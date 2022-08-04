@@ -1,0 +1,26 @@
+
+<router-outlet></router-outlet>
+<!-- [async] used to subscribe and unsubscribe with primitive types -->
+<p-progressSpinner *ngIf="isActive | async" class="spinner-icon">
+</p-progressSpinner>
+
+<p-toast position="top-center"></p-toast>
+
+<p-toast position="top-center" key="confirm" (onClose)="onReject()" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+    <div class="flex flex-column" style="flex: 1">
+      <div class="text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h6>{{message.summary}}</h6>
+      </div>
+      <div class="grid p-fluid">
+        <div class="col-6">
+          <button type="button" pButton (click)="onConfirm()" label="نعم" class="p-button-success"></button>
+        </div>
+        <div class="col-6">
+          <button type="button" pButton (click)="onReject()" label="لا" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>

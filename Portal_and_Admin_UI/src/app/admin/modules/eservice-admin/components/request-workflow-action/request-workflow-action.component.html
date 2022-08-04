@@ -1,0 +1,10 @@
+
+<p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+
+<ng-content select="[requestAction]"></ng-content>
+
+<div class="form-actions">
+  <ng-content select="[requestActionButtons]"></ng-content>
+  <a [routerLink]="[previousUrl, requestId]" class="btn btn-cancel">السابق</a>
+  <a [routerLink]="['/admin/eservice-admin/inbox']" class="btn btn-cancel">إلغاء</a>
+</div>

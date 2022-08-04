@@ -1,0 +1,114 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/service-list']">الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">تعديل الخدمة</span>
+  </nav>
+</div>
+
+<form [formGroup]="updateServiceForm" (ngSubmit)="onSubmit()">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>تعديل الخدمة</h5>
+    </div>
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="form-group col-md-6">
+          <label for="nameAr" class="form-lbl">الاسم عربي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" id="nameAr" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateServiceForm.get('nameAr').touched) &&
+                updateServiceForm.get('nameAr').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('nameAr').touched) && updateServiceForm.get('nameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nameEn" class="form-lbl">الاسم انجليزي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" id="nameEn" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateServiceForm.get('nameEn').touched) &&
+                updateServiceForm.get('nameEn').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('nameEn').touched) && updateServiceForm.get('nameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="titleAr" class="form-lbl">العنوان عربي<span class="danger">*</span></label>
+          <input type="text" class="form-control" formControlName="titleAr" id="titleAr" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateServiceForm.get('titleAr').touched) &&
+                updateServiceForm.get('titleAr').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('titleAr').touched) && updateServiceForm.get('titleAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="titleEn" class="form-lbl">العنوان إنجليزي<span class="danger">*</span></label>
+          <input type="text" class="form-control" formControlName="titleEn" id="titleEn" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateServiceForm.get('titleEn').touched) &&
+                updateServiceForm.get('titleEn').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('titleEn').touched) && updateServiceForm.get('titleEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="descriptionAr" class="form-lbl">الوصف عربي<span class="danger">*</span></label>
+          <textarea rows="4" class="form-control" formControlName="descriptionAr" id="descriptionAr" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateServiceForm.get('descriptionAr').touched) &&
+                updateServiceForm.get('descriptionAr').errors?.required
+            }"></textarea>
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('descriptionAr').touched) && updateServiceForm.get('descriptionAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="descriptionEn" class="form-lbl">الوصف إنجليزي<span class="danger">*</span></label>
+          <textarea rows="4" class="form-control" formControlName="descriptionEn" id="descriptionEn" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateServiceForm.get('descriptionEn').touched) &&
+                updateServiceForm.get('descriptionEn').errors?.required
+            }"></textarea>
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('descriptionEn').touched) && updateServiceForm.get('descriptionEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="requestLink" class="form-lbl">رابط الخدمة<span class="danger">*</span></label>
+          <input type="text" class="form-control" formControlName="requestLink" id="requestLink" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateServiceForm.get('requestLink').touched) &&
+                updateServiceForm.get('requestLink').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('requestLink').touched) && updateServiceForm.get('requestLink').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="workDays" class="form-lbl">مدة انجاز الخدمة<span class="danger">*</span></label>
+          <input type="text" class="form-control" formControlName="workDays" id="workDays" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
+          <img width="200px" height="100px" *ngIf="oldImage" [src]="oldImage?.base64File" />
+          <p-fileUpload #uploader
+                        chooseLabel="تحميل الصورة"
+                        [auto]="true"
+                        [customUpload]="isCustomUpload"
+                        (uploadHandler)="onUpload($event)"
+                        (onRemove)="onRemove($event)"
+                        [multiple]="isMultiple"
+                        mode="advanced"
+                        accept="image/*"
+                        [maxFileSize]="fileSize">
+          </p-fileUpload>
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('image').touched) && updateServiceForm.get('image').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-6">
+          <label class="container-check">
+            فعال
+            <input type="checkbox" formControlName="isActive" id="isActive" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-save">تعديل</button>
+    <a [routerLink]="['/admin/data-management/service-list']" class="btn btn-cancel">رجوع</a>
+  </div>
+</form>

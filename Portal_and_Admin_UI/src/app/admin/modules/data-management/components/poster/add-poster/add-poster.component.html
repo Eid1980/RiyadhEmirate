@@ -1,0 +1,44 @@
+<!-- breadcrumb and add Button -->
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/">
+      <i class="fa fa-home fs-20"></i>
+      الرئيسية
+    </a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/poster-list']">
+      الاعلانات
+    </a>
+    <span class="breadcrumb-item fs-16 active">إضافة إعلان جديد</span>
+  </nav>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>تفاصيل الإعلان</h5>
+    </div>
+    <div class="form-content">
+      <div class="row mx-0">
+        <!-- Image Upload -->
+        <div class="form-group col-md-4">
+          <label for="" class="form-lbl">
+            تحميل الصورة
+            <span class="danger">*</span>
+          </label>
+          <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload" (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced" accept="image/*" [maxFileSize]="fileSize">
+          </p-fileUpload>
+          <small *ngIf="
+              (isFormSubmitted || form.get('Image').touched) &&
+              form.get('Image').errors?.required
+            " class="danger">هذاالحقل مطلوب</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- form actions -->
+  <div class="form-actions">
+    <button type="submit" class="btn btn-save">حفظ</button>
+    <a [routerLink]="['/admin/data-management/poster-list']" class="btn btn-cancel">إلغاء</a>
+  </div>
+</form>

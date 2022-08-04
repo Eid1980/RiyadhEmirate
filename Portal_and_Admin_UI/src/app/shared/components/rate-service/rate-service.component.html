@@ -1,0 +1,4 @@
+
+<p-dialog header="تقييم الخدمة" [(visible)]="showServiceRate && canRate" (onHide)="redirectTo()" [style]="{width: '35vw'}">
+  <p-rating [cancel]="false" [(ngModel)]="rate" (onRate)="rateService()"></p-rating>
+</p-dialog>
