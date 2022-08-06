@@ -76,6 +76,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
 
         private UserRepository users;
         public IUserRepository Users => users ??= new UserRepository(Context);
+
+
+        private LookupRepository lookups;
+        public ILookupRepository Lookups => lookups ??= new LookupRepository(Context);
         #endregion
 
     }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Common;
 using Emirates.Core.Application.Services.Shared;
@@ -51,21 +52,6 @@ namespace Emirates.Core.Application.Services.Accounts
         {
             var isExist = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName.ToString() == userName) != null;
             return GetResponse(data: isExist);
-        }
-        public IApiResponse Register(CreateUserDto createUserDto)
-        {
-            if (_emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName.Equals(createUserDto.UserName)) != null)
-                throw new BusinessException("اسم المستخدم مضاف مسبقا");
-
-            var addedModel = _mapper.Map<User>(createUserDto);
-            CreatePasswordHash(createUserDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
-            addedModel.PasswordHash = passwordHash;
-            addedModel.PasswordSalt = passwordSalt;
-
-            _emiratesUnitOfWork.Users.Add(addedModel);
-            _emiratesUnitOfWork.Complete();
-
-            return GetResponse(message: "sss,sss,تم التسجيل بنجاح", data: addedModel.Id);
         }
         public IApiResponse Login(UserLoginDto userLoginDto)
         {
@@ -166,6 +152,48 @@ namespace Emirates.Core.Application.Services.Accounts
             return GetResponse(data: isReseted);
         }
 
+        public IApiResponse CheckUserRegister(CheckUserRegisterDto checkUserRegisterDto)
+        {
+            if (_emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName.Equals(checkUserRegisterDto.NationalId)) != null)
+                throw new BusinessException("اسم المستخدم مضاف مسبقا");
+            // Nic check
+            var nicUser = new CreateUserDto
+            {
+                UserName = checkUserRegisterDto.NationalId,
+                BirthDate = checkUserRegisterDto.BirthDate,
+                FirstNameAr = "محمد",
+                SecondNameAr = "احمد",
+                ThirdNameAr = "علي",
+                LastNameAr = "الجوهري",
+                FirstNameEn = "Mohamed",
+                SecondNameEn = "Ahmad",
+                ThirdNameEn = "Ali",
+                LastNameEn = "Algohary",
+                IsMale = true
+            };
+            return GetResponse(data: nicUser);
+        }
+        public IApiResponse Register(CreateUserDto createUserDto)
+        {
+            if (_emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName.Equals(createUserDto.UserName)) != null)
+                throw new BusinessException("اسم المستخدم مضاف مسبقا");
+
+            var addedModel = _mapper.Map<User>(createUserDto);
+            CreatePasswordHash(createUserDto.PassWord, out byte[] passwordHash, out byte[] passwordSalt);
+            addedModel.PasswordHash = passwordHash;
+            addedModel.PasswordSalt = passwordSalt;
+            addedModel.IsActive = true;
+            addedModel.IsAdmin = false;
+            addedModel.IsDataComplete = addedModel.ChildrenCount != null && addedModel.ChildrenCount.Value != 0 &&addedModel.MaritalStatusId != null && addedModel.MaritalStatusId.Value != 0 && !string.IsNullOrEmpty(addedModel.EmployeeSide) && !string.IsNullOrEmpty(addedModel.JobOccupation);
+            addedModel.LastLoginDate = DateTime.Now;
+
+            _emiratesUnitOfWork.Users.Add(addedModel);
+            _emiratesUnitOfWork.Complete();
+
+            return GetResponse(message: CustumMessages.MsgSuccess("تم التسجيل بنجاح"), data: addedModel.Id);
+        }
+
+        #region Helper Functions
         private string GenerateToken()
         {
             Random rd = new Random();
@@ -191,6 +219,8 @@ namespace Emirates.Core.Application.Services.Accounts
             }
             return true;
         }
+
+        #endregion
 
     }
 }

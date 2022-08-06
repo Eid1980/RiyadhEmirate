@@ -9,12 +9,13 @@ namespace Emirates.Core.Application.Services.Accounts
         IApiResponse GetByUserName(string userName);
         IApiResponse GetByPhone(string phoneNumber);
         IApiResponse UserExist(string userName);
-        IApiResponse Register(CreateUserDto createUserDto);
         IApiResponse Login(UserLoginDto userLoginDto);
 
         IApiResponse ForgetPassword(ForgetPasswordDto forgetPasswordDto);
         IApiResponse UpdatePassword(UpdatePasswordDto updatePasswordDto);
         IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto);
         IApiResponse ResetPassword(ResetPasswordDto resetPasswordDto);
+        IApiResponse CheckUserRegister(CheckUserRegisterDto checkUserRegisterDto);
+        IApiResponse Register(CreateUserDto createUserDto);
     }
 }

@@ -30,11 +30,7 @@ export class PageListComponent implements OnInit {
   searchOperators: SearchOperator[];
   private subscription: Subscription;
 
-  constructor(
-    public dynamicSearchService: DynamicSearchService,
-    private globalService: GlobalService,
-    private tableService: TableService
-  ) {
+  constructor(public dynamicSearchService: DynamicSearchService, private tableService: TableService) {
     this.searchModel = {};
     this.subscription = new Subscription();
   }
