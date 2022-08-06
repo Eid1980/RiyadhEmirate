@@ -51,17 +51,14 @@ export class ReportsAddComponent implements OnInit {
   }
 
   onUpload(event: any) {
-    debugger;
     this.form.get('Image').setValue(event.files[0]);
   }
 
   onRemove(event) {
-    debugger;
     this.form.get('Image').setValue(null);
   }
 
   onSelectGregorianDate() {
-    debugger;
     let gregorianDate: Date = this.form.get('Date').value as Date;
     let hijriDate = this.globalService.convertToHijri(gregorianDate, 'ar');
     this.form.get('HijriDate').setValue(hijriDate);

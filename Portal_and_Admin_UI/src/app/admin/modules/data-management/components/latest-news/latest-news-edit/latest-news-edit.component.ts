@@ -55,11 +55,6 @@ export class LatestNewsEditComponent implements OnInit {
       IsActive: [true],
     });
 
-    /*this.activatedRoute.queryParamMap.subscribe((params) => {
-      debugger
-      this.id = Number(params.get('id'));
-      this.getEdit(this.id);
-    });*/
 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
@@ -69,7 +64,6 @@ export class LatestNewsEditComponent implements OnInit {
 
   getEdit(productId) {
     this.latestNewsService.getById(productId).subscribe((response) => {
-      debugger
       this.editVM = response.data;
       var date = new Date(this.editVM.Date);
       var ngbDateStructGregorian = {
@@ -97,7 +91,6 @@ export class LatestNewsEditComponent implements OnInit {
   }
 
   onRemove(event) {
-    debugger;
     this.form.get('Image').setValue(null);
   }
 
@@ -121,7 +114,6 @@ export class LatestNewsEditComponent implements OnInit {
       postedVM.Date = date;
       this.latestNewsService.update(postedVM).subscribe((response) => {
         if (response.isSuccess) {
-          debugger;
           if (this.form.get('Image').value) {
             this.fileManagerService
               .deleteByEntityName(this.editVM.Id, 'LatestNews')

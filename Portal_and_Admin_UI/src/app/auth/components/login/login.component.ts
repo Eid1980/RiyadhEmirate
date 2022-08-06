@@ -15,8 +15,11 @@ export class LoginComponent implements OnInit {
   isFormSubmitted: boolean;
   returnUrl: string;
 
-  constructor(private formBuilder: FormBuilder, private accountService: AccountService,
-    private router: Router, private globalService: GlobalService, private activatedRoute: ActivatedRoute)
+  constructor(private formBuilder: FormBuilder,
+     private _accountService: AccountService,
+     private router: Router,
+     private globalService: GlobalService,
+    private activatedRoute: ActivatedRoute)
   {
   }
 
@@ -37,10 +40,19 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.accountService.login(this.loginForm.value).subscribe(
+    this._accountService.login(this.loginForm.value).subscribe(
       (response) => {
         if (response.isSuccess) {
           localStorage.setItem('EmiratesToken', response.data);
+          this._accountService.getAuthUser().subscribe((res) =>
+          {
+            localStorage.setItem('AuthUser',JSON.stringify(res.data))
+          },
+          () =>
+          {
+
+          });
+
           if (this.returnUrl) {
             this.router.navigateByUrl(this.returnUrl);
           } else {

@@ -18,14 +18,21 @@ export class ServiceService {
     return this.httpClient.get<ApiResponse<GetServiceDetailsDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
     );
   }
+
   getByServiceId = (serviceId: number): Observable<ApiResponse<GetServiceListDto[]>> => {
     return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/GetByServiceId/${serviceId}`).pipe(
+    );
+  }
+
+  getAll = (): Observable<ApiResponse<GetServiceListDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/GetAll`).pipe(
     );
   }
 
   create = (createdDto: CreateServiceDto): Observable<ApiResponse<number>> => {
     return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
   }
+
   update = (updatedDto: UpdateServiceDto): Observable<ApiResponse<number>> => {
     return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }

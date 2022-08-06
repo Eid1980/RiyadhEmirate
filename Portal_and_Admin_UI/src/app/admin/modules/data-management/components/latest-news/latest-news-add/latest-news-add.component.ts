@@ -61,7 +61,6 @@ export class LatestNewsAddComponent implements OnInit {
   }
 
   onSelectGregorianDate() {
-    debugger;
     let gregorianDate: Date = this.form.get('Date').value as Date;
     let hijriDate = this.globalService.convertToHijri(gregorianDate, 'ar');
     this.form.get('HijriDate').setValue(hijriDate);
@@ -78,7 +77,6 @@ export class LatestNewsAddComponent implements OnInit {
     if (this.form.valid) {
       const postedVM = this.form.value;
       postedVM.Date = date;
-      debugger
       this.latestNewsService.create(postedVM).subscribe((response) => {
         if (response.isSuccess) {
           let id = response.data.toString();

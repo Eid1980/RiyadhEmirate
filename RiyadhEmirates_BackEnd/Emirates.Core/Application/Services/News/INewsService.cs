@@ -7,8 +7,9 @@ namespace Emirates.Core.Application.Services.News
     public interface INewsService
     {
         IApiResponse GetById(int id);
-        IApiResponse GetAll(int typeId);
+        IApiResponse GetByNewsTypeId(int typeId);
         IApiResponse GetAll(SearchModel searchModel);
+        IApiResponse GetAll();
         IApiResponse Create(CreateNewsDto createModel);
         IApiResponse Update(UpdateNewsDto updateModel);
         IApiResponse ChangeStatus(int id);

@@ -27,7 +27,6 @@ export class LatestNewsViewComponent implements OnInit {
   getEdit(productId) {
     this.latestNewsService.getById(productId).subscribe((response) => {
       this.detailsVM = response.data;
-      debugger
       this.oldImage = this.detailsVM.image;
     });
   }

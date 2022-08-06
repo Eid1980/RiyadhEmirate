@@ -18,7 +18,7 @@ export interface UpdateNewsDto {
   titleEn: string;
   descriptionAr: string;
   descriptionEn: string;
-  newsType: number;
+  newsTypeId: number;
   date: string;
   isActive: boolean;
 
@@ -31,7 +31,7 @@ export interface GetNewsDetailsDto {
   titleEn: string;
   descriptionAr: string;
   descriptionEn: string;
-  newsType: number;
+  newsTypeId: number;
   date: string;
   isActive: boolean;
 
