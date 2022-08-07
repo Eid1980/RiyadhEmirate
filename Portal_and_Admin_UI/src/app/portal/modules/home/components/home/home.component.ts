@@ -20,8 +20,6 @@ declare let $: any;
 export class HomeComponent implements OnInit {
   searchModel: SearchModel = {};
 
-  searchModel : SearchModel = {} ;
-
   news : GetNewsDetailsDto[] = [];
   posters: GetNewsDetailsDto[] = [];
   emiratesNews: GetNewsDetailsDto[] = [];
