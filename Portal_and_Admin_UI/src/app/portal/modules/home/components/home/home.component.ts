@@ -13,8 +13,7 @@ declare let $: any;
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
-  searchModel : SearchModel = {} ;
+  searchModel: SearchModel = {};
 
   posters: any[] = [];
   emiratesNews: any[] = [];
@@ -23,98 +22,12 @@ export class HomeComponent implements OnInit {
   services: any[] = [];
 
   constructor(
-    private _newService : NewsService,
+    private _newService: NewsService,
     private _globalService: GlobalService,
-    private _router: Router) {
-    }
+    private _router: Router
+  ) {}
 
   ngOnInit() {
-
-    setTimeout(function () {
-      $('.news .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 1,
-          },
-        },
-      });
-    }, 8000);
-    setTimeout(function () {
-      $('.e-services .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 3,
-          },
-          1000: {
-            items: 4,
-          },
-        },
-      });
-    }, 8000);
-    setTimeout(function () {
-      $('.gov-news .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 2,
-          },
-        },
-      });
-    }, 8000);
-    setTimeout(function () {
-      $('.advertise-report .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 1,
-          },
-        },
-      });
-    }, 8000);
-
     this.getPosters();
     this.getEmiratesNews();
     this.getLatestNews();
@@ -223,33 +136,32 @@ export class HomeComponent implements OnInit {
 
   getPosters() {
     this.searchModel.SearchFields = [
-        {
-          FieldName: "NewsTypeId",
-          Operator: "Equal",
-          Value: NewsTypes.Posters.toString()
-        }
-    ]
+      {
+        FieldName: 'NewsTypeId',
+        Operator: 'Equal',
+        Value: NewsTypes.Posters.toString(),
+      },
+    ];
 
     this._newService.getAll(NewsTypes.Posters).subscribe((result: any) => {
-      debugger
+      debugger;
       this.posters = result.data;
-      console.log('posters')
-      console.log(this.posters)
+      console.log('posters');
+      console.log(this.posters);
     });
-
   }
 
   getEmiratesNews() {
     this.searchModel.SearchFields = [
       {
-        FieldName: "NewsTypeId",
-        Operator: "Equal",
-        Value: NewsTypes.EmiratesNews.toString()
-      }
-  ]
+        FieldName: 'NewsTypeId',
+        Operator: 'Equal',
+        Value: NewsTypes.EmiratesNews.toString(),
+      },
+    ];
 
     this._newService.getAll(NewsTypes.EmiratesNews).subscribe((result: any) => {
-      debugger
+      debugger;
       this.emiratesNews = result.data;
     });
   }
@@ -257,11 +169,11 @@ export class HomeComponent implements OnInit {
   getLatestNews() {
     this.searchModel.SearchFields = [
       {
-        FieldName: "NewsTypeId",
-        Operator: "Equal",
-        Value: NewsTypes.LatestNews.toString()
-      }
-  ]
+        FieldName: 'NewsTypeId',
+        Operator: 'Equal',
+        Value: NewsTypes.LatestNews.toString(),
+      },
+    ];
 
     this._newService.getAll(NewsTypes.LatestNews).subscribe((result: any) => {
       this.latestNews = result.data;
@@ -277,11 +189,11 @@ export class HomeComponent implements OnInit {
   getServices() {
     this.searchModel.SearchFields = [
       {
-        FieldName: "NewsTypeId",
-        Operator: "Equal",
-        Value: NewsTypes.Posters.toString()
-      }
-  ]
+        FieldName: 'NewsTypeId',
+        Operator: 'Equal',
+        Value: NewsTypes.Posters.toString(),
+      },
+    ];
 
     this._newService.getAll(NewsTypes.Posters).subscribe((result: any) => {
       this.services = result.data;
@@ -330,7 +242,4 @@ export class HomeComponent implements OnInit {
     let hijriDate = this._globalService.convertToHijri(newDate, 'ar');
     return hijriDate.toString();
   }
-
-
-
 }
