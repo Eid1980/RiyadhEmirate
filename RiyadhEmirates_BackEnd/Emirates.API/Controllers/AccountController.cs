@@ -10,6 +10,7 @@ using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.CustomExceptions;
+using Emirates.Core.Application.Interfaces.Helpers;
 
 namespace Emirates.API.Controllers
 {
@@ -63,13 +64,6 @@ namespace Emirates.API.Controllers
         }
 
         [HttpPost]
-        [Route(("Register"))]
-        public IApiResponse Register([FromForm] CreateUserDto createUserDto)
-        {
-            return _accountService.Register(createUserDto);
-        }
-
-        [HttpPost]
         [Route("Login")]
         public IApiResponse Login(UserLoginDto userLoginDto)
         {
@@ -119,11 +113,28 @@ namespace Emirates.API.Controllers
             return _accountService.UpdatePassword(updatePasswordDto);
         }
 
-        [HttpPost]
-        [Route("ValidateOTP")]
+        [HttpPost("ValidateOTP")]
         public IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto)
         {
             return _accountService.ValidateOTP(validateOTPDto);
+        }
+
+
+        [HttpPost("CheckUserRegister")]
+        public IApiResponse CheckUserRegister(CheckUserRegisterDto checkUserRegisterDto)
+        {
+            return _accountService.CheckUserRegister(checkUserRegisterDto);
+        }
+        [HttpPost("Register")]
+        public IApiResponse Register(CreateUserDto createUserDto)
+        {
+            if (!ModelState.IsValid)
+                return new ApiResponse
+                {
+                    IsSuccess=false,
+                    Message = CustumMessages.MsgWarning("رجاء التأكد من صحة البيانات المدخلة")
+                };
+            return _accountService.Register(createUserDto);
         }
 
     }

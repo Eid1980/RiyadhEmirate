@@ -3,6 +3,7 @@ using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Services.CaseTypes;
 using Emirates.Core.Application.Services.Common;
 using Emirates.Core.Application.Services.InternalPortal.FileManager;
+using Emirates.Core.Application.Services.Lookups;
 using Emirates.Core.Application.Services.Nationality;
 using Emirates.Core.Application.Services.News;
 using Emirates.Core.Application.Services.RequestAttachmentTypes;
@@ -26,6 +27,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IEmiratesUnitOfWork, EmiratesUnitOfWork>();
             #endregion
 
+            builder.Services.AddScoped<ILookupService, LookupService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICaseTypeService, CaseTypeService>();
             builder.Services.AddScoped<ILocalizationService, LocalizationService>();

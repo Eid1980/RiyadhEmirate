@@ -12,15 +12,26 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'forgot-password', component: ForgotPasswordComponent },
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent
+      },
       {
         path: 'reset-password',
         component: ResetPasswordComponent,
       },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
 
-      { path: 'register', component: RegisterComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      {
+        path: '', redirectTo: 'login', pathMatch: 'full'
+      },
     ],
     component: AuthLayoutComponent,
   },
