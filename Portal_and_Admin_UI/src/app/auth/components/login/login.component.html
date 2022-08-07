@@ -1,6 +1,6 @@
 <div class="auth-card">
   <div class="auth-head text-right p-4" style="text-align: right">
-    <a href="#">
+    <a routerLink="/home">
       <img src="assets/images/logo.svg" alt="" class="log-logo" width="220" />
     </a>
   </div>
@@ -17,11 +17,14 @@
             <input type="password" name="" id="password" class="form-control" formControlName="password" />
             <label for="password" class="label">كلمة المرور</label>
           </div>
-          <!-- <div class="">
+           <div class="">
+            <a routerLink="/auth/register">
+              <span class="forget-pass">تسجيل مستخدم جديد</span>
+            </a>
             <a href="">
               <span class="forget-pass">نسيت كلمة المرور؟</span>
             </a>
-          </div> -->
+          </div> 
           <div class="">
             <button type="submit" class="btn btn-primary submit">تسجيل دخول</button>
           </div>

@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { GetUserDto, UserLoginDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { JsonPipe } from '@angular/common';
+import { CheckUserRegisterDto, CreateUserDto } from './register.model';
+import { LookupDto } from '../shared/lookup-dto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +19,15 @@ export class AccountService {
 
   login = (userLoginDto: UserLoginDto): Observable<ApiResponse<string>> => {
     return this.httpClient.post<ApiResponse<string>>(`${this.serviceUrl}/Login`, userLoginDto).pipe(
+    );
+  }
+
+  checkUserRegister = (checkUserRegisterDto: CheckUserRegisterDto): Observable<ApiResponse<CreateUserDto>> => {
+    return this.httpClient.post<ApiResponse<CreateUserDto>>(`${this.serviceUrl}/CheckUserRegister`, checkUserRegisterDto).pipe(
+    );
+  }
+  register = (createUserDto: CreateUserDto): Observable<ApiResponse<number>> => {
+    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Register`, createUserDto).pipe(
     );
   }
 

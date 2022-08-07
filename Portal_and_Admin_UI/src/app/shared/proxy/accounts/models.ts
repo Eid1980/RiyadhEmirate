@@ -27,15 +27,6 @@ export interface GetUserDto {
   birthDate: string;
 }
 
-export interface CreateUserDto {
-  name: string;
-  nationalId: string;
-  phoneNumber: string;
-  userName: string;
-  email: string;
-  address: string;
-  birthDate: string;
-}
 
 export interface UserLoginDto {
   userName: string;

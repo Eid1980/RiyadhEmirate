@@ -20,5 +20,6 @@ namespace Emirates.Core.Domain.Interfaces
         IStageRepository Stages { get; }
         IUploadedFileRepository UploadedFiles { get; }
         IUserRepository Users { get; }
+        ILookupRepository Lookups { get; }
     }
 }

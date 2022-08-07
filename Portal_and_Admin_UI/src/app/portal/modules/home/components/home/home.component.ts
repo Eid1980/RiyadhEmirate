@@ -18,6 +18,7 @@ declare let $: any;
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  searchModel: SearchModel = {};
 
   searchModel : SearchModel = {} ;
 

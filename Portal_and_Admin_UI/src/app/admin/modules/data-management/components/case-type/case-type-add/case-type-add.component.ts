@@ -43,7 +43,5 @@ export class CaseTypeAddComponent implements OnInit {
         });
     }
   }
-  showConfirm() {
-  }
 
 }
