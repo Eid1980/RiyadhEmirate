@@ -3,6 +3,7 @@ using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.News;
 using Emirates.Core.Application.Services.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -56,6 +57,7 @@ namespace Emirates.API.Controllers
         /// Get all news
         /// </summary>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet("GetAll")]
         public IApiResponse GetAll()
         {

@@ -65,7 +65,7 @@ export class LatestNewsEditComponent implements OnInit {
   getEdit(productId) {
     this.latestNewsService.getById(productId).subscribe((response) => {
       this.editVM = response.data;
-      var date = new Date(this.editVM.Date);
+      var date = new Date(this.editVM.date);
       var ngbDateStructGregorian = {
         day: date.getUTCDate() + 1,
         month: date.getUTCMonth() + 1,
@@ -82,7 +82,7 @@ export class LatestNewsEditComponent implements OnInit {
         IsActive: this.editVM.isActive,
       });
 
-      this.oldImage = this.editVM.Image;
+      this.oldImage = this.editVM.image;
     });
   }
 
@@ -110,16 +110,18 @@ export class LatestNewsEditComponent implements OnInit {
     }
     if (this.form.valid) {
       const postedVM = this.form.value;
-      postedVM.Id = this.editVM.Id;
+      postedVM.Id = this.editVM.id;
+      postedVM.NewsTypeId = this.editVM.newsTypeId
+
       postedVM.Date = date;
       this.latestNewsService.update(postedVM).subscribe((response) => {
         if (response.isSuccess) {
           if (this.form.get('Image').value) {
             this.fileManagerService
-              .deleteByEntityName(this.editVM.Id, 'LatestNews')
+              .deleteByEntityName(this.editVM.Id, 'News')
               .subscribe((res) => {
                 this.fileManagerService
-                  .upload(this.editVM.Id, 'LatestNews', '', [
+                  .upload(this.editVM.Id, 'News', '', [
                     this.form.get('Image').value,
                   ])
                   .subscribe((res) => {

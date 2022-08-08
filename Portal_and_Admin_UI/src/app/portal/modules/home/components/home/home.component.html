@@ -109,9 +109,9 @@
 
       <owl-carousel-o [options]="newsOptions" class="owl-rtl">
         <!-- Repeatable Item -->
-        <ng-template carouselSlide>
+        <ng-template carouselSlide *ngFor="let news of latestNews">
           <div class="owl-item">
-            <div class="item" *ngFor="let news of latestNews">
+            <div class="item" >
               <div class="news-card">
               <img [src]="news?.image?.base64File" alt="" class="news-img">
               <img src="./assets/images/news-overlay.png" alt="" class="overlay">
@@ -203,8 +203,8 @@
 
         <owl-carousel-o [options]="govNewsOptions" class="owl-rtl">
           <!-- Repeatable Item -->
-          <ng-template carouselSlide>
-            <div class="item" *ngFor="let news of emiratesNews">
+          <ng-template carouselSlide *ngFor="let news of emiratesNews">
+            <div class="item">
               <div class="card">
                 <img [src]="news?.image?.base64File" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -232,8 +232,8 @@
       <div class="owl__carousel">
         <owl-carousel-o [options]="advertiseReportOptions" class="owl-rtl">
           <!-- Repeatable Item -->
-          <ng-template carouselSlide>
-            <div class="item" *ngFor="let poster of posters">
+          <ng-template carouselSlide *ngFor="let poster of posters">
+            <div class="item" >
               <div class="ad-card">
                 <img [src]="poster.image.base64File" alt="" class="ad-card-img">
                 <img src="./assets/images/add-overlay.png" alt="" class="overlay">
@@ -244,24 +244,6 @@
                   <span class="ad-calendar">
                     <img src="./assets/images/icons/add-calendar.svg" alt="">
                     <span>{{ formatDate(poster?.date) }}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </ng-template>
-          <!-- Repeatable Item -->
-          <ng-template carouselSlide>
-            <div class="item">
-              <div class="ad-card">
-                <img src="./assets/images/add-report.png" alt="" class="ad-card-img">
-                <img src="./assets/images/add-overlay.png" alt="" class="overlay">
-                <div class="ad-card-content">
-                  <span class="desc">
-                    تدابير إضافية في مواجهة كورونا.. تعليق العمل 16 يومًا في الجهات الحكومية
-                  </span>
-                  <span class="ad-calendar">
-                    <img src="./assets/images/icons/add-calendar.svg" alt="">
-                    <span>17 شعبان 1443</span>
                   </span>
                 </div>
               </div>

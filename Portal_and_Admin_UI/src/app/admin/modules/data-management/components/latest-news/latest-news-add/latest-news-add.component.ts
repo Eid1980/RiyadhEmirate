@@ -81,7 +81,7 @@ export class LatestNewsAddComponent implements OnInit {
         if (response.isSuccess) {
           let id = response.data.toString();
           this.fileManagerService
-            .upload(id, 'LatestNews', '', [this.form.get('Image').value])
+            .upload(id, 'News', '', [this.form.get('Image').value])
             .subscribe((res) => {
               this.globalService.messageAlert(
                 MessageType.Success,
