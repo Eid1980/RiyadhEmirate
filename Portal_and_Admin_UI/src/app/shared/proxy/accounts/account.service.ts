@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { GetUserDto, UserLoginDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
+import { JsonPipe } from '@angular/common';
 import { CheckUserRegisterDto, CreateUserDto } from './register.model';
 import { LookupDto } from '../shared/lookup-dto.model';
 
@@ -65,9 +66,9 @@ export class AccountService {
     this.router.navigate(['/auth']);
   }
 
-  getCurrentUserInfo = (): string => {
+  getCurrentUserInfo = (): GetUserDto => {
     if (localStorage.getItem('AuthUser') != null) {
-      return localStorage.getItem('AuthUser');
+      return JSON.parse(localStorage.getItem('AuthUser'));
     }
     else {
       this.router.navigate(['/auth']);

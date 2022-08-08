@@ -35,6 +35,7 @@ namespace Emirates.Core.Application.Services.News
             mappedModel.Image = _fileManagerService.GetBase64File(id, "News");
             return GetResponse(data: mappedModel);
         }
+
         public IApiResponse GetAll(SearchModel searchModel)
         {
             var serchResult = _emiratesUnitOfWork.News.GetQueryable()
@@ -48,26 +49,51 @@ namespace Emirates.Core.Application.Services.News
                 PagingMetaData = serchResult.GetMetaData()
             });
         }
-        public IApiResponse GetAll(int typeId)
+
+        public IApiResponse GetByNewsTypeId(int typeId)
         {
             var newsQuerable = _emiratesUnitOfWork.News.GetQueryable();
             var filesQuerable = _emiratesUnitOfWork.UploadedFiles.GetQueryable();
             var query = (from news in newsQuerable
-                        join files in filesQuerable on news.Id.ToString() equals files.EntityId
-                        where files.EntityName == "News" && news.IsActive == true && news.NewsTypeId == typeId
-                        select new GetNewsListDto
-                        {
-                            Id = news.Id,
-                            TitleAr = news.TitleAr,
-                            TitleEn = news.TitleEn,
-                            DescriptionAr = news.DescriptionAr,
-                            DescriptionEn = news.DescriptionEn,
-                            NewsTypeId = news.NewsTypeId,
-                            Date = news.Date,
-                            IsActive = news.IsActive,
-                            
-                            Image = _fileManagerService.GetBase64File(news.Id, "News")
-                        }).OrderByDescending(s => s.Date);
+                         join files in filesQuerable on news.Id.ToString() equals files.EntityId
+                         where files.EntityName == "News" && news.IsActive == true && news.NewsTypeId == typeId
+                         select new GetNewsListDto
+                         {
+                             Id = news.Id,
+                             TitleAr = news.TitleAr,
+                             TitleEn = news.TitleEn,
+                             DescriptionAr = news.DescriptionAr,
+                             DescriptionEn = news.DescriptionEn,
+                             NewsTypeId = news.NewsTypeId,
+                             Date = news.Date,
+                             IsActive = news.IsActive,
+
+                             Image = _fileManagerService.GetBase64File(news.Id, "News")
+                         }).OrderByDescending(s => s.Date);
+
+            return GetResponse(data: query);
+        }
+
+        public IApiResponse GetAll()
+        {
+            var newsQuerable = _emiratesUnitOfWork.News.GetQueryable();
+            var filesQuerable = _emiratesUnitOfWork.UploadedFiles.GetQueryable();
+            var query = (from news in newsQuerable
+                         join files in filesQuerable on news.Id.ToString() equals files.EntityId
+                         where files.EntityName == "News" && news.IsActive == true
+                         select new GetNewsListDto
+                         {
+                             Id = news.Id,
+                             TitleAr = news.TitleAr,
+                             TitleEn = news.TitleEn,
+                             DescriptionAr = news.DescriptionAr,
+                             DescriptionEn = news.DescriptionEn,
+                             NewsTypeId = news.NewsTypeId,
+                             Date = news.Date,
+                             IsActive = news.IsActive,
+
+                             Image = _fileManagerService.GetBase64File(news.Id, "News")
+                         }).OrderByDescending(s => s.Date);
 
             return GetResponse(data: query);
         }
@@ -78,6 +104,7 @@ namespace Emirates.Core.Application.Services.News
             _emiratesUnitOfWork.Complete();
             return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
         }
+
         public IApiResponse Update(UpdateNewsDto updateModel)
         {
             var caseType = _emiratesUnitOfWork.News.FirstOrDefault(n => n.Id.Equals(updateModel.Id));
@@ -88,6 +115,7 @@ namespace Emirates.Core.Application.Services.News
             _emiratesUnitOfWork.Complete();
             return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
         }
+
         public IApiResponse ChangeStatus(int id)
         {
             var news = _emiratesUnitOfWork.News.FirstOrDefault(n => n.Id == id);

@@ -1,34 +1,56 @@
 <div class="auth-card">
-  <div class="auth-head text-right p-4" style="text-align: right">
-    <a routerLink="/home">
-      <img src="assets/images/logo.svg" alt="" class="log-logo" width="220" />
-    </a>
+  <div class="auth-head">
+    <div class="flex_row">
+      <a href="#">
+        <img src="assets/images/logo.svg" alt="" class="log-logo" width="180" />
+      </a>
+      <!-- <span (click)="onChangeLang()">
+        <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
+        <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
+      </span> -->
+    </div>
   </div>
   <div class="w-100">
     <h4 class="title">تسجيل الدخول</h4>
+
+    <!-- Form -->
     <div class="row mx-0">
       <div class="col-md-8 mx-auto">
         <form class="fs-13px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+          <!-- Username -->
           <div class="form-group mb-lg-5">
-            <input type="text" name="" id="national_ID" class="form-control" formControlName="userName" />
             <label for="national_ID" class="label">اسم المستخدم</label>
+            <input type="text" name="" id="national_ID" class="form-control" formControlName="userName" />
           </div>
+          <!-- Password -->
           <div class="form-group">
-            <input type="password" name="" id="password" class="form-control" formControlName="password" />
             <label for="password" class="label">كلمة المرور</label>
+            <input type="password" name="" id="password" class="form-control" formControlName="password" />
           </div>
-           <div class="">
-            <a routerLink="/auth/register">
-              <span class="forget-pass">تسجيل مستخدم جديد</span>
-            </a>
+
+          <!-- Forget Password -->
+          <div class="">
             <a href="">
               <span class="forget-pass">نسيت كلمة المرور؟</span>
             </a>
-          </div> 
+          </div>
+
+          <!-- Button -->
           <div class="">
             <button type="submit" class="btn btn-primary submit">تسجيل دخول</button>
           </div>
+
         </form>
+
+        <!-- Have Account -->
+        <div class="mt-4">
+          <span class="">Don't have an account?</span>
+          <a [routerLink]="['/auth/register']">
+            <span class="primary-text">Create New</span>
+          </a>
+        </div>
+
       </div>
     </div>
   </div>

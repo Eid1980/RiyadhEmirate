@@ -88,11 +88,7 @@ export class DataAccessService {
   create(postedViewModel: any): Observable<ServiceResponseVM> {
     return this.httpClient
       .post(`${this.serviceUrl}/Create`, postedViewModel)
-      .pipe(
-        map((responseVM: ResponseVM) =>
-          this.helperFunctions.handleResponse(responseVM)
-        )
-      );
+      .pipe();
   }
 
   createAsync(postedViewModel: any): Observable<ServiceResponseVM> {
@@ -118,11 +114,7 @@ export class DataAccessService {
   update(postedViewModel: any): Observable<ServiceResponseVM> {
     return this.httpClient
       .put(`${this.serviceUrl}/Update`, postedViewModel)
-      .pipe(
-        map((responseVM: ResponseVM) =>
-          this.helperFunctions.handleResponse(responseVM)
-        )
-      );
+      .pipe();
   }
 
   delete(id: string | number) {

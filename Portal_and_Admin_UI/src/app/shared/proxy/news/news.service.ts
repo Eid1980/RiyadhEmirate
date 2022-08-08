@@ -38,9 +38,9 @@ export class NewsService {
       .pipe();
   }
 
-  getAll(newTypeId : number): Observable<ServiceResponseVM> {
+  getAll(): Observable<ServiceResponseVM> {
     return this.httpClient
-      .get(`${this.serviceUrl}/GetAll/${newTypeId}`)
+      .get(`${this.serviceUrl}/GetAll`)
   }
 
 

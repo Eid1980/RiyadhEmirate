@@ -79,8 +79,6 @@ export class ServiceListComponent implements OnInit {
   }
 
   goToLink(url: string, e: any) {
-    console.log(url);
-    console.log(e);
     window.open(url, '_blank');
   }
 }

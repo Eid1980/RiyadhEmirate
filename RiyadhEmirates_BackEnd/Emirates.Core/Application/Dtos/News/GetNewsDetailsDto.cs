@@ -9,7 +9,7 @@ namespace Emirates.Core.Application.Dtos
         public string TitleEn { get; set; }
         public string DescriptionAr { get; set; }
         public string DescriptionEn { get; set; }
-        public int NewsType { get; set; }
+        public int NewsTypeId { get; set; }
         public DateTime Date { get; set; }
         public bool IsActive { get; set; }
         public UploadedFileBase64Model Image { get; set; }

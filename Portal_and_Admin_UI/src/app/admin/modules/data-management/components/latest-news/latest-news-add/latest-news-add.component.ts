@@ -61,13 +61,13 @@ export class LatestNewsAddComponent implements OnInit {
   }
 
   onSelectGregorianDate() {
-    debugger;
     let gregorianDate: Date = this.form.get('Date').value as Date;
     let hijriDate = this.globalService.convertToHijri(gregorianDate, 'ar');
     this.form.get('HijriDate').setValue(hijriDate);
   }
 
   onSubmit() {
+    debugger
     this.isFormSubmitted = true;
     let date = this.startDatePicker.getSelectedDate();
     this.isValidDate = false;
@@ -78,13 +78,13 @@ export class LatestNewsAddComponent implements OnInit {
     if (this.form.valid) {
       const postedVM = this.form.value;
       postedVM.Date = date;
-      debugger
       this.latestNewsService.create(postedVM).subscribe((response) => {
         if (response.isSuccess) {
           let id = response.data.toString();
           this.fileManagerService
-            .upload(id, 'LatestNews', '', [this.form.get('Image').value])
+            .upload(id, 'News', '', [this.form.get('Image').value])
             .subscribe((res) => {
+              debugger
               this.globalService.messageAlert(
                 MessageType.Success,
                 'تم الحفظ بنجاح'

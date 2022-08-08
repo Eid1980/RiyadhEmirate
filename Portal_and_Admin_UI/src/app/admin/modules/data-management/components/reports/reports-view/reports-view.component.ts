@@ -36,30 +36,33 @@ export class ReportsViewComponent implements OnInit {
       IsActive: [true],
     });
 
-    this.activatedRoute.queryParamMap.subscribe((params) => {
-      this.id = Number(params.get("Id"));
-      this.getEdit(this.id);
-    });
+    this.id = this.activatedRoute.snapshot.params['id'];
+    if (this.id) {
+      this.getDetails(this.id);
+    }
+    else {
+      this.globalService.navigate("/admin/data-management/reports-list");
+    }
   }
 
-  getEdit(productId) {
+  getDetails(newsId : number) {
     this.form.disable();
 
-    this.reportsService.getById(productId).subscribe(
+    this.reportsService.getById(newsId).subscribe(
       (response) => {
         this.detailsVM = response.data;
         this.form.patchValue({
           Id: this.detailsVM.Id,
-          TitleAr:this.detailsVM.TitleAr,
-          TitleEn:this.detailsVM.TitleEn,
-          DescriptionAr:this.detailsVM.DescriptionAr,
-          DescriptionEn:this.detailsVM.DescriptionEn,
+          TitleAr:this.detailsVM.titleAr,
+          TitleEn:this.detailsVM.titleEn,
+          DescriptionAr:this.detailsVM.descriptionAr,
+          DescriptionEn:this.detailsVM.descriptionEn,
           Date: new Date(this.detailsVM.Date),
-           HijriDate: this.globalService.convertToHijri(new Date(this.detailsVM.Date),'ar'),
-          IsActive: this.detailsVM.IsActive,
+           HijriDate: this.globalService.convertToHijri(new Date(this.detailsVM.date),'ar'),
+          IsActive: this.detailsVM.isActive,
         });
 
-        this.oldImage = this.detailsVM.Image
+        this.oldImage = this.detailsVM.image
       }
     );
   }

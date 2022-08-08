@@ -84,12 +84,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: "reports-edit",
+    path: "reports-edit/:id",
     component: ReportsEditComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: "reports-view",
+    path: "reports-view/:id",
     component: ReportsViewComponent,
     canActivate: [AuthGuard],
   },

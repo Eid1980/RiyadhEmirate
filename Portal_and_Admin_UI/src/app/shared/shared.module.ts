@@ -36,6 +36,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { RateServiceComponent } from './components/rate-service/rate-service.component';
 import { RequestStageLogComponent } from './components/request-stage-log/request-stage-log.component';
 import { ToastModule } from 'primeng/toast';
+import { CustomSlicePipe } from './pipes/custom-slice.pipe';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ToastModule } from 'primeng/toast';
     UserDataViewComponent,
     UserDataCurrentViewComponent,
     RateServiceComponent,
+    CustomSlicePipe,
   ],
   imports: [
     CommonModule,
@@ -109,12 +111,15 @@ import { ToastModule } from 'primeng/toast';
     UserDataViewComponent,
     UserDataCurrentViewComponent,
     RateServiceComponent,
+    CustomSlicePipe
+
   ],
   providers: [
     HiddenAuthorizeColumnFilterPipe,
     AuthGuard,
     DatePipe,
-    MessageService
+    MessageService,
+    CustomSlicePipe
   ],
 })
 export class SharedModule {}
