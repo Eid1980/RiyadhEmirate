@@ -118,10 +118,10 @@ export class LatestNewsEditComponent implements OnInit {
         if (response.isSuccess) {
           if (this.form.get('Image').value) {
             this.fileManagerService
-              .deleteByEntityName(this.editVM.Id, 'News')
+              .deleteByEntityName(this.editVM.id, 'News')
               .subscribe((res) => {
                 this.fileManagerService
-                  .upload(this.editVM.Id, 'News', '', [
+                  .upload(this.editVM.id, 'News', '', [
                     this.form.get('Image').value,
                   ])
                   .subscribe((res) => {

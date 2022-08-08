@@ -67,6 +67,7 @@ export class LatestNewsAddComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger
     this.isFormSubmitted = true;
     let date = this.startDatePicker.getSelectedDate();
     this.isValidDate = false;
@@ -83,6 +84,7 @@ export class LatestNewsAddComponent implements OnInit {
           this.fileManagerService
             .upload(id, 'News', '', [this.form.get('Image').value])
             .subscribe((res) => {
+              debugger
               this.globalService.messageAlert(
                 MessageType.Success,
                 'تم الحفظ بنجاح'

@@ -7,6 +7,8 @@ import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { ReportsService } from '../../../services/reports.service';
+import { NewsTypes } from '@shared/enums/news-types.enum';
+
 
 @Component({
   selector: 'app-reports-edit',
@@ -49,22 +51,27 @@ export class ReportsEditComponent implements OnInit {
       TitleEn: [null],
       DescriptionAr: [null, Validators.required],
       DescriptionEn: [null],
-      Date: [null, Validators.required],
-      HijriDate: [null, Validators.required],
+      Date: [null],
+      HijriDate: [null],
       Image: [null],
       IsActive: [true],
+
     });
 
-    this.activatedRoute.queryParamMap.subscribe((params) => {
-      this.id = Number(params.get('Id'));
+    this.id = this.activatedRoute.snapshot.params['id'];
+    if (this.id) {
       this.getEdit(this.id);
-    });
+    }
+    else {
+      this.globalService.navigate("/admin/data-management/emirates-news-list");
+    }
   }
 
   getEdit(productId) {
+    debugger
     this.reportsService.getById(productId).subscribe((response) => {
       this.editVM = response.data;
-      var date = new Date(this.editVM.Date);
+      var date = new Date(this.editVM.date);
       var ngbDateStructGregorian = {
         day: date.getUTCDate() + 1,
         month: date.getUTCMonth() + 1,
@@ -73,16 +80,16 @@ export class ReportsEditComponent implements OnInit {
       this.date = this.dateFormatterService.ToHijri(ngbDateStructGregorian);
 
       this.form.patchValue({
-        Id: this.editVM.Id,
-        TitleAr: this.editVM.TitleAr,
-        TitleEn: this.editVM.TitleEn,
-        DescriptionAr: this.editVM.DescriptionAr,
-        DescriptionEn: this.editVM.DescriptionEn,
+        Id: this.editVM.id,
+        TitleAr: this.editVM.titleAr,
+        TitleEn: this.editVM.titleEn,
+        DescriptionAr: this.editVM.descriptionAr,
+        DescriptionEn: this.editVM.descriptionEn,
         Date: this.startDatePicker.getSelectedDate(),
-        IsActive: this.editVM.IsActive,
+        IsActive: this.editVM.isActive,
       });
 
-      this.oldImage = this.editVM.Image;
+      this.oldImage = this.editVM.image;
     });
   }
 
@@ -101,6 +108,7 @@ export class ReportsEditComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger
     this.isFormSubmitted = true;
     let date = this.startDatePicker.getSelectedDate();
     this.isValidDate = false;
@@ -109,17 +117,16 @@ export class ReportsEditComponent implements OnInit {
       return;
     }
     if (this.form.valid) {
+      debugger
       const postedVM = this.form.value;
-      postedVM.Id = this.editVM.Id;
+      postedVM.Id = this.editVM.id;
+      postedVM.NewsTypeId = NewsTypes.Reports;
       postedVM.Date = date;
       this.reportsService.update(postedVM).subscribe((response) => {
         if (response.isSuccess) {
           if (this.form.get('Image').value) {
-            this.fileManagerService
-              .deleteByEntityName(this.editVM.Id, 'Reports')
-              .subscribe((res) => {
-                this.fileManagerService
-                  .upload(this.editVM.Id, 'Reports', '', [
+            this.fileManagerService.deleteByEntityName(this.editVM.id, 'News').subscribe((res) => {
+                this.fileManagerService .upload(this.editVM.id, 'News', '', [
                     this.form.get('Image').value,
                   ])
                   .subscribe((res) => {

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { MessageType } from '@shared/enums/message-type.enum';
+import { NewsTypes } from '@shared/enums/news-types.enum';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { DateType } from 'ngx-hijri-gregorian-datepicker';
@@ -47,6 +48,7 @@ export class ReportsAddComponent implements OnInit {
       Date: [null],
       Image: [null, Validators.required],
       IsActive: [true],
+      NewsTypeId : [NewsTypes.Reports]
     });
   }
 
@@ -79,7 +81,7 @@ export class ReportsAddComponent implements OnInit {
         if (response.isSuccess) {
           let id = response.data.toString();
           this.fileManagerService
-            .upload(id, 'Reports', '', [this.form.get('Image').value])
+            .upload(id, 'News', '', [this.form.get('Image').value])
             .subscribe((res) => {
               this.globalService.messageAlert(
                 MessageType.Success,

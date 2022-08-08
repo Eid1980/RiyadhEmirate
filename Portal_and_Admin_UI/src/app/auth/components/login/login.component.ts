@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    debugger
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
     this.buildForm();
     /*if (localStorage.getItem('EmiratesToken')) {
