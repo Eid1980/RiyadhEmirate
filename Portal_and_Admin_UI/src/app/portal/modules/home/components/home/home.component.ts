@@ -20,7 +20,7 @@ declare let $: any;
 export class HomeComponent implements OnInit {
   searchModel: SearchModel = {};
 
-  news : GetNewsDetailsDto[] = [];
+  news: GetNewsDetailsDto[] = [];
   posters: GetNewsDetailsDto[] = [];
   emiratesNews: GetNewsDetailsDto[] = [];
   latestNews: GetNewsDetailsDto[] = [];
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
-    items : 5,
+    items: 5,
     pullDrag: false,
     dots: false,
     navSpeed: 700,
@@ -111,7 +111,7 @@ export class HomeComponent implements OnInit {
         items: 1,
       },
       400: {
-        items: 2,
+        items: 1,
       },
     },
     nav: true,
@@ -134,44 +134,46 @@ export class HomeComponent implements OnInit {
   };
 
   constructor(
-    private _newService : NewsService,
-    private _serviceService : ServiceService,
+    private _newService: NewsService,
+    private _serviceService: ServiceService,
     private _globalService: GlobalService,
-    private _router: Router) {
-    }
+    private _router: Router
+  ) {}
 
   ngOnInit() {
-
     this.getAllNews();
     this.getServices();
-
   }
 
   getAllNews() {
-    this._newService.getAll().subscribe((result: ApiResponse<GetNewsDetailsDto[]>) => {
-      debugger
+    this._newService
+      .getAll()
+      .subscribe((result: ApiResponse<GetNewsDetailsDto[]>) => {
+        debugger;
 
-      this.news = result.data;
+        this.news = result.data;
 
-      this.posters = this.getNewsByNewsTypeId(NewsTypes.Posters);
+        this.posters = this.getNewsByNewsTypeId(NewsTypes.Posters);
 
-      this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
-      console.log(this.emiratesNews)
+        this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
+        console.log(this.emiratesNews);
 
-      this.latestNews = this.getNewsByNewsTypeId(NewsTypes.LatestNews);
+        this.latestNews = this.getNewsByNewsTypeId(NewsTypes.LatestNews);
 
-      this.reports = this.getNewsByNewsTypeId(NewsTypes.Posters);
-    });
+        this.reports = this.getNewsByNewsTypeId(NewsTypes.Posters);
+      });
   }
 
-  getNewsByNewsTypeId(newsTypeId : number): GetNewsDetailsDto[] {
-    return this.posters = this.news.filter(n => n.newsTypeId == newsTypeId);
+  getNewsByNewsTypeId(newsTypeId: number): GetNewsDetailsDto[] {
+    return (this.posters = this.news.filter((n) => n.newsTypeId == newsTypeId));
   }
 
   getServices() {
-    this._serviceService.getAll().subscribe((result: ApiResponse<GetServiceListDto[]>) => {
-      this.services = result.data;
-    });
+    this._serviceService
+      .getAll()
+      .subscribe((result: ApiResponse<GetServiceListDto[]>) => {
+        this.services = result.data;
+      });
   }
 
   navigateTo() {
@@ -216,5 +218,4 @@ export class HomeComponent implements OnInit {
     let hijriDate = this._globalService.convertToHijri(newDate, 'ar');
     return hijriDate.toString();
   }
-
 }
