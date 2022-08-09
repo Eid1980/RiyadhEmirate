@@ -68,7 +68,6 @@ export class ReportsEditComponent implements OnInit {
   }
 
   getEdit(productId) {
-    debugger
     this.reportsService.getById(productId).subscribe((response) => {
       this.editVM = response.data;
       var date = new Date(this.editVM.date);
@@ -108,7 +107,6 @@ export class ReportsEditComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger
     this.isFormSubmitted = true;
     let date = this.startDatePicker.getSelectedDate();
     this.isValidDate = false;
@@ -116,15 +114,17 @@ export class ReportsEditComponent implements OnInit {
       this.isValidDate = true;
       return;
     }
+
     if (this.form.valid) {
-      debugger
       const postedVM = this.form.value;
       postedVM.Id = this.editVM.id;
       postedVM.NewsTypeId = NewsTypes.Reports;
       postedVM.Date = date;
       this.reportsService.update(postedVM).subscribe((response) => {
-        if (response.isSuccess) {
-          if (this.form.get('Image').value) {
+        if (response.isSuccess)
+        {
+          if (this.form.get('Image').value)
+           {
             this.fileManagerService.deleteByEntityName(this.editVM.id, 'News').subscribe((res) => {
                 this.fileManagerService .upload(this.editVM.id, 'News', '', [
                     this.form.get('Image').value,

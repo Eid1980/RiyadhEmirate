@@ -21,7 +21,7 @@ export class LatestNewsAddComponent implements OnInit {
   // for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 1000000;
+  fileSize: number = 2097152;
   acceptType: 'image/*';
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
@@ -67,7 +67,6 @@ export class LatestNewsAddComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger
     this.isFormSubmitted = true;
     let date = this.startDatePicker.getSelectedDate();
     this.isValidDate = false;
@@ -84,7 +83,6 @@ export class LatestNewsAddComponent implements OnInit {
           this.fileManagerService
             .upload(id, 'News', '', [this.form.get('Image').value])
             .subscribe((res) => {
-              debugger
               this.globalService.messageAlert(
                 MessageType.Success,
                 'تم الحفظ بنجاح'

@@ -8,6 +8,7 @@ using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.InternalPortal.FileManager;
 using Emirates.Core.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using X.PagedList;
 
 namespace Emirates.Core.Application.Services.News
@@ -91,7 +92,6 @@ namespace Emirates.Core.Application.Services.News
                              NewsTypeId = news.NewsTypeId,
                              Date = news.Date,
                              IsActive = news.IsActive,
-
                              Image = _fileManagerService.GetBase64File(news.Id, "News")
                          }).OrderByDescending(s => s.Date);
 
@@ -107,13 +107,23 @@ namespace Emirates.Core.Application.Services.News
 
         public IApiResponse Update(UpdateNewsDto updateModel)
         {
-            var caseType = _emiratesUnitOfWork.News.FirstOrDefault(n => n.Id.Equals(updateModel.Id));
-            if (caseType == null)
-                throw new NotFoundException(typeof(Domain.Entities.News).Name);
+            try 
+            {
+                var caseType = _emiratesUnitOfWork.News.FirstOrDefault(n => n.Id.Equals(updateModel.Id));
+                if (caseType == null)
+                    throw new NotFoundException(typeof(Domain.Entities.News).Name);
 
-            _emiratesUnitOfWork.News.Update(caseType, _mapper.Map<Domain.Entities.News>(updateModel));
-            _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
+                _emiratesUnitOfWork.News.Update(caseType, _mapper.Map<Domain.Entities.News>(updateModel));
+                _emiratesUnitOfWork.Complete();
+                return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
+            }
+            catch (Exception ex) 
+            {
+                // TODO 
+                // log the exception
+                return null;
+            }
+           
         }
 
         public IApiResponse ChangeStatus(int id)

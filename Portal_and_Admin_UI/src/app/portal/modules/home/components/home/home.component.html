@@ -226,24 +226,26 @@
     <!-- Advertising Reports -->
     <div class="col-md-5 advertise-report" style="height: fit-content;">
       <div class="section-title">
-        <h3 class="title">تقارير إعلانية</h3>
+        <h3 class="title">
+          {{ 'home.mediaReports' | translate}}
+        </h3>
       </div>
       <!-- cards -->
       <div class="owl__carousel">
         <owl-carousel-o [options]="advertiseReportOptions" class="owl-rtl">
           <!-- Repeatable Item -->
-          <ng-template carouselSlide *ngFor="let poster of posters">
+          <ng-template carouselSlide *ngFor="let report of reports">
             <div class="item" >
               <div class="ad-card">
-                <img [src]="poster.image.base64File" alt="" class="ad-card-img">
+                <img [src]="report.image.base64File" alt="" class="ad-card-img">
                 <img src="./assets/images/add-overlay.png" alt="" class="overlay">
                 <div class="ad-card-content">
                   <span class="desc">
-                    {{poster.titleAr}}
+                    {{report.titleAr}}
                   </span>
                   <span class="ad-calendar">
                     <img src="./assets/images/icons/add-calendar.svg" alt="">
-                    <span>{{ formatDate(poster?.date) }}</span>
+                    <span>{{ formatDate(report?.date) }}</span>
                   </span>
                 </div>
               </div>

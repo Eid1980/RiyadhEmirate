@@ -88,7 +88,6 @@ export class EmiratesNewsEditComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger
     this.isFormSubmitted = true;
     let date = this.startDatePicker.getSelectedDate();
     this.isValidDate = false;
@@ -105,7 +104,6 @@ export class EmiratesNewsEditComponent implements OnInit {
       this.newsService.update(this.updateNewsDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
-          debugger
           console.log(this.updateNewsform.get('image').value);
           if (this.updateNewsform.get('image').value){
             this.fileManagerService.deleteByEntityName(this.id, 'News').subscribe(res => {

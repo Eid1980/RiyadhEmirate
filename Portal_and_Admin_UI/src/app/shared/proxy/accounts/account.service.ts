@@ -18,17 +18,14 @@ export class AccountService {
   }
 
   login = (userLoginDto: UserLoginDto): Observable<ApiResponse<string>> => {
-    return this.httpClient.post<ApiResponse<string>>(`${this.serviceUrl}/Login`, userLoginDto).pipe(
-    );
+    return this.httpClient.post<ApiResponse<string>>(`${this.serviceUrl}/Login`, userLoginDto).pipe();
   }
 
   checkUserRegister = (checkUserRegisterDto: CheckUserRegisterDto): Observable<ApiResponse<CreateUserDto>> => {
-    return this.httpClient.post<ApiResponse<CreateUserDto>>(`${this.serviceUrl}/CheckUserRegister`, checkUserRegisterDto).pipe(
-    );
+    return this.httpClient.post<ApiResponse<CreateUserDto>>(`${this.serviceUrl}/CheckUserRegister`, checkUserRegisterDto).pipe();
   }
   register = (createUserDto: CreateUserDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Register`, createUserDto).pipe(
-    );
+    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Register`, createUserDto).pipe();
   }
 
   //isAuthorizedComponent = (componentURL): Observable<ApiResponse<GetUserDto>> => {
@@ -77,12 +74,10 @@ export class AccountService {
   }
 
   getAuthUser = (): Observable<ApiResponse<GetUserDto>> => {
-    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetAuthUser`).pipe(
-    );
+    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetAuthUser`).pipe();
   }
   getById = (id: number): Observable<ApiResponse<GetUserDto>> => {
-    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
-    );
+    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetById/${id}`).pipe();
   }
 
 }
