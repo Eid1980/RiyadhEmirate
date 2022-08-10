@@ -60,6 +60,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     //     document.location.href = "/auth/login";
     //   }, 3000);
     // } else {
+    debugger;
     this.globalService.messageAlert(MessageType.Error, error.error);
     // }
     return throwError(error);

@@ -4,57 +4,68 @@ import { Router } from '@angular/router';
 import { MessageType } from '@shared/enums/message-type.enum';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
+import { CreatePosterDto } from '@shared/proxy/posters/models';
+import { PosterService } from '@shared/proxy/posters/poster.service';
 
 @Component({
   selector: 'app-add-poster',
-  templateUrl: './add-poster.component.html',
-  styleUrls: ['./add-poster.component.scss'],
+  templateUrl: './add-poster.component.html'
 })
 export class AddPosterComponent implements OnInit {
-  form: FormGroup;
+  createPosterform: FormGroup;
   isFormSubmitted: boolean;
+  createPosterDto = {} as CreatePosterDto;
 
-  // for uploader
+  //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
   fileSize: number = 1000000;
   acceptType: 'image/*';
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
+  //#endregion
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private fileManagerService: FileManagerService,
-    private router: Router,
-    private globalService: GlobalService
-  ) {}
+  constructor(private formBuilder: FormBuilder, private fileManagerService: FileManagerService,
+    private posterService: PosterService, private globalService: GlobalService)
+  {
+  }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      Image: [null, Validators.required],
+    this.globalService.setAdminTitle('إضافة اعلان جديد');
+    this.buildForm();
+  }
+
+  buildForm() {
+    this.createPosterform = this.formBuilder.group({
+      titleAr: [this.createPosterDto.titleAr || '', Validators.required],
+      titleEn: [this.createPosterDto.titleEn || '', Validators.required],
+      order: [this.createPosterDto.order || '', Validators.required],
+      image: [this.createPosterDto.image || null, Validators.required],
+      isActive: [this.createPosterDto.isActive || true, Validators.required]
     });
   }
 
   onUpload(event: any) {
-    this.form.get('Image').setValue(event.files[0]);
+    this.createPosterform.get('image').setValue(event.files[0]);
   }
 
   onRemove(event) {
-    this.form.get('Image').setValue(null);
+    this.createPosterform.get('image').setValue(null);
   }
 
   onSubmit() {
     this.isFormSubmitted = true;
-    if (this.form.valid) {
-      this.fileManagerService
-        .upload('', 'Poster', '', [this.form.get('Image').value])
-        .subscribe((res) => {
-          this.globalService.messageAlert(
-            MessageType.Success,
-            'تم الحفظ بنجاح'
-          );
-          this.globalService.navigate('/admin/data-management/poster-list');
-        });
+    if (this.createPosterform.valid) {
+      this.createPosterDto = { ...this.createPosterform.value } as CreatePosterDto;
+      this.posterService.create(this.createPosterDto).subscribe((response) => {
+        this.globalService.showMessage(response.message);
+        if (response.isSuccess) {
+          let id = response.data.toString();
+          this.fileManagerService.upload(id, 'Poster', '', [this.createPosterform.get('image').value]).subscribe(res => {
+            this.globalService.navigate('/admin/data-management/poster-list');
+          })
+        }
+      });
     }
   }
 }

@@ -25,15 +25,9 @@
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-            <img src="./assets/images/icons/couple.svg" alt="">
-            خدمات الزواج
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
-            <img src="./assets/images/icons/prisoner.svg" alt="">
-            خدمات السجناء
+          <button [routerLink]="['/eservice/services-list']" class="nav-link">
+            <img src="./assets/images/icons/feather-arrow-left.svg" alt="">
+            تصفح جميع الخدمات
           </button>
         </li>
       </ul>
@@ -70,16 +64,7 @@
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">2222</div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">333</div>
       </div>
-
     </div>
-
-    <div class="py-5 d-flex justify-content-end">
-      <a [routerLink]="['/eservice/services-list']" class="browse btn">
-        تصفح جميع الخدمات
-        <img src="./assets/images/icons/feather-arrow-left.svg" alt="" class="mx-2">
-      </a>
-    </div>
-
   </div>
 </div>
 

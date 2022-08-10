@@ -53,7 +53,7 @@ namespace Emirates.Core.Application.Services.CaseTypes
         public IApiResponse Create(CreateCaseTypeDto createModel)
         {
             if (_emiratesUnitOfWork.CaseTypes.Where(x => x.NameAr.Equals(createModel.NameAr)).Any())
-                throw new BusinessException("الاسم عربي مضاف مسبقا");
+                throw new BusinessException("Arabic Name Already Exist");
             if (_emiratesUnitOfWork.CaseTypes.Where(x => x.NameEn.Equals(createModel.NameEn)).Any())
                 throw new BusinessException("الاسم انجليزي مضاف مسبقا");
 
