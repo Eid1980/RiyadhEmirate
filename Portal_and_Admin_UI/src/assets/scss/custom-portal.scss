@@ -1794,168 +1794,179 @@
   // Services Page Style
   .services-section {
     background-color: $light-lighter;
-    .bread {
-      background: url("../images/bg-services.svg") no-repeat center center;
-      background-size: cover;
-      height: 6rem;
-      padding: 0 6.25rem;
-      // line-height: 6rem;
+    .ser-bg {
+      background-image: url("../images/eservices-bg.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 222px;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       position: relative;
-
-      .bread-nav {
-        .nav-link {
-          color: $white;
-          font-size: 1rem;
-          margin: 0 0.3rem;
-        }
-        .active {
-          color: $secondary-1;
+      .ser-bread {
+        position: absolute;
+        right: 6%;
+        top: 60%;
+        .breadcrumb {
+          background-image: none;
+          height: auto;
+          align-items: center;
+          padding: 0;
         }
       }
-
-      .slash {
-        border-left: 0.1rem solid #fff;
-        height: 1rem;
-        position: absolute;
-        // top: 50px;
-        right: 230px;
-        transform: rotate(19deg);
+      .title {
+        text-align: center;
+        font-size: 1.8rem;
+        color: #fff;
+        margin-bottom: 2rem;
+      }
+      .form-group {
+        position: relative;
+        .form-control {
+          width: 550px;
+          background: #fafbff;
+          padding-left: 40px;
+          height: 3rem;
+          &::placeholder {
+            font-size: 13px;
+          }
+        }
+        .s-icon {
+          position: absolute;
+          top: 10px;
+          left: 8px;
+        }
       }
     }
 
     // services
     .services {
-      padding: 1rem 6.25rem 1rem 3rem;
-      .side {
-        // width: 22% !important;
-        .sidebar {
-          background-color: $white;
-          border: 1px solid $dimmed;
-
-          .title {
-            border-bottom: 1px solid $dimmed;
-          }
-
-          .form-group {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            .control[type="checkbox"] {
-              width: 1rem;
-              height: 1rem;
-              padding: 0;
-            }
-            .control-label {
-              font-size: 0.8rem;
-              font-weight: normal;
-            }
-            .services-provider {
-              background-color: rgba($color: $primary-alt-3, $alpha: 0.16);
-              width: 1.5rem;
-              height: 1.3125rem;
-              border-radius: 2px;
-              font-size: 0.9rem;
-              color: #007889 !important;
-              font-weight: bold;
-              padding: 0.2rem;
-              line-height: 0.9rem;
-              text-align: center;
+      padding: 1rem 7rem;
+      .count-sort {
+        margin-bottom: 1rem;
+        .title {
+          font-size: 1.2rem;
+          color: $text-color;
+        }
+        .count {
+          width: 38px;
+          height: 30px;
+          background-color: #dce7f0;
+          color: $primary-alt-3;
+          font-size: 1rem;
+          font-weight: 600;
+          border-radius: 3px;
+          display: inline-block;
+          text-align: center;
+          line-height: 33px;
+        }
+        .dropdown-toggle {
+          font-size: 14px;
+          border: 1px solid $Primary-1;
+          background: #fff;
+          color: #6f6f6f;
+        }
+        .dropdown-menu {
+          width: -webkit-fill-available;
+          padding: 1rem;
+          text-align: right;
+          color: $text-color;
+          .btn {
+            font-size: 14px;
+            width: 100%;
+            text-align: right;
+            &:hover {
+              color: $Primary-1;
             }
           }
         }
       }
-
-      .compoenets {
-        .head {
-          border: 1px solid $dimmed;
-          background-color: $white;
-          display: flex;
-          align-items: center;
-          height: 4rem;
-
-          .title {
-            color: $Primary-4;
-            font-size: 1.1rem;
-          }
+      .card-item {
+        background-image: url("../images/ser-card-bg.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+        background-color: #fdfffe;
+        padding: 2rem 0 4rem;
+        border: 1px solid $dimmed;
+        height: 320px;
+        box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+        border-radius: 4px;
+        text-align: center;
+        .ser-icon {
+          display: block;
+          width: 55px;
+          margin: 0 auto 2.3rem;
+        }
+        .title {
+          font-size: 0.9rem;
+          color: $Primary-1;
+          font-weight: bold;
+        }
+        .brief-description {
+          color: $primary-alt-2;
+          font-size: 1rem;
+          font-weight: bold;
         }
 
-        .card-item {
-          position: relative;
-          background-color: $white;
-          padding: 3rem 1rem 4rem;
-          border: 1px solid $dimmed;
-          .title {
-            font-size: 0.9rem;
-            color: $primary-alt-3;
-            font-weight: bold;
-          }
-          .brief-description {
-            color: $primary-alt-2;
-            font-size: 1rem;
-            font-weight: bold;
-          }
+        .description {
+          color: $primary-alt-2;
+          font-size: 0.9rem;
+          font-weight: normal;
+          margin-bottom: 2rem;
+          height: 65px;
+        }
 
-          .description {
-            color: $primary-alt-2;
-            font-size: 0.9rem;
-            font-weight: normal;
-            margin-bottom: 3rem;
-          }
+        .service-link {
+          font-size: 0.9rem;
+          float: left;
+          color: $primary-alt-2;
+          margin-left: 1rem;
+        }
+        .arrow {
+          width: 24px;
+          height: 24px;
+          line-height: 22px;
+          border-radius: 30px;
+        }
 
-          .service-link {
-            font-size: 0.9rem;
-            float: left;
-            color: $primary-alt-2;
-          }
+        &:hover {
+          background-color: #fafffe;
           .arrow {
-            padding: 3px 6px;
-            border-radius: 30px;
-          }
-
-          &:hover {
-            background-color: #fafffe;
-            &::after {
-              content: "";
-              position: absolute;
-              top: -1px;
-              left: 0;
-              right: 0;
-              display: block;
-              width: 100%;
-              height: 3px;
-              background-color: $Primary-2;
-            }
-            .arrow {
-              background: $Primary-1;
-              img {
-                filter: brightness(0) invert(1);
-              }
+            background: $Primary-1;
+            img {
+              filter: brightness(0) invert(1);
             }
           }
-          .ser-icon {
-            display: block;
-            margin: 0 auto 1rem;
-            width: 55px;
-          }
-          .ser-name {
-            font-size: 1rem;
-            color: $Primary-2;
-            text-align: center;
-            height: 48px;
-            font-weight: 400;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-          .ser-desc {
-            font-size: 0.85rem;
-            color: $text-color;
-            text-align: center;
-            font-weight: 400;
-          }
+        }
+        .ser-name {
+          font-size: 1rem;
+          color: $Primary-2;
+          text-align: center;
+          height: 48px;
+          font-weight: 400;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .ser-desc {
+          font-size: 0.85rem;
+          color: $text-color;
+          text-align: center;
+          font-weight: 400;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: -1px;
+          left: 0;
+          right: 0;
+          display: block;
+          width: 100%;
+          height: 3px;
+          background-color: $Primary-2;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
         }
       }
     }
