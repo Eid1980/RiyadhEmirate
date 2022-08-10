@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
     this.maxHigriDate = { day: nowDateHijri.day, month: nowDateHijri.month, year: nowDateHijri.year - 18 };
     //this.minGreg = { day: 1, month: 1, year: 1950 };
     this.maxGreg = { day: nowDate.getUTCDate()+1, month: nowDate.getUTCMonth()+1, year: nowDate.getUTCFullYear() - 18 };
-    debugger;
   }
 
   ngOnInit(): void {

@@ -3,12 +3,12 @@
   <nav class="breadcrumb m-0 p-0 bg-transparent">
     <a class="breadcrumb-item fs-16" routerLink="/">
       <i class="fa fa-home fs-20"></i>
-      الرئيسية
+      {{ 'latestNews.labels.main'  | translate }}
     </a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/latest-news-list']">
-      آخر الأخبار
+      {{ 'latestNews.labels.latestNews'  | translate}}
     </a>
-    <span class="breadcrumb-item fs-16 active">إضافة خبر جديد</span>
+    <span class="breadcrumb-item fs-16 active">{{ 'latestNews.labels.addNews'  | translate}}</span>
   </nav>
 </div>
 
@@ -16,63 +16,67 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-card">
     <div class="form-header">
-      <h5>تفاصيل الخبر</h5>
+      <h5>{{ 'latestNews.labels.newsDetails'  | translate}}</h5>
     </div>
     <div class="form-content">
       <div class="row mx-0">
         <!-- TitleAr -->
         <div class="form-group col-md-6">
           <label for="TitleAr" class="form-lbl">
-            العنوان باللغة العربية
+            {{ 'latestNews.labels.titleAr'  | translate}}
             <span class=danger>*</span>
           </label>
           <input type="text" class="form-control" formControlName="TitleAr" [ngClass]="{'invalid': (isFormSubmitted || form.get('TitleAr').touched) && form.get('TitleAr').errors?.required}" id="TitleAr">
-          <small *ngIf="(isFormSubmitted || form.get('TitleAr').touched) && form.get('TitleAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || form.get('TitleAr').touched) && form.get('TitleAr').errors?.required" class="danger">{{ 'latestNews.validators.requiredField'  | translate}}</small>
         </div>
         <!-- TitleEn -->
         <div class="form-group col-md-6">
           <label for="TitleEn" class="form-lbl">
-            العنوان باللغة الإنجليزية
+            {{ 'latestNews.labels.titleEn'  | translate}}
           </label>
           <input type="text" class="form-control" formControlName="TitleEn" [ngClass]="{'invalid': (isFormSubmitted || form.get('TitleEn').touched) && form.get('TitleEn').errors?.required}" id="TitleEn">
-          <small *ngIf="(isFormSubmitted || form.get('TitleEn').touched) && form.get('TitleEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || form.get('TitleEn').touched) && form.get('TitleEn').errors?.required" class="danger">{{ 'latestNews.validators.requiredField'  | translate}}</small>
         </div>
         <!-- DescriptionAr -->
         <div class="form-group col-md-6">
           <label for="DescriptionAr" class="form-lbl">
-            الوصف باللغة العربية
+            {{ 'latestNews.labels.descriptionAr'  | translate}}
             <span class=danger>*</span>
           </label>
           <textarea rows="4" class="form-control" formControlName="DescriptionAr" [ngClass]="{'invalid': (isFormSubmitted || form.get('DescriptionAr').touched) && form.get('DescriptionAr').errors?.required}" id="DescriptionAr"></textarea>
-          <small *ngIf="(isFormSubmitted || form.get('DescriptionAr').touched) && form.get('DescriptionAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || form.get('DescriptionAr').touched) && form.get('DescriptionAr').errors?.required" class="danger">{{ 'latestNews.validators.requiredField'  | translate}}</small>
         </div>
         <!-- DescriptionEn -->
         <div class="form-group col-md-6">
           <label for="DescriptionEn" class="form-lbl">
-            الوصف باللغة الإنجليزية
+            {{ 'latestNews.labels.descriptionEn'  | translate}}
           </label>
           <textarea rows="4" class="form-control" formControlName="DescriptionEn" [ngClass]="{'invalid': (isFormSubmitted || form.get('DescriptionEn').touched) && form.get('DescriptionEn').errors?.required}" id="DescriptionEn"></textarea>
-          <small *ngIf="(isFormSubmitted || form.get('DescriptionEn').touched) && form.get('DescriptionEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || form.get('DescriptionEn').touched) && form.get('DescriptionEn').errors?.required" class="danger">
+            {{ 'latestNews.validators.requiredField'  | translate}}
+          </small>
         </div>
         <!-- Date -->
         <div class="form-group col-md-4">
           <hijri-gregorian-datepicker id="date" [placeHolder]="'سنة/شهر/يوم'" [(selectedDate)]="date" [isRequired]="true" [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" [selectedDateType]="selectedDateType" label="التاريخ" #datePicker>
           </hijri-gregorian-datepicker>
-          <small *ngIf="(isFormSubmitted && isValidDate)" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted && isValidDate)" class="danger">
+            {{ 'latestNews.validators.requiredField'  | translate}}
+          </small>
         </div>
         <!-- Image Upload -->
         <div class="form-group col-md-4">
           <label for="" class="form-lbl">
-            تحميل الصورة
+            {{ 'latestNews.labels.uploadImage'  | translate}}
             <span class=danger>*</span>
           </label>
-          <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload" (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced" accept="image/*" [maxFileSize]="fileSize">
+          <p-fileUpload #uploader chooseLabel = "تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload" (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced" accept="image/*" [maxFileSize]="fileSize">
           </p-fileUpload>
-          <small *ngIf="(isFormSubmitted || form.get('Image').touched) && form.get('Image').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || form.get('Image').touched) && form.get('Image').errors?.required" class="danger">{{ 'latestNews.validators.requiredField'  | translate}}</small>
         </div>
         <!-- IsActive -->
         <div class="form-group col-12">
-          <label class="container-check">مفعل
+          <label class="container-check">{{ 'latestNews.labels.isActive'  | translate}}
             <input formControlName="IsActive" type="checkbox" id="IsActive">
             <span class="checkmark"></span>
           </label>
@@ -83,7 +87,7 @@
 
   <!-- form actions -->
   <div class="form-actions">
-    <button type="submit" class="btn btn-save">حفظ</button>
-    <a [routerLink]="['/admin/data-management/latest-news-list']" class="btn btn-cancel">إلغاء</a>
+    <button type="submit" class="btn btn-save">{{ 'latestNews.labels.save'  | translate }}</button>
+    <a [routerLink]="['/admin/data-management/latest-news-list']" class="btn btn-cancel">{{ 'latestNews.labels.cancel'  | translate }}</a>
   </div>
 </form>

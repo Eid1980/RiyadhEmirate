@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
-    debugger
     this.isAuthenticated = this.isUserAuthenticate();
     if(this.isAuthenticated)
       this.userInfo = this.accountService.getCurrentUserInfo();

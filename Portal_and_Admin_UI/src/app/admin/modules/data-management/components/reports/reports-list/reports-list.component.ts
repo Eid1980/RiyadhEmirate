@@ -36,7 +36,7 @@ export class ReportsListComponent implements OnInit {
     ]
 
     this.pageListSettings = {
-      PageTitle: 'قائمة التقارير الإخبارية',
+      PageTitle: 'قائمة التقارير الإعلانية',
       listPermissionCode: '*',
       createButtonLink: '/admin/data-management/reports-add',
       createButtonText: 'انشاء تقرير جديد',

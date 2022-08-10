@@ -44,7 +44,6 @@ export class PageListComponent implements OnInit {
   }
 
   getData() {
-    debugger
     this.subscription.add(
       this.tableService
         .getListPage(this.PageListSetting.Url, this.searchModel)

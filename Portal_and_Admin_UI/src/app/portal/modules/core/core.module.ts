@@ -6,6 +6,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SharedModule } from 'primeng/api';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FooterComponent,
     MenuComponent,
   ],
-  imports: [CommonModule, CoreRoutingModule, CarouselModule],
+  imports: [CommonModule, CoreRoutingModule, CarouselModule,    SharedModule,
+    ReactiveFormsModule,
+    HttpClientModule],
   exports: [
     CoreLayoutComponent,
     HeaderComponent,

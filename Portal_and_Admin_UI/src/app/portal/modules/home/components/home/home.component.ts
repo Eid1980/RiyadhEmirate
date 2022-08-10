@@ -147,18 +147,16 @@ export class HomeComponent implements OnInit {
     this._newService
       .getAll()
       .subscribe((result: ApiResponse<GetNewsDetailsDto[]>) => {
-        debugger;
 
         this.news = result.data;
 
         this.posters = this.getNewsByNewsTypeId(NewsTypes.Posters);
 
         this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
-        console.log(this.emiratesNews);
 
         this.latestNews = this.getNewsByNewsTypeId(NewsTypes.LatestNews);
 
-        this.reports = this.getNewsByNewsTypeId(NewsTypes.Posters);
+        this.reports = this.getNewsByNewsTypeId(NewsTypes.Reports);
       });
   }
 

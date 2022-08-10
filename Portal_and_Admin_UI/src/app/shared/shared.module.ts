@@ -37,6 +37,10 @@ import { RateServiceComponent } from './components/rate-service/rate-service.com
 import { RequestStageLogComponent } from './components/request-stage-log/request-stage-log.component';
 import { ToastModule } from 'primeng/toast';
 import { CustomSlicePipe } from './pipes/custom-slice.pipe';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -77,7 +81,7 @@ import { CustomSlicePipe } from './pipes/custom-slice.pipe';
     ToastModule,
     DialogModule,
     RatingModule,
-    NgxHijriGregorianDatepickerModule,
+    NgxHijriGregorianDatepickerModule
   ],
   exports: [
     AuthLayoutComponent,
@@ -111,15 +115,19 @@ import { CustomSlicePipe } from './pipes/custom-slice.pipe';
     UserDataViewComponent,
     UserDataCurrentViewComponent,
     RateServiceComponent,
-    CustomSlicePipe
-
+    CustomSlicePipe,
+    TranslateModule
   ],
   providers: [
     HiddenAuthorizeColumnFilterPipe,
     AuthGuard,
     DatePipe,
-    MessageService,
-    CustomSlicePipe
+    MessageService
   ],
 })
 export class SharedModule {}
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
