@@ -113,7 +113,7 @@
           <div class="owl-item">
             <div class="item">
               <div class="news-card">
-                <img [src]="news?.image?.base64File" alt="" class="news-img">
+                <img [src]="sanitizer.bypassSecurityTrustResourceUrl(news?.image?.base64File)" alt="" class="news-img">
                 <img src="./assets/images/news-overlay.png" alt="" class="overlay">
                 <div class="news-caption">
                   <h6 class="h2">
@@ -206,7 +206,7 @@
           <ng-template carouselSlide *ngFor="let news of emiratesNews">
             <div class="item">
               <div class="card">
-                <img [src]="news?.image?.base64File" class="card-img-top" alt="...">
+                <img [src]="sanitizer.bypassSecurityTrustResourceUrl(news?.image?.base64File)" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title h-2">{{ news?.titleAr }}</h5>
                   <p class="card-text">
