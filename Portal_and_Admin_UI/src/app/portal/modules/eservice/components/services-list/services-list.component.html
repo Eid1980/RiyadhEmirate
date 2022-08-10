@@ -1,29 +1,50 @@
 <section class="services-section">
+  <div class="ser-bg">
+    <div>
+      <h1 class="title mx-2">الخدمات الإلكترونية</h1>
+      <div class="form-group">
+        <input type="text" name="" id="" class="form-control" placeholder="بحث في الخدمات الإلكترونية">
+        <button class="btn p-0 s-icon">
+          <img src="./assets/images/icons/query-search.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="ser-bread">
+      <nav class="breadcrumb m-0 bg-transparent">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">قائمة الخدمات</span>
+      </nav>
+    </div>
+  </div>
   <div class="services">
+    <div class="d-flex justify-content-between align-items-center py-3 count-sort">
+      <div>
+        <span class="title">جميع الخدمات</span>
+        <span class="count mx-2">44</span>
+      </div>
+      <div class="dropdown sort">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="./assets/images/icons/sort-ser.svg" alt="setting" width="20">
+          ترتيب الخدمات حسب: أبجدي - من أ إلى ي
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <button class="btn">أبجدي - من ي إلى أ</button>
+          <button class="btn">من الأقدم إلى الأحدث</button>
+          <button class="btn"> من الأحدث إلى الأقدم </button>
+        </div>
+      </div>
+    </div>
     <div class="row">
-      <div class="col-md-12">
-        <div class="compoenets">
-          <div class="head px-3 mb-4">
-            <img src="./assets/images/icons/services/system.svg" alt="system Icons" width="32" height="32">
-            <span class="title mx-2">الخدمات الإلكترونية</span>
-          </div>
-          <div class="row mb-4">
-            <div class="col-md-3 px-1 mb-3" *ngFor="let service of services">
-              <div class="card-item">
-                <h5 class="title mb-5 d-flex align-items-center">
-                  <img src="./assets/images/icons/services/prisoner.svg" alt="prisoner" style="width:25px;">
-                  <span class="mx-2">{{service.titleAr}}</span>
-                </h5>
-                <p class="description h-3">{{service.descriptionAr}} </p>
-
-                <div class="service-link d-flex align-items-center">
-                  <a [routerLink]="['/eservice/services', service.id]" class="px-3 "> شرح الخدمة</a>
-                  <span class="arrow">
-                    <img src="./assets/images/icons/services/green-arrow-left.svg" alt="green-arrow-left" style="width:14px;">
-                  </span>
-                </div>
-              </div>
-            </div>
+      <div class="col-md-3 mb-4 " *ngFor="let service of services">
+        <div class="card-item">
+          <img [src]="service?.image?.base64File" alt="service-icon" class="ser-icon">
+          <h5 class="title mb-4">{{service.nameAr}}</h5>
+          <p class="description h-3"> {{service.descriptionAr}}</p>
+          <div class="service-link d-flex align-items-center">
+            <a [routerLink]="['/eservice/services', service.id]" class="px-3 "> شرح الخدمة</a>
+            <span class="arrow">
+              <img src="./assets/images/icons/services/green-arrow-left.svg" alt="" style="width:14px;">
+            </span>
           </div>
         </div>
       </div>
