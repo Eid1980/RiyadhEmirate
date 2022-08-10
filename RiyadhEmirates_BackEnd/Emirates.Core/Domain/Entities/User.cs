@@ -96,5 +96,8 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<ServiceStage> CreatedServiceStages { get; set; }
         public virtual ICollection<ServiceStage> ModifiedServiceStages { get; set; }
 
+        public virtual ICollection<Poster> CreatedPosters { get; set; }
+        public virtual ICollection<Poster> ModifiedPosters { get; set; }
+
     }
 }

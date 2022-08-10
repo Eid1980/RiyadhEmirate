@@ -37,6 +37,7 @@ import { ServiceStageEditComponent } from './components/service-stages/service-s
 import { ServiceStageListComponent } from './components/service-stages/service-stage-list/service-stage-list.component';
 import { ServiceStageViewComponent } from './components/service-stages/service-stage-view/service-stage-view.component';
 import { SharedModule } from '@shared/shared.module';
+import { ViewPosterComponent } from './components/poster/view-poster/view-poster.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { SharedModule } from '@shared/shared.module';
     ServiceStageEditComponent,
     ServiceStageListComponent,
     ServiceStageViewComponent,
+    ViewPosterComponent,
   ],
   imports: [CommonModule, DataManagementRoutingModule, SharedModule],
 })

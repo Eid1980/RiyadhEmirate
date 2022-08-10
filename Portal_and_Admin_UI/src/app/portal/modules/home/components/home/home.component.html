@@ -36,7 +36,7 @@
             خدمات السجناء
           </button>
         </li>
-      </ul> -->
+      </ul>-->
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="owl__carousel">
@@ -71,16 +71,7 @@
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">2222</div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">333</div>
       </div>
-
     </div>
-
-    <div class="py-5 d-flex justify-content-end">
-      <a [routerLink]="['/eservice/services-list']" class="browse btn">
-        تصفح جميع الخدمات
-        <img src="./assets/images/icons/feather-arrow-left.svg" alt="" class="mx-2">
-      </a>
-    </div>
-
   </div>
 </div>
 
@@ -227,24 +218,26 @@
     <!-- Advertising Reports -->
     <div class="col-md-5 advertise-report" style="height: fit-content;">
       <div class="section-title">
-        <h3 class="title">تقارير إعلانية</h3>
+        <h3 class="title">
+          <h3 class="title">تقارير إعلانية</h3>
+        </h3>
       </div>
       <!-- cards -->
       <div class="owl__carousel">
         <owl-carousel-o [options]="advertiseReportOptions" class="owl-rtl">
           <!-- Repeatable Item -->
-          <ng-template carouselSlide *ngFor="let poster of posters">
+          <ng-template carouselSlide *ngFor="let report of reports">
             <div class="item">
               <div class="ad-card">
-                <img [src]="poster.image.base64File" alt="" class="ad-card-img">
+                <img [src]="report.image.base64File" alt="" class="ad-card-img">
                 <img src="./assets/images/add-overlay.png" alt="" class="overlay">
                 <div class="ad-card-content">
                   <span class="desc">
-                    {{poster.titleAr}}
+                    {{report.titleAr}}
                   </span>
                   <span class="ad-calendar">
                     <img src="./assets/images/icons/add-calendar.svg" alt="">
-                    <span>{{ formatDate(poster?.date) }}</span>
+                    <span>{{ formatDate(report?.date) }}</span>
                   </span>
                 </div>
               </div>

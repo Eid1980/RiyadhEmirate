@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { AccountService } from '@shared/proxy/accounts/account.service';
 import { GetNewsDetailsDto } from '@shared/proxy/news/models';
@@ -136,8 +135,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private _newService: NewsService,
     private _serviceService: ServiceService,
-    private _globalService: GlobalService,
-    private _router: Router
+    private _globalService: GlobalService
   ) {}
 
   ngOnInit() {
@@ -149,16 +147,17 @@ export class HomeComponent implements OnInit {
     this._newService
       .getAll()
       .subscribe((result: ApiResponse<GetNewsDetailsDto[]>) => {
+        debugger;
+
         this.news = result.data;
 
         this.posters = this.getNewsByNewsTypeId(NewsTypes.Posters);
 
         this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
-        console.log(this.emiratesNews);
 
         this.latestNews = this.getNewsByNewsTypeId(NewsTypes.LatestNews);
 
-        this.reports = this.getNewsByNewsTypeId(NewsTypes.Posters);
+        this.reports = this.getNewsByNewsTypeId(NewsTypes.Reports);
       });
   }
 

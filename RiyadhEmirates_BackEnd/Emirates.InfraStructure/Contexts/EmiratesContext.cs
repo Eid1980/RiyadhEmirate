@@ -145,6 +145,24 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region News
+            modelBuilder.Entity<News>(b =>
+            {
+                b.ToTable("News", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.TitleAr).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.TitleEn).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.DescriptionAr).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.DescriptionEn).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.Date).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+               
+                b.HasOne<NewsType>(x => x.NewsTypesCode).WithMany(x => x.News).HasForeignKey(x => x.NewsTypeId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedNews).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNews).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
             #region NewsTypes
             modelBuilder.Entity<NewsType>(b =>
             {
@@ -164,22 +182,18 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
-            #region News
-            modelBuilder.Entity<News>(b =>
+            #region Poster
+            modelBuilder.Entity<Poster>(b =>
             {
-                b.ToTable("News", EmiratesDbSchemas.DataManagement);
+                b.ToTable("Posters", EmiratesDbSchemas.DataManagement);
                 b.Property(x => x.TitleAr).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.TitleEn).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.DescriptionAr).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
-                b.Property(x => x.DescriptionEn).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
-                b.Property(x => x.Date).IsRequired();
+                b.Property(x => x.Order).IsRequired();
                 b.Property(x => x.IsActive).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
 
-               
-                b.HasOne<NewsType>(x => x.NewsTypesCode).WithMany(x => x.News).HasForeignKey(x => x.NewsTypeId).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedNews).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNews).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedPosters).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedPosters).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -442,6 +456,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<NewsType> NewTypes { get; set; }
+        public DbSet<Poster> Posters { get; set; }
 
         public DbSet<Request> Requests { get; set; }
         public DbSet<RequestAttachmentType> RequestAttachmentTypes { get; set; }

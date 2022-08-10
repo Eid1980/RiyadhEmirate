@@ -111,6 +111,7 @@ export class ReportsEditComponent implements OnInit {
       this.isValidDate = true;
       return;
     }
+
     if (this.form.valid) {
       const postedVM = this.form.value;
       postedVM.Id = this.editVM.id;
