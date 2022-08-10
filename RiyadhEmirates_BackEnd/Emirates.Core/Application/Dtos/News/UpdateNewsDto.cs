@@ -10,7 +10,7 @@ namespace Emirates.Core.Application.Dtos
         public string TitleEn { get; set; }
         public string DescriptionAr { get; set; }
         public string DescriptionEn { get; set; }
-        public int NewsType { get; set; }
+        public int NewsTypeId { get; set; }
         public DateTime Date { get { return date.ToLocalTime(); } set { date = value; } }
         public bool IsActive { get; set; }
     }

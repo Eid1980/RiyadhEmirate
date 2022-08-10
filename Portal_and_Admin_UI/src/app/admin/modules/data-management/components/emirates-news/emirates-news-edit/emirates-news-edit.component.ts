@@ -28,7 +28,7 @@ export class EmiratesNewsEditComponent implements OnInit {
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion
-  //#region for datePicker  
+  //#region for datePicker
   @ViewChild('datePicker') startDatePicker: any;
   isValidDate = false;
   date: NgbDateStruct;
@@ -98,12 +98,13 @@ export class EmiratesNewsEditComponent implements OnInit {
     if (this.updateNewsform.valid) {
       this.updateNewsDto = { ...this.updateNewsform.value } as UpdateNewsDto;
       this.updateNewsDto.id = this.id;
-      this.updateNewsDto.newsType = NewsTypes.EmiratesNews;
+      this.updateNewsDto.newsTypeId = NewsTypes.EmiratesNews;
       this.updateNewsDto.date = date;
 
       this.newsService.update(this.updateNewsDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
+          console.log(this.updateNewsform.get('image').value);
           if (this.updateNewsform.get('image').value){
             this.fileManagerService.deleteByEntityName(this.id, 'News').subscribe(res => {
               this.fileManagerService.upload(this.id.toString(), 'News', '', [this.updateNewsform.get('image').value]).subscribe(res => {

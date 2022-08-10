@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewsTypes } from '@shared/enums/news-types.enum';
+import { AccountService } from '@shared/proxy/accounts/account.service';
+import { GetNewsDetailsDto } from '@shared/proxy/news/models';
 import { NewsService } from '@shared/proxy/news/news.service';
+import { GetServiceListDto } from '@shared/proxy/services/models';
+import { ServiceService } from '@shared/proxy/services/service.service';
+import { ApiResponse } from '@shared/proxy/shared/api-response.model';
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { GlobalService } from '@shared/services/global.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -13,114 +18,14 @@ declare let $: any;
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  searchModel: SearchModel = {};
 
-  searchModel : SearchModel = {} ;
-
-  posters: any[] = [];
-  emiratesNews: any[] = [];
-  latestNews: any[] = [];
-  reports: any[] = [];
-  services: any[] = [];
-
-  constructor(
-    private _newService : NewsService,
-    private _globalService: GlobalService,
-    private _router: Router) {
-    }
-
-  ngOnInit() {
-
-    setTimeout(function () {
-      $('.news .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 1,
-          },
-        },
-      });
-    }, 8000);
-    setTimeout(function () {
-      $('.e-services .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 3,
-          },
-          1000: {
-            items: 4,
-          },
-        },
-      });
-    }, 8000);
-    setTimeout(function () {
-      $('.gov-news .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 2,
-          },
-        },
-      });
-    }, 8000);
-    setTimeout(function () {
-      $('.advertise-report .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 1,
-          },
-        },
-      });
-    }, 8000);
-
-    this.getPosters();
-    this.getEmiratesNews();
-    this.getLatestNews();
-    this.getReports();
-    this.getServices();
-  }
+  news: GetNewsDetailsDto[] = [];
+  posters: GetNewsDetailsDto[] = [];
+  emiratesNews: GetNewsDetailsDto[] = [];
+  latestNews: GetNewsDetailsDto[] = [];
+  reports: GetNewsDetailsDto[] = [];
+  services: GetServiceListDto[] = [];
 
   sliderOptions: OwlOptions = {
     loop: true,
@@ -135,6 +40,9 @@ export class HomeComponent implements OnInit {
       0: {
         items: 1,
       },
+      400: {
+        items: 2,
+      },
     },
     nav: true,
   };
@@ -142,6 +50,7 @@ export class HomeComponent implements OnInit {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
+    items: 5,
     pullDrag: false,
     dots: false,
     navSpeed: 700,
@@ -201,6 +110,9 @@ export class HomeComponent implements OnInit {
       0: {
         items: 1,
       },
+      400: {
+        items: 1,
+      },
     },
     nav: true,
   };
@@ -221,71 +133,45 @@ export class HomeComponent implements OnInit {
     nav: true,
   };
 
-  getPosters() {
-    this.searchModel.SearchFields = [
-        {
-          FieldName: "NewsTypeId",
-          Operator: "Equal",
-          Value: NewsTypes.Posters.toString()
-        }
-    ]
+  constructor(
+    private _newService: NewsService,
+    private _serviceService: ServiceService,
+    private _globalService: GlobalService,
+    private _router: Router
+  ) {}
 
-    this._newService.getAll(NewsTypes.Posters).subscribe((result: any) => {
-      debugger
-      this.posters = result.data;
-      console.log('posters')
-      console.log(this.posters)
-    });
-
+  ngOnInit() {
+    this.getAllNews();
+    this.getServices();
   }
 
-  getEmiratesNews() {
-    this.searchModel.SearchFields = [
-      {
-        FieldName: "NewsTypeId",
-        Operator: "Equal",
-        Value: NewsTypes.EmiratesNews.toString()
-      }
-  ]
+  getAllNews() {
+    this._newService
+      .getAll()
+      .subscribe((result: ApiResponse<GetNewsDetailsDto[]>) => {
 
-    this._newService.getAll(NewsTypes.EmiratesNews).subscribe((result: any) => {
-      debugger
-      this.emiratesNews = result.data;
-    });
+        this.news = result.data;
+
+        this.posters = this.getNewsByNewsTypeId(NewsTypes.Posters);
+
+        this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
+
+        this.latestNews = this.getNewsByNewsTypeId(NewsTypes.LatestNews);
+
+        this.reports = this.getNewsByNewsTypeId(NewsTypes.Reports);
+      });
   }
 
-  getLatestNews() {
-    this.searchModel.SearchFields = [
-      {
-        FieldName: "NewsTypeId",
-        Operator: "Equal",
-        Value: NewsTypes.LatestNews.toString()
-      }
-  ]
-
-    this._newService.getAll(NewsTypes.LatestNews).subscribe((result: any) => {
-      this.latestNews = result.data;
-    });
-  }
-
-  getReports() {
-    this._newService.getAll(NewsTypes.LatestNews).subscribe((result: any) => {
-      this.reports = result.data;
-    });
+  getNewsByNewsTypeId(newsTypeId: number): GetNewsDetailsDto[] {
+    return (this.posters = this.news.filter((n) => n.newsTypeId == newsTypeId));
   }
 
   getServices() {
-    this.searchModel.SearchFields = [
-      {
-        FieldName: "NewsTypeId",
-        Operator: "Equal",
-        Value: NewsTypes.Posters.toString()
-      }
-  ]
-
-    this._newService.getAll(NewsTypes.Posters).subscribe((result: any) => {
-      this.services = result.data;
-    });
+    this._serviceService
+      .getAll()
+      .subscribe((result: ApiResponse<GetServiceListDto[]>) => {
+        this.services = result.data;
+      });
   }
 
   navigateTo() {
@@ -330,7 +216,4 @@ export class HomeComponent implements OnInit {
     let hijriDate = this._globalService.convertToHijri(newDate, 'ar');
     return hijriDate.toString();
   }
-
-
-
 }

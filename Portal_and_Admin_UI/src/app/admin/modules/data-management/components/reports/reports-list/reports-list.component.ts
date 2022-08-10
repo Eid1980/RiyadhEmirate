@@ -4,6 +4,7 @@ import { ActionButtonClass } from '@shared/enums/action-button-class';
 import { ActionButtonIcon } from '@shared/enums/action-button-icon';
 import { ColumnPipe } from '@shared/enums/column-pipe.enum';
 import { ColumnType } from '@shared/enums/column-type.enum';
+import { NewsTypes } from '@shared/enums/news-types.enum';
 import { PageListSetting } from '@shared/interfaces/page-list-setting';
 import { DatePipeOptions } from '@shared/models/date-pipe-options.model';
 import { ReportsService } from '../../../services/reports.service';
@@ -25,25 +26,34 @@ export class ReportsListComponent implements OnInit {
   }
 
   pageSetting() {
+
+    this.list.searchModel .SearchFields = [
+      {
+        FieldName: "NewsTypeId",
+        Operator: "Equal",
+        Value: NewsTypes.Reports.toString()
+      }
+    ]
+
     this.pageListSettings = {
-      PageTitle: 'قائمة التقارير الإخبارية',
+      PageTitle: 'قائمة التقارير الإعلانية',
       listPermissionCode: '*',
       createButtonLink: '/admin/data-management/reports-add',
       createButtonText: 'انشاء تقرير جديد',
       Url: this.reportsService.serviceUrl,
 
       cols: [
-        { Field: 'Id', Header: 'الكود', Searchable: false, Hidden: true },
-        { Field: 'TitleAr', Header: 'العنوان باللغة العربية' },
-        { Field: 'TitleEn', Header: 'العنوان باللغة الانجليزية' },
+        { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
+        { Field: 'titleAr', Header: 'العنوان باللغة العربية' },
+        { Field: 'titleEn', Header: 'العنوان باللغة الانجليزية' },
         {
-          Field: 'Date',
+          Field: 'date',
           Header: 'التاريخ',
           Pipe: ColumnPipe.Date,
           PipeOptions: new DatePipeOptions(),
         },
         {
-          Field: 'IsActive',
+          Field: 'isActive',
           Header: 'الحالة',
           Searchable: false,
           Type: ColumnType.Status,

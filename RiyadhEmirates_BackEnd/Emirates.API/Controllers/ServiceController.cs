@@ -25,8 +25,8 @@ namespace Emirates.API.Controllers
             return _serviceService.GetById(id);
         }
 
-        [HttpGet("GetAll")]
         [AllowAnonymous]
+        [HttpGet("GetAll")]
         public IApiResponse GetAll()
         {
             return _serviceService.GetAll();

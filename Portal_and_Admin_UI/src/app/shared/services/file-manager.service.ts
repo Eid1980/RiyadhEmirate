@@ -55,7 +55,7 @@ export class FileManagerService {
   }
 
   private downloadFile(res: any) {
-    debugger;
+
     const byteCharacters = atob(res.base64File);
     const byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {

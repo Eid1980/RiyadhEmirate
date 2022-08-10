@@ -40,3 +40,5 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+RiyadhEmirates_BackEnd/Emirates.API/appsettings.Development.json
+RiyadhEmirates_BackEnd/Emirates.API/appsettings.json

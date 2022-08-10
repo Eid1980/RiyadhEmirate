@@ -12,7 +12,7 @@ export class ReportsService extends DataAccessService {
     private _httpClient: HttpClient,
     private _helper: HelperFunctions
   ) {
-    super(_httpClient, _helper, `${environment.ApiUrl}/api/Reports`);
-    this.serviceUrl = `${environment.ApiUrl}/api/Reports`;
+    super(_httpClient, _helper, `${environment.ApiUrl}/api/News`);
+    this.serviceUrl = `${environment.ApiUrl}/api/News`;
   }
 }

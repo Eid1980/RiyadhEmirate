@@ -22,42 +22,42 @@
         <!-- TitleAr -->
         <div class="info-col col-md-4 col-12">
           <span class="form-lbl lbl-33">العنوان باللغة العربية</span>
-          <span class="form-val">{{ detailsVM?.TitleAr }}</span>
+          <span class="form-val">{{ detailsVM?.titleAr }}</span>
         </div>
         <!-- TitleEn -->
         <div class="info-col col-md-4 col-12 separator-af-be">
           <span class="form-lbl lbl-33">العنوان باللغة الإنجليزية</span>
-          <span class="form-val">{{ detailsVM?.TitleEn }}</span>
+          <span class="form-val">{{ detailsVM?.titleEn }}</span>
         </div>
         <!-- DescriptionAr -->
         <div class="info-col col-md-4 col-12">
           <span class="form-lbl lbl-33">الوصف باللغة العربية</span>
-          <span class="form-val">{{ detailsVM?.DescriptionAr }}</span>
+          <span class="form-val">{{ detailsVM?.descriptionAr }}</span>
         </div>
         <!-- DescriptionEn -->
         <div class="info-col col-md-4 col-12">
           <span class="form-lbl lbl-33">الوصف باللغة الإنجليزية</span>
-          <span class="form-val">{{ detailsVM?.DescriptionEn }}</span>
+          <span class="form-val">{{ detailsVM?.descriptionEn }}</span>
         </div>
         <!-- Date -->
         <div class="info-col col-md-4 col-12 separator-af-be">
           <span class="form-lbl lbl-33">التاريخ</span>
           <span class="form-val">{{
-            detailsVM?.Date | date: "dd-MM-yyyy"
+            detailsVM?.date | date: "dd-MM-yyyy"
             }}</span>
         </div>
         <!-- isActive -->
         <div class="info-col col-md-4 col-12">
           <span class="form-lbl lbl-33">الحالة</span>
           <span class="form-val">{{
-            detailsVM?.IsActive ? "مفعل" : "غير مفعل"
+            detailsVM?.isActive ? "مفعل" : "غير مفعل"
             }}</span>
         </div>
         <!-- image -->
         <div class="info-col col-md-4 col-12">
           <span class="form-lbl lbl-33">الصورة</span>
           <span class="form-val">
-            <img [src]="oldImage?.Base64File" alt="" style="width: 180px" />
+            <img [src]="oldImage?.base64File" alt="" style="width: 180px" />
           </span>
         </div>
       </div>

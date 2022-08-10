@@ -136,21 +136,39 @@
 
     </div>
 
-    <a routerLink="/auth/login" class="btn btn-primary sign-in">تسجيل الدخول</a>
+    <!--<button type="button" class="btn btn-primary sign-in">تسجيل الدخول</button>-->
 
-    <div class="dropdown topnav-user">
+
+    <div class="dropdown topnav-user" *ngIf="isAuthenticated">
       <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="./assets/images/user-img.svg" alt="" width="40">
-        أهلاً <span> محمد سالم </span>
+        أهلاً <span> {{userInfo.nameAr}}</span>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <a routerLink="/e-council/profile" class="dropdown-item">
           <i class="fa fa-user"></i>
           My Profile
         </a>
-        <a class="dropdown-item">
+        <a class="dropdown-item" (click)="logOut()">
           <i class="fa fa-arrow-right-from-bracket"></i>
           Sign Out
+        </a>
+      </div>
+    </div>
+
+    <div class="dropdown topnav-user" *ngIf="!isAuthenticated">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="./assets/images/user-img.svg" alt="" width="40">
+         <span> </span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <a routerLink="/auth/login" class="dropdown-item">
+          <i class="fa fa-user"></i>
+          تسجيل الدخول
+        </a>
+        <a class="dropdown-item">
+          <i class="fa fa-arrow-right-from-bracket"></i>
+          إنشاء حساب جديد
         </a>
       </div>
     </div>

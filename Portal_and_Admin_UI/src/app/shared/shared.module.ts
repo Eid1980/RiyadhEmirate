@@ -36,6 +36,11 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { RateServiceComponent } from './components/rate-service/rate-service.component';
 import { RequestStageLogComponent } from './components/request-stage-log/request-stage-log.component';
 import { ToastModule } from 'primeng/toast';
+import { CustomSlicePipe } from './pipes/custom-slice.pipe';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -54,6 +59,7 @@ import { ToastModule } from 'primeng/toast';
     UserDataViewComponent,
     UserDataCurrentViewComponent,
     RateServiceComponent,
+    CustomSlicePipe,
   ],
   imports: [
     CommonModule,
@@ -75,7 +81,7 @@ import { ToastModule } from 'primeng/toast';
     ToastModule,
     DialogModule,
     RatingModule,
-    NgxHijriGregorianDatepickerModule,
+    NgxHijriGregorianDatepickerModule
   ],
   exports: [
     AuthLayoutComponent,
@@ -109,6 +115,8 @@ import { ToastModule } from 'primeng/toast';
     UserDataViewComponent,
     UserDataCurrentViewComponent,
     RateServiceComponent,
+    CustomSlicePipe,
+    TranslateModule
   ],
   providers: [
     HiddenAuthorizeColumnFilterPipe,
@@ -118,3 +126,8 @@ import { ToastModule } from 'primeng/toast';
   ],
 })
 export class SharedModule {}
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

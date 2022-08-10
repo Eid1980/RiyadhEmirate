@@ -368,7 +368,7 @@ namespace Emirates.InfraStructure.Contexts
 
         public static NewsType[] NewsTypes()
         {
-            NewsType[] arrData = new NewsType[2];
+            NewsType[] arrData = new NewsType[3];
             arrData[0] = new NewsType
             {
                 Id = 1,
@@ -385,6 +385,15 @@ namespace Emirates.InfraStructure.Contexts
                 TitleAr = "اخر المحافظات",
                 TitleEn = "Provinces news",
                 NewsTypeCode = 2,
+                CreatedBy = 1,
+                CreatedDate = new DateTime(2022, 1, 1)
+            };
+            arrData[2] = new NewsType
+            {
+                Id = 3,
+                TitleAr = "التقارير الاعلانيه",
+                TitleEn = "Advertisments reports",
+                NewsTypeCode = 3,
                 CreatedBy = 1,
                 CreatedDate = new DateTime(2022, 1, 1)
             };
