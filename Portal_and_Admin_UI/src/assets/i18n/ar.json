@@ -52,9 +52,18 @@
   "forgetPassword": {
       "labels": {
           "forgetPassword": "نسيت كلمة المرور",
-          "sendConfirmOTP": "تم إرسال الرمز التاكيدي . برجاء التاكد من بريدك الالكتروني",
           "send": "إرسال",
-          "resendOTP": "إعادة إرسال"
+          "resendOTP": "إعادة إرسال رمز التحقق"
+      },
+      "messages": {
+        "sentConfirmOTP": "تم إرسال الرمز التاكيدي . برجاء التاكد من بريدك الالكتروني",
+        "errorWhileSendingRequest" : "حدث خطأ اثناء الارسال",
+        "otpIsCorrect" : "الرمز التأكيدي  صحيح",
+        "invalidOTP" : "الرمز التأكيدي غير صحيح",
+        "resetPasswordSuccessfuly" : "تم إعادة تعيين كلمة السر بنجاح"
+      },
+      "validators" : {
+
       }
   },
   "__comment1__": "end auth region",
