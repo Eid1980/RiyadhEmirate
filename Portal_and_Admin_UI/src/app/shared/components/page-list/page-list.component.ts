@@ -1,17 +1,17 @@
-import { PageListSetting } from "./../../interfaces/page-list-setting";
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { PagingMetaData } from "@shared/models/paging-meta-data.model";
-import { FormGroup } from "@angular/forms";
-import { SearchOperator } from "@shared/models/search-operator.model";
-import { Subscription } from "rxjs";
-import { GlobalService } from "@shared/services/global.service";
-import { TableService } from "@shared/services/table.service";
-import { SearchModel } from "@proxy/shared/search-model.model";
-import { DynamicSearchService } from "@proxy/shared/dynamic-search.service";
+import { PageListSetting } from './../../interfaces/page-list-setting';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { PagingMetaData } from '@shared/models/paging-meta-data.model';
+import { FormGroup } from '@angular/forms';
+import { SearchOperator } from '@shared/models/search-operator.model';
+import { Subscription } from 'rxjs';
+import { GlobalService } from '@shared/services/global.service';
+import { TableService } from '@shared/services/table.service';
+import { SearchModel } from '@proxy/shared/search-model.model';
+import { DynamicSearchService } from '@proxy/shared/dynamic-search.service';
 
 @Component({
-  selector: "app-page-list",
-  templateUrl: "./page-list.component.html"
+  selector: 'app-page-list',
+  templateUrl: './page-list.component.html',
 })
 export class PageListComponent implements OnInit {
   dataItems: any[];
@@ -30,7 +30,10 @@ export class PageListComponent implements OnInit {
   searchOperators: SearchOperator[];
   private subscription: Subscription;
 
-  constructor(public dynamicSearchService: DynamicSearchService, private tableService: TableService) {
+  constructor(
+    public dynamicSearchService: DynamicSearchService,
+    private tableService: TableService
+  ) {
     this.searchModel = {};
     this.subscription = new Subscription();
   }
@@ -44,11 +47,10 @@ export class PageListComponent implements OnInit {
   }
 
   getData() {
-    debugger
     this.subscription.add(
       this.tableService
         .getListPage(this.PageListSetting.Url, this.searchModel)
-        .subscribe(result => {
+        .subscribe((result) => {
           if (result.isSuccess) {
             this.dataItems = result.data.gridItemsVM;
             this.pagingMetaData = result.data.pagingMetaData;

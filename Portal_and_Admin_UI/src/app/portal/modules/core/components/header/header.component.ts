@@ -5,20 +5,17 @@ import { GetUserDto } from '@shared/proxy/accounts/models';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
   userInfo: GetUserDto;
-  isAuthenticated : boolean;
+  isAuthenticated: boolean;
 
-  constructor(
-    private accountService: AccountService,
-    private router: Router) {}
+  constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit() {
-    debugger
     this.isAuthenticated = this.isUserAuthenticate();
-    if(this.isAuthenticated)
+    if (this.isAuthenticated)
       this.userInfo = this.accountService.getCurrentUserInfo();
   }
 
@@ -28,13 +25,14 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
 
-  isUserAuthenticate():boolean{
-    if (localStorage.getItem('EmiratesToken') === null || localStorage.getItem('EmiratesToken') === undefined) {
+  isUserAuthenticate(): boolean {
+    if (
+      localStorage.getItem('EmiratesToken') === null ||
+      localStorage.getItem('EmiratesToken') === undefined
+    ) {
       return false;
-    }
-    else{
-
-      return true
+    } else {
+      return true;
     }
   }
 }

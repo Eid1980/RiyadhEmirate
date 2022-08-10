@@ -7,7 +7,7 @@ import { AccountService } from '@proxy/accounts/account.service';
 import { UserLoginDto } from '@proxy/accounts/models';
 
 @Component({
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -15,16 +15,15 @@ export class LoginComponent implements OnInit {
   isFormSubmitted: boolean;
   returnUrl: string;
 
-  constructor(private formBuilder: FormBuilder,
-     private _accountService: AccountService,
-     private router: Router,
-     private globalService: GlobalService,
-    private activatedRoute: ActivatedRoute)
-  {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private _accountService: AccountService,
+    private router: Router,
+    private globalService: GlobalService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    debugger
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
     this.buildForm();
     /*if (localStorage.getItem('EmiratesToken')) {
@@ -36,7 +35,7 @@ export class LoginComponent implements OnInit {
   buildForm() {
     this.loginForm = this.formBuilder.group({
       userName: [this.userLoginDto.userName || '', Validators.required],
-      password: [this.userLoginDto.password || '', Validators.required]
+      password: [this.userLoginDto.password || '', Validators.required],
     });
   }
 
@@ -45,14 +44,12 @@ export class LoginComponent implements OnInit {
       (response) => {
         if (response.isSuccess) {
           localStorage.setItem('EmiratesToken', response.data);
-          this._accountService.getAuthUser().subscribe((res) =>
-          {
-            localStorage.setItem('AuthUser',JSON.stringify(res.data))
-          },
-          () =>
-          {
-
-          });
+          this._accountService.getAuthUser().subscribe(
+            (res) => {
+              localStorage.setItem('AuthUser', JSON.stringify(res.data));
+            },
+            () => {}
+          );
 
           if (this.returnUrl) {
             this.router.navigateByUrl(this.returnUrl);
