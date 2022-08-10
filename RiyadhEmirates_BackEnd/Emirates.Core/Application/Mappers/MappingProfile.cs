@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Dtos.Posters;
 using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
 using Emirates.Core.Application.Models.InternalPortal.Response.FileManager;
 using Emirates.Core.Application.Models.Response.Nationality;
@@ -34,6 +35,14 @@ namespace Emirates.Core.Application.Mappers
 
             CreateMap<News, GetNewsDetailsDto>();
             CreateMap<News, GetNewsListDto>();
+            #endregion
+
+            #region Poster
+            CreateMap<CreatePosterDto, Poster>();
+            CreateMap<UpdatePosterDto, Poster>();
+
+            CreateMap<Poster, GetPosterDetailsDto>();
+            CreateMap<Poster, GetPosterListDto>();
             #endregion
 
             #region Account

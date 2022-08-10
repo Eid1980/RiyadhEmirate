@@ -48,7 +48,7 @@ export class LatestNewsAddComponent implements OnInit {
       Date: [null],
       Image: [null, Validators.required],
       IsActive: [true],
-      NewsTypeId : [NewsTypes.LatestNews]
+      NewsTypeId: [NewsTypes.LatestNews],
     });
   }
 

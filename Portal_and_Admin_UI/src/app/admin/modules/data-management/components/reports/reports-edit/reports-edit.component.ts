@@ -9,7 +9,6 @@ import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { ReportsService } from '../../../services/reports.service';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 
-
 @Component({
   selector: 'app-reports-edit',
   templateUrl: './reports-edit.component.html',
@@ -55,15 +54,13 @@ export class ReportsEditComponent implements OnInit {
       HijriDate: [null],
       Image: [null],
       IsActive: [true],
-
     });
 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.getEdit(this.id);
-    }
-    else {
-      this.globalService.navigate("/admin/data-management/emirates-news-list");
+    } else {
+      this.globalService.navigate('/admin/data-management/emirates-news-list');
     }
   }
 
@@ -121,12 +118,13 @@ export class ReportsEditComponent implements OnInit {
       postedVM.NewsTypeId = NewsTypes.Reports;
       postedVM.Date = date;
       this.reportsService.update(postedVM).subscribe((response) => {
-        if (response.isSuccess)
-        {
-          if (this.form.get('Image').value)
-           {
-            this.fileManagerService.deleteByEntityName(this.editVM.id, 'News').subscribe((res) => {
-                this.fileManagerService .upload(this.editVM.id, 'News', '', [
+        if (response.isSuccess) {
+          if (this.form.get('Image').value) {
+            this.fileManagerService
+              .deleteByEntityName(this.editVM.id, 'News')
+              .subscribe((res) => {
+                this.fileManagerService
+                  .upload(this.editVM.id, 'News', '', [
                     this.form.get('Image').value,
                   ])
                   .subscribe((res) => {

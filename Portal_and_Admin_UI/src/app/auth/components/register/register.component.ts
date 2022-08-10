@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CheckUserRegisterDto, CreateUserDto } from '@shared/proxy/accounts/register.model';
+import {
+  CheckUserRegisterDto,
+  CreateUserDto,
+} from '@shared/proxy/accounts/register.model';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { GlobalService } from '@shared/services/global.service';
 import { AccountService } from '@shared/proxy/accounts/account.service';
@@ -11,8 +14,8 @@ import { Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html"
+  selector: 'app-register',
+  templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
   checkUserRegisterForm: FormGroup;
@@ -38,16 +41,28 @@ export class RegisterComponent implements OnInit {
 
   //#endregion
 
-  constructor(private formBuilder: FormBuilder, private globalService: GlobalService,
-    private accountService: AccountService, private lookupService: LookupService,
-    private router: Router, private dateFormatterService: DateFormatterService)
-  {
+  constructor(
+    private formBuilder: FormBuilder,
+    private globalService: GlobalService,
+    private accountService: AccountService,
+    private lookupService: LookupService,
+    private router: Router,
+    private dateFormatterService: DateFormatterService
+  ) {
     //this.minHigriDate = { day: 1, month: 1, year: 1360 };
     let nowDate = new Date();
     let nowDateHijri = dateFormatterService.GetTodayHijri();
-    this.maxHigriDate = { day: nowDateHijri.day, month: nowDateHijri.month, year: nowDateHijri.year - 18 };
+    this.maxHigriDate = {
+      day: nowDateHijri.day,
+      month: nowDateHijri.month,
+      year: nowDateHijri.year - 18,
+    };
     //this.minGreg = { day: 1, month: 1, year: 1950 };
-    this.maxGreg = { day: nowDate.getUTCDate()+1, month: nowDate.getUTCMonth()+1, year: nowDate.getUTCFullYear() - 18 };
+    this.maxGreg = {
+      day: nowDate.getUTCDate() + 1,
+      month: nowDate.getUTCMonth() + 1,
+      year: nowDate.getUTCFullYear() - 18,
+    };
   }
 
   ngOnInit(): void {
@@ -57,8 +72,11 @@ export class RegisterComponent implements OnInit {
 
   buildCheckForm() {
     this.checkUserRegisterForm = this.formBuilder.group({
-      nationalId: [this.checkUserRegisterDto.nationalId || '', Validators.required],
-      birthDate: [this.checkUserRegisterDto.birthDate || '']
+      nationalId: [
+        this.checkUserRegisterDto.nationalId || '',
+        Validators.required,
+      ],
+      birthDate: [this.checkUserRegisterDto.birthDate || ''],
     });
   }
   buildRegisterForm() {
@@ -66,15 +84,24 @@ export class RegisterComponent implements OnInit {
       userName: [this.createUserDto.userName || '', Validators.required],
       birthDate: [this.createUserDto.birthDate || ''],
       passWord: [this.createUserDto.passWord || '', Validators.required],
-      confirmPassWord: [this.createUserDto.confirmPassWord || '', Validators.required],
+      confirmPassWord: [
+        this.createUserDto.confirmPassWord || '',
+        Validators.required,
+      ],
 
       firstNameAr: [this.createUserDto.firstNameAr || '', Validators.required],
-      secondNameAr: [this.createUserDto.secondNameAr || '', Validators.required],
+      secondNameAr: [
+        this.createUserDto.secondNameAr || '',
+        Validators.required,
+      ],
       thirdNameAr: [this.createUserDto.thirdNameAr || '', Validators.required],
       lastNameAr: [this.createUserDto.lastNameAr || '', Validators.required],
 
       firstNameEn: [this.createUserDto.firstNameEn || '', Validators.required],
-      secondNameEn: [this.createUserDto.secondNameEn || '', Validators.required],
+      secondNameEn: [
+        this.createUserDto.secondNameEn || '',
+        Validators.required,
+      ],
       thirdNameEn: [this.createUserDto.thirdNameEn || '', Validators.required],
       lastNameEn: [this.createUserDto.lastNameEn || '', Validators.required],
 
@@ -102,19 +129,23 @@ export class RegisterComponent implements OnInit {
       return;
     }
     if (this.checkUserRegisterForm.valid) {
-      this.checkUserRegisterDto = { ...this.checkUserRegisterForm.value } as CheckUserRegisterDto;
+      this.checkUserRegisterDto = {
+        ...this.checkUserRegisterForm.value,
+      } as CheckUserRegisterDto;
       this.checkUserRegisterDto.birthDate = this.birthDate.getSelectedDate();
 
-      this.accountService.checkUserRegister(this.checkUserRegisterDto).subscribe((response) => {
-        this.createUserDto = response.data;
-        if (response.isSuccess) {
-          this.showCheckUserRegisterForm = false;
-          this.showUserRegisterForm = true;
-          this.isFormSubmitted = false;
-          this.fillLookup();
-          this.buildRegisterForm();
-        }
-      });
+      this.accountService
+        .checkUserRegister(this.checkUserRegisterDto)
+        .subscribe((response) => {
+          this.createUserDto = response.data;
+          if (response.isSuccess) {
+            this.showCheckUserRegisterForm = false;
+            this.showUserRegisterForm = true;
+            this.isFormSubmitted = false;
+            this.fillLookup();
+            this.buildRegisterForm();
+          }
+        });
     }
   }
   onRegister() {
@@ -128,7 +159,7 @@ export class RegisterComponent implements OnInit {
       this.createUserDto = { ...this.userRegisterForm.value } as CreateUserDto;
       this.checkUserRegisterDto.birthDate = this.birthDate.getSelectedDate();
       this.accountService.register(this.createUserDto).subscribe((response) => {
-        this.globalService.showMessage(response.message)
+        this.globalService.showMessage(response.message);
         if (response.isSuccess) {
           //login
           this.login();
@@ -148,7 +179,10 @@ export class RegisterComponent implements OnInit {
     });
   }
   login() {
-    let userLoginDto = { userName: this.createUserDto.userName, password: this.createUserDto.passWord } as UserLoginDto;
+    let userLoginDto = {
+      userName: this.createUserDto.userName,
+      password: this.createUserDto.passWord,
+    } as UserLoginDto;
     this.accountService.login(userLoginDto).subscribe(
       (response) => {
         if (response.isSuccess) {
@@ -157,7 +191,7 @@ export class RegisterComponent implements OnInit {
         }
       },
       (error) => {
-        this.globalService.navigate("/auth/login")
+        this.globalService.navigate('/auth/login');
       }
     );
   }

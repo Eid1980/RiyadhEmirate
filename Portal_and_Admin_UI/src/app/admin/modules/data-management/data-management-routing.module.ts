@@ -36,23 +36,9 @@ import { ServiceStageAddComponent } from "./components/service-stages/service-st
 import { ServiceStageEditComponent } from "./components/service-stages/service-stage-edit/service-stage-edit.component";
 import { ServiceStageListComponent } from "./components/service-stages/service-stage-list/service-stage-list.component";
 import { ServiceStageViewComponent } from "./components/service-stages/service-stage-view/service-stage-view.component";
+import { ViewPosterComponent } from "./components/poster/view-poster/view-poster.component";
 
 const routes: Routes = [
-  {
-    path: "poster-list",
-    component: ListPosterComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "poster-add",
-    component: AddPosterComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "poster-edit",
-    component: EditPosterComponent,
-    canActivate: [AuthGuard],
-  },
   {
     path: "latest-news-list",
     component: LatestNewsListComponent,
@@ -93,6 +79,29 @@ const routes: Routes = [
     component: ReportsViewComponent,
     canActivate: [AuthGuard],
   },
+
+  //#region Poster
+  {
+    path: "poster-list",
+    component: ListPosterComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "poster-add",
+    component: AddPosterComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "poster-edit/:id",
+    component: EditPosterComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "poster-view/:id",
+    component: ViewPosterComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
 
   //#region EmiratesNews
   {
