@@ -51,9 +51,19 @@
   "forgetPassword": {
       "labels": {
           "forgetPassword": "Forget password",
-          "sendConfirmOTP": "Send confirmation otp, please see your email ",
           "send": "Send",
           "resendOTP": "Resend OTP"
+      },
+      "messages" : {
+        "sentConfirmOTP": "Send confirmation otp, please see your email ",
+        "errorWhileSendingRequest" : "Error while sending request",
+        "otpIsCorrect" : "OTP is correct",
+        "invalidOTP" : "Invalid OTP",
+        "resetPasswordSuccessfuly" : "Reset password done, successfully"
+
+      },
+      "validators" : {
+
       }
   },
   "__comment1__": "end auth region",

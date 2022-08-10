@@ -35,7 +35,6 @@ export interface UserLoginDto {
 
 export interface ForgetPasswordDto {
   userName: string;
-  token: string;
 }
 
 export interface ResetPasswordDto {
