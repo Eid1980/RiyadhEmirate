@@ -5,6 +5,7 @@ import { PosterService } from '@shared/proxy/posters/poster.service';
 import { GlobalService } from '@shared/services/global.service';
 import { UpdatePosterDto } from '@shared/proxy/posters/models';
 import { FileManagerService } from '@shared/services/file-manager.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-poster',
@@ -28,8 +29,9 @@ export class EditPosterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private fileManagerService: FileManagerService,
     private posterService: PosterService, private activatedRoute: ActivatedRoute,
-    private globalService: GlobalService)
-  {
+    private globalService: GlobalService,
+    public sanitizer: DomSanitizer
+  ) {
   }
 
   ngOnInit() {

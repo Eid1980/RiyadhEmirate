@@ -55,12 +55,12 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/home/']);
           }
         } else {
-          this.globalService.messageAlert(
+          /*this.globalService.messageAlert(
             MessageType.Error,
             this._translateService.instant(
               'login.messages.invalidUsernameOrPassword'
             )
-          );
+          );*/
         }
       },
       (error) => {

@@ -53,8 +53,20 @@ namespace Emirates.Core.Application.Services.Posters
         }
         public IApiResponse GetAll()
         {
-            var Posters = _emiratesUnitOfWork.Posters.Where(l => l.IsActive).OrderByDescending(s => s.CreatedDate);
-            return GetResponse(data: _mapper.Map<List<GetPosterListDto>>(Posters));
+            var query = (from poster in _emiratesUnitOfWork.Posters
+                         where poster.IsActive == true
+                         select new GetPosterDetailsDto
+                         {
+                             Id = poster.Id,
+                             TitleAr = poster.TitleAr,
+                             TitleEn = poster.TitleEn,
+                             IsActive = poster.IsActive,
+                             Order = poster.Order,
+                             Image = _fileManagerService.GetBase64File(poster.Id, "Poster")
+                         }).OrderBy(s => s.Order);
+
+            return GetResponse(data: query);
+
         }
 
         public IApiResponse Create(CreatePosterDto createModel)

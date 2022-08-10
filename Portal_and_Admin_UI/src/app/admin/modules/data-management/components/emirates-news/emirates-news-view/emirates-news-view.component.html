@@ -39,7 +39,7 @@
       <div class="info-col col-md-6 col-12" *ngIf="newsDetailsDto?.image">
         <span class="form-lbl lbl-33">الصورة</span>
         <span class="form-val">
-          <img [src]="newsDetailsDto?.image?.base64File" alt="" style="width: 180px" />
+          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(newsDetailsDto?.image?.base64File)" alt="" style="width: 180px" />
         </span>
       </div>
     </div>
