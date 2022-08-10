@@ -30,6 +30,9 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public INewsRepository News => news ??= new NewsRepository(Context);
 
 
+        private PosterRepository posters;
+        public IPosterRepository Posters => posters ??= new PosterRepository(Context);
+
         private RequestRepositroy requests;
         public IRequestRepository Requests => requests ??= new RequestRepositroy(Context);
 
