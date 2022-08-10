@@ -147,66 +147,109 @@
       color: $text-color;
       display: inline-block;
       margin-right: 10px;
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
       font-weight: 400;
     }
     .options {
       display: flex;
+      align-items: center;
       img {
         margin-left: 1rem;
       }
-    }
-    .topnav-user {
-      .dropdown-toggle {
-        color: $text-color;
-        background-color: $light-lighter;
-        border: 0.1px solid $dimmed;
-        border-radius: 6px;
-        text-align: right;
-        min-width: 15rem;
-        font-size: 0.9rem;
-        img {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          border: 1px solid $Primary-1;
+      .search {
+        .dropdown-menu {
+          margin-top: 8px !important;
+          border-radius: 6px;
         }
-        span {
-          color: $Primary-2;
+        .dropdown-toggle {
+          padding: 0;
+          &::after {
+            content: unset;
+          }
         }
-        &::after {
-          content: "\f107";
-          font-family: "Font Awesome 6 Free";
-          font-style: normal;
-          font-weight: 900;
-          float: left;
-          font-size: 18px;
-          position: relative;
-          top: 2px;
-          left: -5px;
-          color: #009780;
-          border: 0;
-          margin: 0;
+        .search-card {
+          padding: 1.2rem;
+          .form-group {
+            position: relative;
+            display: flex;
+            .form-control {
+              width: 400px;
+              background: #fafbff;
+              padding-right: 40px;
+              height: 3rem;
+            }
+            .s-icon {
+              position: absolute;
+              top: 12px;
+              right: 8px;
+            }
+            .btn-submit {
+              background-color: $primary-alt-2;
+              color: $white;
+              transition: 0.3s all ease-in-out;
+              height: 2.99rem;
+              width: 120px;
+              margin-right: 8px;
+              &:hover {
+                background-color: $primary-alt-3;
+              }
+            }
+          }
         }
       }
-      .dropdown-menu {
-        min-width: 15rem;
-        border-radius: 6px;
-        .dropdown-item {
-          padding: 0.7rem 1rem;
-          text-align: right;
-          font-size: 0.8rem;
-          border-bottom: 0.1px solid $dimmed;
-          color: $text-color;
-          i {
-            color: $text-color;
-            font-size: 18px;
-            margin-left: 6px;
+      .settings {
+        .dropdown-menu {
+          margin-top: 8px !important;
+          border-radius: 6px;
+        }
+        .dropdown-toggle {
+          padding: 0;
+          &::after {
+            content: unset;
           }
-          &:hover {
-            color: $Primary-2;
+        }
+        .setting-card {
+          position: relative;
+          padding: 0.9rem;
+          font-size: 0.8rem;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 42px;
+            left: 0;
+            right: 0;
+            height: 0.1px;
+            width: 100%;
+            display: block;
+            background: $dimmed;
+          }
+          .title {
+            display: block;
+            text-align: center;
+            color: $Primary-1;
+          }
+          .set {
+            text-align: center;
+            overflow: hidden;
+            width: 170px;
+            margin-bottom: 15px;
             i {
-              color: $Primary-2;
+              color: $primary-alt-3;
+              margin-left: 12px;
+            }
+            .txt {
+              width: 95px;
+              text-align: right;
+              display: inline-block;
+              font-weight: 400;
+              color: $text-color;
+            }
+            .form-check {
+              display: inline-block;
+              float: left;
+              input {
+                cursor: pointer;
+              }
             }
           }
         }
@@ -228,16 +271,20 @@
         .navbar-nav {
           padding-right: 0px;
           .nav-link {
-            // color: $white;
             line-height: 34px;
             font-size: 1rem;
             font-weight: 700;
-            padding-right: 0.9rem;
-            padding-left: 0.9rem;
+            padding: 4px;
+            margin: 0 0.9rem;
             color: $dark;
+            svg {
+              margin-left: 4px;
+            }
             &:hover {
-              color: #fff;
-              background: $Primary-2;
+              color: $Primary-1;
+              svg {
+                fill: $Primary-1;
+              }
             }
             .ic-home {
               width: 30px;
@@ -251,6 +298,69 @@
             .ic-search,
             .ic-settings {
               width: 24px;
+            }
+          }
+          .sub-link {
+            .nav-dropdown {
+              transition: 0.5s all ease-in-out;
+              visibility: hidden;
+              opacity: 0;
+              position: absolute;
+              background: $Primary-1;
+              width: 14rem;
+              padding: 0.4rem 0;
+              border-radius: 3px;
+              li {
+                position: relative;
+                .nav-link {
+                  color: $white;
+                  font-size: 13px;
+                  font-weight: 400;
+                  padding: 5px 20px;
+                  margin: 0;
+                  &:hover {
+                    background-color: #136e35;
+                  }
+                }
+                &::after {
+                  content: "";
+                  display: block;
+                  height: 0.1px;
+                  background: #c2c2c2;
+                  width: 87%;
+                  bottom: 0px;
+                  left: 0;
+                  right: 0;
+                  margin: auto;
+                  position: absolute;
+                }
+                &:last-of-type {
+                  &::after {
+                    content: unset;
+                  }
+                }
+              }
+            }
+            &:hover {
+              .nav-dropdown {
+                transition: 0.3s all ease-in-out;
+                visibility: visible;
+                opacity: 1;
+              }
+            }
+            &::before {
+              content: "\f107";
+              font-family: "Font Awesome 6 Free";
+              font-style: normal;
+              font-weight: 900;
+              float: left;
+              font-size: 14px;
+              position: relative;
+              top: 2px;
+              left: -5px;
+              // color: #000000;
+              border: 0;
+              margin: 0;
             }
           }
         }
@@ -273,6 +383,74 @@
         &:hover {
           background-color: $white;
           color: $Primary-1;
+        }
+      }
+      .topnav-user {
+        .dropdown-toggle {
+          color: $text-color;
+          background-color: $light-lighter;
+          border: 0.1px solid $dimmed;
+          border-radius: 6px;
+          text-align: right;
+          // min-width: 15rem;
+          font-size: 0.9rem;
+          white-space: nowrap;
+          display: flex;
+          align-items: center;
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid $Primary-1;
+            margin-left: 6px;
+          }
+          span {
+            color: $Primary-2;
+            margin: 0 6px;
+          }
+          &::after {
+            content: "\f107";
+            font-family: "Font Awesome 6 Free";
+            font-style: normal;
+            font-weight: 900;
+            float: left;
+            font-size: 18px;
+            position: relative;
+            top: 2px;
+            left: -5px;
+            color: #009780;
+            border: 0;
+            margin: 0;
+          }
+        }
+        .dropdown-menu {
+          min-width: 15rem;
+          border-radius: 6px;
+          .dropdown-item {
+            padding: 0.7rem 1rem;
+            text-align: right;
+            font-size: 0.8rem;
+            border-bottom: 0.1px solid $dimmed;
+            color: $text-color;
+            cursor: pointer;
+            i {
+              color: $text-color;
+              font-size: 18px;
+              margin-left: 6px;
+            }
+            &:hover {
+              color: $Primary-2;
+              i {
+                color: $Primary-2;
+              }
+            }
+            &:active {
+              color: #fff;
+              i {
+                color: $white;
+              }
+            }
+          }
         }
       }
     }
@@ -451,7 +629,7 @@
 
   // BreadCrumb
   .breadcrumb {
-    background-image: url("../images/bread-img.png");
+    background-image: url("../images/bg-services.svg");
     height: 90px;
     align-items: center;
     padding: 0 114px;
@@ -1280,7 +1458,8 @@
 
   // E-Services
   .e-services {
-    background-image: url("../images/serv_bg.png");
+    position: relative;
+    z-index: 0;
     .serv-tabs {
       .nav-tabs {
         border: 0;
@@ -1318,14 +1497,27 @@
     }
     .owl__carousel {
       .card-item {
+        background-image: url("../images/ser-card-bg.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
         position: relative;
-        background-color: $white;
+        background-color: #fdfffe;
         padding: 3rem 0 4rem;
         border: 1px solid $dimmed;
         margin: 0 12px;
+        height: 370px;
+        box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+        border-radius: 4px;
+        margin-bottom: 30px;
+        text-align: center;
+        .ser-icon {
+          display: block;
+          width: 55px;
+          margin: 0 auto 2.3rem;
+        }
         .title {
           font-size: 0.9rem;
-          color: $primary-alt-3;
+          color: $Primary-1;
           font-weight: bold;
         }
         .brief-description {
@@ -1339,6 +1531,7 @@
           font-size: 0.9rem;
           font-weight: normal;
           margin-bottom: 3rem;
+          height: 65px;
         }
 
         .service-link {
@@ -1363,6 +1556,8 @@
             width: 100%;
             height: 3px;
             background-color: $Primary-2;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
           }
           .arrow {
             background: $Primary-1;
@@ -1370,23 +1565,6 @@
               filter: brightness(0) invert(1);
             }
           }
-        }
-
-        // height: 220px;
-        // background: #fff;
-        // border-radius: 12px;
-        // border: 0.1px solid $light-dark;
-        // box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
-        // margin: 8px 3px;
-        // display: flex;
-        // align-items: center;
-        // flex-direction: column;
-        // justify-content: center;
-        // padding: 14px;
-        .ser-icon {
-          display: block;
-          margin: 0 auto 1rem;
-          width: 55px;
         }
         .ser-name {
           font-size: 1rem;
@@ -1406,6 +1584,18 @@
         }
       }
     }
+    &:after {
+      content: "";
+      background: url("../images/serv_bg.png");
+      background-repeat: no-repeat;
+      opacity: 0.3;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+    }
   }
 
   // News & Repors Section
@@ -1419,6 +1609,7 @@
             margin: 0 6px;
             padding: 0;
             margin-bottom: 1rem;
+            box-shadow: none;
             .card-img-top {
               width: 100%;
               height: 225px;
@@ -1617,168 +1808,179 @@
   // Services Page Style
   .services-section {
     background-color: $light-lighter;
-    .bread {
-      background: url("../images/bg-services.svg") no-repeat center center;
-      background-size: cover;
-      height: 6rem;
-      padding: 0 6.25rem;
-      // line-height: 6rem;
+    .ser-bg {
+      background-image: url("../images/eservices-bg.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 222px;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       position: relative;
-
-      .bread-nav {
-        .nav-link {
-          color: $white;
-          font-size: 1rem;
-          margin: 0 0.3rem;
-        }
-        .active {
-          color: $secondary-1;
+      .ser-bread {
+        position: absolute;
+        right: 6%;
+        top: 60%;
+        .breadcrumb {
+          background-image: none;
+          height: auto;
+          align-items: center;
+          padding: 0;
         }
       }
-
-      .slash {
-        border-left: 0.1rem solid #fff;
-        height: 1rem;
-        position: absolute;
-        // top: 50px;
-        right: 230px;
-        transform: rotate(19deg);
+      .title {
+        text-align: center;
+        font-size: 1.8rem;
+        color: #fff;
+        margin-bottom: 2rem;
+      }
+      .form-group {
+        position: relative;
+        .form-control {
+          width: 550px;
+          background: #fafbff;
+          padding-left: 40px;
+          height: 3rem;
+          &::placeholder {
+            font-size: 13px;
+          }
+        }
+        .s-icon {
+          position: absolute;
+          top: 10px;
+          left: 8px;
+        }
       }
     }
 
     // services
     .services {
-      padding: 1rem 6.25rem 1rem 3rem;
-      .side {
-        // width: 22% !important;
-        .sidebar {
-          background-color: $white;
-          border: 1px solid $dimmed;
-
-          .title {
-            border-bottom: 1px solid $dimmed;
-          }
-
-          .form-group {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            .control[type="checkbox"] {
-              width: 1rem;
-              height: 1rem;
-              padding: 0;
-            }
-            .control-label {
-              font-size: 0.8rem;
-              font-weight: normal;
-            }
-            .services-provider {
-              background-color: rgba($color: $primary-alt-3, $alpha: 0.16);
-              width: 1.5rem;
-              height: 1.3125rem;
-              border-radius: 2px;
-              font-size: 0.9rem;
-              color: #007889 !important;
-              font-weight: bold;
-              padding: 0.2rem;
-              line-height: 0.9rem;
-              text-align: center;
+      padding: 1rem 7rem;
+      .count-sort {
+        margin-bottom: 1rem;
+        .title {
+          font-size: 1.2rem;
+          color: $text-color;
+        }
+        .count {
+          width: 38px;
+          height: 30px;
+          background-color: #dce7f0;
+          color: $primary-alt-3;
+          font-size: 1rem;
+          font-weight: 600;
+          border-radius: 3px;
+          display: inline-block;
+          text-align: center;
+          line-height: 33px;
+        }
+        .dropdown-toggle {
+          font-size: 14px;
+          border: 1px solid $Primary-1;
+          background: #fff;
+          color: #6f6f6f;
+        }
+        .dropdown-menu {
+          width: -webkit-fill-available;
+          padding: 1rem;
+          text-align: right;
+          color: $text-color;
+          .btn {
+            font-size: 14px;
+            width: 100%;
+            text-align: right;
+            &:hover {
+              color: $Primary-1;
             }
           }
         }
       }
-
-      .compoenets {
-        .head {
-          border: 1px solid $dimmed;
-          background-color: $white;
-          display: flex;
-          align-items: center;
-          height: 4rem;
-
-          .title {
-            color: $Primary-4;
-            font-size: 1.1rem;
-          }
+      .card-item {
+        background-image: url("../images/ser-card-bg.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+        background-color: #fdfffe;
+        padding: 2rem 0 4rem;
+        border: 1px solid $dimmed;
+        height: 320px;
+        box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+        border-radius: 4px;
+        text-align: center;
+        .ser-icon {
+          display: block;
+          width: 55px;
+          margin: 0 auto 2.3rem;
+        }
+        .title {
+          font-size: 0.9rem;
+          color: $Primary-1;
+          font-weight: bold;
+        }
+        .brief-description {
+          color: $primary-alt-2;
+          font-size: 1rem;
+          font-weight: bold;
         }
 
-        .card-item {
-          position: relative;
-          background-color: $white;
-          padding: 3rem 1rem 4rem;
-          border: 1px solid $dimmed;
-          .title {
-            font-size: 0.9rem;
-            color: $primary-alt-3;
-            font-weight: bold;
-          }
-          .brief-description {
-            color: $primary-alt-2;
-            font-size: 1rem;
-            font-weight: bold;
-          }
+        .description {
+          color: $primary-alt-2;
+          font-size: 0.9rem;
+          font-weight: normal;
+          margin-bottom: 2rem;
+          height: 65px;
+        }
 
-          .description {
-            color: $primary-alt-2;
-            font-size: 0.9rem;
-            font-weight: normal;
-            margin-bottom: 3rem;
-          }
+        .service-link {
+          font-size: 0.9rem;
+          float: left;
+          color: $primary-alt-2;
+          margin-left: 1rem;
+        }
+        .arrow {
+          width: 24px;
+          height: 24px;
+          line-height: 22px;
+          border-radius: 30px;
+        }
 
-          .service-link {
-            font-size: 0.9rem;
-            float: left;
-            color: $primary-alt-2;
-          }
+        &:hover {
+          background-color: #fafffe;
           .arrow {
-            padding: 3px 6px;
-            border-radius: 30px;
-          }
-
-          &:hover {
-            background-color: #fafffe;
-            &::after {
-              content: "";
-              position: absolute;
-              top: -1px;
-              left: 0;
-              right: 0;
-              display: block;
-              width: 100%;
-              height: 3px;
-              background-color: $Primary-2;
-            }
-            .arrow {
-              background: $Primary-1;
-              img {
-                filter: brightness(0) invert(1);
-              }
+            background: $Primary-1;
+            img {
+              filter: brightness(0) invert(1);
             }
           }
-          .ser-icon {
-            display: block;
-            margin: 0 auto 1rem;
-            width: 55px;
-          }
-          .ser-name {
-            font-size: 1rem;
-            color: $Primary-2;
-            text-align: center;
-            height: 48px;
-            font-weight: 400;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-          .ser-desc {
-            font-size: 0.85rem;
-            color: $text-color;
-            text-align: center;
-            font-weight: 400;
-          }
+        }
+        .ser-name {
+          font-size: 1rem;
+          color: $Primary-2;
+          text-align: center;
+          height: 48px;
+          font-weight: 400;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .ser-desc {
+          font-size: 0.85rem;
+          color: $text-color;
+          text-align: center;
+          font-weight: 400;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: -1px;
+          left: 0;
+          right: 0;
+          display: block;
+          width: 100%;
+          height: 3px;
+          background-color: $Primary-2;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
         }
       }
     }

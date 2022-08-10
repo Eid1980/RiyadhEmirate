@@ -17,7 +17,7 @@
     </div>
 
     <div class="serv-tabs">
-      <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
+      <!-- <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
             <img src="./assets/images/icons/search.svg" alt="">
@@ -25,34 +25,33 @@
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button [routerLink]="['/eservice/services-list']" class="nav-link">
-            <img src="./assets/images/icons/feather-arrow-left.svg" alt="">
-            تصفح جميع الخدمات
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+            <img src="./assets/images/icons/couple.svg" alt="">
+            خدمات الزواج
           </button>
         </li>
-      </ul>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
+            <img src="./assets/images/icons/prisoner.svg" alt="">
+            خدمات السجناء
+          </button>
+        </li>
+      </ul>-->
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="owl__carousel">
             <owl-carousel-o [options]="servicesOptions" class="owl-rtl">
               <!-- Repeatable Item -->
               <ng-template carouselSlide *ngFor="let service of services">
-                <div class="card-item px-3" >
-                  <h5 class="title mb-5 d-flex align-items-center">
-                    <img src="./assets/images/icons/services/prisoner.svg" alt="prisoner" style="width:25px;">
-                    <span class="mx-2">
-                      {{service.nameAr}}
-                    </span>
-                  </h5>
-
-                  <p class="brief-description mb-5">{{service.titleAr}}</p>
-
-                  <p class="description"> {{service.descriptionAr}}</p>
-
+                <div class="card-item px-3">
+                  <img [src]="service?.image?.base64File" alt="service-icon" class="ser-icon">
+                  <h5 class="title mb-5">{{service.nameAr}}</h5>
+                  <!-- <p class="brief-description mb-5">{{service.titleAr}}</p> -->
+                  <p class="description h-3"> {{service.descriptionAr}}</p>
                   <div class="service-link d-flex align-items-center">
                     <a [routerLink]="['/eservice/services/22']" class="px-3 "> شرح الخدمة</a>
                     <span class="arrow">
-                      <img src="./assets/images/icons/services/green-arrow-left.svg" alt="green-arrow-left" style="width:14px;">
+                      <img src="./assets/images/icons/services/green-arrow-left.svg" alt="" style="width:14px;">
                     </span>
                   </div>
                 </div>
@@ -65,6 +64,14 @@
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">333</div>
       </div>
     </div>
+
+    <div class="py-5 d-flex justify-content-end">
+      <a [routerLink]="['/eservice/services-list']" class="browse btn">
+        تصفح جميع الخدمات
+        <img src="./assets/images/icons/feather-arrow-left.svg" alt="" class="mx-2">
+      </a>
+    </div>
+
   </div>
 </div>
 
@@ -96,19 +103,19 @@
         <!-- Repeatable Item -->
         <ng-template carouselSlide *ngFor="let news of latestNews">
           <div class="owl-item">
-            <div class="item" >
+            <div class="item">
               <div class="news-card">
-              <img [src]="news?.image?.base64File" alt="" class="news-img">
-              <img src="./assets/images/news-overlay.png" alt="" class="overlay">
-              <div class="news-caption">
-                <h6 class="h2">
-                  {{ news?.titleAr }}
-                </h6>
-                <span class="date">
-                  <img src="./assets/images/icons/date-white.svg" class="date-icon" alt="">
-                  <span class="date-desc">{{ formatDate(news?.date) }}</span>
-                </span>
-              </div>
+                <img [src]="sanitizer.bypassSecurityTrustResourceUrl(news?.image?.base64File)" alt="" class="news-img">
+                <img src="./assets/images/news-overlay.png" alt="" class="overlay">
+                <div class="news-caption">
+                  <h6 class="h2">
+                    {{ news?.titleAr }}
+                  </h6>
+                  <span class="date">
+                    <img src="./assets/images/icons/date-white.svg" class="date-icon" alt="">
+                    <span class="date-desc">{{ formatDate(news?.date) }}</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -191,7 +198,7 @@
           <ng-template carouselSlide *ngFor="let news of emiratesNews">
             <div class="item">
               <div class="card">
-                <img [src]="news?.image?.base64File" class="card-img-top" alt="...">
+                <img [src]="sanitizer.bypassSecurityTrustResourceUrl(news?.image?.base64File)" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title h-2">{{ news?.titleAr }}</h5>
                   <p class="card-text">
@@ -212,7 +219,7 @@
     <div class="col-md-5 advertise-report" style="height: fit-content;">
       <div class="section-title">
         <h3 class="title">
-          {{ 'home.mediaReports' | translate}}
+          <h3 class="title">تقارير إعلانية</h3>
         </h3>
       </div>
       <!-- cards -->
@@ -220,7 +227,7 @@
         <owl-carousel-o [options]="advertiseReportOptions" class="owl-rtl">
           <!-- Repeatable Item -->
           <ng-template carouselSlide *ngFor="let report of reports">
-            <div class="item" >
+            <div class="item">
               <div class="ad-card">
                 <img [src]="report.image.base64File" alt="" class="ad-card-img">
                 <img src="./assets/images/add-overlay.png" alt="" class="overlay">

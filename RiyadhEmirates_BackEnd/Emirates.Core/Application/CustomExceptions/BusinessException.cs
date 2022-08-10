@@ -4,7 +4,7 @@ namespace Emirates.Core.Application.CustomExceptions
 {
     public class BusinessException : Exception
     {
-        public BusinessException(string message) : base(message)
+        public BusinessException(string message) :  base(message)
         {
         }
     }

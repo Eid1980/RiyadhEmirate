@@ -225,11 +225,13 @@ try
                 {
                     context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 }
+                context.Response.Headers.AcceptEncoding = "UTF-8";
                 context.Response.AddApplicationErrorHeader(exceptionHandler.Error.Message);
                 await context.Response.WriteAsync(exceptionHandler.Error.Message);
             }
         });
     });
+
 
     app.UseHttpsRedirection();
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { AccountService } from '@shared/proxy/accounts/account.service';
 import { GetNewsDetailsDto } from '@shared/proxy/news/models';
@@ -135,7 +136,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private _newService: NewsService,
     private _serviceService: ServiceService,
-    private _globalService: GlobalService
+    private _globalService: GlobalService,
+    public sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
@@ -147,12 +149,15 @@ export class HomeComponent implements OnInit {
     this._newService
       .getAll()
       .subscribe((result: ApiResponse<GetNewsDetailsDto[]>) => {
-
         this.news = result.data;
 
         this.posters = this.getNewsByNewsTypeId(NewsTypes.Posters);
 
         this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
+
+        /*this.emiratesNews.forEach(e => { e.image.base64File =  this.sanitizer.bypassSecurityTrustResourceUrl(e.image.base64File);
+
+        });*/
 
         this.latestNews = this.getNewsByNewsTypeId(NewsTypes.LatestNews);
 
