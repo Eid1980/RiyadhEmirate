@@ -18,14 +18,16 @@ export class ServiceService {
     return this.httpClient.get<ApiResponse<GetServiceDetailsDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
     );
   }
-
   getByServiceId = (serviceId: number): Observable<ApiResponse<GetServiceListDto[]>> => {
     return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/GetByServiceId/${serviceId}`).pipe(
     );
   }
-
   getAll = (): Observable<ApiResponse<GetServiceListDto[]>> => {
     return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/GetAll`).pipe(
+    );
+  }
+  searchByFilter = (filter: string): Observable<ApiResponse<GetServiceListDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/SearchByFilter/${filter}`).pipe(
     );
   }
 
