@@ -6,7 +6,7 @@ import { MessageType } from '@shared/enums/message-type.enum';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
-import { DateType } from 'ngx-hijri-gregorian-datepicker';
+import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { ReportsService } from '../../../services/reports.service';
 
 @Component({
@@ -34,10 +34,13 @@ export class ReportsAddComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private latestNewsService: ReportsService,
+    private _dateFormatterService: DateFormatterService,
     private fileManagerService: FileManagerService,
     private router: Router,
     private globalService: GlobalService
-  ) {}
+  ) {
+    this.date = _dateFormatterService.GetTodayHijri();
+  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({

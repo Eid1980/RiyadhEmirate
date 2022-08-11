@@ -8,6 +8,7 @@ import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { UpdateNewsDto } from '@proxy/news/models';
 import { NewsService } from '@proxy/news/news.service';
 import { NewsTypes } from '@shared/enums/news-types.enum';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-emirates-news-edit',
@@ -41,7 +42,8 @@ export class EmiratesNewsEditComponent implements OnInit {
     private fileManagerService: FileManagerService,
     private globalService: GlobalService,
     private activatedRoute: ActivatedRoute,
-    private dateFormatterService: DateFormatterService
+    private dateFormatterService: DateFormatterService,
+    public sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {

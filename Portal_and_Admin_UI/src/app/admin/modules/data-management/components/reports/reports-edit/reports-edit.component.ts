@@ -8,6 +8,7 @@ import { GlobalService } from '@shared/services/global.service';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { ReportsService } from '../../../services/reports.service';
 import { NewsTypes } from '@shared/enums/news-types.enum';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reports-edit',
@@ -40,7 +41,8 @@ export class ReportsEditComponent implements OnInit {
     private router: Router,
     private globalService: GlobalService,
     private activatedRoute: ActivatedRoute,
-    private dateFormatterService: DateFormatterService
+    private dateFormatterService: DateFormatterService,
+    public sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {

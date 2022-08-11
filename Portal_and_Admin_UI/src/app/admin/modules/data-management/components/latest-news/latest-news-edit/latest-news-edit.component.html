@@ -93,7 +93,7 @@
             تحميل الصورة
             <span class="danger">*</span>
           </label>
-          <img width="200px" height="100px" *ngIf="oldImage" [src]="oldImage?.base64File" />
+          <img width="200px" height="100px" *ngIf="oldImage" [src]="sanitizer.bypassSecurityTrustResourceUrl(oldImage?.base64File)" />
           <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload" (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced" accept="image/*" [maxFileSize]="fileSize">
           </p-fileUpload>
           <small *ngIf="

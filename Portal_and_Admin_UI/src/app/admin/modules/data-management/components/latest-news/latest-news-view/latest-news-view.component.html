@@ -57,10 +57,14 @@
         <div class="info-col col-md-4 col-12">
           <span class="form-lbl lbl-33">الصورة</span>
           <span class="form-val">
-            <img [src]="oldImage?.base64File" alt="" style="width: 180px" />
+            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(oldImage?.base64File)" alt="" style="width: 180px" />
           </span>
         </div>
       </div>
     </div>
   </div>
 </form>
+
+<div class="form-actions">
+  <a [routerLink]="['/admin/data-management/latest-news-list']" class="btn btn-cancel">رجوع</a>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { LatestNewsService } from '../../../services/latest-news.service';
 
@@ -14,7 +15,8 @@ export class LatestNewsViewComponent implements OnInit {
 
   constructor(
     private latestNewsService: LatestNewsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
