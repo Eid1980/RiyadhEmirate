@@ -4,7 +4,10 @@ import { NewsTypes } from '@shared/enums/news-types.enum';
 import { AccountService } from '@shared/proxy/accounts/account.service';
 import { GetNewsDetailsDto } from '@shared/proxy/news/models';
 import { NewsService } from '@shared/proxy/news/news.service';
-import { GetPosterDetailsDto, GetPosterListDto } from '@shared/proxy/posters/models';
+import {
+  GetPosterDetailsDto,
+  GetPosterListDto,
+} from '@shared/proxy/posters/models';
 import { PosterService } from '@shared/proxy/posters/poster.service';
 import { GetServiceListDto } from '@shared/proxy/services/models';
 import { ServiceService } from '@shared/proxy/services/service.service';
@@ -43,7 +46,7 @@ export class HomeComponent implements OnInit {
         items: 1,
       },
       400: {
-        items: 2,
+        items: 1,
       },
     },
     nav: true,
@@ -131,6 +134,9 @@ export class HomeComponent implements OnInit {
       0: {
         items: 1,
       },
+      400: {
+        items: 1,
+      },
     },
     nav: true,
   };
@@ -141,13 +147,12 @@ export class HomeComponent implements OnInit {
     private _posterService: PosterService,
     private _globalService: GlobalService,
     public sanitizer: DomSanitizer
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getAllNews();
     this.getServices();
     this.getPosters();
-
   }
 
   getAllNews() {
@@ -165,7 +170,7 @@ export class HomeComponent implements OnInit {
   }
 
   getNewsByNewsTypeId(newsTypeId: number): GetNewsDetailsDto[] {
-    return (this.news.filter((n) => n.newsTypeId == newsTypeId));
+    return this.news.filter((n) => n.newsTypeId == newsTypeId);
   }
 
   getServices() {
@@ -179,19 +184,16 @@ export class HomeComponent implements OnInit {
   getPosters() {
     this._posterService.getAll().subscribe(
       (res: ApiResponse<GetPosterDetailsDto[]>) => {
-        debugger
+        debugger;
         if (res.isSuccess) {
-            this.posters = res.data;
-        }
-        else {
+          this.posters = res.data;
+        } else {
           // TODO
           // display error message
         }
       },
-      (err) => {
-
-      }
-    )
+      (err) => {}
+    );
   }
 
   navigateTo() {
