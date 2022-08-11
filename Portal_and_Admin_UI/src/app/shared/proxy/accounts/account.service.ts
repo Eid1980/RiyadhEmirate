@@ -3,11 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { GetUserDto, UserLoginDto } from './models';
+import { ForgetPasswordDto, GetUserDto, ResetPasswordDto, UserLoginDto, ValidateOTPDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { JsonPipe } from '@angular/common';
 import { CheckUserRegisterDto, CreateUserDto } from './register.model';
-import { LookupDto } from '../shared/lookup-dto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -78,6 +77,18 @@ export class AccountService {
   }
   getById = (id: number): Observable<ApiResponse<GetUserDto>> => {
     return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetById/${id}`).pipe();
+  }
+
+  forgetPassword(foregetPassword : ForgetPasswordDto ){
+    return this.httpClient.post(`${this.serviceUrl}/forgetPassword` , foregetPassword );
+  }
+
+  validateOTP(validateOTP : ValidateOTPDto){
+    return this.httpClient.post(`${this.serviceUrl}/validateOTP` , validateOTP );
+  }
+
+  resetPassword(resetPassword : ResetPasswordDto){
+    return this.httpClient.post(`${this.serviceUrl}/resetPassword` , resetPassword );
   }
 
 }

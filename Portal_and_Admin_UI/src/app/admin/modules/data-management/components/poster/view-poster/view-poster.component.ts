@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { GetPosterDetailsDto } from '@shared/proxy/posters/models';
 import { PosterService } from '@shared/proxy/posters/poster.service';
@@ -13,7 +14,9 @@ export class ViewPosterComponent implements OnInit {
   posterDetailsDto = {} as GetPosterDetailsDto;
 
   constructor(private posterService: PosterService, private activatedRoute: ActivatedRoute,
-    private globalService: GlobalService) {
+    private globalService: GlobalService,
+    public sanitizer: DomSanitizer
+    ) {
   }
 
   ngOnInit() {

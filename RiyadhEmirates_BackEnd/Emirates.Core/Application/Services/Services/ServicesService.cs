@@ -61,6 +61,19 @@ namespace Emirates.Core.Application.Services
                 PagingMetaData = serchResult.GetMetaData()
             });
         }
+        public IApiResponse SearchByFilter(string filter)
+        {
+            var services = _emiratesUnitOfWork.Services.Where(x => x.IsActive &&
+                (x.NameAr.Contains(filter) || x.NameEn.Contains(filter) ||
+                x.TitleAr.Contains(filter) || x.TitleEn.Contains(filter) ||
+                x.DescriptionAr.Contains(filter) || x.DescriptionEn.Contains(filter)));
+            var mappedList = _mapper.Map<List<GetServiceListDto>>(services);
+            foreach (var item in mappedList)
+            {
+                item.Image = _fileManagerService.GetBase64File(item.Id, "Services");
+            }
+            return GetResponse(data: mappedList);
+        }
 
         public IApiResponse Create(CreateServiceDto createModel)
         {
@@ -116,5 +129,6 @@ namespace Emirates.Core.Application.Services
                 Name = item.NameAr
             }).ToList());
         }
+
     }
 }

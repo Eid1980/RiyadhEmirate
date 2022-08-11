@@ -9,6 +9,7 @@ namespace Emirates.Core.Application.Services
         IApiResponse GetById(int id);
         IApiResponse GetAll();
         IApiResponse GetAll(SearchModel searchModel);
+        IApiResponse SearchByFilter(string filter);
         IApiResponse Create(CreateServiceDto createModel);
         IApiResponse Update(UpdateServiceDto updateModel);
         IApiResponse ChangeStatus(int id);

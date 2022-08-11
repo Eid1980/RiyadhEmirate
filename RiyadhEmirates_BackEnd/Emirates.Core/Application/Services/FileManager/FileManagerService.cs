@@ -213,7 +213,7 @@ namespace Emirates.Core.Application.Services.InternalPortal.FileManager
                 {
                     FileName = file.OriginalName,
                     Base64File = file.Extention == ".pdf" || file.Extention == ".docx" || file.Extention == ".doc" || file.Extention == ".xls" || file.Extention == ".xlsx"
-                                     ? base64String : $"data:image/{file.Extention.Substring(1)};base64," + base64String,
+                                     ? base64String : file.Extention == ".svg" ? "data:image/svg+xml;base64," + base64String : $"data:image/{file.Extention.Substring(1)};base64," + base64String,
                 };
             }
             catch (Exception)

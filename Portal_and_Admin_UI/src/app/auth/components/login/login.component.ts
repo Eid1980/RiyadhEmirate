@@ -8,7 +8,7 @@ import { UserLoginDto } from '@proxy/accounts/models';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
 
 @Component({
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -16,14 +16,14 @@ export class LoginComponent implements OnInit {
   isFormSubmitted: boolean;
   returnUrl: string;
 
-  constructor(private formBuilder: FormBuilder,
-     private _accountService: AccountService,
-     private router: Router,
-     private globalService: GlobalService,
-     private _translateService: TranslationServiceService,
-    private activatedRoute: ActivatedRoute)
-  {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private _accountService: AccountService,
+    private router: Router,
+    private globalService: GlobalService,
+    private _translateService: TranslationServiceService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   buildForm() {
     this.loginForm = this.formBuilder.group({
       userName: [this.userLoginDto.userName, Validators.required],
-      password: [this.userLoginDto.password, Validators.required]
+      password: [this.userLoginDto.password, Validators.required],
     });
   }
 
@@ -42,30 +42,33 @@ export class LoginComponent implements OnInit {
       (response) => {
         if (response.isSuccess) {
           localStorage.setItem('EmiratesToken', response.data);
-          this._accountService.getAuthUser().subscribe((res) =>{
-            localStorage.setItem('AuthUser',JSON.stringify(res.data))
-          },
-          (err) =>{
-          });
+          this._accountService.getAuthUser().subscribe(
+            (res) => {
+              localStorage.setItem('AuthUser', JSON.stringify(res.data));
+            },
+            (err) => {}
+          );
 
           if (this.returnUrl) {
             this.router.navigateByUrl(this.returnUrl);
-          }
-          else {
+          } else {
             this.router.navigate(['/home/']);
           }
-        }
-        else {
-          this.globalService.messageAlert(
+        } else {
+          /*this.globalService.messageAlert(
             MessageType.Error,
-            this._translateService.instant('login.messages.invalidUsernameOrPassword')
-            );
+            this._translateService.instant(
+              'login.messages.invalidUsernameOrPassword'
+            )
+          );*/
         }
       },
       (error) => {
         this.globalService.messageAlert(
           MessageType.Error,
-          this._translateService.instant('login.messages.invalidUsernameOrPassword')
+          this._translateService.instant(
+            'login.messages.invalidUsernameOrPassword'
+          )
         );
       }
     );

@@ -14,6 +14,7 @@ namespace Emirates.Core.Application.Dtos
         public string RequestLink { get; set; }
         public int? WorkDays { get; set; }
         public bool IsActive { get; set; }
+        public DateTime CreatedDate { get; set; }
         public UploadedFileBase64Model Image { get; set; }
     }
 }

@@ -18,6 +18,10 @@ export class PosterService {
     );
   }
 
+  getAll = () : Observable<ApiResponse<GetPosterDetailsDto[]>> =>{
+    return this.httpClient.get<ApiResponse<GetPosterDetailsDto[]>>(`${this.serviceUrl}/GetAll`).pipe();
+  }
+
   create = (createdDto: CreatePosterDto): Observable<ApiResponse<number>> => {
     return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
   }

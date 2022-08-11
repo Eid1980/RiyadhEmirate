@@ -8,20 +8,21 @@ import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { UpdateNewsDto } from '@proxy/news/models';
 import { NewsService } from '@proxy/news/news.service';
 import { NewsTypes } from '@shared/enums/news-types.enum';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-emirates-news-edit',
-  templateUrl: './emirates-news-edit.component.html'
+  templateUrl: './emirates-news-edit.component.html',
 })
 export class EmiratesNewsEditComponent implements OnInit {
   updateNewsform: FormGroup;
   isFormSubmitted: boolean;
-  id:number;
-  oldImage:any;
+  id: number;
+  oldImage: any;
   updateNewsDto = {} as UpdateNewsDto;
 
   //#region for uploader
-  @ViewChild('uploader',{static:true}) uploader;
+  @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
   fileSize: number = 1000000;
   acceptType: 'image/*';
@@ -35,11 +36,15 @@ export class EmiratesNewsEditComponent implements OnInit {
   selectedDateType = DateType.Hijri;
   //#endregion
 
-  constructor(private formBuilder: FormBuilder, private newsService: NewsService,
-    private fileManagerService:FileManagerService, private globalService:GlobalService,
-    private activatedRoute: ActivatedRoute, private dateFormatterService: DateFormatterService)
-  {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private newsService: NewsService,
+    private fileManagerService: FileManagerService,
+    private globalService: GlobalService,
+    private activatedRoute: ActivatedRoute,
+    private dateFormatterService: DateFormatterService,
+    public sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
     this.globalService.setAdminTitle('تعديل الخبر');
@@ -47,9 +52,8 @@ export class EmiratesNewsEditComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.getDetails();
-    }
-    else {
-      this.globalService.navigate("/admin/data-management/emirates-news-list");
+    } else {
+      this.globalService.navigate('/admin/data-management/emirates-news-list');
     }
   }
 
@@ -57,18 +61,25 @@ export class EmiratesNewsEditComponent implements OnInit {
     this.updateNewsform = this.formBuilder.group({
       titleAr: [this.updateNewsDto.titleAr || '', Validators.required],
       titleEn: [this.updateNewsDto.titleEn || null],
-      descriptionAr: [this.updateNewsDto.descriptionAr || '', Validators.required],
+      descriptionAr: [
+        this.updateNewsDto.descriptionAr || '',
+        Validators.required,
+      ],
       descriptionEn: [this.updateNewsDto.descriptionEn || null],
       date: [null],
       image: [null],
-      isActive: [this.updateNewsDto.isActive, Validators.required]
+      isActive: [this.updateNewsDto.isActive, Validators.required],
     });
   }
   getDetails() {
     this.newsService.getById(this.id).subscribe((response) => {
       this.updateNewsDto = response.data as UpdateNewsDto;
       let date = new Date(this.updateNewsDto.date);
-      let ngbDateStructGregorian = { day: date.getUTCDate() + 1, month: date.getUTCMonth() + 1, year: date.getUTCFullYear() };
+      let ngbDateStructGregorian = {
+        day: date.getUTCDate() + 1,
+        month: date.getUTCMonth() + 1,
+        year: date.getUTCFullYear(),
+      };
       this.date = this.dateFormatterService.ToHijri(ngbDateStructGregorian);
       //this.updateNewsDto.date = this.dateFormatterService.ToHijri(ngbDateStructGregorian);
       this.buildForm();
@@ -81,9 +92,9 @@ export class EmiratesNewsEditComponent implements OnInit {
   onRemove(event) {
     this.updateNewsform.get('image').setValue(null);
   }
-  onSelectGregorianDate(){
+  onSelectGregorianDate() {
     let gregorianDate: Date = this.updateNewsform.get('date').value as Date;
-    let hijriDate = this.globalService.convertToHijri(gregorianDate,'ar');
+    let hijriDate = this.globalService.convertToHijri(gregorianDate, 'ar');
     this.updateNewsform.get('HijriDate').setValue(hijriDate);
   }
 
@@ -91,7 +102,7 @@ export class EmiratesNewsEditComponent implements OnInit {
     this.isFormSubmitted = true;
     let date = this.startDatePicker.getSelectedDate();
     this.isValidDate = false;
-    if(this.date == null){
+    if (this.date == null) {
       this.isValidDate = true;
       return;
     }
@@ -105,15 +116,24 @@ export class EmiratesNewsEditComponent implements OnInit {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
           console.log(this.updateNewsform.get('image').value);
-          if (this.updateNewsform.get('image').value){
-            this.fileManagerService.deleteByEntityName(this.id, 'News').subscribe(res => {
-              this.fileManagerService.upload(this.id.toString(), 'News', '', [this.updateNewsform.get('image').value]).subscribe(res => {
-                this.globalService.navigate("/admin/data-management/emirates-news-list");
-              })
-            })
-          }
-          else {
-            this.globalService.navigate("/admin/data-management/emirates-news-list");
+          if (this.updateNewsform.get('image').value) {
+            this.fileManagerService
+              .deleteByEntityName(this.id, 'News')
+              .subscribe((res) => {
+                this.fileManagerService
+                  .upload(this.id.toString(), 'News', '', [
+                    this.updateNewsform.get('image').value,
+                  ])
+                  .subscribe((res) => {
+                    this.globalService.navigate(
+                      '/admin/data-management/emirates-news-list'
+                    );
+                  });
+              });
+          } else {
+            this.globalService.navigate(
+              '/admin/data-management/emirates-news-list'
+            );
           }
         }
       });
