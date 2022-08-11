@@ -9,7 +9,7 @@ import { PosterService } from '@shared/proxy/posters/poster.service';
 
 @Component({
   selector: 'app-add-poster',
-  templateUrl: './add-poster.component.html'
+  templateUrl: './add-poster.component.html',
 })
 export class AddPosterComponent implements OnInit {
   createPosterform: FormGroup;
@@ -19,16 +19,18 @@ export class AddPosterComponent implements OnInit {
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 1000000;
+  fileSize: number = 10000000;
   acceptType: 'image/*';
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion
 
-  constructor(private formBuilder: FormBuilder, private fileManagerService: FileManagerService,
-    private posterService: PosterService, private globalService: GlobalService)
-  {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private fileManagerService: FileManagerService,
+    private posterService: PosterService,
+    private globalService: GlobalService
+  ) {}
 
   ngOnInit() {
     this.globalService.setAdminTitle('إضافة اعلان جديد');
@@ -41,7 +43,7 @@ export class AddPosterComponent implements OnInit {
       titleEn: [this.createPosterDto.titleEn || '', Validators.required],
       order: [this.createPosterDto.order || '', Validators.required],
       image: [this.createPosterDto.image || null, Validators.required],
-      isActive: [this.createPosterDto.isActive || true, Validators.required]
+      isActive: [this.createPosterDto.isActive || true, Validators.required],
     });
   }
 
@@ -56,14 +58,20 @@ export class AddPosterComponent implements OnInit {
   onSubmit() {
     this.isFormSubmitted = true;
     if (this.createPosterform.valid) {
-      this.createPosterDto = { ...this.createPosterform.value } as CreatePosterDto;
+      this.createPosterDto = {
+        ...this.createPosterform.value,
+      } as CreatePosterDto;
       this.posterService.create(this.createPosterDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
           let id = response.data.toString();
-          this.fileManagerService.upload(id, 'Poster', '', [this.createPosterform.get('image').value]).subscribe(res => {
-            this.globalService.navigate('/admin/data-management/poster-list');
-          })
+          this.fileManagerService
+            .upload(id, 'Poster', '', [
+              this.createPosterform.get('image').value,
+            ])
+            .subscribe((res) => {
+              this.globalService.navigate('/admin/data-management/poster-list');
+            });
         }
       });
     }

@@ -30,7 +30,7 @@ export class ListPosterComponent implements OnInit {
       PageTitle: "قائمة الاعلانات",
       listPermissionCode: "*",
       createButtonLink: "/admin/data-management/poster-add",
-      createButtonText: "انشاء  إعلان جديد",
+      createButtonText: "انشاء اعلان جديد",
       Url: this.posterService.serviceUrl,
 
       cols: [

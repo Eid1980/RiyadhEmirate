@@ -37,6 +37,11 @@ namespace Emirates.API.Controllers
         {
             return _serviceService.GetAll(searchModel);
         }
+        [HttpGet("SearchByFilter/{filter}")]
+        public IApiResponse SearchByFilter(string filter)
+        {
+            return _serviceService.SearchByFilter(filter);
+        }
 
 
         [HttpPost("Create")]

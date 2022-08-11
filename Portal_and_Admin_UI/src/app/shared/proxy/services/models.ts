@@ -49,5 +49,6 @@ export interface GetServiceListDto {
   requestLink: string;
   workDays?: number;
   isActive: boolean;
+  createdDate: string;
   image: any;
 }

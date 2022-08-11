@@ -1,10 +1,12 @@
 <!-- Poster, Flyer -->
-<div class="owl__carousel">
-  <owl-carousel-o [options]="sliderOptions" class="owl-rtl">
-    <ng-template carouselSlide *ngFor="let poster of posters">
-      <img [src]="sanitizer.bypassSecurityTrustResourceUrl(poster?.image?.base64File)" alt="" class="w-100">
-    </ng-template>
-  </owl-carousel-o>
+<div class="home-slider">
+  <div class="owl__carousel">
+    <owl-carousel-o [options]="sliderOptions" class="owl-rtl">
+      <ng-template carouselSlide *ngFor="let poster of posters">
+        <img [src]="sanitizer.bypassSecurityTrustResourceUrl(poster?.image?.base64File)" alt="" class="w-100 slider">
+      </ng-template>
+    </owl-carousel-o>
+  </div>
 </div>
 
 <!-- Services Section -->

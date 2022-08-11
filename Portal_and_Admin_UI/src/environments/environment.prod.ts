@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  ApiUrl: "http://localhost:5000",
+  ApiUrl: "http://localhost:40004",
   allowedExtensions: 'image/*',
   fileSize: 1000000,
 };

@@ -3,10 +3,12 @@
     <div>
       <h1 class="title mx-2">الخدمات الإلكترونية</h1>
       <div class="form-group">
-        <input type="text" name="" id="" class="form-control" placeholder="بحث في الخدمات الإلكترونية">
-        <button class="btn p-0 s-icon">
-          <img src="./assets/images/icons/query-search.svg" alt="">
-        </button>
+        <form [formGroup]="serviceSearchForm" (ngSubmit)="servicSearch()">
+          <input type="text" formControlName="filter" name="filter" id="filter" class="form-control" placeholder="بحث في الخدمات الإلكترونية" autocomplete="off">
+          <button class="btn p-0 s-icon" type="submit">
+            <img src="./assets/images/icons/query-search.svg" alt="">
+          </button>
+        </form>
       </div>
     </div>
     <div class="ser-bread">
@@ -20,7 +22,7 @@
     <div class="d-flex justify-content-between align-items-center py-3 count-sort">
       <div>
         <span class="title">جميع الخدمات</span>
-        <span class="count mx-2">44</span>
+        <span class="count mx-2">{{services?.length}}</span>
       </div>
       <div class="dropdown sort">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
