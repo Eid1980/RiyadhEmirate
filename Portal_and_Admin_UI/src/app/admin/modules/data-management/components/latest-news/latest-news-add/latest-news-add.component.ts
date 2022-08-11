@@ -35,9 +35,12 @@ export class LatestNewsAddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private latestNewsService: LatestNewsService,
     private fileManagerService: FileManagerService,
+    private _dateFormatterService: DateFormatterService,
     private router: Router,
     private globalService: GlobalService
-  ) {}
+  ) {
+    this.date = _dateFormatterService.GetTodayHijri();
+  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({

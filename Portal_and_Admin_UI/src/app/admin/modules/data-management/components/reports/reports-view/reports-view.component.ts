@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '@shared/services/global.service';
 import { ReportsService } from '../../../services/reports.service';
@@ -21,6 +22,7 @@ export class ReportsViewComponent implements OnInit {
     private reportsService: ReportsService,
     private globalService:GlobalService,
     private activatedRoute: ActivatedRoute,
+    public sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {

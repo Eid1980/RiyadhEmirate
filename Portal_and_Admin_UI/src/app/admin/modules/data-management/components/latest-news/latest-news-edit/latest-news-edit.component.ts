@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { MessageType } from '@shared/enums/message-type.enum';
@@ -40,7 +41,8 @@ export class LatestNewsEditComponent implements OnInit {
     private router: Router,
     private globalService: GlobalService,
     private activatedRoute: ActivatedRoute,
-    private dateFormatterService: DateFormatterService
+    private dateFormatterService: DateFormatterService,
+    public sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {

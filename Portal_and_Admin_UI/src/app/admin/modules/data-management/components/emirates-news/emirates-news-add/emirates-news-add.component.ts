@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
-import { DateType } from 'ngx-hijri-gregorian-datepicker';
+import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { NewsService } from '@proxy/news/news.service';
 import { CreateNewsDto } from '@proxy/news/models';
@@ -32,8 +32,9 @@ export class EmiratesNewsAddComponent implements OnInit {
   createNewsDto = {} as CreateNewsDto;
 
   constructor(private formBuilder: FormBuilder, private newsService: NewsService,
-    private fileManagerService: FileManagerService, private globalService: GlobalService)
+    private fileManagerService: FileManagerService, private _dateFormatterService: DateFormatterService, private globalService: GlobalService)
   {
+    this.date = _dateFormatterService.GetTodayHijri();
   }
 
   ngOnInit() {
