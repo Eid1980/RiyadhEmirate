@@ -6,10 +6,11 @@ import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { ServiceService } from '@proxy/services/service.service';
 import { UpdateServiceDto } from '@proxy/services/models';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-service-edit',
-  templateUrl: './service-edit.component.html'
+  templateUrl: './service-edit.component.html',
 })
 export class ServiceEditComponent implements OnInit {
   updateServiceForm: FormGroup;
@@ -27,11 +28,14 @@ export class ServiceEditComponent implements OnInit {
   isDisabled: boolean = false;
   //#endregion
 
-  constructor(private formBuilder: FormBuilder, private serviceService: ServiceService,
+  constructor(
+    private formBuilder: FormBuilder,
+    private serviceService: ServiceService,
     private fileManagerService: FileManagerService,
-    private globalService: GlobalService, private activatedRoute: ActivatedRoute)
-  {
-  }
+    private globalService: GlobalService,
+    private activatedRoute: ActivatedRoute,
+    public sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
     this.globalService.setAdminTitle('تعديل الخدمة');
@@ -39,9 +43,8 @@ export class ServiceEditComponent implements OnInit {
     this.buildForm();
     if (this.id) {
       this.getDetails();
-    }
-    else {
-      this.globalService.navigate("/admin/data-management/service-list");
+    } else {
+      this.globalService.navigate('/admin/data-management/service-list');
     }
   }
 
@@ -51,12 +54,18 @@ export class ServiceEditComponent implements OnInit {
       nameEn: [this.updateServiceDto.nameEn || '', Validators.required],
       titleAr: [this.updateServiceDto.titleAr || '', Validators.required],
       titleEn: [this.updateServiceDto.titleEn || ''],
-      descriptionAr: [this.updateServiceDto.descriptionAr || '', Validators.required],
+      descriptionAr: [
+        this.updateServiceDto.descriptionAr || '',
+        Validators.required,
+      ],
       descriptionEn: [this.updateServiceDto.descriptionEn || ''],
       workDays: [this.updateServiceDto.workDays || null],
-      requestLink: [this.updateServiceDto.requestLink || '', Validators.required],
+      requestLink: [
+        this.updateServiceDto.requestLink || '',
+        Validators.required,
+      ],
       image: [null],
-      isActive: [this.updateServiceDto.isActive, Validators.required]
+      isActive: [this.updateServiceDto.isActive, Validators.required],
     });
   }
   onUpload(event: any) {
@@ -77,24 +86,36 @@ export class ServiceEditComponent implements OnInit {
   onSubmit() {
     this.isFormSubmitted = true;
     if (this.updateServiceForm.valid) {
-      this.updateServiceDto = { ...this.updateServiceForm.value } as UpdateServiceDto;
+      this.updateServiceDto = {
+        ...this.updateServiceForm.value,
+      } as UpdateServiceDto;
       this.updateServiceDto.id = this.id;
-      this.serviceService.update(this.updateServiceDto).subscribe((response) => {
-        this.globalService.showMessage(response.message);
-        if (response.isSuccess) {
-          if (this.updateServiceForm.get('image').value) {
-            this.fileManagerService.deleteByEntityName(this.id.toString(), 'Services').subscribe((res) => {
-              this.fileManagerService.upload(this.id.toString(), 'Services', '', [this.updateServiceForm.get('image').value]).subscribe((res) => {
-                this.globalService.navigate('/admin/data-management/service-list');
-              });
-            });
+      this.serviceService
+        .update(this.updateServiceDto)
+        .subscribe((response) => {
+          this.globalService.showMessage(response.message);
+          if (response.isSuccess) {
+            if (this.updateServiceForm.get('image').value) {
+              this.fileManagerService
+                .deleteByEntityName(this.id.toString(), 'Services')
+                .subscribe((res) => {
+                  this.fileManagerService
+                    .upload(this.id.toString(), 'Services', '', [
+                      this.updateServiceForm.get('image').value,
+                    ])
+                    .subscribe((res) => {
+                      this.globalService.navigate(
+                        '/admin/data-management/service-list'
+                      );
+                    });
+                });
+            } else {
+              this.globalService.navigate(
+                '/admin/data-management/service-list'
+              );
+            }
           }
-          else {
-            this.globalService.navigate('/admin/data-management/service-list');
-          }
-        }
-      });
+        });
     }
   }
-
 }
