@@ -10,11 +10,15 @@
                 response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
                 response.Headers.Add("Access-Control-Allow-origin", "*");
             }
+<<<<<<< HEAD
             catch (Exception ex)
             {
                 
             }
             
+=======
+            catch { }
+>>>>>>> origin/Salah
         }
     }
 }

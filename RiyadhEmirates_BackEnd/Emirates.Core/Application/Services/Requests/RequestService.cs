@@ -171,5 +171,17 @@ namespace Emirates.Core.Application.Services.Requests
                 PagingMetaData = serchResult.GetMetaData()
             });
         }
+        public IApiResponse InboxShamel(SearchModel searchModel)
+        {
+            searchModel.SearchFields.Add(new SearchField { FieldName = "StageId", Operator = "Equal", Value = ((int)SystemEnums.Stages.UnderProcessing).ToString() });
+            var serchResult = DynamicSearch(_emiratesUnitOfWork.Requests.GetQueryable().ProjectTo<GetInboxListDto>(_mapConfig), searchModel)
+                .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetInboxListDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
+        }
     }
 }

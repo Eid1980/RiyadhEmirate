@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@shared/guards/auth.guard';
+import { InboxShamelComponent } from './components/inbox-shamel/inbox-shamel.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { PrisonerTempReleaseActionComponent } from './components/prisoner-temp-release/prisoner-temp-release-action/prisoner-temp-release-action.component';
 import { PrisonerTempReleasePreviewStepComponent } from './components/prisoner-temp-release/prisoner-temp-release-preview-step/prisoner-temp-release-preview-step.component';
@@ -13,6 +14,11 @@ const routes: Routes = [
   {
     path: 'inbox',
     component: InboxComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'inbox-shamel',
+    component: InboxShamelComponent,
     canActivate: [AuthGuard],
   },
 

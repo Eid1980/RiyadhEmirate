@@ -3,6 +3,14 @@
 
   <app-prisoner-temp-release-details [showStatusLog]="false"></app-prisoner-temp-release-details>
 
+  <div class="form-group col-6">
+    <label class="container-check">
+      أوافق علي الشروط والأحكام
+      <input [(ngModel)]="accept" type="checkbox" id="accept" />
+      <span class="checkmark"></span>
+    </label>
+  </div>
+
   <div class="form-actions">
     <button type="button" class="btn btn-save" (click)="sendRequest()">ارسال الطلب</button>
     <a [routerLink]="['/eservice/prisoner-temp-release-attachments/', requestId]" class="btn btn-cancel">السابق</a>

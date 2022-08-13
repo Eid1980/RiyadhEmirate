@@ -21,18 +21,19 @@
   <div class="services">
     <div class="d-flex justify-content-between align-items-center py-3 count-sort">
       <div>
-        <span class="title">جميع الخدمات</span>
+        <span class="title">{{contentTitle}}</span>
         <span class="count mx-2">{{services?.length}}</span>
       </div>
       <div class="dropdown sort">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="./assets/images/icons/sort-ser.svg" alt="setting" width="20">
-          ترتيب الخدمات حسب: أبجدي - من أ إلى ي
+          ترتيب الخدمات حسب: {{sortTitle}}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <button class="btn">أبجدي - من ي إلى أ</button>
-          <button class="btn">من الأقدم إلى الأحدث</button>
-          <button class="btn"> من الأحدث إلى الأقدم </button>
+          <button class="btn" (click)="sortServices(1)">أبجدي - من أ إلى ي</button>
+          <button class="btn" (click)="sortServices(2)">أبجدي - من ي إلى أ</button>
+          <button class="btn" (click)="sortServices(3)">من الأقدم إلى الأحدث</button>
+          <button class="btn" (click)="sortServices(4)"> من الأحدث إلى الأقدم </button>
         </div>
       </div>
     </div>

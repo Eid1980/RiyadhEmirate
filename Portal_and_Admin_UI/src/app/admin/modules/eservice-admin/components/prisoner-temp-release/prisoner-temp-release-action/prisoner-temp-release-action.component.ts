@@ -36,8 +36,10 @@ export class PrisonerTempReleaseActionComponent implements OnInit {
   }
 
   executeAction(action: number) {
-    this.isFormSubmitted = true;
-    if (this.adminActionForm.valid) {
+    if (action != Stages.UnderProcessing) {
+      this.isFormSubmitted = true;
+    }
+    if (this.adminActionForm.valid || action == Stages.UnderProcessing) {
       let confrimMessage = '';
       switch (action) {
         case Stages.UnderProcessing:

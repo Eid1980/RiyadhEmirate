@@ -29,6 +29,15 @@ namespace Emirates.API.Controllers
             _config = config;
         }
 
+        [HttpGet("GetGetUserDataDto/{id?}")]
+        [Authorize]
+        public IApiResponse GetGetUserDataDto(int id=0)
+        {
+            if (id == 0)
+                id = UserId;
+
+            return _accountService.GetGetUserDataDto(id);
+        }
 
         [HttpGet("GetAuthUser")]
         [Authorize]

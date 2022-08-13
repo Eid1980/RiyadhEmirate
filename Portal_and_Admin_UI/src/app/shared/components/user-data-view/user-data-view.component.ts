@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AccountService } from '@proxy/accounts/account.service';
-import { GetUserDto } from '@proxy/accounts/models';
+import { GetUserDataDto } from '@proxy/accounts/models';
 
 @Component({
   selector: 'app-user-data-view',
   templateUrl: './user-data-view.component.html'
 })
 export class UserDataViewComponent implements OnInit {
-  userDto = {} as GetUserDto;
+  userDataDto = {} as GetUserDataDto;
 
   constructor(private accountService: AccountService) { }
 
@@ -16,8 +16,8 @@ export class UserDataViewComponent implements OnInit {
 
   initializeForm(userId?: number) {
     if (userId) {
-      this.accountService.getById(userId).subscribe((response) => {
-        this.userDto = response.data;
+      this.accountService.getUserData(userId).subscribe((response) => {
+        this.userDataDto = response.data;
       });
     }
   }

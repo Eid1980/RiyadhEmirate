@@ -5,6 +5,7 @@ namespace Emirates.Core.Application.Services.Accounts
 {
     public interface IAccountService
     {
+        IApiResponse GetGetUserDataDto(int id);
         IApiResponse GetById(int id);
         IApiResponse GetByUserName(string userName);
         IApiResponse GetByPhone(string phoneNumber);

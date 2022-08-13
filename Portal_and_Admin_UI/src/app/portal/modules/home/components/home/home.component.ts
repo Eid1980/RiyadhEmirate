@@ -184,7 +184,6 @@ export class HomeComponent implements OnInit {
   getPosters() {
     this._posterService.getAll().subscribe(
       (res: ApiResponse<GetPosterDetailsDto[]>) => {
-        debugger;
         if (res.isSuccess) {
           this.posters = res.data;
         } else {

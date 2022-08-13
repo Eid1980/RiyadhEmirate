@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ForgetPasswordDto, GetUserDto, ResetPasswordDto, UserLoginDto, ValidateOTPDto } from './models';
+import { ForgetPasswordDto, GetUserDataDto, GetUserDto, ResetPasswordDto, UserLoginDto, ValidateOTPDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
-import { JsonPipe } from '@angular/common';
 import { CheckUserRegisterDto, CreateUserDto } from './register.model';
 
 @Injectable({
@@ -70,6 +69,10 @@ export class AccountService {
       this.router.navigate(['/auth']);
       return null;
     }
+  }
+
+  getUserData = (id?: number): Observable<ApiResponse<GetUserDataDto>> => {
+    return this.httpClient.get<ApiResponse<GetUserDataDto>>(`${this.serviceUrl}/GetGetUserDataDto/${id}`).pipe();
   }
 
   getAuthUser = (): Observable<ApiResponse<GetUserDto>> => {

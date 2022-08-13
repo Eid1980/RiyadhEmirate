@@ -44,4 +44,7 @@ export class RequestService {
   inbox = (searchModel: SearchModel): Observable<ApiResponse<any>> => {
     return this.httpClient.post<ApiResponse<any>>(`${this.serviceUrl}/Inbox`, searchModel).pipe();
   }
+  inboxShamel = (searchModel: SearchModel): Observable<ApiResponse<any>> => {
+    return this.httpClient.post<ApiResponse<any>>(`${this.serviceUrl}/InboxShamel`, searchModel).pipe();
+  }
 }

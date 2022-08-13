@@ -3,6 +3,7 @@ using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Posters;
 using Emirates.Core.Application.Services.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emirates.API.Controllers
@@ -28,7 +29,7 @@ namespace Emirates.API.Controllers
         {
             return _posterService.GetAll(searchModelDto);
         }
-        [HttpGet("GetAll")]
+        [AllowAnonymous, HttpGet("GetAll")]
         public IApiResponse GetAll()
         {
             return _posterService.GetAll();

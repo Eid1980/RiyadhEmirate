@@ -1,8 +1,12 @@
 
 export interface GetUserDto {
   id: number;
+  userName: string;
+
   nameAr: string;
+  shortNameAr: string;
   nameEn: string;
+  shortNameEn: string;
 
   employeeSide: string;
   childrenCount: number;
@@ -21,10 +25,29 @@ export interface GetUserDto {
   passwordHash: [];
   passwordSalt: [];
   isAdmin: boolean;
+  isDataComplete: boolean;
   isActive: boolean;
-  userName: string;
   oTP: string;
   birthDate: string;
+}
+
+export interface GetUserDataDto {
+  id: number;
+  userName: string;
+  name: string;
+  employeeSide: string;
+
+  childrenCount: number;
+  maritalStatusName: string;
+  jobOccupation: string;
+
+  genderName: string;
+  birthDate: string;
+  phoneNumber: string;
+
+  nationalityName: string;
+  governorateName: string;
+  email: string;
 }
 
 
