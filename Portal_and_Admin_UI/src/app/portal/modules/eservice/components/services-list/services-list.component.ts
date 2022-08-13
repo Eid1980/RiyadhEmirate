@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '@shared/proxy/services/service.service';
 import { GetServiceListDto } from '@shared/proxy/services/models';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-services-list',
@@ -13,7 +14,8 @@ export class ServicesListComponent implements OnInit {
   contentTitle = 'جميع الخدمات';
   sortTitle = 'أبجدي - من أ إلى ي';
 
-  constructor(private formBuilder: FormBuilder, private serviceService: ServiceService) { }
+  constructor(private formBuilder: FormBuilder, private serviceService: ServiceService,
+    public sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.getServices();

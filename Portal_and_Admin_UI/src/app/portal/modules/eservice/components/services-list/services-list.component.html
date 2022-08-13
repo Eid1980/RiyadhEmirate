@@ -40,7 +40,7 @@
     <div class="row">
       <div class="col-md-3 mb-4 " *ngFor="let service of services">
         <div class="card-item">
-          <img [src]="service?.image?.base64File" alt="service-icon" class="ser-icon">
+          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service?.image?.base64File)" alt="service-icon" class="ser-icon">
           <h5 class="title mb-4">{{service.nameAr}}</h5>
           <p class="description h-3"> {{service.descriptionAr}}</p>
           <div class="service-link d-flex align-items-center">
