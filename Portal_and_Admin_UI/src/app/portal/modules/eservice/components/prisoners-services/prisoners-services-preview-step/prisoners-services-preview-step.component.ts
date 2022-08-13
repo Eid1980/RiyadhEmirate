@@ -7,6 +7,7 @@ import { GlobalService } from '@shared/services/global.service';
 import { Stages } from '@shared/enums/stage.enum';
 import { Service } from '@shared/enums/service.enum';
 import { RateServiceComponent } from '@shared/components/rate-service/rate-service.component';
+import { MessageType } from '@shared/enums/message-type.enum';
 
 @Component({
   selector: 'app-prisoners-services-preview-step',
@@ -21,6 +22,7 @@ export class PrisonersServicesPreviewStepComponent implements OnInit {
   serviceId: number = Service.PrisonerTempRelease;
   showServiceRate: boolean = false;
   redirectUrl: string = "/eservice/my-requests";
+  accept: boolean = false;
 
   constructor(private requestService: RequestService, private globalService: GlobalService, private activatedRoute: ActivatedRoute) {
   }
@@ -31,8 +33,13 @@ export class PrisonersServicesPreviewStepComponent implements OnInit {
     this.getWizardItems();
   }
   sendRequest() {
-    this.globalService.showConfirm('هل تريد متأكد من ارسال طلب خدمات السجناء؟');
-    this.globalService.confirmSubmit = () => this.isconfirm();
+    if (this.accept) {
+      this.globalService.showConfirm('هل تريد متأكد من ارسال طلب خدمات السجناء؟');
+      this.globalService.confirmSubmit = () => this.isconfirm();
+    }
+    else {
+      this.globalService.messageAlert(MessageType.Warning, 'برجاء الموافقة على الشروط والأحكام')
+    }
   }
 
   isconfirm() {
@@ -46,6 +53,7 @@ export class PrisonersServicesPreviewStepComponent implements OnInit {
       this.showServiceRate = true;
       this.rateServiceComponent.buildForm();
     });
+    this.globalService.clearMessages();
   }
   navigate(event: boolean) {
     if (!event) {

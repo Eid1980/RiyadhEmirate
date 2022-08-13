@@ -4,8 +4,11 @@ namespace Emirates.Core.Application.Dtos
     public class GetUserDto
     {
         public int Id { get; set; }
+        public string UserName { get; set; }
         public string NameAr { get; set; }
+        public string ShortNameAr { get; set; }
         public string NameEn { get; set; }
+        public string ShortNameEn { get; set; }
 
         public string EmployeeSide { get; set; }
         public int? ChildrenCount { get; set; }
@@ -24,8 +27,8 @@ namespace Emirates.Core.Application.Dtos
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public bool IsAdmin { get; set; }
+        public bool IsDataComplete { get; set; }
         public bool IsActive { get; set; }
-        public string UserName { get; set; }
         public string OTP { get; set; }
         public DateTime BirthDate { get; set; }
     }

@@ -18,7 +18,7 @@ export class EmiratesNewsAddComponent implements OnInit {
   //#region for uploader
   @ViewChild('uploader',{static:true}) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 1000000;
+  fileSize: number = 10000000;
   acceptType: 'image/*';
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;

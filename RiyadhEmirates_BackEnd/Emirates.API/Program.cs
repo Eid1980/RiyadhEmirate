@@ -214,17 +214,11 @@ try
             if (exceptionHandler != null)
             {
                 if (exceptionHandler.Error is NotFoundException)
-                {
                     context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                }
                 else if (exceptionHandler.Error is BusinessException)
-                {
                     context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                }
                 else
-                {
                     context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                }
                 context.Response.Headers.AcceptEncoding = "UTF-8";
                 context.Response.AddApplicationErrorHeader(exceptionHandler.Error.Message);
                 await context.Response.WriteAsync(exceptionHandler.Error.Message);

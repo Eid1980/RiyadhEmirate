@@ -8,10 +8,10 @@
 
 <section class="service-details">
   <div class="page-head">
-    <h2 class="title px-3">خدمة الخروج المؤقت لسجين</h2>
+    <h2 class="title px-3">{{serviceDetailsDto?.titleAr}}</h2>
 
     <button type="button" class="btn mx-3">
-      <a href="#" class="btn start-ser px-2">إبدأ الخدمة
+      <a [routerLink]="serviceDetailsDto?.requestLink" class="btn start-ser px-2">إبدأ الخدمة
         <img src="./assets/images/icons/services/arrowTwo.svg" alt="" width="15" class="mx-1">
       </a>
     </button>

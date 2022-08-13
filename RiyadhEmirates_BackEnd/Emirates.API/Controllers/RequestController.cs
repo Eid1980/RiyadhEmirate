@@ -64,6 +64,11 @@ namespace Edraak.API.Controllers
         {
             return _requestService.Inbox(searchModel);
         }
+        [HttpPost("InboxShamel")]
+        public IApiResponse InboxShamel(SearchModel searchModel)
+        {
+            return _requestService.InboxShamel(searchModel);
+        }
 
     }
 }

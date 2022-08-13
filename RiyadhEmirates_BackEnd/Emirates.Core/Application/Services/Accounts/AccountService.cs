@@ -27,6 +27,13 @@ namespace Emirates.Core.Application.Services.Accounts
 
         }
 
+        public IApiResponse GetGetUserDataDto(int id)
+        {
+            var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.MaritalStatus, x => x.Nationality, x => x.Governorate));
+            if (user != null)
+                return GetResponse(data: user);
+            return GetResponse(isSuccess: false);
+        }
         public IApiResponse GetById(int id)
         {
             var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id));

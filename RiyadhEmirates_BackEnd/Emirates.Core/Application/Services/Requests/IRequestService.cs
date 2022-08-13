@@ -15,5 +15,6 @@ namespace Emirates.Core.Application.Services.Requests
 
         IApiResponse MyRequests(SearchModel searchModel);
         IApiResponse Inbox(SearchModel searchModel);
+        IApiResponse InboxShamel(SearchModel searchModel);
     }
 }

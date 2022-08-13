@@ -5,6 +5,7 @@ namespace Emirates.Core.Domain.Entities
     {
         public int Id { get; set; }
         public string UserName { get; set; }
+        public DateTime BirthDate { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
 
@@ -28,7 +29,6 @@ namespace Emirates.Core.Domain.Entities
         public string PhoneNumber { get; set; }
         public bool TwoFactorEnabled { get; set; } = true;
         public string PassportId { get; set; }
-        public DateTime? BirthDate { get; set; }
 
         public int? NationalityId { get; set; }
         public int? GovernorateId { get; set; }

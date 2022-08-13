@@ -49,7 +49,16 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<CreateUserDto, User>();
             CreateMap<User, GetUserDto>()
                 .ForMember(dest => dest.NameAr, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
+                .ForMember(dest => dest.ShortNameAr, src => src.MapFrom(m => $"{m.FirstNameAr} {m.LastNameAr}"))
                 .ForMember(dest => dest.NameEn, src => src.MapFrom(m => $"{m.FirstNameEn} {m.SecondNameEn} {m.ThirdNameEn} {m.LastNameEn}"))
+                .ForMember(dest => dest.ShortNameEn, src => src.MapFrom(m => $"{m.FirstNameEn} {m.LastNameEn}"))
+                .ForMember(dest => dest.MaritalStatusName, src => src.MapFrom(m => m.MaritalStatus.NameAr))
+                .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr))
+                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
+            CreateMap<User, GetUserDataDto>()
+                .ForMember(dest => dest.Name, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
+                .ForMember(dest => dest.BirthDate, src => src.MapFrom(m => m.BirthDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.GenderName, src => src.MapFrom(m => m.IsMale ? "ذكر" : "أنثى"))
                 .ForMember(dest => dest.MaritalStatusName, src => src.MapFrom(m => m.MaritalStatus.NameAr))
                 .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr))
                 .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));

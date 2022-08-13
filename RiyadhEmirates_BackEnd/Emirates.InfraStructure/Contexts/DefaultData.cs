@@ -321,6 +321,7 @@ namespace Emirates.InfraStructure.Contexts
             {
                 Id = 1,
                 UserName = "myoussef",
+                BirthDate = new DateTime(2022, 1, 1),
                 FirstNameAr = "محمد",
                 SecondNameAr = "صلاح",
                 ThirdNameAr = "عبدالرحمن",
@@ -344,6 +345,7 @@ namespace Emirates.InfraStructure.Contexts
             {
                 Id = 2,
                 UserName = "2440573661",
+                BirthDate = new DateTime(1989, 1, 1),
                 FirstNameAr = "محمد",
                 SecondNameAr = "صلاح",
                 ThirdNameAr = "عبدالرحمن",

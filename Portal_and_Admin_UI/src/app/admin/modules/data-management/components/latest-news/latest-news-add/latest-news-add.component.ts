@@ -21,7 +21,7 @@ export class LatestNewsAddComponent implements OnInit {
   // for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 2097152;
+  fileSize: number = 20971520;
   acceptType: 'image/*';
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
