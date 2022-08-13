@@ -44,7 +44,7 @@
               <!-- Repeatable Item -->
               <ng-template carouselSlide *ngFor="let service of services">
                 <div class="card-item px-3">
-                  <img [src]="service?.image?.base64File" alt="service-icon" class="ser-icon">
+                  <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service?.image?.base64File)" alt="service-icon" class="ser-icon">
                   <h5 class="title mb-5">{{service.nameAr}}</h5>
                   <!-- <p class="brief-description mb-5">{{service.titleAr}}</p> -->
                   <p class="description h-3"> {{service.descriptionAr}}</p>

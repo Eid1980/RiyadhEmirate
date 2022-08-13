@@ -3,28 +3,30 @@ import { ActivatedRoute } from '@angular/router';
 import { ServiceService } from '@proxy/services/service.service';
 import { GetServiceDetailsDto } from '@proxy/services/models';
 import { GlobalService } from '@shared/services/global.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-service-view',
-  templateUrl: './service-view.component.html'
+  templateUrl: './service-view.component.html',
 })
 export class ServiceViewComponent implements OnInit {
   id: number;
   serviceDetailsDto: GetServiceDetailsDto;
 
-  constructor(private serviceService: ServiceService, private activatedRoute: ActivatedRoute,
-    private globalService: GlobalService)
-  {
-  }
+  constructor(
+    private serviceService: ServiceService,
+    private activatedRoute: ActivatedRoute,
+    private globalService: GlobalService,
+    public sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {
     this.globalService.setAdminTitle('تفاصيل الخدمة');
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.getDetails();
-    }
-    else {
-      this.globalService.navigate("/admin/data-management/service-list");
+    } else {
+      this.globalService.navigate('/admin/data-management/service-list');
     }
   }
 
