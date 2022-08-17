@@ -23,5 +23,6 @@ namespace Emirates.Core.Domain.Entities
         public virtual RequestElectronicBoard RequestElectronicBoard { get; set; }
         public virtual RequestPrisonerTempRelease RequestPrisonerTempRelease { get; set; }
         public virtual RequestPrisonersService RequestPrisonersService { get; set; }
+        public virtual RequestLandsInfringement RequestLandsInfringement { get; set; }
     }
 }

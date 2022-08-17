@@ -8,6 +8,7 @@ using Emirates.Core.Application.Services.Nationality;
 using Emirates.Core.Application.Services.News;
 using Emirates.Core.Application.Services.Posters;
 using Emirates.Core.Application.Services.RequestAttachmentTypes;
+using Emirates.Core.Application.Services.RequestLandsInfringements;
 using Emirates.Core.Application.Services.RequestPrisonersServices;
 using Emirates.Core.Application.Services.RequestPrisonerTempReleases;
 using Emirates.Core.Application.Services.Requests;
@@ -48,6 +49,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IRequestTypeService, RequestTypeService>();
             builder.Services.AddScoped<IRequestPrisonersServiceService, RequestPrisonersServiceService>();
             builder.Services.AddScoped<IRequestPrisonerTempReleaseService, RequestPrisonerTempReleaseService>();
+            builder.Services.AddScoped<IRequestLandsInfringementService, RequestLandsInfringementService>();
         }
     }
 }

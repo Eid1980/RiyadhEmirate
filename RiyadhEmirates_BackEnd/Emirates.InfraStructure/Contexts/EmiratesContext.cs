@@ -220,6 +220,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<RequestElectronicBoard>(x => x.RequestElectronicBoard).WithOne(x => x.Request).HasForeignKey<RequestElectronicBoard>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestPrisonerTempRelease>(x => x.RequestPrisonerTempRelease).WithOne(x => x.Request).HasForeignKey<RequestPrisonerTempRelease>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestPrisonersService>(x => x.RequestPrisonersService).WithOne(x => x.Request).HasForeignKey<RequestPrisonersService>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<RequestLandsInfringement>(x => x.RequestLandsInfringement).WithOne(x => x.Request).HasForeignKey<RequestLandsInfringement>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -251,6 +252,25 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.RequestContent).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
 
                 b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestElectronicBoards).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region RequestLandsInfringement
+            modelBuilder.Entity<RequestLandsInfringement>(b =>
+            {
+                b.ToTable("RequestLandsInfringements", EmiratesDbSchemas.RequestSehema);
+                b.Property(x => x.RequestTypeId).IsRequired();
+                b.Property(x => x.InstrumentNumber).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.EstimatedSpace).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.GovernorateId).IsRequired();
+                b.Property(x => x.Address).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.Longitude).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.Latitude).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.InfringerName).HasMaxLength(EmiratesConstants.MaxNameLength);
+                b.Property(x => x.InfringerDescription).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+
+                b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestLandsInfringements).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Governorate>(x => x.Governorate).WithMany(x => x.RequestLandsInfringements).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -461,6 +481,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<Request> Requests { get; set; }
         public DbSet<RequestAttachmentType> RequestAttachmentTypes { get; set; }
         public DbSet<RequestElectronicBoard> RequestElectronicBoards { get; set; }
+        public DbSet<RequestLandsInfringement> RequestLandsInfringements { get; set; }
         public DbSet<RequestPrisonersService> RequestPrisonersServices { get; set; }
         public DbSet<RequestPrisonerTempRelease> RequestPrisonerTempReleases { get; set; }
         public DbSet<Stage> Stages { get; set; }

@@ -252,7 +252,7 @@ namespace Emirates.InfraStructure.Contexts
         }
         public static RequestType[] RequestTypes()
         {
-            RequestType[] arrData = new RequestType[19];
+            RequestType[] arrData = new RequestType[23];
             arrData[0] = new RequestType { Id = 1, NameAr = "حضور زواج", NameEn = "حضور زواج", ServiceId = 2, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[1] = new RequestType { Id = 2, NameAr = "زيارة الوالدين والأهل", NameEn = "زيارة الوالدين والأهل", ServiceId = 2, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[2] = new RequestType { Id = 3, NameAr = "زيارة مريض", NameEn = "زيارة مريض", ServiceId = 2, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
@@ -274,20 +274,26 @@ namespace Emirates.InfraStructure.Contexts
             arrData[16] = new RequestType { Id = 17, NameAr = "اقتراح", NameEn = "اقتراح", ServiceId = 4, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[17] = new RequestType { Id = 18, NameAr = "شكوى", NameEn = "شكوى", ServiceId = 4, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[18] = new RequestType { Id = 19, NameAr = "طلب", NameEn = "طلب", ServiceId = 4, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+
+            arrData[19] = new RequestType { Id = 20, NameAr = "زراعي", NameEn = "زراعي", ServiceId = 5, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[20] = new RequestType { Id = 21, NameAr = "سكني", NameEn = "سكني", ServiceId = 5, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[21] = new RequestType { Id = 22, NameAr = "تجاري", NameEn = "تجاري", ServiceId = 5, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[22] = new RequestType { Id = 23, NameAr = "أملاك عامة", NameEn = "أملاك عامة", ServiceId = 5, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             return arrData;
         }
         public static Service[] Services()
         {
-            Service[] arrData = new Service[4];
+            Service[] arrData = new Service[5];
             arrData[0] = new Service { Id = 1, NameAr = "المجلس الالكتروني", NameEn = "Electronic Board", TitleAr = "المجلس الالكتروني", TitleEn = "المجلس الالكتروني", DescriptionAr = "المجلس الالكتروني", DescriptionEn = "المجلس الالكتروني", RequestLink = "url", WorkDays = 10, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[1] = new Service { Id = 2, NameAr = "الخروج المؤقت لسجين", NameEn = "Prisoner Temp Release", TitleAr = "الخروج المؤقت لسجين", TitleEn = "الخروج المؤقت لسجين", DescriptionAr = "الخروج المؤقت لسجين", DescriptionEn = "الخروج المؤقت لسجين", RequestLink = "/eservice/prisoner-temp-release", WorkDays = 10, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[2] = new Service { Id = 3, NameAr = "خدمات السجناء", NameEn = "Prisoners Services", TitleAr = "خدمات السجناء", TitleEn = "خدمات السجناء", DescriptionAr = "خدمات السجناء", DescriptionEn = "خدمات السجناء", RequestLink = "/eservice/prisoners-services", WorkDays = 10, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[3] = new Service { Id = 4, NameAr = "الاستدعاء الإلكتروني", NameEn = "Electronic Summoning", TitleAr = "الاستدعاء الإلكتروني", TitleEn = "الاستدعاء الإلكتروني", DescriptionAr = "الاستدعاء الإلكتروني", DescriptionEn = "الاستدعاء الإلكتروني", RequestLink = "/eservice/electronic-summoning", WorkDays = 10, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[4] = new Service { Id = 5, NameAr = "التعديات على الأراضي الحكومية", NameEn = "Infringements On Government Land", TitleAr = "التعديات على الأراضي الحكومية", TitleEn = "التعديات على الأراضي الحكومية", DescriptionAr = "التعديات على الأراضي الحكومية", DescriptionEn = "التعديات على الأراضي الحكومية", RequestLink = "/eservice/lands-infringement", WorkDays = 10, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             return arrData;
         }
         public static ServiceStage[] ServiceStages()
         {
-            ServiceStage[] arrData = new ServiceStage[21];
+            ServiceStage[] arrData = new ServiceStage[28];
             arrData[0] = new ServiceStage { Id = 1, ServiceId = 2, StageId = 1, RequesterUrl = "/eservice/prisoner-temp-release", AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[1] = new ServiceStage { Id = 2, ServiceId = 2, StageId = 2, RequesterUrl = "/eservice/prisoner-temp-release-view", AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-preview-step", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[2] = new ServiceStage { Id = 3, ServiceId = 2, StageId = 3, RequesterUrl = "/eservice/prisoner-temp-release", AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
@@ -311,6 +317,14 @@ namespace Emirates.InfraStructure.Contexts
             arrData[18] = new ServiceStage { Id = 19, ServiceId = 3, StageId = 5, RequesterUrl = "/eservice/electronic-summoning-view", AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[19] = new ServiceStage { Id = 20, ServiceId = 3, StageId = 6, RequesterUrl = "/eservice/electronic-summoning-view", AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[20] = new ServiceStage { Id = 21, ServiceId = 3, StageId = 7, RequesterUrl = "/eservice/electronic-summoning-view", AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+
+            arrData[21] = new ServiceStage { Id = 22, ServiceId = 5, StageId = 1, RequesterUrl = "/eservice/lands-infringement", AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[22] = new ServiceStage { Id = 23, ServiceId = 5, StageId = 2, RequesterUrl = "/eservice/lands-infringement-view", AdminUrl = "/admin/eservice-admin/lands-infringement-admin-preview-step", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[23] = new ServiceStage { Id = 24, ServiceId = 5, StageId = 3, RequesterUrl = "/eservice/lands-infringement", AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[24] = new ServiceStage { Id = 25, ServiceId = 5, StageId = 4, RequesterUrl = "/eservice/lands-infringement-view", AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[25] = new ServiceStage { Id = 26, ServiceId = 5, StageId = 5, RequesterUrl = "/eservice/lands-infringement-view", AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[26] = new ServiceStage { Id = 27, ServiceId = 5, StageId = 6, RequesterUrl = "/eservice/lands-infringement-view", AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[27] = new ServiceStage { Id = 28, ServiceId = 5, StageId = 7, RequesterUrl = "/eservice/lands-infringement-view", AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
 
             return arrData;
         }

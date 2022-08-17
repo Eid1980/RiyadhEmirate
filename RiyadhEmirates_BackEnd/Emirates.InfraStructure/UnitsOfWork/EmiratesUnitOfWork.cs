@@ -45,6 +45,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public IRequestPrisonersServiceRepository RequestPrisonersServices => requestPrisonersServices ??= new RequestPrisonersServiceRepository(Context);
 
 
+        private RequestLandsInfringementRepository requestLandsInfringements;
+        public IRequestLandsInfringementRepository RequestLandsInfringements => requestLandsInfringements ??= new RequestLandsInfringementRepository(Context);
+        
+
         private RequestPrisonerTempReleaseRepository requestPrisonerTempReleases;
         public IRequestPrisonerTempReleaseRepository RequestPrisonerTempReleases => requestPrisonerTempReleases ??= new RequestPrisonerTempReleaseRepository(Context);
 

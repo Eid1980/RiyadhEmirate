@@ -3,4 +3,5 @@ export enum Service {
   PrisonerTempRelease = 2,
   PrisonersServices = 3,
   ElectronicSummoning = 4,
+  LandsInfringement = 5,
 }

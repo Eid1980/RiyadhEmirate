@@ -13,6 +13,10 @@ import { PrisonersServicesPreviewStepComponent } from './components/prisoners-se
 import { PrisonersServicesViewComponent } from './components/prisoners-services/prisoners-services-view/prisoners-services-view.component';
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
 import { ServicesListComponent } from './components/services-list/services-list.component';
+import { LandsInfringementComponent } from './components/lands-infringement/lands-infringement/lands-infringement.component';
+import { LandsInfringementAttachmentsComponent } from './components/lands-infringement/lands-infringement-attachments/lands-infringement-attachments.component';
+import { LandsInfringementPreviewStepComponent } from './components/lands-infringement/lands-infringement-preview-step/lands-infringement-preview-step.component';
+import { LandsInfringementViewComponent } from './components/lands-infringement/lands-infringement-view/lands-infringement-view.component';
 
 const routes: Routes = [
   { path: 'services-list', component: ServicesListComponent },
@@ -82,8 +86,37 @@ const routes: Routes = [
     component: PrisonerTempReleaseViewComponent,
     canActivate: [AuthGuard],
   },
-  { path: '', redirectTo: 'services-list', pathMatch: 'full' },
   //#endregion
+
+  //#region LandsInfringement
+  {
+    path: 'lands-infringement',
+    component: LandsInfringementComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'lands-infringement/:id',
+    component: LandsInfringementComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'lands-infringement-attachments/:id',
+    component: LandsInfringementAttachmentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'lands-infringement-preview-step/:id',
+    component: LandsInfringementPreviewStepComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'lands-infringement-view/:id',
+    component: LandsInfringementViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  { path: '', redirectTo: 'services-list', pathMatch: 'full' },
 ];
 
 @NgModule({

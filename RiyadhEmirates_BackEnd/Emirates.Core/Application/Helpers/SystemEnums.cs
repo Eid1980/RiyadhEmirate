@@ -14,7 +14,8 @@ namespace Emirates.Core.Application.Helpers
             ElectronicBoard = 1,
             PrisonerTempRelease = 2,
             PrisonersServices = 3,
-            ElectronicSummoning = 4
+            ElectronicSummoning = 4,
+            LandsInfringement = 5
         }
         public enum Stages
         {

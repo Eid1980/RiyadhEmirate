@@ -121,6 +121,27 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<RequestPrisonerTempRelease, RequestPrisonerTempReleaseDto>();
             #endregion
 
+            #region RequestLandsInfringement
+            CreateMap<CreateRequestLandsInfringementDto, RequestLandsInfringement>();
+            CreateMap<UpdateRequestLandsInfringementDto, RequestLandsInfringement>();
+
+            CreateMap<Request, GetRequestLandsInfringementDetailsDto>()
+                .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
+                .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
+                .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
+                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestLandsInfringement.RequestType.NameAr))
+                .ForMember(dest => dest.InstrumentNumber, src => src.MapFrom(m => m.RequestLandsInfringement.InstrumentNumber))
+                .ForMember(dest => dest.EstimatedSpace, src => src.MapFrom(m => m.RequestLandsInfringement.EstimatedSpace))
+                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.RequestLandsInfringement.Governorate.NameAr))
+                .ForMember(dest => dest.Address, src => src.MapFrom(m => m.RequestLandsInfringement.Address))
+                .ForMember(dest => dest.Longitude, src => src.MapFrom(m => m.RequestLandsInfringement.Longitude))
+                .ForMember(dest => dest.Latitude, src => src.MapFrom(m => m.RequestLandsInfringement.Latitude))
+                .ForMember(dest => dest.LocationLink, src => src.MapFrom(m => $"https://www.google.com/maps,{m.RequestLandsInfringement.Longitude},{m.RequestLandsInfringement.Latitude}"))
+                .ForMember(dest => dest.InfringerDescription, src => src.MapFrom(m => m.RequestLandsInfringement.InfringerDescription));
+            CreateMap<RequestLandsInfringement, RequestLandsInfringementDto>();
+            #endregion
+
             #region RequestAttachmentType
             CreateMap<CreateRequestAttachmentTypeDto, RequestAttachmentType>();
             CreateMap<UpdateRequestAttachmentTypeDto, RequestAttachmentType>();

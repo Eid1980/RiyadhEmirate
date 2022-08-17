@@ -19,6 +19,11 @@ import { PrisonersServicesPreviewStepComponent } from './components/prisoners-se
 import { PrisonersServicesViewComponent } from './components/prisoners-services/prisoners-services-view/prisoners-services-view.component';
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
 import { ServicesListComponent } from './components/services-list/services-list.component';
+import { LandsInfringementComponent } from './components/lands-infringement/lands-infringement/lands-infringement.component';
+import { LandsInfringementAttachmentsComponent } from './components/lands-infringement/lands-infringement-attachments/lands-infringement-attachments.component';
+import { LandsInfringementDetailsComponent } from './components/lands-infringement/lands-infringement-details/lands-infringement-details.component';
+import { LandsInfringementPreviewStepComponent } from './components/lands-infringement/lands-infringement-preview-step/lands-infringement-preview-step.component';
+import { LandsInfringementViewComponent } from './components/lands-infringement/lands-infringement-view/lands-infringement-view.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,11 @@ import { ServicesListComponent } from './components/services-list/services-list.
     PrisonersServicesDetailsComponent,
     PrisonersServicesPreviewStepComponent,
     PrisonersServicesViewComponent,
+    LandsInfringementComponent,
+    LandsInfringementAttachmentsComponent,
+    LandsInfringementDetailsComponent,
+    LandsInfringementPreviewStepComponent,
+    LandsInfringementViewComponent,
   ],
   imports: [
     StepsModule,
