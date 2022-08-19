@@ -221,7 +221,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<RequestPrisonerTempRelease>(x => x.RequestPrisonerTempRelease).WithOne(x => x.Request).HasForeignKey<RequestPrisonerTempRelease>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestPrisonersService>(x => x.RequestPrisonersService).WithOne(x => x.Request).HasForeignKey<RequestPrisonersService>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestLandsInfringement>(x => x.RequestLandsInfringement).WithOne(x => x.Request).HasForeignKey<RequestLandsInfringement>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<RequestElectronicSummon>(x => x.RequestElectronicSummon).WithOne(x => x.Request).HasForeignKey<RequestLandsInfringement>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<RequestElectronicSummon>(x => x.RequestElectronicSummon).WithOne(x => x.Request).HasForeignKey<RequestElectronicSummon>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
