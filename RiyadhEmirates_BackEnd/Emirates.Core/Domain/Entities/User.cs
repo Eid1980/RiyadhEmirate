@@ -19,11 +19,6 @@ namespace Emirates.Core.Domain.Entities
         public string ThirdNameEn { get; set; }
         public string LastNameEn { get; set; }
 
-        public string EmployeeSide { get; set; }
-        public int? ChildrenCount { get; set; }
-        public int? MaritalStatusId { get; set; }
-        public string JobOccupation { get; set; }
-
         public bool IsMale { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
@@ -37,20 +32,20 @@ namespace Emirates.Core.Domain.Entities
 
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
-        public bool IsDataComplete { get; set; } = false;
 
         public string Last2Factor { get; set; }
         public DateTime? LastLoginDate { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
 
-
         public virtual Nationality Nationality { get; set; }
-        public virtual MaritalStatus MaritalStatus { get; set; }
         public virtual Governorate Governorate { get; set; }
 
         public virtual ICollection<CaseType> CreatedCaseTypes { get; set; }
         public virtual ICollection<CaseType> ModifiedCaseTypes { get; set; }
+
+        public virtual ICollection<DefendantType> CreatedDefendantTypes { get; set; }
+        public virtual ICollection<DefendantType> ModifiedDefendantTypes { get; set; }
 
         public virtual ICollection<Nationality> CreatedNationalities { get; set; }
         public virtual ICollection<Nationality> ModifiedNationalities { get; set; }

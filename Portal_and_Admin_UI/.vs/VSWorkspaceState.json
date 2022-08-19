@@ -1,0 +1,19 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\portal",
+    "\\src\\app\\portal\\modules",
+    "\\src\\app\\portal\\modules\\eservice",
+    "\\src\\app\\portal\\modules\\eservice\\components",
+    "\\src\\app\\portal\\modules\\eservice\\components\\prisoner-temp-release",
+    "\\src\\app\\portal\\modules\\eservice\\components\\prisoner-temp-release\\prisoner-temp-release",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\enums",
+    "\\src\\app\\shared\\proxy",
+    "\\src\\app\\shared\\proxy\\request-electronic-summon"
+  ],
+  "SelectedNode": "\\src\\app\\portal\\modules\\eservice\\components\\electronic-summon\\electronic-summon\\electronic-summon.component.ts",
+  "PreviewInSolutionExplorer": false
+}

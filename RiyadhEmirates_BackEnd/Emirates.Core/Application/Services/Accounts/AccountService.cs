@@ -29,7 +29,7 @@ namespace Emirates.Core.Application.Services.Accounts
 
         public IApiResponse GetGetUserDataDto(int id)
         {
-            var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.MaritalStatus, x => x.Nationality, x => x.Governorate));
+            var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
@@ -191,7 +191,6 @@ namespace Emirates.Core.Application.Services.Accounts
             addedModel.PasswordSalt = passwordSalt;
             addedModel.IsActive = true;
             addedModel.IsAdmin = false;
-            addedModel.IsDataComplete = addedModel.ChildrenCount != null && addedModel.ChildrenCount.Value != 0 &&addedModel.MaritalStatusId != null && addedModel.MaritalStatusId.Value != 0 && !string.IsNullOrEmpty(addedModel.EmployeeSide) && !string.IsNullOrEmpty(addedModel.JobOccupation);
             addedModel.LastLoginDate = DateTime.Now;
 
             _emiratesUnitOfWork.Users.Add(addedModel);

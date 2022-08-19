@@ -24,6 +24,11 @@ import { LandsInfringementAttachmentsComponent } from './components/lands-infrin
 import { LandsInfringementDetailsComponent } from './components/lands-infringement/lands-infringement-details/lands-infringement-details.component';
 import { LandsInfringementPreviewStepComponent } from './components/lands-infringement/lands-infringement-preview-step/lands-infringement-preview-step.component';
 import { LandsInfringementViewComponent } from './components/lands-infringement/lands-infringement-view/lands-infringement-view.component';
+import { ElectronicSummonComponent } from './components/electronic-summon/electronic-summon/electronic-summon.component';
+import { ElectronicSummonAttachmentsComponent } from './components/electronic-summon/electronic-summon-attachments/electronic-summon-attachments.component';
+import { ElectronicSummonDetailsComponent } from './components/electronic-summon/electronic-summon-details/electronic-summon-details.component';
+import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
+import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +51,11 @@ import { LandsInfringementViewComponent } from './components/lands-infringement/
     LandsInfringementDetailsComponent,
     LandsInfringementPreviewStepComponent,
     LandsInfringementViewComponent,
+    ElectronicSummonComponent,
+    ElectronicSummonAttachmentsComponent,
+    ElectronicSummonDetailsComponent,
+    ElectronicSummonViewComponent,
+    ElectronicSummonPreviewStepComponent,
   ],
   imports: [
     StepsModule,
@@ -57,6 +67,7 @@ import { LandsInfringementViewComponent } from './components/lands-infringement/
   exports: [
     PrisonerTempReleaseDetailsComponent,
     PrisonersServicesDetailsComponent,
+    ElectronicSummonDetailsComponent,
     LandsInfringementDetailsComponent,
   ],
 })

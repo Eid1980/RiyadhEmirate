@@ -17,6 +17,10 @@ import { LandsInfringementComponent } from './components/lands-infringement/land
 import { LandsInfringementAttachmentsComponent } from './components/lands-infringement/lands-infringement-attachments/lands-infringement-attachments.component';
 import { LandsInfringementPreviewStepComponent } from './components/lands-infringement/lands-infringement-preview-step/lands-infringement-preview-step.component';
 import { LandsInfringementViewComponent } from './components/lands-infringement/lands-infringement-view/lands-infringement-view.component';
+import { ElectronicSummonComponent } from './components/electronic-summon/electronic-summon/electronic-summon.component';
+import { ElectronicSummonAttachmentsComponent } from './components/electronic-summon/electronic-summon-attachments/electronic-summon-attachments.component';
+import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
+import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
 
 const routes: Routes = [
   { path: 'services-list', component: ServicesListComponent },
@@ -84,6 +88,34 @@ const routes: Routes = [
   {
     path: 'prisoner-temp-release-view/:id',
     component: PrisonerTempReleaseViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region ElectronicSummon
+  {
+    path: 'electronic-summon',
+    component: ElectronicSummonComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'electronic-summon/:id',
+    component: ElectronicSummonComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'electronic-summon-attachments/:id',
+    component: ElectronicSummonAttachmentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'electronic-summon-preview-step/:id',
+    component: ElectronicSummonPreviewStepComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'electronic-summon-view/:id',
+    component: ElectronicSummonViewComponent,
     canActivate: [AuthGuard],
   },
   //#endregion

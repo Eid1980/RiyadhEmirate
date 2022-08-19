@@ -23,11 +23,6 @@ namespace Emirates.Core.Application.Dtos
         public string ThirdNameEn { get; set; }
         public string LastNameEn { get; set; }
 
-        public string EmployeeSide { get; set; }
-        public int? ChildrenCount { get; set; }
-        public int? MaritalStatusId { get; set; }
-        public string JobOccupation { get; set; }
-
         public bool IsMale { get; set; }
         [EmailAddress(ErrorMessage ="صيغة البريد الالكتروني غير صحيحة")]
         public string Email { get; set; }

@@ -95,6 +95,22 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region DefendantType
+            modelBuilder.Entity<DefendantType>(b =>
+            {
+                b.ToTable("DefendantTypes", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedDefendantTypes).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedDefendantTypes).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.DefendantTypes());
+            });
+            #endregion
+
             #region Governorate
             modelBuilder.Entity<Governorate>(b =>
             {
@@ -222,6 +238,8 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<RequestPrisonersService>(x => x.RequestPrisonersService).WithOne(x => x.Request).HasForeignKey<RequestPrisonersService>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestLandsInfringement>(x => x.RequestLandsInfringement).WithOne(x => x.Request).HasForeignKey<RequestLandsInfringement>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestElectronicSummon>(x => x.RequestElectronicSummon).WithOne(x => x.Request).HasForeignKey<RequestElectronicSummon>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<RequestMarriageCertificate>(x => x.RequestMarriageCertificate).WithOne(x => x.Request).HasForeignKey<RequestMarriageCertificate>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<RequestJudgmentExecution>(x => x.RequestJudgmentExecution).WithOne(x => x.Request).HasForeignKey<RequestJudgmentExecution>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -265,6 +283,36 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.RequestContent).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
 
                 b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestElectronicSummons).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region RequestJudgmentExecution
+            modelBuilder.Entity<RequestJudgmentExecution>(b =>
+            {
+                b.ToTable("RequestJudgmentExecutions", EmiratesDbSchemas.RequestSehema);
+                b.Property(x => x.RequesterType).IsRequired();
+                b.Property(x => x.RequesterName).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.RequesterNationalId).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.DefendantTypeId).IsRequired();
+                b.Property(x => x.LawsuitDate).IsRequired();
+                b.Property(x => x.LawsuitNumber).HasMaxLength(EmiratesConstants.MaxNameLength).IsRequired();
+
+                b.HasOne<DefendantType>(x => x.DefendantType).WithMany(x => x.RequestJudgmentExecutions).HasForeignKey(x => x.DefendantTypeId).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region RequestMarriageCertificate
+            modelBuilder.Entity<RequestMarriageCertificate>(b =>
+            {
+                b.ToTable("RequestMarriageCertificates", EmiratesDbSchemas.RequestSehema);
+                b.Property(x => x.RequestTypeId).IsRequired();
+                b.Property(x => x.EmployeeSide).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.JobOccupation).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.MaritalStatusId).IsRequired();
+                b.Property(x => x.ChildrenCount).IsRequired();
+
+                b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestMarriageCertificates).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<MaritalStatus>(x => x.MaritalStatus).WithMany(x => x.RequestMarriageCertificates).HasForeignKey(x => x.MaritalStatusId).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -464,8 +512,6 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.ThirdNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.LastNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
 
-                b.Property(x => x.EmployeeSide).HasMaxLength(EmiratesConstants.MaxLongNameLength);
-                b.Property(x => x.JobOccupation).HasMaxLength(EmiratesConstants.MaxLongNameLength);
                 b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxNameLength);
                 b.Property(x => x.PhoneNumber).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.PassportId).HasMaxLength(EmiratesConstants.MaxShortLength);
@@ -475,7 +521,6 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.IsActive).IsRequired();
 
                 b.HasOne<Nationality>(x => x.Nationality).WithMany(x => x.Users).HasForeignKey(x => x.NationalityId).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<MaritalStatus>(x => x.MaritalStatus).WithMany(x => x.Users).HasForeignKey(x => x.MaritalStatusId).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<Governorate>(x => x.Governorate).WithMany(x => x.Users).HasForeignKey(x => x.GovernorateId).OnDelete(DeleteBehavior.NoAction);
 
                 b.HasData(DefaultData.Users());
@@ -484,6 +529,7 @@ namespace Emirates.InfraStructure.Contexts
         }
 
         public DbSet<CaseType> CaseTypes { get; set; }
+        public DbSet<DefendantType> DefendantTypes { get; set; }
         public DbSet<Governorate> Governorates { get; set; }
         public DbSet<MaritalStatus> MaritalStatuses { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }
@@ -495,7 +541,9 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<RequestAttachmentType> RequestAttachmentTypes { get; set; }
         public DbSet<RequestElectronicBoard> RequestElectronicBoards { get; set; }
         public DbSet<RequestElectronicSummon> RequestElectronicSummons { get; set; }
+        public DbSet<RequestJudgmentExecution> RequestJudgmentExecutions { get; set; }
         public DbSet<RequestLandsInfringement> RequestLandsInfringements { get; set; }
+        public DbSet<RequestMarriageCertificate> RequestMarriageCertificates { get; set; }
         public DbSet<RequestPrisonersService> RequestPrisonersServices { get; set; }
         public DbSet<RequestPrisonerTempRelease> RequestPrisonerTempReleases { get; set; }
         public DbSet<Stage> Stages { get; set; }

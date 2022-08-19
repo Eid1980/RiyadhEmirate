@@ -52,14 +52,12 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.ShortNameAr, src => src.MapFrom(m => $"{m.FirstNameAr} {m.LastNameAr}"))
                 .ForMember(dest => dest.NameEn, src => src.MapFrom(m => $"{m.FirstNameEn} {m.SecondNameEn} {m.ThirdNameEn} {m.LastNameEn}"))
                 .ForMember(dest => dest.ShortNameEn, src => src.MapFrom(m => $"{m.FirstNameEn} {m.LastNameEn}"))
-                .ForMember(dest => dest.MaritalStatusName, src => src.MapFrom(m => m.MaritalStatus.NameAr))
                 .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr))
                 .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
             CreateMap<User, GetUserDataDto>()
                 .ForMember(dest => dest.Name, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
                 .ForMember(dest => dest.BirthDate, src => src.MapFrom(m => m.BirthDate.ToString("yyyy-MM-dd")))
                 .ForMember(dest => dest.GenderName, src => src.MapFrom(m => m.IsMale ? "ذكر" : "أنثى"))
-                .ForMember(dest => dest.MaritalStatusName, src => src.MapFrom(m => m.MaritalStatus.NameAr))
                 .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr))
                 .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
             #endregion
@@ -100,7 +98,9 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
-                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestElectronicBoard.RequestType.NameAr));
+                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestElectronicBoard.RequestType.NameAr))
+                .ForMember(dest => dest.RequestTitle, src => src.MapFrom(m => m.RequestElectronicSummon.RequestTitle))
+                .ForMember(dest => dest.RequestContent, src => src.MapFrom(m => m.RequestElectronicSummon.RequestContent));
             CreateMap<RequestElectronicBoard, RequestElectronicBoardDto>();
             #endregion
 
@@ -113,7 +113,9 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
-                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestElectronicSummon.RequestType.NameAr));
+                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestElectronicSummon.RequestType.NameAr))
+                .ForMember(dest => dest.RequestTitle, src => src.MapFrom(m => m.RequestElectronicSummon.RequestTitle))
+                .ForMember(dest => dest.RequestContent, src => src.MapFrom(m => m.RequestElectronicSummon.RequestContent));
             CreateMap<RequestElectronicSummon, RequestElectronicSummonDto>();
             #endregion
 

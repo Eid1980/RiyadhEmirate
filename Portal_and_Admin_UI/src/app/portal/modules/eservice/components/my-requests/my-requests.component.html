@@ -71,7 +71,8 @@
             <td> {{myRequest.requestNumber}} </td>
             <td> {{myRequest.requestDate}} </td>
             <td> {{myRequest.stageName}} </td>
-            <td title="{{myRequest.notes}}"> {{myRequest.notes.length > 20 ? myRequest.notes.substring(0, 20) + ' ...' : myRequest.notes}} </td>
+            <td title="{{myRequest.notes}}" *ngIf="myRequest.notes"> {{myRequest.notes.length > 20 ? myRequest.notes.substring(0, 20) + ' ...' : myRequest.notes}} </td>
+            <td title="{{myRequest.notes}}" *ngIf="!myRequest.notes"></td>
             <td>
               <a class="btn btn-primary mx-1 px-1 py-0" *ngIf="myRequest.url" title="بيانات الطلب" [routerLink]="[myRequest.url, myRequest.id] ">
                 <i class="fa fa-eye"></i>

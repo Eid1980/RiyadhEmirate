@@ -25,5 +25,7 @@ namespace Emirates.Core.Domain.Entities
         public virtual RequestPrisonersService RequestPrisonersService { get; set; }
         public virtual RequestLandsInfringement RequestLandsInfringement { get; set; }
         public virtual RequestElectronicSummon RequestElectronicSummon { get; set; }
+        public virtual RequestMarriageCertificate RequestMarriageCertificate { get; set; }
+        public virtual RequestJudgmentExecution RequestJudgmentExecution { get; set; }
     }
 }

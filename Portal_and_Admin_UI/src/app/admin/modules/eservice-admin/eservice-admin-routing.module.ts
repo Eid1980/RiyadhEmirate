@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@shared/guards/auth.guard';
+import { ElectronicSummonActionComponent } from './components/electronic-summon/electronic-summon-action/electronic-summon-action.component';
+import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
+import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
 import { InboxShamelComponent } from './components/inbox-shamel/inbox-shamel.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { LandsInfringementActionComponent } from './components/lands-infringement/lands-infringement-action/lands-infringement-action.component';
@@ -39,6 +42,24 @@ const routes: Routes = [
   {
     path: 'prisoners-services-action/:id',
     component: PrisonersServicesActionComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region ElectronicSummon
+  {
+    path: 'electronic-summon-admin-preview-step/:id',
+    component: ElectronicSummonPreviewStepComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'electronic-summon-admin-view/:id',
+    component: ElectronicSummonViewComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'electronic-summon-action/:id',
+    component: ElectronicSummonActionComponent,
     canActivate: [AuthGuard],
   },
   //#endregion

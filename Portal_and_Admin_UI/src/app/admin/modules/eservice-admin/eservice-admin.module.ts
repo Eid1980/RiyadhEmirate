@@ -18,6 +18,9 @@ import { InboxShamelComponent } from './components/inbox-shamel/inbox-shamel.com
 import { LandsInfringementActionComponent } from './components/lands-infringement/lands-infringement-action/lands-infringement-action.component';
 import { LandsInfringementPreviewStepComponent } from './components/lands-infringement/lands-infringement-preview-step/lands-infringement-preview-step.component';
 import { LandsInfringementViewComponent } from './components/lands-infringement/lands-infringement-view/lands-infringement-view.component';
+import { ElectronicSummonActionComponent } from './components/electronic-summon/electronic-summon-action/electronic-summon-action.component';
+import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
+import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { LandsInfringementViewComponent } from './components/lands-infringement/
     LandsInfringementActionComponent,
     LandsInfringementPreviewStepComponent,
     LandsInfringementViewComponent,
+    ElectronicSummonActionComponent,
+    ElectronicSummonViewComponent,
+    ElectronicSummonPreviewStepComponent,
   ],
   imports: [
     StepsModule,

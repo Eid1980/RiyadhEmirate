@@ -1,0 +1,62 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/services-list']">قائمة الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">انشاء طلب جديد</span>
+  </nav>
+</div>
+
+<div class="p-5 row mx-0">
+  <div class="col-md-10 mx-auto">
+
+    <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+
+    <div class="mt-4">
+      <form [formGroup]="electronicSummonForm" (ngSubmit)="onSubmit()">
+        <div class="form-card">
+          <div class="form-header">
+            <h5>خدمة الاستدعاء الالكتروني</h5>
+          </div>
+          <div class="form-content">
+            <div class="row mx-0">
+              <div class="form-group col-md-6" *ngIf="requestTypes?.length > 0">
+                <label for="requestTypeId" class="form-lbl">نوع الطلب<span class="danger">*</span></label>
+                <select class="form-control form-select" formControlName="requestTypeId" [ngClass]="{
+                    invalid:
+                    (isFormSubmitted || electronicSummonForm.get('requestTypeId').touched) &&
+                    electronicSummonForm.get('requestTypeId').errors?.required}">
+                  <option [ngValue]="null">-- اختر نوع الطلب --</option>
+                  <option *ngFor="let requestType of requestTypes" [ngValue]="requestType.id">{{ requestType.name }}</option>
+                </select>
+                <small *ngIf="(isFormSubmitted || electronicSummonForm.get('requestTypeId').touched) && electronicSummonForm.get('requestTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="requestTitle" class="form-lbl">عنوان الطلب<span class="danger">*</span></label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="requestTitle" id="requestTitle" [ngClass]="{
+                    invalid:
+                    (isFormSubmitted || electronicSummonForm.get('requestTitle').touched) &&
+                    electronicSummonForm.get('requestTitle').errors?.required}" />
+                <small *ngIf="(isFormSubmitted || electronicSummonForm.get('requestTitle').touched) && electronicSummonForm.get('requestTitle').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="requestContent" class="form-lbl">محتوى الطلب<span class="danger">*</span></label>
+                <textarea type="text" class="form-control" autocomplete="off" formControlName="requestContent" id="requestContent" [ngClass]="{
+                    invalid:
+                    (isFormSubmitted || electronicSummonForm.get('requestContent').touched) &&
+                    electronicSummonForm.get('requestContent').errors?.required}">
+                </textarea>
+                <small *ngIf="(isFormSubmitted || electronicSummonForm.get('requestContent').touched) && electronicSummonForm.get('requestContent').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-save">التالي</button>
+          <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

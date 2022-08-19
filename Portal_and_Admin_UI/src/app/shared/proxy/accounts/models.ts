@@ -8,11 +8,6 @@ export interface GetUserDto {
   nameEn: string;
   shortNameEn: string;
 
-  employeeSide: string;
-  childrenCount: number;
-  maritalStatusName: string;
-  jobOccupation: string;
-
   nationalId: string;
   genderName: string;
   address: string;
@@ -25,7 +20,6 @@ export interface GetUserDto {
   passwordHash: [];
   passwordSalt: [];
   isAdmin: boolean;
-  isDataComplete: boolean;
   isActive: boolean;
   oTP: string;
   birthDate: string;
@@ -35,11 +29,6 @@ export interface GetUserDataDto {
   id: number;
   userName: string;
   name: string;
-  employeeSide: string;
-
-  childrenCount: number;
-  maritalStatusName: string;
-  jobOccupation: string;
 
   genderName: string;
   birthDate: string;

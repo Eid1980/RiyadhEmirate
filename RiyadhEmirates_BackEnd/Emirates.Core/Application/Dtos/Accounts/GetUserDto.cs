@@ -10,11 +10,6 @@ namespace Emirates.Core.Application.Dtos
         public string NameEn { get; set; }
         public string ShortNameEn { get; set; }
 
-        public string EmployeeSide { get; set; }
-        public int? ChildrenCount { get; set; }
-        public string MaritalStatusName { get; set; }
-        public string JobOccupation { get; set; }
-
         public string NationalId { get; set; }
         public string GenderName { get; set; }
         public string Address { get; set; }

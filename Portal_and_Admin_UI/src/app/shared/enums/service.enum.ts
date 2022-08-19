@@ -2,6 +2,6 @@ export enum Service {
   ElectronicBoard = 1,
   PrisonerTempRelease = 2,
   PrisonersServices = 3,
-  ElectronicSummoning = 4,
+  ElectronicSummon = 4,
   LandsInfringement = 5,
 }
