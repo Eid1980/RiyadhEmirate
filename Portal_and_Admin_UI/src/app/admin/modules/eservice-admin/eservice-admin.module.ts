@@ -15,6 +15,9 @@ import { PrisonersServicesPreviewStepComponent } from './components/prisoners-se
 import { PrisonersServicesViewComponent } from './components/prisoners-services/prisoners-services-view/prisoners-services-view.component';
 import { EServiceModule } from 'src/app/portal/modules/eservice/eservice.module';
 import { InboxShamelComponent } from './components/inbox-shamel/inbox-shamel.component';
+import { LandsInfringementActionComponent } from './components/lands-infringement/lands-infringement-action/lands-infringement-action.component';
+import { LandsInfringementPreviewStepComponent } from './components/lands-infringement/lands-infringement-preview-step/lands-infringement-preview-step.component';
+import { LandsInfringementViewComponent } from './components/lands-infringement/lands-infringement-view/lands-infringement-view.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { InboxShamelComponent } from './components/inbox-shamel/inbox-shamel.com
     PrisonersServicesPreviewStepComponent,
     PrisonersServicesViewComponent,
     InboxShamelComponent,
+    LandsInfringementActionComponent,
+    LandsInfringementPreviewStepComponent,
+    LandsInfringementViewComponent,
   ],
   imports: [
     StepsModule,

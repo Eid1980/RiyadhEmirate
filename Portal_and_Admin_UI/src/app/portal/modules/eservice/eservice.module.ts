@@ -57,6 +57,7 @@ import { LandsInfringementViewComponent } from './components/lands-infringement/
   exports: [
     PrisonerTempReleaseDetailsComponent,
     PrisonersServicesDetailsComponent,
+    LandsInfringementDetailsComponent,
   ],
 })
 export class EServiceModule {}

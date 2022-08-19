@@ -91,6 +91,32 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
             #endregion
 
+            #region RequestElectronicBoards
+            CreateMap<CreateRequestElectronicBoardDto, RequestElectronicBoard>();
+            CreateMap<UpdateRequestElectronicBoardDto, RequestElectronicBoard>();
+
+            CreateMap<Request, GetRequestElectronicBoardDetailsDto>()
+                .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
+                .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
+                .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
+                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestElectronicBoard.RequestType.NameAr));
+            CreateMap<RequestElectronicBoard, RequestElectronicBoardDto>();
+            #endregion
+
+            #region RequestElectronicSummons
+            CreateMap<CreateRequestElectronicSummonDto, RequestElectronicSummon>();
+            CreateMap<UpdateRequestElectronicSummonDto, RequestElectronicSummon>();
+
+            CreateMap<Request, GetRequestElectronicSummonDetailsDto>()
+                .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
+                .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
+                .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
+                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestElectronicSummon.RequestType.NameAr));
+            CreateMap<RequestElectronicSummon, RequestElectronicSummonDto>();
+            #endregion
+
             #region RequestPrisonersServices
             CreateMap<CreateRequestPrisonersServiceDto, RequestPrisonersService>();
             CreateMap<UpdateRequestPrisonersServiceDto, RequestPrisonersService>();
