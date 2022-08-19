@@ -11,6 +11,8 @@ namespace Emirates.Core.Domain.Interfaces
         IPosterRepository Posters { get; }
         IRequestRepository Requests { get; }
         IRequestAttachmentTypeRepository RequestAttachmentTypes { get; }
+        IRequestElectronicBoardRepository RequestElectronicBoards { get; }
+        IRequestElectronicSummonRepository RequestElectronicSummons { get; }
         IRequestPrisonersServiceRepository RequestPrisonersServices { get; }
         IRequestLandsInfringementRepository RequestLandsInfringements { get; }
         IRequestPrisonerTempReleaseRepository RequestPrisonerTempReleases { get; }

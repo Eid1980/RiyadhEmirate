@@ -55,7 +55,7 @@ export interface GetRequestLandsInfringementDetailsDto {
   requestTypeName: string;
   instrumentNumber: string;
   estimatedSpace: string;
-  governorateId: string;
+  governorateName: string;
   address: string;
   longitude: string;
   latitude: string;

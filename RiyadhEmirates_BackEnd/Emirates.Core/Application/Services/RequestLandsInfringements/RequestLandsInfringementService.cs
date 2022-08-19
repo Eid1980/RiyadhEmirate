@@ -6,11 +6,6 @@ using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Emirates.Core.Application.Services.RequestLandsInfringements
 {

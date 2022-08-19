@@ -63,9 +63,15 @@ export class LandsInfringementComponent implements OnInit {
   buildForm() {
     this.landsInfringementForm = this.formBuilder.group({
       requestTypeId: [this.createRequestLandsInfringementDto.requestTypeId || null, Validators.required],
-      notes: [this.createRequestLandsInfringementDto.notes || '', Validators.required],
-      //presonName: [this.createRequestLandsInfringementDto.presonName || '', Validators.required],
-      //caseTypeId: [this.createRequestLandsInfringementDto.caseTypeId || null, Validators.required]
+      governorateId: [this.createRequestLandsInfringementDto.governorateId || null, Validators.required],
+      instrumentNumber: [this.createRequestLandsInfringementDto.instrumentNumber || '', Validators.required],
+      estimatedSpace: [this.createRequestLandsInfringementDto.estimatedSpace || ''],
+      infringerDescription: [this.createRequestLandsInfringementDto.infringerDescription || '', Validators.required],
+      address: [this.createRequestLandsInfringementDto.address || '', Validators.required],
+      longitude: [this.createRequestLandsInfringementDto.longitude || '', Validators.required],
+      latitude: [this.createRequestLandsInfringementDto.latitude || '', Validators.required],
+      infringerName: [this.createRequestLandsInfringementDto.infringerName || ''],
+      notes: [this.createRequestLandsInfringementDto.notes || '', Validators.required]
     });
   }
   fillRequestType() {

@@ -41,6 +41,14 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public IRequestAttachmentTypeRepository RequestAttachmentTypes => requestAttachmentTypes ??=  new RequestAttachmentTypeRepository(Context);
 
 
+        private RequestElectronicBoardRepository requestElectronicBoards;
+        public IRequestElectronicBoardRepository RequestElectronicBoards => requestElectronicBoards ??=  new RequestElectronicBoardRepository(Context);
+
+
+        private RequestElectronicSummonRepository requestElectronicSummons;
+        public IRequestElectronicSummonRepository RequestElectronicSummons => requestElectronicSummons ??=  new RequestElectronicSummonRepository(Context);
+
+
         private RequestPrisonersServiceRepository requestPrisonersServices;
         public IRequestPrisonersServiceRepository RequestPrisonersServices => requestPrisonersServices ??= new RequestPrisonersServiceRepository(Context);
 

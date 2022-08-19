@@ -221,6 +221,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<RequestPrisonerTempRelease>(x => x.RequestPrisonerTempRelease).WithOne(x => x.Request).HasForeignKey<RequestPrisonerTempRelease>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestPrisonersService>(x => x.RequestPrisonersService).WithOne(x => x.Request).HasForeignKey<RequestPrisonersService>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestLandsInfringement>(x => x.RequestLandsInfringement).WithOne(x => x.Request).HasForeignKey<RequestLandsInfringement>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<RequestElectronicSummon>(x => x.RequestElectronicSummon).WithOne(x => x.Request).HasForeignKey<RequestLandsInfringement>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -255,6 +256,18 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region RequestElectronicSummon
+            modelBuilder.Entity<RequestElectronicSummon>(b =>
+            {
+                b.ToTable("RequestElectronicSummons", EmiratesDbSchemas.RequestSehema);
+                b.Property(x => x.RequestTypeId).IsRequired();
+                b.Property(x => x.RequestTitle).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.RequestContent).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+
+                b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestElectronicSummons).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
             #region RequestLandsInfringement
             modelBuilder.Entity<RequestLandsInfringement>(b =>
             {
@@ -270,7 +283,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.InfringerDescription).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
 
                 b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestLandsInfringements).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<Governorate>(x => x.Governorate).WithMany(x => x.RequestLandsInfringements).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Governorate>(x => x.Governorate).WithMany(x => x.RequestLandsInfringements).HasForeignKey(x => x.GovernorateId).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -481,6 +494,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<Request> Requests { get; set; }
         public DbSet<RequestAttachmentType> RequestAttachmentTypes { get; set; }
         public DbSet<RequestElectronicBoard> RequestElectronicBoards { get; set; }
+        public DbSet<RequestElectronicSummon> RequestElectronicSummons { get; set; }
         public DbSet<RequestLandsInfringement> RequestLandsInfringements { get; set; }
         public DbSet<RequestPrisonersService> RequestPrisonersServices { get; set; }
         public DbSet<RequestPrisonerTempRelease> RequestPrisonerTempReleases { get; set; }
