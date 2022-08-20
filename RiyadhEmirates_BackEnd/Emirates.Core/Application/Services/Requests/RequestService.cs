@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Dtos.Requests;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.DynamicSearch;
 using Emirates.Core.Application.Helpers;
@@ -171,6 +172,20 @@ namespace Emirates.Core.Application.Services.Requests
                 PagingMetaData = serchResult.GetMetaData()
             });
         }
+
+        public IApiResponse GetElectronicCouncilRequests(SearchModel searchModel)
+        {
+            searchModel.SearchFields.Add(new SearchField { FieldName = "StageId", Operator = "Equal", Value = ((int)SystemEnums.Stages.NewRequest).ToString() });
+            var serchResult = DynamicSearch(_emiratesUnitOfWork.Requests.Include(r => r.Stage).Include(r => r.RequestElectronicBoard).ProjectTo<GetElectronicConcilInboxDto>(_mapConfig), searchModel)
+                .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetElectronicConcilInboxDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
+        }
+
         public IApiResponse InboxShamel(SearchModel searchModel)
         {
             searchModel.SearchFields.Add(new SearchField { FieldName = "StageId", Operator = "Equal", Value = ((int)SystemEnums.Stages.UnderProcessing).ToString() });

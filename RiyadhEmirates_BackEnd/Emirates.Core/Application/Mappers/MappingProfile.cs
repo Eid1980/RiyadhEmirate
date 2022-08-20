@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Posters;
+using Emirates.Core.Application.Dtos.Requests;
 using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
 using Emirates.Core.Application.Models.InternalPortal.Response.FileManager;
 using Emirates.Core.Application.Models.Response.Nationality;
@@ -80,6 +81,16 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.Url, src => src.MapFrom(m => m.Service.ServiceStages.FirstOrDefault(x => x.StageId.Equals(m.StageId)).AdminUrl));
 
 
+            CreateMap<Request, GetElectronicConcilInboxDto>()
+                .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
+                .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
+                .ForMember(dest => dest.NationalId, src => src.MapFrom(m => m.CreatedUser.UserName))
+                .ForMember(dest => dest.Url, src => src.MapFrom(m => m.Service.ServiceStages.FirstOrDefault(x => x.StageId.Equals(m.StageId)).AdminUrl))
+                .ForMember(dest => dest.RequestTitle, src => src.MapFrom(o => o.RequestElectronicBoard.RequestTitle))
+                .ForMember(dest => dest.RequestContent, src => src.MapFrom(o => o.RequestElectronicBoard.RequestContent))
+                .ForMember(dest => dest.StageName, src => src.MapFrom(o => o.Stage.NameAr));
+
             #endregion
 
             #region RequestStageLog
@@ -99,10 +110,12 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
                 .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestElectronicBoard.RequestType.NameAr))
-                .ForMember(dest => dest.RequestTitle, src => src.MapFrom(m => m.RequestElectronicSummon.RequestTitle))
-                .ForMember(dest => dest.RequestContent, src => src.MapFrom(m => m.RequestElectronicSummon.RequestContent));
+                .ForMember(dest => dest.RequestTitle, src => src.MapFrom(m => m.RequestElectronicBoard.RequestTitle))
+                .ForMember(dest => dest.RequestContent, src => src.MapFrom(m => m.RequestElectronicBoard.RequestContent));
             CreateMap<RequestElectronicBoard, RequestElectronicBoardDto>();
             #endregion
+
+
 
             #region RequestElectronicSummons
             CreateMap<CreateRequestElectronicSummonDto, RequestElectronicSummon>();

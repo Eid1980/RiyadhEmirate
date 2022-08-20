@@ -62,6 +62,8 @@ namespace Emirates.API.Controllers
         {
             return _requestTypeService.GetLookupList();
         }
+
+        [AllowAnonymous]
         [HttpGet("GetLookupListByServiceId/{serviceId}")]
         public IApiResponse GetLookupListByServiceId(int serviceId)
         {
