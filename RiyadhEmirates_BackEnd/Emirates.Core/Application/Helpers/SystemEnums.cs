@@ -15,7 +15,11 @@ namespace Emirates.Core.Application.Helpers
             PrisonerTempRelease = 2,
             PrisonersServices = 3,
             ElectronicSummon = 4,
-            LandsInfringement = 5
+            LandsInfringement = 5,
+            JudgmentExecution = 6,
+            MarriageCertificate = 7,
+            ForeignersRealtyOwner = 8,
+            TreatmentRecommendation = 9
         }
         public enum Stages
         {

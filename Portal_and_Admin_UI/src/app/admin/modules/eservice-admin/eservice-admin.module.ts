@@ -24,6 +24,18 @@ import { ElectronicSummonPreviewStepComponent } from './components/electronic-su
 import { ElectronicCouncilActionComponent } from './components/electronic-council/electronic-council-action/electronic-council-action.component';
 import { ElectronicCouncilViewComponent } from './components/electronic-council/electronic-council-view/electronic-council-view.component';
 import { ElectronicCouncilStepViewComponent } from './components/electronic-council/electronic-council-step-view/electronic-council-step-view.component';
+import { MarriageCertificateActionComponent } from './components/marriage-certificate/marriage-certificate-action/marriage-certificate-action.component';
+import { MarriageCertificatePreviewStepComponent } from './components/marriage-certificate/marriage-certificate-preview-step/marriage-certificate-preview-step.component';
+import { MarriageCertificateViewComponent } from './components/marriage-certificate/marriage-certificate-view/marriage-certificate-view.component';
+import { JudgmentExecutionActionComponent } from './components/judgment-execution/judgment-execution-action/judgment-execution-action.component';
+import { JudgmentExecutionViewComponent } from './components/judgment-execution/judgment-execution-view/judgment-execution-view.component';
+import { JudgmentExecutionPreviewStepComponent } from './components/judgment-execution/judgment-execution-preview-step/judgment-execution-preview-step.component';
+import { ForeignersRealtyOwnerViewComponent } from './components/foreigners-realty-owner/foreigners-realty-owner-view/foreigners-realty-owner-view.component';
+import { ForeignersRealtyOwnerPreviewStepComponent } from './components/foreigners-realty-owner/foreigners-realty-owner-preview-step/foreigners-realty-owner-preview-step.component';
+import { ForeignersRealtyOwnerActionComponent } from './components/foreigners-realty-owner/foreigners-realty-owner-action/foreigners-realty-owner-action.component';
+import { TreatmentRecommendationViewComponent } from './components/treatment-recommendation/treatment-recommendation-view/treatment-recommendation-view.component';
+import { TreatmentRecommendationPreviewStepComponent } from './components/treatment-recommendation/treatment-recommendation-preview-step/treatment-recommendation-preview-step.component';
+import { TreatmentRecommendationActionComponent } from './components/treatment-recommendation/treatment-recommendation-action/treatment-recommendation-action.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +58,18 @@ import { ElectronicCouncilStepViewComponent } from './components/electronic-coun
     ElectronicCouncilActionComponent,
     ElectronicCouncilViewComponent,
     ElectronicCouncilStepViewComponent
+    MarriageCertificateActionComponent,
+    MarriageCertificatePreviewStepComponent,
+    MarriageCertificateViewComponent,
+    JudgmentExecutionActionComponent,
+    JudgmentExecutionViewComponent,
+    JudgmentExecutionPreviewStepComponent,
+    ForeignersRealtyOwnerViewComponent,
+    ForeignersRealtyOwnerPreviewStepComponent,
+    ForeignersRealtyOwnerActionComponent,
+    TreatmentRecommendationViewComponent,
+    TreatmentRecommendationPreviewStepComponent,
+    TreatmentRecommendationActionComponent,
   ],
   imports: [
     StepsModule,

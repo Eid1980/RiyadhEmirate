@@ -25,4 +25,16 @@ export class LookupService {
     return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetNationalityLookupList`).pipe(
     );
   }
+  getDefendantTypeLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
+    return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetDefendantTypeLookupList`).pipe(
+    );
+  }
+  getBuildingTypeLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
+    return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetBuildingTypeLookupList`).pipe(
+    );
+  }
+  getReligionLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
+    return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetReligionLookupList`).pipe(
+    );
+  }
 }

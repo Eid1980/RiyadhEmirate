@@ -30,7 +30,7 @@ export interface GetRequestPrisonersServiceDetailsDto {
   requestNumber: string;
   serviceName: string;
   requestDate: string;
-  requestStatusName: string;
+  stageName: string;
   canEdit: boolean;
   notes: string;
   concurrencyStamp: string;

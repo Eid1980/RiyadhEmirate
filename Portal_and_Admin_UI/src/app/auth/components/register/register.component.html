@@ -175,25 +175,6 @@
             <label for="email" class="label">البريد الالكتروني</label>
           </div>
           <div class="form-group mb-lg-5">
-            <input type="text" class="form-control" formControlName="employeeSide" id="employeeSide" />
-            <label for="employeeSide" class="label">جهة العمل</label>
-          </div>
-          <div class="form-group mb-lg-5">
-            <input type="text" class="form-control" formControlName="childrenCount" id="childrenCount" />
-            <label for="childrenCount" class="label">عدد الأبناء</label>
-          </div>
-          <div class="form-group mb-lg-5">
-            <select class="form-control form-select" formControlName="maritalStatusId" id="maritalStatusId">
-              <option [ngValue]="null">-- اختر الحالة الاجتماعية --</option>
-              <option *ngFor="let maritalStatus of maritalStatuses" [ngValue]="maritalStatus.id">{{ maritalStatus.name }}</option>
-            </select>
-            <label for="maritalStatusId" class="form-lbl">الحالة الاجتماعية</label>
-          </div>
-          <div class="form-group mb-lg-5">
-            <input type="text" class="form-control" formControlName="jobOccupation" id="jobOccupation" />
-            <label for="jobOccupation" class="label">المهنة</label>
-          </div>
-          <div class="form-group mb-lg-5">
             <input type="text" class="form-control" formControlName="passportId" id="passportId" />
             <label for="passportId" class="label">رقم جواز السفر</label>
           </div>

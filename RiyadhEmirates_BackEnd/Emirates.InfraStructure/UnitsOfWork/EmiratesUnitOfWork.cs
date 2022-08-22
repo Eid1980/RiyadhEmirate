@@ -33,6 +33,7 @@ namespace Emirates.InfraStructure.UnitsOfWork
         private PosterRepository posters;
         public IPosterRepository Posters => posters ??= new PosterRepository(Context);
 
+
         private RequestRepositroy requests;
         public IRequestRepository Requests => requests ??= new RequestRepositroy(Context);
 
@@ -47,15 +48,27 @@ namespace Emirates.InfraStructure.UnitsOfWork
 
         private RequestElectronicSummonRepository requestElectronicSummons;
         public IRequestElectronicSummonRepository RequestElectronicSummons => requestElectronicSummons ??=  new RequestElectronicSummonRepository(Context);
+        
+
+        private RequestForeignersRealtyOwnerRepository requestForeignersRealtyOwners;
+        public IRequestForeignersRealtyOwnerRepository RequestForeignersRealtyOwners => requestForeignersRealtyOwners ??=  new RequestForeignersRealtyOwnerRepository(Context);
+
+
+        private RequestJudgmentExecutionRepository requestJudgmentExecutions;
+        public IRequestJudgmentExecutionRepository RequestJudgmentExecutions => requestJudgmentExecutions ??= new RequestJudgmentExecutionRepository(Context);
+
+
+        private RequestLandsInfringementRepository requestLandsInfringements;
+        public IRequestLandsInfringementRepository RequestLandsInfringements => requestLandsInfringements ??= new RequestLandsInfringementRepository(Context);
+
+
+        private RequestMarriageCertificateRepository requestMarriageCertificates;
+        public IRequestMarriageCertificateRepository RequestMarriageCertificates => requestMarriageCertificates ??= new RequestMarriageCertificateRepository(Context);
 
 
         private RequestPrisonersServiceRepository requestPrisonersServices;
         public IRequestPrisonersServiceRepository RequestPrisonersServices => requestPrisonersServices ??= new RequestPrisonersServiceRepository(Context);
 
-
-        private RequestLandsInfringementRepository requestLandsInfringements;
-        public IRequestLandsInfringementRepository RequestLandsInfringements => requestLandsInfringements ??= new RequestLandsInfringementRepository(Context);
-        
 
         private RequestPrisonerTempReleaseRepository requestPrisonerTempReleases;
         public IRequestPrisonerTempReleaseRepository RequestPrisonerTempReleases => requestPrisonerTempReleases ??= new RequestPrisonerTempReleaseRepository(Context);
@@ -63,6 +76,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
 
         private IRequestStageLogRepository requestStageLogs;
         public IRequestStageLogRepository RequestStageLogs => requestStageLogs ??= new RequestStageLogRepository(Context);
+
+
+        private RequestTreatmentRecommendationRepository requestTreatmentRecommendations;
+        public IRequestTreatmentRecommendationRepository RequestTreatmentRecommendations => requestTreatmentRecommendations ??= new RequestTreatmentRecommendationRepository(Context);
 
 
         private RequestTypeRepository requestTypes;

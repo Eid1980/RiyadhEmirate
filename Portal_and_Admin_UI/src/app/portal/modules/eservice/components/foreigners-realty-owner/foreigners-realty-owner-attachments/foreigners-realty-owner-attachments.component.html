@@ -1,0 +1,13 @@
+<div class="p-5">
+
+  <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+
+  <app-request-attacment allowedExtensions="image/*"></app-request-attacment>
+
+  <div class="form-actions">
+    <button type="button" class="btn btn-save" (click)="onSubmit()">التالي</button>
+    <a [routerLink]="['/eservice/foreigners-realty-owner/', requestId]" class="btn btn-cancel">السابق</a>
+    <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+  </div>
+
+</div>

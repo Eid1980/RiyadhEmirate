@@ -39,5 +39,32 @@ namespace Emirates.Core.Application.Services.Lookups
                 Name = item.NameAr
             }).ToList());
         }
+        public IApiResponse GetDefendantTypeLookupList()
+        {
+            return GetResponse(data: _emiratesUnitOfWork.Lookups.GetDefendantTypes().Where(l => l.IsActive).Select(item =>
+            new LookupDto<int>
+            {
+                Id = item.Id,
+                Name = item.NameAr
+            }).ToList());
+        }
+        public IApiResponse GetBuildingTypeLookupList()
+        {
+            return GetResponse(data: _emiratesUnitOfWork.Lookups.GetBuildingTypes().Where(l => l.IsActive).Select(item =>
+            new LookupDto<int>
+            {
+                Id = item.Id,
+                Name = item.NameAr
+            }).ToList());
+        }
+        public IApiResponse GetReligionLookupList()
+        {
+            return GetResponse(data: _emiratesUnitOfWork.Lookups.GetReligions().Where(l => l.IsActive).Select(item =>
+            new LookupDto<int>
+            {
+                Id = item.Id,
+                Name = item.NameAr
+            }).ToList());
+        }
     }
 }

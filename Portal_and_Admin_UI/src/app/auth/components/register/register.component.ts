@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  CheckUserRegisterDto,
-  CreateUserDto,
-} from '@shared/proxy/accounts/register.model';
+import { CheckUserRegisterDto, CreateUserDto} from '@shared/proxy/accounts/register.model';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { GlobalService } from '@shared/services/global.service';
 import { AccountService } from '@shared/proxy/accounts/account.service';
@@ -26,7 +23,6 @@ export class RegisterComponent implements OnInit {
 
   checkUserRegisterDto = {} as CheckUserRegisterDto;
   createUserDto = {} as CreateUserDto;
-  maritalStatuses = [] as LookupDto<number>[];
   governorates = [] as LookupDto<number>[];
   nationalities = [] as LookupDto<number>[];
 
@@ -108,11 +104,6 @@ export class RegisterComponent implements OnInit {
       phoneNumber: [this.createUserDto.phoneNumber || '', Validators.required],
       email: [this.createUserDto.email || '', Validators.required],
 
-      employeeSide: [this.createUserDto.employeeSide || ''],
-      childrenCount: [this.createUserDto.childrenCount || ''],
-      maritalStatusId: [this.createUserDto.maritalStatusId || null],
-      jobOccupation: [this.createUserDto.jobOccupation || ''],
-
       passportId: [this.createUserDto.passportId || ''],
       isMale: [this.createUserDto.isMale || null, Validators.required],
 
@@ -168,9 +159,6 @@ export class RegisterComponent implements OnInit {
     }
   }
   fillLookup() {
-    this.lookupService.getMaritalStatusLookupList().subscribe((response) => {
-      this.maritalStatuses = response.data;
-    });
     this.lookupService.getGovernorateLookupList().subscribe((response) => {
       this.governorates = response.data;
     });

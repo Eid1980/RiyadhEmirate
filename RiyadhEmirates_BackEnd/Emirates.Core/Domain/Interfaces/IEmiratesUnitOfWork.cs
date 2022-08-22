@@ -13,10 +13,14 @@ namespace Emirates.Core.Domain.Interfaces
         IRequestAttachmentTypeRepository RequestAttachmentTypes { get; }
         IRequestElectronicBoardRepository RequestElectronicBoards { get; }
         IRequestElectronicSummonRepository RequestElectronicSummons { get; }
-        IRequestPrisonersServiceRepository RequestPrisonersServices { get; }
+        IRequestForeignersRealtyOwnerRepository RequestForeignersRealtyOwners { get; }
+        IRequestJudgmentExecutionRepository RequestJudgmentExecutions { get; }
         IRequestLandsInfringementRepository RequestLandsInfringements { get; }
+        IRequestMarriageCertificateRepository RequestMarriageCertificates { get; }
+        IRequestPrisonersServiceRepository RequestPrisonersServices { get; }
         IRequestPrisonerTempReleaseRepository RequestPrisonerTempReleases { get; }
         IRequestStageLogRepository RequestStageLogs { get; }
+        IRequestTreatmentRecommendationRepository RequestTreatmentRecommendations { get; }
         IRequestTypeRepository RequestTypes { get; }
         IServiceRepository Services { get; }
         IServiceRateRepository ServiceRates { get; }

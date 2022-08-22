@@ -1,0 +1,80 @@
+<div class="p-5">
+
+  <div class="form-card">
+    <div class="form-header">
+      <h5>بيانات مقدم الطلب</h5>
+    </div>
+    <div class="form-content">
+      <app-user-data-view></app-user-data-view>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-header">
+      <h5>بيانات الطلب</h5>
+    </div>
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">رقم الطلب</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.requestNumber }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">اسم الخدمة</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.serviceName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">تاريخ الطلب</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.requestDate }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">حالة الطلب</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.stageName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">نوع الطلب</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.requestTypeName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">جهة العمل</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.employeeSide }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">المهنة</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.jobOccupation }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">الحالة الاجتماعية</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.maritalStatusName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">عدد الأبناء</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.childrenCount }}</span>
+        </div>
+        <div class="info-col col-md-12 col-12">
+          <span class="form-lbl lbl-33">ملاحظات</span>
+          <span class="form-val">{{ requestMarriageCertificateDetailsDto?.notes }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-header">
+      <h5>المرفقات</h5>
+    </div>
+    <div class="form-content">
+      <app-request-attacment-preview [requestId]="requestId"></app-request-attacment-preview>
+    </div>
+  </div>
+
+  <div class="form-card" *ngIf="showStatusLog">
+    <div class="form-header">
+      <h5>مراحل الطلب</h5>
+    </div>
+    <div class="form-content">
+      <app-request-stage-log [requestId]="requestId"></app-request-stage-log>
+    </div>
+  </div>
+
+</div>

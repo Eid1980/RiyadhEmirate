@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Response;
 
 namespace Emirates.Core.Application.Services.RequestJudgmentExecutions
 {
     public interface IRequestJudgmentExecutionService
     {
+        IApiResponse GetById(Guid id);
+        IApiResponse GetDetailsById(Guid id);
+        IApiResponse Create(CreateRequestJudgmentExecutionDto createModel);
+        IApiResponse Update(UpdateRequestJudgmentExecutionDto updateModel);
     }
 }

@@ -2,8 +2,6 @@
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.RequestPrisonerTempReleases;
 using Emirates.Core.Application.Services.Shared;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emirates.API.Controllers

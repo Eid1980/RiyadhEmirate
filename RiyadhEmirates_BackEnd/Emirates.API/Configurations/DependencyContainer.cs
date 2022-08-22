@@ -10,10 +10,14 @@ using Emirates.Core.Application.Services.Posters;
 using Emirates.Core.Application.Services.RequestAttachmentTypes;
 using Emirates.Core.Application.Services.RequestElectronicBoards;
 using Emirates.Core.Application.Services.RequestElectronicSummons;
+using Emirates.Core.Application.Services.RequestForeignersRealtyOwners;
+using Emirates.Core.Application.Services.RequestJudgmentExecutions;
 using Emirates.Core.Application.Services.RequestLandsInfringements;
+using Emirates.Core.Application.Services.RequestMarriageCertificates;
 using Emirates.Core.Application.Services.RequestPrisonersServices;
 using Emirates.Core.Application.Services.RequestPrisonerTempReleases;
 using Emirates.Core.Application.Services.Requests;
+using Emirates.Core.Application.Services.RequestTreatmentRecommendations;
 using Emirates.Core.Application.Services.RequestTypes;
 using Emirates.Core.Application.Services.ServiceRates;
 using Emirates.Core.Application.Services.ServiceStages;
@@ -50,10 +54,14 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IRequestAttachmentTypeService, RequestAttachmentTypeService>();
             builder.Services.AddScoped<IRequestElectronicBoardService, RequestElectronicBoardService>();
             builder.Services.AddScoped<IRequestElectronicSummonService, RequestElectronicSummonService>();
+            builder.Services.AddScoped<IRequestJudgmentExecutionService, RequestJudgmentExecutionService>();
+            builder.Services.AddScoped<IRequestLandsInfringementService, RequestLandsInfringementService>();
+            builder.Services.AddScoped<IRequestMarriageCertificateService, RequestMarriageCertificateService>();
             builder.Services.AddScoped<IRequestTypeService, RequestTypeService>();
             builder.Services.AddScoped<IRequestPrisonersServiceService, RequestPrisonersServiceService>();
             builder.Services.AddScoped<IRequestPrisonerTempReleaseService, RequestPrisonerTempReleaseService>();
-            builder.Services.AddScoped<IRequestLandsInfringementService, RequestLandsInfringementService>();
+            builder.Services.AddScoped<IRequestForeignersRealtyOwnerService, RequestForeignersRealtyOwnerService>();
+            builder.Services.AddScoped<IRequestTreatmentRecommendationService, RequestTreatmentRecommendationService>();
         }
     }
 }
