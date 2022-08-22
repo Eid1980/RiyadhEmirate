@@ -29,5 +29,17 @@ namespace Emirates.InfraStructure.Repositories
         {
             return _context.Nationalities.AsQueryable();
         }
+        public IQueryable<DefendantType> GetDefendantTypes()
+        {
+            return _context.DefendantTypes.AsQueryable();
+        }
+        public IQueryable<BuildingType> GetBuildingTypes()
+        {
+            return _context.BuildingTypes.AsQueryable();
+        }
+        public IQueryable<Religion> GetReligions()
+        {
+            return _context.Religions.AsQueryable();
+        }
     }
 }

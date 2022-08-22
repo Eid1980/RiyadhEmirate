@@ -1,6 +1,7 @@
 ﻿using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Lookups;
 using Emirates.Core.Application.Services.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emirates.API.Controllers
@@ -21,15 +22,30 @@ namespace Emirates.API.Controllers
         {
             return _lookupService.GetMaritalStatusLookupList();
         }
-        [HttpGet("GetGovernorateLookupList")]
+        [AllowAnonymous, HttpGet("GetGovernorateLookupList")]
         public IApiResponse GetGovernorateLookupList()
         {
             return _lookupService.GetGovernorateLookupList();
         }
-        [HttpGet("GetNationalityLookupList")]
+        [AllowAnonymous, HttpGet("GetNationalityLookupList")]
         public IApiResponse GetNationalityLookupList()
         {
             return _lookupService.GetNationalityLookupList();
+        }
+        [HttpGet("GetDefendantTypeLookupList")]
+        public IApiResponse GetDefendantTypeLookupList()
+        {
+            return _lookupService.GetDefendantTypeLookupList();
+        }
+        [HttpGet("GetBuildingTypeLookupList")]
+        public IApiResponse GetBuildingTypeLookupList()
+        {
+            return _lookupService.GetBuildingTypeLookupList();
+        }
+        [HttpGet("GetReligionLookupList")]
+        public IApiResponse GetReligionLookupList()
+        {
+            return _lookupService.GetReligionLookupList();
         }
     }
 }

@@ -57,8 +57,7 @@ namespace Emirates.API.Controllers
         /// Get all news
         /// </summary>
         /// <returns></returns>
-        [AllowAnonymous]
-        [HttpGet("GetAll")]
+        [AllowAnonymous, HttpGet("GetAll")]
         public IApiResponse GetAll()
         {
             return _newsService.GetAll();

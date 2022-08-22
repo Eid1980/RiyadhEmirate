@@ -7,13 +7,10 @@
     "\\src\\app\\portal\\modules",
     "\\src\\app\\portal\\modules\\eservice",
     "\\src\\app\\portal\\modules\\eservice\\components",
-    "\\src\\app\\portal\\modules\\eservice\\components\\prisoner-temp-release",
-    "\\src\\app\\portal\\modules\\eservice\\components\\prisoner-temp-release\\prisoner-temp-release",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\enums",
-    "\\src\\app\\shared\\proxy",
-    "\\src\\app\\shared\\proxy\\request-electronic-summon"
+    "\\src\\app\\portal\\modules\\eservice\\components\\treatment-recommendation",
+    "\\src\\app\\portal\\modules\\eservice\\components\\treatment-recommendation\\treatment-recommendation-details",
+    "\\src\\app\\portal\\modules\\eservice\\components\\treatment-recommendation\\treatment-recommendation-preview-step"
   ],
-  "SelectedNode": "\\src\\app\\portal\\modules\\eservice\\components\\electronic-summon\\electronic-summon\\electronic-summon.component.ts",
+  "SelectedNode": "\\src\\app\\portal\\modules\\eservice\\components\\treatment-recommendation\\treatment-recommendation-details\\treatment-recommendation-details.component.ts",
   "PreviewInSolutionExplorer": false
 }

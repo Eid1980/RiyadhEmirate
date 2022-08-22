@@ -81,6 +81,22 @@ namespace Emirates.InfraStructure.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region BuildingType
+            modelBuilder.Entity<BuildingType>(b =>
+            {
+                b.ToTable("BuildingTypes", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedBuildingTypes).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedBuildingTypes).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.BuildingTypes());
+            });
+            #endregion
+
             #region CaseType
             modelBuilder.Entity<CaseType>(b =>
             {
@@ -92,6 +108,8 @@ namespace Emirates.InfraStructure.Contexts
 
                 b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedCaseTypes).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedCaseTypes).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.CaseTypes());
             });
             #endregion
 
@@ -213,6 +231,22 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region Religion
+            modelBuilder.Entity<Religion>(b =>
+            {
+                b.ToTable("Religions", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedReligions).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedReligions).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.Religions());
+            });
+            #endregion
+
             #region Request
             modelBuilder.HasSequence<long>("RequestNumberSequence", EmiratesDbSchemas.RequestSehema).StartsAt(100000).IncrementsBy(1);
             modelBuilder.Entity<RequestNumberSequence>().HasNoKey().ToSqlQuery($"SELECT NEXT VALUE FOR {EmiratesDbSchemas.RequestSehema}.RequestNumberSequence AS [Value]");
@@ -240,6 +274,8 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<RequestElectronicSummon>(x => x.RequestElectronicSummon).WithOne(x => x.Request).HasForeignKey<RequestElectronicSummon>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestMarriageCertificate>(x => x.RequestMarriageCertificate).WithOne(x => x.Request).HasForeignKey<RequestMarriageCertificate>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<RequestJudgmentExecution>(x => x.RequestJudgmentExecution).WithOne(x => x.Request).HasForeignKey<RequestJudgmentExecution>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<RequestForeignersRealtyOwner>(x => x.RequestForeignersRealtyOwner).WithOne(x => x.Request).HasForeignKey<RequestForeignersRealtyOwner>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<RequestTreatmentRecommendation>(x => x.RequestTreatmentRecommendation).WithOne(x => x.Request).HasForeignKey<RequestTreatmentRecommendation>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -283,6 +319,22 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.RequestContent).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
 
                 b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestElectronicSummons).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region RequestForeignersRealtyOwner
+            modelBuilder.Entity<RequestForeignersRealtyOwner>(b =>
+            {
+                b.ToTable("RequestForeignersRealtyOwners", EmiratesDbSchemas.RequestSehema);
+                b.Property(x => x.BuildingTypeId).IsRequired();
+                b.Property(x => x.GovernorateId).IsRequired();
+                b.Property(x => x.District).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.ReligionId).IsRequired();
+                b.Property(x => x.Address).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+
+                b.HasOne<BuildingType>(x => x.BuildingType).WithMany(x => x.RequestForeignersRealtyOwners).HasForeignKey(x => x.BuildingTypeId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Governorate>(x => x.Governorate).WithMany(x => x.RequestForeignersRealtyOwners).HasForeignKey(x => x.GovernorateId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Religion>(x => x.Religion).WithMany(x => x.RequestForeignersRealtyOwners).HasForeignKey(x => x.ReligionId).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -361,23 +413,6 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
-            #region Stage
-            modelBuilder.Entity<Stage>(b =>
-            {
-                b.ToTable("Stages", EmiratesDbSchemas.LookupSehema);
-                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
-                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
-                b.Property(x => x.CanEdit).IsRequired();
-                b.Property(x => x.IsActive).IsRequired();
-                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
-
-                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedStages).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedStages).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
-
-                b.HasData(DefaultData.Stages());
-            });
-            #endregion
-
             #region RequestStageLog
             modelBuilder.Entity<RequestStageLog>(b =>
             {
@@ -391,6 +426,19 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<Stage>(x => x.Stage).WithMany(x => x.RequestStageLogs).HasForeignKey(x => x.StageId).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedRequestStageLogs).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedRequestStageLogs).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region RequestTreatmentRecommendation
+            modelBuilder.Entity<RequestTreatmentRecommendation>(b =>
+            {
+                b.ToTable("RequestTreatmentRecommendations", EmiratesDbSchemas.RequestSehema);
+                b.Property(x => x.RequestTypeId).IsRequired();
+                b.Property(x => x.PatientType).IsRequired();
+                b.Property(x => x.PatientName).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.PatientNationalId).HasMaxLength(EmiratesConstants.MaxShortLength);
+
+                b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestTreatmentRecommendations).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -478,6 +526,23 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region Stage
+            modelBuilder.Entity<Stage>(b =>
+            {
+                b.ToTable("Stages", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.CanEdit).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedStages).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedStages).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.Stages());
+            });
+            #endregion
+
             #region UploadedFile
             modelBuilder.Entity<UploadedFile>(b =>
             {
@@ -528,6 +593,7 @@ namespace Emirates.InfraStructure.Contexts
             #endregion
         }
 
+        public DbSet<BuildingType> BuildingTypes { get; set; }
         public DbSet<CaseType> CaseTypes { get; set; }
         public DbSet<DefendantType> DefendantTypes { get; set; }
         public DbSet<Governorate> Governorates { get; set; }
@@ -536,6 +602,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<News> News { get; set; }
         public DbSet<NewsType> NewTypes { get; set; }
         public DbSet<Poster> Posters { get; set; }
+        public DbSet<Religion> Religions { get; set; }
 
         public DbSet<Request> Requests { get; set; }
         public DbSet<RequestAttachmentType> RequestAttachmentTypes { get; set; }
@@ -546,8 +613,8 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<RequestMarriageCertificate> RequestMarriageCertificates { get; set; }
         public DbSet<RequestPrisonersService> RequestPrisonersServices { get; set; }
         public DbSet<RequestPrisonerTempRelease> RequestPrisonerTempReleases { get; set; }
-        public DbSet<Stage> Stages { get; set; }
         public DbSet<RequestStageLog> RequestStageLogs { get; set; }
+        public DbSet<RequestTreatmentRecommendation> RequestTreatmentRecommendations { get; set; }
         public DbSet<RequestType> RequestType { get; set; }
 
         public DbSet<Role> Roles { get; set; }
@@ -555,6 +622,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<Service> Services { get; set; }
         public DbSet<ServiceRate> ServiceRates { get; set; }
         public DbSet<ServiceStage> ServiceStages { get; set; }
+        public DbSet<Stage> Stages { get; set; }
         public DbSet<UploadedFile> UploadedFiles { get; set; }
         public DbSet<User> User { get; set; }
 

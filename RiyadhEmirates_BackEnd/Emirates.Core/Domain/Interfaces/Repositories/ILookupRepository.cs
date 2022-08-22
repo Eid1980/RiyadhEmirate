@@ -8,5 +8,8 @@ namespace Emirates.Core.Domain.Interfaces.Repositories
         IQueryable<MaritalStatus> GetMaritalStatus();
         IQueryable<Governorate> GetGovernorates();
         IQueryable<Nationality> GetNationalities();
+        IQueryable<DefendantType> GetDefendantTypes();
+        IQueryable<BuildingType> GetBuildingTypes();
+        IQueryable<Religion> GetReligions();
     }
 }

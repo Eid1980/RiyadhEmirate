@@ -21,6 +21,22 @@ import { ElectronicSummonComponent } from './components/electronic-summon/electr
 import { ElectronicSummonAttachmentsComponent } from './components/electronic-summon/electronic-summon-attachments/electronic-summon-attachments.component';
 import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
 import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
+import { MarriageCertificateComponent } from './components/marriage-certificate/marriage-certificate/marriage-certificate.component';
+import { MarriageCertificateAttachmentsComponent } from './components/marriage-certificate/marriage-certificate-attachments/marriage-certificate-attachments.component';
+import { MarriageCertificatePreviewStepComponent } from './components/marriage-certificate/marriage-certificate-preview-step/marriage-certificate-preview-step.component';
+import { MarriageCertificateViewComponent } from './components/marriage-certificate/marriage-certificate-view/marriage-certificate-view.component';
+import { JudgmentExecutionComponent } from './components/judgment-execution/judgment-execution/judgment-execution.component';
+import { JudgmentExecutionAttachmentsComponent } from './components/judgment-execution/judgment-execution-attachments/judgment-execution-attachments.component';
+import { JudgmentExecutionPreviewStepComponent } from './components/judgment-execution/judgment-execution-preview-step/judgment-execution-preview-step.component';
+import { JudgmentExecutionViewComponent } from './components/judgment-execution/judgment-execution-view/judgment-execution-view.component';
+import { ForeignersRealtyOwnerComponent } from './components/foreigners-realty-owner/foreigners-realty-owner/foreigners-realty-owner.component';
+import { ForeignersRealtyOwnerAttachmentsComponent } from './components/foreigners-realty-owner/foreigners-realty-owner-attachments/foreigners-realty-owner-attachments.component';
+import { ForeignersRealtyOwnerPreviewStepComponent } from './components/foreigners-realty-owner/foreigners-realty-owner-preview-step/foreigners-realty-owner-preview-step.component';
+import { ForeignersRealtyOwnerViewComponent } from './components/foreigners-realty-owner/foreigners-realty-owner-view/foreigners-realty-owner-view.component';
+import { TreatmentRecommendationComponent } from './components/treatment-recommendation/treatment-recommendation/treatment-recommendation.component';
+import { TreatmentRecommendationAttachmentsComponent } from './components/treatment-recommendation/treatment-recommendation-attachments/treatment-recommendation-attachments.component';
+import { TreatmentRecommendationPreviewStepComponent } from './components/treatment-recommendation/treatment-recommendation-preview-step/treatment-recommendation-preview-step.component';
+import { TreatmentRecommendationViewComponent } from './components/treatment-recommendation/treatment-recommendation-view/treatment-recommendation-view.component';
 
 const routes: Routes = [
   { path: 'services-list', component: ServicesListComponent },
@@ -144,6 +160,118 @@ const routes: Routes = [
   {
     path: 'lands-infringement-view/:id',
     component: LandsInfringementViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region MarriageCertificate
+  {
+    path: 'marriage-certificate',
+    component: MarriageCertificateComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'marriage-certificate/:id',
+    component: MarriageCertificateComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'marriage-certificate-attachments/:id',
+    component: MarriageCertificateAttachmentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'marriage-certificate-preview-step/:id',
+    component: MarriageCertificatePreviewStepComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'marriage-certificate-view/:id',
+    component: MarriageCertificateViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region JudgmentExecution
+  {
+    path: 'judgment-execution',
+    component: JudgmentExecutionComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'judgment-execution/:id',
+    component: JudgmentExecutionComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'judgment-execution-attachments/:id',
+    component: JudgmentExecutionAttachmentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'judgment-execution-preview-step/:id',
+    component: JudgmentExecutionPreviewStepComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'judgment-execution-view/:id',
+    component: JudgmentExecutionViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region ForeignersRealtyOwner
+  {
+    path: 'foreigners-realty-owner',
+    component: ForeignersRealtyOwnerComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'foreigners-realty-owner/:id',
+    component: ForeignersRealtyOwnerComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'foreigners-realty-owner-attachments/:id',
+    component: ForeignersRealtyOwnerAttachmentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'foreigners-realty-owner-preview-step/:id',
+    component: ForeignersRealtyOwnerPreviewStepComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'foreigners-realty-owner-view/:id',
+    component: ForeignersRealtyOwnerViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region TreatmentRecommendation
+  {
+    path: 'treatment-recommendation',
+    component: TreatmentRecommendationComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'treatment-recommendation/:id',
+    component: TreatmentRecommendationComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'treatment-recommendation-attachments/:id',
+    component: TreatmentRecommendationAttachmentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'treatment-recommendation-preview-step/:id',
+    component: TreatmentRecommendationPreviewStepComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'treatment-recommendation-view/:id',
+    component: TreatmentRecommendationViewComponent,
     canActivate: [AuthGuard],
   },
   //#endregion

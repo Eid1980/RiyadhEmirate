@@ -99,8 +99,8 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
                 .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestElectronicBoard.RequestType.NameAr))
-                .ForMember(dest => dest.RequestTitle, src => src.MapFrom(m => m.RequestElectronicSummon.RequestTitle))
-                .ForMember(dest => dest.RequestContent, src => src.MapFrom(m => m.RequestElectronicSummon.RequestContent));
+                .ForMember(dest => dest.RequestTitle, src => src.MapFrom(m => m.RequestElectronicBoard.RequestTitle))
+                .ForMember(dest => dest.RequestContent, src => src.MapFrom(m => m.RequestElectronicBoard.RequestContent));
             CreateMap<RequestElectronicBoard, RequestElectronicBoardDto>();
             #endregion
 
@@ -117,6 +117,79 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.RequestTitle, src => src.MapFrom(m => m.RequestElectronicSummon.RequestTitle))
                 .ForMember(dest => dest.RequestContent, src => src.MapFrom(m => m.RequestElectronicSummon.RequestContent));
             CreateMap<RequestElectronicSummon, RequestElectronicSummonDto>();
+            #endregion
+
+            #region RequestForeignersRealtyOwners
+            CreateMap<CreateRequestForeignersRealtyOwnerDto, RequestForeignersRealtyOwner>();
+            CreateMap<UpdateRequestForeignersRealtyOwnerDto, RequestForeignersRealtyOwner>();
+
+            CreateMap<Request, GetRequestForeignersRealtyOwnerDetailsDto>()
+                .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
+                .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
+                .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
+                .ForMember(dest => dest.BuildingTypeName, src => src.MapFrom(m => m.RequestForeignersRealtyOwner.BuildingType.NameAr))
+                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.RequestForeignersRealtyOwner.Governorate.NameAr))
+                .ForMember(dest => dest.District, src => src.MapFrom(m => m.RequestForeignersRealtyOwner.District))
+                .ForMember(dest => dest.ReligionName, src => src.MapFrom(m => m.RequestForeignersRealtyOwner.Religion.NameAr))
+                .ForMember(dest => dest.Address, src => src.MapFrom(m => m.RequestForeignersRealtyOwner.Address));
+            CreateMap<RequestForeignersRealtyOwner, RequestForeignersRealtyOwnerDto>();
+            #endregion
+
+            #region RequestJudgmentExecution
+            CreateMap<CreateRequestJudgmentExecutionDto, RequestJudgmentExecution>();
+            CreateMap<UpdateRequestJudgmentExecutionDto, RequestJudgmentExecution>();
+
+            CreateMap<Request, GetRequestJudgmentExecutionDetailsDto>()
+                .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
+                .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
+                .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
+                .ForMember(dest => dest.RequesterTypeName, src => src.MapFrom(m => m.RequestJudgmentExecution.RequesterType == 1 ? "نفسه" : "الموكل"))
+                .ForMember(dest => dest.RequesterName, src => src.MapFrom(m => m.RequestJudgmentExecution.RequesterName))
+                .ForMember(dest => dest.RequesterNationalId, src => src.MapFrom(m => m.RequestJudgmentExecution.RequesterNationalId))
+                .ForMember(dest => dest.DefendantTypeName, src => src.MapFrom(m => m.RequestJudgmentExecution.DefendantType.NameAr))
+                .ForMember(dest => dest.LawsuitNumber, src => src.MapFrom(m => m.RequestJudgmentExecution.LawsuitNumber))
+                .ForMember(dest => dest.LawsuitDate, src => src.MapFrom(m => m.RequestJudgmentExecution.LawsuitDate.ToString("yyyy-MM-dd")));
+            CreateMap<RequestJudgmentExecution, RequestJudgmentExecutionDto>();
+            #endregion
+
+            #region RequestLandsInfringement
+            CreateMap<CreateRequestLandsInfringementDto, RequestLandsInfringement>();
+            CreateMap<UpdateRequestLandsInfringementDto, RequestLandsInfringement>();
+
+            CreateMap<Request, GetRequestLandsInfringementDetailsDto>()
+                .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
+                .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
+                .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
+                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestLandsInfringement.RequestType.NameAr))
+                .ForMember(dest => dest.InstrumentNumber, src => src.MapFrom(m => m.RequestLandsInfringement.InstrumentNumber))
+                .ForMember(dest => dest.EstimatedSpace, src => src.MapFrom(m => m.RequestLandsInfringement.EstimatedSpace))
+                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.RequestLandsInfringement.Governorate.NameAr))
+                .ForMember(dest => dest.Address, src => src.MapFrom(m => m.RequestLandsInfringement.Address))
+                .ForMember(dest => dest.Longitude, src => src.MapFrom(m => m.RequestLandsInfringement.Longitude))
+                .ForMember(dest => dest.Latitude, src => src.MapFrom(m => m.RequestLandsInfringement.Latitude))
+                .ForMember(dest => dest.LocationLink, src => src.MapFrom(m => $"https://www.google.com/maps,{m.RequestLandsInfringement.Longitude},{m.RequestLandsInfringement.Latitude}"))
+                .ForMember(dest => dest.InfringerDescription, src => src.MapFrom(m => m.RequestLandsInfringement.InfringerDescription));
+            CreateMap<RequestLandsInfringement, RequestLandsInfringementDto>();
+            #endregion
+
+            #region RequestMarriageCertificate
+            CreateMap<CreateRequestMarriageCertificateDto, RequestMarriageCertificate>();
+            CreateMap<UpdateRequestMarriageCertificateDto, RequestMarriageCertificate>();
+
+            CreateMap<Request, GetRequestMarriageCertificateDetailsDto>()
+                .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
+                .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
+                .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
+                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestMarriageCertificate.RequestType.NameAr))
+                .ForMember(dest => dest.EmployeeSide, src => src.MapFrom(m => m.RequestMarriageCertificate.EmployeeSide))
+                .ForMember(dest => dest.JobOccupation, src => src.MapFrom(m => m.RequestMarriageCertificate.JobOccupation))
+                .ForMember(dest => dest.MaritalStatusName, src => src.MapFrom(m => m.RequestMarriageCertificate.MaritalStatus.NameAr))
+                .ForMember(dest => dest.ChildrenCount, src => src.MapFrom(m => m.RequestMarriageCertificate.ChildrenCount));
+            CreateMap<RequestMarriageCertificate, RequestMarriageCertificateDto>();
             #endregion
 
             #region RequestPrisonersServices
@@ -149,25 +222,20 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<RequestPrisonerTempRelease, RequestPrisonerTempReleaseDto>();
             #endregion
 
-            #region RequestLandsInfringement
-            CreateMap<CreateRequestLandsInfringementDto, RequestLandsInfringement>();
-            CreateMap<UpdateRequestLandsInfringementDto, RequestLandsInfringement>();
+            #region RequestTreatmentRecommendation
+            CreateMap<CreateRequestTreatmentRecommendationDto, RequestTreatmentRecommendation>();
+            CreateMap<UpdateRequestTreatmentRecommendationDto, RequestTreatmentRecommendation>();
 
-            CreateMap<Request, GetRequestLandsInfringementDetailsDto>()
+            CreateMap<Request, GetRequestTreatmentRecommendationDetailsDto>()
                 .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
                 .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
-                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestLandsInfringement.RequestType.NameAr))
-                .ForMember(dest => dest.InstrumentNumber, src => src.MapFrom(m => m.RequestLandsInfringement.InstrumentNumber))
-                .ForMember(dest => dest.EstimatedSpace, src => src.MapFrom(m => m.RequestLandsInfringement.EstimatedSpace))
-                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.RequestLandsInfringement.Governorate.NameAr))
-                .ForMember(dest => dest.Address, src => src.MapFrom(m => m.RequestLandsInfringement.Address))
-                .ForMember(dest => dest.Longitude, src => src.MapFrom(m => m.RequestLandsInfringement.Longitude))
-                .ForMember(dest => dest.Latitude, src => src.MapFrom(m => m.RequestLandsInfringement.Latitude))
-                .ForMember(dest => dest.LocationLink, src => src.MapFrom(m => $"https://www.google.com/maps,{m.RequestLandsInfringement.Longitude},{m.RequestLandsInfringement.Latitude}"))
-                .ForMember(dest => dest.InfringerDescription, src => src.MapFrom(m => m.RequestLandsInfringement.InfringerDescription));
-            CreateMap<RequestLandsInfringement, RequestLandsInfringementDto>();
+                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestTreatmentRecommendation.RequestType.NameAr))
+                .ForMember(dest => dest.PatientTypeName, src => src.MapFrom(m => m.RequestTreatmentRecommendation.PatientType == 1 ? "نفسه" : "أحد الأقارب"))
+                .ForMember(dest => dest.PatientName, src => src.MapFrom(m => m.RequestTreatmentRecommendation.PatientName))
+                .ForMember(dest => dest.PatientNationalId, src => src.MapFrom(m => m.RequestTreatmentRecommendation.PatientNationalId));
+            CreateMap<RequestTreatmentRecommendation, RequestTreatmentRecommendationDto>();
             #endregion
 
             #region RequestAttachmentType

@@ -41,6 +41,9 @@ namespace Emirates.Core.Domain.Entities
         public virtual Nationality Nationality { get; set; }
         public virtual Governorate Governorate { get; set; }
 
+        public virtual ICollection<BuildingType> CreatedBuildingTypes { get; set; }
+        public virtual ICollection<BuildingType> ModifiedBuildingTypes { get; set; }
+
         public virtual ICollection<CaseType> CreatedCaseTypes { get; set; }
         public virtual ICollection<CaseType> ModifiedCaseTypes { get; set; }
 
@@ -93,6 +96,9 @@ namespace Emirates.Core.Domain.Entities
 
         public virtual ICollection<Poster> CreatedPosters { get; set; }
         public virtual ICollection<Poster> ModifiedPosters { get; set; }
+
+        public virtual ICollection<Religion> CreatedReligions { get; set; }
+        public virtual ICollection<Religion> ModifiedReligions { get; set; }
 
     }
 }

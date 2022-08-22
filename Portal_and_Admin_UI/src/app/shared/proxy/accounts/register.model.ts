@@ -20,11 +20,6 @@ export interface CreateUserDto {
   thirdNameEn: string;
   lastNameEn: string;
 
-  employeeSide: string;
-  childrenCount?: number;
-  maritalStatusId?: number;
-  jobOccupation: string;
-
   phoneNumber: string;
   email: string;
 

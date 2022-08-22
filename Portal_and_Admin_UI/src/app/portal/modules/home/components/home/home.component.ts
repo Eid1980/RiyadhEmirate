@@ -19,8 +19,7 @@ declare let $: any;
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
   searchModel: SearchModel = {};
@@ -150,6 +149,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this._globalService.setTitle('الصفحة الرئيسية');
     this.getAllNews();
     this.getServices();
     this.getPosters();

@@ -7,5 +7,8 @@ namespace Emirates.Core.Application.Services.Lookups
         IApiResponse GetMaritalStatusLookupList();
         IApiResponse GetGovernorateLookupList();
         IApiResponse GetNationalityLookupList();
+        IApiResponse GetDefendantTypeLookupList();
+        IApiResponse GetBuildingTypeLookupList();
+        IApiResponse GetReligionLookupList();
     }
 }

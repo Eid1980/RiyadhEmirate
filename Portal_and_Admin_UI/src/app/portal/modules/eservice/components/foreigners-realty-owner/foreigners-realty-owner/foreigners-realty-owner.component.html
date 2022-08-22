@@ -1,0 +1,91 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/services-list']">قائمة الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">انشاء طلب جديد</span>
+  </nav>
+</div>
+
+<div class="p-5 row mx-0">
+  <div class="col-md-10 mx-auto">
+
+    <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+
+    <div class="mt-4">
+      <form [formGroup]="foreignersRealtyOwnerForm" (ngSubmit)="onSubmit()">
+        <div class="form-card">
+          <div class="form-header">
+            <h5>خدمة تملك العقار للأجانب</h5>
+          </div>
+          <div class="form-content">
+            <div class="row mx-0">
+              <div class="form-group col-md-6">
+                <label for="buildingTypeId" class="form-lbl">نوع المبنى<span class="danger">*</span></label>
+                <select class="form-control form-select" formControlName="buildingTypeId" [ngClass]="{
+                    invalid:
+                    (isFormSubmitted || foreignersRealtyOwnerForm.get('buildingTypeId').touched) &&
+                    foreignersRealtyOwnerForm.get('buildingTypeId').errors?.required}">
+                  <option [ngValue]="null">-- اختر نوع المبنى --</option>
+                  <option *ngFor="let buildingType of buildingTypes" [ngValue]="buildingType.id">{{ buildingType.name }}</option>
+                </select>
+                <small *ngIf="(isFormSubmitted || foreignersRealtyOwnerForm.get('buildingTypeId').touched) && foreignersRealtyOwnerForm.get('buildingTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="governorateId" class="form-lbl">المحافظة<span class="danger">*</span></label>
+                <select class="form-control form-select" formControlName="governorateId" [ngClass]="{
+                    invalid:
+                    (isFormSubmitted || foreignersRealtyOwnerForm.get('governorateId').touched) &&
+                    foreignersRealtyOwnerForm.get('governorateId').errors?.required}">
+                  <option [ngValue]="null">-- اختر المحافظة --</option>
+                  <option *ngFor="let governorate of governorates" [ngValue]="governorate.id">{{ governorate.name }}</option>
+                </select>
+                <small *ngIf="(isFormSubmitted || foreignersRealtyOwnerForm.get('governorateId').touched) && foreignersRealtyOwnerForm.get('governorateId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="religionId" class="form-lbl">الديانة<span class="danger">*</span></label>
+                <select class="form-control form-select" formControlName="religionId" [ngClass]="{
+                    invalid:
+                    (isFormSubmitted || foreignersRealtyOwnerForm.get('religionId').touched) &&
+                    foreignersRealtyOwnerForm.get('religionId').errors?.required}">
+                  <option [ngValue]="null">-- اختر الديانة --</option>
+                  <option *ngFor="let religion of religions" [ngValue]="religion.id">{{ religion.name }}</option>
+                </select>
+                <small *ngIf="(isFormSubmitted || foreignersRealtyOwnerForm.get('religionId').touched) && foreignersRealtyOwnerForm.get('religionId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="district" class="form-lbl">الحي<span class="danger">*</span></label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="district" id="district" [ngClass]="{
+                    invalid:
+                    (isFormSubmitted || foreignersRealtyOwnerForm.get('district').touched) &&
+                    foreignersRealtyOwnerForm.get('district').errors?.required}" />
+                <small *ngIf="(isFormSubmitted || foreignersRealtyOwnerForm.get('district').touched) && foreignersRealtyOwnerForm.get('district').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="address" class="form-lbl">العنوان<span class="danger">*</span></label>
+                <textarea type="text" class="form-control" autocomplete="off" formControlName="address" id="address" [ngClass]="{
+                    invalid:
+                    (isFormSubmitted || foreignersRealtyOwnerForm.get('address').touched) &&
+                    foreignersRealtyOwnerForm.get('address').errors?.required}">
+                </textarea>
+                <small *ngIf="(isFormSubmitted || foreignersRealtyOwnerForm.get('address').touched) && foreignersRealtyOwnerForm.get('address').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="notes" class="form-lbl">التفاصيل<span class="danger">*</span></label>
+                <textarea type="text" class="form-control" autocomplete="off" formControlName="notes" id="notes" [ngClass]="{
+                    invalid:
+                    (isFormSubmitted || foreignersRealtyOwnerForm.get('notes').touched) &&
+                    foreignersRealtyOwnerForm.get('notes').errors?.required}">
+                </textarea>
+                <small *ngIf="(isFormSubmitted || foreignersRealtyOwnerForm.get('notes').touched) && foreignersRealtyOwnerForm.get('notes').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-save">التالي</button>
+          <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
