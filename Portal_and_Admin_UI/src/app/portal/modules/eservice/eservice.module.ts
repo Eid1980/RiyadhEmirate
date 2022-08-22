@@ -111,7 +111,7 @@ import { TreatmentRecommendationViewComponent } from './components/treatment-rec
     PrisonersServicesDetailsComponent,
     ElectronicSummonDetailsComponent,
     LandsInfringementDetailsComponent,
-    ElectronicCouncilDetailsComponent
+    ElectronicCouncilDetailsComponent,
     JudgmentExecutionDetailsComponent,
     MarriageCertificateDetailsComponent,
     ForeignersRealtyOwnerDetailsComponent,

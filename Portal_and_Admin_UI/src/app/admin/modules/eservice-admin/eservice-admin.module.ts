@@ -57,7 +57,7 @@ import { TreatmentRecommendationActionComponent } from './components/treatment-r
     ElectronicSummonPreviewStepComponent,
     ElectronicCouncilActionComponent,
     ElectronicCouncilViewComponent,
-    ElectronicCouncilStepViewComponent
+    ElectronicCouncilStepViewComponent,
     MarriageCertificateActionComponent,
     MarriageCertificatePreviewStepComponent,
     MarriageCertificateViewComponent,
