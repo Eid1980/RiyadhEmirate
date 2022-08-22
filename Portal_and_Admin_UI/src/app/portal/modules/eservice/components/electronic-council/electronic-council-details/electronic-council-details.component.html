@@ -1,0 +1,69 @@
+<p>electronic-council-details works!</p>
+<div class="p-5">
+
+  <div class="form-card">
+    <div class="form-header">
+      <h5>بيانات مقدم الطلب</h5>
+    </div>
+    <div class="form-content">
+      <app-user-data-view></app-user-data-view>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-header">
+      <h5>بيانات الطلب</h5>
+    </div>
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">رقم الطلب</span>
+          <span class="form-val">{{ requestElectronicBoardDetailsDto?.requestNumber }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">اسم الخدمة</span>
+          <span class="form-val">{{ requestElectronicBoardDetailsDto?.serviceName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">تاريخ الطلب</span>
+          <span class="form-val">{{ requestElectronicBoardDetailsDto?.requestDate }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">حالة الطلب</span>
+          <span class="form-val">{{ requestElectronicBoardDetailsDto?.stageName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">نوع الطلب</span>
+          <span class="form-val">{{ requestElectronicBoardDetailsDto?.requestTypeName }}</span>
+        </div>
+        <div class="info-col col-md-12 col-12">
+          <span class="form-lbl lbl-33">عنوان الطلب</span>
+          <span class="form-val">{{ requestElectronicBoardDetailsDto?.requestTitle }}</span>
+        </div>
+        <div class="info-col col-md-12 col-12">
+          <span class="form-lbl lbl-33">محتوى الطلب</span>
+          <span class="form-val">{{ requestElectronicBoardDetailsDto?.requestContent }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-header">
+      <h5>المرفقات</h5>
+    </div>
+    <div class="form-content">
+      <app-request-attacment-preview [requestId]="requestId"></app-request-attacment-preview>
+    </div>
+  </div>
+
+  <div class="form-card" *ngIf="showStatusLog">
+    <div class="form-header">
+      <h5>مراحل الطلب</h5>
+    </div>
+    <div class="form-content">
+      <app-request-stage-log [requestId]="requestId"></app-request-stage-log>
+    </div>
+  </div>
+
+</div>

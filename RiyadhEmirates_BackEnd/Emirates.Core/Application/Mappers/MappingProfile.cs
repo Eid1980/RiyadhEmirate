@@ -86,10 +86,12 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
                 .ForMember(dest => dest.NationalId, src => src.MapFrom(m => m.CreatedUser.UserName))
-                .ForMember(dest => dest.Url, src => src.MapFrom(m => m.Service.ServiceStages.FirstOrDefault(x => x.StageId.Equals(m.StageId)).AdminUrl))
+                .ForMember(dest => dest.Url, src => src.MapFrom(m => m.Service.ServiceStages.FirstOrDefault(x => x.StageId.Equals(m.StageId)).RequesterUrl))
                 .ForMember(dest => dest.RequestTitle, src => src.MapFrom(o => o.RequestElectronicBoard.RequestTitle))
                 .ForMember(dest => dest.RequestContent, src => src.MapFrom(o => o.RequestElectronicBoard.RequestContent))
-                .ForMember(dest => dest.StageName, src => src.MapFrom(o => o.Stage.NameAr));
+                .ForMember(dest => dest.StageName, src => src.MapFrom(o => o.Stage.NameAr))
+                .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(o => o.RequestElectronicBoard.RequestType.NameAr));
+
 
             #endregion
 

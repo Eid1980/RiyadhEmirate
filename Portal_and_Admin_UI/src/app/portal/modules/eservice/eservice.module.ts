@@ -29,6 +29,7 @@ import { ElectronicSummonAttachmentsComponent } from './components/electronic-su
 import { ElectronicSummonDetailsComponent } from './components/electronic-summon/electronic-summon-details/electronic-summon-details.component';
 import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
 import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
+import { ElectronicCouncilDetailsComponent } from './components/electronic-council/electronic-council-details/electronic-council-details.component';
 import { JudgmentExecutionComponent } from './components/judgment-execution/judgment-execution/judgment-execution.component';
 import { JudgmentExecutionAttachmentsComponent } from './components/judgment-execution/judgment-execution-attachments/judgment-execution-attachments.component';
 import { JudgmentExecutionDetailsComponent } from './components/judgment-execution/judgment-execution-details/judgment-execution-details.component';
@@ -96,6 +97,7 @@ import { TreatmentRecommendationViewComponent } from './components/treatment-rec
     TreatmentRecommendationAttachmentsComponent,
     TreatmentRecommendationPreviewStepComponent,
     TreatmentRecommendationViewComponent,
+    ElectronicCouncilDetailsComponent
   ],
   imports: [
     StepsModule,
@@ -109,6 +111,7 @@ import { TreatmentRecommendationViewComponent } from './components/treatment-rec
     PrisonersServicesDetailsComponent,
     ElectronicSummonDetailsComponent,
     LandsInfringementDetailsComponent,
+    ElectronicCouncilDetailsComponent
     JudgmentExecutionDetailsComponent,
     MarriageCertificateDetailsComponent,
     ForeignersRealtyOwnerDetailsComponent,

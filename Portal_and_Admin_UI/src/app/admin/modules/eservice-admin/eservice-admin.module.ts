@@ -21,6 +21,9 @@ import { LandsInfringementViewComponent } from './components/lands-infringement/
 import { ElectronicSummonActionComponent } from './components/electronic-summon/electronic-summon-action/electronic-summon-action.component';
 import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
 import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
+import { ElectronicCouncilActionComponent } from './components/electronic-council/electronic-council-action/electronic-council-action.component';
+import { ElectronicCouncilViewComponent } from './components/electronic-council/electronic-council-view/electronic-council-view.component';
+import { ElectronicCouncilStepViewComponent } from './components/electronic-council/electronic-council-step-view/electronic-council-step-view.component';
 import { MarriageCertificateActionComponent } from './components/marriage-certificate/marriage-certificate-action/marriage-certificate-action.component';
 import { MarriageCertificatePreviewStepComponent } from './components/marriage-certificate/marriage-certificate-preview-step/marriage-certificate-preview-step.component';
 import { MarriageCertificateViewComponent } from './components/marriage-certificate/marriage-certificate-view/marriage-certificate-view.component';
@@ -52,6 +55,9 @@ import { TreatmentRecommendationActionComponent } from './components/treatment-r
     ElectronicSummonActionComponent,
     ElectronicSummonViewComponent,
     ElectronicSummonPreviewStepComponent,
+    ElectronicCouncilActionComponent,
+    ElectronicCouncilViewComponent,
+    ElectronicCouncilStepViewComponent
     MarriageCertificateActionComponent,
     MarriageCertificatePreviewStepComponent,
     MarriageCertificateViewComponent,

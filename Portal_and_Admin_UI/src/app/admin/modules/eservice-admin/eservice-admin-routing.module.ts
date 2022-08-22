@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@shared/guards/auth.guard';
+import { ElectronicCouncilActionComponent } from './components/electronic-council/electronic-council-action/electronic-council-action.component';
+import { ElectronicCouncilStepViewComponent } from './components/electronic-council/electronic-council-step-view/electronic-council-step-view.component';
+import { ElectronicCouncilViewComponent } from './components/electronic-council/electronic-council-view/electronic-council-view.component';
 import { ElectronicSummonActionComponent } from './components/electronic-summon/electronic-summon-action/electronic-summon-action.component';
 import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
 import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
@@ -90,6 +93,24 @@ const routes: Routes = [
   {
     path: 'marriage-certificate-action/:id',
     component: MarriageCertificateActionComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+   //#region ElectronicCouncilBooard
+   {
+    path: 'electronic-council-admin-preview-step/:id',
+    component: ElectronicCouncilStepViewComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'electronic-council-admin-view/:id',
+    component: ElectronicCouncilViewComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'electronic-council-action/:id',
+    component: ElectronicCouncilActionComponent,
     canActivate: [AuthGuard],
   },
   //#endregion
