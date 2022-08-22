@@ -21,6 +21,9 @@ import { LandsInfringementViewComponent } from './components/lands-infringement/
 import { ElectronicSummonActionComponent } from './components/electronic-summon/electronic-summon-action/electronic-summon-action.component';
 import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
 import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
+import { ElectronicCouncilActionComponent } from './components/electronic-council/electronic-council-action/electronic-council-action.component';
+import { ElectronicCouncilViewComponent } from './components/electronic-council/electronic-council-view/electronic-council-view.component';
+import { ElectronicCouncilStepViewComponent } from './components/electronic-council/electronic-council-step-view/electronic-council-step-view.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { ElectronicSummonPreviewStepComponent } from './components/electronic-su
     ElectronicSummonActionComponent,
     ElectronicSummonViewComponent,
     ElectronicSummonPreviewStepComponent,
+    ElectronicCouncilActionComponent,
+    ElectronicCouncilViewComponent,
+    ElectronicCouncilStepViewComponent
   ],
   imports: [
     StepsModule,

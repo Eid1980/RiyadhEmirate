@@ -29,6 +29,7 @@ import { ElectronicSummonAttachmentsComponent } from './components/electronic-su
 import { ElectronicSummonDetailsComponent } from './components/electronic-summon/electronic-summon-details/electronic-summon-details.component';
 import { ElectronicSummonViewComponent } from './components/electronic-summon/electronic-summon-view/electronic-summon-view.component';
 import { ElectronicSummonPreviewStepComponent } from './components/electronic-summon/electronic-summon-preview-step/electronic-summon-preview-step.component';
+import { ElectronicCouncilDetailsComponent } from './components/electronic-council/electronic-council-details/electronic-council-details.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ElectronicSummonPreviewStepComponent } from './components/electronic-su
     ElectronicSummonDetailsComponent,
     ElectronicSummonViewComponent,
     ElectronicSummonPreviewStepComponent,
+    ElectronicCouncilDetailsComponent
   ],
   imports: [
     StepsModule,
@@ -69,6 +71,7 @@ import { ElectronicSummonPreviewStepComponent } from './components/electronic-su
     PrisonersServicesDetailsComponent,
     ElectronicSummonDetailsComponent,
     LandsInfringementDetailsComponent,
+    ElectronicCouncilDetailsComponent
   ],
 })
 export class EServiceModule {}

@@ -1,12 +1,12 @@
 export interface PagingMetaData {
-  PageCount: number;
-  TotalItemCount: number;
-  PageNumber: number;
-  PageSize: number;
-  HasPreviousPage: boolean;
-  HasNextPage: boolean;
-  IsFirstPage: boolean;
-  IsLastPage: boolean;
-  FirstItemOnPage: number;
-  LastItemOnPage: number;
+  pageCount: number;
+  totalItemCount: number;
+  pageNumber: number;
+  pageSize: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+  isFirstPage: boolean;
+  isLastPage: boolean;
+  firstItemOnPage: number;
+  lastItemOnPage: number;
 }
