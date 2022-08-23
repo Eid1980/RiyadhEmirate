@@ -35,6 +35,7 @@ export class JudgmentExecutionComponent implements OnInit {
   selectedDateType = DateType.Hijri;
   maxHigriDate: NgbDateStruct;
   maxGreg: NgbDateStruct;
+  date: NgbDateStruct;
   //#endregion
 
   constructor(private formBuilder: FormBuilder, private requestJudgmentExecutionService: RequestJudgmentExecutionService,
@@ -47,12 +48,12 @@ export class JudgmentExecutionComponent implements OnInit {
     this.maxHigriDate = {
       day: nowDateHijri.day,
       month: nowDateHijri.month,
-      year: nowDateHijri.year - 18,
+      year: nowDateHijri.year,
     };
     this.maxGreg = {
       day: nowDate.getUTCDate() + 1,
       month: nowDate.getUTCMonth() + 1,
-      year: nowDate.getUTCFullYear() - 18,
+      year: nowDate.getUTCFullYear(),
     };
   }
 
@@ -145,6 +146,15 @@ export class JudgmentExecutionComponent implements OnInit {
         else {
           this.isSameRequester = false;
         }
+
+        let dt = new Date(this.createRequestJudgmentExecutionDto.lawsuitDate);
+        let ngbDateStructGregorian = {
+          day: dt.getUTCDate() + 1,
+          month: dt.getUTCMonth() + 1,
+          year: dt.getUTCFullYear(),
+        };
+        this.date = this.dateFormatterService.ToHijri(ngbDateStructGregorian);
+
         this.buildForm();
       }
       else {

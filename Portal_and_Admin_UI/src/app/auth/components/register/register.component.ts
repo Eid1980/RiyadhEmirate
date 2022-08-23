@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
   //minGreg: NgbDateStruct;
   maxHigriDate: NgbDateStruct;
   maxGreg: NgbDateStruct;
-
+  date: NgbDateStruct;
   //#endregion
 
   constructor(
@@ -129,6 +129,15 @@ export class RegisterComponent implements OnInit {
         .checkUserRegister(this.checkUserRegisterDto)
         .subscribe((response) => {
           this.createUserDto = response.data;
+
+          let dt = new Date(this.checkUserRegisterDto.birthDate);
+          let ngbDateStructGregorian = {
+            day: dt.getUTCDate() + 1,
+            month: dt.getUTCMonth() + 1,
+            year: dt.getUTCFullYear(),
+          };
+          this.date = this.dateFormatterService.ToHijri(ngbDateStructGregorian);
+
           if (response.isSuccess) {
             this.showCheckUserRegisterForm = false;
             this.showUserRegisterForm = true;

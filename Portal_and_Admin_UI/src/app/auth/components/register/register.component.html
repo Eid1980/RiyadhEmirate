@@ -49,7 +49,7 @@
           </div>
           <div class="form-group mb-lg-5">
             <hijri-gregorian-datepicker id="date" [placeHolder]="'سنة/شهر/يوم'" [isRequired]="false" [GregLabel]="'ميلادي'"
-                                        [maxGreg]="maxGreg" [maxHijri]="maxHigriDate"
+                                        [(selectedDate)]="date" [maxGreg]="maxGreg" [maxHijri]="maxHigriDate"
                                         [hijriLabel]="'هجري'" [selectedDateType]="selectedDateType" label="تاريخ الميلاد" #birthDate>
             </hijri-gregorian-datepicker>
             <small *ngIf="(isFormSubmitted && isValidDate)" class="danger">هذاالحقل مطلوب</small>
