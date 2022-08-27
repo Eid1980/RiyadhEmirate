@@ -11,6 +11,7 @@ import { HttpTokenInterceptor } from '@shared/interceptors/http-token.intercepto
 import { ServiceLocator } from '@shared/services/service-locator';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
       useClass: HttpTokenInterceptor,
       multi: true,
     },
+    {provide : LocationStrategy , useClass: HashLocationStrategy}
+
   ],
   bootstrap: [AppComponent],
 })
