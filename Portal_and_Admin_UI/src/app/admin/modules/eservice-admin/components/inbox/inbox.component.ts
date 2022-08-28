@@ -7,6 +7,9 @@ import { SearchField, SearchModel } from '@proxy/shared/search-model.model';
 import { LookupDto } from '@proxy/shared/lookup-dto.model';
 import { GetInboxListDto, InboxSearchDto } from '@proxy/requests/models';
 import { DateType } from 'ngx-hijri-gregorian-datepicker';
+import { DynamicSearchService } from '@shared/proxy/shared/dynamic-search.service';
+import { PagingMetaData } from '@shared/models/paging-meta-data.model';
+import { PageListSetting } from '@shared/interfaces/page-list-setting';
 
 @Component({
   selector: 'app-inbox',
@@ -25,9 +28,16 @@ export class InboxComponent implements OnInit {
   selectedDateType = DateType.Hijri;
   //#endregion
 
-  constructor(private requestService: RequestService, private serviceService: ServiceService,
-    private formBuilder: FormBuilder, private globalService: GlobalService)
-  {
+  pagingMetaData: PagingMetaData;
+  PageListSetting: PageListSetting;
+
+
+
+  constructor(private requestService: RequestService,
+    private serviceService: ServiceService,
+    public dynamicSearchService: DynamicSearchService,
+    private formBuilder: FormBuilder,
+    private globalService: GlobalService) {
   }
 
   ngOnInit(): void {
@@ -51,6 +61,7 @@ export class InboxComponent implements OnInit {
   }
 
   search(all?: boolean) {
+    debugger
     if (all) {
       this.inboxSearchForm.reset();
       this.searchModel.SearchFields = [];
@@ -60,14 +71,15 @@ export class InboxComponent implements OnInit {
     }
     this.requestService.inbox(this.searchModel).subscribe((response) => {
       this.inboxListDto = response.data.gridItemsVM as GetInboxListDto[];
+      this.pagingMetaData = response.data.pagingMetaData;
     });
   }
 
   getSearchField() {
     let fields = [] as SearchField[];
     this.inboxSearchDto = { ...this.inboxSearchForm.value } as InboxSearchDto;
-    this.inboxSearchDto.dateFrom = this.dateFrom.getSelectedDate();
-    this.inboxSearchDto.dateTo = this.dateTo.getSelectedDate();
+    this.inboxSearchDto.dateFrom = this.dateFrom?.getSelectedDate();
+    this.inboxSearchDto.dateTo = this.dateTo?.getSelectedDate();
     if (this.inboxSearchDto.requestNumber) {
       fields.push({ FieldName: "RequestNumber", Operator: "Contain", Value: this.inboxSearchDto.requestNumber } as SearchField);
     }
@@ -84,6 +96,12 @@ export class InboxComponent implements OnInit {
       fields.push({ FieldName: "CreatedDate", Operator: "LessThanOrEqual", Value: this.inboxSearchDto.dateTo } as SearchField);
     }
     return fields;
+  }
+
+  onTableLazyLoad(event: any) {
+    this.dynamicSearchService.lazy(event, this.searchModel, () =>
+      this.search()
+    );
   }
 
 }

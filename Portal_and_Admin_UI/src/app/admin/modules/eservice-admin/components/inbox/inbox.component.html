@@ -48,7 +48,10 @@
       </div>
     </form>
     <div class="row mx-0">
-      <p-table #inbox [value]="inboxListDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+      <p-table #inbox [value]="inboxListDto" [paginator]="true" dataKey="id" [autoLayout]="true" [responsive]="true"
+      [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10 "
+      [first]="pagingMetaData?.firstItemOnPage"  [lazy]="true" (onLazyLoad)="onTableLazyLoad($event)"
+      [totalRecords]="pagingMetaData?.totalItemCount"  [scrollable]="true" class="w-100">
         <ng-template pTemplate="header" let-columns>
           <tr>
             <th>م</th>
@@ -63,7 +66,7 @@
 
         <ng-template pTemplate="body" let-i="rowIndex" let-inbox>
           <tr>
-            <td> {{i+1}} </td>
+            <td> {{i}} </td>
             <td> {{inbox.serviceName}} </td>
             <td> {{inbox.requestNumber}} </td>
             <td> {{inbox.requestDate}} </td>
