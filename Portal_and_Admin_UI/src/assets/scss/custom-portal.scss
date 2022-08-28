@@ -1359,18 +1359,25 @@
 
   // Related Websites in home page
   .related-web {
-    margin-top: 0.8rem;
+    margin-top: 26px;
+
     .rel-web {
       display: flex;
+      align-items: center;
       justify-content: start;
       overflow: hidden;
-      height: 72px;
+
       a {
-        display: inline-block;
-        margin-left: 1rem;
-        // max-width: 92%;
+        display: flex;
+        margin-left: 12px;
+        width: 100px;
+        height: 70px;
+        border-radius: 4px;
+        overflow: hidden;
+
         .rel-web-logos {
-          height: -webkit-fill-available;
+          height: auto;
+          width: 100%;
         }
         &:last-of-type {
           margin-left: 0;
@@ -2400,6 +2407,80 @@
       }
       .toast-detail:last-of-type {
         border-bottom: none;
+      }
+    }
+  }
+
+  // services details section
+  .services-details-container{
+    .services-details-box{
+      background-color: #fff;
+      border: 1px solid rgba($color: #000, $alpha: 0.1);
+    }
+
+    .services-details-card{
+      display: flex;
+      align-items: center;
+      padding: 26px 16px;
+      border-bottom: 1px solid rgba($color: #000, $alpha: 0.1);
+
+      &:nth-child(2n){
+        border-bottom: 0px;
+      }
+
+      .card-image{
+        min-width: 70px;
+        margin-left: 16px;
+
+        img{
+          max-width: 70px;
+        }
+      }
+
+      h4{
+        font-size: 16px;
+        color: $Primary-2;
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+
+      p{
+        margin-bottom: 0px;
+        color: rgba($color: #000, $alpha: 0.8);
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    .owl__carousel{
+      .owl-item{
+        width: 100%;
+      }
+      .owl-dots{
+        display: flex;
+        align-items: center;
+        top: -32px;
+        position: absolute;
+        left: 0;
+        margin: 0;
+
+        .owl-dot{
+          span{
+            width: 8px;
+            height: 8px;
+            margin: 0px 3px;
+            border-radius: 50%;
+            background: rgba($color: #000, $alpha: 0.3);
+          }
+
+          &.active{
+            span{
+              width: 10px;
+              height: 10px;
+              background: $Primary-1;
+            }
+          }
+        }
       }
     }
   }

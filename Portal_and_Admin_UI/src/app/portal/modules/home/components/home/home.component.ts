@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
     },
     nav: true,
   };
-  servicesOptions: OwlOptions = {
+  Details: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
@@ -140,13 +140,55 @@ export class HomeComponent implements OnInit {
     nav: true,
   };
 
+  servicesOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    rtl: true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+    },
+    nav: true,
+  };
+
+  servicesDetailsOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    rtl: true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+    },
+    nav: false,
+    animateOut: 'slideOutUp',
+    animateIn: 'slideInUp'
+  };
+
   constructor(
     private _newService: NewsService,
     private _serviceService: ServiceService,
     private _posterService: PosterService,
     private _globalService: GlobalService,
     public sanitizer: DomSanitizer
-  ) {}
+  ) { }
 
   ngOnInit() {
     this._globalService.setTitle('الصفحة الرئيسية');
@@ -191,7 +233,7 @@ export class HomeComponent implements OnInit {
           // display error message
         }
       },
-      (err) => {}
+      (err) => { }
     );
   }
 
