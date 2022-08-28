@@ -2,15 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\portal",
-    "\\src\\app\\portal\\modules",
-    "\\src\\app\\portal\\modules\\eservice",
-    "\\src\\app\\portal\\modules\\eservice\\components",
-    "\\src\\app\\portal\\modules\\eservice\\components\\treatment-recommendation",
-    "\\src\\app\\portal\\modules\\eservice\\components\\treatment-recommendation\\treatment-recommendation-details",
-    "\\src\\app\\portal\\modules\\eservice\\components\\treatment-recommendation\\treatment-recommendation-preview-step"
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\portal\\modules\\eservice\\components\\treatment-recommendation\\treatment-recommendation-details\\treatment-recommendation-details.component.ts",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
