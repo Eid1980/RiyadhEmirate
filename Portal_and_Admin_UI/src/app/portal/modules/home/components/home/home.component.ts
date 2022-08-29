@@ -201,6 +201,16 @@ export class HomeComponent implements OnInit {
     this.getAllNews();
     this.getServices();
     this.getPosters();
+
+    let processNumber1 = document.getElementById("processNumber1");
+    let processNumber2 = document.getElementById("processNumber2");
+    let processNumber3 = document.getElementById("processNumber3");
+    let processNumber4 = document.getElementById("processNumber4");
+
+    this.animateValue(processNumber1, 0, 135.661, 5000);
+    this.animateValue(processNumber2, 0, 22.123, 5000);
+    this.animateValue(processNumber3, 0, 435, 5000);
+    this.animateValue(processNumber4, 0, 89, 5000);
   }
 
   getAllNews() {
@@ -284,5 +294,19 @@ export class HomeComponent implements OnInit {
     let newDate = new Date(date);
     let hijriDate = this._globalService.convertToHijri(newDate, 'ar');
     return hijriDate.toString();
+  }
+
+  animateValue(obj: any, start: any, end: any, duration: any) {
+    let startTimestamp = null;
+    let step = (timestamp: any) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      let progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerHTML = Math.floor(progress * (end - start) + start);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    console.log(step)
+    window.requestAnimationFrame(step);
   }
 }
