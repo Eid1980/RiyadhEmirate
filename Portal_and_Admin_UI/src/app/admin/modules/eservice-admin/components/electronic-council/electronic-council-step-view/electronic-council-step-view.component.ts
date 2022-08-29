@@ -14,7 +14,6 @@ export class ElectronicCouncilStepViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger
     console.log('preview-step')
     this.requestId = this.activatedRoute.snapshot.params['id'];
   }

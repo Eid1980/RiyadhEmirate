@@ -28,7 +28,6 @@ export class ElectronicCouncilDetailsComponent implements OnInit {
   }
 
   getDetails() {
-    debugger
     console.log('getDetailsById')
     this.requestElectronicBoardService.getDetailsById(this.requestId).subscribe((response) => {
       if (!this.showStatusLog && !response.data.canEdit) {
