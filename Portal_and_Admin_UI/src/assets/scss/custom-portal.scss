@@ -1627,8 +1627,9 @@
       }
     }
     &:after {
+      //display: none;
       content: "";
-      background: url("../images/serv_bg.png");
+      //background: url("../images/serv_bg.png");
       background-repeat: no-repeat;
       opacity: 0.3;
       top: 0;
