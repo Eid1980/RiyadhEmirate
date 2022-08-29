@@ -207,6 +207,8 @@ export class HomeComponent implements OnInit {
     let processNumber3 = document.getElementById("processNumber3");
     let processNumber4 = document.getElementById("processNumber4");
 
+    console.log("TOPPPP: ", document.getElementsByClassName("process-wrapper")[0].scrollTop)
+
     this.animateValue(processNumber1, 0, 135.661, 5000);
     this.animateValue(processNumber2, 0, 22.123, 5000);
     this.animateValue(processNumber3, 0, 435, 5000);
