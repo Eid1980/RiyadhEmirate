@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'home',
+        path: '',
         loadChildren: () =>
           import('../home/home.module').then((x) => x.HomeModule),
       },
@@ -28,4 +28,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule, CoreModule],
 })
-export class NavigationRoutingModule {}
+export class NavigationRoutingModule { }

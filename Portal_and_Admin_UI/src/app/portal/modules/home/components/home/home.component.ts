@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { AccountService } from '@shared/proxy/accounts/account.service';
@@ -206,8 +206,6 @@ export class HomeComponent implements OnInit {
     let processNumber2 = document.getElementById("processNumber2");
     let processNumber3 = document.getElementById("processNumber3");
     let processNumber4 = document.getElementById("processNumber4");
-
-    console.log("TOPPPP: ", document.getElementsByClassName("process-wrapper")[0].scrollTop)
 
     this.animateValue(processNumber1, 0, 135.661, 5000);
     this.animateValue(processNumber2, 0, 22.123, 5000);

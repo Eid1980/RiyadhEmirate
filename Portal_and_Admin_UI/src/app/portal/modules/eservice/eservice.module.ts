@@ -118,4 +118,4 @@ import { TreatmentRecommendationViewComponent } from './components/treatment-rec
     TreatmentRecommendationDetailsComponent,
   ],
 })
-export class EServiceModule {}
+export class EServiceModule { }

@@ -1,0 +1,84 @@
+.card-basic {
+  background-color: $white;
+  border: 1px solid rgba($color: $dark, $alpha: 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .card-basic-banner {
+    padding: 16px;
+
+    img {
+      border-radius: 10px;
+      height: 160px;
+      width: 100%;
+    }
+  }
+
+  .card-basic-body {
+    padding: 16px;
+
+    h4 {
+      font-size: 18px;
+      color: $Primary-1;
+      margin-bottom: 10px;
+      font-weight: 600;
+      max-height: 44px;
+      overflow: hidden;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba($color: $dark, $alpha: 0.7);
+      max-height: 66px;
+      overflow: hidden;
+    }
+  }
+}
+
+.card-basic-h {
+  background-color: $white;
+  border: 1px solid rgba($color: $dark, $alpha: 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+  height: 100%;
+  align-items: flex-start;
+
+  .card-basic-banner {
+    width: 110px;
+    height: 110px;
+    margin-left: 16px;
+
+    img {
+      border-radius: 10px;
+      height: 100%;
+    }
+  }
+
+  .card-basic-body {
+    width: calc(100% - 110px);
+    margin-top: 12px;
+
+    h4 {
+      font-size: 18px;
+      color: $Primary-1;
+      margin-bottom: 10px;
+      font-weight: 600;
+      max-height: 45px;
+    overflow: hidden;
+    }
+
+    p {
+      margin-bottom: 0px;
+      font-size: 15px;
+      font-weight: 400;
+      max-height: 68px;
+      overflow: hidden;
+      color: rgba($color: $dark, $alpha: 0.7);
+    }
+  }
+}
