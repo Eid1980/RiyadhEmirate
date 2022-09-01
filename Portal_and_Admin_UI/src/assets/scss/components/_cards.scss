@@ -16,8 +16,29 @@
     }
   }
 
+  .card-basic-cover {
+    padding: 0px;
+    padding-bottom: 16px;
+
+    img {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      height: 260px;
+      width: 100%;
+    }
+  }
+
   .card-basic-body {
     padding: 16px;
+
+    h3 {
+      font-size: 22px;
+      color: $Primary-1;
+      margin-bottom: 16px;
+      font-weight: 900;
+      max-height: 55px;
+      overflow: hidden;
+    }
 
     h4 {
       font-size: 18px;
@@ -28,12 +49,55 @@
       overflow: hidden;
     }
 
+    h6 {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba($color: $dark, $alpha: 0.6);
+      line-height: 22px;
+    }
+
     p {
       font-size: 14px;
       font-weight: 400;
       color: rgba($color: $dark, $alpha: 0.7);
       max-height: 66px;
       overflow: hidden;
+    }
+  }
+
+  .card-basic-list{
+    padding: 0px 16px;
+    margin: 0px;
+
+    .card-basic-list-item{
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+
+      i{
+        font-size: 16px;
+        color: $secondary-1;
+        margin-left: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+      }
+
+      span,a{
+        font-size: 14px;
+        color: rgba($color: $dark, $alpha: 0.5);
+        font-weight: 400;
+        text-decoration: none;
+        display: flex;
+      }
+
+      a{
+        &:hover{
+          color: rgba($color: $dark, $alpha: 0.8);
+        }
+      }
     }
   }
 }
