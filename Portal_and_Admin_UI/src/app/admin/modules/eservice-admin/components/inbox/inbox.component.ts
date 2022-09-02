@@ -61,7 +61,7 @@ export class InboxComponent implements OnInit {
   }
 
   search(all?: boolean) {
-    debugger
+
     if (all) {
       this.inboxSearchForm.reset();
       this.searchModel.SearchFields = [];

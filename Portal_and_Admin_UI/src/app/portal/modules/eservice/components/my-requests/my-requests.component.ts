@@ -7,6 +7,9 @@ import { GetMyRequestListDto, MyRequestSearchDto } from '@proxy/requests/models'
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SearchField, SearchModel } from '@proxy/shared/search-model.model';
 import { DateType } from 'ngx-hijri-gregorian-datepicker';
+import { DynamicSearchService } from '@shared/proxy/shared/dynamic-search.service';
+import { PagingMetaData } from '@shared/models/paging-meta-data.model';
+import { PageListSetting } from '@shared/interfaces/page-list-setting';
 
 @Component({
   selector: 'app-my-requests',
@@ -26,8 +29,14 @@ export class MyRequestsComponent implements OnInit {
   selectedDateType = DateType.Hijri;
   //#endregion
 
-  constructor(private requestService: RequestService, private serviceService: ServiceService,
-    private formBuilder: FormBuilder, private globalService: GlobalService) {
+  pagingMetaData: PagingMetaData;
+  PageListSetting: PageListSetting;
+
+  constructor(private requestService: RequestService,
+    private serviceService: ServiceService,
+    private formBuilder: FormBuilder,
+    public dynamicSearchService: DynamicSearchService,
+    private globalService: GlobalService) {
   }
 
   ngOnInit(): void {
@@ -60,6 +69,7 @@ export class MyRequestsComponent implements OnInit {
     }
     this.requestService.myRequests(this.searchModel).subscribe((response) => {
       this.myRequestListDto = response.data.gridItemsVM as GetMyRequestListDto[];
+      this.pagingMetaData = response.data.pagingMetaData;
     });
   }
 
@@ -84,6 +94,12 @@ export class MyRequestsComponent implements OnInit {
       fields.push({ FieldName: "CreatedDate", Operator: "LessThanOrEqual", Value: this.myRequestSearchDto.dateTo } as SearchField);
     }
     return fields;
+  }
+
+  onTableLazyLoad(event: any) {
+    this.dynamicSearchService.lazy(event, this.searchModel, () =>
+      this.search()
+    );
   }
 
 }
