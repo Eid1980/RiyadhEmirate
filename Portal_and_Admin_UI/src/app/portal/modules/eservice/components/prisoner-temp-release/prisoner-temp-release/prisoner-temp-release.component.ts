@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '@shared/services/global.service';
 import { MessageType } from '@shared/enums/message-type.enum';
 import { MenuItem } from 'primeng/api';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-prisoner-temp-release',
@@ -66,8 +67,8 @@ export class PrisonerTempReleaseComponent implements OnInit {
   buildForm() {
     this.prisonerTempReleaseForm = this.formBuilder.group({
       requestTypeId: [this.createRequestPrisonerTempReleaseDto.requestTypeId || null, Validators.required],
-      notes: [this.createRequestPrisonerTempReleaseDto.notes || '', Validators.required],
-      presonName: [this.createRequestPrisonerTempReleaseDto.presonName || '', Validators.required],
+      notes: [this.createRequestPrisonerTempReleaseDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      presonName: [this.createRequestPrisonerTempReleaseDto.presonName || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       caseTypeId: [this.createRequestPrisonerTempReleaseDto.caseTypeId || null, Validators.required]
     });
   }

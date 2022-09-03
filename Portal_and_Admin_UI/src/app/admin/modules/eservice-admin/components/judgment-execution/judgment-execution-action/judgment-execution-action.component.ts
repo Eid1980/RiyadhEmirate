@@ -5,6 +5,7 @@ import { Stages } from '@shared/enums/stage.enum';
 import { RequestChangeStageDto } from '@shared/proxy/requests/models';
 import { RequestService } from '@shared/proxy/requests/request.service';
 import { GlobalService } from '@shared/services/global.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-judgment-execution-action',
@@ -31,7 +32,7 @@ export class JudgmentExecutionActionComponent implements OnInit {
 
   buildForm() {
     this.adminActionForm = this.formBuilder.group({
-      notes: [this.requestChangeStageDto.notes || '', Validators.required],
+      notes: [this.requestChangeStageDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
     });
   }
 

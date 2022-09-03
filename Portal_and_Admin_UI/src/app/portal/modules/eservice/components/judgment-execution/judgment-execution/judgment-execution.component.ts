@@ -12,6 +12,7 @@ import { CreateRequestJudgmentExecutionDto, UpdateRequestJudgmentExecutionDto } 
 import { RequestJudgmentExecutionService } from '@shared/proxy/request-judgment-execution/request-judgment-execution.service';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 
 @Component({
@@ -78,9 +79,9 @@ export class JudgmentExecutionComponent implements OnInit {
     }
 
     if (!this.isSameRequester) {
-      this.judgmentExecutionForm.controls["requesterName"].setValidators(Validators.required);
+      this.judgmentExecutionForm.controls["requesterName"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
       this.judgmentExecutionForm.controls['requesterName'].updateValueAndValidity();
-      this.judgmentExecutionForm.controls["requesterNationalId"].setValidators(Validators.required);
+      this.judgmentExecutionForm.controls["requesterNationalId"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
       this.judgmentExecutionForm.controls['requesterNationalId'].updateValueAndValidity();
     }
     if (this.judgmentExecutionForm.valid) {
@@ -106,11 +107,11 @@ export class JudgmentExecutionComponent implements OnInit {
     this.judgmentExecutionForm = this.formBuilder.group({
       requestTypeId: [this.createRequestJudgmentExecutionDto.requestTypeId || null],
       requesterType: [this.createRequestJudgmentExecutionDto.requesterType, Validators.required],
-      notes: [this.createRequestJudgmentExecutionDto.notes || '', Validators.required],
+      notes: [this.createRequestJudgmentExecutionDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       requesterName: [this.createRequestJudgmentExecutionDto.requesterName || ''],
       requesterNationalId: [this.createRequestJudgmentExecutionDto.requesterNationalId || ''],
       defendantTypeId: [this.createRequestJudgmentExecutionDto.defendantTypeId || null, Validators.required],
-      lawsuitNumber: [this.createRequestJudgmentExecutionDto.lawsuitNumber || '', Validators.required],
+      lawsuitNumber: [this.createRequestJudgmentExecutionDto.lawsuitNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       lawsuitDate: [this.createRequestJudgmentExecutionDto.lawsuitDate || '']
     });
   }

@@ -13,5 +13,6 @@ namespace Emirates.Core.Application.Services.News
         IApiResponse Create(CreateNewsDto createModel);
         IApiResponse Update(UpdateNewsDto updateModel);
         IApiResponse ChangeStatus(int id);
+        IApiResponse Delete(int id);
     }
 }

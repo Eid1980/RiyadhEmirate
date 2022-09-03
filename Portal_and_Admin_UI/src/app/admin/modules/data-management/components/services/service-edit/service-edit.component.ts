@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { MessageType } from '@shared/enums/message-type.enum';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { ServiceService } from '@proxy/services/service.service';
 import { UpdateServiceDto } from '@proxy/services/models';
 import { DomSanitizer } from '@angular/platform-browser';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-service-edit',
@@ -50,20 +50,14 @@ export class ServiceEditComponent implements OnInit {
 
   buildForm() {
     this.updateServiceForm = this.formBuilder.group({
-      nameAr: [this.updateServiceDto.nameAr || '', Validators.required],
-      nameEn: [this.updateServiceDto.nameEn || '', Validators.required],
-      titleAr: [this.updateServiceDto.titleAr || '', Validators.required],
-      titleEn: [this.updateServiceDto.titleEn || ''],
-      descriptionAr: [
-        this.updateServiceDto.descriptionAr || '',
-        Validators.required,
-      ],
-      descriptionEn: [this.updateServiceDto.descriptionEn || ''],
+      nameAr: [this.updateServiceDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.updateServiceDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      titleAr: [this.updateServiceDto.titleAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      titleEn: [this.updateServiceDto.titleEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      descriptionAr: [this.updateServiceDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      descriptionEn: [this.updateServiceDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       workDays: [this.updateServiceDto.workDays || null],
-      requestLink: [
-        this.updateServiceDto.requestLink || '',
-        Validators.required,
-      ],
+      requestLink: [this.updateServiceDto.requestLink || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       image: [null],
       isActive: [this.updateServiceDto.isActive, Validators.required],
     });

@@ -7,6 +7,7 @@ import { NewsTypes } from '@shared/enums/news-types.enum';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { ReportsService } from '../../../services/reports.service';
 
 @Component({
@@ -44,10 +45,10 @@ export class ReportsAddComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      TitleAr: [null, Validators.required],
-      TitleEn: [null],
-      DescriptionAr: [null, Validators.required],
-      DescriptionEn: [null],
+      TitleAr: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      TitleEn: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      DescriptionAr: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      DescriptionEn: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       Date: [null],
       Image: [null, Validators.required],
       IsActive: [true],

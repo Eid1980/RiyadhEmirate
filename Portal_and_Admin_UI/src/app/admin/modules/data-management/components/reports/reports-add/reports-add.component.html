@@ -6,7 +6,7 @@
       الرئيسية
     </a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/reports-list']">
-      التقارير الإعلانية
+      التقارير الإعلامية
     </a>
     <span class="breadcrumb-item fs-16 active">إضافة تقرير جديد</span>
   </nav>
@@ -38,7 +38,7 @@
         <!-- TitleEn -->
         <div class="form-group col-md-6">
           <label for="TitleEn" class="form-lbl">
-            العنوان باللغة الإنجليزية
+            العنوان باللغة الإنجليزية<span class="danger">*</span>
           </label>
           <input type="text" class="form-control" formControlName="TitleEn" [ngClass]="{
               invalid:
@@ -69,7 +69,7 @@
         <!-- DescriptionEn -->
         <div class="form-group col-md-6">
           <label for="DescriptionEn" class="form-lbl">
-            الوصف باللغة الإنجليزية
+            الوصف باللغة الإنجليزية<span class="danger">*</span>
           </label>
           <textarea rows="4" class="form-control" formControlName="DescriptionEn" [ngClass]="{
               invalid:

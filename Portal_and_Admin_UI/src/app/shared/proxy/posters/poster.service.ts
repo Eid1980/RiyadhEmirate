@@ -33,4 +33,8 @@ export class PosterService {
     return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeStatus/${id}`).pipe();
   }
 
+  delete = (id: number): Observable<ApiResponse<boolean>> => {
+    return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
+  }
+
 }

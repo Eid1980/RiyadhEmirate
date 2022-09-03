@@ -9,6 +9,7 @@ import { UpdateNewsDto } from '@proxy/news/models';
 import { NewsService } from '@proxy/news/news.service';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { DomSanitizer } from '@angular/platform-browser';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-emirates-news-edit',
@@ -59,13 +60,10 @@ export class EmiratesNewsEditComponent implements OnInit {
 
   buildForm() {
     this.updateNewsform = this.formBuilder.group({
-      titleAr: [this.updateNewsDto.titleAr || '', Validators.required],
-      titleEn: [this.updateNewsDto.titleEn || null],
-      descriptionAr: [
-        this.updateNewsDto.descriptionAr || '',
-        Validators.required,
-      ],
-      descriptionEn: [this.updateNewsDto.descriptionEn || null],
+      titleAr: [this.updateNewsDto.titleAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      titleEn: [this.updateNewsDto.titleEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      descriptionAr: [this.updateNewsDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      descriptionEn: [this.updateNewsDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       date: [null],
       image: [null],
       isActive: [this.updateNewsDto.isActive, Validators.required],

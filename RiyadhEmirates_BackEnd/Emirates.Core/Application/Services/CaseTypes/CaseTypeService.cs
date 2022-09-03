@@ -86,6 +86,21 @@ namespace Emirates.Core.Application.Services.CaseTypes
             _emiratesUnitOfWork.Complete();
             return GetResponse();
         }
+        public IApiResponse Delete(int id)
+        {
+            var caseType = _emiratesUnitOfWork.CaseTypes.FirstOrDefault(n => n.Id == id, x => x.RequestPrisonerTempReleases, x => x.RequestPrisonersServices);
+            if (caseType == null)
+                throw new NotFoundException(typeof(CaseType).Name);
+            if(caseType.RequestPrisonerTempReleases.Count > 0)
+                throw new BusinessException("نوع القضايا مرتبط بطلبات في خدمة الخروج المؤقت لسجين");
+            if(caseType.RequestPrisonersServices.Count > 0)
+                throw new BusinessException("نوع القضايا مرتبط بطلبات في خدمات السجناء");
+
+            _emiratesUnitOfWork.CaseTypes.Remove(caseType);
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
+
         public IApiResponse GetLookupList()
         {
             return GetResponse(data: _emiratesUnitOfWork.CaseTypes.Where(l => l.IsActive).Select(item =>

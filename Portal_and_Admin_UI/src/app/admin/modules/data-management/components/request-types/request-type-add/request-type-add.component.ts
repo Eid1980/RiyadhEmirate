@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GlobalService } from '@shared/services/global.service';
 import { ServiceService } from '@proxy/services/service.service';
 import { LookupDto } from '@proxy/shared/lookup-dto.model';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-request-type-add',
@@ -33,8 +34,8 @@ export class RequestTypeAddComponent implements OnInit {
 
   buildForm() {
     this.createRequestTypeForm = this.formBuilder.group({
-      nameAr: [this.createRequestTypeDto.nameAr || '', Validators.required],
-      nameEn: [this.createRequestTypeDto.nameEn || '', Validators.required],
+      nameAr: [this.createRequestTypeDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.createRequestTypeDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       serviceId: [
         this.createRequestTypeDto.serviceId || null,
         Validators.required,

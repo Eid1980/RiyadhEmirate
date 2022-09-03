@@ -6,6 +6,7 @@ import { ServiceService } from '@proxy/services/service.service';
 import { LookupDto } from '@proxy/shared/lookup-dto.model';
 import { RequestTypeService } from '@proxy/request-types/request-type.service';
 import { UpdateRequestTypeDto } from '@proxy/request-types/models';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-request-type-edit',
@@ -42,8 +43,8 @@ export class RequestTypeEditComponent implements OnInit {
 
   buildForm() {
     this.updateRequestTypeForm = this.formBuilder.group({
-      nameAr: [this.updateRequestTypeDto.nameAr || '', Validators.required],
-      nameEn: [this.updateRequestTypeDto.nameEn || '', Validators.required],
+      nameAr: [this.updateRequestTypeDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.updateRequestTypeDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       serviceId: [
         this.updateRequestTypeDto.serviceId || null,
         Validators.required,

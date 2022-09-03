@@ -7,6 +7,7 @@ import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { NewsService } from '@proxy/news/news.service';
 import { CreateNewsDto } from '@proxy/news/models';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-emirates-news-add',
@@ -44,10 +45,10 @@ export class EmiratesNewsAddComponent implements OnInit {
 
   buildForm() {
     this.createNewsform = this.formBuilder.group({
-      titleAr: [this.createNewsDto.titleAr || '', Validators.required],
-      titleEn: [this.createNewsDto.titleEn || null],
-      descriptionAr: [this.createNewsDto.descriptionAr || '', Validators.required],
-      descriptionEn: [this.createNewsDto.descriptionEn || null],
+      titleAr: [this.createNewsDto.titleAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      titleEn: [this.createNewsDto.titleEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      descriptionAr: [this.createNewsDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      descriptionEn: [this.createNewsDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       date: [this.createNewsDto.date || null],
       image: [this.createNewsDto.image || null, Validators.required],
       isActive: [this.createNewsDto.isActive || true, Validators.required],

@@ -7,21 +7,24 @@ import { ColumnType } from '@shared/enums/column-type.enum';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { PageListSetting } from '@shared/interfaces/page-list-setting';
 import { DatePipeOptions } from '@shared/models/date-pipe-options.model';
-import { ReportsService } from '../../../services/reports.service';
+import { NewsService } from '@shared/proxy/news/news.service';
+import { FileManagerService } from '@shared/services/file-manager.service';
+import { GlobalService } from '@shared/services/global.service';
 
 @Component({
   selector: 'app-reports-list',
-  templateUrl: './reports-list.component.html',
-  styleUrls: ['./reports-list.component.scss'],
+  templateUrl: './reports-list.component.html'
 })
 export class ReportsListComponent implements OnInit {
   @ViewChild(PageListComponent, { static: true }) list: PageListComponent;
   pageListSettings: PageListSetting;
   checked: true;
 
-  constructor(private reportsService: ReportsService) {}
+  constructor(private newsService: NewsService, private fileManagerService: FileManagerService, private globalService: GlobalService) {
+  }
 
   ngOnInit() {
+    this.globalService.setAdminTitle('التقارير الإعلامية');
     this.pageSetting();
   }
 
@@ -36,16 +39,16 @@ export class ReportsListComponent implements OnInit {
     ]
 
     this.pageListSettings = {
-      PageTitle: 'قائمة التقارير الإعلانية',
+      PageTitle: 'قائمة التقارير الإعلامية',
       listPermissionCode: '*',
       createButtonLink: '/admin/data-management/reports-add',
       createButtonText: 'انشاء تقرير جديد',
-      Url: this.reportsService.serviceUrl,
+      Url: this.newsService.serviceUrl,
 
       cols: [
         { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
-        { Field: 'titleAr', Header: 'العنوان باللغة العربية' },
-        { Field: 'titleEn', Header: 'العنوان باللغة الانجليزية' },
+        { Field: 'titleAr', Header: 'العنوان عربي' },
+        { Field: 'titleEn', Header: 'العنوان انجليزي' },
         {
           Field: 'date',
           Header: 'التاريخ',
@@ -82,15 +85,37 @@ export class ReportsListComponent implements OnInit {
           buttonclass: ActionButtonClass.View,
           buttonIcon: ActionButtonIcon.View,
         },
+        {
+          title: 'حذف',
+          FuncName: (id) => this.delete(id),
+          buttonclass: ActionButtonClass.Delete,
+          buttonIcon: ActionButtonIcon.Delete,
+        },
       ],
     };
   }
 
   changeStatus(id: number, e: any) {
-    this.reportsService.changeStatus(id).subscribe((result) => {
+    this.newsService.changeStatus(id).subscribe((result) => {
       if (result.isSuccess) {
         this.list.getData();
       }
     });
   }
+  delete(id: number) {
+    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.confirmSubmit = () => this.isconfirm(id);
+  }
+  isconfirm(id: number) {
+    this.newsService.delete(id).subscribe((result) => {
+      if (result.isSuccess) {
+        this.fileManagerService.deleteByEntityName(id, 'News').subscribe((res) => {
+        });
+        this.globalService.clearMessages();
+        this.list.getData();
+      }
+      this.globalService.showMessage(result.message);
+    });
+  }
+
 }

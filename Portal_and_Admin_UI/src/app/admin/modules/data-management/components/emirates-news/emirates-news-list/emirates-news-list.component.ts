@@ -8,6 +8,8 @@ import { PageListSetting } from '@shared/interfaces/page-list-setting';
 import { DatePipeOptions } from '@shared/models/date-pipe-options.model';
 import { NewsService } from '@proxy/news/news.service';
 import { NewsTypes } from '@shared/enums/news-types.enum';
+import { FileManagerService } from '@shared/services/file-manager.service';
+import { GlobalService } from '@shared/services/global.service';
 
 @Component({
   selector: 'app-emirates-news-list',
@@ -18,17 +20,17 @@ export class EmiratesNewsListComponent implements OnInit {
   pageListSettings: PageListSetting;
   checked: true;
 
-  constructor(private newsService: NewsService)
-  {
+  constructor(private newsService: NewsService, private fileManagerService: FileManagerService, private globalService: GlobalService) {
   }
 
   ngOnInit() {
+    this.globalService.setAdminTitle('اخبار المحافظات');
     this.pageSetting();
   }
 
   pageSetting() {
 
-    this.list.searchModel .SearchFields = [
+    this.list.searchModel.SearchFields = [
       {
         FieldName: "NewsTypeId",
         Operator: "Equal",
@@ -44,11 +46,13 @@ export class EmiratesNewsListComponent implements OnInit {
       Url: this.newsService.serviceUrl,
 
       cols: [
-        { Field: "id", Header: "الكود", Searchable: false, Hidden:true },
+        { Field: "id", Header: "الكود", Searchable: false, Hidden: true },
         { Field: "titleAr", Header: "العنوان عربي" },
         { Field: "titleEn", Header: "العنوان انجليزي" },
-        { Field: "date", Header: "التاريخ",
-          Pipe:ColumnPipe.Date,PipeOptions:new DatePipeOptions() },
+        {
+          Field: "date", Header: "التاريخ",
+          Pipe: ColumnPipe.Date, PipeOptions: new DatePipeOptions()
+        },
         {
           Field: "isActive",
           Header: "الحالة",
@@ -79,6 +83,12 @@ export class EmiratesNewsListComponent implements OnInit {
           buttonclass: ActionButtonClass.View,
           buttonIcon: ActionButtonIcon.View,
         },
+        {
+          title: 'حذف',
+          FuncName: (id) => this.delete(id),
+          buttonclass: ActionButtonClass.Delete,
+          buttonIcon: ActionButtonIcon.Delete,
+        },
       ],
     };
   }
@@ -88,6 +98,22 @@ export class EmiratesNewsListComponent implements OnInit {
       if (result.isSuccess) {
         this.list.getData();
       }
+    });
+  }
+
+  delete(id: number) {
+    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.confirmSubmit = () => this.isconfirm(id);
+  }
+  isconfirm(id: number) {
+    this.newsService.delete(id).subscribe((result) => {
+      if (result.isSuccess) {
+        this.fileManagerService.deleteByEntityName(id, 'News').subscribe((res) => {
+        });
+        this.globalService.clearMessages();
+        this.list.getData();
+      }
+      this.globalService.showMessage(result.message);
     });
   }
 }

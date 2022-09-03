@@ -7,6 +7,7 @@ import { MessageType } from '@shared/enums/message-type.enum';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { LatestNewsService } from '../../../services/latest-news.service';
 
 @Component({
@@ -48,10 +49,10 @@ export class LatestNewsEditComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       Id: [null, Validators.required],
-      TitleAr: [null, Validators.required],
-      TitleEn: [null],
-      DescriptionAr: [null, Validators.required],
-      DescriptionEn: [null],
+      TitleAr: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      TitleEn: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      DescriptionAr: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      DescriptionEn: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       Date: [null],
       Image: [null],
       IsActive: [true],

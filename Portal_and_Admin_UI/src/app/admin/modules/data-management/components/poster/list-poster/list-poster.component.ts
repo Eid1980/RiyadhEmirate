@@ -16,7 +16,7 @@ export class ListPosterComponent implements OnInit {
   @ViewChild(PageListComponent, { static: true }) list: PageListComponent;
   pageListSettings: PageListSetting;
 
-  constructor(private posterService: PosterService,private globalService: GlobalService)
+  constructor(private posterService: PosterService, private fileManagerService: FileManagerService,private globalService: GlobalService)
   {
   }
 
@@ -68,6 +68,12 @@ export class ListPosterComponent implements OnInit {
           buttonclass: ActionButtonClass.View,
           buttonIcon: ActionButtonIcon.View,
         },
+        {
+          title: 'حذف',
+          FuncName: (id) => this.delete(id),
+          buttonclass: ActionButtonClass.Delete,
+          buttonIcon: ActionButtonIcon.Delete,
+        },
       ],
     };
   }
@@ -77,6 +83,22 @@ export class ListPosterComponent implements OnInit {
       if (result.isSuccess) {
         this.list.getData();
       }
+    });
+  }
+
+  delete(id: number) {
+    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.confirmSubmit = () => this.isconfirm(id);
+  }
+  isconfirm(id: number) {
+    this.posterService.delete(id).subscribe((result) => {
+      if (result.isSuccess) {
+        this.fileManagerService.deleteByEntityName(id, 'Poster').subscribe((res) => {
+        });
+        this.globalService.clearMessages();
+        this.list.getData();
+      }
+      this.globalService.showMessage(result.message);
     });
   }
 

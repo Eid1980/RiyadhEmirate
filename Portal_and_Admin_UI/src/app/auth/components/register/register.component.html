@@ -10,7 +10,7 @@
       <div class="col-md-8 mx-auto">
         <form [formGroup]="checkUserRegisterForm" (ngSubmit)="onCheck()" class="fs-13px">
           <div class="form-group mb-lg-5">
-            <input type="text" class="form-control" formControlName="nationalId" id="nationalId" [ngClass]="{
+            <input type="text" class="form-control" formControlName="nationalId" id="nationalId" maxlength="10" [ngClass]="{
               invalid:
                 (isFormSubmitted || checkUserRegisterForm.get('nationalId').touched) &&
                 checkUserRegisterForm.get('nationalId').errors?.required
@@ -38,7 +38,7 @@
       <div class="col-md-8 mx-auto">
         <form [formGroup]="userRegisterForm" (ngSubmit)="onRegister()" class="fs-13px">
           <div class="form-group mb-lg-5">
-            <input type="text" class="form-control" formControlName="userName" id="userName" [ngClass]="{
+            <input type="text" class="form-control" formControlName="userName" id="userName" maxlength="10" [ngClass]="{
               invalid:
                 (isFormSubmitted || userRegisterForm.get('userName').touched) &&
                 userRegisterForm.get('userName').errors?.required

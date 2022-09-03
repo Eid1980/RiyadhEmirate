@@ -81,5 +81,11 @@ namespace Emirates.API.Controllers
             return _newsService.ChangeStatus(id);
         }
 
+        [HttpDelete("Delete/{id}")]
+        public IApiResponse Delete(int id)
+        {
+            return _newsService.Delete(id);
+        }
+
     }
 }

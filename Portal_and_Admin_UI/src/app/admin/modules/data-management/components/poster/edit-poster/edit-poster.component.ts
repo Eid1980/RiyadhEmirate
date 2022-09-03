@@ -6,6 +6,7 @@ import { GlobalService } from '@shared/services/global.service';
 import { UpdatePosterDto } from '@shared/proxy/posters/models';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-edit-poster',
@@ -48,8 +49,8 @@ export class EditPosterComponent implements OnInit {
 
   buildForm() {
     this.updatePosterform = this.formBuilder.group({
-      titleAr: [this.updatePosterDto.titleAr || '', Validators.required],
-      titleEn: [this.updatePosterDto.titleEn || '', Validators.required],
+      titleAr: [this.updatePosterDto.titleAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      titleEn: [this.updatePosterDto.titleEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       order: [this.updatePosterDto.order || '', Validators.required],
       image: [null],
       isActive: [this.updatePosterDto.isActive, Validators.required]

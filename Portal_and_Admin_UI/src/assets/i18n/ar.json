@@ -69,21 +69,21 @@
   "__comment1__": "end auth region",
 
   "home": {
-      "aboutEmirate": "عن الامارة",
-      "princesRegion": "امراء المنطقة",
-      "provinces": "المحافظات",
-      "electronicServices": "الخدمات الالكترونية",
-      "browseAllServices": "تصفح جميع الخدمات",
-      "electronicCouncil": "المجلس الإلكتروني",
-      "electronicCouncilTitle": "تقديم شكوي أو مقترح أو متابعة طلب لسمو أمير منطقة الرياض",
-      "inquireyService": "استعلام عن خدمة أو معاملة",
-      "inquireyServiceTitle": "استعلام عن خدمة برقم المعاملة أو رقم الطلب",
-      "news": "الاخبار",
-      "relatedplatforms": "منصات ذات صلة",
-      "mediaReports": "التقارير الاعلانية",
-      "provincialNews": "أخبار المحافظات",
-      "browseAllNews": "تصفح جميع الأخبار",
-      "advertisingReports": "تقارير إعلانية"
+    "aboutEmirate": "عن الامارة",
+    "princesRegion": "امراء المنطقة",
+    "provinces": "المحافظات",
+    "electronicServices": "الخدمات الالكترونية",
+    "browseAllServices": "تصفح جميع الخدمات",
+    "electronicCouncil": "المجلس الإلكتروني",
+    "electronicCouncilTitle": "تقديم شكوي أو مقترح أو متابعة طلب لسمو أمير منطقة الرياض",
+    "inquireyService": "استعلام عن خدمة أو معاملة",
+    "inquireyServiceTitle": "استعلام عن خدمة برقم المعاملة أو رقم الطلب",
+    "news": "الاخبار",
+    "relatedplatforms": "منصات ذات صلة",
+    "mediaReports": "التقارير الإعلامية",
+    "provincialNews": "أخبار المحافظات",
+    "browseAllNews": "تصفح جميع الأخبار",
+    "advertisingReports": "تقارير إعلامية"
   },
   "electronicCouncil": {
       "shared": {

@@ -1,31 +1,31 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { PageListComponent } from '@shared/components/page-list/page-list.component';
 import { ActionButtonClass } from '@shared/enums/action-button-class';
 import { ActionButtonIcon } from '@shared/enums/action-button-icon';
 import { ColumnPipe } from '@shared/enums/column-pipe.enum';
 import { ColumnType } from '@shared/enums/column-type.enum';
-import { HelperFunctions } from '@shared/helpers/helper-functions';
 import { PageListSetting } from '@shared/interfaces/page-list-setting';
-import { LatestNewsService } from '../../../services/latest-news.service';
-import { ColumnPipeOptions } from '@shared/interfaces/column-pipe-options.interface';
-import { CurrencyPipeOptions } from '@shared/models/currency-pipe-options.model';
 import { DatePipeOptions } from '@shared/models/date-pipe-options.model';
 import { NewsTypes } from '@shared/enums/news-types.enum';
+import { GlobalService } from '@shared/services/global.service';
+import { NewsService } from '@shared/proxy/news/news.service';
+import { FileManagerService } from '@shared/services/file-manager.service';
 
 @Component({
   selector: 'app-latest-news-list',
-  templateUrl: './latest-news-list.component.html',
-  styleUrls: ['./latest-news-list.component.scss'],
+  templateUrl: './latest-news-list.component.html'
 })
 export class LatestNewsListComponent implements OnInit {
   @ViewChild(PageListComponent, { static: true }) list: PageListComponent;
   pageListSettings: PageListSetting;
   checked: true;
 
-  constructor(private latestNewsService: LatestNewsService) {}
+  constructor(private newsService: NewsService, private fileManagerService: FileManagerService, private globalService: GlobalService)
+  {
+  }
 
   ngOnInit() {
+    this.globalService.setAdminTitle('أخر الأخبار');
     this.pageSetting();
   }
 
@@ -43,12 +43,12 @@ export class LatestNewsListComponent implements OnInit {
       listPermissionCode: '*',
       createButtonLink: '/admin/data-management/latest-news-add',
       createButtonText: 'انشاء خبر جديد',
-      Url: this.latestNewsService.serviceUrl,
+      Url: this.newsService.serviceUrl,
 
       cols: [
         { Field: 'Id', Header: 'الكود', Searchable: false, Hidden: true },
-        { Field: 'titleAr', Header: 'العنوان باللغة العربية' },
-        { Field: 'titleEn', Header: 'العنوان باللغة الانجليزية' },
+        { Field: 'titleAr', Header: 'العنوان عربي' },
+        { Field: 'titleEn', Header: 'العنوان انجليزي' },
         {
           Field: 'date',
           Header: 'التاريخ',
@@ -85,15 +85,37 @@ export class LatestNewsListComponent implements OnInit {
           buttonclass: ActionButtonClass.View,
           buttonIcon: ActionButtonIcon.View,
         },
+        {
+          title: 'حذف',
+          FuncName: (id) => this.delete(id),
+          buttonclass: ActionButtonClass.Delete,
+          buttonIcon: ActionButtonIcon.Delete,
+        },
       ],
     };
   }
 
   changeStatus(id: number, e: any) {
-    this.latestNewsService.changeStatus(id).subscribe((result) => {
+    this.newsService.changeStatus(id).subscribe((result) => {
       if (result.isSuccess) {
         this.list.getData();
       }
+    });
+  }
+
+  delete(id: number) {
+    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.confirmSubmit = () => this.isconfirm(id);
+  }
+  isconfirm(id: number) {
+    this.newsService.delete(id).subscribe((result) => {
+      if (result.isSuccess) {
+        this.fileManagerService.deleteByEntityName(id, 'News').subscribe((res) => {
+        });
+        this.globalService.clearMessages();
+        this.list.getData();
+      }
+      this.globalService.showMessage(result.message);
     });
   }
 }

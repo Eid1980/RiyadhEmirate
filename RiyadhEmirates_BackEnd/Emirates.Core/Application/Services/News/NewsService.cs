@@ -136,5 +136,16 @@ namespace Emirates.Core.Application.Services.News
             _emiratesUnitOfWork.Complete();
             return GetResponse();
         }
+
+        public IApiResponse Delete(int id)
+        {
+            var news = _emiratesUnitOfWork.News.FirstOrDefault(n => n.Id == id);
+            if (news == null)
+                throw new NotFoundException(typeof(Domain.Entities.News).Name);
+
+            _emiratesUnitOfWork.News.Remove(news);
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
     }
 }

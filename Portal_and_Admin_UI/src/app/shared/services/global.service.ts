@@ -23,6 +23,7 @@ export class GlobalService {
 
   //#region Messaging
   public messageAlert(messageType: MessageType, message: string) {
+    this.clearMessages();
     switch (messageType) {
       case MessageType.Success:
         this.messageService.add({ severity: 'success', summary: 'عملية ناجحة', detail: message });

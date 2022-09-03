@@ -76,10 +76,11 @@ export class ServiceStageListComponent implements OnInit {
   }
   isconfirm(id: number) {
     this.serviceStageService.delete(id).subscribe((result) => {
-      this.globalService.showMessage(result.message);
       if (result.isSuccess) {
+        this.globalService.clearMessages();
         this.list.getData();
       }
+      this.globalService.showMessage(result.message);
     });
   }
 }

@@ -72,6 +72,12 @@ export class RequestAttachmentTypeListComponent implements OnInit {
           buttonclass: ActionButtonClass.View,
           buttonIcon: ActionButtonIcon.View,
         },
+        {
+          title: 'حذف',
+          FuncName: (id) => this.delete(id),
+          buttonclass: ActionButtonClass.Delete,
+          buttonIcon: ActionButtonIcon.Delete,
+        },
       ],
     };
   }
@@ -83,6 +89,20 @@ export class RequestAttachmentTypeListComponent implements OnInit {
       }
     });
   }
+  delete(id: number) {
+    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.confirmSubmit = () => this.isconfirm(id);
+  }
+  isconfirm(id: number) {
+    this.requestAttachmentTypeService.delete(id).subscribe((result) => {
+      if (result.isSuccess) {
+        this.globalService.clearMessages();
+        this.list.getData();
+      }
+      this.globalService.showMessage(result.message);
+    });
+  }
+
   changeRequire(id: number, e: any) {
     this.requestAttachmentTypeService.changeRequire(id).subscribe((result) => {
       if (result.isSuccess) {

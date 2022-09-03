@@ -5,6 +5,7 @@ import { RequestChangeStageDto } from '@proxy/requests/models';
 import { RequestService } from '@proxy/requests/request.service';
 import { GlobalService } from '@shared/services/global.service';
 import { Stages } from '@shared/enums/stage.enum';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-prisoner-temp-release-action',
@@ -31,7 +32,7 @@ export class PrisonerTempReleaseActionComponent implements OnInit {
 
   buildForm() {
     this.adminActionForm = this.formBuilder.group({
-      notes: [this.requestChangeStageDto.notes || '', Validators.required],
+      notes: [this.requestChangeStageDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
     });
   }
 

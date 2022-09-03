@@ -6,6 +6,7 @@ import { RequestAttachmentTypeService } from '@proxy/request-attachment-types/re
 import { GlobalService } from '@shared/services/global.service';
 import { LookupDto } from '@proxy/shared/lookup-dto.model';
 import { ServiceService } from '@proxy/services/service.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-request-attachment-type-edit',
@@ -41,8 +42,8 @@ export class RequestAttachmentTypeEditComponent implements OnInit {
 
   buildForm() {
     this.updateRequestAttachmentTypeForm = this.formBuilder.group({
-      nameAr: [this.updateRequestAttachmentTypeDto.nameAr || '', Validators.required],
-      nameEn: [this.updateRequestAttachmentTypeDto.nameEn || '', Validators.required],
+      nameAr: [this.updateRequestAttachmentTypeDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.updateRequestAttachmentTypeDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       serviceId: [this.updateRequestAttachmentTypeDto.serviceId || null, Validators.required],
       extentionAllowed: [this.updateRequestAttachmentTypeDto.extentionAllowed || null],
       maxFileSize: [this.updateRequestAttachmentTypeDto.maxFileSize || null],

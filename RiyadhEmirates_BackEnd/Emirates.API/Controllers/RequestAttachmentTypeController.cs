@@ -55,6 +55,12 @@ namespace Emirates.API.Controllers
         {
             return _requestAttachmentTypeService.ChangeStatus(id);
         }
+        [HttpDelete("Delete/{id}")]
+        public IApiResponse Delete(int id)
+        {
+            return _requestAttachmentTypeService.Delete(id);
+        }
+
         [HttpGet("ChangeRequire/{id}")]
         public IApiResponse ChangeRequire(int id)
         {

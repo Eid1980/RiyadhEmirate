@@ -12,5 +12,6 @@ namespace Emirates.Core.Application.Services.Posters
         IApiResponse Create(CreatePosterDto createModel);
         IApiResponse Update(UpdatePosterDto updateModel);
         IApiResponse ChangeStatus(int id);
+        IApiResponse Delete(int id);
     }
 }

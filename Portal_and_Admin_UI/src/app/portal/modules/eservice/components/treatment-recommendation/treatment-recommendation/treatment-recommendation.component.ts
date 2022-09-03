@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RequestTypeService } from '@proxy/request-types/request-type.service';
 import { Service } from '@shared/enums/service.enum';
@@ -9,6 +9,7 @@ import { MessageType } from '@shared/enums/message-type.enum';
 import { MenuItem } from 'primeng/api';
 import { CreateRequestTreatmentRecommendationDto, UpdateRequestTreatmentRecommendationDto } from '@shared/proxy/request-treatment-recommendation/models';
 import { RequestTreatmentRecommendationService } from '@shared/proxy/request-treatment-recommendation/request-treatment-recommendation.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-treatment-recommendation',
@@ -46,9 +47,9 @@ export class TreatmentRecommendationComponent implements OnInit {
   onSubmit() {
     this.isFormSubmitted = true;
     if (!this.isSameRequester) {
-      this.treatmentRecommendationForm.controls["patientName"].setValidators(Validators.required);
+      this.treatmentRecommendationForm.controls["patientName"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
       this.treatmentRecommendationForm.controls['patientName'].updateValueAndValidity();
-      this.treatmentRecommendationForm.controls["patientNationalId"].setValidators(Validators.required);
+      this.treatmentRecommendationForm.controls["patientNationalId"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
       this.treatmentRecommendationForm.controls['patientNationalId'].updateValueAndValidity();
     }
     if (this.treatmentRecommendationForm.valid) {
@@ -72,7 +73,7 @@ export class TreatmentRecommendationComponent implements OnInit {
     this.treatmentRecommendationForm = this.formBuilder.group({
       requestTypeId: [this.createRequestTreatmentRecommendationDto.requestTypeId || null, Validators.required],
       patientType: [this.createRequestTreatmentRecommendationDto.patientType, Validators.required],
-      notes: [this.createRequestTreatmentRecommendationDto.notes || '', Validators.required],
+      notes: [this.createRequestTreatmentRecommendationDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       patientName: [this.createRequestTreatmentRecommendationDto.patientName || ''],
       patientNationalId: [this.createRequestTreatmentRecommendationDto.patientNationalId || '']
     });

@@ -62,6 +62,12 @@ namespace Emirates.API.Controllers
             return _serviceService.ChangeStatus(id);
         }
 
+        [HttpDelete("Delete/{id}")]
+        public IApiResponse Delete(int id)
+        {
+            return _serviceService.Delete(id);
+        }
+
         [HttpGet("GetLookupList")]
         public IApiResponse GetLookupList()
         {

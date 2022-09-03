@@ -10,6 +10,7 @@ import { GlobalService } from '@shared/services/global.service';
 import { RequestLandsInfringementService } from '@shared/proxy/request-lands-infringement/request-lands-infringement.service';
 import { LookupService } from '@shared/proxy/shared/lookup.service';
 import { MessageType } from '@shared/enums/message-type.enum';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-lands-infringement',
@@ -64,14 +65,14 @@ export class LandsInfringementComponent implements OnInit {
     this.landsInfringementForm = this.formBuilder.group({
       requestTypeId: [this.createRequestLandsInfringementDto.requestTypeId || null, Validators.required],
       governorateId: [this.createRequestLandsInfringementDto.governorateId || null, Validators.required],
-      instrumentNumber: [this.createRequestLandsInfringementDto.instrumentNumber || '', Validators.required],
+      instrumentNumber: [this.createRequestLandsInfringementDto.instrumentNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       estimatedSpace: [this.createRequestLandsInfringementDto.estimatedSpace || ''],
-      infringerDescription: [this.createRequestLandsInfringementDto.infringerDescription || '', Validators.required],
-      address: [this.createRequestLandsInfringementDto.address || '', Validators.required],
-      longitude: [this.createRequestLandsInfringementDto.longitude || '', Validators.required],
-      latitude: [this.createRequestLandsInfringementDto.latitude || '', Validators.required],
+      infringerDescription: [this.createRequestLandsInfringementDto.infringerDescription || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      address: [this.createRequestLandsInfringementDto.address || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      longitude: [this.createRequestLandsInfringementDto.longitude || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      latitude: [this.createRequestLandsInfringementDto.latitude || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       infringerName: [this.createRequestLandsInfringementDto.infringerName || ''],
-      notes: [this.createRequestLandsInfringementDto.notes || '', Validators.required]
+      notes: [this.createRequestLandsInfringementDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });
   }
   fillRequestType() {

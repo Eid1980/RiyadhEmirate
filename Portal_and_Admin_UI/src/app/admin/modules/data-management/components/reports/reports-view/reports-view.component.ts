@@ -26,18 +26,6 @@ export class ReportsViewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      Id:[null, Validators.required],
-      TitleAr: [null, Validators.required],
-      TitleEn: [null],
-      DescriptionAr: [null, Validators.required],
-      DescriptionEn: [null],
-      Date: [null, Validators.required],
-      HijriDate: [null, Validators.required],
-      Image: [null],
-      IsActive: [true],
-    });
-
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.getDetails(this.id);

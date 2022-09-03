@@ -94,6 +94,32 @@ namespace Emirates.Core.Application.Services.RequestTypes
             _emiratesUnitOfWork.Complete();
             return GetResponse();
         }
+        public IApiResponse Delete(int id)
+        {
+            var requestType = _emiratesUnitOfWork.RequestTypes.FirstOrDefault(n => n.Id == id,
+                x => x.RequestElectronicBoards, x => x.RequestPrisonerTempReleases, x => x.RequestPrisonersServices,
+                x => x.RequestLandsInfringements, x => x.RequestElectronicSummons, x => x.RequestMarriageCertificates, x => x.RequestTreatmentRecommendations);
+            if (requestType == null)
+                throw new NotFoundException(typeof(RequestType).Name);
+            if (requestType.RequestElectronicBoards.Count > 0)
+                throw new BusinessException("نوع الطلب مرتبط بطلبات في خدمة المجلس الالكتروني");
+            if (requestType.RequestPrisonerTempReleases.Count > 0)
+                throw new BusinessException("نوع الطلب مرتبط بطلبات في خدمة الخروج المؤقت لسجين");
+            if (requestType.RequestPrisonersServices.Count > 0)
+                throw new BusinessException("نوع الطلب مرتبط بطلبات في خدمة خدمات السجناء");
+            if (requestType.RequestLandsInfringements.Count > 0)
+                throw new BusinessException("نوع الطلب مرتبط بطلبات في خدمة التعديات على الأراضي الحكومية");
+            if (requestType.RequestElectronicSummons.Count > 0)
+                throw new BusinessException("نوع الطلب مرتبط بطلبات في خدمة الاستدعاء الالكتروني");
+            if (requestType.RequestMarriageCertificates.Count > 0)
+                throw new BusinessException("نوع الطلب مرتبط بطلبات في خدمة توثيق زواج");
+            if (requestType.RequestTreatmentRecommendations.Count > 0)
+                throw new BusinessException("نوع الطلب مرتبط بطلبات في خدمة طلب علاج");
+
+            _emiratesUnitOfWork.RequestTypes.Remove(requestType);
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
         public IApiResponse GetLookupList()
         {
             return GetResponse(data: _emiratesUnitOfWork.RequestTypes.Where(x => x.IsActive).Select(item =>

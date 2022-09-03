@@ -13,6 +13,7 @@ namespace Emirates.Core.Application.Services.RequestAttachmentTypes
         IApiResponse Create(CreateRequestAttachmentTypeDto createModel);
         IApiResponse Update(UpdateRequestAttachmentTypeDto updateModel);
         IApiResponse ChangeStatus(int id);
+        IApiResponse Delete(int id);
         IApiResponse ChangeRequire(int id);
     }
 }

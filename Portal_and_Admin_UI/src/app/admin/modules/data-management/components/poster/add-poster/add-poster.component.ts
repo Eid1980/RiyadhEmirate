@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { MessageType } from '@shared/enums/message-type.enum';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { CreatePosterDto } from '@shared/proxy/posters/models';
 import { PosterService } from '@shared/proxy/posters/poster.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-add-poster',
@@ -39,8 +38,8 @@ export class AddPosterComponent implements OnInit {
 
   buildForm() {
     this.createPosterform = this.formBuilder.group({
-      titleAr: [this.createPosterDto.titleAr || '', Validators.required],
-      titleEn: [this.createPosterDto.titleEn || '', Validators.required],
+      titleAr: [this.createPosterDto.titleAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      titleEn: [this.createPosterDto.titleEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       order: [this.createPosterDto.order || '', Validators.required],
       image: [this.createPosterDto.image || null, Validators.required],
       isActive: [this.createPosterDto.isActive || true, Validators.required],

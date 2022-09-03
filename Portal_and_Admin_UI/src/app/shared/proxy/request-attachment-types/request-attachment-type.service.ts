@@ -33,6 +33,11 @@ export class RequestAttachmentTypeService {
   changeStatus = (id: number): Observable<ApiResponse<boolean>> => {
     return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeStatus/${id}`).pipe();
   }
+
+  delete = (id: number): Observable<ApiResponse<boolean>> => {
+    return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
+  }
+
   changeRequire = (id: number): Observable<ApiResponse<boolean>> => {
     return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeRequire/${id}`).pipe();
   }

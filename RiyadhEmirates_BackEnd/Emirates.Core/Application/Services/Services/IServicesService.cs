@@ -13,6 +13,7 @@ namespace Emirates.Core.Application.Services
         IApiResponse Create(CreateServiceDto createModel);
         IApiResponse Update(UpdateServiceDto updateModel);
         IApiResponse ChangeStatus(int id);
+        IApiResponse Delete(int id);
         IApiResponse GetLookupList();
         IApiResponse GetStagesLookupList();
     }

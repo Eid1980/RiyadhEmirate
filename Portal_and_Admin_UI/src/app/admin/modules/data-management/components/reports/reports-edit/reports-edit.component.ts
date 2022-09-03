@@ -9,6 +9,7 @@ import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { ReportsService } from '../../../services/reports.service';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { DomSanitizer } from '@angular/platform-browser';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-reports-edit',
@@ -48,10 +49,10 @@ export class ReportsEditComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       Id: [null, Validators.required],
-      TitleAr: [null, Validators.required],
-      TitleEn: [null],
-      DescriptionAr: [null, Validators.required],
-      DescriptionEn: [null],
+      TitleAr: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      TitleEn: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      DescriptionAr: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      DescriptionEn: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       Date: [null],
       HijriDate: [null],
       Image: [null],

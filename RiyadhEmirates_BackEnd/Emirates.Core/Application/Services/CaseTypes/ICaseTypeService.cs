@@ -12,6 +12,7 @@ namespace Emirates.Core.Application.Services.CaseTypes
         IApiResponse Create(CreateCaseTypeDto createModel);
         IApiResponse Update(UpdateCaseTypeDto updateModel);
         IApiResponse ChangeStatus(int id);
+        IApiResponse Delete(int id);
         IApiResponse GetLookupList();
     }
 }

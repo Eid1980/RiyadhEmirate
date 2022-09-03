@@ -8,6 +8,7 @@ import { ForgetPasswordDto, ResetPasswordDto, ValidateOTPDto } from '@shared/pro
 import { ApiResponse } from '@shared/proxy/shared/api-response.model';
 import { GlobalService } from '@shared/services/global.service';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-forgot-password',
@@ -26,7 +27,7 @@ export class ForgotPasswordComponent implements OnInit {
   newPassword : string;
 
   forgetPasswordForm = this.fb.group({
-    userName: ['', Validators.required],
+    userName: ['', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
   });
 
   constructor(

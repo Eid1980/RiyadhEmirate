@@ -49,7 +49,7 @@ namespace Emirates.API.Controllers
             return _serviceStageService.Update(updateDto);
         }
 
-        [HttpGet("Delete/{id}")]
+        [HttpDelete("Delete/{id}")]
         public IApiResponse Delete(int id)
         {
             return _serviceStageService.Delete(id);

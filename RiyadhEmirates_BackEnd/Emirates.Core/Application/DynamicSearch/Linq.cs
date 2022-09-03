@@ -29,6 +29,7 @@ namespace Emirates.Core.Application.DynamicSearch
 
         public static IQueryable<T> DynamicSearch<T>(this IQueryable<T> source, SearchModel searchModel)
         {
+            searchModel.OrderBy = searchModel.OrderBy.ToUpperFirstChar();
             List<PropertyInfo> tProperties = typeof(T).GetProperties().ToList();
             if (searchModel.SearchFields != null)
             {

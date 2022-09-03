@@ -10,6 +10,7 @@ import { MessageType } from '@shared/enums/message-type.enum';
 import { MenuItem } from 'primeng/api';
 import { RequestPrisonersServicesService } from '@proxy/request-prisoners-services/request-prisoners-services.service';
 import { CreateRequestPrisonersServiceDto, UpdateRequestPrisonersServiceDto } from '@proxy/request-prisoners-services/models';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-prisoners-services',
@@ -65,8 +66,8 @@ export class PrisonersServicesComponent implements OnInit {
   buildForm() {
     this.prisonersServicesForm = this.formBuilder.group({
       requestTypeId: [this.createRequestPrisonersServiceDto.requestTypeId || null, Validators.required],
-      notes: [this.createRequestPrisonersServiceDto.notes || '', Validators.required],
-      presonName: [this.createRequestPrisonersServiceDto.presonName || '', Validators.required],
+      notes: [this.createRequestPrisonersServiceDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      presonName: [this.createRequestPrisonersServiceDto.presonName || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       caseTypeId: [this.createRequestPrisonersServiceDto.caseTypeId || null, Validators.required]
     });
   }

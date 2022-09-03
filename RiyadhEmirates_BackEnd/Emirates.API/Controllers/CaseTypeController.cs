@@ -50,6 +50,12 @@ namespace Emirates.API.Controllers
             return _caseTypeService.ChangeStatus(id);
         }
 
+        [HttpDelete("Delete/{id}")]
+        public IApiResponse Delete(int id)
+        {
+            return _caseTypeService.Delete(id);
+        }
+
         [HttpGet("GetLookupList")]
         public IApiResponse GetLookupList()
         {

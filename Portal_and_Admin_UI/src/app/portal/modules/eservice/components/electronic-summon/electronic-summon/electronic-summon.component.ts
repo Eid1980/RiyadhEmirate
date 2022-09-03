@@ -9,6 +9,7 @@ import { MessageType } from '@shared/enums/message-type.enum';
 import { MenuItem } from 'primeng/api';
 import { RequestElectronicSummonService } from '@shared/proxy/request-electronic-summon/request-electronic-summon.service';
 import { CreateRequestElectronicSummonDto, UpdateRequestElectronicSummonDto } from '@shared/proxy/request-electronic-summon/models';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-electronic-summon',
@@ -61,8 +62,8 @@ export class ElectronicSummonComponent implements OnInit {
   buildForm() {
     this.electronicSummonForm = this.formBuilder.group({
       requestTypeId: [this.createRequestElectronicSummonDto.requestTypeId || null, Validators.required],
-      requestTitle: [this.createRequestElectronicSummonDto.requestTitle || '', Validators.required],
-      requestContent: [this.createRequestElectronicSummonDto.requestContent || null, Validators.required]
+      requestTitle: [this.createRequestElectronicSummonDto.requestTitle || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      requestContent: [this.createRequestElectronicSummonDto.requestContent || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });
   }
   fillRequestType() {

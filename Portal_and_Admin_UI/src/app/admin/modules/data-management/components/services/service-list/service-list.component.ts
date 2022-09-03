@@ -5,6 +5,7 @@ import { ActionButtonIcon } from '@shared/enums/action-button-icon';
 import { ColumnType } from '@shared/enums/column-type.enum';
 import { PageListSetting } from '@shared/interfaces/page-list-setting';
 import { ServiceService } from '@proxy/services/service.service';
+import { GlobalService } from '@shared/services/global.service';
 
 @Component({
   selector: 'app-service-list',
@@ -15,9 +16,12 @@ export class ServiceListComponent implements OnInit {
   pageListSettings: PageListSetting;
   checked: true;
 
-  constructor(private serviceService: ServiceService) {}
+  constructor(private serviceService: ServiceService, private globalService: GlobalService)
+  {
+  }
 
   ngOnInit() {
+    this.globalService.setAdminTitle('الخدمات');
     this.pageSetting();
   }
 
@@ -66,6 +70,12 @@ export class ServiceListComponent implements OnInit {
           buttonclass: ActionButtonClass.View,
           buttonIcon: ActionButtonIcon.View,
         },
+        {
+          title: 'حذف',
+          FuncName: (id) => this.delete(id),
+          buttonclass: ActionButtonClass.Delete,
+          buttonIcon: ActionButtonIcon.Delete,
+        },
       ],
     };
   }
@@ -75,6 +85,19 @@ export class ServiceListComponent implements OnInit {
       if (result.isSuccess) {
         this.list.getData();
       }
+    });
+  }
+  delete(id: number) {
+    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.confirmSubmit = () => this.isconfirm(id);
+  }
+  isconfirm(id: number) {
+    this.serviceService.delete(id).subscribe((result) => {
+      if (result.isSuccess) {
+        this.globalService.clearMessages();
+        this.list.getData();
+      }
+      this.globalService.showMessage(result.message);
     });
   }
 

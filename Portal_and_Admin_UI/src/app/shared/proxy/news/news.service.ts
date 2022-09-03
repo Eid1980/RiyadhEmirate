@@ -32,6 +32,10 @@ export class NewsService {
     return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeStatus/${id}`).pipe();
   }
 
+  delete = (id: number): Observable<ApiResponse<boolean>> => {
+    return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
+  }
+
   getListPage(searchModel: SearchModel): Observable<ServiceResponseVM> {
     return this.httpClient
       .post(`${this.serviceUrl}/GetListPage`, searchModel)

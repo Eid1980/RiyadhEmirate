@@ -50,5 +50,11 @@ namespace Emirates.API.Controllers
         {
             return _posterService.ChangeStatus(id);
         }
+
+        [HttpDelete("Delete/{id}")]
+        public IApiResponse Delete(int id)
+        {
+            return _posterService.Delete(id);
+        }
     }
 }

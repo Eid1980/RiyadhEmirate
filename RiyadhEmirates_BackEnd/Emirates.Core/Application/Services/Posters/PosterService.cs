@@ -95,5 +95,15 @@ namespace Emirates.Core.Application.Services.Posters
             _emiratesUnitOfWork.Complete();
             return GetResponse();
         }
+        public IApiResponse Delete(int id)
+        {
+            var poster = _emiratesUnitOfWork.Posters.FirstOrDefault(n => n.Id == id);
+            if (poster == null)
+                throw new NotFoundException(typeof(Poster).Name);
+
+            _emiratesUnitOfWork.Posters.Remove(poster);
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
     }
 }

@@ -8,6 +8,7 @@ import { LatestNewsService } from '../../../services/latest-news.service';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { NewsTypes } from '@shared/enums/news-types.enum';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-latest-news-add',
@@ -44,10 +45,10 @@ export class LatestNewsAddComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      TitleAr: [null, Validators.required],
-      TitleEn: [null, Validators.required],
-      DescriptionAr: [null, Validators.required],
-      DescriptionEn: [null, Validators.required],
+      TitleAr: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      TitleEn: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      DescriptionAr: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      DescriptionEn: [null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       Date: [null],
       Image: [null, Validators.required],
       IsActive: [true],

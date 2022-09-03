@@ -117,8 +117,6 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<RequestElectronicBoard, RequestElectronicBoardDto>();
             #endregion
 
-
-
             #region RequestElectronicSummons
             CreateMap<CreateRequestElectronicSummonDto, RequestElectronicSummon>();
             CreateMap<UpdateRequestElectronicSummonDto, RequestElectronicSummon>();

@@ -11,8 +11,6 @@
     <span class="breadcrumb-item fs-16 active">إضافة خبر جديد</span>
   </nav>
 </div>
-
-
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-card">
     <div class="form-header">
@@ -22,35 +20,25 @@
       <div class="row mx-0">
         <!-- TitleAr -->
         <div class="form-group col-md-6">
-          <label for="TitleAr" class="form-lbl">
-            العنوان باللغة العربية
-            <span class=danger>*</span>
-          </label>
+          <label for="TitleAr" class="form-lbl">العنوان باللغة العربية<span class=danger>*</span></label>
           <input type="text" class="form-control" formControlName="TitleAr" [ngClass]="{'invalid': (isFormSubmitted || form.get('TitleAr').touched) && form.get('TitleAr').errors?.required}" id="TitleAr">
           <small *ngIf="(isFormSubmitted || form.get('TitleAr').touched) && form.get('TitleAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <!-- TitleEn -->
         <div class="form-group col-md-6">
-          <label for="TitleEn" class="form-lbl">
-            العنوان باللغة الإنجليزية
-          </label>
+          <label for="TitleEn" class="form-lbl">العنوان باللغة الإنجليزية<span class="danger">*</span></label>
           <input type="text" class="form-control" formControlName="TitleEn" [ngClass]="{'invalid': (isFormSubmitted || form.get('TitleEn').touched) && form.get('TitleEn').errors?.required}" id="TitleEn">
           <small *ngIf="(isFormSubmitted || form.get('TitleEn').touched) && form.get('TitleEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <!-- DescriptionAr -->
         <div class="form-group col-md-6">
-          <label for="DescriptionAr" class="form-lbl">
-            الوصف باللغة العربية
-            <span class=danger>*</span>
-          </label>
+          <label for="DescriptionAr" class="form-lbl">الوصف باللغة العربية<span class=danger>*</span></label>
           <textarea rows="4" class="form-control" formControlName="DescriptionAr" [ngClass]="{'invalid': (isFormSubmitted || form.get('DescriptionAr').touched) && form.get('DescriptionAr').errors?.required}" id="DescriptionAr"></textarea>
           <small *ngIf="(isFormSubmitted || form.get('DescriptionAr').touched) && form.get('DescriptionAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <!-- DescriptionEn -->
         <div class="form-group col-md-6">
-          <label for="DescriptionEn" class="form-lbl">
-            الوصف باللغة الإنجليزية
-          </label>
+          <label for="DescriptionEn" class="form-lbl">الوصف باللغة الإنجليزية<span class="danger">*</span></label>
           <textarea rows="4" class="form-control" formControlName="DescriptionEn" [ngClass]="{'invalid': (isFormSubmitted || form.get('DescriptionEn').touched) && form.get('DescriptionEn').errors?.required}" id="DescriptionEn"></textarea>
           <small *ngIf="(isFormSubmitted || form.get('DescriptionEn').touched) && form.get('DescriptionEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
@@ -62,10 +50,7 @@
         </div>
         <!-- Image Upload -->
         <div class="form-group col-md-4">
-          <label for="" class="form-lbl">
-            تحميل الصورة
-            <span class=danger>*</span>
-          </label>
+          <label for="" class="form-lbl">تحميل الصورة<span class=danger>*</span></label>
           <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload" (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced" accept="image/*" [maxFileSize]="fileSize">
           </p-fileUpload>
           <small *ngIf="(isFormSubmitted || form.get('Image').touched) && form.get('Image').errors?.required" class="danger">هذاالحقل مطلوب</small>

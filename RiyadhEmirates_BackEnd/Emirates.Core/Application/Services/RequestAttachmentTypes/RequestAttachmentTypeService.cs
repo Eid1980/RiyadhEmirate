@@ -91,6 +91,16 @@ namespace Emirates.Core.Application.Services.RequestAttachmentTypes
             _emiratesUnitOfWork.Complete();
             return GetResponse(data: true);
         }
+        public IApiResponse Delete(int id)
+        {
+            var requestAttachmentType = _emiratesUnitOfWork.RequestAttachmentTypes.FirstOrDefault(n => n.Id == id);
+            if (requestAttachmentType == null)
+                throw new NotFoundException(typeof(RequestAttachmentType).Name);
+
+            _emiratesUnitOfWork.RequestAttachmentTypes.Remove(requestAttachmentType);
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
         public IApiResponse ChangeRequire(int id)
         {
             var requestAttachmentType = _emiratesUnitOfWork.RequestAttachmentTypes.FirstOrDefault(n => n.Id == id);

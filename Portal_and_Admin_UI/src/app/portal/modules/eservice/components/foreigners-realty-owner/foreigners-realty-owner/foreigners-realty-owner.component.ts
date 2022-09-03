@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RequestTypeService } from '@proxy/request-types/request-type.service';
 import { Service } from '@shared/enums/service.enum';
 import { LookupDto } from '@proxy/shared/lookup-dto.model';
-import { CaseTypeService } from '@proxy/case-types/case-type.service';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '@shared/services/global.service';
 import { MessageType } from '@shared/enums/message-type.enum';
@@ -11,6 +9,7 @@ import { MenuItem } from 'primeng/api';
 import { LookupService } from '@shared/proxy/shared/lookup.service';
 import { CreateRequestForeignersRealtyOwnerDto, UpdateRequestForeignersRealtyOwnerDto } from '@shared/proxy/request-foreigners-realty-owner/models';
 import { RequestForeignersRealtyOwnerService } from '@shared/proxy/request-foreigners-realty-owner/request-foreigners-realty-owner.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-foreigners-realty-owner',
@@ -69,9 +68,9 @@ export class ForeignersRealtyOwnerComponent implements OnInit {
     this.foreignersRealtyOwnerForm = this.formBuilder.group({
       buildingTypeId: [this.createRequestForeignersRealtyOwnerDto.buildingTypeId || null, Validators.required],
       governorateId: [this.createRequestForeignersRealtyOwnerDto.governorateId || null, Validators.required],
-      district: [this.createRequestForeignersRealtyOwnerDto.district || '', Validators.required],
-      notes: [this.createRequestForeignersRealtyOwnerDto.notes || '', Validators.required],
-      address: [this.createRequestForeignersRealtyOwnerDto.address || '', Validators.required],
+      district: [this.createRequestForeignersRealtyOwnerDto.district || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      notes: [this.createRequestForeignersRealtyOwnerDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      address: [this.createRequestForeignersRealtyOwnerDto.address || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       religionId: [this.createRequestForeignersRealtyOwnerDto.religionId || null, Validators.required]
     });
   }

@@ -5,6 +5,7 @@ import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { ServiceService } from '@proxy/services/service.service';
 import { CreateServiceDto } from '@proxy/services/models';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-service-add',
@@ -36,14 +37,14 @@ export class ServiceAddComponent implements OnInit {
 
   buildForm() {
     this.createServiceForm = this.formBuilder.group({
-      nameAr: [this.createServiceDto.nameAr || '', Validators.required],
-      nameEn: [this.createServiceDto.nameEn || '', Validators.required],
-      titleAr: [this.createServiceDto.titleAr || '', Validators.required],
-      titleEn: [this.createServiceDto.titleEn || ''],
-      descriptionAr: [this.createServiceDto.descriptionAr || '', Validators.required],
-      descriptionEn: [this.createServiceDto.descriptionEn || ''],
+      nameAr: [this.createServiceDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.createServiceDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      titleAr: [this.createServiceDto.titleAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      titleEn: [this.createServiceDto.titleEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      descriptionAr: [this.createServiceDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      descriptionEn: [this.createServiceDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       workDays: [this.createServiceDto.workDays || null],
-      requestLink: [this.createServiceDto.requestLink || '', Validators.required],
+      requestLink: [this.createServiceDto.requestLink || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       image: [ null, Validators.required],
       isActive: [this.createServiceDto.isActive || true, Validators.required]
     });

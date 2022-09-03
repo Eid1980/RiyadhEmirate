@@ -10,6 +10,7 @@ import { MenuItem } from 'primeng/api';
 import { CreateRequestMarriageCertificateDto, UpdateRequestMarriageCertificateDto } from '@shared/proxy/request-marriage-certificate/models';
 import { RequestMarriageCertificateService } from '@shared/proxy/request-marriage-certificate/request-marriage-certificate.service';
 import { LookupService } from '@shared/proxy/shared/lookup.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-marriage-certificate',
@@ -65,11 +66,11 @@ export class MarriageCertificateComponent implements OnInit {
   buildForm() {
     this.marriageCertificateForm = this.formBuilder.group({
       requestTypeId: [this.createRequestMarriageCertificateDto.requestTypeId || null, Validators.required],
-      notes: [this.createRequestMarriageCertificateDto.notes || '', Validators.required],
-      employeeSide: [this.createRequestMarriageCertificateDto.employeeSide || '', Validators.required],
-      jobOccupation: [this.createRequestMarriageCertificateDto.jobOccupation || '', Validators.required],
+      notes: [this.createRequestMarriageCertificateDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      employeeSide: [this.createRequestMarriageCertificateDto.employeeSide || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      jobOccupation: [this.createRequestMarriageCertificateDto.jobOccupation || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       maritalStatusId: [this.createRequestMarriageCertificateDto.maritalStatusId || null, Validators.required],
-      childrenCount: [this.createRequestMarriageCertificateDto.childrenCount || '', Validators.required]
+      childrenCount: [this.createRequestMarriageCertificateDto.childrenCount || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });
   }
   fillRequestType() {

@@ -9,6 +9,7 @@ import { LookupService } from '@shared/proxy/shared/lookup.service';
 import { UserLoginDto } from '@shared/proxy/accounts/models';
 import { Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-register',
@@ -69,40 +70,29 @@ export class RegisterComponent implements OnInit {
   buildCheckForm() {
     this.checkUserRegisterForm = this.formBuilder.group({
       nationalId: [
-        this.checkUserRegisterDto.nationalId || '',
-        Validators.required,
-      ],
-      birthDate: [this.checkUserRegisterDto.birthDate || ''],
+        this.checkUserRegisterDto.nationalId || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      birthDate: [this.checkUserRegisterDto.birthDate || '', Validators.required],
     });
   }
   buildRegisterForm() {
     this.userRegisterForm = this.formBuilder.group({
-      userName: [this.createUserDto.userName || '', Validators.required],
+      userName: [this.createUserDto.userName || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       birthDate: [this.createUserDto.birthDate || ''],
-      passWord: [this.createUserDto.passWord || '', Validators.required],
-      confirmPassWord: [
-        this.createUserDto.confirmPassWord || '',
-        Validators.required,
-      ],
+      passWord: [this.createUserDto.passWord || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      confirmPassWord: [this.createUserDto.confirmPassWord || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
 
-      firstNameAr: [this.createUserDto.firstNameAr || '', Validators.required],
-      secondNameAr: [
-        this.createUserDto.secondNameAr || '',
-        Validators.required,
-      ],
-      thirdNameAr: [this.createUserDto.thirdNameAr || '', Validators.required],
-      lastNameAr: [this.createUserDto.lastNameAr || '', Validators.required],
+      firstNameAr: [this.createUserDto.firstNameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      secondNameAr: [this.createUserDto.secondNameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      thirdNameAr: [this.createUserDto.thirdNameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      lastNameAr: [this.createUserDto.lastNameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
 
-      firstNameEn: [this.createUserDto.firstNameEn || '', Validators.required],
-      secondNameEn: [
-        this.createUserDto.secondNameEn || '',
-        Validators.required,
-      ],
-      thirdNameEn: [this.createUserDto.thirdNameEn || '', Validators.required],
-      lastNameEn: [this.createUserDto.lastNameEn || '', Validators.required],
+      firstNameEn: [this.createUserDto.firstNameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      secondNameEn: [this.createUserDto.secondNameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      thirdNameEn: [this.createUserDto.thirdNameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      lastNameEn: [this.createUserDto.lastNameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
 
-      phoneNumber: [this.createUserDto.phoneNumber || '', Validators.required],
-      email: [this.createUserDto.email || '', Validators.required],
+      phoneNumber: [this.createUserDto.phoneNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      email: [this.createUserDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
 
       passportId: [this.createUserDto.passportId || ''],
       isMale: [this.createUserDto.isMale || null, Validators.required],

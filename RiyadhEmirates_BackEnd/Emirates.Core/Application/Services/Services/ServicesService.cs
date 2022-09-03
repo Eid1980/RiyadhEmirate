@@ -111,6 +111,25 @@ namespace Emirates.Core.Application.Services
             _emiratesUnitOfWork.Complete();
             return GetResponse();
         }
+        public IApiResponse Delete(int id)
+        {
+            var service = _emiratesUnitOfWork.Services.FirstOrDefault(n => n.Id == id,
+                x => x.ServiceStages, x => x.RequestTypes, x => x.RequestAttachmentTypes, x => x.Requests);
+            if (service == null)
+                throw new NotFoundException(typeof(Service).Name);
+            if (service.ServiceStages.Count > 0)
+                throw new BusinessException("الخدمة مرتبطة بطلبات في مراحل الخدمات");
+            if (service.RequestTypes.Count > 0)
+                throw new BusinessException("الخدمة مرتبطة بطلبات في أنواع الخدمات");
+            if (service.RequestAttachmentTypes.Count > 0)
+                throw new BusinessException("الخدمة مرتبطة بطلبات في مرفقات الخدمات");
+            if (service.Requests.Count > 0)
+                throw new BusinessException("الخدمة مرتبطة بطلبات في طلبات الخدمات");
+
+            _emiratesUnitOfWork.Services.Remove(service);
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
         public IApiResponse GetLookupList()
         {
             return GetResponse(data: _emiratesUnitOfWork.Services.Where(l => l.IsActive).Select(item =>

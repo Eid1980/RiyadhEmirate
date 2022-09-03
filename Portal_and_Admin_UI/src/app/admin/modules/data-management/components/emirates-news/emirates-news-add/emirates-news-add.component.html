@@ -22,7 +22,7 @@
           <small *ngIf="(isFormSubmitted || createNewsform.get('titleAr').touched) && createNewsform.get('titleAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="titleEn" class="form-lbl">العنوان إنجليزي</label>
+          <label for="titleEn" class="form-lbl">العنوان إنجليزي<span class="danger">*</span></label>
           <input type="text" class="form-control" formControlName="titleEn" id="titleEn" [ngClass]="{
               invalid:
                 (isFormSubmitted || createNewsform.get('titleEn').touched) && createNewsform.get('titleEn').errors?.required
@@ -39,7 +39,7 @@
           <small *ngIf="(isFormSubmitted || createNewsform.get('descriptionAr').touched) && createNewsform.get('descriptionAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="descriptionEn" class="form-lbl">الوصف إنجليزي</label>
+          <label for="descriptionEn" class="form-lbl">الوصف إنجليزي<span class="danger">*</span></label>
           <textarea rows="4" class="form-control" formControlName="descriptionEn" id="descriptionEn" [ngClass]="{
               invalid:
                 (isFormSubmitted || createNewsform.get('descriptionEn').touched) &&

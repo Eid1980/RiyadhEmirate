@@ -66,8 +66,8 @@ namespace Emirates.Core.Application.Services.Accounts
             if(user == null)
                 throw new BusinessException("اسم المستخدم غير مضاف على النظام");
 
-            //if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
-            //    throw new BusinessException("كلمة المرور غير صحيحة");
+            if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
+                throw new BusinessException("كلمة المرور غير صحيحة");
             return GetResponse(data: user);
         }
 
