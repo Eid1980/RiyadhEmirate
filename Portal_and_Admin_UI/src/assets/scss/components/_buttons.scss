@@ -1,0 +1,20 @@
+.btn {
+
+  &:focus,
+  &:active {
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  &.btn-primary,
+  &.btn-secondary {
+    color: $white;
+
+    &:hover,
+    &.active,
+    &:focus,
+    &:disabled {
+      color: $white;
+    }
+  }
+}

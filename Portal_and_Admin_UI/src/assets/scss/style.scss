@@ -1,3 +1,6 @@
+// components
+@import "components/components";
+
 // primeng 13.3.3 styles
 @import "../node_modules/primeicons/primeicons.css";
 // @import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
@@ -30,9 +33,6 @@
 @import "responsive";
 @import "rtl";
 @import "responsive-rtl";
-
-// components
-@import "components/components";
 
 // plugins
 @import "plugins/plugins";
