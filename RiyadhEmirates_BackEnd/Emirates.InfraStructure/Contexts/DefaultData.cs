@@ -342,7 +342,7 @@ namespace Emirates.InfraStructure.Contexts
         }
         public static ServiceStage[] ServiceStages()
         {
-            ServiceStage[] arrData = new ServiceStage[63];
+            ServiceStage[] arrData = new ServiceStage[70];
             arrData[0] = new ServiceStage { Id = 1, ServiceId = 2, StageId = 1, RequesterUrl = "/eservice/prisoner-temp-release", AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[1] = new ServiceStage { Id = 2, ServiceId = 2, StageId = 2, RequesterUrl = "/eservice/prisoner-temp-release-view", AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-preview-step", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[2] = new ServiceStage { Id = 3, ServiceId = 2, StageId = 3, RequesterUrl = "/eservice/prisoner-temp-release", AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
@@ -414,6 +414,15 @@ namespace Emirates.InfraStructure.Contexts
             arrData[60] = new ServiceStage { Id = 61, ServiceId = 9, StageId = 5, RequesterUrl = "/eservice/treatment-recommendation-view", AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[61] = new ServiceStage { Id = 62, ServiceId = 9, StageId = 6, RequesterUrl = "/eservice/treatment-recommendation-view", AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[62] = new ServiceStage { Id = 63, ServiceId = 9, StageId = 7, RequesterUrl = "/eservice/treatment-recommendation-view", AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+
+
+            arrData[63] = new ServiceStage { Id = 64, ServiceId = 1, StageId = 1, RequesterUrl = "/e-council/update", AdminUrl = "", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[64] = new ServiceStage { Id = 65, ServiceId = 1, StageId = 2, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-preview-step", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[65] = new ServiceStage { Id = 66, ServiceId = 1, StageId = 3, RequesterUrl = "/e-council/update", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[66] = new ServiceStage { Id = 67, ServiceId = 1, StageId = 4, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[67] = new ServiceStage { Id = 68, ServiceId = 1, StageId = 5, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[68] = new ServiceStage { Id = 69, ServiceId = 1, StageId = 6, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[69] = new ServiceStage { Id = 70, ServiceId = 1, StageId = 7, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
 
             return arrData;
         }
