@@ -1,10 +1,10 @@
 <div class="auth-card">
   <div class="auth-head">
     <div class="flex_row">
-      <a href="#">
-        <img src="assets/images/logo.svg" alt="" class="log-logo" width="180" />
+      <a routerLink="/" class="card-logo">
+        <img src="assets/images/logo.svg" alt="logo" class="img-fluid" />
       </a>
-     <!--<span (click)="onChangeLang()" >
+      <!--<span (click)="onChangeLang()" >
         <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
         <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
       </span>-->
@@ -17,22 +17,40 @@
     <div class="row mx-0">
       <div class="col-md-8 mx-auto">
         <form class="fs-13px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<<<<<<< HEAD
           <div class="form-group mb-lg-5">
             <input type="text" id="userName" class="form-control" formControlName="userName" maxlength="10" />
             <small *ngIf="(isFormSubmitted || loginForm.get('userName').touched) && loginForm.get('userName').errors?.required"
                    class="danger">هذاالحقل مطلوب</small>
             <label for="userName" class="label">{{ 'login.labels.userName' | translate }}</label>
+=======
+
+          <!-- Username -->
+          <div class="form-group mb-4">
+            <label for="national_ID">
+              {{ 'login.labels.userName' | translate }}
+            </label>
+            <input type="text" name="" id="national_ID" class="form-control" placeholder="اسم المستخدم" formControlName="userName" required />
+>>>>>>> origin/Refaat-FrontEnd
           </div>
           <div class="form-group">
+<<<<<<< HEAD
             <input type="password" name="password" id="password" class="form-control" formControlName="password" />
             <small *ngIf="(isFormSubmitted || loginForm.get('password').touched) && loginForm.get('password').errors?.required"
                    class="danger">هذاالحقل مطلوب</small>
             <label for="password" class="label">{{ 'login.labels.password' | translate }}</label>
+=======
+            <label for="password">
+              {{ 'login.labels.password' | translate }}
+            </label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="كلمة المرور" formControlName="password"
+              required />
+>>>>>>> origin/Refaat-FrontEnd
           </div>
 
           <!-- Forget Password -->
           <div class="">
-            <a [routerLink]="['/auth/forgot-password']" >
+            <a [routerLink]="['/auth/forgot-password']">
               <span class="forget-pass">
                 {{ 'login.labels.forgetPassword' | translate }}
               </span>
@@ -40,20 +58,19 @@
           </div>
 
           <!-- Button -->
-          <div class="">
-            <button type="submit" class="btn btn-primary submit">
+          <div class="mt-5">
+            <button type="submit" class="btn btn-primary submit mb-0">
               {{ 'login.labels.signIn' | translate }}
             </button>
           </div>
-
         </form>
 
         <!-- Have Account -->
-        <div class="mt-4">
-          <span class="">
+        <div class="mt-2">
+          <span class="ms-1">
             {{ 'login.labels.dontHaveAccount' | translate }}
           </span>
-          <a [routerLink]="['/auth/register']">
+          <a [routerLink]="['/auth/register']" class="text-secondary">
             <span class="primary-text">
               {{ 'login.labels.createNewAccount' | translate }}
             </span>
