@@ -10,6 +10,7 @@ import { UserLoginDto } from '@shared/proxy/accounts/models';
 import { Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { MessageType } from '@shared/enums/message-type.enum';
 
 @Component({
   selector: 'app-register',
@@ -35,6 +36,7 @@ export class RegisterComponent implements OnInit {
   //minGreg: NgbDateStruct;
   maxHigriDate: NgbDateStruct;
   maxGreg: NgbDateStruct;
+  dateOfBirth: NgbDateStruct;
 
   //#endregion
 
@@ -69,15 +71,14 @@ export class RegisterComponent implements OnInit {
 
   buildCheckForm() {
     this.checkUserRegisterForm = this.formBuilder.group({
-      nationalId: [
-        this.checkUserRegisterDto.nationalId || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      birthDate: [this.checkUserRegisterDto.birthDate || '', Validators.required],
+      nationalId: [this.checkUserRegisterDto.nationalId || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      birthDate: [this.checkUserRegisterDto.birthDate || null],
     });
   }
   buildRegisterForm() {
     this.userRegisterForm = this.formBuilder.group({
       userName: [this.createUserDto.userName || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      birthDate: [this.createUserDto.birthDate || ''],
+      birthDate: [this.createUserDto.birthDate || null],
       passWord: [this.createUserDto.passWord || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       confirmPassWord: [this.createUserDto.confirmPassWord || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
 
@@ -103,7 +104,6 @@ export class RegisterComponent implements OnInit {
     });
   }
   onCheck() {
-    debugger;
     this.isFormSubmitted = true;
     this.isValidDate = false;
     if (this.birthDate.getSelectedDate() == 'Invalid date') {
@@ -120,6 +120,14 @@ export class RegisterComponent implements OnInit {
         .checkUserRegister(this.checkUserRegisterDto)
         .subscribe((response) => {
           this.createUserDto = response.data;
+          let date = new Date(response.data.birthDate);
+          let ngbDateStructGregorian = {
+            day: date.getUTCDate() + 1,
+            month: date.getUTCMonth() + 1,
+            year: date.getUTCFullYear(),
+          };
+          this.dateOfBirth = this.dateFormatterService.ToHijri(ngbDateStructGregorian);
+
           if (response.isSuccess) {
             this.showCheckUserRegisterForm = false;
             this.showUserRegisterForm = true;
@@ -147,6 +155,9 @@ export class RegisterComponent implements OnInit {
           this.login();
         }
       });
+    }
+    else {
+      this.globalService.messageAlert(MessageType.Warning, 'برجاء استكمال البيانات المطلوبة');
     }
   }
   fillLookup() {

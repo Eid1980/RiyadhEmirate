@@ -23,7 +23,6 @@ export class AccountService {
     return this.httpClient.post<ApiResponse<CreateUserDto>>(`${this.serviceUrl}/CheckUserRegister`, checkUserRegisterDto).pipe();
   }
   register = (createUserDto: CreateUserDto): Observable<ApiResponse<number>> => {
-    debugger;
     return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Register`, createUserDto).pipe();
   }
 
