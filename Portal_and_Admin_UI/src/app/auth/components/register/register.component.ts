@@ -103,6 +103,7 @@ export class RegisterComponent implements OnInit {
     });
   }
   onCheck() {
+    debugger;
     this.isFormSubmitted = true;
     this.isValidDate = false;
     if (this.birthDate.getSelectedDate() == 'Invalid date') {

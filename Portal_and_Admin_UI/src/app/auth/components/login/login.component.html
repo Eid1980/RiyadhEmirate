@@ -14,16 +14,11 @@
     <h4 class="title">
       {{ 'login.labels.signIn' | translate }}
     </h4>
+
+    <!-- Form -->
     <div class="row mx-0">
       <div class="col-md-8 mx-auto">
         <form class="fs-13px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-<<<<<<< HEAD
-          <div class="form-group mb-lg-5">
-            <input type="text" id="userName" class="form-control" formControlName="userName" maxlength="10" />
-            <small *ngIf="(isFormSubmitted || loginForm.get('userName').touched) && loginForm.get('userName').errors?.required"
-                   class="danger">هذاالحقل مطلوب</small>
-            <label for="userName" class="label">{{ 'login.labels.userName' | translate }}</label>
-=======
 
           <!-- Username -->
           <div class="form-group mb-4">
@@ -31,21 +26,15 @@
               {{ 'login.labels.userName' | translate }}
             </label>
             <input type="text" name="" id="national_ID" class="form-control" placeholder="اسم المستخدم" formControlName="userName" required />
->>>>>>> origin/Refaat-FrontEnd
           </div>
+
+          <!-- Password -->
           <div class="form-group">
-<<<<<<< HEAD
-            <input type="password" name="password" id="password" class="form-control" formControlName="password" />
-            <small *ngIf="(isFormSubmitted || loginForm.get('password').touched) && loginForm.get('password').errors?.required"
-                   class="danger">هذاالحقل مطلوب</small>
-            <label for="password" class="label">{{ 'login.labels.password' | translate }}</label>
-=======
             <label for="password">
               {{ 'login.labels.password' | translate }}
             </label>
             <input type="password" name="password" id="password" class="form-control" placeholder="كلمة المرور" formControlName="password"
-              required />
->>>>>>> origin/Refaat-FrontEnd
+                   required />
           </div>
 
           <!-- Forget Password -->
