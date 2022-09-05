@@ -283,4 +283,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EServiceRoutingModule {}
+export class EServiceRoutingModule { }

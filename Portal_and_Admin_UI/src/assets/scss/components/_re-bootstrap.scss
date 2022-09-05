@@ -1,0 +1,13 @@
+.container {
+  @media screen and (max-width: $min-sm) {
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: $min-md) {
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: $min-lg) {
+    max-width: 100%;
+  }
+}

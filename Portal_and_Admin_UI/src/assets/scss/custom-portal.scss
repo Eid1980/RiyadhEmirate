@@ -643,23 +643,25 @@
     .breadcrumb-item {
       display: flex;
       align-items: center;
-      color: #fff;
+      color: $white;
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 16px;
       i {
-        font-size: 2rem;
-        margin-left: 6px;
+        font-size: 26px;
+    margin-left: 8px;
       }
       + {
         .breadcrumb-item {
           padding-left: 0;
-          padding-right: 0.5rem;
+          padding-right: 10px;
+
           &::before {
             float: right;
             padding-right: 0;
-            padding-left: 0.5rem;
-            color: #fff;
+            padding-left: 10px;
+            color: $white;
+            font-size: 16px;
           }
         }
       }
@@ -2482,6 +2484,48 @@
             }
           }
         }
+      }
+    }
+  }
+
+  // process numbers section
+  .process-wrapper{
+    background-image: url('../../assets/images/serv_bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 60px 32px 120px;
+    background-color: #f7f8f9;
+
+    h3{
+      font-size: 28px;
+      color: $Primary-1;
+      margin-bottom: 80px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .process-item{
+      margin: 8px 0;
+
+      img{
+        margin-bottom: 22px;
+        width: 50px;
+      }
+
+      h5{
+        font-size: 36px;
+        color: $Primary-2;
+        margin-bottom: 8px;
+      }
+      p{
+        color: rgba($color: #000, $alpha: 0.6);
+        border-bottom: 1px solid rgba($color: #000, $alpha: 0.2);
+        margin-bottom: 0px;
+        font-size: 14px;
+        display: inline-block;
+        color: rgba(0, 0, 0, 0.6);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding-bottom: 2px;
       }
     }
   }

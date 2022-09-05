@@ -45,3 +45,23 @@ $font-semi-bold: 600;
 $font-normal: normal;
 $font-bold: bold;
 $font-extra-bold: 800;
+
+// media query
+$min-xs: 380px;
+$min-sm: 576px;
+$min-md: 767px;
+$min-lg: 991px;
+$min-xl: 1200px;
+
+$theme-colors: (
+  "primary": $Primary-1,
+  "primary-2": $Primary-2,
+  "primary-3": $Primary-3,
+  "secondary": $secondary-1,
+  "secondary-2": $secondary-2,
+  "secondary-3": $secondary-3,
+  "white": $white,
+  "black": $dark,
+  "success": $success,
+  "danger": $danger,
+);
