@@ -13,6 +13,7 @@ import { MessageType } from '@shared/enums/message-type.enum';
   selector: 'app-electronic-summon-preview-step',
   templateUrl: './electronic-summon-preview-step.component.html'
 })
+
 export class ElectronicSummonPreviewStepComponent implements OnInit {
   @ViewChild(RateServiceComponent, { static: true }) rateServiceComponent: RateServiceComponent;
 
@@ -27,6 +28,8 @@ export class ElectronicSummonPreviewStepComponent implements OnInit {
   constructor(private requestService: RequestService,
     private globalService: GlobalService, private activatedRoute: ActivatedRoute) {
   }
+
+
 
   ngOnInit(): void {
     this.globalService.setTitle("خدمة الاستدعاء الالكتروني");
@@ -56,11 +59,13 @@ export class ElectronicSummonPreviewStepComponent implements OnInit {
     });
     this.globalService.clearMessages();
   }
+
   navigate(event: boolean) {
     if (!event) {
       this.globalService.navigateToRequesterDashboard();
     }
   }
+
   getWizardItems() {
     if (this.requestId) {
       this.wizardItems = [
