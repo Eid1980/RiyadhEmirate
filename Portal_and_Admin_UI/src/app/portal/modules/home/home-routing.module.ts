@@ -12,6 +12,7 @@ import { OrganizationChartComponent } from "./components/emirate/organization-ch
 import { RegionGovComponent } from "./components/emirate/region-gov/region-gov.component";
 import { RegionPrincesComponent } from "./components/emirate/region-princes/region-princes.component";
 import { WomenSectionComponent } from "./components/emirate/women-section/women-section.component";
+import { OpenDataComponent } from "./components/open-data/open-data.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "emirate/region-gov", component: RegionGovComponent },
   { path: "emirate/organization", component: OrganizationChartComponent },
   { path: "emirate/women-section", component: WomenSectionComponent },
+  { path: "open-data", component: OpenDataComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
