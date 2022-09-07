@@ -39,8 +39,8 @@ export class ServiceAddComponent implements OnInit {
     this.createServiceForm = this.formBuilder.group({
       nameAr: [this.createServiceDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       nameEn: [this.createServiceDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      titleAr: [this.createServiceDto.titleAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      titleEn: [this.createServiceDto.titleEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      sectorAr: [this.createServiceDto.sectorAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      sectorEn: [this.createServiceDto.sectorEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionAr: [this.createServiceDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionEn: [this.createServiceDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       workDays: [this.createServiceDto.workDays || null],

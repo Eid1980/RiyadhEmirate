@@ -15,7 +15,7 @@
       <div class="row mx-0">
         <div class="form-group col-md-6">
           <label for="nameAr" class="form-lbl">الاسم عربي<span class="danger">*</span></label>
-          <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" id="nameAr" [ngClass]="{
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" maxlength="256" id="nameAr" [ngClass]="{
               invalid:
                 (isFormSubmitted || updateServiceForm.get('nameAr').touched) &&
                 updateServiceForm.get('nameAr').errors?.required
@@ -24,7 +24,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="nameEn" class="form-lbl">الاسم انجليزي<span class="danger">*</span></label>
-          <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" id="nameEn" [ngClass]="{
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" maxlength="256" id="nameEn" [ngClass]="{
               invalid:
                 (isFormSubmitted || updateServiceForm.get('nameEn').touched) &&
                 updateServiceForm.get('nameEn').errors?.required
@@ -32,26 +32,26 @@
           <small *ngIf="(isFormSubmitted || updateServiceForm.get('nameEn').touched) && updateServiceForm.get('nameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="titleAr" class="form-lbl">العنوان عربي<span class="danger">*</span></label>
-          <input type="text" class="form-control" formControlName="titleAr" id="titleAr" [ngClass]="{
+          <label for="sectorAr" class="form-lbl">القطاع عربي<span class="danger">*</span></label>
+          <input type="text" class="form-control" formControlName="sectorAr" maxlength="256" id="sectorAr" [ngClass]="{
               invalid:
-                (isFormSubmitted || updateServiceForm.get('titleAr').touched) &&
-                updateServiceForm.get('titleAr').errors?.required
+                (isFormSubmitted || updateServiceForm.get('sectorAr').touched) &&
+                updateServiceForm.get('sectorAr').errors?.required
             }" />
-          <small *ngIf="(isFormSubmitted || updateServiceForm.get('titleAr').touched) && updateServiceForm.get('titleAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('sectorAr').touched) && updateServiceForm.get('sectorAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="titleEn" class="form-lbl">العنوان إنجليزي<span class="danger">*</span></label>
-          <input type="text" class="form-control" formControlName="titleEn" id="titleEn" [ngClass]="{
+          <label for="sectorEn" class="form-lbl">القطاع إنجليزي<span class="danger">*</span></label>
+          <input type="text" class="form-control" formControlName="sectorEn" maxlength="256" id="sectorEn" [ngClass]="{
               invalid:
-                (isFormSubmitted || updateServiceForm.get('titleEn').touched) &&
-                updateServiceForm.get('titleEn').errors?.required
+                (isFormSubmitted || updateServiceForm.get('sectorEn').touched) &&
+                updateServiceForm.get('sectorEn').errors?.required
             }" />
-          <small *ngIf="(isFormSubmitted || updateServiceForm.get('titleEn').touched) && updateServiceForm.get('titleEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || updateServiceForm.get('sectorEn').touched) && updateServiceForm.get('sectorEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-md-6">
           <label for="descriptionAr" class="form-lbl">الوصف عربي<span class="danger">*</span></label>
-          <textarea rows="4" class="form-control" formControlName="descriptionAr" id="descriptionAr" [ngClass]="{
+          <textarea rows="4" class="form-control" formControlName="descriptionAr" maxlength="4000" id="descriptionAr" [ngClass]="{
               invalid:
                 (isFormSubmitted || updateServiceForm.get('descriptionAr').touched) &&
                 updateServiceForm.get('descriptionAr').errors?.required
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="descriptionEn" class="form-lbl">الوصف إنجليزي<span class="danger">*</span></label>
-          <textarea rows="4" class="form-control" formControlName="descriptionEn" id="descriptionEn" [ngClass]="{
+          <textarea rows="4" class="form-control" formControlName="descriptionEn" maxlength="4000" id="descriptionEn" [ngClass]="{
               invalid:
                 (isFormSubmitted || updateServiceForm.get('descriptionEn').touched) &&
                 updateServiceForm.get('descriptionEn').errors?.required
@@ -69,7 +69,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="requestLink" class="form-lbl">رابط الخدمة<span class="danger">*</span></label>
-          <input type="text" class="form-control" formControlName="requestLink" id="requestLink" [ngClass]="{
+          <input type="text" class="form-control" formControlName="requestLink" maxlength="256" id="requestLink" [ngClass]="{
               invalid:
                 (isFormSubmitted || updateServiceForm.get('requestLink').touched) &&
                 updateServiceForm.get('requestLink').errors?.required
@@ -90,6 +90,13 @@
         <div class="form-group col-6">
           <label class="container-check">
             فعال
+            <input type="checkbox" formControlName="isActive" id="isActive" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="form-group col-6">
+          <label class="container-check">
+            خدمة خارجية
             <input type="checkbox" formControlName="isActive" id="isActive" />
             <span class="checkmark"></span>
           </label>

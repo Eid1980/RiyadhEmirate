@@ -81,6 +81,22 @@ namespace Emirates.InfraStructure.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region Audience
+            modelBuilder.Entity<Audience>(b =>
+            {
+                b.ToTable("Audiences", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedAudiences).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedAudiences).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.Audiences());
+            });
+            #endregion
+
             #region BuildingType
             modelBuilder.Entity<BuildingType>(b =>
             {
@@ -480,18 +496,58 @@ namespace Emirates.InfraStructure.Contexts
                 b.ToTable("Services", EmiratesDbSchemas.DataManagement);
                 b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
-                b.Property(x => x.TitleAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
-                b.Property(x => x.TitleEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.SectorAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.SectorEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.DescriptionAr).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.DescriptionEn).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.RequestLink).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.WorkDays).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.IsExternal).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
 
                 b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedServices).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedServices).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
 
                 b.HasData(DefaultData.Services());
+            });
+            #endregion
+
+            #region ServiceAudience
+            modelBuilder.Entity<ServiceAudience>(b =>
+            {
+                b.ToTable("ServiceAudiences", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.ServiceId).IsRequired();
+                b.Property(x => x.AudienceId).IsRequired();
+
+                b.HasOne<Service>(x => x.Service).WithMany(x => x.ServiceAudiences).HasForeignKey(x => x.ServiceId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Audience>(x => x.Audience).WithMany(x => x.ServiceAudiences).HasForeignKey(x => x.AudienceId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedServiceAudiences).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region ServiceBenefit
+            modelBuilder.Entity<ServiceBenefit>(b =>
+            {
+                b.ToTable("ServiceBenefits", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.ServiceId).IsRequired();
+                b.Property(x => x.IsBenefit).IsRequired();
+
+                b.HasOne<Service>(x => x.Service).WithMany(x => x.ServiceBenefits).HasForeignKey(x => x.ServiceId).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region ServiceCondition
+            modelBuilder.Entity<ServiceCondition>(b =>
+            {
+                b.ToTable("ServiceConditions", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.ServiceId).IsRequired();
+                b.Property(x => x.Condition).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.Order).IsRequired();
+
+                b.HasOne<Service>(x => x.Service).WithMany(x => x.ServiceConditions).HasForeignKey(x => x.ServiceId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedServiceConditions).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedServiceConditions).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -593,6 +649,7 @@ namespace Emirates.InfraStructure.Contexts
             #endregion
         }
 
+        public DbSet<Audience> Audiences { get; set; }
         public DbSet<BuildingType> BuildingTypes { get; set; }
         public DbSet<CaseType> CaseTypes { get; set; }
         public DbSet<DefendantType> DefendantTypes { get; set; }
@@ -620,6 +677,9 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<Role> Roles { get; set; }
         public DbSet<RolesScreen> RolesScreens { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<ServiceAudience> ServiceAudiences { get; set; }
+        public DbSet<ServiceBenefit> ServiceBenefits { get; set; }
+        public DbSet<ServiceCondition> ServiceConditions { get; set; }
         public DbSet<ServiceRate> ServiceRates { get; set; }
         public DbSet<ServiceStage> ServiceStages { get; set; }
         public DbSet<Stage> Stages { get; set; }

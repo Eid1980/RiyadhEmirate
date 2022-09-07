@@ -65,7 +65,7 @@ namespace Emirates.Core.Application.Services
         {
             var services = _emiratesUnitOfWork.Services.Where(x => x.IsActive &&
                 (x.NameAr.Contains(filter) || x.NameEn.Contains(filter) ||
-                x.TitleAr.Contains(filter) || x.TitleEn.Contains(filter) ||
+                x.SectorAr.Contains(filter) || x.SectorEn.Contains(filter) ||
                 x.DescriptionAr.Contains(filter) || x.DescriptionEn.Contains(filter)));
             var mappedList = _mapper.Map<List<GetServiceListDto>>(services);
             foreach (var item in mappedList)
