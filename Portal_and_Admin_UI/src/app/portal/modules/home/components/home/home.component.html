@@ -16,7 +16,7 @@
       <div class="section-title">
         <h3 class="title">آخر الأخبار</h3>
         <div class="more">
-          <a routerLink="/news">
+          <a [routerLink]="['/news']"  [queryParams]="{newsTypeId:  '1'}">
             تصفح جميع الأخبار
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
           </a>
@@ -261,7 +261,7 @@
       <div class="section-title">
         <h3 class="title">أخبار المحافظات</h3>
         <div class="more">
-          <a routerLink="/news">
+          <a [routerLink]="['/news']"  [queryParams]="{newsTypeId:  '2'}">
             تصفح جميع الأخبار
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
           </a>
