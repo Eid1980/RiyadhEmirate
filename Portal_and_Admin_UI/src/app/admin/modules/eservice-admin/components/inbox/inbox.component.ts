@@ -31,8 +31,6 @@ export class InboxComponent implements OnInit {
   pagingMetaData: PagingMetaData;
   PageListSetting: PageListSetting;
 
-
-
   constructor(private requestService: RequestService,
     private serviceService: ServiceService,
     public dynamicSearchService: DynamicSearchService,
