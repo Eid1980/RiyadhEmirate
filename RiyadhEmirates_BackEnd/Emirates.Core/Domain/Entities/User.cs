@@ -44,6 +44,9 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<BuildingType> CreatedBuildingTypes { get; set; }
         public virtual ICollection<BuildingType> ModifiedBuildingTypes { get; set; }
 
+        public virtual ICollection<Audience> CreatedAudiences { get; set; }
+        public virtual ICollection<Audience> ModifiedAudiences { get; set; }
+
         public virtual ICollection<CaseType> CreatedCaseTypes { get; set; }
         public virtual ICollection<CaseType> ModifiedCaseTypes { get; set; }
 
@@ -99,6 +102,11 @@ namespace Emirates.Core.Domain.Entities
 
         public virtual ICollection<Religion> CreatedReligions { get; set; }
         public virtual ICollection<Religion> ModifiedReligions { get; set; }
+
+        public virtual ICollection<ServiceAudience> CreatedServiceAudiences { get; set; }
+
+        public virtual ICollection<ServiceCondition> CreatedServiceConditions { get; set; }
+        public virtual ICollection<ServiceCondition> ModifiedServiceConditions { get; set; }
 
     }
 }

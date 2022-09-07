@@ -1,11 +1,6 @@
 ﻿using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces.Repositories;
 using Emirates.InfraStructure.Contexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Emirates.InfraStructure.Repositories
 {

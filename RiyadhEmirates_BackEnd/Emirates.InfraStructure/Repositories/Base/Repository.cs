@@ -2,7 +2,7 @@
 using Emirates.Core.Domain.Interfaces;
 using System.Linq.Expressions;
 
-namespace Emirates.InfraStructure.Repositories.Security
+namespace Emirates.InfraStructure.Repositories
 {
     public class Repository<TEntity, TContext> : IRepository<TEntity>
         where TEntity: class

@@ -2,7 +2,7 @@
 using Emirates.Core.Domain.Interfaces.Repositories;
 using Emirates.InfraStructure.Contexts;
 
-namespace Emirates.InfraStructure.Repositories.Security
+namespace Emirates.InfraStructure.Repositories
 {
     public class UserRepository : Repository<User, EmiratesContext>, IUserRepository
     {

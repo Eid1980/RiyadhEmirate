@@ -37,8 +37,8 @@ export class ServiceListComponent implements OnInit {
         { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
         { Field: 'nameAr', Header: 'الاسم عربي' },
         { Field: 'nameEn', Header: 'الاسم انجليزي' },
-        { Field: 'titleAr', Header: 'العنوان عربي' },
-        { Field: 'titleEn', Header: 'العنوان انجليزي' },
+        { Field: 'sectorAr', Header: 'القطاع عربي' },
+        { Field: 'sectorEn', Header: 'القطاع انجليزي' },
         { Field: 'workDays', Header: 'مدة الخدمة' },
         {
           Field: 'isActive',
