@@ -22,8 +22,11 @@ namespace Emirates.Core.Domain.Interfaces
         IRequestStageLogRepository RequestStageLogs { get; }
         IRequestTreatmentRecommendationRepository RequestTreatmentRecommendations { get; }
         IRequestTypeRepository RequestTypes { get; }
-        IServiceRepository Services { get; }
+        IServiceAudienceRepository ServiceAudiences { get; }
+        IServiceBenefitRepository ServiceBenefits { get; }
+        IServiceConditionRepository ServiceConditions { get; }
         IServiceRateRepository ServiceRates { get; }
+        IServiceRepository Services { get; }
         IServiceStageRepository ServiceStages { get; }
         IStageRepository Stages { get; }
         IUploadedFileRepository UploadedFiles { get; }

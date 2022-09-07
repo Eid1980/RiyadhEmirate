@@ -52,8 +52,8 @@ export class ServiceEditComponent implements OnInit {
     this.updateServiceForm = this.formBuilder.group({
       nameAr: [this.updateServiceDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       nameEn: [this.updateServiceDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      titleAr: [this.updateServiceDto.titleAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      titleEn: [this.updateServiceDto.titleEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      sectorAr: [this.updateServiceDto.sectorAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      sectorEn: [this.updateServiceDto.sectorEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionAr: [this.updateServiceDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionEn: [this.updateServiceDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       workDays: [this.updateServiceDto.workDays || null],

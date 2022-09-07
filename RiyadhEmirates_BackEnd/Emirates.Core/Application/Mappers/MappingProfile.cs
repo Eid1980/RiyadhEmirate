@@ -2,6 +2,7 @@
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Posters;
 using Emirates.Core.Application.Dtos.Requests;
+using Emirates.Core.Application.Dtos.ServiceBenefits;
 using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
 using Emirates.Core.Application.Models.InternalPortal.Response.FileManager;
 using Emirates.Core.Application.Models.Response.Nationality;
@@ -277,6 +278,10 @@ namespace Emirates.Core.Application.Mappers
 
             CreateMap<Service, GetServiceDetailsDto>();
             CreateMap<Service, GetServiceListDto>();
+            #endregion
+
+            #region ServiceBenefit
+            CreateMap<CreateServiceBenefitDto, ServiceBenefit>();
             #endregion
 
             #region ServiceRate

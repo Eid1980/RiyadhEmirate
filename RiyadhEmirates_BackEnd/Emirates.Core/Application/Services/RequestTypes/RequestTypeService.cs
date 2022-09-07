@@ -5,8 +5,6 @@ using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.DynamicSearch;
 using Emirates.Core.Application.Interfaces.Helpers;
-using Emirates.Core.Application.Models.Request;
-using Emirates.Core.Application.Models.Response;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;

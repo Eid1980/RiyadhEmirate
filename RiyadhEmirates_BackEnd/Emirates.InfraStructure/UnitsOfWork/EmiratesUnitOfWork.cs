@@ -2,7 +2,6 @@
 using Emirates.Core.Domain.Interfaces.Repositories;
 using Emirates.InfraStructure.Contexts;
 using Emirates.InfraStructure.Repositories;
-using Emirates.InfraStructure.Repositories.Security;
 
 namespace Emirates.InfraStructure.UnitsOfWork
 {
@@ -85,7 +84,19 @@ namespace Emirates.InfraStructure.UnitsOfWork
         private RequestTypeRepository requestTypes;
         public IRequestTypeRepository RequestTypes => requestTypes ??=  new RequestTypeRepository(Context);
 
+
+        private ServiceAudienceRepository serviceAudiences;
+        public IServiceAudienceRepository ServiceAudiences => serviceAudiences ??= new ServiceAudienceRepository(Context);
+
+
+        private ServiceBenefitRepository serviceBenefits;
+        public IServiceBenefitRepository ServiceBenefits => serviceBenefits ??= new ServiceBenefitRepository(Context);
+
         
+        private ServiceConditionRepository serviceConditions;
+        public IServiceConditionRepository ServiceConditions => serviceConditions ??= new ServiceConditionRepository(Context);
+
+
         private ServiceRepository services;
         public IServiceRepository Services => services ??= new ServiceRepository(Context);
 
