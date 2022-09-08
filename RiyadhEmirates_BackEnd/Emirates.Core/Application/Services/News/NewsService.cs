@@ -40,9 +40,23 @@ namespace Emirates.Core.Application.Services.News
         public IApiResponse GetAll(SearchModel searchModel)
         {
             var serchResult = _emiratesUnitOfWork.News.GetQueryable()
-               .ProjectTo<GetNewsListDto>(_mapConfig)
-               .DynamicSearch(searchModel)
-               .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+                .Select(news => new GetNewsListDto()
+                {
+                    Id = news.Id,
+                    TitleAr = news.TitleAr,
+                    TitleEn = news.TitleEn,
+                    DescriptionAr = news.DescriptionAr,
+                    DescriptionEn = news.DescriptionEn,
+                    NewsTypeId = news.NewsTypeId,
+                    Date = news.Date,
+                    IsActive = news.IsActive,
+
+                    Image = _fileManagerService.GetBase64File(news.Id, "News")
+                })
+
+                .OrderByDescending(s => s.Date)
+                .DynamicSearch(searchModel)
+                .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
 
             return GetResponse(data: new ListPageModel<GetNewsListDto>
             {

@@ -14,10 +14,10 @@
             <input type="text" class="form-control" maxlength="10" formControlName="nationalId" id="nationalId" [ngClass]="{
               invalid:
                 (isFormSubmitted || checkUserRegisterForm.get('nationalId').touched) &&
-                checkUserRegisterForm.get('nationalId').errors?.required
-            }" />
+                checkUserRegisterForm.get('nationalId').errors?.required}" />
             <small *ngIf="(isFormSubmitted || checkUserRegisterForm.get('nationalId').touched) && checkUserRegisterForm.get('nationalId').errors?.required"
-                   class="danger">هذا الحقل مطلوب</small>
+                   class="danger">هذا الحقل مطلوب
+            </small>
           </div>
           <div class="form-group mb-4">
             <!--[minGreg]="minGreg" [minHijri]="minHigriDate"-->
