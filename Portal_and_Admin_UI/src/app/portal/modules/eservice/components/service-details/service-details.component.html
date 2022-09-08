@@ -10,7 +10,12 @@
   <div class="page-head">
     <h2 class="title px-3">{{serviceDetailsDto?.nameAr}}</h2>
     <button type="button" class="btn mx-3">
-      <a [routerLink]="serviceDetailsDto?.requestLink" class="btn start-ser px-2">إبدأ الخدمة
+      <a *ngIf="serviceDetailsDto?.isExternal" [routerLink]="serviceDetailsDto?.requestLink" class="btn start-ser px-2">
+        إبدأ الخدمة
+        <img src="./assets/images/icons/services/arrowTwo.svg" alt="" width="15" class="mx-1">
+      </a>
+      <a *ngIf="!serviceDetailsDto?.isExternal" href="serviceDetailsDto?.requestLink" class="btn start-ser px-2">
+        إبدأ الخدمة
         <img src="./assets/images/icons/services/arrowTwo.svg" alt="" width="15" class="mx-1">
       </a>
     </button>
@@ -203,52 +208,33 @@
         <div class="d-lg-flex justify-content-between align-items-center">
           <div>
             <span class="question">هل استفدت من المعلومات المقدمة في هذه الصفحة؟</span>
-            <button class="btn-vote">نعم</button>
+            <button class="btn-vote" (click)="createBenefit(true)">نعم</button>
             <span class="d-inline-block mx-2">|</span>
-            <button class="btn-vote">لا</button>
+            <button class="btn-vote" (click)="createBenefit(false)">لا</button>
           </div>
           <div class="liked">
-            <span>1119</span>
-            <span>من الزوار أعجبهم محتوى الصفحة من أصل <span>1410</span> مشاركة</span>
+            <span> ({{getAllCountDto?.benefitCount}}) </span>
+            <span>من الزوار أعجبهم محتوى الصفحة من أصل <span> ({{getAllCountDto?.allCount}}) </span> مشاركة</span>
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="col-md-3">
       <div class="sidebar ">
-        <div class="toast-detail">
+        <div class="toast-detail" *ngIf="getServiceAudienceListDto.length > 0">
           <h4 class="title ">الجمهور المستهدف</h4>
-
-          <div class="group ">
+          <div class="group" *ngFor="let audience of getServiceAudienceListDto">
             <img src="./assets/images/icons/details/15-Checked.svg" alt="15-Checked" width="20">
-            <span class="service">أفراد</span>
+            <span class="service">{{audience.audienceName}}</span>
           </div>
-
-          <div class="group">
-            <img src="./assets/images/icons/details/15-Checked.svg" alt="15-Checked" width="20">
-            <span class="service">جهات حكومية</span>
-          </div>
-
-          <div class="group ">
-            <img src="./assets/images/icons/details/15-Checked.svg" alt="15-Checked" width="20">
-            <span class="service">قطاع الأعمال</span>
-          </div>
-
-          <div class="group">
-            <img src="./assets/images/icons/details/15-Checked.svg" alt="15-Checked" width="20">
-            <span class="service">الجمعيات التطوعية</span>
-          </div>
-
         </div>
 
         <div class="toast-detail">
-          <h4 class="title ">المدة الزمنية لإنجاز الخدمة عبر جميع القنوات</h4>
-
+          <h4 class="title ">المدة الزمنية لإنجاز الخدمة</h4>
           <div class="group ">
             <img src="./assets/images/icons/details/feather-clock.svg" alt="feather-clock" width="16">
-            <span class="service ">20 - 15</span>
+            <span class="service ">{{serviceDetailsDto?.workDays}}</span>
             <span class="service mx-1">يوم</span>
           </div>
         </div>
@@ -264,52 +250,34 @@
 
         <div class="toast-detail pl-0 ">
           <h4 class="title ">تقييم الخدمة</h4>
-
           <table class="table-e ">
-
             <tr class="row mx-0">
               <td class="col-4 ">التقييم</td>
               <td class="col-8 ">
-                <img src="./assets/images/icons/details/ionic-ios-star2.svg" alt="ionic-ios-star2" width="17">
-                <img src="./assets/images/icons/details/ionic-ios-star2.svg" alt="ionic-ios-star2" width="17">
-                <img src="./assets/images/icons/details/ionic-ios-star2.svg" alt="ionic-ios-star2" width="17">
-                <img src="./assets/images/icons/details/ionic-ios-star2.svg" alt="ionic-ios-star2" width="17">
-                <img src="./assets/images/icons/details/ionic-ios-star.svg" alt="ionic-ios-star" width="17">
-                <span class="service mx-2">4.4</span>
+                <p-rating [cancel]="false" [(ngModel)]="rate" [readonly]="!canRate" (onRate)="rateService()"></p-rating>
+                <span class="service mx-2">{{getServiceRateDto?.serviceRatePercentage}}</span>
               </td>
             </tr>
-
             <tr class="row mx-0">
               <td class="col-4 ">آخر تقييم</td>
               <td class="col-8 ">
-
-                <span class="service mx-2">25/07/1443</span>
-                <span class="service ">09:11</span>
-                <span class="service ">ص</span>
+                <span class="service mx-2">{{getServiceRateDto?.lastRateDate}}</span>
               </td>
             </tr>
-
             <tr class="row mx-0">
               <td class="col-4 ">مجموع التقييم</td>
               <td class="col-8 ">
-
-                <span class="service mx-2">جيد جداً</span>
+                <span class="service mx-2">{{getServiceRateDto?.ratePercentage}}</span>
               </td>
             </tr>
-
             <tr class="row mx-0">
               <td class="col-4 ">عدد المقيمين</td>
               <td class="col-8 ">
-
-                <span class="service mx-2">1938</span>
+                <span class="service mx-2">{{getServiceRateDto?.rateCout}}</span>
               </td>
             </tr>
-
-
           </table>
-
         </div>
-
       </div>
     </div>
   </div>

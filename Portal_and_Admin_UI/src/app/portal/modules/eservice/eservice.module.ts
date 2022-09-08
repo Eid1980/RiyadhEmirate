@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { StepsModule } from 'primeng/steps';
 import { ToastModule } from 'primeng/toast';
+import { RatingModule } from 'primeng/rating';
 
 import { EServiceRoutingModule } from './eservice-routing.module';
 import { RequesterDashboardComponent } from './components/requester-dashboard/requester-dashboard.component';
@@ -105,6 +106,7 @@ import { TreatmentRecommendationViewComponent } from './components/treatment-rec
     CommonModule,
     EServiceRoutingModule,
     SharedModule,
+    RatingModule,
   ],
   exports: [
     PrisonerTempReleaseDetailsComponent,

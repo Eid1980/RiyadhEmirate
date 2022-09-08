@@ -1,5 +1,5 @@
 ﻿
-namespace Emirates.Core.Application.Dtos.ServiceBenefits
+namespace Emirates.Core.Application.Dtos
 {
     public class CreateServiceBenefitDto
     {

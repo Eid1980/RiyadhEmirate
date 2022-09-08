@@ -19,6 +19,7 @@ using Emirates.Core.Application.Services.RequestPrisonerTempReleases;
 using Emirates.Core.Application.Services.Requests;
 using Emirates.Core.Application.Services.RequestTreatmentRecommendations;
 using Emirates.Core.Application.Services.RequestTypes;
+using Emirates.Core.Application.Services.ServiceAudiences;
 using Emirates.Core.Application.Services.ServiceBenefits;
 using Emirates.Core.Application.Services.ServiceRates;
 using Emirates.Core.Application.Services.ServiceStages;
@@ -45,6 +46,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<INewsService, NewsService>();
             builder.Services.AddScoped<IPosterService, PosterService>();
             builder.Services.AddScoped<IServicesService, ServicesService>();
+            builder.Services.AddScoped<IServiceAudienceService, ServiceAudienceService>();
             builder.Services.AddScoped<IServiceBenefitService, ServiceBenefitService>();
             builder.Services.AddScoped<IServiceRateService, ServiceRateService>();
             builder.Services.AddScoped<IServiceStageService, ServiceStageService>();

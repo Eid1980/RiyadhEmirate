@@ -35,6 +35,7 @@ export interface GetServiceDetailsDto {
   requestLink: string;
   workDays?: number;
   isActive: boolean;
+  isExternal: boolean;
   image: any;
 }
 

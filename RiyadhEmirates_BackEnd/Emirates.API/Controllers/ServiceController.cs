@@ -19,14 +19,13 @@ namespace Emirates.API.Controllers
         }
 
 
-        [HttpGet("GetById/{id}")]
+        [AllowAnonymous, HttpGet("GetById/{id}")]
         public IApiResponse GetById(int id)
         {
             return _serviceService.GetById(id);
         }
 
-        [AllowAnonymous]
-        [HttpGet("GetAll")]
+        [AllowAnonymous, HttpGet("GetAll")]
         public IApiResponse GetAll()
         {
             return _serviceService.GetAll();

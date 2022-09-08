@@ -1,9 +1,8 @@
-﻿using Emirates.Core.Application.Dtos.ServiceBenefits;
+﻿using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.ServiceBenefits;
 using Emirates.Core.Application.Services.Shared;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emirates.API.Controllers
@@ -22,11 +21,6 @@ namespace Emirates.API.Controllers
         public IApiResponse GetAllCountByServiceId(int serviceId)
         {
             return _serviceBenefitService.GetAllCountByServiceId(serviceId);
-        }
-        [AllowAnonymous, HttpGet("GetBenefitCountByServiceId/{serviceId}")]
-        public IApiResponse GetBenefitCountByServiceId(int serviceId)
-        {
-            return _serviceBenefitService.GetBenefitCountByServiceId(serviceId);
         }
 
         [AllowAnonymous, HttpPost("Create")]
