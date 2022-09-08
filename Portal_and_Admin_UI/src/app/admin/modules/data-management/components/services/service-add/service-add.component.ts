@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MessageType } from '@shared/enums/message-type.enum';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { ServiceService } from '@proxy/services/service.service';
@@ -63,10 +62,10 @@ export class ServiceAddComponent implements OnInit {
     if (this.createServiceForm.valid) {
       this.createServiceDto = { ...this.createServiceForm.value } as CreateServiceDto;
       this.serviceService.create(this.createServiceDto).subscribe((response) => {
+        this.globalService.showMessage(response.message);
         if (response.isSuccess) {
           let id = response.data.toString();
           this.fileManagerService.upload(id, 'Services', '', [this.createServiceForm.get('image').value]).subscribe(res =>{
-            this.globalService.messageAlert(MessageType.Success,'تم الحفظ بنجاح');
             this.globalService.navigate("/admin/data-management/service-list");
           })
         }

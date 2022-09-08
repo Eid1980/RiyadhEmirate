@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Emirates.Core.Application.Dtos.ServiceBenefits;
+using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Domain.Entities;
@@ -19,19 +19,18 @@ namespace Emirates.Core.Application.Services.ServiceBenefits
 
         public IApiResponse GetAllCountByServiceId(int serviceId)
         {
-            var count = _emiratesUnitOfWork.ServiceBenefits.Where(x => x.ServiceId.Equals(serviceId)).Count();
-            return GetResponse(data: count);
-        }
-        public IApiResponse GetBenefitCountByServiceId(int serviceId)
-        {
-            var count = _emiratesUnitOfWork.ServiceBenefits.Where(x => x.ServiceId.Equals(serviceId) && x.IsBenefit).Count();
-            return GetResponse(data: count);
+            var serviceBenefits = _emiratesUnitOfWork.ServiceBenefits.Where(x => x.ServiceId.Equals(serviceId)).ToList();
+            return GetResponse(data: new GetAllCountDto
+            {
+                AllCount = serviceBenefits.Count,
+                BenefitCount = serviceBenefits.Where(x => x.IsBenefit).Count()
+            });
         }
         public IApiResponse Create(CreateServiceBenefitDto createModel)
         {
             var addedModel = _emiratesUnitOfWork.ServiceBenefits.Add(_mapper.Map<ServiceBenefit>(createModel));
             _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
+            return GetResponse(message: CustumMessages.MsgSuccess("تم تقييم الاستفادة بنجاح شكرا لك"), data: addedModel.Id);
         }
     }
 }
