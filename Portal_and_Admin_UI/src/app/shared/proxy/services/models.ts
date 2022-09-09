@@ -7,8 +7,10 @@ export interface CreateServiceDto {
   descriptionAr: string;
   descriptionEn: string;
   requestLink: string;
-  workDays?: number;
+  workDays: string;
+  cost?: number;
   isActive: boolean;
+  isExternal: boolean;
 }
 
 export interface UpdateServiceDto {
@@ -19,9 +21,11 @@ export interface UpdateServiceDto {
   sectorEn: string;
   descriptionAr: string;
   descriptionEn: string;
-  workDays?: number;
   requestLink: string;
+  workDays: string;
+  cost?: number;
   isActive: boolean;
+  isExternal: boolean;
 }
 
 export interface GetServiceDetailsDto {
@@ -33,7 +37,8 @@ export interface GetServiceDetailsDto {
   descriptionAr: string;
   descriptionEn: string;
   requestLink: string;
-  workDays?: number;
+  workDays: string;
+  cost?: number;
   isActive: boolean;
   isExternal: boolean;
   image: any;
@@ -48,8 +53,10 @@ export interface GetServiceListDto {
   descriptionAr: string;
   descriptionEn: string;
   requestLink: string;
-  workDays?: number;
+  workDays: string;
   isActive: boolean;
   createdDate: string;
   image: any;
 }
+
+

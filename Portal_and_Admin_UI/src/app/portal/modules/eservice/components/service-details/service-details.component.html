@@ -9,12 +9,14 @@
 <section class="service-details">
   <div class="page-head">
     <h2 class="title px-3">{{serviceDetailsDto?.nameAr}}</h2>
-    <button type="button" class="btn mx-3">
-      <a *ngIf="serviceDetailsDto?.isExternal" [routerLink]="serviceDetailsDto?.requestLink" class="btn start-ser px-2">
+    <button type="button" class="btn mx-3" [hidden]="serviceDetailsDto?.isExternal">
+      <a [routerLink]="serviceDetailsDto?.requestLink" class="btn start-ser px-2">
         إبدأ الخدمة
         <img src="./assets/images/icons/services/arrowTwo.svg" alt="" width="15" class="mx-1">
       </a>
-      <a *ngIf="!serviceDetailsDto?.isExternal" href="serviceDetailsDto?.requestLink" class="btn start-ser px-2">
+    </button>
+    <button type="button" class="btn mx-3" [hidden]="!serviceDetailsDto?.isExternal">
+      <a [href]="serviceDetailsDto?.requestLink" class="btn start-ser px-2">
         إبدأ الخدمة
         <img src="./assets/images/icons/services/arrowTwo.svg" alt="" width="15" class="mx-1">
       </a>
@@ -150,40 +152,9 @@
           </div>
           <div class="tab-pane fade" id="conditions" role="tabpanel" aria-labelledby="conditions-tab">
             <div class="py-4">
-              <!-- Terms -->
-              <div class="term-row">
-                <span class="term-num">1</span>
-                <span class="term-desc">سداد رسوم الخدمة من هنا: 300 ريال لـ 5 سنوات و600 ريال لـ 10 سنوات</span>
-              </div>
-              <!-- Terms -->
-              <div class="term-row">
-                <span class="term-num">2</span>
-                <span class="term-desc">سداد المخالفات المرورية على صاحب الجواز المراد الإصدار له إن وجدت</span>
-              </div>
-              <!-- Terms -->
-              <div class="term-row">
-                <span class="term-num">3</span>
-                <span class="term-desc">وجود بصمة وصورة للمواطن/المواطنة المراد الإصدار له</span>
-              </div>
-              <!-- Terms -->
-              <div class="term-row">
-                <span class="term-num">4</span>
-                <span class="term-desc">تواجد المواطن المراد إصدار الجواز له داخل الأراضي السعودية أثناء طلب الجواز</span>
-              </div>
-              <!-- Terms -->
-              <div class="term-row">
-                <span class="term-num">5</span>
-                <span class="term-desc">عدم وجود جواز سفر للمواطن المراد إصدار الجواز له، بشرط ألا يكون مرافقاً لأحد بجواز سفر</span>
-              </div>
-              <!-- Terms -->
-              <div class="term-row">
-                <span class="term-num">6</span>
-                <span class="term-desc">خدمة إصدار جواز السفر السعودي تشمل المواطن (أعزب/ رب أسرة). ويمكن لرب الأسرة الإصدار لأفراد الأسرة ممن هم دون 21 عاما</span>
-              </div>
-              <!-- Terms -->
-              <div class="term-row">
-                <span class="term-num">7</span>
-                <span class="term-desc">المزيد من التفاصيل في: دليل استخدام خدمات منصة أبشر</span>
+              <div class="term-row" *ngFor="let serviceCondition of getServiceConditionListDto;let i=index;">
+                <span class="term-num">{{i+1}}</span>
+                <span class="term-desc">{{serviceCondition.condition}}</span>
               </div>
             </div>
           </div>
