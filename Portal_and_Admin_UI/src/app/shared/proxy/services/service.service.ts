@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
 import { CreateServiceDto, GetServiceDetailsDto, GetServiceListDto, UpdateServiceDto } from './models';
 import { LookupDto } from '../shared/lookup-dto.model';
+import { SearchModel } from '../shared/search-model.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +26,9 @@ export class ServiceService {
   getAll = (): Observable<ApiResponse<GetServiceListDto[]>> => {
     return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/GetAll`).pipe(
     );
+  }
+  getAllServiceGuide = (searchModel: SearchModel): Observable<ApiResponse<any>> => {
+    return this.httpClient.post<ApiResponse<any>>(`${this.serviceUrl}/GetAllServiceGuide`, searchModel).pipe();
   }
   searchByFilter = (filter: string): Observable<ApiResponse<GetServiceListDto[]>> => {
     return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/SearchByFilter/${filter}`).pipe(
