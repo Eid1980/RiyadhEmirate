@@ -1,6 +1,4 @@
-﻿using Emirates.Core.Domain;
-using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace Emirates.Core.Application.Dtos
 {
     public class CreateServiceDto
@@ -12,7 +10,9 @@ namespace Emirates.Core.Application.Dtos
         public string DescriptionAr { get; set; }
         public string DescriptionEn { get; set; }
         public string RequestLink { get; set; }
-        public int? WorkDays { get; set; }
+        public string WorkDays { get; set; }
+        public double? Cost { get; set; }
         public bool IsActive { get; set; }
+        public bool IsExternal { get; set; }
     }
 }

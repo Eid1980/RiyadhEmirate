@@ -285,6 +285,14 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.AudienceName, src => src.MapFrom(m => m.Audience.NameAr));
             #endregion
 
+            #region ServiceCondition
+            CreateMap<CreateServiceConditionDto, ServiceCondition>();
+            CreateMap<UpdateServiceConditionDto, ServiceCondition>();
+
+            CreateMap<ServiceCondition, GetServiceConditionDetailsDto>();
+            CreateMap<ServiceCondition, GetServiceConditionListDto>();
+            #endregion
+
             #region ServiceBenefit
             CreateMap<CreateServiceBenefitDto, ServiceBenefit>();
             #endregion

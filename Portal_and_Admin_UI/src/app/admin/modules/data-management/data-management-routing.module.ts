@@ -37,8 +37,11 @@ import { ServiceStageEditComponent } from "./components/service-stages/service-s
 import { ServiceStageListComponent } from "./components/service-stages/service-stage-list/service-stage-list.component";
 import { ServiceStageViewComponent } from "./components/service-stages/service-stage-view/service-stage-view.component";
 import { ViewPosterComponent } from "./components/poster/view-poster/view-poster.component";
+import { ServiceConditionComponent } from "./components/services/service-condition/service-condition.component";
+import { ServiceAudienceComponent } from "./components/services/service-audience/service-audience.component";
 
 const routes: Routes = [
+  //#region LatestNews
   {
     path: "latest-news-list",
     component: LatestNewsListComponent,
@@ -59,6 +62,9 @@ const routes: Routes = [
     component: LatestNewsViewComponent,
     canActivate: [AuthGuard],
   },
+  //#endregion
+
+  //#region Reports
   {
     path: "reports-list",
     component: ReportsListComponent,
@@ -79,6 +85,7 @@ const routes: Routes = [
     component: ReportsViewComponent,
     canActivate: [AuthGuard],
   },
+  //#endregion
 
   //#region Poster
   {
@@ -209,6 +216,16 @@ const routes: Routes = [
   {
     path: "service-edit/:id",
     component: ServiceEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "service-audience/:id",
+    component: ServiceAudienceComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "service-condition/:id",
+    component: ServiceConditionComponent,
     canActivate: [AuthGuard],
   },
   {

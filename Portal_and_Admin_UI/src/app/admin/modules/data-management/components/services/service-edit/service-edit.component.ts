@@ -7,12 +7,15 @@ import { ServiceService } from '@proxy/services/service.service';
 import { UpdateServiceDto } from '@proxy/services/models';
 import { DomSanitizer } from '@angular/platform-browser';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-service-edit',
   templateUrl: './service-edit.component.html',
 })
 export class ServiceEditComponent implements OnInit {
+  wizardItems: MenuItem[];
+  activeIndex: number = 0;
   updateServiceForm: FormGroup;
   isFormSubmitted: boolean;
   id: number;
@@ -35,7 +38,7 @@ export class ServiceEditComponent implements OnInit {
     private globalService: GlobalService,
     private activatedRoute: ActivatedRoute,
     public sanitizer: DomSanitizer
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.globalService.setAdminTitle('تعديل الخدمة');
@@ -46,6 +49,7 @@ export class ServiceEditComponent implements OnInit {
     } else {
       this.globalService.navigate('/admin/data-management/service-list');
     }
+    this.getWizardItems();
   }
 
   buildForm() {
@@ -56,10 +60,12 @@ export class ServiceEditComponent implements OnInit {
       sectorEn: [this.updateServiceDto.sectorEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionAr: [this.updateServiceDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionEn: [this.updateServiceDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      workDays: [this.updateServiceDto.workDays || null],
       requestLink: [this.updateServiceDto.requestLink || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      workDays: [this.updateServiceDto.workDays || null],
+      cost: [this.updateServiceDto.cost || null],
       image: [null],
-      isActive: [this.updateServiceDto.isActive, Validators.required],
+      isActive: [this.updateServiceDto.isActive || true, Validators.required],
+      isExternal: [this.updateServiceDto.isExternal || false, Validators.required]
     });
   }
   onUpload(event: any) {
@@ -80,36 +86,29 @@ export class ServiceEditComponent implements OnInit {
   onSubmit() {
     this.isFormSubmitted = true;
     if (this.updateServiceForm.valid) {
-      this.updateServiceDto = {
-        ...this.updateServiceForm.value,
-      } as UpdateServiceDto;
+      this.updateServiceDto = { ...this.updateServiceForm.value } as UpdateServiceDto;
       this.updateServiceDto.id = this.id;
-      this.serviceService
-        .update(this.updateServiceDto)
-        .subscribe((response) => {
-          this.globalService.showMessage(response.message);
-          if (response.isSuccess) {
-            if (this.updateServiceForm.get('image').value) {
-              this.fileManagerService
-                .deleteByEntityName(this.id.toString(), 'Services')
-                .subscribe((res) => {
-                  this.fileManagerService
-                    .upload(this.id.toString(), 'Services', '', [
-                      this.updateServiceForm.get('image').value,
-                    ])
-                    .subscribe((res) => {
-                      this.globalService.navigate(
-                        '/admin/data-management/service-list'
-                      );
-                    });
-                });
-            } else {
-              this.globalService.navigate(
-                '/admin/data-management/service-list'
-              );
-            }
+      this.serviceService.update(this.updateServiceDto).subscribe((response) => {
+        this.globalService.showMessage(response.message);
+        if (response.isSuccess) {
+          if (this.updateServiceForm.get('image').value) {
+            this.fileManagerService.deleteByEntityName(this.id.toString(), 'Services').subscribe((res) => {
+              this.fileManagerService.upload(this.id.toString(), 'Services', '', [this.updateServiceForm.get('image').value]).subscribe((res) => {
+              });
+            });
           }
-        });
+          this.globalService.navigate(`/admin/data-management/service-audience/${this.id}`);
+        }
+      });
     }
   }
+
+  getWizardItems() {
+    this.wizardItems = [
+      { label: 'البيانات الأساسية', url: `/data-management/service-edit/${this.id}` },
+      { label: 'الجمهور المستهدف', url: `/data-management/service-audience/${this.id}` },
+      { label: 'شروط ووثائق الخدمة', url: `/data-management/service-condition/${this.id}` }
+    ];
+  }
+
 }

@@ -9,6 +9,8 @@ import { CreateServiceRateDto, GetServiceRateDto, GetServiceRateToUserRequestDto
 import { ServiceRateService } from '@shared/proxy/service-rates/service-rate.service';
 import { ServiceAudienceService } from '@shared/proxy/service-audience/service-audience.service';
 import { GetServiceAudienceListDto } from '@shared/proxy/service-audience/models';
+import { ServiceConditionService } from '@shared/proxy/service-condition/service-condition.service';
+import { GetServiceConditionListDto } from '@shared/proxy/service-condition/models';
 
 @Component({
   selector: 'app-service-details',
@@ -18,6 +20,7 @@ export class ServiceDetailsComponent implements OnInit {
   id: number;
   serviceDetailsDto = {} as GetServiceDetailsDto;
   getServiceAudienceListDto = [] as GetServiceAudienceListDto[];
+  getServiceConditionListDto = [] as GetServiceConditionListDto[];
   getAllCountDto = {} as GetAllCountDto;
   getServiceRateDto = {} as GetServiceRateDto;
   rate: number;
@@ -25,11 +28,12 @@ export class ServiceDetailsComponent implements OnInit {
 
   constructor(private serviceService: ServiceService, private serviceBenefitService: ServiceBenefitService,
     private serviceRateService: ServiceRateService, private serviceAudienceService: ServiceAudienceService,
+    private serviceConditionService: ServiceConditionService,
     private activatedRoute: ActivatedRoute, private globalService: GlobalService) {
   }
 
   ngOnInit(): void {
-    this.globalService.setAdminTitle('تفاصيل الخدمة');
+    this.globalService.setTitle('تفاصيل الخدمة');
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.getDetails();
@@ -46,6 +50,7 @@ export class ServiceDetailsComponent implements OnInit {
     this.serviceAudienceService.getByServiceId(this.id).subscribe((response) => {
       this.getServiceAudienceListDto = response.data;
     });
+    this.getServiceCondition();
     this.getBenefit();
     this.buildRateForm();
   }
@@ -62,6 +67,11 @@ export class ServiceDetailsComponent implements OnInit {
   getBenefit() {
     this.serviceBenefitService.getAllCountByServiceId(this.id).subscribe((response) => {
       this.getAllCountDto = response.data;
+    });
+  }
+  getServiceCondition() {
+    this.serviceConditionService.getByServiceId(this.id).subscribe((response) => {
+      this.getServiceConditionListDto = response.data;
     });
   }
 

@@ -5,12 +5,15 @@ import { GlobalService } from '@shared/services/global.service';
 import { ServiceService } from '@proxy/services/service.service';
 import { CreateServiceDto } from '@proxy/services/models';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-service-add',
   templateUrl: './service-add.component.html'
 })
 export class ServiceAddComponent implements OnInit {
+  wizardItems: MenuItem[];
+  activeIndex: number = 0;
   createServiceForm: FormGroup;
   isFormSubmitted: boolean;
   createServiceDto = {} as CreateServiceDto;
@@ -32,6 +35,7 @@ export class ServiceAddComponent implements OnInit {
   ngOnInit() {
     this.globalService.setAdminTitle('اضافة خدمة جديدة');
     this.buildForm();
+    this.getWizardItems();
   }
 
   buildForm() {
@@ -42,10 +46,12 @@ export class ServiceAddComponent implements OnInit {
       sectorEn: [this.createServiceDto.sectorEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionAr: [this.createServiceDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionEn: [this.createServiceDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      workDays: [this.createServiceDto.workDays || null],
       requestLink: [this.createServiceDto.requestLink || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      workDays: [this.createServiceDto.workDays || null],
+      cost: [this.createServiceDto.cost || null],
       image: [ null, Validators.required],
-      isActive: [this.createServiceDto.isActive || true, Validators.required]
+      isActive: [this.createServiceDto.isActive || true, Validators.required],
+      isExternal: [this.createServiceDto.isExternal || false, Validators.required]
     });
   }
 
@@ -66,10 +72,19 @@ export class ServiceAddComponent implements OnInit {
         if (response.isSuccess) {
           let id = response.data.toString();
           this.fileManagerService.upload(id, 'Services', '', [this.createServiceForm.get('image').value]).subscribe(res =>{
-            this.globalService.navigate("/admin/data-management/service-list");
+            this.globalService.navigate(`/admin/data-management/service-audience/${id}`);
           })
         }
       });
     }
   }
+
+  getWizardItems() {
+    this.wizardItems = [
+      { label: 'البيانات الأساسية' },
+      { label: 'الجمهور المستهدف' },
+      { label: 'شروط ووثائق الخدمة' }
+    ];
+  }
+
 }

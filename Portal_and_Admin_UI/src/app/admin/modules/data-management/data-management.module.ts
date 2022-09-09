@@ -37,7 +37,10 @@ import { ServiceStageEditComponent } from './components/service-stages/service-s
 import { ServiceStageListComponent } from './components/service-stages/service-stage-list/service-stage-list.component';
 import { ServiceStageViewComponent } from './components/service-stages/service-stage-view/service-stage-view.component';
 import { SharedModule } from '@shared/shared.module';
+import { StepsModule } from 'primeng/steps';
 import { ViewPosterComponent } from './components/poster/view-poster/view-poster.component';
+import { ServiceAudienceComponent } from './components/services/service-audience/service-audience.component';
+import { ServiceConditionComponent } from './components/services/service-condition/service-condition.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +80,9 @@ import { ViewPosterComponent } from './components/poster/view-poster/view-poster
     ServiceStageListComponent,
     ServiceStageViewComponent,
     ViewPosterComponent,
+    ServiceAudienceComponent,
+    ServiceConditionComponent,
   ],
-  imports: [CommonModule, DataManagementRoutingModule, SharedModule],
+  imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })
 export class DataManagementModule {}

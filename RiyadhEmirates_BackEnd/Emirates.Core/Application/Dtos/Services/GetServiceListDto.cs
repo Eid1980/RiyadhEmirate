@@ -12,7 +12,7 @@ namespace Emirates.Core.Application.Dtos
         public string DescriptionAr { get; set; }
         public string DescriptionEn { get; set; }
         public string RequestLink { get; set; }
-        public int? WorkDays { get; set; }
+        public string WorkDays { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
         public UploadedFileBase64Model Image { get; set; }

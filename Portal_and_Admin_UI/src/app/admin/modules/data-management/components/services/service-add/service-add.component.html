@@ -10,6 +10,9 @@
   <div class="form-card">
     <div class="form-header">
       <h5>إضافة خدمة جديدة</h5>
+
+      <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+
     </div>
     <div class="form-content">
       <div class="row mx-0">
@@ -77,8 +80,12 @@
           <small *ngIf="(isFormSubmitted || createServiceForm.get('requestLink').touched) && createServiceForm.get('requestLink').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="workDays" class="form-lbl">مدة انجاز الخدمة<span class="danger">*</span></label>
+          <label for="workDays" class="form-lbl">مدة انجاز الخدمة</label>
           <input type="text" class="form-control" formControlName="workDays" id="workDays" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="cost" class="form-lbl">تكلفة الخدمة</label>
+          <input type="text" class="form-control" formControlName="cost" id="cost" />
         </div>
         <div class="form-group col-md-6">
           <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
@@ -105,7 +112,7 @@
         <div class="form-group col-6">
           <label class="container-check">
             خدمة خارجية
-            <input type="checkbox" formControlName="isActive" id="isActive" />
+            <input type="checkbox" formControlName="isExternal" id="isExternal" />
             <span class="checkmark"></span>
           </label>
         </div>
@@ -113,7 +120,7 @@
     </div>
   </div>
   <div class="form-actions">
-    <button type="submit" class="btn btn-save">حفظ</button>
+    <button type="submit" class="btn btn-save">التالي</button>
     <a [routerLink]="['/admin/data-management/service-list']" class="btn btn-cancel">رجوع</a>
   </div>
 </form>
