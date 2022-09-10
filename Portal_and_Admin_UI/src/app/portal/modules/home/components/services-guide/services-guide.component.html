@@ -9,50 +9,16 @@
 </div>
 
 <div class="container">
-  <div class="row my-5">
-    <div class="col-md-6 mb-4">
-      <a class="card-basic-h" routerLink="/services-guide/1">
+  <div class="row my-5" >
+    <div class="col-md-6 mb-4" *ngFor="let service of services">
+      <a class="card-basic-h" [routerLink]="['/services-guide' , service.id]">
         <div class="card-basic-banner">
-          <img src="https://via.placeholder.com/110x110" class="img-fluid" alt="banner" />
+          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="banner" />
         </div>
 
         <div class="card-basic-body">
-          <h4>ريبوسومات الخلايا البدائية: حيث تكون أصغر حجما من الريبوسومات في الخلايا حقيقية النواة </h4>
-          <p>الشرح العام</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="col-md-6 mb-4">
-      <a class="card-basic-h" routerLink="/services-guide/1">
-        <div class="card-basic-banner">
-          <img src="https://via.placeholder.com/600x300" class="img-fluid" alt="banner" />
-        </div>
-
-        <div class="card-basic-body">
-          <h4>العنوان الرئيسى</h4>
-          <p class="artical-text">تتكون الريبوسومات من وحدتي بروتينات، لا تجتمع مع بعضها اِلا في حالة تكوين
-            البروتين.اِحدى هذه الوحدات أكبر من الأخرى. يعتبر الريبوسوم أنه المصنع الذي يحول المعلومات الوراثية المشفرة
-            إلى تسلسل ببتيدي من أحماض أمينية. يمكن للريبوسومات أن تسبح في الخلية بحرية كما في بدائيات النوى أمّا في
-            حقيقيات النوى فقد توجد حرة في الهيولى أو مرتبطة إلى الوجه الهيولي لأغشية الشبكة الهيولية الداخلية (الخشنة
-            تحديداً ) أو مرتبطة إلى الغلاف النووي.
-
-            تقوم الريبوسومات المبعثرة في الهيولي باِنتاج البروتينات الخاصة بالخلية.أما الرايبوسومات التي تكون مرتبطة
-            بالشبكة الاِندوبلازمية والغلاف النووي فتنتج البروتينات الخاصة بالغشاء الخلوي أو تلك التي قد لاتخص الخلية
-            نفسها مثل الهرمونات.</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="col-md-6 mb-4">
-      <a class="card-basic-h" routerLink="/services-guide/1">
-        <div class="card-basic-banner">
-          <img src="https://via.placeholder.com/600" class="img-fluid" alt="banner" />
-        </div>
-
-        <div class="card-basic-body">
-          <h4>العنوان الرئيسى</h4>
-          <p>الشرح العام</p>
+          <h4> {{ service.nameAr }} </h4>
+          <p>{{ service.descriptionAr }}</p>
         </div>
       </a>
     </div>

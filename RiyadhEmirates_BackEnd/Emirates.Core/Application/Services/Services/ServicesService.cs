@@ -61,6 +61,20 @@ namespace Emirates.Core.Application.Services
                 PagingMetaData = serchResult.GetMetaData()
             });
         }
+        public IApiResponse GetAllServiceGuide(SearchModel searchModel)
+        {
+            searchModel.PageSize = 2;
+            var serchResult = _emiratesUnitOfWork.Services.GetQueryable()
+               .ProjectTo<GetServiceListDto>(_mapConfig)
+               .DynamicSearch(searchModel)
+               .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetServiceListDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
+        }
         public IApiResponse SearchByFilter(string filter)
         {
             var services = _emiratesUnitOfWork.Services.Where(x => x.IsActive &&
