@@ -41,6 +41,8 @@ import { StepsModule } from 'primeng/steps';
 import { ViewPosterComponent } from './components/poster/view-poster/view-poster.component';
 import { ServiceAudienceComponent } from './components/services/service-audience/service-audience.component';
 import { ServiceConditionComponent } from './components/services/service-condition/service-condition.component';
+import { AddAboutUsComponent } from './components/about-us/add-about-us/add-about-us.component';
+import { EditAboutUsComponent } from './components/about-us/edit-about-us/edit-about-us.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,8 @@ import { ServiceConditionComponent } from './components/services/service-conditi
     ViewPosterComponent,
     ServiceAudienceComponent,
     ServiceConditionComponent,
+    AddAboutUsComponent,
+    EditAboutUsComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

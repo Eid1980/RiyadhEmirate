@@ -1,12 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NewsTypes } from '@shared/enums/news-types.enum';
-import { AccountService } from '@shared/proxy/accounts/account.service';
 import { GetNewsDetailsDto } from '@shared/proxy/news/models';
 import { NewsService } from '@shared/proxy/news/news.service';
 import {
-  GetPosterDetailsDto,
-  GetPosterListDto,
+  GetPosterDetailsDto
 } from '@shared/proxy/posters/models';
 import { PosterService } from '@shared/proxy/posters/poster.service';
 import { GetServiceListDto } from '@shared/proxy/services/models';
@@ -30,6 +28,13 @@ export class HomeComponent implements OnInit {
   reports: GetNewsDetailsDto[] = [];
   posters: GetPosterDetailsDto[] = [];
   services: GetServiceListDto[] = [];
+  serviceGuidLength:number = 2;
+
+  serviceGuidesList: GetServiceListDto[] = [];
+
+  serviceGuide: GetServiceListDto[] = [];
+
+  isEven: boolean
 
   sliderOptions: OwlOptions = {
     loop: true,
@@ -201,6 +206,7 @@ export class HomeComponent implements OnInit {
     this.getAllNews();
     this.getServices();
     this.getPosters();
+    //this.getAllServiceGuide();
 
     let processNumber1 = document.getElementById("processNumber1");
     let processNumber2 = document.getElementById("processNumber2");
@@ -236,7 +242,28 @@ export class HomeComponent implements OnInit {
       .getAll()
       .subscribe((result: ApiResponse<GetServiceListDto[]>) => {
         this.services = result.data;
+        this.serviceGuidesList = this.services
       });
+  }
+
+  getAllServiceGuide(){
+    let searchModel : SearchModel = {
+
+    }
+
+    this._serviceService
+    .getAllServiceGuide(searchModel)
+    .subscribe((result) => {
+      debugger
+      this.serviceGuidesList = result.data.gridItemsVM;
+    });
+
+  }
+
+  load(index){
+    console.log('hi')
+    debugger
+
   }
 
   getPosters() {
@@ -251,6 +278,13 @@ export class HomeComponent implements OnInit {
       },
       (err) => { }
     );
+  }
+
+  onCarouselSlide(index : number){
+    this.isEven = index % 2 == 0;
+    debugger
+    console.log(this.isEven)
+    this.serviceGuide = this.serviceGuidesList.slice(index * 2 , index * 2 + 2);
   }
 
   navigateTo() {

@@ -8,6 +8,7 @@ namespace Emirates.Core.Domain.Interfaces
         ICaseTypeRepository CaseTypes { get; }
         INationalityRepository Nationalities { get; }
         INewsRepository News { get; }
+        IPageContentRepository PageContent { get; }
         IPosterRepository Posters { get; }
         IRequestRepository Requests { get; }
         IRequestAttachmentTypeRepository RequestAttachmentTypes { get; }

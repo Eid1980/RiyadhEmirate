@@ -161,6 +161,19 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region MainPagePoints
+            modelBuilder.Entity<MainPagePoints>(b =>
+            {
+                b.ToTable("MainPagePoints", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.PageContentId).IsRequired();
+
+                b.HasOne(p => p.PageContent).WithMany(p => p.MainPagePoints).HasForeignKey(p => p.PageContentId).OnDelete(DeleteBehavior.NoAction);
+
+            });
+            #endregion
+
             #region MaritalStatus
             modelBuilder.Entity<MaritalStatus>(b =>
             {
@@ -228,6 +241,17 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNewsType).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
                     
                 b.HasData(DefaultData.NewsTypes());
+
+            });
+            #endregion
+
+            #region PageContent
+            modelBuilder.Entity<PageContent>(b =>
+            {
+                b.ToTable("PageContent", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.DescriptionAr).HasMaxLength(EmiratesConstants.MaxDescriptionLength).IsRequired();
+                b.Property(x => x.DescriptionEn).HasMaxLength(EmiratesConstants.MaxDescriptionLength).IsRequired();
+                b.Property(x => x.PageContentType).IsRequired();
 
             });
             #endregion
@@ -647,6 +671,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasData(DefaultData.Users());
             });
             #endregion
+
         }
 
         public DbSet<Audience> Audiences { get; set; }
@@ -654,10 +679,12 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<CaseType> CaseTypes { get; set; }
         public DbSet<DefendantType> DefendantTypes { get; set; }
         public DbSet<Governorate> Governorates { get; set; }
+        public DbSet<MainPagePoints> MainPagePoints { get; set; }
         public DbSet<MaritalStatus> MaritalStatuses { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<NewsType> NewTypes { get; set; }
+        public DbSet<PageContent> PageContent { get; set; }
         public DbSet<Poster> Posters { get; set; }
         public DbSet<Religion> Religions { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using Emirates.Core.Application.Services;
+using Emirates.Core.Application.Services.AboutUs;
 using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Services.CaseTypes;
 using Emirates.Core.Application.Services.Common;
@@ -39,6 +40,7 @@ namespace Emirates.API.Configurations
             #endregion
 
             builder.Services.AddScoped<ILookupService, LookupService>();
+            builder.Services.AddScoped<IAboutUsService, AboutUsService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICaseTypeService, CaseTypeService>();
             builder.Services.AddScoped<ILocalizationService, LocalizationService>();

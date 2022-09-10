@@ -28,6 +28,8 @@ namespace Emirates.InfraStructure.UnitsOfWork
         private NewsRepository news;
         public INewsRepository News => news ??= new NewsRepository(Context);
 
+        private PageContentRepository pageContent;
+        public IPageContentRepository PageContent => pageContent ??= new PageContentRepository(Context);
 
         private PosterRepository posters;
         public IPosterRepository Posters => posters ??= new PosterRepository(Context);
