@@ -275,7 +275,8 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<CreateServiceDto, Service>();
             CreateMap<UpdateServiceDto, Service>();
 
-            CreateMap<Service, GetServiceDetailsDto>();
+            CreateMap<Service, GetServiceDetailsDto>()
+                .ForMember(dest => dest.ServiceCost, src => src.MapFrom(m => m.Cost));
             CreateMap<Service, GetServiceListDto>();
             #endregion
 

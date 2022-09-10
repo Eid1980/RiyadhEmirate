@@ -78,6 +78,7 @@ export class ServiceEditComponent implements OnInit {
   getDetails() {
     this.serviceService.getById(this.id).subscribe((response) => {
       this.updateServiceDto = response.data as UpdateServiceDto;
+      this.updateServiceDto.cost = response.data.serviceCost;
       this.buildForm();
       this.oldImage = response.data.image;
     });
@@ -88,6 +89,7 @@ export class ServiceEditComponent implements OnInit {
     if (this.updateServiceForm.valid) {
       this.updateServiceDto = { ...this.updateServiceForm.value } as UpdateServiceDto;
       this.updateServiceDto.id = this.id;
+      debugger;
       this.serviceService.update(this.updateServiceDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
