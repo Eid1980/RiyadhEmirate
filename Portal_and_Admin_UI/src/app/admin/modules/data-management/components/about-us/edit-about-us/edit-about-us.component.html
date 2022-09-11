@@ -10,22 +10,22 @@
   <div class="form-header">
     <h5>تعديل بيانات عن الاماره</h5>
   </div>
-  <form [formGroup]="aboutUsMainPoints" (ngSubmit)="onSubmit()">
+  <form [formGroup]="aboutUsMainPointsForm" (ngSubmit)="onSubmit()">
     <div class="form-content">
       <div class="row mx-0">
         <div class="form-group col-md-12">
           <label for="condition" class="form-lbl">اليند<span class="danger">*</span></label>
-          <textarea rows="4" class="form-control" formControlName="condition" maxlength="4000" id="condition" [ngClass]="{
-                invalid: (isFormSubmitted || aboutUsMainPoints.get('point').touched) &&
-                aboutUsMainPoints.get('point').errors?.required}"></textarea>
-          <small *ngIf="(isFormSubmitted || aboutUsMainPoints.get('point').touched) && aboutUsMainPoints.get('point').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <textarea rows="4" class="form-control" formControlName="point" maxlength="4000" id="point" [ngClass]="{
+                invalid: (isFormSubmitted || aboutUsMainPointsForm.get('point').touched) &&
+                aboutUsMainPointsForm.get('point').errors?.required}"></textarea>
+          <small *ngIf="(isFormSubmitted || aboutUsMainPointsForm.get('point').touched) && aboutUsMainPointsForm.get('point').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-md-6">
           <label for="order" class="form-lbl">الترتيب<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="order" id="order" [ngClass]="{
-                invalid: (isFormSubmitted || aboutUsMainPoints.get('order').touched) &&
-                aboutUsMainPoints.get('order').errors?.required}" />
-          <small *ngIf="(isFormSubmitted || aboutUsMainPoints.get('order').touched) && aboutUsMainPoints.get('order').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                invalid: (isFormSubmitted || aboutUsMainPointsForm.get('order').touched) &&
+                aboutUsMainPointsForm.get('order').errors?.required}" />
+          <small *ngIf="(isFormSubmitted || aboutUsMainPointsForm.get('order').touched) && aboutUsMainPointsForm.get('order').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-md-6">
           <div class="form-actions" *ngIf="!isUpdate">
@@ -41,7 +41,7 @@
   </form>
 
   <div class="row mx-0">
-    <p-table #serviceConditions [value]="getMainPointsList" dataKey="id"
+    <p-table #mainPoints [value]="adoutUsDetails.mainPoints" dataKey="id"
              [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
       <ng-template pTemplate="header" let-columns>
         <tr>

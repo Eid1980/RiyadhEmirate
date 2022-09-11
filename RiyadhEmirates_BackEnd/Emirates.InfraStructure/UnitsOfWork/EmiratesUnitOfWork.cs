@@ -36,6 +36,8 @@ namespace Emirates.InfraStructure.UnitsOfWork
         private LatestNewsCommentRepository latestNewsComments;
         public ILatestNewsCommentRepository LatestNewsComments => latestNewsComments ??= new LatestNewsCommentRepository(Context);
 
+        private PageMainPointsRepository pageMainPoints;
+        public IPageMainPointsRepository PageMainPoints => pageMainPoints ??= new PageMainPointsRepository(Context);
 
         private NewsRepository news;
         public INewsRepository News => news ??= new NewsRepository(Context);

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ApiResponse } from '../shared/api-response.model';
-import { GetAboutUsDto } from './models';
+import { CreateMainPoint, GetAboutUsDto } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,9 @@ export class AboutUsService {
 
   update = (updatedDto: GetAboutUsDto): Observable<ApiResponse<number>> => {
     return this._httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  }
+
+  createMainPoint(mainPoint : CreateMainPoint ){
+    return this._httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/createMainPoint`, mainPoint).pipe();
   }
 }

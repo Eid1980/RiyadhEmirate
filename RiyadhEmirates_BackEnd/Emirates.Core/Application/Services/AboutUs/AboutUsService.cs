@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos.AboutUs;
+using Emirates.Core.Application.Dtos.MainPoints;
 using Emirates.Core.Application.Enums;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
@@ -21,21 +22,35 @@ namespace Emirates.Core.Application.Services.AboutUs
             _mapConfig = mapper.ConfigurationProvider;
         }
 
-        public IApiResponse GetAll()
-        {
-            var aboutUsContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).Where(p => p.PageContentType == PageContentTypeEnum.AboutUs.ToString());
-            return GetResponse(data: _mapper.Map<List<GetAboutUsDto>>(aboutUsContent));
-        }
-
         public IApiResponse Create(CreateAboutUsDto createModel)
         {
             if (_emiratesUnitOfWork.CaseTypes.Where(x => x.NameAr.Equals(createModel.PageContentType)).Any())
                 throw new BusinessException("الاسم عربي مضاف مسبقا");
-            
+
 
             var addedModel = _emiratesUnitOfWork.PageContent.Add(_mapper.Map<PageContent>(createModel));
             _emiratesUnitOfWork.Complete();
             return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
+        }
+
+        public IApiResponse CreateMainPoint(CreateMainPoints createMainPoints)
+        {
+            var aboutUsContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).Where(p => p.PageContentType == PageContentTypeEnum.AboutUs.ToString()).FirstOrDefault();
+
+            createMainPoints.PageContentId = aboutUsContent.Id;
+            var mainPagePoint = _mapper.Map<MainPagePoints>(createMainPoints);
+
+            _emiratesUnitOfWork.PageMainPoints.Add(mainPagePoint);
+
+            _emiratesUnitOfWork.Complete();
+
+            return GetResponse(message: CustumMessages.SaveSuccess(), data: aboutUsContent);
+        }
+
+        public IApiResponse GetAll()
+        {
+            var aboutUsContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).Where(p => p.PageContentType == PageContentTypeEnum.AboutUs.ToString());
+            return GetResponse(data: _mapper.Map<List<GetAboutUsDto>>(aboutUsContent));
         }
 
         public IApiResponse Update(UpdateAboutUsDto updateModel)
