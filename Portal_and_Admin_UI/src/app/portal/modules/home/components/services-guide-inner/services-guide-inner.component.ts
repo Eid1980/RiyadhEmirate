@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { GetServiceConditionListDto } from '@shared/proxy/service-condition/models';
+import { ServiceConditionService } from '@shared/proxy/service-condition/service-condition.service';
 import { GetServiceDetailsDto } from '@shared/proxy/services/models';
 import { ServiceService } from '@shared/proxy/services/service.service';
 
@@ -12,10 +14,12 @@ import { ServiceService } from '@shared/proxy/services/service.service';
 export class ServicesGuideInnerComponent implements OnInit {
 
   serviceId : number
-
   service = {} as GetServiceDetailsDto
+  getServiceConditionListDto = [] as GetServiceConditionListDto[];
+
 
   constructor(private _serviceService : ServiceService,
+    private _serviceConditionService: ServiceConditionService,
     private _activatedRoute: ActivatedRoute,
     public sanitizer: DomSanitizer) { }
 
@@ -23,6 +27,7 @@ export class ServicesGuideInnerComponent implements OnInit {
     this.serviceId = this._activatedRoute.snapshot.params['id'];
 
     this.getServiceById();
+    this.getServiceConditions();
 
   }
 
@@ -33,6 +38,12 @@ export class ServicesGuideInnerComponent implements OnInit {
       },
       (error) => {}
     )
+  }
+
+  getServiceConditions() {
+    this._serviceConditionService.getByServiceId(this.serviceId).subscribe((response) => {
+      this.getServiceConditionListDto = response.data;
+    });
   }
 
 }

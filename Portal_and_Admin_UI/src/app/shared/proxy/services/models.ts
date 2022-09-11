@@ -38,7 +38,7 @@ export interface GetServiceDetailsDto {
   descriptionEn: string;
   requestLink: string;
   workDays: string;
-  cost?: number;
+  serviceCost?: number;
   isActive: boolean;
   isExternal: boolean;
   image: any;

@@ -78,6 +78,7 @@ export class ServiceEditComponent implements OnInit {
   getDetails() {
     this.serviceService.getById(this.id).subscribe((response) => {
       this.updateServiceDto = response.data as UpdateServiceDto;
+      this.updateServiceDto.cost = response.data.serviceCost;
       this.buildForm();
       this.oldImage = response.data.image;
     });

@@ -27,9 +27,6 @@ export class ServiceService {
     return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/GetAll`).pipe(
     );
   }
-  getAllServiceGuide = (searchModel: SearchModel): Observable<ApiResponse<any>> => {
-    return this.httpClient.post<ApiResponse<any>>(`${this.serviceUrl}/GetAllServiceGuide`, searchModel).pipe();
-  }
   searchByFilter = (filter: string): Observable<ApiResponse<GetServiceListDto[]>> => {
     return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/SearchByFilter/${filter}`).pipe(
     );

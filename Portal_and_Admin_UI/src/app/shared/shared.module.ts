@@ -41,6 +41,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserModule } from '@angular/platform-browser';
+import { ServiceFilterPipe } from './pipes/service-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { BrowserModule } from '@angular/platform-browser';
     UserDataCurrentViewComponent,
     RateServiceComponent,
     CustomSlicePipe,
+    ServiceFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -116,6 +118,7 @@ import { BrowserModule } from '@angular/platform-browser';
     UserDataCurrentViewComponent,
     RateServiceComponent,
     CustomSlicePipe,
+    ServiceFilterPipe,
     TranslateModule
   ],
   providers: [

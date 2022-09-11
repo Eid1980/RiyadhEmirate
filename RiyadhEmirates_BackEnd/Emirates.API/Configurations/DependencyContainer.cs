@@ -26,6 +26,7 @@ using Emirates.Core.Application.Services.ServiceConditions;
 using Emirates.Core.Application.Services.ServiceRates;
 using Emirates.Core.Application.Services.ServiceStages;
 using Emirates.Core.Application.Services.Shared;
+using Emirates.Core.Application.Services.WomanSection;
 using Emirates.Core.Domain.Interfaces;
 using Emirates.InfraStructure.UnitsOfWork;
 
@@ -70,6 +71,9 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IRequestPrisonerTempReleaseService, RequestPrisonerTempReleaseService>();
             builder.Services.AddScoped<IRequestForeignersRealtyOwnerService, RequestForeignersRealtyOwnerService>();
             builder.Services.AddScoped<IRequestTreatmentRecommendationService, RequestTreatmentRecommendationService>();
+
+            builder.Services.AddScoped<IWomanSectionService, WomanSectionService>();
+
         }
     }
 }

@@ -39,6 +39,7 @@ import { ServiceStageViewComponent } from "./components/service-stages/service-s
 import { ViewPosterComponent } from "./components/poster/view-poster/view-poster.component";
 import { ServiceConditionComponent } from "./components/services/service-condition/service-condition.component";
 import { ServiceAudienceComponent } from "./components/services/service-audience/service-audience.component";
+import { EditAboutUsComponent } from "./components/about-us/edit-about-us/edit-about-us.component";
 
 const routes: Routes = [
   //#region LatestNews
@@ -257,6 +258,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   //#endregion
+
+  //#region
+  {
+    path: "edit-about-us",
+    component: EditAboutUsComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endRegion
 
 
   {

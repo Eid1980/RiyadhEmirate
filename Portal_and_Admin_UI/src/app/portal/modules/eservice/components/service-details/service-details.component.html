@@ -212,10 +212,10 @@
 
         <div class="toast-detail">
           <h4 class="title ">تكلفة الخدمة</h4>
-
           <div class="group ">
             <img src="./assets/images/icons/details/feather-check-circle.svg" alt="feather-check-circle.svg" width="16">
-            <span class="service">مجانا</span>
+            <span class="service" *ngIf="serviceDetailsDto?.serviceCost && serviceDetailsDto?.serviceCost != 0">{{serviceDetailsDto?.serviceCost}} ريـال</span>
+            <span class="service" *ngIf="!serviceDetailsDto?.serviceCost || serviceDetailsDto?.serviceCost == 0">مجانا</span>
           </div>
         </div>
 

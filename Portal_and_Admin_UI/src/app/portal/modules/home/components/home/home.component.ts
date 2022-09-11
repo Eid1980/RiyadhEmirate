@@ -3,9 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { GetNewsDetailsDto } from '@shared/proxy/news/models';
 import { NewsService } from '@shared/proxy/news/news.service';
-import {
-  GetPosterDetailsDto
-} from '@shared/proxy/posters/models';
+import { GetPosterDetailsDto } from '@shared/proxy/posters/models';
 import { PosterService } from '@shared/proxy/posters/poster.service';
 import { GetServiceListDto } from '@shared/proxy/services/models';
 import { ServiceService } from '@shared/proxy/services/service.service';
@@ -28,13 +26,8 @@ export class HomeComponent implements OnInit {
   reports: GetNewsDetailsDto[] = [];
   posters: GetPosterDetailsDto[] = [];
   services: GetServiceListDto[] = [];
-  serviceGuidLength:number = 2;
-
-  serviceGuidesList: GetServiceListDto[] = [];
-
-  serviceGuide: GetServiceListDto[] = [];
-
-  isEven: boolean
+  serviceGuidFirst: GetServiceListDto[] = [];
+  serviceGuidLength = [];
 
   sliderOptions: OwlOptions = {
     loop: true,
@@ -242,28 +235,9 @@ export class HomeComponent implements OnInit {
       .getAll()
       .subscribe((result: ApiResponse<GetServiceListDto[]>) => {
         this.services = result.data;
-        this.serviceGuidesList = this.services
+        this.serviceGuidLength = Array(Math.round(result.data?.length / 2)).fill(1);
+        this.serviceGuidFirst = this.services.slice(0,  2)
       });
-  }
-
-  getAllServiceGuide(){
-    let searchModel : SearchModel = {
-
-    }
-
-    this._serviceService
-    .getAllServiceGuide(searchModel)
-    .subscribe((result) => {
-      debugger
-      this.serviceGuidesList = result.data.gridItemsVM;
-    });
-
-  }
-
-  load(index){
-    console.log('hi')
-    debugger
-
   }
 
   getPosters() {
@@ -280,12 +254,6 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  onCarouselSlide(index : number){
-    this.isEven = index % 2 == 0;
-    debugger
-    console.log(this.isEven)
-    this.serviceGuide = this.serviceGuidesList.slice(index * 2 , index * 2 + 2);
-  }
 
   navigateTo() {
     /*if (this._userService.currentUser.IsAdmin) {
