@@ -40,3 +40,18 @@ export interface GetLatestNewsDetailsDto {
 
   image: any;
 }
+
+export interface GetLatestNewsListDto {
+  id: number;
+  title: string;
+  content: string;
+  isArabic: boolean;
+  newsCategueryId: number;
+  newsCategueryName: string;
+  date: string;
+  newsOrigin: string;
+  isActive: boolean;
+  openComments: boolean;
+
+  image: any;
+}

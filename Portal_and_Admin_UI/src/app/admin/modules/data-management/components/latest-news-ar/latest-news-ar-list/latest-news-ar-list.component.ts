@@ -44,9 +44,10 @@ export class LatestNewsArListComponent implements OnInit {
       Url: this.latestNewsService.serviceUrl,
 
       cols: [
-        { Field: 'Id', Header: 'الكود', Searchable: false, Hidden: true },
-        { Field: 'titleAr', Header: 'العنوان عربي' },
-        { Field: 'titleEn', Header: 'العنوان انجليزي' },
+        { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
+        { Field: 'title', Header: 'عنوان الخبر' },
+        { Field: 'newsCategueryName', Header: 'التصنيف' },
+        { Field: 'newsOrigin', Header: 'المصدر' },
         {
           Field: 'date',
           Header: 'التاريخ',
@@ -59,6 +60,13 @@ export class LatestNewsArListComponent implements OnInit {
           Searchable: false,
           Type: ColumnType.Status,
           FuncName: (id, event) => this.changeStatus(id, event),
+        },
+        {
+          Field: 'openComments',
+          Header: 'التعليقات',
+          Searchable: false,
+          Type: ColumnType.Status,
+          FuncName: (id, event) => this.changecommentStatus(id, event),
         },
         {
           Field: 'action',
@@ -95,6 +103,14 @@ export class LatestNewsArListComponent implements OnInit {
 
   changeStatus(id: number, e: any) {
     this.latestNewsService.changeStatus(id).subscribe((result) => {
+      if (result.isSuccess) {
+        this.list.getData();
+      }
+    });
+  }
+
+  changecommentStatus(id: number, e: any) {
+    this.latestNewsService.changecommentStatus(id).subscribe((result) => {
       if (result.isSuccess) {
         this.list.getData();
       }

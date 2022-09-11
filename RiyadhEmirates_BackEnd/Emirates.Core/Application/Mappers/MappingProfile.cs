@@ -40,8 +40,10 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<CreateLatestNewsDto, LatestNews>();
             CreateMap<UpdateLatestNewsDto, LatestNews>();
 
-            CreateMap<LatestNews, GetLatestNewsDetailsDto>();
-            CreateMap<LatestNews, GetLatestNewsListDto>();
+            CreateMap<LatestNews, GetLatestNewsDetailsDto>()
+                .ForMember(dest => dest.NewsCategueryName, src => src.MapFrom(m => m.NewsCateguery.NameAr));
+            CreateMap<LatestNews, GetLatestNewsListDto>()
+                .ForMember(dest => dest.NewsCategueryName, src => src.MapFrom(m => m.NewsCateguery.NameAr));
             #endregion
 
             #region News

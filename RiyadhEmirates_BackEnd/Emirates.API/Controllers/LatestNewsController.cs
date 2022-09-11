@@ -25,10 +25,10 @@ namespace Emirates.API.Controllers
             return _latestNewsService.GetById(id);
         }
 
-        [AllowAnonymous, HttpGet("GetByLangId/{isArabic}")]
-        public IApiResponse GetByLangId(bool isArabic = true)
+        [AllowAnonymous, HttpGet("GetByLang/{isArabic}")]
+        public IApiResponse GetByLang(bool isArabic = true)
         {
-            return _latestNewsService.GetByLangId(isArabic);
+            return _latestNewsService.GetByLang(isArabic);
         }
 
         [HttpPost("GetListPage")]
@@ -60,6 +60,12 @@ namespace Emirates.API.Controllers
         public IApiResponse ChangeStatus(int id)
         {
             return _latestNewsService.ChangeStatus(id);
+        }
+
+        [HttpGet("ChangecommentStatus/{id}")]
+        public IApiResponse ChangecommentStatus(int id)
+        {
+            return _latestNewsService.ChangecommentStatus(id);
         }
 
         [HttpDelete("Delete/{id}")]

@@ -45,7 +45,7 @@ export class EmiratesNewsEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private dateFormatterService: DateFormatterService,
     public sanitizer: DomSanitizer
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.globalService.setAdminTitle('تعديل الخبر');
@@ -113,22 +113,14 @@ export class EmiratesNewsEditComponent implements OnInit {
       this.newsService.update(this.updateNewsDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
-          console.log(this.updateNewsform.get('image').value);
           if (this.updateNewsform.get('image').value) {
-            this.fileManagerService
-              .deleteByEntityName(this.id, 'News')
-              .subscribe((res) => {
-                this.fileManagerService
-                  .upload(this.id.toString(), 'News', '', [
-                    this.updateNewsform.get('image').value,
-                  ])
-                  .subscribe((res) => {
-                    this.globalService.navigate(
-                      '/admin/data-management/emirates-news-list'
-                    );
-                  });
+            this.fileManagerService.deleteByEntityName(this.id, 'News').subscribe((res) => {
+              this.fileManagerService.upload(this.id.toString(), 'News', '', [this.updateNewsform.get('image').value]).subscribe((res) => {
+                this.globalService.navigate('/admin/data-management/emirates-news-list');
               });
-          } else {
+            });
+          }
+          else {
             this.globalService.navigate(
               '/admin/data-management/emirates-news-list'
             );

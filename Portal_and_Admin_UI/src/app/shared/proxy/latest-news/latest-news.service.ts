@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
-import { CreateLatestNewsDto, GetLatestNewsDetailsDto, UpdateLatestNewsDto } from './models';
+import { CreateLatestNewsDto, GetLatestNewsDetailsDto, GetLatestNewsListDto, UpdateLatestNewsDto } from './models';
 import { SearchModel } from '../shared/search-model.model';
 import { ServiceResponseVM } from '@shared/models/response.model';
 
@@ -17,6 +17,11 @@ export class LatestNewsService {
 
   getById = (id: number): Observable<ApiResponse<GetLatestNewsDetailsDto>> => {
     return this.httpClient.get<ApiResponse<GetLatestNewsDetailsDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
+    );
+  }
+
+  getByLang = (id: number): Observable<ApiResponse<GetLatestNewsListDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetLatestNewsListDto[]>>(`${this.serviceUrl}/GetByLang/${id}`).pipe(
     );
   }
   getListPage(searchModel: SearchModel): Observable<ServiceResponseVM> {
@@ -37,6 +42,9 @@ export class LatestNewsService {
   }
   changeStatus = (id: number): Observable<ApiResponse<boolean>> => {
     return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeStatus/${id}`).pipe();
+  }
+  changecommentStatus = (id: number): Observable<ApiResponse<boolean>> => {
+    return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangecommentStatus/${id}`).pipe();
   }
   delete = (id: number): Observable<ApiResponse<boolean>> => {
     return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();

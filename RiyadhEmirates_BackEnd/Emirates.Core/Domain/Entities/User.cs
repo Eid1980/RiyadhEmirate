@@ -114,5 +114,7 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<ServiceCondition> CreatedServiceConditions { get; set; }
         public virtual ICollection<ServiceCondition> ModifiedServiceConditions { get; set; }
 
+        public virtual ICollection<LatestNewsComment> ModifiedLatestNewsComments { get; set; }
+
     }
 }

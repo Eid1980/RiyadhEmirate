@@ -188,10 +188,12 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.LatestNewsId).IsRequired();
                 b.Property(x => x.Comment).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.CommentStage).IsRequired();
+                b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.CreatedBy).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.CreatedDate).IsRequired();
 
                 b.HasOne<LatestNews>(x => x.LatestNews).WithMany(x => x.LatestNewsComments).HasForeignKey(x => x.LatestNewsId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedLatestNewsComments).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 

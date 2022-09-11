@@ -1,1 +1,55 @@
-<p>latest-news-ar-view works!</p>
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/latest-news-ar-list']">أخر الأخبار عربي</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل الخبر</span>
+  </nav>
+</div>
+
+<div class="form-card">
+  <div class="form-header">
+    <h5>تفاصيل الخبر</h5>
+  </div>
+  <div class="form-content">
+    <div class="row mx-0">
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">عنوان الخبر</span>
+        <span class="form-val">{{ newsDetailsDto?.title }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12 separator-af-be">
+        <span class="form-lbl lbl-33">تصنيف الخبر</span>
+        <span class="form-val">{{ newsDetailsDto?.newsCategueryName }}</span>
+      </div>
+      <div class="info-col col-md-12 col-12">
+        <span class="form-lbl lbl-33">محتوى الخبر</span>
+        <span class="form-val">{{ newsDetailsDto?.content }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">مصدر الخبر</span>
+        <span class="form-val">{{ newsDetailsDto?.newsOrigin }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12 separator-af-be">
+        <span class="form-lbl lbl-33">التاريخ</span>
+        <span class="form-val">{{ newsDetailsDto?.date | date: "dd-MM-yyyy" }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الحالة</span>
+        <span class="form-val">{{ newsDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">التعليقات مفتوحة</span>
+        <span class="form-val">{{ newsDetailsDto?.openComments ? "نعم" : "لا" }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12" *ngIf="newsDetailsDto?.image">
+        <span class="form-lbl lbl-33">الصورة</span>
+        <span class="form-val">
+          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(newsDetailsDto?.image?.base64File)" alt="" style="width: 180px" />
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions">
+  <a [routerLink]="['/admin/data-management/latest-news-ar-list']" class="btn btn-cancel">رجوع</a>
+</div>
