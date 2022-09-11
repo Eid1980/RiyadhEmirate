@@ -161,6 +161,40 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region LatestNews
+            modelBuilder.Entity<LatestNews>(b =>
+            {
+                b.ToTable("LatestNews", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.Title).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.Content).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.IsArabic).IsRequired();
+                b.Property(x => x.NewsCategueryId).IsRequired();
+                b.Property(x => x.Date).IsRequired();
+                b.Property(x => x.NewsOrigin).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.OpenComments).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<NewsCateguery>(x => x.NewsCateguery).WithMany(x => x.LatestNews).HasForeignKey(x => x.NewsCategueryId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedLatestNews).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedLatestNews).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region LatestNewsComment
+            modelBuilder.Entity<LatestNewsComment>(b =>
+            {
+                b.ToTable("LatestNewsComments", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.LatestNewsId).IsRequired();
+                b.Property(x => x.Comment).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.CommentStage).IsRequired();
+                b.Property(x => x.CreatedBy).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.CreatedDate).IsRequired();
+
+                b.HasOne<LatestNews>(x => x.LatestNews).WithMany(x => x.LatestNewsComments).HasForeignKey(x => x.LatestNewsId).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
             #region MaritalStatus
             modelBuilder.Entity<MaritalStatus>(b =>
             {
@@ -210,6 +244,22 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<NewsType>(x => x.NewsTypesCode).WithMany(x => x.News).HasForeignKey(x => x.NewsTypeId).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedNews).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNews).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region NewsCateguery
+            modelBuilder.Entity<NewsCateguery>(b =>
+            {
+                b.ToTable("NewsCategueries", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedNewsCategueries).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNewsCategueries).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.NewsCategueries());
             });
             #endregion
 
@@ -654,9 +704,12 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<CaseType> CaseTypes { get; set; }
         public DbSet<DefendantType> DefendantTypes { get; set; }
         public DbSet<Governorate> Governorates { get; set; }
+        public DbSet<LatestNews> LatestNews { get; set; }
+        public DbSet<LatestNewsComment> LatestNewsComments { get; set; }
         public DbSet<MaritalStatus> MaritalStatuses { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<NewsCateguery> NewsCategueries { get; set; }
         public DbSet<NewsType> NewTypes { get; set; }
         public DbSet<Poster> Posters { get; set; }
         public DbSet<Religion> Religions { get; set; }

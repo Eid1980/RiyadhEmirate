@@ -162,6 +162,10 @@ namespace Emirates.Core.Application.Services
                 Name = item.NameAr
             }).ToList());
         }
+        public IApiResponse GetServiceExplainAttachment(int id)
+        {
+            return GetResponse(data: _fileManagerService.GetBase64File(id, "ServiceExplain"));
+        }
 
     }
 }

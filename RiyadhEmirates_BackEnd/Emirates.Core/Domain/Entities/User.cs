@@ -80,8 +80,14 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<UploadedFile> CreatedUploadedFiles { get; set; }
         public virtual ICollection<UploadedFile> ModifiedUploadedFiles { get; set; }
 
+        public virtual ICollection<LatestNews> CreatedLatestNews { get; set; }
+        public virtual ICollection<LatestNews> ModifiedLatestNews { get; set; }
+
         public virtual ICollection<News> CreatedNews { get; set; }
         public virtual ICollection<News> ModifiedNews { get; set; }
+
+        public virtual ICollection<NewsCateguery> CreatedNewsCategueries { get; set; }
+        public virtual ICollection<NewsCateguery> ModifiedNewsCategueries { get; set; }
 
         public virtual ICollection<NewsType> CreatedNewsType { get; set; }
         public virtual ICollection<NewsType> ModifiedNewsType { get; set; }

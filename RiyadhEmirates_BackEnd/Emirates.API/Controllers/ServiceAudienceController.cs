@@ -23,6 +23,12 @@ namespace Emirates.API.Controllers
         {
             return _serviceAudienceService.GetByServiceId(serviceId);
         }
+
+        [AllowAnonymous, HttpGet("GetCheckedAudience/{serviceId}")]
+        public IApiResponse GetCheckedAudience(int serviceId)
+        {
+            return _serviceAudienceService.GetCheckedAudience(serviceId);
+        }
         [HttpPost("Create")]
         public IApiResponse Create(CreateServiceAudienceDto createDto)
         {

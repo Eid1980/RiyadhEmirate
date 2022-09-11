@@ -5,9 +5,14 @@ namespace Emirates.Core.Application.Helpers
     {
         public enum NewsTypes
         {
-            EmiratesNews = 1,
             LatestNews = 2,
             Reports = 3
+        }
+        public enum CommentStages
+        {
+            New = 1,
+            Approved = 2,
+            Rejected = 3
         }
         public enum Services
         {

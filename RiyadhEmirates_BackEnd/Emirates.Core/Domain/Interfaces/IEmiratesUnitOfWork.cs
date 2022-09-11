@@ -5,9 +5,13 @@ namespace Emirates.Core.Domain.Interfaces
 {
     public interface IEmiratesUnitOfWork : IUnitOfWork
     {
+        IAudienceRepository Audiences { get; }
         ICaseTypeRepository CaseTypes { get; }
         INationalityRepository Nationalities { get; }
+        ILatestNewsRepository LatestNews { get; }
+        ILatestNewsCommentRepository LatestNewsComments { get; }
         INewsRepository News { get; }
+        INewsCategueryRepository NewsCategueries { get; }
         IPosterRepository Posters { get; }
         IRequestRepository Requests { get; }
         IRequestAttachmentTypeRepository RequestAttachmentTypes { get; }

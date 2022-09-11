@@ -13,7 +13,6 @@
   <ItemGroup>
     <Compile Remove="Controllers\AuthController.cs" />
     <Compile Remove="Controllers\EmiratesNewsController.cs" />
-    <Compile Remove="Controllers\LatestNewsController.cs" />
     <Compile Remove="Controllers\NationalitiesController.cs" />
     <Compile Remove="Controllers\ReportsController.cs" />
   </ItemGroup>

@@ -145,7 +145,7 @@
                 شرح خدمة {{serviceDetailsDto?.nameAr}}
               </span>
               <div class="mt-4" style="zoom: .7;">
-                <img src="./assets/images/icons/flow/video.svg" alt="">
+                <img *ngIf="imageExplain" [src]="sanitizer.bypassSecurityTrustResourceUrl(imageExplain?.base64File) " />
               </div>
             </div>
 

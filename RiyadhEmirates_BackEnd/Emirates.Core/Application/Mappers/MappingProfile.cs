@@ -30,12 +30,28 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<Nationality, NationalityResponse>();
             #endregion
 
+            #region LatestNews
+            CreateMap<CreateLatestNewsDto, LatestNews>();
+            CreateMap<UpdateLatestNewsDto, LatestNews>();
+
+            CreateMap<LatestNews, GetLatestNewsDetailsDto>();
+            CreateMap<LatestNews, GetLatestNewsListDto>();
+            #endregion
+
             #region News
             CreateMap<CreateNewsDto, News>();
             CreateMap<UpdateNewsDto, News>();
 
             CreateMap<News, GetNewsDetailsDto>();
             CreateMap<News, GetNewsListDto>();
+            #endregion
+
+            #region NewsCateguery
+            CreateMap<CreateNewsCategueryDto, NewsCateguery>();
+            CreateMap<UpdateNewsCategueryDto, NewsCateguery>();
+
+            CreateMap<NewsCateguery, GetNewsCategueryDetailsDto>();
+            CreateMap<NewsCateguery, GetNewsCategueryListDto>();
             #endregion
 
             #region Poster

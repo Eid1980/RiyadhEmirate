@@ -41,6 +41,18 @@ import { StepsModule } from 'primeng/steps';
 import { ViewPosterComponent } from './components/poster/view-poster/view-poster.component';
 import { ServiceAudienceComponent } from './components/services/service-audience/service-audience.component';
 import { ServiceConditionComponent } from './components/services/service-condition/service-condition.component';
+import { NewsCategueryAddComponent } from './components/news-categueries/news-categuery-add/news-categuery-add.component';
+import { NewsCategueryEditComponent } from './components/news-categueries/news-categuery-edit/news-categuery-edit.component';
+import { NewsCategueryListComponent } from './components/news-categueries/news-categuery-list/news-categuery-list.component';
+import { NewsCategueryViewComponent } from './components/news-categueries/news-categuery-view/news-categuery-view.component';
+import { LatestNewsArAddComponent } from './components/latest-news-ar/latest-news-ar-add/latest-news-ar-add.component';
+import { LatestNewsArEditComponent } from './components/latest-news-ar/latest-news-ar-edit/latest-news-ar-edit.component';
+import { LatestNewsArListComponent } from './components/latest-news-ar/latest-news-ar-list/latest-news-ar-list.component';
+import { LatestNewsArViewComponent } from './components/latest-news-ar/latest-news-ar-view/latest-news-ar-view.component';
+import { LatestNewsEnViewComponent } from './components/latest-news-en/latest-news-en-view/latest-news-en-view.component';
+import { LatestNewsEnAddComponent } from './components/latest-news-en/latest-news-en-add/latest-news-en-add.component';
+import { LatestNewsEnListComponent } from './components/latest-news-en/latest-news-en-list/latest-news-en-list.component';
+import { LatestNewsEnEditComponent } from './components/latest-news-en/latest-news-en-edit/latest-news-en-edit.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +94,18 @@ import { ServiceConditionComponent } from './components/services/service-conditi
     ViewPosterComponent,
     ServiceAudienceComponent,
     ServiceConditionComponent,
+    NewsCategueryAddComponent,
+    NewsCategueryEditComponent,
+    NewsCategueryListComponent,
+    NewsCategueryViewComponent,
+    LatestNewsArAddComponent,
+    LatestNewsArEditComponent,
+    LatestNewsArListComponent,
+    LatestNewsArViewComponent,
+    LatestNewsEnViewComponent,
+    LatestNewsEnAddComponent,
+    LatestNewsEnListComponent,
+    LatestNewsEnEditComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

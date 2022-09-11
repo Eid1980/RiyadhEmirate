@@ -15,9 +15,19 @@
   </div>
   <div class="form-content">
     <div class="row mx-0">
+      <div class="form-group col-md-12">
+        <label class="container-check" *ngFor="let audience of getCheckedAudienceDto.checkedAudiences">
+          {{audience.audienceName}}
+          <input type="checkbox" [checked]="audience.isChecked" (change)="checkAudience(audience.id, audience.audienceId)" />
+          <span class="checkmark"></span>
+        </label>
+      </div>
       <div class="form-group col-md-6">
-
-
+        <label for="" class="form-lbl">تحميل مرفق شرح الخدمة</label>
+        <img width="200px" height="100px" *ngIf="getCheckedAudienceDto.image" [src]="sanitizer.bypassSecurityTrustResourceUrl(getCheckedAudienceDto.image?.base64File) " />
+        <p-fileUpload #uploader chooseLabel="تحميل مرفق شرح الخدمة" [auto]="true"  [customUpload]="isCustomUpload"
+            (uploadHandler)="onUpload($event)" [multiple]="isMultiple" mode="advanced" [accept]="acceptType" [maxFileSize]="fileSize">
+        </p-fileUpload>
       </div>
     </div>
   </div>

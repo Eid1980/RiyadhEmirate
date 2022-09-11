@@ -10,3 +10,16 @@ export interface GetServiceAudienceListDto {
   audienceId: number;
   audienceName: string;
 }
+
+
+export interface CheckedAudience {
+  id: number;
+  audienceId: number;
+  audienceName: string;
+  isChecked: boolean;
+}
+
+export interface GetCheckedAudienceDto {
+  checkedAudiences: CheckedAudience[];
+  image: any;
+}

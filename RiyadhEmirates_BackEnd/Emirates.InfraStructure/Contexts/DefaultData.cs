@@ -27,6 +27,15 @@ namespace Emirates.InfraStructure.Contexts
             arrData[0] = new CaseType { Id = 1, NameAr = "قضية جنائية", NameEn = "Criminal Case", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             return arrData;
         }
+        public static NewsCateguery[] NewsCategueries()
+        {
+            NewsCateguery[] arrData = new NewsCateguery[4];
+            arrData[0] = new NewsCateguery { Id = 1, NameAr = "غير مصنف", NameEn = "Not Categuerized", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[1] = new NewsCateguery { Id = 2, NameAr = "أخبار الأمير", NameEn = "Prince News", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[2] = new NewsCateguery { Id = 3, NameAr = "أخبار النائب", NameEn = "Deputy News", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[3] = new NewsCateguery { Id = 4, NameAr = "أخبار الإمارة", NameEn = "Emirate News", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            return arrData;
+        }
         public static Religion[] Religions()
         {
             Religion[] arrData = new Religion[1];
@@ -341,7 +350,7 @@ namespace Emirates.InfraStructure.Contexts
             arrData[1] = new Service { Id = 2, NameAr = "الخروج المؤقت لسجين", NameEn = "Prisoner Temp Release", SectorAr = "الخروج المؤقت لسجين", SectorEn = "الخروج المؤقت لسجين", DescriptionAr = "الخروج المؤقت لسجين", DescriptionEn = "الخروج المؤقت لسجين", RequestLink = "/eservice/prisoner-temp-release", WorkDays = "10", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[2] = new Service { Id = 3, NameAr = "خدمات السجناء", NameEn = "Prisoners Services", SectorAr = "خدمات السجناء", SectorEn = "خدمات السجناء", DescriptionAr = "خدمات السجناء", DescriptionEn = "خدمات السجناء", RequestLink = "/eservice/prisoners-services", WorkDays = "10", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[3] = new Service { Id = 4, NameAr = "الاستدعاء الإلكتروني", NameEn = "Electronic Summon", SectorAr = "الاستدعاء الإلكتروني", SectorEn = "الاستدعاء الإلكتروني", DescriptionAr = "الاستدعاء الإلكتروني", DescriptionEn = "الاستدعاء الإلكتروني", RequestLink = "/eservice/electronic-summon", WorkDays = "10", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[4] = new Service { Id = 5, NameAr = "التعديات على الأراضي الحكومية", NameEn = "Infringements On Government Land", SectorAr = "التعديات على الأراضي الحكومية", SectorEn = "التعديات على الأراضي الحكومية", DescriptionAr = "التعديات على الأراضي الحكومية", DescriptionEn = "التعديات على الأراضي الحكومية", RequestLink = "/eservice/lands-infringement", WorkDays = "10", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[4] = new Service { Id = 5, NameAr = "التعديات على الأراضي الحكومية", NameEn = "Infringements On Government Land", SectorAr = "التعديات على الأراضي الحكومية", SectorEn = "التعديات على الأراضي الحكومية", DescriptionAr = "التعديات على الأراضي الحكومية", DescriptionEn = "التعديات على الأراضي الحكومية", RequestLink = "/eservice/lands-infringement", WorkDays = "10", IsActive = false, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[5] = new Service { Id = 6, NameAr = "انفاذ الحكم الشرعي", NameEn = "Judgment Execution", SectorAr = "انفاذ الحكم الشرعي", SectorEn = "انفاذ الحكم الشرعي", DescriptionAr = "انفاذ الحكم الشرعي", DescriptionEn = "انفاذ الحكم الشرعي", RequestLink = "/eservice/judgment-execution", WorkDays = "10", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[6] = new Service { Id = 7, NameAr = "توثيق زواج", NameEn = "Marriage Certificate", SectorAr = "توثيق زواج", SectorEn = "توثيق زواج", DescriptionAr = "توثيق زواج", DescriptionEn = "توثيق زواج", RequestLink = "/eservice/marriage-certificate", WorkDays = "10", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[7] = new Service { Id = 8, NameAr = "تملك عقار للأجانب", NameEn = "Realty Ownership For Foreigners", SectorAr = "تملك عقار للأجانب", SectorEn = "تملك عقار للأجانب", DescriptionAr = "تملك عقار للأجانب", DescriptionEn = "تملك عقار للأجانب", RequestLink = "/eservice/foreigners-realty-owner", WorkDays = "10", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
@@ -482,18 +491,8 @@ namespace Emirates.InfraStructure.Contexts
 
         public static NewsType[] NewsTypes()
         {
-            NewsType[] arrData = new NewsType[3];
+            NewsType[] arrData = new NewsType[2];
             arrData[0] = new NewsType
-            {
-                Id = 1,
-                TitleAr = "اخر الاخبار",
-                TitleEn = "Latest news",
-                NewsTypeCode = 1,
-                CreatedBy = 1,
-                CreatedDate = new DateTime(2022, 1, 1)
-
-            };
-            arrData[1] = new NewsType
             {
                 Id = 2,
                 TitleAr = "اخر المحافظات",
@@ -502,7 +501,7 @@ namespace Emirates.InfraStructure.Contexts
                 CreatedBy = 1,
                 CreatedDate = new DateTime(2022, 1, 1)
             };
-            arrData[2] = new NewsType
+            arrData[1] = new NewsType
             {
                 Id = 3,
                 TitleAr = "التقارير الاعلانيه",

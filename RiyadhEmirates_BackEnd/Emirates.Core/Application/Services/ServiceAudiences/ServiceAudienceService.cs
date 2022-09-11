@@ -3,6 +3,7 @@ using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Services.InternalPortal.FileManager;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,12 @@ namespace Emirates.Core.Application.Services.ServiceAudiences
     public class ServiceAudienceService : BaseService, IServiceAudienceService
     {
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
+        private readonly IFileManagerService _fileManagerService;
         private readonly IMapper _mapper;
-        public ServiceAudienceService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper)
+        public ServiceAudienceService(IEmiratesUnitOfWork emiratesUnitOfWork, IFileManagerService fileManagerService, IMapper mapper)
         {
             _emiratesUnitOfWork = emiratesUnitOfWork;
+            _fileManagerService = fileManagerService;
             _mapper = mapper;
         }
         public IApiResponse GetByServiceId(int serviceId)
@@ -23,6 +26,43 @@ namespace Emirates.Core.Application.Services.ServiceAudiences
             var serviceAudiences = _emiratesUnitOfWork.ServiceAudiences.Where(l => l.ServiceId.Equals(serviceId)).Include(x => x.Audience).ToList();
             var mappedModel = _mapper.Map<List<GetServiceAudienceListDto>>(serviceAudiences);
             return GetResponse(data: mappedModel);
+        }
+        public IApiResponse GetCheckedAudience(int serviceId)
+        {
+            var service = _emiratesUnitOfWork.Services.FirstOrDefault(l => l.Id.Equals(serviceId));
+            if (service == null)
+                throw new NotFoundException(typeof(Service).Name);
+
+            List<CheckedAudience> checkedAudiences = new List<CheckedAudience>();
+            var audiences = _emiratesUnitOfWork.Audiences.Where(x => x.IsActive).ToList();
+            if (audiences.Any())
+            {
+                var serviceAudiences = _emiratesUnitOfWork.ServiceAudiences.Where(l => l.ServiceId.Equals(serviceId)).ToList();
+                audiences.ForEach(item =>
+                {
+                    var addedItem = serviceAudiences.FirstOrDefault(x => x.AudienceId.Equals(item.Id));
+                    if (addedItem == null)
+                        checkedAudiences.Add(new CheckedAudience
+                        {
+                            AudienceId = item.Id,
+                            AudienceName = item.NameAr,
+                            IsChecked = false
+                        });
+                    else
+                        checkedAudiences.Add(new CheckedAudience
+                        {
+                            Id = addedItem.Id,
+                            AudienceId = item.Id,
+                            AudienceName = item.NameAr,
+                            IsChecked = true
+                        });
+                });
+            }
+            return GetResponse(data: new GetCheckedAudienceDto
+            {
+                CheckedAudiences = checkedAudiences,
+                Image = _fileManagerService.GetBase64File(serviceId, "ServiceExplain")
+            });
         }
         public IApiResponse Create(CreateServiceAudienceDto createModel)
         {

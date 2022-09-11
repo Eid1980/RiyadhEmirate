@@ -56,5 +56,9 @@ export class ServiceService {
     return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetStagesLookupList`).pipe(
     );
   }
+  getServiceExplainAttachment = (id: number): Observable<ApiResponse<any>> => {
+    return this.httpClient.get<ApiResponse<any>>(`${this.serviceUrl}/GetServiceExplainAttachment/${id}`).pipe(
+    );
+  }
 
 }

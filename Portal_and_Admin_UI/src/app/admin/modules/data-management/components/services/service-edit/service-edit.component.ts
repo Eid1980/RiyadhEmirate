@@ -89,7 +89,7 @@ export class ServiceEditComponent implements OnInit {
     if (this.updateServiceForm.valid) {
       this.updateServiceDto = { ...this.updateServiceForm.value } as UpdateServiceDto;
       this.updateServiceDto.id = this.id;
-      debugger;
+      this.updateServiceDto.cost = this.updateServiceDto.cost.toString() == '' ? null : this.updateServiceDto.cost;
       this.serviceService.update(this.updateServiceDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {

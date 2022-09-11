@@ -31,4 +31,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\Dtos\LatestNewsComments\" />
+    <Folder Include="Application\Services\LatestNewsComments\" />
+  </ItemGroup>
+
 </Project>

@@ -17,6 +17,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
         #endregion
 
         #region Repositories
+        private AudienceRepository audiences;
+        public IAudienceRepository Audiences => audiences ??= new AudienceRepository(Context);
+
+
         private CaseTypeRepository caseTypes;
         public ICaseTypeRepository CaseTypes => caseTypes ??= new CaseTypeRepository(Context);
 
@@ -25,8 +29,20 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public INationalityRepository Nationalities => nationalities ??= new NationalityRepository(Context);
 
 
+        private LatestNewsRepository latestNews;
+        public ILatestNewsRepository LatestNews => latestNews ??= new LatestNewsRepository(Context);
+
+
+        private LatestNewsCommentRepository latestNewsComments;
+        public ILatestNewsCommentRepository LatestNewsComments => latestNewsComments ??= new LatestNewsCommentRepository(Context);
+
+
         private NewsRepository news;
         public INewsRepository News => news ??= new NewsRepository(Context);
+
+
+        private NewsCategueryRepository newsCategueries;
+        public INewsCategueryRepository NewsCategueries => newsCategueries ??= new NewsCategueryRepository(Context);
 
 
         private PosterRepository posters;

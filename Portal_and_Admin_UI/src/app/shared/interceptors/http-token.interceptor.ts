@@ -51,6 +51,12 @@ export class HttpTokenInterceptor implements HttpInterceptor {
   }
 
   errorHandler(error: HttpErrorResponse) {
+    if (error.statusText == 'Unknown Error') {
+      this.globalService.messageAlert(MessageType.Error, 'الاتصال بالخادم غير متاح حاليا');
+    }
+    else {
+      this.globalService.messageAlert(MessageType.Error, error.error);
+    }
     // if (error.url.includes("IsAuthorizedComponent")) {
     //   this.globalService.messageAlert(
     //     MessageType.Error,
@@ -60,7 +66,6 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     //     document.location.href = "/auth/login";
     //   }, 3000);
     // } else {
-    this.globalService.messageAlert(MessageType.Error, error.error);
     // }
     return throwError(error);
   }

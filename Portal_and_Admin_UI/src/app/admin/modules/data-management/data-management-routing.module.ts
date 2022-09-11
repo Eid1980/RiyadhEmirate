@@ -39,6 +39,18 @@ import { ServiceStageViewComponent } from "./components/service-stages/service-s
 import { ViewPosterComponent } from "./components/poster/view-poster/view-poster.component";
 import { ServiceConditionComponent } from "./components/services/service-condition/service-condition.component";
 import { ServiceAudienceComponent } from "./components/services/service-audience/service-audience.component";
+import { NewsCategueryAddComponent } from "./components/news-categueries/news-categuery-add/news-categuery-add.component";
+import { NewsCategueryEditComponent } from "./components/news-categueries/news-categuery-edit/news-categuery-edit.component";
+import { NewsCategueryListComponent } from "./components/news-categueries/news-categuery-list/news-categuery-list.component";
+import { NewsCategueryViewComponent } from "./components/news-categueries/news-categuery-view/news-categuery-view.component";
+import { LatestNewsArListComponent } from "./components/latest-news-ar/latest-news-ar-list/latest-news-ar-list.component";
+import { LatestNewsArAddComponent } from "./components/latest-news-ar/latest-news-ar-add/latest-news-ar-add.component";
+import { LatestNewsArEditComponent } from "./components/latest-news-ar/latest-news-ar-edit/latest-news-ar-edit.component";
+import { LatestNewsArViewComponent } from "./components/latest-news-ar/latest-news-ar-view/latest-news-ar-view.component";
+import { LatestNewsEnEditComponent } from "./components/latest-news-en/latest-news-en-edit/latest-news-en-edit.component";
+import { LatestNewsEnListComponent } from "./components/latest-news-en/latest-news-en-list/latest-news-en-list.component";
+import { LatestNewsEnAddComponent } from "./components/latest-news-en/latest-news-en-add/latest-news-en-add.component";
+import { LatestNewsEnViewComponent } from "./components/latest-news-en/latest-news-en-view/latest-news-en-view.component";
 
 const routes: Routes = [
   //#region LatestNews
@@ -60,6 +72,52 @@ const routes: Routes = [
   {
     path: "latest-news-view/:id",
     component: LatestNewsViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region LatestNewsAr
+  {
+    path: "latest-news-ar-list",
+    component: LatestNewsArListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "latest-news-ar-add",
+    component: LatestNewsArAddComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "latest-news-ar-edit/:id",
+    component: LatestNewsArEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "latest-news-ar-view/:id",
+    component: LatestNewsArViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region LatestNewsEn
+  {
+    path: "latest-news-en-list",
+    component: LatestNewsEnListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "latest-news-en-add",
+    component: LatestNewsEnAddComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "latest-news-en-edit/:id",
+    component: LatestNewsEnEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "latest-news-en-view/:id",
+    component: LatestNewsEnViewComponent,
     canActivate: [AuthGuard],
   },
   //#endregion
@@ -152,6 +210,29 @@ const routes: Routes = [
   {
     path: "case-type-view/:id",
     component: CaseTypeViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region NewsCateguery
+  {
+    path: "news-categuery-add",
+    component: NewsCategueryAddComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "news-categuery-edit/:id",
+    component: NewsCategueryEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "news-categuery-list",
+    component: NewsCategueryListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "news-categuery-view/:id",
+    component: NewsCategueryViewComponent,
     canActivate: [AuthGuard],
   },
   //#endregion

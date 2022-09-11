@@ -85,5 +85,11 @@ namespace Emirates.API.Controllers
         {
             return _serviceService.GetStagesLookupList();
         }
+
+        [HttpGet("GetServiceExplainAttachment/{id}")]
+        public IApiResponse GetServiceExplainAttachment(int id)
+        {
+            return _serviceService.GetServiceExplainAttachment(id);
+        }
     }
 }

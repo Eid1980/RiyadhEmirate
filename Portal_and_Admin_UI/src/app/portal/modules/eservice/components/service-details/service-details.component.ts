@@ -11,6 +11,7 @@ import { ServiceAudienceService } from '@shared/proxy/service-audience/service-a
 import { GetServiceAudienceListDto } from '@shared/proxy/service-audience/models';
 import { ServiceConditionService } from '@shared/proxy/service-condition/service-condition.service';
 import { GetServiceConditionListDto } from '@shared/proxy/service-condition/models';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-service-details',
@@ -25,10 +26,11 @@ export class ServiceDetailsComponent implements OnInit {
   getServiceRateDto = {} as GetServiceRateDto;
   rate: number;
   canRate: boolean = false;
+  imageExplain: any;
 
   constructor(private serviceService: ServiceService, private serviceBenefitService: ServiceBenefitService,
     private serviceRateService: ServiceRateService, private serviceAudienceService: ServiceAudienceService,
-    private serviceConditionService: ServiceConditionService,
+    private serviceConditionService: ServiceConditionService, public sanitizer: DomSanitizer,
     private activatedRoute: ActivatedRoute, private globalService: GlobalService) {
   }
 
@@ -46,12 +48,18 @@ export class ServiceDetailsComponent implements OnInit {
   getDetails() {
     this.serviceService.getById(this.id).subscribe((response) => {
       this.serviceDetailsDto = response.data;
+      if (!this.serviceDetailsDto.isActive) {
+        this.globalService.navigate("/admin/data-management/service-list");
+      }
     });
     this.serviceAudienceService.getByServiceId(this.id).subscribe((response) => {
       this.getServiceAudienceListDto = response.data;
     });
     this.getServiceCondition();
     this.getBenefit();
+    this.serviceService.getServiceExplainAttachment(this.id).subscribe((response) => {
+      this.imageExplain = response.data;
+    });
     this.buildRateForm();
   }
 
@@ -80,6 +88,7 @@ export class ServiceDetailsComponent implements OnInit {
       const createServiceRateDto = { serviceId: this.id, starsCount: this.rate } as CreateServiceRateDto;
       this.serviceRateService.create(createServiceRateDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
+        this.buildRateForm();
       });
     }
   }
