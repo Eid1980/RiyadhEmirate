@@ -20,7 +20,7 @@
       <div class="section-title">
         <h3 class="title">آخر الأخبار</h3>
         <div class="more">
-          <a [routerLink]="['/news']" [queryParams]="{ newsTypeId: '1' }">
+          <a [routerLink]="['emirate/latest-news']">
             تصفح جميع الأخبار
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
           </a>
@@ -36,9 +36,7 @@
                 <div class="news-card" routerLink="/news/1">
                   <img [src]="
                       sanitizer.bypassSecurityTrustResourceUrl(
-                        news?.image?.base64File
-                      )
-                    "
+                        news?.image?.base64File)"
                        alt=""
                        class="news-img" />
                   <img src="./assets/images/news-overlay.png"

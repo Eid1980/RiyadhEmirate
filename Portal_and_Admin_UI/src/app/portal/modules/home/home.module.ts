@@ -16,9 +16,10 @@ import { WomenSectionComponent } from './components/emirate/women-section/women-
 import { RegionPrincesComponent } from './components/emirate/region-princes/region-princes.component';
 import { RegionGovComponent } from './components/emirate/region-gov/region-gov.component';
 import { OrganizationChartComponent } from './components/emirate/organization-chart/organization-chart.component';
+import { LatestNewsComponent } from './components/emirate/latest-news/latest-news.component';
 
 @NgModule({
-  declarations: [HomeComponent, NewsComponent, NewsInnerComponent, ServicesGuideComponent, ServicesGuideInnerComponent, AboutusComponent, WomenSectionComponent, RegionPrincesComponent, RegionGovComponent, OrganizationChartComponent],
+  declarations: [HomeComponent, NewsComponent,LatestNewsComponent,  NewsInnerComponent, ServicesGuideComponent, ServicesGuideInnerComponent, AboutusComponent, WomenSectionComponent, RegionPrincesComponent, RegionGovComponent, OrganizationChartComponent],
   imports: [
     SharedModule,
     HomeRoutingModule,

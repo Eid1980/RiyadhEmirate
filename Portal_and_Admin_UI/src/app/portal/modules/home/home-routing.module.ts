@@ -12,6 +12,7 @@ import { OrganizationChartComponent } from "./components/emirate/organization-ch
 import { RegionGovComponent } from "./components/emirate/region-gov/region-gov.component";
 import { RegionPrincesComponent } from "./components/emirate/region-princes/region-princes.component";
 import { WomenSectionComponent } from "./components/emirate/women-section/women-section.component";
+import { LatestNewsComponent } from "./components/emirate/latest-news/latest-news.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: "news/:id", component: NewsInnerComponent },
   { path: "services-guide", component: ServicesGuideComponent },
   { path: "services-guide/:id", component: ServicesGuideInnerComponent },
+  { path: "emirate/latest-news", component: LatestNewsComponent},
+  { path: "emirate/latest-news/:id", component: LatestNewsComponent},
 
   // emirate pages
   { path: "emirate/aboutus", component: AboutusComponent },

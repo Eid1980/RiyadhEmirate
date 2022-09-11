@@ -32,6 +32,9 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<MainPagePoints, GetMainPagePoints>();
             #endregion
 
+            #region
+            CreateMap<CreateMainPoints, MainPagePoints>().ReverseMap();
+            #endregion
             #region Nationality
             CreateMap<Nationality, NationalityResponse>();
             #endregion

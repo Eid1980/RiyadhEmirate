@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { PageContentTypeEnum } from '@shared/enums/page-content-type-enum';
 import { AboutUsService } from '@shared/proxy/about-us/about-us.service';
-import { GetMainPoints } from '@shared/proxy/about-us/models';
+import { CreateMainPoint, GetAboutUsDto, GetMainPoints } from '@shared/proxy/about-us/models';
 
 @Component({
   selector: 'app-edit-about-us',
@@ -12,9 +12,10 @@ import { GetMainPoints } from '@shared/proxy/about-us/models';
 })
 export class EditAboutUsComponent implements OnInit {
 
-  aboutUsMainPoints: FormGroup;
+  aboutUsMainPointsForm: FormGroup;
   getMainPoints: GetMainPoints;
   getMainPointsList = [] as GetMainPoints[];
+  adoutUsDetails  = {} as GetAboutUsDto;
 
 
   isFormSubmitted: boolean;
@@ -25,23 +26,38 @@ export class EditAboutUsComponent implements OnInit {
     private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-
     this.buildForm();
+
+    this.getPageContent();
   }
 
   buildForm() {
-    this.aboutUsMainPoints = this._formBuilder.group({
-      id: [this.getMainPoints.id],
-      point: [this.getMainPoints.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      order: [this.getMainPoints.order || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
+    this.aboutUsMainPointsForm = this._formBuilder.group({
+      id: [this.getMainPoints?.id],
+      point: [this.getMainPoints?.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      order: [this.getMainPoints?.order || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });
+  }
+
+  getPageContent(){
+    debugger
+    this._aboutUsService.getAboutUs().subscribe(
+      (response : any) => {
+        debugger
+        this.adoutUsDetails = response.data[0]
+      },
+      (error) => {
+
+      }
+    )
+
   }
 
   onSubmit() {
     this.isFormSubmitted = true;
-    if (this.aboutUsMainPoints.valid) {
-      if (this.getMainPoints.id == 0) {
-        this.getMainPoints = { ...this.aboutUsMainPoints.value } as GetMainPoints;
+    if (this.aboutUsMainPointsForm.valid) {
+      if (this.getMainPoints?.id == 0) {
+        this.getMainPoints = { ...this.aboutUsMainPointsForm.value } as GetMainPoints;
         this.getMainPoints.pageContentType = PageContentTypeEnum.AboutUs.toString();
         /*this._aboutUsService.create(this.createServiceConditionDto).subscribe((response) => {
           this.globalService.showMessage(response.message);
@@ -52,6 +68,18 @@ export class EditAboutUsComponent implements OnInit {
         });*/
       }
       else {
+
+        let aboutUsFormValues = this.aboutUsMainPointsForm.value
+        let createMainPoint : CreateMainPoint = {nameAr : aboutUsFormValues.point, nameEn: '' , pageContentType: '' , order : aboutUsFormValues.order};
+
+        this._aboutUsService.createMainPoint(createMainPoint).subscribe(
+          (response) => {
+
+            this.getPageContent();
+          },
+          (error) => {}
+        );
+
         /* this.updateServiceConditionDto = { ...this.serviceConditionForm.value } as UpdateServiceConditionDto;
          this.updateServiceConditionDto.id = this.serviceConditionId;
          this.updateServiceConditionDto.serviceId = this.id;
@@ -84,7 +112,7 @@ export class EditAboutUsComponent implements OnInit {
   }
 
   clear() {
-    this.aboutUsMainPoints.reset();
+    this.aboutUsMainPointsForm.reset();
     this.isFormSubmitted = false;
     this.isUpdate = false;
   }

@@ -12,3 +12,10 @@ export interface GetMainPoints {
   order: number;
   pageContentType: string;
 }
+
+export interface CreateMainPoint{
+  nameAr: string;
+  nameEn: string;
+  order: number;
+  pageContentType: string;
+}
