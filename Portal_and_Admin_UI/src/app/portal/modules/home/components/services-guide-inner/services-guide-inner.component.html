@@ -19,9 +19,15 @@
       <h4 class="artical-head">
         {{ service.nameAr }}
       </h4>
-      <p class="artical-text me-3">
+      <!--<p class="artical-text me-3">
         {{ service.descriptionAr }}
-      </p>
+      </p>-->
+    </div>
+  </div>
+  <div class="py-4">
+    <div class="term-row" *ngFor="let serviceCondition of getServiceConditionListDto;let i=index;">
+      <span class="term-num">{{ i+1 }}</span>
+      <span class="term-desc">{{ serviceCondition.condition }}</span>
     </div>
   </div>
 </div>

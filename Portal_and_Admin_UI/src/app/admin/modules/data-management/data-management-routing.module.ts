@@ -51,6 +51,7 @@ import { LatestNewsEnEditComponent } from "./components/latest-news-en/latest-ne
 import { LatestNewsEnListComponent } from "./components/latest-news-en/latest-news-en-list/latest-news-en-list.component";
 import { LatestNewsEnAddComponent } from "./components/latest-news-en/latest-news-en-add/latest-news-en-add.component";
 import { LatestNewsEnViewComponent } from "./components/latest-news-en/latest-news-en-view/latest-news-en-view.component";
+import { EditAboutUsComponent } from "./components/about-us/edit-about-us/edit-about-us.component";
 
 const routes: Routes = [
   //#region LatestNews
@@ -338,6 +339,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   //#endregion
+
+  //#region
+  {
+    path: "edit-about-us",
+    component: EditAboutUsComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endRegion
 
 
   {

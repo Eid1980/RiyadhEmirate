@@ -12,6 +12,7 @@ namespace Emirates.Core.Domain.Interfaces
         ILatestNewsCommentRepository LatestNewsComments { get; }
         INewsRepository News { get; }
         INewsCategueryRepository NewsCategueries { get; }
+        IPageContentRepository PageContent { get; }
         IPosterRepository Posters { get; }
         IRequestRepository Requests { get; }
         IRequestAttachmentTypeRepository RequestAttachmentTypes { get; }

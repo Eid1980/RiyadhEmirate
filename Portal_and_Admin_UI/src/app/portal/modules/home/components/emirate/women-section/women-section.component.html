@@ -29,31 +29,7 @@
         </h4>
 
         <ol class="artical-list me-3 mt-4">
-          <li class="artical-list-item">
-            حقوق المواطنات الخاصة من مطالبات عائلية وقضايا الأحوال الشخصية والاثباتات والمنازعات المالية
-          </li>
-          <li class="artical-list-item">
-            طلبات الزواجات (زواج السعودية من أجنبي ) أو (الأجنبية من سعودي) .
-          </li>
-          <li class="artical-list-item">
-            حوادث الاعتداء على النفس والأموال والأخلاق والقضايا المخلة بالآداب والعبث بأنظمة الدولة و إساءة استخدام
-            السلطة
-          </li>
-          <li class="artical-list-item">
-            متابعة إجراءات العفو ومتابعة قضايا المساجين بشكل عام
-          </li>
-          <li class="artical-list-item">
-            قضايا المخدرات من علاج المتعاطي أو الابلاغ عن مروجين
-          </li>
-          <li class="artical-list-item">
-            أوامر العلاج من بعض المستشفيات الحكومية
-          </li>
-          <li class="artical-list-item">
-            تقديم أوامر علاج الصحة النفسية وتصاريح إقامة الحفلات والبرامج وقبول الأبناء بالمدارس ممن لا يملك إثباتات
-          </li>
-          <li class="artical-list-item">
-            متابعة جميع المعاملات المحولة للإمارة من الدوائر الحكومية الأخرى أو التي تم تقديمها في القسم
-          </li>
+          <li class="artical-list-item" *ngFor="let point of womanSection.mainPoints">{{ point.nameAr }}</li>
         </ol>
       </div>
     </div>

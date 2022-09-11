@@ -199,6 +199,7 @@ export class HomeComponent implements OnInit {
     this.getAllNews();
     this.getServices();
     this.getPosters();
+    //this.getAllServiceGuide();
 
     let processNumber1 = document.getElementById("processNumber1");
     let processNumber2 = document.getElementById("processNumber2");
@@ -234,7 +235,7 @@ export class HomeComponent implements OnInit {
       .getAll()
       .subscribe((result: ApiResponse<GetServiceListDto[]>) => {
         this.services = result.data;
-        this.serviceGuidLength = Array(result.data.length / 2).fill(1);
+        this.serviceGuidLength = Array(Math.round(result.data?.length / 2)).fill(1);
         this.serviceGuidFirst = this.services.slice(0,  2)
       });
   }
@@ -252,6 +253,7 @@ export class HomeComponent implements OnInit {
       (err) => { }
     );
   }
+
 
   navigateTo() {
     /*if (this._userService.currentUser.IsAdmin) {

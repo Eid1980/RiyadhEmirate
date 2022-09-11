@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Dtos.AboutUs;
+using Emirates.Core.Application.Dtos.MainPoints;
 using Emirates.Core.Application.Dtos.Posters;
 using Emirates.Core.Application.Dtos.Requests;
 using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
@@ -24,6 +26,10 @@ namespace Emirates.Core.Application.Mappers
             #region FileManager
             CreateMap<CreateUploadedFileModel, UploadedFile>();
             CreateMap<UploadedFile, GetUploadedFileModel>();
+            #endregion
+
+            #region
+            CreateMap<MainPagePoints, GetMainPagePoints>();
             #endregion
 
             #region Nationality
@@ -52,6 +58,12 @@ namespace Emirates.Core.Application.Mappers
 
             CreateMap<NewsCateguery, GetNewsCategueryDetailsDto>();
             CreateMap<NewsCateguery, GetNewsCategueryListDto>();
+            #endregion
+
+            #region PageContent
+            CreateMap<PageContent, GetAboutUsDto>()
+                .ForPath(dest => dest.MainPoints , src => src.MapFrom(opt => opt.MainPagePoints));
+
             #endregion
 
             #region Poster

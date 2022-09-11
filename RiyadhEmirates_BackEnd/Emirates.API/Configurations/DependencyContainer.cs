@@ -1,4 +1,5 @@
 ﻿using Emirates.Core.Application.Services;
+using Emirates.Core.Application.Services.AboutUs;
 using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Services.CaseTypes;
 using Emirates.Core.Application.Services.Common;
@@ -27,6 +28,7 @@ using Emirates.Core.Application.Services.ServiceConditions;
 using Emirates.Core.Application.Services.ServiceRates;
 using Emirates.Core.Application.Services.ServiceStages;
 using Emirates.Core.Application.Services.Shared;
+using Emirates.Core.Application.Services.WomanSection;
 using Emirates.Core.Domain.Interfaces;
 using Emirates.InfraStructure.UnitsOfWork;
 
@@ -41,6 +43,7 @@ namespace Emirates.API.Configurations
             #endregion
 
             builder.Services.AddScoped<ILookupService, LookupService>();
+            builder.Services.AddScoped<IAboutUsService, AboutUsService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICaseTypeService, CaseTypeService>();
             builder.Services.AddScoped<ILocalizationService, LocalizationService>();
@@ -72,6 +75,9 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IRequestPrisonerTempReleaseService, RequestPrisonerTempReleaseService>();
             builder.Services.AddScoped<IRequestForeignersRealtyOwnerService, RequestForeignersRealtyOwnerService>();
             builder.Services.AddScoped<IRequestTreatmentRecommendationService, RequestTreatmentRecommendationService>();
+
+            builder.Services.AddScoped<IWomanSectionService, WomanSectionService>();
+
         }
     }
 }

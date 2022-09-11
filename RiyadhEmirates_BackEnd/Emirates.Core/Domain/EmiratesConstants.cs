@@ -11,5 +11,7 @@ namespace Emirates.Core.Domain
         public const int MaxNameLength = 128;
         public const int MaxLongNameLength = 256;
 
+        public const int MaxDescriptionLength = 512;
+
     }
 }

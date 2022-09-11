@@ -104,9 +104,9 @@
                   <div class="owl-item item-box">
                     <div class="item">
                       <div class="services-details-box" *ngIf="i == 0">
-                        <a class="services-details-card" *ngFor="let service of serviceGuidFirst" routerLink="/services-guide/1">
+                        <a class="services-details-card" *ngFor="let service of serviceGuidFirst" [routerLink]="['/services-guide/' , service.id]">
                           <div class="card-image">
-                            <img src="assets/images/favicon/fav-logo.png" class="img-fluid" alt="image" />
+                            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="image" />
                           </div>
                           <div class="content">
                             <h4>{{service.nameAr}}</h4>
@@ -115,9 +115,9 @@
                         </a>
                       </div>
                       <div class="services-details-box" *ngIf="i != 0">
-                        <a class="services-details-card" *ngFor="let service of services | servicefilter:i" routerLink="/services-guide/1">
+                        <a class="services-details-card" *ngFor="let service of services | servicefilter:i" [routerLink]="['/services-guide/' , service.id]">
                           <div class="card-image">
-                            <img src="assets/images/favicon/fav-logo.png" class="img-fluid" alt="image" />
+                            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="image" />
                           </div>
                           <div class="content">
                             <h4>{{service.nameAr}}</h4>
