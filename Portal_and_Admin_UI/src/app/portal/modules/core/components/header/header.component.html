@@ -134,22 +134,22 @@
             الإمارة
             <ul class="nav-dropdown">
               <li>
-                <a class="nav-link" routerLink="/emirate/aboutus">عن الإمارة</a>
+                <a class="nav-link" routerLink="/home/aboutus">عن الإمارة</a>
               </li>
               <li>
-                <a class="nav-link" routerLink="/emirate/regiion-princes">أمراء المنطقة</a>
+                <a class="nav-link" routerLink="/home/regiion-princes">أمراء المنطقة</a>
               </li>
               <li>
-                <a class="nav-link" routerLink="/emirate/region-gov">محافظات المنطقة</a>
+                <a class="nav-link" routerLink="/home/region-gov">محافظات المنطقة</a>
               </li>
               <li>
-                <a class="nav-link" routerLink="/emirate/organization">الهيكل التنظيمي</a>
+                <a class="nav-link" routerLink="/home/organization">الهيكل التنظيمي</a>
               </li>
               <li>
                 <a class="nav-link" routerLink="/services-guide">دليل إجراءات الخدمات</a>
               </li>
               <li>
-                <a class="nav-link" routerLink="/emirate/women-section">القسم النسوي</a>
+                <a class="nav-link" routerLink="/home/women-section">القسم النسوي</a>
               </li>
             </ul>
           </a>
@@ -161,7 +161,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:;">
+          <a class="nav-link" routerLink="/home/services-guide">
             <!-- {{ 'header.provinces' | translate }} -->
             دليل الإجراءات
           </a>
@@ -172,13 +172,13 @@
             المركز الإعلامي
             <ul class="nav-dropdown">
               <li>
-                <a class="nav-link">أخبار الإمارة</a>
+                <a class="nav-link" routerLink="/home/latest-news">أخر الأخبار</a>
               </li>
               <li>
-                <a class="nav-link">أخبار المحافظات</a>
+                <a class="nav-link" routerLink="home/news" [queryParams]="{ newsTypeId: '2' }">أخبار المحافظات</a>
               </li>
               <li>
-                <a class="nav-link">الإعلانات والمزارات والمناقصات</a>
+                <a class="nav-link" routerLink="home/news" [queryParams]="{ newsTypeId: '3' }">الإعلانات والمزارات والمناقصات</a>
               </li>
             </ul>
           </a>

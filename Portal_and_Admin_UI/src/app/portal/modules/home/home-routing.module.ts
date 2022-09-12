@@ -12,25 +12,25 @@ import { OrganizationChartComponent } from "./components/emirate/organization-ch
 import { RegionGovComponent } from "./components/emirate/region-gov/region-gov.component";
 import { RegionPrincesComponent } from "./components/emirate/region-princes/region-princes.component";
 import { WomenSectionComponent } from "./components/emirate/women-section/women-section.component";
-import { LatestNewsComponent } from "./components/emirate/latest-news/latest-news.component";
-import { LatestNewsInnerComponent } from "./components/emirate/latest-news-inner/latest-news-inner.component";
+import { LatestNewsComponent } from "./components/latest-news/latest-news.component";
+import { LatestNewsInnerComponent } from "./components/latest-news-inner/latest-news-inner.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent },
-  { path: "news", component: NewsComponent },
-  { path: "news/:id", component: NewsInnerComponent },
-  { path: "services-guide", component: ServicesGuideComponent },
-  { path: "services-guide/:id", component: ServicesGuideInnerComponent },
-  { path: "emirate/latest-news", component: LatestNewsComponent},
-  { path: "emirate/latest-news/:id", component: LatestNewsInnerComponent},
+  { path: "home/news", component: NewsComponent },
+  { path: "home/news/:id", component: NewsInnerComponent },
+  { path: "home/services-guide", component: ServicesGuideComponent },
+  { path: "home/services-guide/:id", component: ServicesGuideInnerComponent },
+  { path: "home/latest-news", component: LatestNewsComponent},
+  { path: "home/latest-news/:id", component: LatestNewsInnerComponent},
 
   // emirate pages
-  { path: "emirate/aboutus", component: AboutusComponent },
-  { path: "emirate/regiion-princes", component: RegionPrincesComponent },
-  { path: "emirate/region-gov", component: RegionGovComponent },
-  { path: "emirate/organization", component: OrganizationChartComponent },
-  { path: "emirate/women-section", component: WomenSectionComponent },
+  { path: "home/aboutus", component: AboutusComponent },
+  { path: "home/regiion-princes", component: RegionPrincesComponent },
+  { path: "home/region-gov", component: RegionGovComponent },
+  { path: "home/organization", component: OrganizationChartComponent },
+  { path: "home/women-section", component: WomenSectionComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

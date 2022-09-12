@@ -49,6 +49,17 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.NewsCategueryName, src => src.MapFrom(m => m.NewsCateguery.NameAr));
             #endregion
 
+            #region LatestNewsComment
+            CreateMap<CreateLatestNewsCommentDto, LatestNewsComment>();
+
+            CreateMap<LatestNewsComment, GetLatestNewsCommentDetailsDto>()
+                .ForMember(dest => dest.CommentStageName, src => src.MapFrom(m => m.CommentStage.NameAr))
+                .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
+            CreateMap<LatestNewsComment, GetLatestNewsCommentListDto>()
+                .ForMember(dest => dest.CommentStageName, src => src.MapFrom(m => m.CommentStage.NameAr))
+                .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
+            #endregion
+
             #region News
             CreateMap<CreateNewsDto, News>();
             CreateMap<UpdateNewsDto, News>();

@@ -25,6 +25,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public ICaseTypeRepository CaseTypes => caseTypes ??= new CaseTypeRepository(Context);
 
 
+        private CommentStageRepository commentStages;
+        public ICommentStageRepository CommentStages => commentStages ??= new CommentStageRepository(Context);
+
+
         private NationalityRepository nationalities;
         public INationalityRepository Nationalities => nationalities ??= new NationalityRepository(Context);
 

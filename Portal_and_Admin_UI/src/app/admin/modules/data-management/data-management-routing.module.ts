@@ -8,10 +8,6 @@ import { EmiratesNewsAddComponent } from "./components/emirates-news/emirates-ne
 import { EmiratesNewsListComponent } from "./components/emirates-news/emirates-news-list/emirates-news-list.component";
 import { EmiratesNewsEditComponent } from "./components/emirates-news/emirates-news-edit/emirates-news-edit.component";
 import { EmiratesNewsViewComponent } from "./components/emirates-news/emirates-news-view/emirates-news-view.component";
-import { LatestNewsListComponent } from "./components/latest-news/latest-news-list/latest-news-list.component";
-import { LatestNewsAddComponent } from "./components/latest-news/latest-news-add/latest-news-add.component";
-import { LatestNewsEditComponent } from "./components/latest-news/latest-news-edit/latest-news-edit.component";
-import { LatestNewsViewComponent } from "./components/latest-news/latest-news-view/latest-news-view.component";
 import { ReportsListComponent } from "./components/reports/reports-list/reports-list.component";
 import { ReportsAddComponent } from "./components/reports/reports-add/reports-add.component";
 import { ReportsEditComponent } from "./components/reports/reports-edit/reports-edit.component";
@@ -52,31 +48,10 @@ import { LatestNewsEnListComponent } from "./components/latest-news-en/latest-ne
 import { LatestNewsEnAddComponent } from "./components/latest-news-en/latest-news-en-add/latest-news-en-add.component";
 import { LatestNewsEnViewComponent } from "./components/latest-news-en/latest-news-en-view/latest-news-en-view.component";
 import { EditAboutUsComponent } from "./components/about-us/edit-about-us/edit-about-us.component";
+import { LatestNewsEnCommentsComponent } from "./components/latest-news-en/latest-news-en-comments/latest-news-en-comments.component";
+import { LatestNewsArCommentsComponent } from "./components/latest-news-ar/latest-news-ar-comments/latest-news-ar-comments.component";
 
 const routes: Routes = [
-  //#region LatestNews
-  {
-    path: "latest-news-list",
-    component: LatestNewsListComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "latest-news-add",
-    component: LatestNewsAddComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "latest-news-edit/:id",
-    component: LatestNewsEditComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "latest-news-view/:id",
-    component: LatestNewsViewComponent,
-    canActivate: [AuthGuard],
-  },
-  //#endregion
-
   //#region LatestNewsAr
   {
     path: "latest-news-ar-list",
@@ -96,6 +71,11 @@ const routes: Routes = [
   {
     path: "latest-news-ar-view/:id",
     component: LatestNewsArViewComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "latest-news-ar-comments",
+    component: LatestNewsArCommentsComponent,
     canActivate: [AuthGuard],
   },
   //#endregion
@@ -119,6 +99,11 @@ const routes: Routes = [
   {
     path: "latest-news-en-view/:id",
     component: LatestNewsEnViewComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "latest-news-en-comments",
+    component: LatestNewsEnCommentsComponent,
     canActivate: [AuthGuard],
   },
   //#endregion

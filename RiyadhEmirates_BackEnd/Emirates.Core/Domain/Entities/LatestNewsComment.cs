@@ -6,7 +6,7 @@ namespace Emirates.Core.Domain.Entities
         public int Id { get; set; }
         public int LatestNewsId { get; set; }
         public string Comment { get; set; }
-        public int CommentStage { get; set; }
+        public int CommentStageId { get; set; }
         public string Email { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
@@ -15,5 +15,6 @@ namespace Emirates.Core.Domain.Entities
 
         public virtual User ModifiedUser { get; set; }
         public LatestNews LatestNews { get; set; }
+        public CommentStage CommentStage { get; set; }
     }
 }

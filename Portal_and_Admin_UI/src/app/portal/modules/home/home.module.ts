@@ -16,8 +16,8 @@ import { WomenSectionComponent } from './components/emirate/women-section/women-
 import { RegionPrincesComponent } from './components/emirate/region-princes/region-princes.component';
 import { RegionGovComponent } from './components/emirate/region-gov/region-gov.component';
 import { OrganizationChartComponent } from './components/emirate/organization-chart/organization-chart.component';
-import { LatestNewsComponent } from './components/emirate/latest-news/latest-news.component';
-import { LatestNewsInnerComponent } from './components/emirate/latest-news-inner/latest-news-inner.component';
+import { LatestNewsComponent } from './components/latest-news/latest-news.component';
+import { LatestNewsInnerComponent } from './components/latest-news-inner/latest-news-inner.component';
 
 @NgModule({
   declarations: [

@@ -116,5 +116,8 @@ namespace Emirates.Core.Domain.Entities
 
         public virtual ICollection<LatestNewsComment> ModifiedLatestNewsComments { get; set; }
 
+        public virtual ICollection<CommentStage> CreatedCommentStages { get; set; }
+        public virtual ICollection<CommentStage> ModifiedCommentStages { get; set; }
+
     }
 }

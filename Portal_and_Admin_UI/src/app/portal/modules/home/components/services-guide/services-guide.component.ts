@@ -6,8 +6,7 @@ import { ApiResponse } from '@shared/proxy/shared/api-response.model';
 
 @Component({
   selector: 'app-services-guide',
-  templateUrl: './services-guide.component.html',
-  styleUrls: ['./services-guide.component.scss']
+  templateUrl: './services-guide.component.html'
 })
 export class ServicesGuideComponent implements OnInit {
 

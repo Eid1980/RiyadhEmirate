@@ -36,5 +36,9 @@ namespace Emirates.InfraStructure.Repositories
         {
             return _context.Religions.AsQueryable();
         }
+        public IQueryable<CommentStage> GetCommentStages()
+        {
+            return _context.CommentStages.AsQueryable();
+        }
     }
 }

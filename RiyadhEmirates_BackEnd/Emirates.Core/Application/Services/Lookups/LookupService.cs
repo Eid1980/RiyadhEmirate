@@ -66,5 +66,14 @@ namespace Emirates.Core.Application.Services.Lookups
                 Name = item.NameAr
             }).ToList());
         }
+        public IApiResponse GetCommentStageLookupList()
+        {
+            return GetResponse(data: _emiratesUnitOfWork.Lookups.GetCommentStages().Where(l => l.IsActive).Select(item =>
+            new LookupDto<int>
+            {
+                Id = item.Id,
+                Name = item.NameAr
+            }).ToList());
+        }
     }
 }

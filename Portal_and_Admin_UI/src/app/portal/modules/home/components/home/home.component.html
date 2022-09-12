@@ -3,11 +3,7 @@
   <div class="owl__carousel">
     <owl-carousel-o [options]="sliderOptions" class="owl-rtl">
       <ng-template carouselSlide *ngFor="let poster of posters">
-        <img [src]="
-            sanitizer.bypassSecurityTrustResourceUrl(poster?.image?.base64File)
-          "
-             alt=""
-             class="w-100 slider" />
+        <img [src]="sanitizer.bypassSecurityTrustResourceUrl(poster?.image?.base64File)" alt="" class="w-100 slider" />
       </ng-template>
     </owl-carousel-o>
   </div>
@@ -20,7 +16,7 @@
       <div class="section-title">
         <h3 class="title">آخر الأخبار</h3>
         <div class="more">
-          <a [routerLink]="['emirate/latest-news']">
+          <a routerLink="home/latest-news">
             تصفح جميع الأخبار
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
           </a>
@@ -102,7 +98,7 @@
                   <div class="owl-item item-box">
                     <div class="item">
                       <div class="services-details-box" *ngIf="i == 0">
-                        <a class="services-details-card" *ngFor="let service of serviceGuidFirst" [routerLink]="['/services-guide/' , service.id]">
+                        <a class="services-details-card" *ngFor="let service of serviceGuidFirst" [routerLink]="['/home/services-guide/' , service.id]">
                           <div class="card-image">
                             <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="image" />
                           </div>
@@ -113,7 +109,7 @@
                         </a>
                       </div>
                       <div class="services-details-box" *ngIf="i != 0">
-                        <a class="services-details-card" *ngFor="let service of services | servicefilter:i" [routerLink]="['/services-guide/' , service.id]">
+                        <a class="services-details-card" *ngFor="let service of services | servicefilter:i" [routerLink]="['/home/services-guide/' , service.id]">
                           <div class="card-image">
                             <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="image" />
                           </div>
@@ -284,7 +280,7 @@
       <div class="section-title">
         <h3 class="title">أخبار المحافظات</h3>
         <div class="more">
-          <a [routerLink]="['/news']" [queryParams]="{ newsTypeId: '2' }">
+          <a routerLink="home/news" [queryParams]="{ newsTypeId: '2' }">
             تصفح جميع الأخبار
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
           </a>
@@ -322,7 +318,7 @@
         <h3 class="title">
           <h3 class="title">تقارير إعلامية</h3>
           <div class="more">
-            <a [routerLink]="['/news']" [queryParams]="{ newsTypeId: '3' }">
+            <a routerLink="home/news" [queryParams]="{ newsTypeId: '3' }">
               تصفح جميع التقارير
               <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>

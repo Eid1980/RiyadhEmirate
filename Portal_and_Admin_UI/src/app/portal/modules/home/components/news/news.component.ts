@@ -3,19 +3,18 @@ import { ActivatedRoute } from '@angular/router';
 import { GetNewsDetailsDto } from '@shared/proxy/news/models';
 import { NewsService } from '@shared/proxy/news/news.service';
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
+import { GlobalService } from '@shared/services/global.service';
 
 @Component({
   selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  templateUrl: './news.component.html'
 })
 export class NewsComponent implements OnInit {
-
   latestNews: GetNewsDetailsDto[] = []
+  newsTypeId: number
+  title = "اخبار المحافظات" as string;
 
-  newsTypeId : number
-
-  constructor(private _newService: NewsService,
+  constructor(private _newService: NewsService, private globalService: GlobalService,
     private _activatedRoute: ActivatedRoute) {
   }
 
@@ -23,7 +22,20 @@ export class NewsComponent implements OnInit {
     // Note: Below 'queryParams' can be replaced with 'params' depending on your requirements
     this._activatedRoute.queryParams.subscribe(params => {
       this.newsTypeId = params['newsTypeId'];
-      this.getNewsByTypeId();
+      if (this.newsTypeId) {
+        this.getNewsByTypeId();
+        if (this.newsTypeId == 2) {
+          this.title = "اخبار المحافظات";
+          this.globalService.setAdminTitle(this.title);
+        }
+        else if (this.newsTypeId == 3) {
+          this.title = "التقارير الإعلامية";
+          this.globalService.setAdminTitle(this.title);
+        }
+      }
+      else {
+        this.globalService.navigate("/");
+      }
     });
 
   }

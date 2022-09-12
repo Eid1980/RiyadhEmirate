@@ -37,4 +37,8 @@ export class LookupService {
     return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetReligionLookupList`).pipe(
     );
   }
+  getCommentStageLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
+    return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetCommentStageLookupList`).pipe(
+    );
+  }
 }
