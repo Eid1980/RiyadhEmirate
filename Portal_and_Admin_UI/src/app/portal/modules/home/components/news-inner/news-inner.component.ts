@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { GetNewsDetailsDto } from '@shared/proxy/news/models';
 import { NewsService } from '@shared/proxy/news/news.service';
@@ -10,13 +11,19 @@ import { NewsService } from '@shared/proxy/news/news.service';
 })
 export class NewsInnerComponent implements OnInit {
 
+  addCommentForm = new FormGroup({
+    userName: new FormControl('', Validators.required),
+    userEmail: new FormControl('', Validators.required),
+    userComment: new FormControl('', Validators.required)
+  });
+
   news = {} as GetNewsDetailsDto
 
-  newsId : number
+  newsId: number
 
   constructor(private _newService: NewsService,
     private _activatedRoute: ActivatedRoute,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.newsId = this._activatedRoute.snapshot.params['id'];
@@ -24,14 +31,18 @@ export class NewsInnerComponent implements OnInit {
     this.getNewsById();
   }
 
-  getNewsById(){
+  getNewsById() {
     this._newService.getById(this.newsId).subscribe(
       (response) => {
         debugger
         this.news = response.data
       },
-      (error) => {}
+      (error) => { }
     )
 
+  }
+
+  addCommentFormSubmit() {
+    console.log(this.addCommentForm);
   }
 }
