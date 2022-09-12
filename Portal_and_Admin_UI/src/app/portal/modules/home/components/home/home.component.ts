@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NewsTypes } from '@shared/enums/news-types.enum';
+import { LatestNewsService } from '@shared/proxy/latest-news/latest-news.service';
+import { GetLatestNewsListDto } from '@shared/proxy/latest-news/models';
 import { GetNewsDetailsDto } from '@shared/proxy/news/models';
 import { NewsService } from '@shared/proxy/news/news.service';
 import { GetPosterDetailsDto } from '@shared/proxy/posters/models';
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   news: GetNewsDetailsDto[] = [];
   emiratesNews: GetNewsDetailsDto[] = [];
-  latestNews: GetNewsDetailsDto[] = [];
+  latestNews = [] as GetLatestNewsListDto[];
   reports: GetNewsDetailsDto[] = [];
   posters: GetPosterDetailsDto[] = [];
   services: GetServiceListDto[] = [];
@@ -188,6 +190,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private _newService: NewsService,
+    private _latestNewsService: LatestNewsService,
     private _serviceService: ServiceService,
     private _posterService: PosterService,
     private _globalService: GlobalService,
@@ -199,7 +202,7 @@ export class HomeComponent implements OnInit {
     this.getAllNews();
     this.getServices();
     this.getPosters();
-    //this.getAllServiceGuide();
+    this.getLatestNews();
 
     let processNumber1 = document.getElementById("processNumber1");
     let processNumber2 = document.getElementById("processNumber2");
@@ -220,8 +223,6 @@ export class HomeComponent implements OnInit {
 
         this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
 
-        this.latestNews = this.getNewsByNewsTypeId(NewsTypes.LatestNews);
-
         this.reports = this.getNewsByNewsTypeId(NewsTypes.Reports);
       });
   }
@@ -237,6 +238,14 @@ export class HomeComponent implements OnInit {
         this.services = result.data;
         this.serviceGuidLength = Array(Math.round(result.data?.length / 2)).fill(1);
         this.serviceGuidFirst = this.services.slice(0,  2)
+      });
+  }
+
+  getLatestNews() {
+    this._latestNewsService
+      .getByLangTop5(true)
+      .subscribe((result) => {
+        this.latestNews = result.data;
       });
   }
 

@@ -33,7 +33,7 @@
           <ng-template carouselSlide *ngFor="let news of latestNews">
             <div class="owl-item">
               <div class="item">
-                <div class="news-card" routerLink="/news/1">
+                <div class="news-card" [routerLink]="['/emirate/latest-news' , news.id]">
                   <img [src]="
                       sanitizer.bypassSecurityTrustResourceUrl(
                         news?.image?.base64File)"
@@ -44,7 +44,7 @@
                        class="overlay" />
                   <div class="news-caption">
                     <h6 class="h2">
-                      {{ news?.titleAr }}
+                      {{ news?.title }}
                     </h6>
                     <span class="date">
                       <img src="./assets/images/icons/date-white.svg"
@@ -297,7 +297,7 @@
           <!-- Repeatable Item -->
           <ng-template carouselSlide *ngFor="let news of emiratesNews">
             <div class="item">
-              <div class="card" routerLink="/news/1">
+              <div class="card" [routerLink]="['/news' , news.id]">
                 <img [src]="
                     sanitizer.bypassSecurityTrustResourceUrl(
                       news?.image?.base64File )"
@@ -335,8 +335,8 @@
           <!-- Repeatable Item -->
           <ng-template carouselSlide *ngFor="let report of reports">
             <div class="item">
-              <div class="ad-card">
-                <img [src]="report.image.base64File"
+              <div class="ad-card" [routerLink]="['/news' , report.id]">
+                <img [src]="report.image?.base64File"
                      alt=""
                      class="ad-card-img" />
                 <img src="./assets/images/add-overlay.png"

@@ -8,6 +8,7 @@ namespace Emirates.Core.Application.Services.LatestNews
     {
         IApiResponse GetById(int id);
         IApiResponse GetByLang(bool isArabic = true);
+        IApiResponse GetByLangTop5(bool isArabic = true);
         IApiResponse GetAll(SearchModel searchModel);
         IApiResponse GetAll();
         IApiResponse Create(CreateLatestNewsDto createModel);

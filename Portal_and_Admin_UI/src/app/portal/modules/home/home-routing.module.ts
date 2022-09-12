@@ -13,6 +13,7 @@ import { RegionGovComponent } from "./components/emirate/region-gov/region-gov.c
 import { RegionPrincesComponent } from "./components/emirate/region-princes/region-princes.component";
 import { WomenSectionComponent } from "./components/emirate/women-section/women-section.component";
 import { LatestNewsComponent } from "./components/emirate/latest-news/latest-news.component";
+import { LatestNewsInnerComponent } from "./components/emirate/latest-news-inner/latest-news-inner.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: "services-guide", component: ServicesGuideComponent },
   { path: "services-guide/:id", component: ServicesGuideInnerComponent },
   { path: "emirate/latest-news", component: LatestNewsComponent},
-  { path: "emirate/latest-news/:id", component: LatestNewsComponent},
+  { path: "emirate/latest-news/:id", component: LatestNewsInnerComponent},
 
   // emirate pages
   { path: "emirate/aboutus", component: AboutusComponent },

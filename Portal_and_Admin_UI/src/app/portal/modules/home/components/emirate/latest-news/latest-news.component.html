@@ -19,15 +19,15 @@
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let news of latestNews">
       <a
         class="card-basic"
-        [routerLink]="['/news', news.id]"
+        [routerLink]="['/emirate/latest-news', news.id]"
         routerLinkActive="router-link-active">
         <div class="card-basic-banner">
           <img [src]="news.image?.base64File" class="img-fluid" alt="banner" />
         </div>
 
         <div class="card-basic-body">
-          <h4>{{ news.titleAr }}</h4>
-          <p>{{ news.descriptionAr }}</p>
+          <h4>{{ news.title }}</h4>
+          <p>{{ news.content }}</p>
         </div>
       </a>
     </div>

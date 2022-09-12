@@ -17,9 +17,23 @@ import { RegionPrincesComponent } from './components/emirate/region-princes/regi
 import { RegionGovComponent } from './components/emirate/region-gov/region-gov.component';
 import { OrganizationChartComponent } from './components/emirate/organization-chart/organization-chart.component';
 import { LatestNewsComponent } from './components/emirate/latest-news/latest-news.component';
+import { LatestNewsInnerComponent } from './components/emirate/latest-news-inner/latest-news-inner.component';
 
 @NgModule({
-  declarations: [HomeComponent, NewsComponent,LatestNewsComponent,  NewsInnerComponent, ServicesGuideComponent, ServicesGuideInnerComponent, AboutusComponent, WomenSectionComponent, RegionPrincesComponent, RegionGovComponent, OrganizationChartComponent],
+  declarations: [
+    HomeComponent,
+     NewsComponent,
+     NewsInnerComponent ,
+     LatestNewsComponent,
+     LatestNewsInnerComponent,
+     ServicesGuideComponent,
+     ServicesGuideInnerComponent,
+     AboutusComponent,
+     WomenSectionComponent,
+     RegionPrincesComponent,
+     RegionGovComponent,
+     OrganizationChartComponent
+    ],
   imports: [
     SharedModule,
     HomeRoutingModule,

@@ -91,6 +91,26 @@ namespace Emirates.Core.Application.Services.LatestNews
                          }).OrderByDescending(s => s.Date);
             return GetResponse(data: query);
         }
+        public IApiResponse GetByLangTop5(bool isArabic = true)
+        {
+            var latestNewsQuerable = _emiratesUnitOfWork.LatestNews.GetQueryable().Where(x => x.IsActive).OrderByDescending(s => s.Date).Take(5).Include(x => x.NewsCateguery);
+            var filesQuerable = _emiratesUnitOfWork.UploadedFiles.GetQueryable();
+            var query = (from latestNews in latestNewsQuerable
+                         join files in filesQuerable on latestNews.Id.ToString() equals files.EntityId
+                         where files.EntityName == "LatestNews" && latestNews.IsArabic == isArabic
+                         select new GetLatestNewsListDto
+                         {
+                             Id = latestNews.Id,
+                             Title = latestNews.Title,
+                             Content = latestNews.Content,
+                             NewsCategueryName = latestNews.NewsCateguery.NameAr,
+                             NewsOrigin = latestNews.NewsOrigin,
+                             Date = latestNews.Date,
+                             OpenComments = latestNews.OpenComments,
+                             Image = _fileManagerService.GetBase64File(latestNews.Id, "LatestNews")
+                         });
+            return GetResponse(data: query);
+        }
 
         public IApiResponse GetAll()
         {

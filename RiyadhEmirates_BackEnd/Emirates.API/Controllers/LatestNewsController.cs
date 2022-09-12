@@ -31,6 +31,12 @@ namespace Emirates.API.Controllers
             return _latestNewsService.GetByLang(isArabic);
         }
 
+        [AllowAnonymous, HttpGet("GetByLangTop5/{isArabic}")]
+        public IApiResponse GetByLangTop5(bool isArabic = true)
+        {
+            return _latestNewsService.GetByLangTop5(isArabic);
+        }
+
         [HttpPost("GetListPage")]
         public IApiResponse GetAll(SearchModel searchModel)
         {
