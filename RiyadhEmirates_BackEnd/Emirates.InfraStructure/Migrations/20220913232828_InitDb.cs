@@ -166,6 +166,28 @@ namespace Emirates.InfraStructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CommentStages",
+                schema: "Lookup",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameAr = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    NameEn = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    CanShowComment = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedBy = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ConcurrencyStamp = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: true),
+                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommentStages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DefendantTypes",
                 schema: "Lookup",
                 columns: table => new
@@ -974,7 +996,7 @@ namespace Emirates.InfraStructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LatestNewsId = table.Column<int>(type: "int", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false),
-                    CommentStage = table.Column<int>(type: "int", nullable: false),
+                    CommentStageId = table.Column<int>(type: "int", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -984,6 +1006,12 @@ namespace Emirates.InfraStructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LatestNewsComments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LatestNewsComments_CommentStages_CommentStageId",
+                        column: x => x.CommentStageId,
+                        principalSchema: "Lookup",
+                        principalTable: "CommentStages",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_LatestNewsComments_LatestNews_LatestNewsId",
                         column: x => x.LatestNewsId,
@@ -1342,48 +1370,48 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "Code", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "CreatedUserId", "DialCode", "IsActive", "Iso2", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 1, "101", new Guid("e989ce70-26fb-49db-afd6-617c5aa060c7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "971", true, "ae", null, null, "الامارات العربية", "Arab Emirates" },
-                    { 2, "102", new Guid("a765fe02-5c60-4b1c-a024-6fdac8aa3a38"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "962", true, "jo", null, null, "الاردن", "Jordan" },
-                    { 3, "103", new Guid("28a49762-739c-4dec-95b8-292aa64fbe22"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "973", true, "bh", null, null, "البحرين", "Bahrain" },
-                    { 4, "104", new Guid("32142a6e-effd-4603-ad72-d9759c33f1d2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "963", true, "sy", null, null, "سوريا", "Syria" },
-                    { 5, "105", new Guid("a2c00e15-e962-44ad-b49d-6d2aa8e812cc"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "964", true, "iq", null, null, "العراق", "Iraq" },
-                    { 6, "106", new Guid("7335bef8-adc3-4225-a51f-ef823f12cce5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "968", true, "om", null, null, "عمان", "Oman" },
-                    { 7, "107", new Guid("7c0f42a6-1146-49ad-ab03-0c94b53b1908"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "970", true, "ps", null, null, "فلسطين", "Palestine" },
-                    { 8, "108", new Guid("8d59683f-9a6b-4349-9e82-522d2fd28449"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "974", true, "qa", null, null, "قطر", "Qatar" },
-                    { 9, "109", new Guid("70cb0abf-3418-4737-b51e-150dca987653"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "965", true, "kw", null, null, "الكويت", "Kuwait" },
-                    { 10, "110", new Guid("158d83de-1f6d-45e0-a5d8-8818f7aee660"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "961", true, "lb", null, null, "لبنان", "Lebanon" },
-                    { 11, "111", new Guid("20d299c5-4085-487f-a768-55caa1689b34"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "967", true, "ye", null, null, "اليمن", "Yemen" },
-                    { 12, "113", new Guid("3abaaf66-e65d-4f42-838a-f729e528c694"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "966", true, "sa", null, null, "العربية السعودية", "Saudi Arabia" },
-                    { 13, "201", new Guid("5b8bd6e0-37b0-4104-b0fa-9fae93664ba6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "216", true, "tn", null, null, "تونس", "Tunisia" },
-                    { 14, "202", new Guid("f047edef-5329-40c5-a4a4-d8f7f5c4177d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "213", true, "dz", null, null, "الجزائر", "Algeria" },
-                    { 15, "203", new Guid("654e1adc-ea52-4ffc-a3d6-d6513608c480"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "253", true, "dj", null, null, "جيبوتى", "Djibouti" },
-                    { 16, "204", new Guid("6c5ed0aa-b56e-4684-843c-873f90614baa"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "249", true, "sd", null, null, "السودان", "Sudan" },
-                    { 17, "205", new Guid("e38d365b-ca51-4ce3-803d-0ae764089420"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "252", true, "so", null, null, "الصومال", "Somalia" },
-                    { 18, "206", new Guid("099f314a-b9b8-4986-bb7b-549c1b03bc40"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "218", true, "ly", null, null, "ليبيا", "Libya" },
-                    { 19, "207", new Guid("a97a0dbf-25dd-4fe1-9d29-ee6c87126f9f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "20", true, "eg", null, null, "مصر", "Egypt" },
-                    { 20, "208", new Guid("648b2584-e687-47b4-83dc-5c429a59267f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "212", true, "ma", null, null, "المغرب", "Morocco" },
-                    { 21, "209", new Guid("b7cbfbbb-7d52-4245-b144-f59bc857f286"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "222", true, "mr", null, null, "موريتانيا", "Mauritania" },
-                    { 22, "301", new Guid("783fc6c0-78a4-42a6-8a3b-11d0c5ef7a3b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "93", true, "af", null, null, "افغانستان", "Afghanistan" },
-                    { 23, "302", new Guid("8e1a6232-23b3-461d-8b9c-aa1f7479db3b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "62", true, "id", null, null, "اندونيسيا", "Indonesia" },
-                    { 24, "303", new Guid("eca2c114-c2ea-41b5-a541-252c08fc208a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "98", true, "ir", null, null, "ايران", "Iran" },
-                    { 25, "304", new Guid("5a8a6d09-42d0-481c-bd22-7f9f91bb399b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "92", true, "pk", null, null, "باكستان", "Pakistan" },
-                    { 26, "305", new Guid("6e33aa64-4ce2-4592-b5fe-f9f9d866abb3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "880", true, "bd", null, null, "بنجلاديش", "Bangladesh" },
-                    { 27, "306", new Guid("3dca4952-f67a-4305-90da-80465670866e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "673", true, "bn", null, null, "بروني", "Brunei" },
-                    { 28, "307", new Guid("73f95431-97b6-4f3e-957b-39d435470049"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "95", true, "mm", null, null, "جمهورية ميانمار", "Myanmar" },
-                    { 29, "308", new Guid("79287fbc-35b2-4d63-b226-4a5ab2c837f4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "66", true, "th", null, null, "تايلند", "Thailand" },
-                    { 30, "309", new Guid("f18995a1-53fc-4b2a-925d-c2216e50dc54"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "90", true, "tr", null, null, "تركيا", "Turkey" },
-                    { 31, "310", new Guid("dfb71673-d2c2-4a68-8334-78c80a706887"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "960", true, "mv", null, null, "جزر مالديف", "Maldives" },
-                    { 32, "311", new Guid("385ee0e6-409f-49df-bc85-cd3dae293429"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "7", true, "ru", null, null, "روسيا الاتحادية", "Russia" },
-                    { 33, "312", new Guid("ac98a710-1ab5-4168-a96d-7e9841b5561e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "65", true, "sg", null, null, "سنغافورة", "Singapore" },
-                    { 34, "313", new Guid("debc6860-d19c-4e17-8307-9f216cbff58d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "94", true, "lk", null, null, "سري لنكا", "Sri Lanka" },
-                    { 35, "315", new Guid("99bf7cc2-f2d1-48ce-a6a3-ab23b0997693"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "63", true, "ph", null, null, "الفلبين", "Philippines" },
-                    { 36, "316", new Guid("f3676a12-c78c-4b08-935b-feb4af97a778"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "84", true, "vn", null, null, "فيتنام", "Vietnam" },
-                    { 37, "317", new Guid("c28785d6-d788-4f31-8543-1637bf09f688"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "855", true, "kh", null, null, "كمبوديا", "Cambodia" },
-                    { 38, "318", new Guid("84827560-1cf6-475d-8d4e-bd21627056d6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "82", true, "kr", null, null, "كوريا الجنوبية", "South Korea" },
-                    { 39, "319", new Guid("27fb3062-550e-42e0-a889-f40a06b748cf"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "60", true, "my", null, null, "ماليزيا", "Malaysia" },
-                    { 40, "320", new Guid("21f1c43d-a5c2-441c-b95e-58006e67c476"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "977", true, "np", null, null, "نيبال", "Nepal" },
-                    { 41, "321", new Guid("b7b6b3ce-e412-4fb0-aa52-f6acd46454c6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "91", true, "in", null, null, "الهند", "India" },
-                    { 42, "322", new Guid("6d4ab0b5-0f23-4ed9-ad59-ebe92c800422"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "852", true, "hk", null, null, "هونج كونج", "Hong Kong" }
+                    { 1, "101", new Guid("ef428051-5fdd-4cdf-a735-c8153d2326f1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "971", true, "ae", null, null, "الامارات العربية", "Arab Emirates" },
+                    { 2, "102", new Guid("e69a83fa-0e7a-42c1-af7d-c1aa1d87c4e3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "962", true, "jo", null, null, "الاردن", "Jordan" },
+                    { 3, "103", new Guid("7ab823d3-acfa-4e65-b098-791fef6e072d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "973", true, "bh", null, null, "البحرين", "Bahrain" },
+                    { 4, "104", new Guid("30c5e891-f5ec-48e8-aa76-dc1a93e71476"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "963", true, "sy", null, null, "سوريا", "Syria" },
+                    { 5, "105", new Guid("bbb0553d-df6f-4d01-a587-7d908f84e2c5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "964", true, "iq", null, null, "العراق", "Iraq" },
+                    { 6, "106", new Guid("d5b2f45f-30c2-4664-b01c-9e68f1b1b311"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "968", true, "om", null, null, "عمان", "Oman" },
+                    { 7, "107", new Guid("3736d67a-f553-4ccc-8a08-4ece25b9b4c4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "970", true, "ps", null, null, "فلسطين", "Palestine" },
+                    { 8, "108", new Guid("4210cd8f-3ad2-47d3-9b1b-6818ceeb4e17"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "974", true, "qa", null, null, "قطر", "Qatar" },
+                    { 9, "109", new Guid("d776a1a2-cf9a-42ef-9f9b-dbf08b4d67c6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "965", true, "kw", null, null, "الكويت", "Kuwait" },
+                    { 10, "110", new Guid("89da97cd-ce8e-4f85-8822-030119c60f56"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "961", true, "lb", null, null, "لبنان", "Lebanon" },
+                    { 11, "111", new Guid("d4811176-92e5-47a2-a3c7-c17bbbc426cd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "967", true, "ye", null, null, "اليمن", "Yemen" },
+                    { 12, "113", new Guid("b2b78c70-16f0-470e-8447-61398ba5bfbf"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "966", true, "sa", null, null, "العربية السعودية", "Saudi Arabia" },
+                    { 13, "201", new Guid("bae85f36-d018-43fc-8857-b1dc66e00489"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "216", true, "tn", null, null, "تونس", "Tunisia" },
+                    { 14, "202", new Guid("65781b7b-1345-4624-9e78-2c3e20a7a6a6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "213", true, "dz", null, null, "الجزائر", "Algeria" },
+                    { 15, "203", new Guid("c55f44e5-d8bd-4254-aa26-4bcff3f1bf1d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "253", true, "dj", null, null, "جيبوتى", "Djibouti" },
+                    { 16, "204", new Guid("99177ec1-3515-4a8e-ba94-0793bbe257a6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "249", true, "sd", null, null, "السودان", "Sudan" },
+                    { 17, "205", new Guid("1c5bd4bb-27cf-41f9-95c2-129e5675f492"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "252", true, "so", null, null, "الصومال", "Somalia" },
+                    { 18, "206", new Guid("7b7e80ee-34bc-4708-a2bf-2c3590f43332"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "218", true, "ly", null, null, "ليبيا", "Libya" },
+                    { 19, "207", new Guid("439d4a58-1c22-458c-a4c9-06bc779446f8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "20", true, "eg", null, null, "مصر", "Egypt" },
+                    { 20, "208", new Guid("68e08566-da61-4c98-8917-9379ef578ee0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "212", true, "ma", null, null, "المغرب", "Morocco" },
+                    { 21, "209", new Guid("850dec1c-231c-4821-9f59-7e881dd3fba6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "222", true, "mr", null, null, "موريتانيا", "Mauritania" },
+                    { 22, "301", new Guid("ddb1fd09-da1a-4bce-9ac5-7ef11caef676"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "93", true, "af", null, null, "افغانستان", "Afghanistan" },
+                    { 23, "302", new Guid("a4005ddd-8280-4773-adfe-f9b3d480047b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "62", true, "id", null, null, "اندونيسيا", "Indonesia" },
+                    { 24, "303", new Guid("2ab8b192-c3a7-4366-9f44-ba1eaf999662"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "98", true, "ir", null, null, "ايران", "Iran" },
+                    { 25, "304", new Guid("10f66dd9-2b9d-4fa6-90a8-5723afb4409e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "92", true, "pk", null, null, "باكستان", "Pakistan" },
+                    { 26, "305", new Guid("c2a6d309-4891-4b73-bb34-0f44092556f7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "880", true, "bd", null, null, "بنجلاديش", "Bangladesh" },
+                    { 27, "306", new Guid("71b08a31-b41f-446d-9da8-22760f0312ad"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "673", true, "bn", null, null, "بروني", "Brunei" },
+                    { 28, "307", new Guid("0708336a-082b-4000-bfa1-2d57697703b9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "95", true, "mm", null, null, "جمهورية ميانمار", "Myanmar" },
+                    { 29, "308", new Guid("e56a37d1-d6e1-4dbe-ab8c-5c14af83583d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "66", true, "th", null, null, "تايلند", "Thailand" },
+                    { 30, "309", new Guid("0799cc0d-64c8-4bf5-ad93-a86440bc6024"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "90", true, "tr", null, null, "تركيا", "Turkey" },
+                    { 31, "310", new Guid("3518c3a3-3759-4023-9020-d4244b9b1037"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "960", true, "mv", null, null, "جزر مالديف", "Maldives" },
+                    { 32, "311", new Guid("6c945c4b-1ac2-4d0d-a2e0-620e2fcfae46"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "7", true, "ru", null, null, "روسيا الاتحادية", "Russia" },
+                    { 33, "312", new Guid("b8a66d47-9b34-43e6-a521-f01f9aa1e11e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "65", true, "sg", null, null, "سنغافورة", "Singapore" },
+                    { 34, "313", new Guid("c82513c2-ef7d-48ff-aa99-2f2b4c2a7f93"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "94", true, "lk", null, null, "سري لنكا", "Sri Lanka" },
+                    { 35, "315", new Guid("83f4127d-0ba9-4fa2-8ebf-1a182bde4921"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "63", true, "ph", null, null, "الفلبين", "Philippines" },
+                    { 36, "316", new Guid("59e44260-bb7b-44cb-bb80-1089376fa063"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "84", true, "vn", null, null, "فيتنام", "Vietnam" },
+                    { 37, "317", new Guid("cde96ceb-d958-4aa7-b545-dcb652b9e2d5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "855", true, "kh", null, null, "كمبوديا", "Cambodia" },
+                    { 38, "318", new Guid("d0d0cff1-3228-48f4-8414-a164619f8415"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "82", true, "kr", null, null, "كوريا الجنوبية", "South Korea" },
+                    { 39, "319", new Guid("2af8fc4d-a554-4230-b62d-bb20a9aa23e6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "60", true, "my", null, null, "ماليزيا", "Malaysia" },
+                    { 40, "320", new Guid("3d862406-4ac1-4f83-a876-8cf83f1b3e81"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "977", true, "np", null, null, "نيبال", "Nepal" },
+                    { 41, "321", new Guid("cdf4bec7-c634-47a7-97e0-80addcc5b34b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "91", true, "in", null, null, "الهند", "India" },
+                    { 42, "322", new Guid("2e937563-d669-4ac3-9653-96ca6d9584fe"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "852", true, "hk", null, null, "هونج كونج", "Hong Kong" }
                 });
 
             migrationBuilder.InsertData(
@@ -1392,48 +1420,48 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "Code", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "CreatedUserId", "DialCode", "IsActive", "Iso2", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 43, "323", new Guid("77781b45-26de-4709-942e-3118de322bd5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "81", true, "jp", null, null, "اليابان", "Japan" },
-                    { 44, "324", new Guid("6a6a44ac-7d64-4200-a8cf-c543663134a9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "975", true, "bt", null, null, "بهوتان", "Bhutan" },
-                    { 45, "325", new Guid("5cac775d-5a86-4d13-9f48-4d2d8776f2cb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "86", true, "cn", null, null, "الصين الشعبية", "China" },
-                    { 46, "326", new Guid("e73dde2a-552b-4b10-a378-18f3163c4006"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "357", true, "cy", null, null, "قبرص", "Cyprus" },
-                    { 47, "328", new Guid("1bed33ca-34e4-46eb-9a2d-b95e5815acde"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "850", true, "kp", null, null, "كوريا الشمالية", "North Korea" },
-                    { 48, "329", new Guid("22113b96-ee2b-419b-a329-c89f2a1a7f27"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "856", true, "la", null, null, "لاوس", "Laos" },
-                    { 49, "330", new Guid("f48f2409-ddaf-4f3b-9a42-d6aeb41ec53e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "976", true, "mn", null, null, "منغوليا", "Mongolia" },
-                    { 50, "331", new Guid("8d5bd6a2-efec-432d-ac89-571024e2d1e4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "853", true, "mo", null, null, "ماكاو", "Macao" },
-                    { 51, "332", new Guid("78271ef5-c9d4-4204-a04b-ad112618fbc3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "تركستان", "Turkistan" },
-                    { 52, "335", new Guid("f940f8aa-e27a-46df-b83b-a9ae32410258"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "القبائل النازحة", "Tribes Emigrated" },
-                    { 53, "336", new Guid("07954469-2832-4cf9-95a3-8f234a2e471d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "7", true, "kz", null, null, "كازاخستان", "Kazakhstan" },
-                    { 54, "337", new Guid("bca2d636-07dc-4b7f-9518-80a749119f95"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "998", true, "uz", null, null, "ازبكستان", "Uzbekistan" },
-                    { 55, "338", new Guid("35c2a7a7-8db1-425a-a7e5-e6fcb918f1d3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "993", true, "tm", null, null, "تركمانستان", "Turkmenistan" },
-                    { 56, "339", new Guid("13b657dd-f2c3-4739-9b59-f0bff166f5cf"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "992", true, "tj", null, null, "طاجكستان", "Tajikistan" },
-                    { 57, "340", new Guid("e2b7042f-b908-4cf0-965f-82b097e5c211"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "996", false, "kg", null, null, "قرغيزستان", "kyrgyzstan" },
-                    { 58, "343", new Guid("d8fd571f-73f5-4a68-86c9-155d8872ae9b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "994", true, "az", null, null, "اذربيجان", "Azerbaijan" },
-                    { 59, "344", new Guid("bdb6cc16-9540-4a7b-a57c-6454861e45ca"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "الشاشان", "Chechnya" },
-                    { 60, "345", new Guid("e526d780-5744-4d1b-8a94-67b156f94e5b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "872", false, "da", null, null, "داغستان", "Dagestan" },
-                    { 61, "346", new Guid("069f94cc-3250-4ae5-9c5c-c91dda9c168f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "انقوش", "Anquosh" },
-                    { 62, "347", new Guid("26ad2306-b07d-4736-8f3f-296e8805bc0c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "7", false, "ta", null, null, "تتارستان", "Tatarstan" },
-                    { 63, "349", new Guid("89b3c74f-b4d4-4ad3-a0a4-6816a6a8e87b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "670", false, "tp", null, null, "تيمور الشرقية", "East Timor" },
-                    { 64, "401", new Guid("738a0442-eb80-41fe-a7b6-a86438cbdcda"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "251", true, "et", null, null, "اثيوبيا", "Ethiopia" },
-                    { 65, "402", new Guid("9895a0b9-bb6d-4928-ae93-a3cce6d2b627"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "256", true, "ug", null, null, "اوغندة", "Uganda" },
-                    { 66, "403", new Guid("ab38456f-1ebc-40bd-8d66-8b0acf60aefd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "267", true, "bw", null, null, "بوتسوانا", "Botswana" },
-                    { 67, "404", new Guid("22bf1aac-5508-494d-a4b3-4dba2580cec0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "257", true, "bi", null, null, "بورندي", "Burundi" },
-                    { 68, "405", new Guid("f6108f10-54ff-4b49-a792-1f2318bdbf89"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "235", true, "td", null, null, "تشاد", "Chad" },
-                    { 69, "406", new Guid("b8f4622e-09df-40f2-b7d4-bf6bc3b77641"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "255", true, "tz", null, null, "تنزانيا", "Tanzania" },
-                    { 70, "407", new Guid("203943de-e8e9-4787-9096-a222f4d9d2e4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "228", true, "tg", null, null, "توجو", "Togo" },
-                    { 71, "408", new Guid("1c7f904a-b29d-4cf8-8a92-c838c39982d2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "241", true, "ga", null, null, "جابون", "Answer" },
-                    { 72, "409", new Guid("b268648a-a7ae-4f4b-831c-e8b2b445a96f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "220", true, "gm", null, null, "غامبيا", "Gambia" },
-                    { 73, "410", new Guid("63196e1b-872d-48c9-ac53-9a82d1b09ec7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "269", true, "km", null, null, "جزر القمر", "Comoros" },
-                    { 74, "411", new Guid("92a61031-a2c1-4537-a2b5-6becc782f644"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "27", true, "za", null, null, "جنوب افريقيا", "South Africa" },
-                    { 75, "412", new Guid("3d3dc226-ba96-4726-bc3c-a5e69e8c9ddd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "264", true, "na", null, null, "ناميبيا", "Namibia" },
-                    { 76, "413", new Guid("db57a7b5-8f47-46e1-80c1-9439e02aa240"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "229", true, "bj", null, null, "بنين", "Benin" },
-                    { 77, "414", new Guid("2939d10b-cf42-409c-9bbc-628331280d5d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "250", true, "rw", null, null, "رواندا", "Rwanda" },
-                    { 78, "415", new Guid("936f6ff5-8b16-4305-b09b-21ce952ac3a5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "263", true, "zw", null, null, "زمبابوي", "Zimbabwe" },
-                    { 79, "416", new Guid("3a6f3e2a-f35b-41b6-9ccb-9b415fc48204"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "243", false, "zr", null, null, "زائير", "Zaire" },
-                    { 80, "417", new Guid("e8dcf59b-8154-43a8-986b-b768a74941f6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "260", true, "zm", null, null, "زامبيا", "Zambia" },
-                    { 81, "418", new Guid("ab0bbfbc-6ce9-43da-9430-2bc029720d4a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "225", false, "ci", null, null, "ساحل العاج", "Ivory Coast" },
-                    { 82, "419", new Guid("670ae49e-1da0-4202-890e-455638d15a26"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, true, "sn  221", null, null, "السنغال", "Senegal" },
-                    { 83, "420", new Guid("a7787ed7-da95-4f37-bf47-c51d855086b0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "232", true, "sl", null, null, "سيراليون", "Sierra Leone" },
-                    { 84, "421", new Guid("945688f6-80d6-432f-ae12-09bc0979a236"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "233", true, "gh", null, null, "غانا", "Ghana" }
+                    { 43, "323", new Guid("078dafc9-64ec-4b9f-9633-c0131aa5e502"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "81", true, "jp", null, null, "اليابان", "Japan" },
+                    { 44, "324", new Guid("30613fdd-342f-40b9-96de-2ecec1a589b4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "975", true, "bt", null, null, "بهوتان", "Bhutan" },
+                    { 45, "325", new Guid("9da71aff-b41f-4ca5-bed7-6257c49ff6ce"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "86", true, "cn", null, null, "الصين الشعبية", "China" },
+                    { 46, "326", new Guid("93101c77-1ff6-4f53-ad35-48e7776a224b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "357", true, "cy", null, null, "قبرص", "Cyprus" },
+                    { 47, "328", new Guid("09d29d27-065a-4fc0-b5bf-98c6f6f3b2ce"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "850", true, "kp", null, null, "كوريا الشمالية", "North Korea" },
+                    { 48, "329", new Guid("9cfaf567-7375-4911-86fc-02f2f70ce789"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "856", true, "la", null, null, "لاوس", "Laos" },
+                    { 49, "330", new Guid("61fcd8e0-8359-4034-8d3a-e9928efd6ee5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "976", true, "mn", null, null, "منغوليا", "Mongolia" },
+                    { 50, "331", new Guid("078e56bf-a579-4c2b-8b39-d0918a3abf71"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "853", true, "mo", null, null, "ماكاو", "Macao" },
+                    { 51, "332", new Guid("e9fcc4c9-36d8-484e-b625-b642f8146ec5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "تركستان", "Turkistan" },
+                    { 52, "335", new Guid("499644b0-43c7-4bf1-9994-39f3b109d999"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "القبائل النازحة", "Tribes Emigrated" },
+                    { 53, "336", new Guid("e6ef5e14-8051-4dc4-a9d3-b040d378338e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "7", true, "kz", null, null, "كازاخستان", "Kazakhstan" },
+                    { 54, "337", new Guid("3c5f43e7-8565-4cfd-ba5e-17eef271e3d7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "998", true, "uz", null, null, "ازبكستان", "Uzbekistan" },
+                    { 55, "338", new Guid("c0c7cee0-f5eb-4267-901b-3e071e4d6160"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "993", true, "tm", null, null, "تركمانستان", "Turkmenistan" },
+                    { 56, "339", new Guid("859a6a20-d433-4971-8d5b-20b65a6af30a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "992", true, "tj", null, null, "طاجكستان", "Tajikistan" },
+                    { 57, "340", new Guid("f4b68921-5ca8-4590-81e5-b1aa7ec88734"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "996", false, "kg", null, null, "قرغيزستان", "kyrgyzstan" },
+                    { 58, "343", new Guid("503de82f-89b3-4f52-acfb-b0eac8db413b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "994", true, "az", null, null, "اذربيجان", "Azerbaijan" },
+                    { 59, "344", new Guid("cf45595c-c48b-42d0-866f-260b50fca826"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "الشاشان", "Chechnya" },
+                    { 60, "345", new Guid("a98c4e57-d87a-4941-8f8f-70c5a53416d5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "872", false, "da", null, null, "داغستان", "Dagestan" },
+                    { 61, "346", new Guid("6c858e34-2267-4de2-9202-2748ac37ac60"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "انقوش", "Anquosh" },
+                    { 62, "347", new Guid("1b8f5ca3-23e1-4eb6-9d27-6aa5e5a95d36"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "7", false, "ta", null, null, "تتارستان", "Tatarstan" },
+                    { 63, "349", new Guid("c313a591-3bef-4580-b1b7-84d8efbb9c56"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "670", false, "tp", null, null, "تيمور الشرقية", "East Timor" },
+                    { 64, "401", new Guid("418f665f-fb15-4d0e-bff0-173b0b4c6438"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "251", true, "et", null, null, "اثيوبيا", "Ethiopia" },
+                    { 65, "402", new Guid("7ee2b77e-6b35-4ce1-a1b7-f5f21e157c7c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "256", true, "ug", null, null, "اوغندة", "Uganda" },
+                    { 66, "403", new Guid("52b27fd1-436e-4008-8843-03ae3dce2a58"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "267", true, "bw", null, null, "بوتسوانا", "Botswana" },
+                    { 67, "404", new Guid("10c66948-1cf8-4a58-ba76-0ee67b1a56dd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "257", true, "bi", null, null, "بورندي", "Burundi" },
+                    { 68, "405", new Guid("0fb604ea-2379-4eaa-93ed-e3e69602e6dc"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "235", true, "td", null, null, "تشاد", "Chad" },
+                    { 69, "406", new Guid("bc107d3a-8fc3-4ee2-9227-dc9e944e9f74"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "255", true, "tz", null, null, "تنزانيا", "Tanzania" },
+                    { 70, "407", new Guid("99e3be31-f7cf-4b1c-92dd-b509833954b3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "228", true, "tg", null, null, "توجو", "Togo" },
+                    { 71, "408", new Guid("5edb7ead-a1ce-4891-9bf1-641f258e5152"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "241", true, "ga", null, null, "جابون", "Answer" },
+                    { 72, "409", new Guid("dbf67981-f201-4409-aac6-cde825e6da3c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "220", true, "gm", null, null, "غامبيا", "Gambia" },
+                    { 73, "410", new Guid("041ca8dd-7364-4ca8-936f-c6f7a150b42d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "269", true, "km", null, null, "جزر القمر", "Comoros" },
+                    { 74, "411", new Guid("69cd30c5-9929-44a8-b596-f01b6a762f1a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "27", true, "za", null, null, "جنوب افريقيا", "South Africa" },
+                    { 75, "412", new Guid("982c426d-b99f-4be8-bcd5-ae1d6979d6d5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "264", true, "na", null, null, "ناميبيا", "Namibia" },
+                    { 76, "413", new Guid("490d0330-001c-4a7a-944d-051e9aed6e29"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "229", true, "bj", null, null, "بنين", "Benin" },
+                    { 77, "414", new Guid("91100e4a-c904-42b5-a0f8-c146331aa6df"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "250", true, "rw", null, null, "رواندا", "Rwanda" },
+                    { 78, "415", new Guid("dc3b6ec2-18d9-4cc2-83da-a65ca098952e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "263", true, "zw", null, null, "زمبابوي", "Zimbabwe" },
+                    { 79, "416", new Guid("33103dd8-62a1-4526-8662-7568dac4d6ed"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "243", false, "zr", null, null, "زائير", "Zaire" },
+                    { 80, "417", new Guid("e4174c59-0393-41ff-a781-53db7f323031"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "260", true, "zm", null, null, "زامبيا", "Zambia" },
+                    { 81, "418", new Guid("1a81064c-88ba-4159-80c6-f8f78251ab25"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "225", false, "ci", null, null, "ساحل العاج", "Ivory Coast" },
+                    { 82, "419", new Guid("04f0fb07-f19e-462b-b22c-dba104083a65"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, true, "sn  221", null, null, "السنغال", "Senegal" },
+                    { 83, "420", new Guid("a964e289-9d6d-4b27-9604-6954bf221000"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "232", true, "sl", null, null, "سيراليون", "Sierra Leone" },
+                    { 84, "421", new Guid("80eaa300-76fe-44c3-bf35-0926f4526661"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "233", true, "gh", null, null, "غانا", "Ghana" }
                 });
 
             migrationBuilder.InsertData(
@@ -1442,48 +1470,48 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "Code", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "CreatedUserId", "DialCode", "IsActive", "Iso2", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 85, "422", new Guid("ae4e43d1-15c5-403b-b713-9ec9e16e7026"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "224", true, "gn", null, null, "غينيا", "Guinea" },
-                    { 86, "423", new Guid("dffa3340-d34a-4a8e-b43f-9f7345883f0e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "245", true, "gw", null, null, "غينيابيساو", "Guinea Bissau" },
-                    { 87, "424", new Guid("1e179ee4-d8fe-47bc-ae61-90b07605059a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "226", true, "bf", null, null, "بوركينافاسو", "Burkina Faso" },
-                    { 88, "425", new Guid("ab197190-48b8-45a7-abdf-093eb5236dd1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "237", true, "cm", null, null, "الكاميرون", "Cameroon" },
-                    { 89, "426", new Guid("2b3a20eb-c12b-47ae-9200-f8c373547db2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "243", true, "cd", null, null, "جمهورية الكونغو الديمقراطية", "Congo(DRC)" },
-                    { 90, "427", new Guid("f769539c-e738-41b7-95d7-68486cc6bb83"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "254", true, "ke", null, null, "كينيا", "Kenya" },
-                    { 91, "428", new Guid("b7e8fd30-4309-4ad1-98f7-4ed0dfa9b435"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "266", true, "ls", null, null, "ليسوتو", "Lesotho" },
-                    { 92, "429", new Guid("0908001c-b3d9-4625-9dca-5628e2ec7e9a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "231", true, "lr", null, null, "ليبيريا", "Liberia" },
-                    { 93, "430", new Guid("ad646391-bfdf-401b-96ae-5511e8dd307d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "223", true, "ml", null, null, "مالي", "Mali" },
-                    { 94, "432", new Guid("aeb8f825-5265-4af3-a7ce-2bf81c98c5a0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "265", true, "mw", null, null, "ملاوي", "Malawi" },
-                    { 95, "433", new Guid("47030ca4-57f3-4446-bf6e-d0aa4d773f8c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "230", true, "mu", null, null, "موريشيوس", "Mauritius" },
-                    { 96, "434", new Guid("2cbb2337-a3b5-44a5-84bd-219a131e84b8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "258", true, "mz", null, null, "موزمبيق", "Mozambique" },
-                    { 97, "435", new Guid("2aae5c2e-65e3-485e-93e4-7e4e87fd463c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "234", true, "ng", null, null, "نيجيريا", "Nigeria" },
-                    { 98, "436", new Guid("547c4807-86b6-4916-a27c-23edd8837a90"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "227", true, "ne", null, null, "النيجر", "Niger" },
-                    { 99, "437", new Guid("59ae90d5-7b35-451c-8b12-e817d2477768"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "236", true, "cf", null, null, "افريقيا الوسطى", "Central Africa" },
-                    { 100, "438", new Guid("4ed318dd-01a5-4313-9aeb-ff0670fbbcce"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "244", true, "ao", null, null, "انجولا", "Angola" },
-                    { 101, "439", new Guid("0d049bda-9228-4132-83c2-7ee271225d51"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "599", true, "bq", null, null, "الجزر الكاريبية الهولندية", "Caribbean Netherlands" },
-                    { 102, "440", new Guid("d946f8c7-8e51-4701-8ca7-e8534eccc41d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "240", true, "gq", null, null, "غينيا الاستوائية", "Equatorial Guinea" },
-                    { 103, "441", new Guid("6f720014-245d-4d0c-bb31-1f82c9b392a7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "ملاجاسي", "Mlajasi" },
-                    { 104, "442", new Guid("a4e7d623-b83c-4be5-bcdf-d76029d22599"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "239", true, "st", null, null, "ساوتومي/برنسبى", "S? o Tomé and Pr? ncipe" },
-                    { 105, "443", new Guid("0e22954e-0bd4-4237-9d3c-2563bbb278c5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "248", true, "sc", null, null, "جزر سيشل", "Seychelles Islands" },
-                    { 106, "444", new Guid("e070f5e5-5c65-4207-8a1b-9a30c81e9d05"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "268", false, "sz", null, null, "سوزيلاند", "Swaziland" },
-                    { 107, "449", new Guid("ed9f065f-2e15-47d3-8931-9d372f7c24eb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "291", true, "er", null, null, "ارتيريا", "Eritrea" },
-                    { 108, "453", new Guid("4bf27943-3da5-4201-9a3f-987e866f8b59"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "211", false, "ss", null, null, "جمهورية جنوب السودان", "Republic of South Sudan" },
-                    { 109, "454", new Guid("4f6ab627-2691-47fa-9b0a-f70c25448b1c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "238", true, "cv", null, null, "كاب فيرد(الراس الاخضر)", "Cape Verde" },
-                    { 110, "501", new Guid("2b2c2d68-d5ae-4138-844c-08237eda0581"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "34", true, "es", null, null, "اسبانيا", "Spain" },
-                    { 111, "502", new Guid("13337499-3283-4f43-8353-c97019d5bbc4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "355", true, "al", null, null, "البانيا", "Albania" },
-                    { 112, "503", new Guid("6641c800-f719-46ea-ae5c-a400f8eb7c8a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "49", true, "de", null, null, "المانيا", "Germany" },
-                    { 113, "504", new Guid("231df79b-1ec3-4f04-8e0b-c1bf7430bdfd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "353", true, "ie", null, null, "ايرلندا", "Ireland" },
-                    { 114, "505", new Guid("194e51fe-cedf-4979-96f2-d3437a84f064"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "39", true, "it", null, null, "ايطاليا", "Italy" },
-                    { 115, "506", new Guid("17bc065a-5923-4541-9663-788f6a03ccf1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "44", true, "gb", null, null, "المملكة المتحدة", "United Kingdom" },
-                    { 116, "507", new Guid("5708da1c-de3f-4521-9189-f0caa978a123"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "351", true, "pt", null, null, "البرتغال", "Portugal" },
-                    { 117, "508", new Guid("e36d81b3-3e49-4383-8113-3110e59143db"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "359", true, "bg", null, null, "بلغاريا", "Bulgaria" },
-                    { 118, "509", new Guid("e6c7d5da-e52a-4e4c-bb17-327e7fa4ead3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "32", true, "be", null, null, "بلجيكا", "Belgium" },
-                    { 119, "510", new Guid("c0512e21-29e1-43aa-aad2-45a5aecf42ec"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "48", true, "pl", null, null, "بولندا", "Poland" },
-                    { 120, "512", new Guid("cfd62002-7830-4e74-97bf-e617db387cf5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "45", true, "dk", null, null, "الدانمارك", "Denmark" },
-                    { 121, "513", new Guid("176e71b0-ad51-4b14-9f84-c4073710f336"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "40", true, "ro", null, null, "رومانيا", "Romania" },
-                    { 122, "514", new Guid("bc204620-0ca5-4c26-9df4-8c4b6a2f604a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "46", true, "se", null, null, "السويد", "Sweden" },
-                    { 123, "515", new Guid("0f758ce8-af64-4661-9998-3a07e5308e5f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "41", true, "ch", null, null, "سويسرا", "Switzerland" },
-                    { 124, "516", new Guid("9c3ba2b5-9b7f-4923-81c7-b69ca483b834"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "33", true, "fr", null, null, "فرنسا", "France" },
-                    { 125, "517", new Guid("e2300269-7fdf-40ef-b328-1b310884bf6a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "358", true, "fi", null, null, "فنلندا", "Finland" },
-                    { 126, "518", new Guid("4b74516d-c2e2-4857-8bf5-c0cc36682ad2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "381", true, "rs", null, null, "صربيا", "Serbia" }
+                    { 85, "422", new Guid("0219b0af-62fb-4c5d-91f6-753373776ac6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "224", true, "gn", null, null, "غينيا", "Guinea" },
+                    { 86, "423", new Guid("79b50c82-93d7-4fc8-8e6e-b1c6b61049b0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "245", true, "gw", null, null, "غينيابيساو", "Guinea Bissau" },
+                    { 87, "424", new Guid("b2c7f881-6604-4a90-b646-4355e7666d5b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "226", true, "bf", null, null, "بوركينافاسو", "Burkina Faso" },
+                    { 88, "425", new Guid("a489df5b-a7f0-4529-bb37-3ca8cf636c17"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "237", true, "cm", null, null, "الكاميرون", "Cameroon" },
+                    { 89, "426", new Guid("1790a759-0d77-45a9-aa62-3024327a1483"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "243", true, "cd", null, null, "جمهورية الكونغو الديمقراطية", "Congo(DRC)" },
+                    { 90, "427", new Guid("17a5de24-e828-4ffb-9a7d-159fe991e1ec"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "254", true, "ke", null, null, "كينيا", "Kenya" },
+                    { 91, "428", new Guid("1950c961-3533-42c1-95f8-a27381d2ce8a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "266", true, "ls", null, null, "ليسوتو", "Lesotho" },
+                    { 92, "429", new Guid("81243598-134f-4b18-9b01-e3024257cabd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "231", true, "lr", null, null, "ليبيريا", "Liberia" },
+                    { 93, "430", new Guid("899c7dbb-c960-4d8e-9d49-9d592f8436de"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "223", true, "ml", null, null, "مالي", "Mali" },
+                    { 94, "432", new Guid("0a951389-bbe7-4076-bcb2-f7e1576b4a90"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "265", true, "mw", null, null, "ملاوي", "Malawi" },
+                    { 95, "433", new Guid("93fab356-347c-4e63-9858-52737c010bb6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "230", true, "mu", null, null, "موريشيوس", "Mauritius" },
+                    { 96, "434", new Guid("3ecb9201-acc2-443d-83ea-10bdb40fb961"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "258", true, "mz", null, null, "موزمبيق", "Mozambique" },
+                    { 97, "435", new Guid("dbb88241-e39b-48d8-a638-069cc0081b8b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "234", true, "ng", null, null, "نيجيريا", "Nigeria" },
+                    { 98, "436", new Guid("b281a54d-e191-4be8-9c8d-a1d13ce785f5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "227", true, "ne", null, null, "النيجر", "Niger" },
+                    { 99, "437", new Guid("5627417e-8bdf-40bf-811a-79f32c48c72f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "236", true, "cf", null, null, "افريقيا الوسطى", "Central Africa" },
+                    { 100, "438", new Guid("075e198e-13df-4550-ba21-8cd1e2886948"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "244", true, "ao", null, null, "انجولا", "Angola" },
+                    { 101, "439", new Guid("63587316-a0fb-4ecc-b637-17a9a100f2a8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "599", true, "bq", null, null, "الجزر الكاريبية الهولندية", "Caribbean Netherlands" },
+                    { 102, "440", new Guid("8a557dd4-0612-48d0-b689-ca7f9a0e9bc4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "240", true, "gq", null, null, "غينيا الاستوائية", "Equatorial Guinea" },
+                    { 103, "441", new Guid("ce3eb2b4-23fe-4bec-b8cd-a86aab696a55"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "ملاجاسي", "Mlajasi" },
+                    { 104, "442", new Guid("afe5004b-cd3a-47fa-8d8c-9408d1b9d685"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "239", true, "st", null, null, "ساوتومي/برنسبى", "S? o Tomé and Pr? ncipe" },
+                    { 105, "443", new Guid("eef5c8bf-ecce-41e9-9504-572cf942baba"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "248", true, "sc", null, null, "جزر سيشل", "Seychelles Islands" },
+                    { 106, "444", new Guid("667fdf9b-fb4a-417e-b962-38b65726e60c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "268", false, "sz", null, null, "سوزيلاند", "Swaziland" },
+                    { 107, "449", new Guid("be77451b-17e3-4d3a-88df-0a0a7348ce0b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "291", true, "er", null, null, "ارتيريا", "Eritrea" },
+                    { 108, "453", new Guid("4632b706-223c-4162-8699-494634bd670f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "211", false, "ss", null, null, "جمهورية جنوب السودان", "Republic of South Sudan" },
+                    { 109, "454", new Guid("24feab03-901d-429b-88ec-15a2bccc3d77"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "238", true, "cv", null, null, "كاب فيرد(الراس الاخضر)", "Cape Verde" },
+                    { 110, "501", new Guid("a59f163b-97b8-4d99-b59e-ca543b33dba8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "34", true, "es", null, null, "اسبانيا", "Spain" },
+                    { 111, "502", new Guid("c6febaf4-ddb9-482d-98c4-c61da05f93df"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "355", true, "al", null, null, "البانيا", "Albania" },
+                    { 112, "503", new Guid("c21b31c6-6cae-40e5-aec6-9a613a376bd1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "49", true, "de", null, null, "المانيا", "Germany" },
+                    { 113, "504", new Guid("726ee201-a754-4e8d-804b-a326bacd0ffa"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "353", true, "ie", null, null, "ايرلندا", "Ireland" },
+                    { 114, "505", new Guid("a1e5fd85-6f56-4f99-a7d1-203dcd82a1c1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "39", true, "it", null, null, "ايطاليا", "Italy" },
+                    { 115, "506", new Guid("a7253635-4121-4ecb-b25a-2e79f718e494"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "44", true, "gb", null, null, "المملكة المتحدة", "United Kingdom" },
+                    { 116, "507", new Guid("ba02d426-0965-479d-be47-fd472b9844a5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "351", true, "pt", null, null, "البرتغال", "Portugal" },
+                    { 117, "508", new Guid("a36bc6a3-8465-416a-bd2f-f4d432285f92"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "359", true, "bg", null, null, "بلغاريا", "Bulgaria" },
+                    { 118, "509", new Guid("b1f9c728-9628-4dd2-8972-9b40955afefe"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "32", true, "be", null, null, "بلجيكا", "Belgium" },
+                    { 119, "510", new Guid("bbd8c2de-22b3-44d9-8053-49db971e6af8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "48", true, "pl", null, null, "بولندا", "Poland" },
+                    { 120, "512", new Guid("aff15507-7850-4604-a5e0-267522eaeb9e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "45", true, "dk", null, null, "الدانمارك", "Denmark" },
+                    { 121, "513", new Guid("d9b95495-655f-4314-851d-8792fcb43b7e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "40", true, "ro", null, null, "رومانيا", "Romania" },
+                    { 122, "514", new Guid("8c052a51-cf0e-401e-95f6-e160e70087ac"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "46", true, "se", null, null, "السويد", "Sweden" },
+                    { 123, "515", new Guid("24890444-3420-4102-8054-4e7da9257a91"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "41", true, "ch", null, null, "سويسرا", "Switzerland" },
+                    { 124, "516", new Guid("bc42c203-05d3-4a3e-aae2-14c6c2e23605"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "33", true, "fr", null, null, "فرنسا", "France" },
+                    { 125, "517", new Guid("429ac27b-3bce-4a75-a8db-406afaed1061"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "358", true, "fi", null, null, "فنلندا", "Finland" },
+                    { 126, "518", new Guid("1cb9e32f-7bbd-4ef8-9379-94feb0bc0416"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "381", true, "rs", null, null, "صربيا", "Serbia" }
                 });
 
             migrationBuilder.InsertData(
@@ -1492,48 +1520,48 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "Code", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "CreatedUserId", "DialCode", "IsActive", "Iso2", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 127, "519", new Guid("5a241779-5040-4711-8d5f-067d02b37947"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "31", true, "nl", null, null, "هولندا", "Netherlands" },
-                    { 128, "521", new Guid("5023aef6-7e84-4d0a-8275-3e48a34f7eeb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "30", true, "gr", null, null, "اليونان", "Greece" },
-                    { 129, "522", new Guid("f67c3952-1262-4c00-862f-40142cb5531b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "376", true, "ad", null, null, "اندورا", "Andorra" },
-                    { 130, "523", new Guid("57839578-d089-4c86-88cd-e02c0de92e65"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "43", true, "at", null, null, "النمسا", "Austria" },
-                    { 131, "524", new Guid("bbef8569-6a33-49d5-9fb4-28f92464e48d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "382", true, "me", null, null, "الجبل الأ سود", "Montenegro" },
-                    { 132, "525", new Guid("e909ea06-93a0-4648-a346-996070f89ce8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "36", true, "hu", null, null, "هنغاريا", "Hungary" },
-                    { 133, "526", new Guid("153d71c9-277b-452d-9a9d-bf563d9c3424"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "354", true, "is", null, null, "ايسلندا", "Iceland" },
-                    { 134, "527", new Guid("399b305f-e987-46fe-82ce-025efd0815ba"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "423", true, "li", null, null, "ليختنشتين", "Liechtenstein" },
-                    { 135, "528", new Guid("153098a5-1256-4e30-8432-2fa2af993242"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "352", true, "lu", null, null, "لوكسمبورغ", "Luxembourg" },
-                    { 136, "529", new Guid("f47cf74d-8cb1-46b3-9f55-4abb6abe0cb2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "356", true, "mt", null, null, "مالطا", "Malta" },
-                    { 137, "530", new Guid("1b056bde-5a21-4721-b72e-842420034d43"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "377", true, "mc", null, null, "موناكو", "Monaco" },
-                    { 138, "531", new Guid("2caef93d-ebea-41bf-aa8a-2125a6ff5e30"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "47", true, "no", null, null, "النرويج", "Norway" },
-                    { 139, "532", new Guid("adf3486e-3ad7-4297-9f5c-e70d697ccfee"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "378", true, "sm", null, null, "سان مارينو", "San Marino" },
-                    { 140, "533", new Guid("f6e793d2-640e-4e18-944a-f90c1ae393ce"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "39", true, "va", null, null, "مدينة الفاتيكان", "Vatican City" },
-                    { 141, "534", new Guid("1bbfa8e6-1c94-41b4-97ba-30a9f8c75a1c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "350", true, "gi", null, null, "جبل طارق", "Gibraltar" },
-                    { 142, "536", new Guid("e2abbb93-0c73-4c93-a197-2de86da55cad"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "380", true, "ua", null, null, "اوكرانيا", "Ukraine" },
-                    { 143, "537", new Guid("76665819-784b-4af5-a785-1d7beac6b361"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "روسيا البيضاء", "Byelorussia" },
-                    { 144, "539", new Guid("bea6c1a7-6a1d-4cb3-ba96-1cb98937c26f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "374", true, "am", null, null, "ارمينيا", "Armenia" },
-                    { 145, "540", new Guid("5277411d-6e45-443e-b0bd-7fd618fc1b74"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "373", true, "md", null, null, "مولدافيا", "Moldova" },
-                    { 146, "541", new Guid("faf01de1-cd4a-40a8-9687-12b495975316"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "995", true, "ge", null, null, "جورجيا", "Georgia" },
-                    { 147, "542", new Guid("9b508581-a303-43c8-aa98-ac225fcfc3fa"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "370", true, "lt", null, null, "ليتوانيا", "Lithuania" },
-                    { 148, "543", new Guid("7e82ad4d-a9a2-44af-ae99-f4fbd20878e4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "372", true, "ee", null, null, "استونيا", "Estonia" },
-                    { 149, "544", new Guid("3b83c4c6-e24e-46ae-b951-ba8adfab2c1b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "371", true, "lv", null, null, "لاتفيا", "Latvia" },
-                    { 150, "545", new Guid("ab91772f-6779-464d-9a7f-0055f099ad69"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "387", true, "ba", null, null, "البوسنة والهرسك", "Bosnia / Herzegovina" },
-                    { 151, "546", new Guid("00ae0aa4-7067-48ba-b6fc-5f8427378021"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "385", true, "hr", null, null, "كرواتيا", "Croatia" },
-                    { 152, "547", new Guid("4442fb6d-7f16-46ad-bb35-25d9e29d9b7c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "386", true, "si", null, null, "سلوفينيا", "Slovenia" },
-                    { 153, "549", new Guid("e4613cd8-89b6-41ba-8dd5-11887ee61449"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "389", true, "mk", null, null, "مقدونيا", "Macedonia" },
-                    { 154, "552", new Guid("fb3a825b-e95d-4dc3-a177-8bfd14f11c34"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "420", true, "cz", null, null, "تشيك", "Czech Republic" },
-                    { 155, "553", new Guid("68c6c56b-cd24-47dd-af2a-5c652629760c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "421", true, "sk", null, null, "سلوفاكيا", "Slovakia" },
-                    { 156, "554", new Guid("451b7f44-a7a8-40a7-9246-a9ebca26a21e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "298", true, "fo", null, null, "جزر فيرو", "Faroe Islands" },
-                    { 157, "555", new Guid("e4b2dc29-e7b3-4708-8eb3-da2c84bee823"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "33", false, "fx", null, null, "ميتروبوليتان فرنسية", "France Metropolitan" },
-                    { 158, "601", new Guid("a98d6297-bfb0-49f4-9228-598c2c4cbc18"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "us", null, null, "الولايات المتحدة", "United States" },
-                    { 159, "602", new Guid("1f5abddb-d583-4557-8aa8-f608bff816fc"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "54", true, "ar", null, null, "الارجنتين", "Argentina" },
-                    { 160, "603", new Guid("0220ffd3-bf0c-4aa9-87e0-e18ec49eb2f1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "bb", null, null, "بربادوس", "Barbados" },
-                    { 161, "604", new Guid("ff71011b-5922-496f-874f-3456283ea713"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "55", true, "br", null, null, "البرازيل", "Brazil" },
-                    { 162, "605", new Guid("ded5c76c-5dc9-407f-b42b-4a93179f8f02"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "507", true, "pa", null, null, "بنما", "Panama" },
-                    { 163, "606", new Guid("6644422e-7b9c-4d15-ac36-9f3c905cacca"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "tt", null, null, "ترينداد وتوباجو", "Trinidad and Tobago" },
-                    { 164, "607", new Guid("c693956b-5655-4cce-bc21-ca29bfebc4e7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "jm", null, null, "جامايكا", "Jamaica" },
-                    { 165, "608", new Guid("6b1dc96c-c1a6-4e6c-b7e8-99727e36e0af"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "جوانا", "Joanna" },
-                    { 166, "609", new Guid("8482329f-9a19-42d5-aa54-ec3768fb1c72"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "58", true, "ve", null, null, "فنزويلا", "Venezuela" },
-                    { 167, "610", new Guid("227bb531-7480-46de-91fb-f9379aa008f5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "ca", null, null, "كندا", "Canada" },
-                    { 168, "611", new Guid("1fce99f3-9199-4e42-8daa-56dd88a4868e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "57", true, "co", null, null, "كولمبيا", "Columbia" }
+                    { 127, "519", new Guid("38e86907-6bae-4479-afff-d227f571de63"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "31", true, "nl", null, null, "هولندا", "Netherlands" },
+                    { 128, "521", new Guid("2aeb33b6-3bd3-4525-931a-d29ad771a5f5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "30", true, "gr", null, null, "اليونان", "Greece" },
+                    { 129, "522", new Guid("c3473e8a-aece-4a8a-8ca9-8bfd8afc6176"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "376", true, "ad", null, null, "اندورا", "Andorra" },
+                    { 130, "523", new Guid("3c9a4a0f-2992-4991-aa04-f571d4f3a195"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "43", true, "at", null, null, "النمسا", "Austria" },
+                    { 131, "524", new Guid("3ded2ee6-c648-44e6-9a68-7150a80beef2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "382", true, "me", null, null, "الجبل الأ سود", "Montenegro" },
+                    { 132, "525", new Guid("7b239238-7108-4ad4-8ca1-d216ed86744b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "36", true, "hu", null, null, "هنغاريا", "Hungary" },
+                    { 133, "526", new Guid("de66adac-9389-4030-bbe5-4418d9894368"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "354", true, "is", null, null, "ايسلندا", "Iceland" },
+                    { 134, "527", new Guid("52d0ff50-a922-4ef6-8dd7-9881adfc2f3c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "423", true, "li", null, null, "ليختنشتين", "Liechtenstein" },
+                    { 135, "528", new Guid("25246814-a751-4d69-aca4-9956dce30a1b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "352", true, "lu", null, null, "لوكسمبورغ", "Luxembourg" },
+                    { 136, "529", new Guid("297f64c7-50c5-4431-9e06-31e1495392c2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "356", true, "mt", null, null, "مالطا", "Malta" },
+                    { 137, "530", new Guid("5d4bfe4d-41d5-4d1c-8167-0d863a881fa0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "377", true, "mc", null, null, "موناكو", "Monaco" },
+                    { 138, "531", new Guid("f86af575-46ee-4fad-b979-4af34c871d5d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "47", true, "no", null, null, "النرويج", "Norway" },
+                    { 139, "532", new Guid("2397bc68-022a-4b56-8dcb-50923239afda"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "378", true, "sm", null, null, "سان مارينو", "San Marino" },
+                    { 140, "533", new Guid("58b51244-d464-42a8-95d3-273b278be741"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "39", true, "va", null, null, "مدينة الفاتيكان", "Vatican City" },
+                    { 141, "534", new Guid("19e391dd-35e5-46b9-835e-80fcfab93c66"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "350", true, "gi", null, null, "جبل طارق", "Gibraltar" },
+                    { 142, "536", new Guid("ffb3581f-a3ab-482b-8e8b-721728320e4f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "380", true, "ua", null, null, "اوكرانيا", "Ukraine" },
+                    { 143, "537", new Guid("38f483e0-79ff-4f88-8f1c-f447139eb190"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "روسيا البيضاء", "Byelorussia" },
+                    { 144, "539", new Guid("5f2b38a6-126c-4d0b-8e18-23151321db0a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "374", true, "am", null, null, "ارمينيا", "Armenia" },
+                    { 145, "540", new Guid("329a13f9-d533-451c-a191-39cd220b483f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "373", true, "md", null, null, "مولدافيا", "Moldova" },
+                    { 146, "541", new Guid("b922d798-b319-4d17-bd45-ad84a1a54803"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "995", true, "ge", null, null, "جورجيا", "Georgia" },
+                    { 147, "542", new Guid("708a4a8f-3aea-4e7c-85c9-abea74173497"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "370", true, "lt", null, null, "ليتوانيا", "Lithuania" },
+                    { 148, "543", new Guid("33450449-0550-418e-b968-d6c6726eb3d1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "372", true, "ee", null, null, "استونيا", "Estonia" },
+                    { 149, "544", new Guid("4c357d82-30e2-41f0-9217-338d98131acf"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "371", true, "lv", null, null, "لاتفيا", "Latvia" },
+                    { 150, "545", new Guid("87c97b33-28d3-4eae-91e5-be6d073b1863"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "387", true, "ba", null, null, "البوسنة والهرسك", "Bosnia / Herzegovina" },
+                    { 151, "546", new Guid("ebd4127b-01cd-431c-b74f-651f7f751742"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "385", true, "hr", null, null, "كرواتيا", "Croatia" },
+                    { 152, "547", new Guid("452a1fb4-fa7f-4473-8691-d62523c80baa"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "386", true, "si", null, null, "سلوفينيا", "Slovenia" },
+                    { 153, "549", new Guid("da2f6102-8668-4db3-84df-0073e7c444c3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "389", true, "mk", null, null, "مقدونيا", "Macedonia" },
+                    { 154, "552", new Guid("9870ca51-82fc-4b9d-a0d8-da274de1509c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "420", true, "cz", null, null, "تشيك", "Czech Republic" },
+                    { 155, "553", new Guid("750bbdd4-d6b2-4752-a99e-d8c085ad73c4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "421", true, "sk", null, null, "سلوفاكيا", "Slovakia" },
+                    { 156, "554", new Guid("d5c445d3-7d1e-49ca-b445-b9305e12e8ae"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "298", true, "fo", null, null, "جزر فيرو", "Faroe Islands" },
+                    { 157, "555", new Guid("00cb200c-5c87-438e-bd05-5775ad3d30f0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "33", false, "fx", null, null, "ميتروبوليتان فرنسية", "France Metropolitan" },
+                    { 158, "601", new Guid("b917b440-0736-4768-a30f-139957f79b99"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "us", null, null, "الولايات المتحدة", "United States" },
+                    { 159, "602", new Guid("653aea91-2a3d-47c3-a1d0-aaf61f5b3e50"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "54", true, "ar", null, null, "الارجنتين", "Argentina" },
+                    { 160, "603", new Guid("d4a1819d-0f01-4bfc-ba0a-bc9131218f3c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "bb", null, null, "بربادوس", "Barbados" },
+                    { 161, "604", new Guid("89195f8c-9837-41d5-84b2-8477ebdece01"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "55", true, "br", null, null, "البرازيل", "Brazil" },
+                    { 162, "605", new Guid("52667bba-9056-4bc1-b64f-40c8f4060895"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "507", true, "pa", null, null, "بنما", "Panama" },
+                    { 163, "606", new Guid("4da1d1dd-504d-4a75-a4f5-75f4ef8591ae"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "tt", null, null, "ترينداد وتوباجو", "Trinidad and Tobago" },
+                    { 164, "607", new Guid("99acf1c2-b29e-4cd2-816c-a0c2d90432cc"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "jm", null, null, "جامايكا", "Jamaica" },
+                    { 165, "608", new Guid("6f3ed5ad-d176-4417-aba8-99c1477713ba"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, null, null, null, "جوانا", "Joanna" },
+                    { 166, "609", new Guid("c46f2881-7dd0-42d1-9ac6-14fddecd46a6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "58", true, "ve", null, null, "فنزويلا", "Venezuela" },
+                    { 167, "610", new Guid("2ceb84af-9052-489d-951f-07118e2c71df"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "ca", null, null, "كندا", "Canada" },
+                    { 168, "611", new Guid("b98babd2-c16d-494b-af58-13765c2b83c7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "57", true, "co", null, null, "كولمبيا", "Columbia" }
                 });
 
             migrationBuilder.InsertData(
@@ -1542,28 +1570,28 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "Code", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "CreatedUserId", "DialCode", "IsActive", "Iso2", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 169, "612", new Guid("96661b66-1e71-4539-bc15-9af056cf2b71"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "bs", null, null, "جزر البهاما", "Bahamas" },
-                    { 170, "613", new Guid("aaed6db1-cf0b-479e-8cd4-f36dd1595318"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "506", true, "cr", null, null, "كوستاريكا", "Costa Rica" },
-                    { 171, "614", new Guid("ca2ce7ed-222a-407b-8c75-81bd68d37a4a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "53", true, "cu", null, null, "كوبا", "Cuba" },
-                    { 172, "615", new Guid("5141775b-0ade-4736-b562-e8d463be6a9e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "dm", null, null, "دومينيكا", "Dominica" },
-                    { 173, "616", new Guid("ac3959b5-ea88-41d5-8685-67d17625e53e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "do", null, null, "جمهورية دمينكان", "Republic Dominica" },
-                    { 174, "617", new Guid("3321af13-fb12-467e-ba6a-a2ad4ac2e824"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "503", true, "sv", null, null, "السلفادور", "El Salvador" },
-                    { 175, "618", new Guid("5627ca87-2951-430e-9517-7d7cf7cdcdec"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "gd", null, null, "جرانادا", "Granada" },
-                    { 176, "619", new Guid("e973893f-6b26-4377-a7fd-b7dfe07b3163"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "502", true, "gt", null, null, "جواتيمالا", "Guatemala" },
-                    { 177, "620", new Guid("4ce2e742-878e-49a2-b775-b9672c9d7886"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "509", true, "ht", null, null, "هايتي", "Haiti" },
-                    { 178, "621", new Guid("09f67953-071a-448a-b819-e197ef6a7ad8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "504", true, "hn", null, null, "هوندوراس", "Honduras" },
-                    { 179, "622", new Guid("148923c7-a6e2-47a7-935d-52e2e3836593"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "52", true, "mx", null, null, "المكسيك", "Mexico" },
-                    { 180, "623", new Guid("40e6825d-952b-4500-98f2-671eaed795fb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "505", true, "ni", null, null, "نيكاراجوا", "Nicaragua" },
-                    { 181, "624", new Guid("fec45dc3-9ab5-4582-9397-48fc0ffe2659"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "lc", null, null, "سانت لوسيا", "Saint Lucia" },
-                    { 182, "625", new Guid("ca134b0c-b3ed-4e6e-86d4-b7e44d42e105"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "vc", null, null, "سان فينسنت", "Saint Vincent" },
-                    { 183, "626", new Guid("85a823bc-0188-4671-9a4e-e26f96d9d575"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "591", true, "bo", null, null, "بوليفيا", "Bolivia" },
-                    { 184, "627", new Guid("fde59406-2a2c-4005-91fd-84a98dc142b3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "56", true, "cl", null, null, "شيلي", "Chile" },
-                    { 185, "628", new Guid("b37acc13-7a75-4afb-9f73-423269181718"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "593", true, "ec", null, null, "اكوادور", "Ecuador" },
-                    { 186, "629", new Guid("81ebecc3-5536-4cab-911f-e6eb70ed1f25"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "595", true, "py", null, null, "باراجواي", "Paraguay" },
-                    { 187, "630", new Guid("aa981267-c76e-41fb-9bb2-57c2f4374ce3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "51", true, "pe", null, null, "بيرو", "Peru" },
-                    { 188, "701", new Guid("79f4e69b-5212-4da4-affb-926512dd3bbb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "61", true, "au", null, null, "استراليا", "Australia" },
-                    { 189, "702", new Guid("265df25d-fc0f-43c4-ba35-b7c1e15a8f0d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "64", true, "nz", null, null, "نيوزيلندا", "New Zealand" },
-                    { 190, "703", new Guid("959b8af4-86d7-4d6e-8fd8-4de0d7f9b39d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "598", true, "yu", null, null, "أوروغواي", "Uruguay" }
+                    { 169, "612", new Guid("99df9ce8-427c-41be-a169-4536252063e6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "bs", null, null, "جزر البهاما", "Bahamas" },
+                    { 170, "613", new Guid("f7beced1-361c-43dc-9691-e082b7bf87b0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "506", true, "cr", null, null, "كوستاريكا", "Costa Rica" },
+                    { 171, "614", new Guid("80aff07d-cd2c-4f2d-8d03-6bc51464b77d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "53", true, "cu", null, null, "كوبا", "Cuba" },
+                    { 172, "615", new Guid("d2eb203f-039a-4142-bfaa-6338e3af1ee4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "dm", null, null, "دومينيكا", "Dominica" },
+                    { 173, "616", new Guid("f698cb9d-b8bc-4068-89ef-cf7f7885b3fd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "do", null, null, "جمهورية دمينكان", "Republic Dominica" },
+                    { 174, "617", new Guid("a6fe29af-f714-42b6-97d6-2ebfbcc08c60"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "503", true, "sv", null, null, "السلفادور", "El Salvador" },
+                    { 175, "618", new Guid("7e3ec0fb-3032-4af9-a182-f8274f14ca8b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "gd", null, null, "جرانادا", "Granada" },
+                    { 176, "619", new Guid("198725ca-7880-4432-a51b-db07ede3b4b4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "502", true, "gt", null, null, "جواتيمالا", "Guatemala" },
+                    { 177, "620", new Guid("7115dab7-27ba-43b9-acb2-ff5aa2f106e0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "509", true, "ht", null, null, "هايتي", "Haiti" },
+                    { 178, "621", new Guid("575cc66c-b22f-4f5c-a79c-18e92a2a27a7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "504", true, "hn", null, null, "هوندوراس", "Honduras" },
+                    { 179, "622", new Guid("b2137fad-3037-437e-9462-81ba364b71f6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "52", true, "mx", null, null, "المكسيك", "Mexico" },
+                    { 180, "623", new Guid("b4bd0d9e-4f57-451e-914f-6d8530e69fc6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "505", true, "ni", null, null, "نيكاراجوا", "Nicaragua" },
+                    { 181, "624", new Guid("d7c6d010-786c-4955-91d8-e66d9eb3d3a6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "lc", null, null, "سانت لوسيا", "Saint Lucia" },
+                    { 182, "625", new Guid("0b6584c4-569c-4cfb-8bea-47c0bf1518c8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "1", true, "vc", null, null, "سان فينسنت", "Saint Vincent" },
+                    { 183, "626", new Guid("a7098c77-8195-457f-b7ed-0852a571e0ce"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "591", true, "bo", null, null, "بوليفيا", "Bolivia" },
+                    { 184, "627", new Guid("81b6b7aa-7071-4eca-b2db-0b85cc23b83a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "56", true, "cl", null, null, "شيلي", "Chile" },
+                    { 185, "628", new Guid("b6666a8e-d8aa-4cc3-a34c-fd92902e6403"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "593", true, "ec", null, null, "اكوادور", "Ecuador" },
+                    { 186, "629", new Guid("71bef0e1-9201-4244-b703-d280861ab002"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "595", true, "py", null, null, "باراجواي", "Paraguay" },
+                    { 187, "630", new Guid("310d0b19-2d7e-47aa-81c4-cbd40d31830d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "51", true, "pe", null, null, "بيرو", "Peru" },
+                    { 188, "701", new Guid("525f0a3e-dac7-4737-b89f-c37750e266ce"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "61", true, "au", null, null, "استراليا", "Australia" },
+                    { 189, "702", new Guid("7d6c82a7-b967-42f9-b600-7074007213d6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "64", true, "nz", null, null, "نيوزيلندا", "New Zealand" },
+                    { 190, "703", new Guid("b9eea848-885b-4dda-ac15-c53dcb4e5927"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "598", true, "yu", null, null, "أوروغواي", "Uruguay" }
                 });
 
             migrationBuilder.InsertData(
@@ -1572,8 +1600,8 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "DescriptionAr", "DescriptionEn", "LastModifiedBy", "LastModifiedDate", "PageContentType" },
                 values: new object[,]
                 {
-                    { 1, new Guid("f2ef36dc-d021-41fa-95ea-d46214cb4298"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عن الاماره", "About us", null, null, "AboutUs" },
-                    { 2, new Guid("c6aca90d-dba3-4bd6-9252-be6312f320a9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "القسم النسوي", "Woman sections", null, null, "WomanSection" }
+                    { 1, new Guid("bca1496c-7782-4462-8ffd-0b33bf6b5a5d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عن الاماره", "About us", null, null, "AboutUs" },
+                    { 2, new Guid("451c6def-d8fe-44e5-ac95-3056b60fe1ed"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "القسم النسوي", "Woman sections", null, null, "WomanSection" }
                 });
 
             migrationBuilder.InsertData(
@@ -1592,9 +1620,9 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 1, new Guid("aa0e2efd-19b0-4fb1-b398-263e9d3e788b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مواطنين", "Citizens" },
-                    { 2, new Guid("849d6bb3-caf1-4265-b7fa-65bc3da3569f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مقيمين", "Residents" },
-                    { 3, new Guid("d8982584-b5b4-496c-817e-5cc158a88926"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زائرين", "Visitors" }
+                    { 1, new Guid("9f02a3c7-a225-4745-bf72-52b336729419"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مواطنين", "Citizens" },
+                    { 2, new Guid("7ccbd579-667a-43d1-b1be-66e154fb5413"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مقيمين", "Residents" },
+                    { 3, new Guid("7f2d9f20-c512-4a1c-a5a1-b20938f21171"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زائرين", "Visitors" }
                 });
 
             migrationBuilder.InsertData(
@@ -1603,17 +1631,28 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 1, new Guid("50df9c0e-aa55-4fa4-ab9b-f5a5392201ed"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "شقة", "Apartment" },
-                    { 2, new Guid("c150fc83-9b9e-47a5-a85e-1c1659776667"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "فيلا", "Villa" },
-                    { 3, new Guid("c8ba1406-bbdb-43ee-98de-1ca5e609bd7d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "عمارة سكنية", "Residential Building" },
-                    { 4, new Guid("37948f18-90c0-46b0-b225-877ab824c024"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مبنى تجاري", "Commercial Building" }
+                    { 1, new Guid("65e59968-9060-4f35-95f9-8e69b332c0ba"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "شقة", "Apartment" },
+                    { 2, new Guid("e2480ec5-c2e6-45c7-8fad-c6c1c4b1f0cb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "فيلا", "Villa" },
+                    { 3, new Guid("459e5671-61f1-4a7d-8ce5-8adac83e01f1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "عمارة سكنية", "Residential Building" },
+                    { 4, new Guid("682d2347-7efd-4461-8987-adde3187f788"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مبنى تجاري", "Commercial Building" }
                 });
 
             migrationBuilder.InsertData(
                 schema: "Lookup",
                 table: "CaseTypes",
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
-                values: new object[] { 1, new Guid("2211783c-8344-496b-a646-07b3d8f27498"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "قضية جنائية", "Criminal Case" });
+                values: new object[] { 1, new Guid("fb8917a3-226d-41fc-bcec-9561614e8089"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "قضية جنائية", "Criminal Case" });
+
+            migrationBuilder.InsertData(
+                schema: "Lookup",
+                table: "CommentStages",
+                columns: new[] { "Id", "CanShowComment", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
+                values: new object[,]
+                {
+                    { 1, false, new Guid("4847cf15-d650-41fa-a4ce-dba44fa011c1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "جديد", "New" },
+                    { 2, false, new Guid("e08e0547-8230-450c-b0be-ac5733014a23"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "معتمد", "Approved" },
+                    { 3, false, new Guid("e843dec7-cd8d-4c52-a5ff-3ed0ddb2f43a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مرفوض", "Rejected" }
+                });
 
             migrationBuilder.InsertData(
                 schema: "Lookup",
@@ -1621,9 +1660,9 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 1, new Guid("642de8e3-15a2-4e56-8e32-6f80a5920955"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "فرد", "Individual" },
-                    { 2, new Guid("62ca3bb1-d2cc-4af8-ad28-ce39e55c819a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "شركة", "Company" },
-                    { 3, new Guid("f0cf7f50-db16-46e9-a7dd-e0276753c497"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "جهة حكومية", "Governate" }
+                    { 1, new Guid("534a8d6c-ffd6-4b18-89ee-c00372472fd1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "فرد", "Individual" },
+                    { 2, new Guid("cc59fcca-b350-4ea8-a173-83780fe8b1be"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "شركة", "Company" },
+                    { 3, new Guid("5143a72a-c5ed-47a8-ad27-a33127d14c6d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "جهة حكومية", "Governate" }
                 });
 
             migrationBuilder.InsertData(
@@ -1632,29 +1671,29 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 1, new Guid("4ec6d93c-8c29-4a2d-83b1-9e18fe0152ba"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مدينة الرياض مقر الإمارة", "Emirate of Riyadh City" },
-                    { 2, new Guid("3f5308c1-63bd-4f7d-9f8e-2fc0e5b47b68"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالدرعية", "Diriyah" },
-                    { 3, new Guid("3af2b0fa-9757-4fa2-9ac1-d3b45b6b8af4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالخرج", "Al-Kharj" },
-                    { 4, new Guid("7f5e4745-32ce-4b6a-a339-4218616b5e3f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالدوادمي", "Dawadmi" },
-                    { 5, new Guid("4e7c9ba6-7a85-4eda-8c92-9e8a03f12cad"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالمجمعة", "Al Majma'ah" },
-                    { 6, new Guid("56befeaf-a356-4a43-8043-8ea59ecb1444"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالقويعية", "Al Quwaiiyah" },
-                    { 7, new Guid("68289780-ad79-4812-9e2a-a3be9e02eef8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة وادي الدواسر", "Wadi ad-Dawasir" },
-                    { 8, new Guid("9c433a73-59a1-4ce8-8b57-9c486a3efc8f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالأفلاج", "Al-Aflaj" },
-                    { 9, new Guid("6c6fe43e-9d84-4b99-945b-18fd03f9ff8b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالزلفي", "Az Zulfi" },
-                    { 10, new Guid("d7978fb4-4932-4357-9c49-45a0cf760682"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة شـقراء", "Shaqra" },
-                    { 11, new Guid("f2d57029-7c2c-45e4-a43a-934b58962db4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة حوطةبني تميم", "Howtat Bani Tamim" },
-                    { 12, new Guid("11d98dba-af82-41a4-a679-d495c32c0c74"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة عفيـف", "Afif" },
-                    { 13, new Guid("8ec31faa-6309-4d35-86f6-ced0a4cb22f0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالسليل", "As Sulayyil" },
-                    { 14, new Guid("e2de8a76-35eb-4ba1-9b88-7b249837f506"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة ضـرمـا", "Dhurma" },
-                    { 15, new Guid("c661f502-42a9-4a8f-98d0-d80635522eb9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالمزاحمية", "Al-Muzahmiya" },
-                    { 16, new Guid("730f94af-770c-40f9-801f-72b01fa1d3d7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة رمـاح", "Rumah" },
-                    { 17, new Guid("1bfdf19e-38de-4678-a13f-3e63312e14cb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة ثـادق", "Thadiq" },
-                    { 18, new Guid("5bff008e-81eb-4659-ae4b-421ae2d8681a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة حـريملاء", "Huraymila" },
-                    { 19, new Guid("e8ac0ae2-0c63-47ec-80f1-c591d536b965"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالحريق", "Al Hariq" },
-                    { 20, new Guid("1996af10-ebfc-43d6-8f68-6f97a0ba573a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالغـاط", "Al Ghat" },
-                    { 21, new Guid("893ff17a-17be-4b8f-8db7-28ee499eb9dd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة مرات", "Marat" },
-                    { 22, new Guid("5f6d3f97-340c-4a13-be6a-c7a9dfe73aea"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة الدلم", "Ad-Dilam" },
-                    { 23, new Guid("8021b7d4-c320-4715-8123-218b178d3de5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة الرين", "Rayn" }
+                    { 1, new Guid("248ae533-7ec6-4523-b88d-668f632e9249"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مدينة الرياض مقر الإمارة", "Emirate of Riyadh City" },
+                    { 2, new Guid("e29e81c3-eb15-43e5-8cda-63c4f24e9aa6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالدرعية", "Diriyah" },
+                    { 3, new Guid("1cf1c175-9a00-4efe-b7cd-db8c7445892f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالخرج", "Al-Kharj" },
+                    { 4, new Guid("94bfdce6-990b-424f-95eb-e8f23cf8c57c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالدوادمي", "Dawadmi" },
+                    { 5, new Guid("4e55db2c-8a9f-4dcd-9d4b-d94d582a247a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالمجمعة", "Al Majma'ah" },
+                    { 6, new Guid("b3eb56c7-5d21-4b1f-96e6-391ff08dbb2c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالقويعية", "Al Quwaiiyah" },
+                    { 7, new Guid("fdd7e5e9-4f92-4dbe-8388-c9fd465f0849"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة وادي الدواسر", "Wadi ad-Dawasir" },
+                    { 8, new Guid("9cf3ef97-7394-4fd5-9037-f42a85ea2e9b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالأفلاج", "Al-Aflaj" },
+                    { 9, new Guid("8ebe893b-6d9c-420e-9b37-6f678555180e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالزلفي", "Az Zulfi" },
+                    { 10, new Guid("33f41edd-59dd-48f7-b591-093a2853d576"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة شـقراء", "Shaqra" },
+                    { 11, new Guid("435ffb97-2583-4883-b372-f72ad3a5f686"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة حوطةبني تميم", "Howtat Bani Tamim" },
+                    { 12, new Guid("3f7f8233-b268-46e0-befb-36311eb34c6f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة عفيـف", "Afif" },
+                    { 13, new Guid("781f1fab-96a9-4121-909e-dc0574ec2a01"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالسليل", "As Sulayyil" },
+                    { 14, new Guid("eaa76b83-218f-4d1d-979b-7a391b92f836"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة ضـرمـا", "Dhurma" },
+                    { 15, new Guid("da722a88-9a8e-490d-b324-20604e725ac9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالمزاحمية", "Al-Muzahmiya" },
+                    { 16, new Guid("1c54d76d-56aa-4c8a-934c-93f5ee2f1a81"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة رمـاح", "Rumah" },
+                    { 17, new Guid("963e5ce0-e058-42a0-a023-8c0d97fcd6d4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة ثـادق", "Thadiq" },
+                    { 18, new Guid("0dc2a418-7db0-4b7c-8270-8f775f2f2255"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة حـريملاء", "Huraymila" },
+                    { 19, new Guid("691915a8-0710-4058-846a-2e5ee8640f8f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالحريق", "Al Hariq" },
+                    { 20, new Guid("bc3e7131-a9d0-4ce4-bb99-39620f4c81c8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظةالغـاط", "Al Ghat" },
+                    { 21, new Guid("008c1fc3-7c05-49eb-88ef-4c7bc96784ec"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة مرات", "Marat" },
+                    { 22, new Guid("d7b4d9f5-b009-412a-92ca-1f831bb51b71"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة الدلم", "Ad-Dilam" },
+                    { 23, new Guid("886e1ba5-28a5-46a8-ab1d-51d49bb25151"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "محافظة الرين", "Rayn" }
                 });
 
             migrationBuilder.InsertData(
@@ -1663,11 +1702,17 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 1, new Guid("f89e6208-0b80-4332-8da2-618d2358ca08"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أعزب", "Single" },
-                    { 2, new Guid("b0c14d04-2aba-4cb3-b19c-a686d460534f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "متزوج", "Married" },
-                    { 3, new Guid("904b6b0a-c65a-4ff4-b46f-d2cb197085b1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مطلق", "Divorced" },
-                    { 4, new Guid("8cddd81a-ffd9-4f9b-832f-d5c4fd11b385"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أرمل", "Widower" }
+                    { 1, new Guid("2d715f15-4df8-47b1-8536-192f35aef63c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أعزب", "Single" },
+                    { 2, new Guid("86027752-b6a2-4f19-bdb9-ee1259f46b8f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "متزوج", "Married" },
+                    { 3, new Guid("496704e8-db7b-45dc-82e5-9a44f5d7fc74"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مطلق", "Divorced" },
+                    { 4, new Guid("672e0ecd-7b9b-4237-851b-bc43be4f314c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أرمل", "Widower" }
                 });
+
+            migrationBuilder.InsertData(
+                schema: "Lookup",
+                table: "NewsCategueries",
+                columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
+                values: new object[] { 1, new Guid("981f5bd3-acdc-41c4-9655-9160b0d9f284"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "غير مصنف", "Not Categuerized" });
 
             migrationBuilder.InsertData(
                 schema: "Lookup",
@@ -1675,10 +1720,9 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 1, new Guid("38a5c92f-96d0-4bc1-b957-43527d593cc7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "غير مصنف", "Not Categuerized" },
-                    { 2, new Guid("b2f9f6ee-d2a5-4f5f-8e6d-f628acf9c8ed"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أخبار الأمير", "Prince News" },
-                    { 3, new Guid("7579183a-843f-4966-b126-a9c912f595af"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أخبار النائب", "Deputy News" },
-                    { 4, new Guid("135e4399-156f-4467-b509-ecce2a22547c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أخبار الإمارة", "Emirate News" }
+                    { 2, new Guid("ef1e3129-067f-496f-bdde-ac3ba9d2dabb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أخبار الأمير", "Prince News" },
+                    { 3, new Guid("006442d9-83ea-4138-88d0-b05d4cb8402b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أخبار النائب", "Deputy News" },
+                    { 4, new Guid("093bf41a-bd90-4798-bd04-12b27d2ec6d5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أخبار الإمارة", "Emirate News" }
                 });
 
             migrationBuilder.InsertData(
@@ -1687,15 +1731,15 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "Date", "IsActive", "LastModifiedBy", "LastModifiedDate", "NewsTypeCode", "TitleAr", "TitleEn" },
                 values: new object[,]
                 {
-                    { 2, new Guid("68ea8b16-c22e-4ea4-ac3f-fac8dd93ce1c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, 2, "اخر المحافظات", "Provinces news" },
-                    { 3, new Guid("1c8caea3-2416-45d5-a57b-7c4ade54bca5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, 3, "التقارير الاعلانيه", "Advertisments reports" }
+                    { 2, new Guid("1e0fd774-1cdd-4175-a9a6-9f398d04f679"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, 2, "اخر المحافظات", "Provinces news" },
+                    { 3, new Guid("b44ce54a-1bac-4b3a-b2e4-0319316a44db"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, 3, "التقارير الاعلانيه", "Advertisments reports" }
                 });
 
             migrationBuilder.InsertData(
                 schema: "Lookup",
                 table: "Religions",
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
-                values: new object[] { 1, new Guid("bcdc2d37-2728-4c07-9628-5191229da2d4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مسلم", "Muslem" });
+                values: new object[] { 1, new Guid("29270947-b826-47b2-b7e3-f2d46440eeec"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مسلم", "Muslem" });
 
             migrationBuilder.InsertData(
                 schema: "DataManagement",
@@ -1703,15 +1747,15 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Cost", "CreatedBy", "CreatedDate", "DescriptionAr", "DescriptionEn", "IsActive", "IsExternal", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn", "RequestLink", "SectorAr", "SectorEn", "WorkDays" },
                 values: new object[,]
                 {
-                    { 1, new Guid("f5f85cf6-a2fe-49e9-bc6d-b5a854474350"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "المجلس الالكتروني", "المجلس الالكتروني", true, false, null, null, "المجلس الالكتروني", "Electronic Board", "url", "المجلس الالكتروني", "المجلس الالكتروني", "10" },
-                    { 2, new Guid("5fc27f4d-86da-4753-92a7-a1ad2a7510da"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "الخروج المؤقت لسجين", "الخروج المؤقت لسجين", true, false, null, null, "الخروج المؤقت لسجين", "Prisoner Temp Release", "/eservice/prisoner-temp-release", "الخروج المؤقت لسجين", "الخروج المؤقت لسجين", "10" },
-                    { 3, new Guid("55c3634b-4edb-47ae-85e4-19808bd96895"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "خدمات السجناء", "خدمات السجناء", true, false, null, null, "خدمات السجناء", "Prisoners Services", "/eservice/prisoners-services", "خدمات السجناء", "خدمات السجناء", "10" },
-                    { 4, new Guid("1489c9e4-9137-4806-ad50-e6b0bf9781f9"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "الاستدعاء الإلكتروني", "الاستدعاء الإلكتروني", true, false, null, null, "الاستدعاء الإلكتروني", "Electronic Summon", "/eservice/electronic-summon", "الاستدعاء الإلكتروني", "الاستدعاء الإلكتروني", "10" },
-                    { 5, new Guid("2b6e67c1-57f6-495d-8eff-bfca8a0e5c79"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "التعديات على الأراضي الحكومية", "التعديات على الأراضي الحكومية", false, false, null, null, "التعديات على الأراضي الحكومية", "Infringements On Government Land", "/eservice/lands-infringement", "التعديات على الأراضي الحكومية", "التعديات على الأراضي الحكومية", "10" },
-                    { 6, new Guid("923a316f-e750-416d-99e9-9fd290846824"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "انفاذ الحكم الشرعي", "انفاذ الحكم الشرعي", true, false, null, null, "انفاذ الحكم الشرعي", "Judgment Execution", "/eservice/judgment-execution", "انفاذ الحكم الشرعي", "انفاذ الحكم الشرعي", "10" },
-                    { 7, new Guid("acc22427-93db-4ec9-acef-d050860a6256"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "توثيق زواج", "توثيق زواج", true, false, null, null, "توثيق زواج", "Marriage Certificate", "/eservice/marriage-certificate", "توثيق زواج", "توثيق زواج", "10" },
-                    { 8, new Guid("211b006c-d5a6-43da-8c17-16ba856e156e"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تملك عقار للأجانب", "تملك عقار للأجانب", true, false, null, null, "تملك عقار للأجانب", "Realty Ownership For Foreigners", "/eservice/foreigners-realty-owner", "تملك عقار للأجانب", "تملك عقار للأجانب", "10" },
-                    { 9, new Guid("a14ea17d-bf02-4e8d-89f4-824025a5aa2b"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "طلب علاج", "طلب علاج", true, false, null, null, "طلب علاج", "Treatment Recommendation", "/eservice/treatment-recommendation", "طلب علاج", "طلب علاج", "10" }
+                    { 1, new Guid("15e2b407-9f9a-4d8b-9aeb-bce8d9f399a3"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "المجلس الالكتروني", "المجلس الالكتروني", true, false, null, null, "المجلس الالكتروني", "Electronic Board", "url", "المجلس الالكتروني", "المجلس الالكتروني", "10" },
+                    { 2, new Guid("0d2a89c0-8f3f-405f-94d2-91bdec2a15bf"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "الخروج المؤقت لسجين", "الخروج المؤقت لسجين", true, false, null, null, "الخروج المؤقت لسجين", "Prisoner Temp Release", "/eservice/prisoner-temp-release", "الخروج المؤقت لسجين", "الخروج المؤقت لسجين", "10" },
+                    { 3, new Guid("d9af000e-f229-4789-b630-8caac8afd0ae"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "خدمات السجناء", "خدمات السجناء", true, false, null, null, "خدمات السجناء", "Prisoners Services", "/eservice/prisoners-services", "خدمات السجناء", "خدمات السجناء", "10" },
+                    { 4, new Guid("8f1e5614-0006-4140-8ad7-6ec29267f871"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "الاستدعاء الإلكتروني", "الاستدعاء الإلكتروني", true, false, null, null, "الاستدعاء الإلكتروني", "Electronic Summon", "/eservice/electronic-summon", "الاستدعاء الإلكتروني", "الاستدعاء الإلكتروني", "10" },
+                    { 5, new Guid("3316d24a-ffb8-41fe-aba0-cc0ef6ceb3b1"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "التعديات على الأراضي الحكومية", "التعديات على الأراضي الحكومية", false, false, null, null, "التعديات على الأراضي الحكومية", "Infringements On Government Land", "/eservice/lands-infringement", "التعديات على الأراضي الحكومية", "التعديات على الأراضي الحكومية", "10" },
+                    { 6, new Guid("cf9acdde-2b76-4ac3-a4a2-7b10910bc0bd"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "انفاذ الحكم الشرعي", "انفاذ الحكم الشرعي", true, false, null, null, "انفاذ الحكم الشرعي", "Judgment Execution", "/eservice/judgment-execution", "انفاذ الحكم الشرعي", "انفاذ الحكم الشرعي", "10" },
+                    { 7, new Guid("893b7195-df69-4ade-8dd4-5df68b702734"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "توثيق زواج", "توثيق زواج", true, false, null, null, "توثيق زواج", "Marriage Certificate", "/eservice/marriage-certificate", "توثيق زواج", "توثيق زواج", "10" },
+                    { 8, new Guid("7e0e1b20-60cd-49fb-8249-5a8027471780"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تملك عقار للأجانب", "تملك عقار للأجانب", true, false, null, null, "تملك عقار للأجانب", "Realty Ownership For Foreigners", "/eservice/foreigners-realty-owner", "تملك عقار للأجانب", "تملك عقار للأجانب", "10" },
+                    { 9, new Guid("5034c012-59af-4c47-9fa9-6a58e4b5879c"), null, 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "طلب علاج", "طلب علاج", true, false, null, null, "طلب علاج", "Treatment Recommendation", "/eservice/treatment-recommendation", "طلب علاج", "طلب علاج", "10" }
                 });
 
             migrationBuilder.InsertData(
@@ -1720,13 +1764,13 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "CanEdit", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn" },
                 values: new object[,]
                 {
-                    { 1, true, new Guid("dbbf53c4-3846-426e-8a8d-d5022b818838"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مسودة", "Draft" },
-                    { 2, false, new Guid("ca731723-17f9-44ce-8c56-bd271a6a6359"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "طلب جديد", "New Request" },
-                    { 3, true, new Guid("ea542a41-6854-4923-bbe6-b9b093a20dba"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "استكمال البيانات من مقدم الطلب", "Complete Data From Requester" },
-                    { 4, false, new Guid("dbea39a3-af71-4079-8ca8-7f08c9765835"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "تحت الإجراء", "Under Processing" },
-                    { 5, false, new Guid("10fb1b79-4f2b-4014-acfc-065276dd8ed6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "الطلب مرفوض من مدير النظام", "Request Rejected From Admin" },
-                    { 6, false, new Guid("25b109b6-e672-407c-af2d-412298270888"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "الطلب مرفوض", "Request Rejected" },
-                    { 7, false, new Guid("888d77b2-3f1b-4426-8d07-f021f13be0d6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "الطلب معتمد", "Request Approved" }
+                    { 1, true, new Guid("22cbdbf1-afe6-404f-b860-c115e3094421"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "مسودة", "Draft" },
+                    { 2, false, new Guid("161bff38-fc17-48b5-8da1-cddab13adc9f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "طلب جديد", "New Request" },
+                    { 3, true, new Guid("7d950515-c8a8-4aa6-8a04-3f3c3a4b3b08"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "استكمال البيانات من مقدم الطلب", "Complete Data From Requester" },
+                    { 4, false, new Guid("3c7903b7-7b54-4536-97eb-ed7869b7ad71"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "تحت الإجراء", "Under Processing" },
+                    { 5, false, new Guid("7069deb5-fbfa-4ba4-9b23-56f02996896e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "الطلب مرفوض من مدير النظام", "Request Rejected From Admin" },
+                    { 6, false, new Guid("64ca50ae-a36f-49fe-bde9-78c7014ac6d9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "الطلب مرفوض", "Request Rejected" },
+                    { 7, false, new Guid("3d2675ca-9939-4afb-b87b-47763fdd4e16"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "الطلب معتمد", "Request Approved" }
                 });
 
             migrationBuilder.InsertData(
@@ -1735,41 +1779,41 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "NameAr", "NameEn", "ServiceId" },
                 values: new object[,]
                 {
-                    { 1, new Guid("15bcacf4-0011-4790-9962-14f0945987a2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "حضور زواج", "حضور زواج", 2 },
-                    { 2, new Guid("ba836bcd-96f2-4d14-b887-07ff4cf4ec14"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زيارة الوالدين والأهل", "زيارة الوالدين والأهل", 2 },
-                    { 3, new Guid("27cb92f9-87a0-4b4d-950e-2713f52769f3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زيارة مريض", "زيارة مريض", 2 },
-                    { 4, new Guid("cdfa64e3-741c-466b-959e-ddc1dc512149"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "تسجيل في الجامعة", "تسجيل في الجامعة", 2 },
-                    { 5, new Guid("b64a0ea7-37ce-4e43-a922-0a9efe028384"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "عزاء", "عزاء", 2 },
-                    { 6, new Guid("e03f0dc0-25fd-4d2a-9581-9ed7d147d0a0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "العلاج والتنويم", "العلاج والتنويم", 2 },
-                    { 7, new Guid("61ebb192-697b-4ed1-8035-12ea40d32f2c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إبعاد سجين لبلادة", "إبعاد سجين لبلادة", 3 },
-                    { 8, new Guid("d24eeb8a-5230-411f-9694-8d3f8e171076"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إعفاء من الإبعاد", "إعفاء من الإبعاد", 3 },
-                    { 9, new Guid("50f5c3f8-6ed3-487d-9bb2-6b75c5b9e920"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إعفاء من باقي المحكومية لسجين", "إعفاء من باقي المحكومية لسجين", 3 },
-                    { 10, new Guid("33e0c235-e9e7-4ae8-843c-12e0c8121457"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إفراج صحي لسجين", "إفراج صحي لسجين", 3 },
-                    { 11, new Guid("f9c6ca78-9375-4622-b8b5-b56236a330b0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إنهاء قضايا الأحداث الاجانب", "إنهاء قضايا الأحداث الاجانب", 3 },
-                    { 12, new Guid("9c271655-2608-4270-a94a-9ca4100ed612"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "تثبيت سجين في سجنه", "تثبيت سجين في سجنه", 3 },
-                    { 13, new Guid("dfd73db0-f489-4fd7-b4c9-aeed1906ac87"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "ترحيل سجين", "ترحيل سجين", 3 },
-                    { 14, new Guid("b332de8f-52d8-4e9c-9afd-87f1fc064ba9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زيارة خاصة لسجين", "زيارة خاصة لسجين", 3 },
-                    { 15, new Guid("bb6c06a6-62e7-4646-809c-e485f95c53be"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زيارة خاصة مكتبية لسجين", "زيارة خاصة مكتبية لسجين", 3 },
-                    { 16, new Guid("8fcccba5-df1f-43a3-ad4a-8c5d01e370d4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "طلب نقل سجين", "طلب نقل سجين", 3 },
-                    { 17, new Guid("8c7a2611-0152-4394-9ccd-7e4b39ef614d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "اقتراح", "اقتراح", 4 },
-                    { 18, new Guid("6362bc81-430a-4327-8b53-79e965cae443"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "شكوى", "شكوى", 4 },
-                    { 19, new Guid("ffb3d754-6195-401f-b8a6-25884051c9f8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "طلب", "طلب", 4 },
-                    { 20, new Guid("b93f758a-4abb-4b76-b92a-c5aadf403f82"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زراعي", "زراعي", 5 },
-                    { 21, new Guid("07e6ea9c-9687-4759-a0a1-da1cd55f758b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "سكني", "سكني", 5 },
-                    { 22, new Guid("350fa82e-4af8-4bd5-96e1-02a0ab1637cc"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "تجاري", "تجاري", 5 },
-                    { 23, new Guid("e52eb9b7-12b0-4bb3-8420-fb86f37db180"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أملاك عامة", "أملاك عامة", 5 },
-                    { 24, new Guid("f62bc5b8-fc44-4ddc-85c6-3d16bacca77d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "اقتراح", "اقتراح", 1 },
-                    { 25, new Guid("a32b2233-3b9a-4392-8914-4ff08be6d12f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "شكوى", "شكوى", 1 },
-                    { 26, new Guid("33408466-f31e-475d-9067-152be55389a1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "طلب", "طلب", 1 },
-                    { 27, new Guid("59710b2f-d3cc-4753-97d0-bd1944130cd8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودية من أجنبي", "زواج السعودية من أجنبي", 7 },
-                    { 28, new Guid("4d97c092-a21c-406e-b21d-a77a98b28efc"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودي من دولة المغرب", "زواج السعودي من دولة المغرب", 7 },
-                    { 29, new Guid("6fd4b522-322c-44e1-93ce-2abb622ceba1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودي من غير سعودية مقيمة بالمملكة", "زواج السعودي من غير سعودية مقيمة بالمملكة", 7 },
-                    { 30, new Guid("ab570ea3-a67c-43e5-9a29-8c80b28dd5f7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودي من غير سعودية مولودة بالمملكة", "زواج السعودي من غير سعودية مولودة بالمملكة", 7 },
-                    { 31, new Guid("1de96634-8f51-4e37-b168-fdae9db5323f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودية من غير سعودي مقيم بالمملكة", "زواج السعودية من غير سعودي مقيم بالمملكة", 7 },
-                    { 32, new Guid("f8554dfd-6975-4f1d-9b43-f3f3cc522b2c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودية من غير سعودي مولود بالمملكة", "زواج السعودية من غير سعودي مولود بالمملكة", 7 },
-                    { 33, new Guid("499800cd-6e07-48d3-af5b-9ee923f895b9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودي من غير سعودية من خارج المملكة", "زواج السعودي من غير سعودية من خارج المملكة", 7 },
-                    { 34, new Guid("73b051bf-a0ce-49b1-ba94-569c10fcd064"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "العلاج النفسي", "العلاج النفسي", 9 },
-                    { 35, new Guid("0f0df424-fd58-4317-b992-0f295b7b47f4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "علاج الإدمان", "علاج الإدمان", 9 }
+                    { 1, new Guid("d134d9f9-ab47-47a3-9d58-d77d6f846965"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "حضور زواج", "حضور زواج", 2 },
+                    { 2, new Guid("b0373ad9-8ed7-41bd-8bf1-b3e0aba7be6e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زيارة الوالدين والأهل", "زيارة الوالدين والأهل", 2 },
+                    { 3, new Guid("9c365297-17d8-4422-9e95-01d235f2d81c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زيارة مريض", "زيارة مريض", 2 },
+                    { 4, new Guid("543b3d85-ab20-43d7-81ee-21e486f27372"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "تسجيل في الجامعة", "تسجيل في الجامعة", 2 },
+                    { 5, new Guid("aa28a27b-e6c1-4e83-8af9-06addef35190"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "عزاء", "عزاء", 2 },
+                    { 6, new Guid("51618c43-1869-43c8-a20f-0fe70ed4fa53"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "العلاج والتنويم", "العلاج والتنويم", 2 },
+                    { 7, new Guid("d29ec153-b57f-47d3-871e-2cc6816ccb1f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إبعاد سجين لبلادة", "إبعاد سجين لبلادة", 3 },
+                    { 8, new Guid("1abc89c0-2eb5-4f0b-82cf-24f7bed7425a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إعفاء من الإبعاد", "إعفاء من الإبعاد", 3 },
+                    { 9, new Guid("5dbb6b5c-1df0-4cbd-a53a-aea272a1271d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إعفاء من باقي المحكومية لسجين", "إعفاء من باقي المحكومية لسجين", 3 },
+                    { 10, new Guid("3401e329-8016-41ec-bfd5-4485f3d30b98"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إفراج صحي لسجين", "إفراج صحي لسجين", 3 },
+                    { 11, new Guid("6600f170-c5dc-425b-aedf-220916299d7a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "إنهاء قضايا الأحداث الاجانب", "إنهاء قضايا الأحداث الاجانب", 3 },
+                    { 12, new Guid("3137f37a-4427-404e-80b8-697e40bb6a2e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "تثبيت سجين في سجنه", "تثبيت سجين في سجنه", 3 },
+                    { 13, new Guid("6ec3c1ad-d623-4fa6-a738-fc3afed580f9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "ترحيل سجين", "ترحيل سجين", 3 },
+                    { 14, new Guid("ba87bd41-c1bb-4d4d-81d6-b3dcd324eeb9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زيارة خاصة لسجين", "زيارة خاصة لسجين", 3 },
+                    { 15, new Guid("87d95fd4-680b-429f-b088-c4b45febe63d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زيارة خاصة مكتبية لسجين", "زيارة خاصة مكتبية لسجين", 3 },
+                    { 16, new Guid("fa2bfadb-6756-4b17-85f6-2f4c83b7661a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "طلب نقل سجين", "طلب نقل سجين", 3 },
+                    { 17, new Guid("38bdc4cf-0c41-461c-a5ec-4e6cf02d952e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "اقتراح", "اقتراح", 4 },
+                    { 18, new Guid("d9fee43e-9de9-42ff-890e-2bbeecee605f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "شكوى", "شكوى", 4 },
+                    { 19, new Guid("28b1771b-3afd-4247-bde0-ac015d102fa1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "طلب", "طلب", 4 },
+                    { 20, new Guid("6e6f7b06-0649-4182-9e45-d89d97f7fddb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زراعي", "زراعي", 5 },
+                    { 21, new Guid("95cdefe1-089a-4cea-a229-9947f5176219"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "سكني", "سكني", 5 },
+                    { 22, new Guid("afd43814-7e82-4953-99cb-ae5e46d05a9f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "تجاري", "تجاري", 5 },
+                    { 23, new Guid("2c7e6a7a-a041-4b14-b671-2077e4500844"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "أملاك عامة", "أملاك عامة", 5 },
+                    { 24, new Guid("759f89bd-a4e5-4cd2-8c5d-78e83eedf354"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "اقتراح", "اقتراح", 1 },
+                    { 25, new Guid("c158e2be-7a2e-421c-a1de-283a3e3596c3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "شكوى", "شكوى", 1 },
+                    { 26, new Guid("6aeced0f-a369-4ff0-9f5f-3a6dafba5b24"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "طلب", "طلب", 1 },
+                    { 27, new Guid("93b4b5d5-06c9-4423-8037-ecac8cc35f72"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودية من أجنبي", "زواج السعودية من أجنبي", 7 },
+                    { 28, new Guid("bcdcc09e-2903-40c5-8ebd-dc86de1908d8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودي من دولة المغرب", "زواج السعودي من دولة المغرب", 7 },
+                    { 29, new Guid("652a839b-6cbf-4a6e-bc50-e9a0857a5961"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودي من غير سعودية مقيمة بالمملكة", "زواج السعودي من غير سعودية مقيمة بالمملكة", 7 },
+                    { 30, new Guid("095ad446-f1b9-41fb-96a7-bb3c8192a608"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودي من غير سعودية مولودة بالمملكة", "زواج السعودي من غير سعودية مولودة بالمملكة", 7 },
+                    { 31, new Guid("ff5d3283-989f-4ef9-81df-77320924ec70"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودية من غير سعودي مقيم بالمملكة", "زواج السعودية من غير سعودي مقيم بالمملكة", 7 },
+                    { 32, new Guid("96f61ce4-bc4a-4ef4-bf9f-3fa7461d2448"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودية من غير سعودي مولود بالمملكة", "زواج السعودية من غير سعودي مولود بالمملكة", 7 },
+                    { 33, new Guid("3a8e6304-0622-4a52-858f-2846fb367b47"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "زواج السعودي من غير سعودية من خارج المملكة", "زواج السعودي من غير سعودية من خارج المملكة", 7 },
+                    { 34, new Guid("158939b9-bf53-40a9-b274-83a19f6ad45c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "العلاج النفسي", "العلاج النفسي", 9 },
+                    { 35, new Guid("0c52c0b4-f60e-409b-82e1-6397305a3cf5"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, null, null, "علاج الإدمان", "علاج الإدمان", 9 }
                 });
 
             migrationBuilder.InsertData(
@@ -1778,13 +1822,13 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "AdminUrl", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "RequesterUrl", "ServiceId", "StageId" },
                 values: new object[,]
                 {
-                    { 1, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("83a69460-b21e-4aac-bd1d-1254c946960f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release", 2, 1 },
-                    { 2, "/admin/eservice-admin/prisoner-temp-release-admin-preview-step", new Guid("674972e0-b985-45ac-bb81-bd2ad0947ba7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 2 },
-                    { 3, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("4e688fb5-4fe9-444c-b8e7-65894dac2604"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release", 2, 3 },
-                    { 4, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("fca8482e-5556-4abd-83ca-a68df4ea1b6a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 4 },
-                    { 5, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("7d0f7215-fb5b-4f51-b679-292e218d08ff"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 5 },
-                    { 6, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("dd490425-cf29-4342-a2f6-a5d8303d8ee3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 6 },
-                    { 7, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("970ea714-53e3-4a67-8fa0-89cba4e1eb7a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 7 }
+                    { 1, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("d88163ab-3c1d-4c80-ba73-ff19c4ca0c63"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release", 2, 1 },
+                    { 2, "/admin/eservice-admin/prisoner-temp-release-admin-preview-step", new Guid("dd7e6e4e-441e-4eb8-b5ec-26a835d59953"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 2 },
+                    { 3, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("242fd3ad-0382-465f-b1d6-3762601ad0c4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release", 2, 3 },
+                    { 4, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("e6c79d35-e566-41a2-9b97-813ed7f38367"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 4 },
+                    { 5, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("7446c514-5810-4add-a1cf-c9a28f34d4dd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 5 },
+                    { 6, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("69cf9d14-32f6-4a73-aae0-932293d711eb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 6 },
+                    { 7, "/admin/eservice-admin/prisoner-temp-release-admin-view", new Guid("271297bc-fcc8-40fd-adaa-a3fec30bba76"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoner-temp-release-view", 2, 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -1793,48 +1837,48 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "AdminUrl", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "RequesterUrl", "ServiceId", "StageId" },
                 values: new object[,]
                 {
-                    { 8, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("e80d660f-489c-4164-ad5b-32b11ecdda05"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services", 3, 1 },
-                    { 9, "/admin/eservice-admin/prisoners-services-admin-preview-step", new Guid("5c7820f6-41e4-4168-9b81-9a0384af03e0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 2 },
-                    { 10, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("9ebc08b0-c96e-44c8-9c59-5a1db2f00b77"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services", 3, 3 },
-                    { 11, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("5bf0b510-9358-4869-b409-dbebf1ab7a6b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 4 },
-                    { 12, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("a008cede-02e7-4355-8de8-6cc675eedd81"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 5 },
-                    { 13, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("69ff43a1-e8b6-4b92-b7a7-af839817671d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 6 },
-                    { 14, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("c5a799aa-4b4f-489e-b719-ca35928d151a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 7 },
-                    { 15, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("04cb998f-d3fd-4d4e-aafa-cc7c6cbd7c5f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning", 3, 1 },
-                    { 16, "/admin/eservice-admin/electronic-summoning-admin-preview-step", new Guid("b6e1375e-1f67-4dcd-b5e0-5ea54388ac58"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 2 },
-                    { 17, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("db69d508-b4e8-4832-994b-be06ed028846"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning", 3, 3 },
-                    { 18, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("a2c9bcf1-83fb-4d3c-adc3-a19c33390fdc"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 4 },
-                    { 19, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("d8d06bad-c5a9-4a63-9432-fbd9e7f86b00"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 5 },
-                    { 20, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("704da5b3-6369-40ea-bdf1-c2bca1439fa9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 6 },
-                    { 21, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("07a20148-2ef7-4701-96a7-707f0c779f3c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 7 },
-                    { 22, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("efdbb025-7fea-4145-913b-0b7753c0911a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon", 4, 1 },
-                    { 23, "/admin/eservice-admin/electronic-summon-admin-preview-step", new Guid("b35f3fec-516d-45dc-9587-ad92c30f1903"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 2 },
-                    { 24, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("9fc73ccd-e680-4ec4-b77a-18ba69128372"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon", 4, 3 },
-                    { 25, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("827f8904-e2e1-4bfe-a61a-27681c6ff3e2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 4 },
-                    { 26, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("783c41e5-9b66-42f6-8a50-822fff165fe4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 5 },
-                    { 27, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("86eb21a5-c47b-4160-9913-a252be052c06"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 6 },
-                    { 28, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("685c99ba-960b-413f-ad26-51fa966fe08f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 7 },
-                    { 29, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("57ebbfa9-57cd-4af2-adf6-302cdc27ccea"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement", 5, 1 },
-                    { 30, "/admin/eservice-admin/lands-infringement-admin-preview-step", new Guid("8e58cd36-70bc-4ac1-b3cf-9c65c3e03b6f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 2 },
-                    { 31, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("3cc88238-47fe-43c9-ac08-dda972851937"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement", 5, 3 },
-                    { 32, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("ece360c5-9658-425e-b287-563743a39199"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 4 },
-                    { 33, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("1b30df2b-c9c3-45fc-850f-3325c7326191"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 5 },
-                    { 34, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("37d73288-cbb8-4eaf-87d7-4a127b3b2f17"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 6 },
-                    { 35, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("254e8812-fe50-4893-ab45-74423fadd0f3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 7 },
-                    { 36, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("7c65e257-d8b9-4e6e-8757-772f658ae208"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution", 6, 1 },
-                    { 37, "/admin/eservice-admin/judgment-execution-admin-preview-step", new Guid("8864cd08-fd35-4055-93b8-ba54f6851130"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 2 },
-                    { 38, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("79605d98-4fd6-43bb-b867-53450ae170dd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution", 6, 3 },
-                    { 39, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("fd5bfc82-c8d0-4fd5-a8be-6e4984e49bd0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 4 },
-                    { 40, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("d9df9577-210b-4ae3-837f-01c3a040afac"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 5 },
-                    { 41, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("2cff84e6-093a-446c-a42d-87d5d7e1b53b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 6 },
-                    { 42, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("24269571-b965-4544-a0dc-6c1d77f7fb5a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 7 },
-                    { 43, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("defacbe2-375e-4a65-9e72-83f187069048"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate", 7, 1 },
-                    { 44, "/admin/eservice-admin/marriage-certificate-admin-preview-step", new Guid("7705c86a-6361-4bef-9f8d-1ca75421b1c9"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 2 },
-                    { 45, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("2641b9d7-5b61-45cd-8ea3-18e0c72c5460"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate", 7, 3 },
-                    { 46, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("fcb9838c-846c-46a9-b2ec-352965bd8d38"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 4 },
-                    { 47, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("5eb2b033-63a9-4e3b-b532-98b57c40a3f3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 5 },
-                    { 48, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("3b57e503-7d7f-405f-a1a3-fcea2f99a016"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 6 },
-                    { 49, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("e867e0c8-66d4-4132-8a2c-8b2c7fcda40c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 7 }
+                    { 8, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("fe239fe9-e24d-4a9c-b406-6ff3fa62cd80"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services", 3, 1 },
+                    { 9, "/admin/eservice-admin/prisoners-services-admin-preview-step", new Guid("9e1f43d9-aee7-4724-8992-cc0076d834c0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 2 },
+                    { 10, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("966bd4d4-7212-411b-b7e5-3b0aa498a22e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services", 3, 3 },
+                    { 11, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("aecad609-3aaf-4a6f-b6a5-fb5545666c2b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 4 },
+                    { 12, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("e9f4b3a6-53e3-473c-ba8e-abf61ce21d90"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 5 },
+                    { 13, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("7c9b7023-43f7-4799-9252-57fee1c5032c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 6 },
+                    { 14, "/admin/eservice-admin/prisoners-services-admin-view", new Guid("a6c7a220-5201-4e47-94e4-5361a6365198"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/prisoners-services-view", 3, 7 },
+                    { 15, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("4a7498ab-d6b4-44e4-8de4-9a266b6fde44"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning", 3, 1 },
+                    { 16, "/admin/eservice-admin/electronic-summoning-admin-preview-step", new Guid("1bae8a83-d0a0-411c-9bbc-9ac7a2e81a4e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 2 },
+                    { 17, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("a9be6cb9-1357-4c37-b54f-8aa7018a52a6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning", 3, 3 },
+                    { 18, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("69603a43-90ab-4b86-9dc1-b485d0390542"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 4 },
+                    { 19, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("b2b08cf9-269e-4ddd-8b9c-7a41ca9bf358"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 5 },
+                    { 20, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("a04987b4-4f87-41d0-af87-ed094f5eac02"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 6 },
+                    { 21, "/admin/eservice-admin/electronic-summoning-admin-view", new Guid("4d7a9aa4-f1f1-4e37-ab2e-7ba2d6d10564"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summoning-view", 3, 7 },
+                    { 22, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("5253da1e-6ae3-41a2-b7f7-e2b7c42338c0"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon", 4, 1 },
+                    { 23, "/admin/eservice-admin/electronic-summon-admin-preview-step", new Guid("6b213a6c-0019-4cc7-87a6-c33931f50131"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 2 },
+                    { 24, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("5557d812-9e13-4474-b286-f5f5913f40a1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon", 4, 3 },
+                    { 25, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("0a24919e-eda4-4d3d-befa-9aa1c2a8d264"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 4 },
+                    { 26, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("9d51c29f-a0bc-4e77-a373-cb178dc77b6a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 5 },
+                    { 27, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("717b8246-6dc3-4cb5-b8ca-9e3e8a5048d8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 6 },
+                    { 28, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("70bf35cd-587d-48b0-a3f2-c5d446c7efca"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/electronic-summon-view", 4, 7 },
+                    { 29, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("961e821e-d957-419e-92ba-8b33744b0e34"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement", 5, 1 },
+                    { 30, "/admin/eservice-admin/lands-infringement-admin-preview-step", new Guid("d2a4d0a1-cb3e-4a8e-894a-58a2ca39d55f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 2 },
+                    { 31, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("0b4800b4-c2e9-4538-b3bc-b26e6890bb90"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement", 5, 3 },
+                    { 32, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("77e3ec32-e900-4f68-8e14-ff55e12f1f78"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 4 },
+                    { 33, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("d80a0ebd-6713-4b40-b479-9c466eb23848"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 5 },
+                    { 34, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("d4b8d989-3b07-46cb-9177-5b18cf6ced77"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 6 },
+                    { 35, "/admin/eservice-admin/lands-infringement-admin-view", new Guid("c2950abe-c216-40e6-8fb6-253a14049c44"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/lands-infringement-view", 5, 7 },
+                    { 36, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("ad64708e-2b6d-47fc-9e93-e7edd56b8c11"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution", 6, 1 },
+                    { 37, "/admin/eservice-admin/judgment-execution-admin-preview-step", new Guid("9816c7c1-a2bc-4d34-91f2-d4bab68234c1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 2 },
+                    { 38, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("e73f172e-4bd4-454b-930a-ea10afd55b24"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution", 6, 3 },
+                    { 39, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("5bd0d28b-abfe-41d1-8ba2-aede0a5a7762"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 4 },
+                    { 40, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("9675e511-c121-4a76-93f6-b4433ef01a05"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 5 },
+                    { 41, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("24cd9334-3ebe-4153-82d0-b0f376fbf89f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 6 },
+                    { 42, "/admin/eservice-admin/judgment-execution-admin-view", new Guid("e37a28df-ae9f-4579-8065-aa4ec254a3d8"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/judgment-execution-view", 6, 7 },
+                    { 43, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("8eb09114-5e11-42ad-b2ef-e0978e1b120e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate", 7, 1 },
+                    { 44, "/admin/eservice-admin/marriage-certificate-admin-preview-step", new Guid("beb3f864-7d64-4850-919f-02d1970b0d59"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 2 },
+                    { 45, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("3d37dc1d-d8df-44b1-9acf-dd9ecbd81d52"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate", 7, 3 },
+                    { 46, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("e31d6065-18e3-4b8f-b41f-98a11b72cd1d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 4 },
+                    { 47, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("0ae6a110-e534-4a14-bf7a-8c43590a971a"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 5 },
+                    { 48, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("3fea56dc-ca7a-498d-b262-103543eade87"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 6 },
+                    { 49, "/admin/eservice-admin/marriage-certificate-admin-view", new Guid("24566be0-7f64-404e-886e-d59de945d279"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/marriage-certificate-view", 7, 7 }
                 });
 
             migrationBuilder.InsertData(
@@ -1843,27 +1887,27 @@ namespace Emirates.InfraStructure.Migrations
                 columns: new[] { "Id", "AdminUrl", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "LastModifiedBy", "LastModifiedDate", "RequesterUrl", "ServiceId", "StageId" },
                 values: new object[,]
                 {
-                    { 50, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("5c4db715-542d-4e25-a683-ba71e2804d5b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner", 8, 1 },
-                    { 51, "/admin/eservice-admin/foreigners-realty-owner-admin-preview-step", new Guid("0daf12af-790a-41a1-b4ea-3a2db23f198d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 2 },
-                    { 52, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("fc613ed7-97a2-40eb-af3d-f87406d32dab"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner", 8, 3 },
-                    { 53, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("d4676d67-b4e4-4237-aacc-ad3c30e4b250"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 4 },
-                    { 54, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("93951cab-5056-46f4-b36b-2321c14a69a3"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 5 },
-                    { 55, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("976db294-36f5-4844-b67c-b5964cc21001"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 6 },
-                    { 56, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("749c45ab-e19c-4e73-9915-018b3bac401e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 7 },
-                    { 57, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("e0b71167-73a1-4333-b7ba-29a3df20bec4"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation", 9, 1 },
-                    { 58, "/admin/eservice-admin/treatment-recommendation-admin-preview-step", new Guid("6b83553a-48a4-4d6f-898b-65970107a35e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 2 },
-                    { 59, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("abaa53c4-b3c4-4a8a-bc2e-68e97f89a3dd"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation", 9, 3 },
-                    { 60, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("08c5ac9c-7f63-49de-a287-833631d10a73"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 4 },
-                    { 61, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("89a9a59a-34c8-4663-b497-acdfeac17779"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 5 },
-                    { 62, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("82e3e3a5-7c27-4079-b44c-b36cc3720efe"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 6 },
-                    { 63, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("77c47be4-b6d2-4efd-b43c-e565252e8a20"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 7 },
-                    { 64, "", new Guid("137f793e-d4b1-468b-ab81-5ed37eb726f1"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/update", 1, 1 },
-                    { 65, "/admin/eservice-admin/electronic-summon-admin-preview-step", new Guid("dfa72e76-8188-4348-b8b4-98b4d4082e4e"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 2 },
-                    { 66, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("0a27eed3-6931-4c0f-8d75-889466233d56"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/update", 1, 3 },
-                    { 67, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("b45a8b59-2511-4a79-bbcc-5ddcf4e652a6"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 4 },
-                    { 68, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("884e2790-09f9-473c-bf7e-4ec4c818e9ca"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 5 },
-                    { 69, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("4fe34879-956c-4025-8377-66e245267c98"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 6 },
-                    { 70, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("392a566d-65a2-4165-80ff-7f71aa1c5000"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 7 }
+                    { 50, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("3063b056-e8f4-44a5-a289-8026484e6c89"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner", 8, 1 },
+                    { 51, "/admin/eservice-admin/foreigners-realty-owner-admin-preview-step", new Guid("0dd4fa07-0ed0-4d05-8691-04d3900c5af2"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 2 },
+                    { 52, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("74f38b80-5b06-4b6a-92e8-374551c89879"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner", 8, 3 },
+                    { 53, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("1d2c0e86-5c58-4486-922f-b7675780566b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 4 },
+                    { 54, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("f685a979-552c-43b1-a3fc-0b0b97a92b0b"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 5 },
+                    { 55, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("03eb3e4f-ffac-46b8-a412-02b9d91874de"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 6 },
+                    { 56, "/admin/eservice-admin/foreigners-realty-owner-admin-view", new Guid("348d2674-66e7-4f3f-85fd-607ac752b070"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/foreigners-realty-owner-view", 8, 7 },
+                    { 57, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("5bdc23af-b6b7-4db5-b04d-ffd49955c48d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation", 9, 1 },
+                    { 58, "/admin/eservice-admin/treatment-recommendation-admin-preview-step", new Guid("95e6e23e-cfc9-472e-8c09-c083729d0e3f"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 2 },
+                    { 59, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("bfb11310-313a-4249-8e66-237717af5e26"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation", 9, 3 },
+                    { 60, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("92f33b8f-5c32-4ee8-b6f0-fae5f88dab7d"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 4 },
+                    { 61, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("01851d24-cd4d-434d-803b-bf8b79f81423"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 5 },
+                    { 62, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("d12711b6-5c66-4a61-8b10-fb4238965859"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 6 },
+                    { 63, "/admin/eservice-admin/treatment-recommendation-admin-view", new Guid("e33454fa-936c-43ac-a004-118dac80771c"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/eservice/treatment-recommendation-view", 9, 7 },
+                    { 64, "", new Guid("08f59986-2dc2-4073-80ad-2b9ebde83a35"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/update", 1, 1 },
+                    { 65, "/admin/eservice-admin/electronic-summon-admin-preview-step", new Guid("d90acebf-258d-4bd7-a2a7-1a8c1e9aa501"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 2 },
+                    { 66, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("b6641ab2-c5eb-41cb-b3e8-7db972a1d820"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/update", 1, 3 },
+                    { 67, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("3588b658-6a01-4df3-b4ce-372bcc77d112"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 4 },
+                    { 68, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("4ee926b1-591c-4b45-accb-ca1e33a74897"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 5 },
+                    { 69, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("319af91b-b674-4ea7-877f-085d7f6f54eb"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 6 },
+                    { 70, "/admin/eservice-admin/electronic-summon-admin-view", new Guid("056adbe2-a3e3-477a-a97f-313cfffd22f7"), 1, new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, "/e-council/electronic-board-view", 1, 7 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -1900,6 +1944,18 @@ namespace Emirates.InfraStructure.Migrations
                 name: "IX_CaseTypes_LastModifiedBy",
                 schema: "Lookup",
                 table: "CaseTypes",
+                column: "LastModifiedBy");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CommentStages_CreatedBy",
+                schema: "Lookup",
+                table: "CommentStages",
+                column: "CreatedBy");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CommentStages_LastModifiedBy",
+                schema: "Lookup",
+                table: "CommentStages",
                 column: "LastModifiedBy");
 
             migrationBuilder.CreateIndex(
@@ -1945,6 +2001,12 @@ namespace Emirates.InfraStructure.Migrations
                 column: "NewsCategueryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_LatestNewsComments_CommentStageId",
+                schema: "DataManagement",
+                table: "LatestNewsComments",
+                column: "CommentStageId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_LatestNewsComments_LastModifiedBy",
                 schema: "DataManagement",
                 table: "LatestNewsComments",
@@ -1955,13 +2017,6 @@ namespace Emirates.InfraStructure.Migrations
                 schema: "DataManagement",
                 table: "LatestNewsComments",
                 column: "LatestNewsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MainPagePoints_Order",
-                schema: "DataManagement",
-                table: "MainPagePoints",
-                column: "Order",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_MainPagePoints_PageContentId",
@@ -2433,6 +2488,24 @@ namespace Emirates.InfraStructure.Migrations
                 principalColumn: "Id");
 
             migrationBuilder.AddForeignKey(
+                name: "FK_CommentStages_Users_CreatedBy",
+                schema: "Lookup",
+                table: "CommentStages",
+                column: "CreatedBy",
+                principalSchema: "Security",
+                principalTable: "Users",
+                principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_CommentStages_Users_LastModifiedBy",
+                schema: "Lookup",
+                table: "CommentStages",
+                column: "LastModifiedBy",
+                principalSchema: "Security",
+                principalTable: "Users",
+                principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
                 name: "FK_DefendantTypes_Users_CreatedBy",
                 schema: "Lookup",
                 table: "DefendantTypes",
@@ -2613,6 +2686,10 @@ namespace Emirates.InfraStructure.Migrations
             migrationBuilder.DropTable(
                 name: "UploadedFiles",
                 schema: "FileManager");
+
+            migrationBuilder.DropTable(
+                name: "CommentStages",
+                schema: "Lookup");
 
             migrationBuilder.DropTable(
                 name: "LatestNews",
