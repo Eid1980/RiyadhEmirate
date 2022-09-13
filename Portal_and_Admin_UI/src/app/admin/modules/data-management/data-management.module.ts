@@ -57,6 +57,7 @@ import { AddAboutUsComponent } from './components/about-us/add-about-us/add-abou
 import { EditAboutUsComponent } from './components/about-us/edit-about-us/edit-about-us.component';
 import { LatestNewsArCommentsComponent } from './components/latest-news-ar/latest-news-ar-comments/latest-news-ar-comments.component';
 import { LatestNewsEnCommentsComponent } from './components/latest-news-en/latest-news-en-comments/latest-news-en-comments.component';
+import { EditWomanSectionComponent } from './components/woman-section/edit-woman-section/edit-woman-section.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +115,7 @@ import { LatestNewsEnCommentsComponent } from './components/latest-news-en/lates
     EditAboutUsComponent,
     LatestNewsArCommentsComponent,
     LatestNewsEnCommentsComponent,
+    EditWomanSectionComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

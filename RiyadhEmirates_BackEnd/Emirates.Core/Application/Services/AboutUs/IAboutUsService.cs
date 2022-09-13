@@ -11,5 +11,7 @@ namespace Emirates.Core.Application.Services.AboutUs
         IApiResponse Create(CreateAboutUsDto createModel);
         IApiResponse CreateMainPoint(CreateMainPoints createMainPoint);
         IApiResponse Update(UpdateAboutUsDto updateModel);
+        IApiResponse UpdateMainPoint(UpdateMainPoint updateMainPoint);
+        IApiResponse DeleteMainPoint(int id);
     }
 }

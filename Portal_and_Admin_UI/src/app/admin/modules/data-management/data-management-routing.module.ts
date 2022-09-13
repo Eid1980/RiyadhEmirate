@@ -52,6 +52,7 @@ import { LatestNewsEnListComponent } from "./components/latest-news-en/latest-ne
 import { LatestNewsEnAddComponent } from "./components/latest-news-en/latest-news-en-add/latest-news-en-add.component";
 import { LatestNewsEnViewComponent } from "./components/latest-news-en/latest-news-en-view/latest-news-en-view.component";
 import { EditAboutUsComponent } from "./components/about-us/edit-about-us/edit-about-us.component";
+import { EditWomanSectionComponent } from "./components/woman-section/edit-woman-section/edit-woman-section.component";
 
 const routes: Routes = [
   //#region LatestNews
@@ -344,6 +345,12 @@ const routes: Routes = [
   {
     path: "edit-about-us",
     component: EditAboutUsComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: "edit-woman-section",
+    component: EditWomanSectionComponent,
     canActivate: [AuthGuard],
   },
   //#endRegion

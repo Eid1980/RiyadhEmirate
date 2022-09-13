@@ -1,14 +1,12 @@
 ﻿using Emirates.Core.Application.Dtos.MainPoints;
 
-namespace Emirates.Core.Application.Dtos.AboutUs
+namespace Emirates.Core.Application.Dtos.WomanSection
 {
-    public class GetAboutUsDto
+    public class CreateWomanSectionDto
     {
-        public int Id { get; set; }
         public string DescriptionAr { get; set; }
         public string DescriptionEn { get; set; }
-        public int Order { get; set; }
         public string PageContentType { get; set; }
-        public GetMainPagePoints[] MainPoints { get; set; }
+        public CreateMainPoints[] MainPoints { get; set; }
     }
 }

@@ -1,28 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
-import { AboutUsService } from '@shared/proxy/about-us/about-us.service';
-import { CreateMainPoint, EditAboutUs, EditPageMainPoint, GetAboutUsDto, GetMainPoints } from '@shared/proxy/about-us/models';
+import { CreateMainPoint, EditPageMainPoint, GetMainPoints } from '@shared/proxy/about-us/models';
+import { EditWomanSectionDto, GetWomanSectionDto } from '@shared/proxy/woman-section/models';
+import { WomanSectionService } from '@shared/proxy/woman-section/woman-section.service';
 import { GlobalService } from '@shared/services/global.service';
 
 @Component({
-  selector: 'app-edit-about-us',
-  templateUrl: './edit-about-us.component.html',
-  styleUrls: ['./edit-about-us.component.scss']
+  selector: 'app-edit-woman-section',
+  templateUrl: './edit-woman-section.component.html',
+  styleUrls: ['./edit-woman-section.component.scss']
 })
-export class EditAboutUsComponent implements OnInit {
+export class EditWomanSectionComponent implements OnInit {
 
   aboutUsDetaislForm: FormGroup;
   aboutUsMainPointsForm: FormGroup;
   getMainPoints: GetMainPoints;
-  aboutUsDetails = {} as GetAboutUsDto;
+  aboutUsDetails = {} as GetWomanSectionDto;
 
   isFormSubmitted: boolean;
   isAboutUsFormSubmitted: boolean;
 
   isUpdate: boolean = false;
 
-  constructor(private _aboutUsService: AboutUsService,
+  constructor(private _womanSectionService: WomanSectionService,
     private _formBuilder: FormBuilder,
     private _globalService: GlobalService) {
 
@@ -51,7 +52,7 @@ export class EditAboutUsComponent implements OnInit {
   }
 
   getPageContent() {
-    this._aboutUsService.getAboutUs().subscribe(
+    this._womanSectionService.getAboutUs().subscribe(
       (response: any) => {
         this.aboutUsDetails = response.data[0]
         this.buildForm();
@@ -69,7 +70,7 @@ export class EditAboutUsComponent implements OnInit {
         let aboutUsFormValues = this.aboutUsMainPointsForm.value
         let createMainPoint: CreateMainPoint = { nameAr: aboutUsFormValues.nameAr, nameEn: '', pageContentType: '', order: aboutUsFormValues.order };
 
-        this._aboutUsService.createMainPoint(createMainPoint).subscribe(
+        this._womanSectionService.createMainPoint(createMainPoint).subscribe(
           (response) => {
             this._globalService.showMessage(response.message);
             if (response.isSuccess) {
@@ -85,7 +86,7 @@ export class EditAboutUsComponent implements OnInit {
         let updateMainPoint = { ...this.aboutUsMainPointsForm.value } as EditPageMainPoint;
         updateMainPoint.nameEn = updateMainPoint.nameAr
 
-        this._aboutUsService.updateMainPoint(updateMainPoint).subscribe((response) => {
+        this._womanSectionService.updateMainPoint(updateMainPoint).subscribe((response) => {
           this._globalService.showMessage(response.message);
            if (response.isSuccess) {
              this.clear();
@@ -103,13 +104,13 @@ export class EditAboutUsComponent implements OnInit {
     }
     else {
 
-      let editAboutUs: EditAboutUs = {
+      let editAboutUs: EditWomanSectionDto = {
         id: this.aboutUsDetaislForm.value.id,
         descriptionAr: this.aboutUsDetaislForm.value.descriptionAr,
         descriptionEn: this.aboutUsDetaislForm.value.descriptionEn,
       }
 
-      this._aboutUsService.update(editAboutUs).subscribe(
+      this._womanSectionService.update(editAboutUs).subscribe(
         (response) => {
           this.getPageContent();
         },
@@ -137,7 +138,7 @@ export class EditAboutUsComponent implements OnInit {
   }
 
   isconfirm(id: number) {
-    this._aboutUsService.delete(id).subscribe((result) => {
+    this._womanSectionService.delete(id).subscribe((result) => {
       if (result.isSuccess) {
         this._globalService.clearMessages();
         this.getPageContent();

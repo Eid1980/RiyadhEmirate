@@ -1,8 +1,8 @@
 ﻿using Emirates.Core.Application.Dtos.MainPoints;
 
-namespace Emirates.Core.Application.Dtos.AboutUs
+namespace Emirates.Core.Application.Dtos.WomanSection
 {
-    public class GetAboutUsDto
+    public class GetWomanSectionDto 
     {
         public int Id { get; set; }
         public string DescriptionAr { get; set; }

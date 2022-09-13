@@ -4,6 +4,7 @@ using Emirates.Core.Application.Dtos.AboutUs;
 using Emirates.Core.Application.Dtos.MainPoints;
 using Emirates.Core.Application.Dtos.Posters;
 using Emirates.Core.Application.Dtos.Requests;
+using Emirates.Core.Application.Dtos.WomanSection;
 using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
 using Emirates.Core.Application.Models.InternalPortal.Response.FileManager;
 using Emirates.Core.Application.Models.Response.Nationality;
@@ -34,6 +35,7 @@ namespace Emirates.Core.Application.Mappers
 
             #region
             CreateMap<CreateMainPoints, MainPagePoints>().ReverseMap();
+            CreateMap<UpdateMainPoint, MainPagePoints>().ReverseMap();
             #endregion
             #region Nationality
             CreateMap<Nationality, NationalityResponse>();
@@ -67,8 +69,14 @@ namespace Emirates.Core.Application.Mappers
 
             #region PageContent
             CreateMap<PageContent, GetAboutUsDto>()
-                .ForPath(dest => dest.MainPoints , src => src.MapFrom(opt => opt.MainPagePoints));
+                .ForPath(dest => dest.MainPoints, src => src.MapFrom(opt => opt.MainPagePoints));
 
+            CreateMap<UpdateAboutUsDto, PageContent>().ReverseMap();
+
+            CreateMap<PageContent, GetWomanSectionDto>()
+            .ForPath(dest => dest.MainPoints, src => src.MapFrom(opt => opt.MainPagePoints));
+
+            CreateMap<UpdateWomanSectionDto, PageContent>().ReverseMap();
             #endregion
 
             #region Poster

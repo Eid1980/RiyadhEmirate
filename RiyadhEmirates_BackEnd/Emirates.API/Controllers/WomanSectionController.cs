@@ -1,4 +1,6 @@
 ﻿using Emirates.Core.Application.Dtos.AboutUs;
+using Emirates.Core.Application.Dtos.MainPoints;
+using Emirates.Core.Application.Dtos.WomanSection;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.WomanSection;
 using Microsoft.AspNetCore.Authorization;
@@ -24,15 +26,33 @@ namespace Emirates.API.Controllers
         }
 
         [HttpPost("Create")]
-        public IApiResponse Create(CreateAboutUsDto createDto)
+        public IApiResponse Create(CreateWomanSectionDto createDto)
         {
             return _womanSectionService.Create(createDto);
         }
 
+        [HttpPost("CreateMainPoint")]
+        public IApiResponse CreateMainPoint(CreateMainPoints mainPoint)
+        {
+            return _womanSectionService.CreateMainPoint(mainPoint);
+        }
+
         [HttpPut("Update")]
-        public IApiResponse Update(UpdateAboutUsDto updateDto)
+        public IApiResponse Update(UpdateWomanSectionDto updateDto)
         {
             return _womanSectionService.Update(updateDto);
+        }
+
+        [HttpPut("Update/MainPoint")]
+        public IApiResponse UpdateMainPoint(UpdateMainPoint updateMainPoint)
+        {
+            return _womanSectionService.UpdateMainPoint(updateMainPoint);
+        }
+
+        [HttpPut("Delete/MainPoint/{mainPointid}")]
+        public IApiResponse DeleteMainPoint(int mainPointid)
+        {
+            return _womanSectionService.DeleteMainPoint(mainPointid);
         }
     }
 }
