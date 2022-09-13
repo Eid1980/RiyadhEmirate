@@ -7,6 +7,7 @@ namespace Emirates.Core.Domain.Interfaces
     {
         IAudienceRepository Audiences { get; }
         ICaseTypeRepository CaseTypes { get; }
+        ICommentStageRepository CommentStages { get; }
         INationalityRepository Nationalities { get; }
         ILatestNewsRepository LatestNews { get; }
         ILatestNewsCommentRepository LatestNewsComments { get; }

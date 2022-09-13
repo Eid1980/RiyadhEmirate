@@ -28,6 +28,14 @@ namespace Emirates.InfraStructure.Contexts
             arrData[0] = new CaseType { Id = 1, NameAr = "قضية جنائية", NameEn = "Criminal Case", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             return arrData;
         }
+        public static CommentStage[] CommentStages()
+        {
+            CommentStage[] arrData = new CommentStage[3];
+            arrData[0] = new CommentStage { Id = 1, NameAr = "جديد", NameEn = "New", CanShowComment = false, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[1] = new CommentStage { Id = 2, NameAr = "معتمد", NameEn = "Approved", CanShowComment = false, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[2] = new CommentStage { Id = 3, NameAr = "مرفوض", NameEn = "Rejected", CanShowComment = false, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            return arrData;
+        }
         public static NewsCateguery[] NewsCategueries()
         {
             NewsCateguery[] arrData = new NewsCateguery[4];

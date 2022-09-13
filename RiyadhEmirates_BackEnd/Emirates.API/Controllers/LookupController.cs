@@ -47,5 +47,10 @@ namespace Emirates.API.Controllers
         {
             return _lookupService.GetReligionLookupList();
         }
+        [HttpGet("GetCommentStageLookupList")]
+        public IApiResponse GetCommentStageLookupList()
+        {
+            return _lookupService.GetCommentStageLookupList();
+        }
     }
 }

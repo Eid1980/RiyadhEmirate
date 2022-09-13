@@ -8,10 +8,6 @@ import { EmiratesNewsAddComponent } from './components/emirates-news/emirates-ne
 import { EmiratesNewsListComponent } from './components/emirates-news/emirates-news-list/emirates-news-list.component';
 import { EmiratesNewsEditComponent } from './components/emirates-news/emirates-news-edit/emirates-news-edit.component';
 import { EmiratesNewsViewComponent } from './components/emirates-news/emirates-news-view/emirates-news-view.component';
-import { LatestNewsAddComponent } from './components/latest-news/latest-news-add/latest-news-add.component';
-import { LatestNewsListComponent } from './components/latest-news/latest-news-list/latest-news-list.component';
-import { LatestNewsEditComponent } from './components/latest-news/latest-news-edit/latest-news-edit.component';
-import { LatestNewsViewComponent } from './components/latest-news/latest-news-view/latest-news-view.component';
 import { ReportsAddComponent } from './components/reports/reports-add/reports-add.component';
 import { ReportsEditComponent } from './components/reports/reports-edit/reports-edit.component';
 import { ReportsListComponent } from './components/reports/reports-list/reports-list.component';
@@ -68,10 +64,6 @@ import { EditWomanSectionComponent } from './components/woman-section/edit-woman
     EmiratesNewsListComponent,
     EmiratesNewsEditComponent,
     EmiratesNewsViewComponent,
-    LatestNewsAddComponent,
-    LatestNewsListComponent,
-    LatestNewsEditComponent,
-    LatestNewsViewComponent,
     ReportsAddComponent,
     ReportsEditComponent,
     ReportsListComponent,

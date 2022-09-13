@@ -129,6 +129,23 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region CommentStage
+            modelBuilder.Entity<CommentStage>(b =>
+            {
+                b.ToTable("CommentStages", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.CanShowComment).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedCommentStages).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedCommentStages).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.CommentStages());
+            });
+            #endregion
+
             #region DefendantType
             modelBuilder.Entity<DefendantType>(b =>
             {
@@ -187,12 +204,13 @@ namespace Emirates.InfraStructure.Contexts
                 b.ToTable("LatestNewsComments", EmiratesDbSchemas.DataManagement);
                 b.Property(x => x.LatestNewsId).IsRequired();
                 b.Property(x => x.Comment).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.CommentStage).IsRequired();
+                b.Property(x => x.CommentStageId).IsRequired();
                 b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.CreatedBy).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.CreatedDate).IsRequired();
 
                 b.HasOne<LatestNews>(x => x.LatestNews).WithMany(x => x.LatestNewsComments).HasForeignKey(x => x.LatestNewsId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<CommentStage>(x => x.CommentStage).WithMany(x => x.LatestNewsComments).HasForeignKey(x => x.CommentStageId).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedLatestNewsComments).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
@@ -734,6 +752,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<Audience> Audiences { get; set; }
         public DbSet<BuildingType> BuildingTypes { get; set; }
         public DbSet<CaseType> CaseTypes { get; set; }
+        public DbSet<CommentStage> CommentStages { get; set; }
         public DbSet<DefendantType> DefendantTypes { get; set; }
         public DbSet<Governorate> Governorates { get; set; }
         public DbSet<LatestNews> LatestNews { get; set; }

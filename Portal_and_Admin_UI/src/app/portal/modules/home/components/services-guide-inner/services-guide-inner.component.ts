@@ -8,8 +8,7 @@ import { ServiceService } from '@shared/proxy/services/service.service';
 
 @Component({
   selector: 'app-services-guide-inner',
-  templateUrl: './services-guide-inner.component.html',
-  styleUrls: ['./services-guide-inner.component.scss']
+  templateUrl: './services-guide-inner.component.html'
 })
 export class ServicesGuideInnerComponent implements OnInit {
 

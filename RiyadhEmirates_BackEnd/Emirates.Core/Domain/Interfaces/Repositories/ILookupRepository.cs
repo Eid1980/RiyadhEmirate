@@ -11,5 +11,6 @@ namespace Emirates.Core.Domain.Interfaces.Repositories
         IQueryable<DefendantType> GetDefendantTypes();
         IQueryable<BuildingType> GetBuildingTypes();
         IQueryable<Religion> GetReligions();
+        IQueryable<CommentStage> GetCommentStages();
     }
 }

@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row my-5" >
     <div class="col-md-6 mb-4" *ngFor="let service of services">
-      <a class="card-basic-h" [routerLink]="['/services-guide' , service.id]">
+      <a class="card-basic-h" [routerLink]="['/home/services-guide' , service.id]">
         <div class="card-basic-banner">
           <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="banner" />
         </div>

@@ -5,8 +5,7 @@ import { NewsService } from '@shared/proxy/news/news.service';
 
 @Component({
   selector: 'app-news-inner',
-  templateUrl: './news-inner.component.html',
-  styleUrls: ['./news-inner.component.scss']
+  templateUrl: './news-inner.component.html'
 })
 export class NewsInnerComponent implements OnInit {
 
