@@ -2,10 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PageListComponent } from '@shared/components/page-list/page-list.component';
 import { ActionButtonClass } from '@shared/enums/action-button-class';
 import { ActionButtonIcon } from '@shared/enums/action-button-icon';
-import { ColumnPipe } from '@shared/enums/column-pipe.enum';
 import { ColumnType } from '@shared/enums/column-type.enum';
 import { PageListSetting } from '@shared/interfaces/page-list-setting';
-import { DatePipeOptions } from '@shared/models/date-pipe-options.model';
 import { GlobalService } from '@shared/services/global.service';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { LatestNewsCommentService } from '@shared/proxy/latest-news-comments/latest-news-comment.service';
@@ -31,7 +29,6 @@ export class LatestNewsArCommentsComponent implements OnInit {
   }
 
   pageSetting() {
-    debugger;
     this.list.searchModel.SearchFields = [
       {
         FieldName: "IsArabic",

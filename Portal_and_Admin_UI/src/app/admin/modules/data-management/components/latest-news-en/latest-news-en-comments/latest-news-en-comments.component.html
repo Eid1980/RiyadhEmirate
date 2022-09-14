@@ -1,1 +1,33 @@
-<p>latest-news-en-comments works!</p>
+<app-page-list [PageListSetting]="pageListSettings"></app-page-list>
+<p-dialog [modal]="true" header="الموافقة علي التعليق" [(visible)]="showDialog">
+  <div class="form-card">
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">الاسم</span>
+          <span class="form-val">{{ getLatestNewsCommentDetailsDto?.createdBy }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">البريد الالكتروني</span>
+          <span class="form-val">{{ getLatestNewsCommentDetailsDto?.email }}</span>
+        </div>
+        <div class="info-col col-md-12 col-12">
+          <span class="form-lbl lbl-33">التعليق</span>
+          <span class="form-val">{{ getLatestNewsCommentDetailsDto?.comment }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">حالة التعليق</span>
+          <span class="form-val">{{ getLatestNewsCommentDetailsDto?.commentStageName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">تاريخ التعليق</span>
+          <span class="form-val">{{ getLatestNewsCommentDetailsDto?.createdDate }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="btn btn-save" (click)="updateCommentStage(2)">الموافقة على الطلب</button>
+    <button type="button" class="btn btn-cancel" (click)="updateCommentStage(3)">رفض الطلب</button>
+  </div>
+</p-dialog>
