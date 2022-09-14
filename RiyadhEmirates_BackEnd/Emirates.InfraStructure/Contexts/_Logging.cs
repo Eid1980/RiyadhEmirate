@@ -21,7 +21,8 @@ namespace Emirates.InfraStructure.Contexts
                 if (type.GetProperty(CreatedByProperty) != null)
                 {
                     var createdByProperty = entityEntry.Property(CreatedByProperty);
-                    createdByProperty.CurrentValue = UserId;
+                    if (createdByProperty.CurrentValue == null)
+                        createdByProperty.CurrentValue = UserId;
                 }
                 if (type.GetProperty(CreatedAtProperty) != null)
                 {

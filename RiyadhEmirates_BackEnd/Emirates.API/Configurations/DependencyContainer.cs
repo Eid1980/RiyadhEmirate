@@ -5,6 +5,7 @@ using Emirates.Core.Application.Services.CaseTypes;
 using Emirates.Core.Application.Services.Common;
 using Emirates.Core.Application.Services.InternalPortal.FileManager;
 using Emirates.Core.Application.Services.LatestNews;
+using Emirates.Core.Application.Services.LatestNewsComments;
 using Emirates.Core.Application.Services.Lookups;
 using Emirates.Core.Application.Services.Nationality;
 using Emirates.Core.Application.Services.News;
@@ -50,6 +51,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IFileManagerService, FileManagerService>();
             builder.Services.AddScoped<IFileUploaderService, FileUploaderService>();
             builder.Services.AddScoped<ILatestNewsService, LatestNewsService>();
+            builder.Services.AddScoped<ILatestNewsCommentService, LatestNewsCommentService>();
             builder.Services.AddScoped<INewsService, NewsService>();
             builder.Services.AddScoped<INewsCategueryService, NewsCategueryService>();
             builder.Services.AddScoped<IPosterService, PosterService>();

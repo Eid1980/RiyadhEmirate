@@ -14,7 +14,7 @@ export class LatestNewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.globalService.setAdminTitle('أخر الأخبار');
+    this.globalService.setTitle('أخر الأخبار');
     this.getLatestNews();
   }
 

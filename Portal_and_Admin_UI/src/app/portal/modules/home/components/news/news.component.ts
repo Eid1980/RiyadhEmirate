@@ -26,11 +26,11 @@ export class NewsComponent implements OnInit {
         this.getNewsByTypeId();
         if (this.newsTypeId == 2) {
           this.title = "اخبار المحافظات";
-          this.globalService.setAdminTitle(this.title);
+          this.globalService.setTitle(this.title);
         }
         else if (this.newsTypeId == 3) {
           this.title = "التقارير الإعلامية";
-          this.globalService.setAdminTitle(this.title);
+          this.globalService.setTitle(this.title);
         }
       }
       else {

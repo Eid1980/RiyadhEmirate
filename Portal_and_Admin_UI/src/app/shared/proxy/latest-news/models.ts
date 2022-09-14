@@ -34,6 +34,7 @@ export interface GetLatestNewsDetailsDto {
   newsCategueryId: number;
   newsCategueryName: string;
   date: string;
+  latestNewsDate: string;
   newsOrigin: string;
   isActive: boolean;
   openComments: boolean;

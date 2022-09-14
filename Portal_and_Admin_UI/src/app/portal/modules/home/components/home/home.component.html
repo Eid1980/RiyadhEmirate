@@ -29,7 +29,7 @@
           <ng-template carouselSlide *ngFor="let news of latestNews">
             <div class="owl-item">
               <div class="item">
-                <div class="news-card" [routerLink]="['/emirate/latest-news' , news.id]">
+                <div class="news-card" [routerLink]="['/home/latest-news' , news.id]">
                   <img [src]="
                       sanitizer.bypassSecurityTrustResourceUrl(
                         news?.image?.base64File)"

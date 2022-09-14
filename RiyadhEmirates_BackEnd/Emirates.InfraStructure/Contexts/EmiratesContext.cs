@@ -2,6 +2,7 @@
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain;
 using Microsoft.AspNetCore.Http;
+using Emirates.Core.Application.CustomExceptions;
 
 namespace Emirates.InfraStructure.Contexts
 {
@@ -69,7 +70,7 @@ namespace Emirates.InfraStructure.Contexts
             }
             catch (Exception ex)
             {
-                return 0;
+                throw new BusinessException("خطأ في قاعدة البيانات برجاء التواصل مع مدير النظلم");
             }
         }
 

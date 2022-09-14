@@ -107,6 +107,7 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
     HiddenAuthorizeColumnFilterPipe,
     InputSwitchModule,
     ToastModule,
+    DialogModule,
     DatePipe,
     FileUploadModule,
     ConfirmDialogModule,

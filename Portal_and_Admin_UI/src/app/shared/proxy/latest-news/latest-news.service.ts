@@ -6,7 +6,6 @@ import { ApiResponse } from '../shared/api-response.model';
 import { CreateLatestNewsDto, GetLatestNewsDetailsDto, GetLatestNewsListDto, UpdateLatestNewsDto } from './models';
 import { SearchModel } from '../shared/search-model.model';
 import { ServiceResponseVM } from '@shared/models/response.model';
-import { Languages } from '@shared/enums/languages';
 
 @Injectable({
   providedIn: 'root',

@@ -44,7 +44,8 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<UpdateLatestNewsDto, LatestNews>();
 
             CreateMap<LatestNews, GetLatestNewsDetailsDto>()
-                .ForMember(dest => dest.NewsCategueryName, src => src.MapFrom(m => m.NewsCateguery.NameAr));
+                .ForMember(dest => dest.NewsCategueryName, src => src.MapFrom(m => m.NewsCateguery.NameAr))
+                .ForMember(dest => dest.LatestNewsDate, src => src.MapFrom(m => m.Date.ToString("yyyy-MM-dd")));
             CreateMap<LatestNews, GetLatestNewsListDto>()
                 .ForMember(dest => dest.NewsCategueryName, src => src.MapFrom(m => m.NewsCateguery.NameAr));
             #endregion
@@ -57,6 +58,7 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
             CreateMap<LatestNewsComment, GetLatestNewsCommentListDto>()
                 .ForMember(dest => dest.CommentStageName, src => src.MapFrom(m => m.CommentStage.NameAr))
+                .ForMember(dest => dest.IsArabic, src => src.MapFrom(m => m.LatestNews.IsArabic))
                 .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
             #endregion
 

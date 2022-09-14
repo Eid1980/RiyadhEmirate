@@ -6,6 +6,7 @@ namespace Emirates.Core.Application.Dtos
     {
         public int Id { get; set; }
         public string NewsCategueryName { get; set; }
+        public string LatestNewsDate { get; set; }
         public UploadedFileBase64Model Image { get; set; }
     }
 }
