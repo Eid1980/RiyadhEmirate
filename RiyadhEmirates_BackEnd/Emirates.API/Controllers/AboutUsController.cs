@@ -41,5 +41,17 @@ namespace Emirates.API.Controllers
         {
             return _aboutUsService.Update(updateDto);
         }
+
+        [HttpPut("Update/MainPoint")]
+        public IApiResponse UpdateMainPoint(UpdateMainPoint updateMainPoint)
+        {
+            return _aboutUsService.UpdateMainPoint(updateMainPoint);
+        }
+
+        [HttpPut("Delete/MainPoint/{mainPointid}")]
+        public IApiResponse DeleteMainPoint(int mainPointid)
+        {
+            return _aboutUsService.DeleteMainPoint(mainPointid);
+        }
     }
 }

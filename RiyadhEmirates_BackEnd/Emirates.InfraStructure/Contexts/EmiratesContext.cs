@@ -220,8 +220,10 @@ namespace Emirates.InfraStructure.Contexts
             modelBuilder.Entity<MainPagePoints>(b =>
             {
                 b.ToTable("MainPagePoints", EmiratesDbSchemas.DataManagement);
+                
                 b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.Order).IsRequired();
                 b.Property(x => x.PageContentId).IsRequired();
 
                 b.HasOne(p => p.PageContent).WithMany(p => p.MainPagePoints).HasForeignKey(p => p.PageContentId).OnDelete(DeleteBehavior.NoAction);
@@ -323,6 +325,9 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.DescriptionAr).HasMaxLength(EmiratesConstants.MaxDescriptionLength).IsRequired();
                 b.Property(x => x.DescriptionEn).HasMaxLength(EmiratesConstants.MaxDescriptionLength).IsRequired();
                 b.Property(x => x.PageContentType).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasData(DefaultData.PageContents());
 
             });
             #endregion

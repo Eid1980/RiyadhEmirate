@@ -1,4 +1,5 @@
-﻿using Emirates.Core.Domain.Entities;
+﻿using Emirates.Core.Application.Enums;
+using Emirates.Core.Domain.Entities;
 
 namespace Emirates.InfraStructure.Contexts
 {
@@ -521,5 +522,28 @@ namespace Emirates.InfraStructure.Contexts
             return arrData;
         }
 
+        public static PageContent[] PageContents()
+        {
+            PageContent[] arrData = new PageContent[2];
+            arrData[0] = new PageContent
+            {
+                Id = 1,
+                DescriptionAr = "عن الاماره",
+                DescriptionEn = "About us",
+                PageContentType = PageContentTypeEnum.AboutUs.ToString(),
+                CreatedBy = 1,
+                CreatedDate = new DateTime(2022, 1, 1)
+            };
+            arrData[1] = new PageContent
+            {
+                Id = 2,
+                DescriptionAr = "القسم النسوي",
+                DescriptionEn = "Woman sections",
+                PageContentType = PageContentTypeEnum.WomanSection.ToString(),
+                CreatedBy = 1,
+                CreatedDate = new DateTime(2022, 1, 1)
+            };
+            return arrData;
+        }
     }
 }

@@ -1,3 +1,5 @@
+import { GetMainPoints } from "../about-us/models";
+
 export interface GetWomanSectionDto {
   id: number;
   descriptionAr: string;
@@ -5,10 +7,12 @@ export interface GetWomanSectionDto {
   mainPoints: GetMainPoints[]
 }
 
-export interface GetMainPoints {
+export interface EditWomanSectionDto{
   id: number;
-  nameAr: string;
-  nameEn: string;
-  order: number;
-  pageContentType: string;
+  descriptionAr: string;
+  descriptionEn: string;
 }
+
+
+
+
