@@ -14,6 +14,10 @@
         إبدأ الخدمة
         <img src="./assets/images/icons/services/arrowTwo.svg" alt="" width="15" class="mx-1">
       </a>
+      <a *ngIf="!serviceDetailsDto?.isExternal" href="serviceDetailsDto?.requestLink" class="btn start-ser px-2">
+        إبدأ الخدمة
+        <img src="./assets/images/icons/services/arrowTwo.svg" alt="" width="15" class="mx-1">
+      </a>
     </button>
     <button type="button" class="btn mx-3" [hidden]="!serviceDetailsDto?.isExternal">
       <a [href]="serviceDetailsDto?.requestLink" class="btn start-ser px-2">

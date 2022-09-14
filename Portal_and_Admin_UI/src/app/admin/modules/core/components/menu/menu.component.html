@@ -1,105 +1,101 @@
-<!-- BEGIN: SIDE-MENU -->
-<div class="sidebar h-100" id="sidebar">
-  <div class="pb-4">
-    <ul class="list-unstyled px-0 pt-3 m-0">
-      <li class="position-relative">
-        <a routerLink="/admin/" class="menu-item menu-link cursor-pointer">
-          <i class="menu-icon las la-chalkboard"></i>
-          <span class="nav-label fs-14">الرئيسية</span>
-        </a>
-      </li>
-      <!-- <div class="accordion" id="accordionExample"> -->
+<div class="sidebar" id="sidebar">
+  <ul class="sidebar-list">
+    <li class="sidebar-list-item">
+      <a class="sidebar-list-link" routerLink="/admin/" routerLinkActive="active">
+        <i class="fa-solid fa-house"></i>
+        <span>الرئيسية</span>
+      </a>
+    </li>
+
+    <div class="accordion" id="accordionSidemenu">
       <li class="accordion-item">
         <h2 class="accordion-header" id="headingNews">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">
-            <i class="menu-icon las la-ad"></i>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">
+            <i class="fa-solid fa-newspaper"></i>
             <span class="nav-label">الأخبار</span>
           </button>
         </h2>
-        <div id="collapseNews" class="accordion-collapse collapse" aria-labelledby="headingNews" data-bs-parent="#accordionExample">
+
+        <div id="collapseNews" class="accordion-collapse collapse" aria-labelledby="headingNews"
+          data-bs-parent="#accordionSidemenu">
           <div class="accordion-body">
-            <ul class="list-styled">
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/latest-news-ar-list">
-                  <span class="nav-label fs-14 px-1">اخر الأخبار عربي</span>
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/latest-news-list" routerLinkActive="active">
+                  <span>اخر الأخبار</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/latest-news-ar-comments">
-                  <span class="nav-label fs-14 px-1">مراجعة تعليقات اخر الأخبار عربي</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/emirates-news-list" routerLinkActive="active">
+                  <span>اخبار المحافظات</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/latest-news-en-list">
-                  <span class="nav-label fs-14 px-1">اخر الأخبار انجليزي</span>
-                </a>
-              </li>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/latest-news-en-comments">
-                  <span class="nav-label fs-14 px-1">مراجعة تعليقات اخر الأخبار انجليزي</span>
-                </a>
-              </li>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/emirates-news-list">
-                  <span class="nav-label fs-14 px-1">اخبار المحافظات</span>
-                </a>
-              </li>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/reports-list">
-                  <span class="nav-label fs-14 px-1">التقارير الإعلامية</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/reports-list" routerLinkActive="active">
+                  <span>التقارير الإعلامية</span>
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </li>
+
       <li class="accordion-item">
         <h2 class="accordion-header" id="headingSevices">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSevices" aria-expanded="true" aria-controls="collapseSevices">
-            <i class="menu-icon las la-ad"></i>
-            <span class="nav-label">الخدمات</span>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseSevices" aria-expanded="true" aria-controls="collapseSevices">
+            <i class="fa-solid fa-hand-holding-medical"></i>
+            <span>الخدمات</span>
           </button>
         </h2>
-        <div id="collapseSevices" class="accordion-collapse collapse" aria-labelledby="headingSevices" data-bs-parent="#accordionExample">
+
+        <div id="collapseSevices" class="accordion-collapse collapse" aria-labelledby="headingSevices"
+          data-bs-parent="#accordionSidemenu">
           <div class="accordion-body">
-            <ul>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/service-list">
-                  <span class="nav-label fs-14 px-1">الخدمات</span>
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/service-list" routerLinkActive="active">
+                  <span>الخدمات</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/request-type-list">
-                  <span class="nav-label fs-14 px-1">أنواع الخدمات</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/request-type-list" routerLinkActive="active">
+                  <span>أنواع الخدمات</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/request-attachment-type-list">
-                  <span class="nav-label fs-14 px-1">مرفقات الخدمات</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link"
+                  routerLink="/admin/data-management/request-attachment-type-list" routerLinkActive="active">
+                  <span>مرفقات الخدمات</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/service-stage-list">
-                  <span class="nav-label fs-14 px-1">مراحل الخدمات</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/service-stage-list" routerLinkActive="active">
+                  <span>مراحل الخدمات</span>
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </li>
+
       <li class="accordion-item">
         <h2 class="accordion-header" id="headingSettings">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
-            <i class="menu-icon las la-ad"></i>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
+            <i class="fa-solid fa-gear"></i>
             <span class="nav-label">الاعدادات</span>
           </button>
         </h2>
-        <div id="collapseSettings" class="accordion-collapse collapse" aria-labelledby="headingSettings" data-bs-parent="#accordionExample">
+
+        <div id="collapseSettings" class="accordion-collapse collapse" aria-labelledby="headingSettings"
+          data-bs-parent="#accordionSidemenu">
           <div class="accordion-body">
-            <ul>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/case-type-list">
-                  <span class="nav-label fs-14 px-1">أنواع القضايا</span>
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/case-type-list" routerLinkActive="active">
+                  <span>أنواع القضايا</span>
                 </a>
               </li>
               <li class="position-relative">
@@ -111,52 +107,27 @@
           </div>
         </div>
       </li>
-      <li class="position-relative">
-        <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/poster-list">
-          <i class="menu-icon las la-ad"></i>
-          <span class="nav-label fs-14 px-1">الإعلانات</span>
-        </a>
-      </li>
+    </div>
 
-      <li class="position-relative">
-        <a class="menu-item menu-link cursor-pointer" routerLink="/admin/eservice-admin/inbox">
-          <i class="menu-icon las la-ad"></i>
-          <span class="nav-label fs-14 px-1">البريد الوارد</span>
-        </a>
-      </li>
-      <li class="position-relative">
-        <a class="menu-item menu-link cursor-pointer" routerLink="/admin/eservice-admin/inbox-shamel">
-          <i class="menu-icon las la-ad"></i>
-          <span class="nav-label fs-14 px-1">البريد الوارد لنطام شامل</span>
-        </a>
-      </li>
+    <li class="sidebar-list-item">
+      <a class="sidebar-list-link" routerLink="/admin/data-management/poster-list" routerLinkActive="active">
+        <i class="fa-solid fa-rectangle-ad"></i>
+        <span>الإعلانات</span>
+      </a>
+    </li>
 
-      <li class="accordion-item">
-        <h2 class="accordion-header" id="headingNews">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmirate" aria-expanded="true" aria-controls="collapseEmirate">
-            <i class="menu-icon las la-ad"></i>
-            <span class="nav-label">الامارة</span>
-          </button>
-        </h2>
-        <div id="collapseEmirate" class="accordion-collapse collapse" aria-labelledby="headingNews" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <ul class="list-styled">
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/edit-about-us">
-                  <span class="nav-label fs-14 px-1">عن الامارة</span>
-                </a>
-              </li>
-              <li class="position-relative">
-                <a class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/edit-woman-section">
-                  <span class="nav-label fs-14 px-1">  القسم النسوي</span>
-                </a>
-              </li>
+    <li class="sidebar-list-item">
+      <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox" routerLinkActive="active">
+        <i class="fa-solid fa-envelope"></i>
+        <span>البريد الوارد</span>
+      </a>
+    </li>
 
-            </ul>
-          </div>
-        </div>
-      </li>
-
-    </ul>
-  </div>
+    <li class="sidebar-list-item">
+      <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox-shamel" routerLinkActive="active">
+        <i class="fa-solid fa-envelope-open-text"></i>
+        <span>البريد الوارد لنطام شامل</span>
+      </a>
+    </li>
+  </ul>
 </div>

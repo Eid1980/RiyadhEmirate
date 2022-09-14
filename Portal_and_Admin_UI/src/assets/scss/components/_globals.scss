@@ -1,0 +1,109 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Almarai";
+  direction: rtl;
+  text-align: right;
+}
+
+.alert.alert-primary {
+  border: 2px solid $primary-alt-1;
+  border-radius: 4px;
+  background-color: rgba($primary-alt-1, .08);
+
+  i {
+    color: $primary-alt-1;
+  }
+
+  span {
+    color: $dark;
+    font-size: 15px;
+    margin-right: 6px;
+  }
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: $dark;
+  border-right: 4px solid $Primary-1;
+  padding-right: 16px;
+  margin-bottom: 26px;
+}
+
+.page-not-found {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 26px 0px 16px 40px;
+
+  .not-found-content {
+    padding-top: 60px;
+
+    h2 {
+      font-size: 64px;
+      margin-bottom: 26px;
+      line-height: 60px;
+      color: $dark;
+    }
+
+    p {
+      color: #6A6A6A;
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-block;
+    }
+  }
+
+  @media screen and (max-width: $min-lg) {
+    flex-wrap: wrap;
+    padding: 30px 0px;
+    flex-direction: column-reverse;
+
+    .not-found-content {
+      padding-top: 0px;
+
+      h2 {
+        font-size: 40px;
+        margin-bottom: 16px;
+        line-height: 40px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 22px;
+      }
+    }
+
+    .not-found-banner {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+// scroll bar style
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  cursor: pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba($color: $dark, $alpha: 0.08);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba($color: $dark, $alpha: 0.12);
+  border-radius: 2px;
+  cursor: pointer;
+}

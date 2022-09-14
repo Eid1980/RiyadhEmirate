@@ -18,6 +18,12 @@ export class NewsComponent implements OnInit {
     private _activatedRoute: ActivatedRoute) {
   }
 
+  newsTypeId : number
+
+  constructor(private _newService: NewsService,
+    private _activatedRoute: ActivatedRoute) {
+  }
+
   ngOnInit(): void {
     // Note: Below 'queryParams' can be replaced with 'params' depending on your requirements
     this._activatedRoute.queryParams.subscribe(params => {

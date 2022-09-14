@@ -1,0 +1,372 @@
+<!-- breadcrumb -->
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+      <span class="breadcrumb-item fs-16 active">البيانات المفتوحة</span>
+    </nav>
+  </div>
+</div>
+
+<div class="container my-5">
+    <div class="section-title">منصة البيانات المفتوحة</div>
+
+    <ul class="nav nav-pills tabs-card my-5" id="openDataTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <div class="nav-link active" id="pills-openDataDesc-tab" data-bs-toggle="pill" data-bs-target="#pills-openDataDesc" type="button" role="tab" aria-controls="pills-openDataDesc" aria-selected="true">
+            <img src="assets/images/icons/pic/projects.png" class="img-fluid" alt="icon" />
+            <h6>لمحة عن البيانات المفتوحة</h6>
+          </div>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-openDataLibrary-tab" data-bs-toggle="pill" data-bs-target="#pills-openDataLibrary" type="button" role="tab" aria-controls="pills-openDataLibrary" aria-selected="false">
+            <img src="assets/images/icons/pic/documents.png" class="img-fluid" alt="icon" />
+            <h6>مكتبة البيانات المفتوحة</h6>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-usagePrivacy-tab" data-bs-toggle="pill" data-bs-target="#pills-usagePrivacy" type="button" role="tab" aria-controls="pills-usagePrivacy" aria-selected="false">
+              <img src="assets/images/icons/pic/roles-icon.png" class="img-fluid" alt="icon" />
+              <h6>سياسة الاستخدام</h6>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-openDataRequest-tab" data-bs-toggle="pill" data-bs-target="#pills-openDataRequest" type="button" role="tab" aria-controls="pills-openDataRequest" aria-selected="false">
+              <img src="assets/images/icons/pic/reports.png" class="img-fluid" alt="icon" />
+              <h6>طلب بيانات مفتوحة </h6>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-openDataResult-tab" data-bs-toggle="pill" data-bs-target="#pills-openDataResult" type="button" role="tab" aria-controls="pills-openDataResult" aria-selected="false">
+              <img src="assets/images/icons/pic/newspaper.png" class="img-fluid" alt="icon" />
+              <h6>نتائج استخدام البيانات المفتوحة</h6>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-howToUse-tab" data-bs-toggle="pill" data-bs-target="#pills-howToUse" type="button" role="tab" aria-controls="pills-howToUse" aria-selected="false">
+              <img src="assets/images/icons/pic/search.png" class="img-fluid" alt="icon" />
+              <h6>كيفية الإستخدام</h6>
+            </button>
+          </li>
+      </ul>
+
+      <div class="tab-content bg-white border rounded-4 py-4 px-4" id="openDataTabsContent">
+        <div class="tab-pane fade show active" id="pills-openDataDesc" role="tabpanel" aria-labelledby="pills-openDataDesc-tab" tabindex="0">
+            <div class="artical-content-wrapper">
+                <div class="mb-4">
+                    <div class="artical-title mb-2">لمحة عن البيانات المفتوحة</div>
+                    <div class="artical-text">قامت وزارة المالية بتوفير منصة للبيانات لزوّار وروّاد بوابة الوزارة ، حيث تمكنهم من استخدام البيانات المنشورة والاستفادة منها، حيث توفر البوابة قائمة تحتوي على ملفات متعددة تضم مختلف البيانات بحيث يمكن تحميلها بعدة صيغ مختلفة.</div>
+                </div>
+                <div>
+                    <div class="artical-text mb-2"><span class="fw-bold ms-2">الناشر:</span>وزارة المالية</div>
+                    <div class="artical-text"><span class="fw-bold ms-2">المصادر:</span> مؤسسة النقد العربي السعودي، مصلحة الاحصاءات العامة - وزارة الاقتصاد و التخطيط ، وزارة المالية.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-openDataLibrary" role="tabpanel" aria-labelledby="pills-openDataLibrary-tab" tabindex="0">
+            <p class="fw-normal fa-16 mb-4">قامت وزارة المالية بتوفير البيانات المفتوحة لجميع زوار الموقع تعزيز الشفافية وتشجيع المشاركة الإلكترونية. حيث تتم مشاركتها عبر <span class="text-primary">البوابة الوطنية للبيانات المفتوحة</span> بإتاحة مجموعات البيانات المنشورة من قبل الوزارة بصيغ تسهل معالجتها وإعادة استخدامها .</p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center mw-100">​البيانات​</th>
+                            <th class="text-center mw-100">موقع النشر</th>
+                            <th class="text-center mw-100">​التحديث​</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="text-center">بيانات الميزانية</td>
+                            <td class="text-center">
+                                <a class="text-primary" href="#" target="_blank">​وزارة المالية</a>
+                            </td>
+                            <td class="text-center">بشكل ربعي (كل ثلاثة اشهر)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">بيانات الاقتصاد الكلي والبيانات المالية </td>
+                            <td class="text-center">
+                                <a class="text-primary" href="#" target="_blank">البنك الدولي</a>
+                            </td>
+                            <td class="text-center">بشكل شهري​</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">​النفقات  (البيانات السنوية والربع سنوية)</td>
+                            <td class="text-center">
+                                <a class="text-primary" href="#" target="_blank">البوابة الوطنية للبيانات المفتوحة ​</a>
+                            </td>
+                            <td class="text-center">بشكل سنوي</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">رصيد الدين​</td>
+                            <td class="text-center">
+                                <a class="text-primary" href="#" target="_blank">البوابة الوطنية للبيانات المفتوحة</a>
+                            </td>
+                            <td class="text-center">بشكل سنوي</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">الإيرادات والمصروفات الفعلية للدولة</td>
+                            <td class="text-center">
+                                <a class="text-primary" href="#" target="_blank">البوابة الوطنية للبيانات المفتوحة ​​</a>
+                            </td>
+                            <td class="text-center">​بشكل سنوي​</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">رصيد الدين </td>
+                            <td class="text-center">
+                                <a class="text-primary" href="#" target="_blank">البوابة الوطنية للبيانات المفتوحة ​​</a>
+                            </td>
+                            <td class="text-center">​بشكل سنوي​</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">بيانات الاقتصاد الكلي والبيانات المالية</td>
+                            <td class="text-center">
+                                <a class="text-primary" href="#" target="_blank">البوابة الوطنية للبيانات المفتوحة ​​</a>
+                            </td>
+                            <td class="text-center">​بشكل سنوي​</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">التصنيف الوظيفي للنفقات​</td>
+                            <td class="text-center">
+                                <a class="text-primary" href="#" target="_blank">البوابة الوطنية للبيانات المفتوحة ​​</a>
+                            </td>
+                            <td class="text-center">​بشكل سنوي​</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="pills-usagePrivacy" role="tabpanel" aria-labelledby="pills-usagePrivacy-tab" tabindex="0">
+            <div class="artical-content-wrapper">
+                <div class="mb-4">
+                    <div class="artical-title mb-2">​ماهي البيانات المفتوحة</div>
+                    <div class="artical-text">هي بيانات متاحة لجميع زوّار ومستخدمي البوابة الإلكترونية، تهدف إلى تعزيز المشاركة ورفع مستوى المعرفة، ويجب على زوار البوابة والمستفيدين من خدماتها الاطلاع على سياسة استخدام تلك البيانات لمعرفة أي تحديثات تتم عليها، وأن جميع البيانات المفتوحة المتوفرة على البوابة الإلكترونية للوزارة توعوية وغير ربحية.</div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="artical-title mb-2">مستخدمو البيانات المفتوحة</div>
+                    <div class="artical-text">تتيح الوزارة لمستخدمي البوابة الاطلاع على البيانات المفتوحة، كما أن لهم الحق في استخدام هذه البيانات على مسؤوليتهم الشخصية، وهذا الحق مكفول لكافة المستفيدين.</div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="artical-title mb-2">مسؤولية مستخدمي البيانات</div>
+                    <div class="artical-text">يكون مستخدم البيانات المفتوحة مسؤولاً عن إعادة استخدام البيانات في البوابة الإلكترونية للوزارة، ولا يجب أن ينتج عن إعادة استخدام هذه البيانات أي أخطاء تتعلق بمحتوى البيانات ومصدرها وتاريخها.</div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="artical-title mb-2">مسؤولية الوزارة</div>
+                    <div class="artical-text">إن وزارة المالية غير مسؤولة عن أي ضرر أو سوء استخدام تتعرض له الجهات نتيجة استخدام هذه البيانات المنشورة بالبوابة الإلكترونية للوزارة. كما أن الوزارة لا تضمن استمرارية توافر هذه البيانات أو جزء منها. كما لا تتحمل الوزارة أي مسؤولية تجاه مستخدمي هذه البيانات، وما قد يقع عليهم من ضرر أو خسارة بسبب إعادة استخدامها.</div>
+                </div>
+
+                <div class="mb-5">
+                    <div class="artical-title mb-2">شروط إعادة الاستخدام</div>
+                    <ol class="artical-list">
+                        <li class="artical-list-item">يجب على المستخدم عدم تحريف هذه البيانات أو مصدرها.</li>
+                        <li class="artical-list-item">يجب ‌ألا تستخدم هذه البيانات في أغراض سياسية أو لدعم نشاط غير مشروع أو إجرامي أو في تعليقات عنصرية أو تميزية أو التأجيج أو التأثير السلبي في الثقافة أو المساواة أو التحريض أو أي نشاط غير نظامي أو مخالف لعادات المملكة وتقاليدها.</li>
+                        <li class="artical-list-item">يجب الإشارة إلى مصدر المعلومات التي تم إعادة استخدامها عن طريق وضع رابط البوابة الإلكترونية لوزارة المالية للمحافظة على الملكية الفكرية للبيانات ومصداقيتها وصحة مصدرها.</li>
+                    </ol>
+                </div>
+
+                <div class="mb-4">
+                    <div class="artical-text fa-18">سياسة البيانات المفتوحة مستمدة من سياسات حوكمة البيانات الوطنية الصادر عن الهيئة السعودية للبيانات والذكاء الإصطناعي لمزيد من التفاصيل حول المبادىء الرئيسية والقواعد العامة للبيانات المفتوحة والمبادىء الرئيسية والقواعد العامة لحرية المعلومات</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="pills-openDataRequest" role="tabpanel" aria-labelledby="pills-openDataRequest-tab" tabindex="0">
+            <div class="artical-content-wrapper">
+                <div class="mb-4">
+                    <div class="artical-title mb-2">لطلب المزيد من البيانات المفتوحة الرجاء تعبئة النموذج التالي :</div>
+                    <div class="artical-text">مدة الاستجابة : 10 أيام عمل (أوقات العمل من الأحد إلى الخميس)</div>
+                </div>
+            </div>
+
+            <form class="mb-5">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="fullName">الاسم الكامل</label>
+                            <input type="text" class="form-control" name="fullName" id="fullName" placeholder="اكتب..." />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="email">البريد الإلكترونى</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="اكتب..." />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="msgTitle">عنوان الرساله</label>
+                            <input type="text" class="form-control" name="msgTitle" id="msgTitle" placeholder="اكتب..." />
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <div class="form-group">
+                            <label for="msgContent">الرساله</label>
+                            <textarea class="form-control" rows="6" name="msgContent" id="msgContent" placeholder="اكتب..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 d-flex justify-content-end mt-4">
+                        <button type="submit" class="btn btn-primary px-5 py-2">إرسال</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="artical-content-wrapper">
+                <div class="mb-4">
+                    <div class="artical-title mb-3">قنوات بديلة للحصول على الخدمة</div>
+                    
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center mw-100">طريقة التواصل</th>
+                            <th class="text-center mw-100">وقت توفر الخدمة</th>
+                            <th class="text-center mw-100">مدة الاستجابة</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="text-center">زيارتنا</td>
+                            <td class="text-center">
+                                <p class="mb-0">من يوم الأحد إلى يوم الخميس</p>
+                                <p class="mb-0">من الساعة 8 صباحا – الساعة 2 ظهرا </p>
+                            </td>
+                            <td class="text-center"> الرد فوري</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">​خدمة المحادثة المباشرة "تواصل معنا"</td>
+                            <td class="text-center">
+                                <p class="mb-0">من يوم الأحد إلى يوم الخميس</p>
+                                <p class="mb-0">من الساعة 8 صباحا – الساعة 2 ظهرا </p>
+                            </td>
+                            <td class="text-center">يتم الرد خلال 30 ثانية</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <p class="mb-0">حساب تويتر</p>
+                                <a class="text-primary" href="https://twitter.com/MOFKSA" target="_blank">@MoFCare</a>
+                            </td>
+                            <td class="text-center">
+                                <p class="mb-0">من يوم الأحد إلى يوم الخميس</p>
+                                <p class="mb-0">من الساعة 8 صباحا – الساعة 2 ظهرا </p>
+                            </td>
+                            <td class="text-center">يتم الرد خلال 30 ثانية</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <p class="mb-0">البريد الإلكترونى</p>
+                                <a class="text-primary" href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=ccc@mof.gov.sa" target="_blank">ccc@mof.gov.sa</a>
+                            </td>
+                            <td class="text-center">
+                                <p class="mb-0">من يوم الأحد إلى يوم الخميس</p>
+                                <p class="mb-0">من الساعة 8 صباحا – الساعة 2 ظهرا </p>
+                            </td>
+                            <td class="text-center">يتم الرد خلال 60 ثانية</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <p class="mb-0">رقم الهاتف</p>
+                                <a class="text-primary">19990</a>
+                            </td>
+                            <td class="text-center">
+                                <p class="mb-0">من يوم الأحد إلى يوم الخميس</p>
+                                <p class="mb-0">من الساعة 8 صباحا – الساعة 2 ظهرا </p>
+                            </td>
+                            <td class="text-center">الرد فوري</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="pills-openDataResult" role="tabpanel" aria-labelledby="pills-openDataResult-tab" tabindex="0">
+            <div class="artical-content-wrapper">
+                <div class="mb-4">
+                    <div class="artical-title mb-2">نتائج استخدام البيانات المفتوحة</div>
+                    <div class="artical-text">تتيح البيانات المفتوح​ة المقدمة من وزارة المالية المجال لجميع المستفيدين من استخدام هذه البيانات في الدراسات الاقتصادية والمالية والمشاريع والبحوث الخاصة بشكل عام بناء على هذه البيانات.</div>
+                    <div class="artical-text">وقد تم نشر الملفات المهمة  كبرامج الإقراض الحكومي و الانظمة والتعليمات والحسابات القومية وبرنامج الإقراض الحكومي وتجارة السلع وغيرها كما يلي :</div>
+                </div>
+
+                <div class="mb-5">
+                    <div class="artical-title mb-2">البيانات المفتوحة للميزانية العامة</div>
+                    <div class="artical-text">في البيانات المفتوحة للميزانية العامة تم نشر الميزانية العامة للدولة للأعوام المالية التالية :</div>
+                    <ol class="artical-list">
+                        <li class="artical-list-item">​​​​​​ميزانية السنة المالية القادمة 1439/1438 هـ (2017م) </li>
+                        <li class="artical-list-item">بيـان الوزارة حـول ميـزانيـة الـدولــة للعـام المـالـي 1437 1438هـ (2016) </li>
+                        <li class="artical-list-item">بيـان الوزارة حـول ميـزانيـة الـدولــة للعـام المـالـي 1436 1437هـ (2015) </li>
+                        <li class="artical-list-item">بيـان الوزارة حـول ميـزانيـة الـدولــة للعـام المـالـي 1435 1436هـ (2014) </li>
+                        <li class="artical-list-item">بيـان الوزارة حـول ميـزانيـة الـدولــة للعـام المـالـي 1434 1435هـ (2013)</li>
+                        <li class="artical-list-item">بيـان الوزارة حـول ميـزانيـة الـدولــة للعـام المـالـي 1433 1434هـ (2012) </li>
+                        <li class="artical-list-item">بيـان الوزارة حـول ميـزانيـة الـدولــة للعـام المـالـي 1432 1433هـ (2011)</li>
+                     </ol>
+                </div>
+
+                <div class="mb-4">
+                    <div class="artical-text"> حيث تتيح الوزارة البيانات حـول ميـزانيـة الـدولــة للأعـوام المـالـية التي تفيد في صنع واتخاذ القرارات المالية ، كما تتيح لذوي المعرفة المالية والاقتصادية​ في معرفة المستوى الاقتصادي بالمملكة .</div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="artical-title mb-2">البيانات المفتوحة لنتائج تقييم الخدمات الالكترونية</div>
+                    <div class="artical-text">تحرص وزارة المالية على نشر نتائج التقييم ونتائج استطلاع الرأي للخدمات الالكترونية التي تقدمها الوزارة وذلك لتطوير الخدمات الالكترونية بناء على هذه النتائج واستطلاعات الرأي.</div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center mw-100">حالات الاستخدام​</th>
+                            <th class="text-center mw-100">وصف الحالة</th>
+                            <th class="text-center mw-100">الأثر</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="text-center">النموذج التنبؤي بالتدفقات النقدية للمطالبات المالية</td>
+                            <td class="text-center">نموذج تنبؤي بعمر المطالبات المالية من القطاع الخاص وتوقع المدفوعات خلال الفترة القادمة بناء على سلوك الدفع بأنواع المشاريع والعقود</td>
+                            <td class="text-center">تحسين عمليات إدارة السيولة النقدية للدولة لتحقيق التوزيع الأمثل للموارد وتحديد فرص التحسين في إجراءات المطالبات المالية للقطاع الخاص</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">التحليل المتقدم للأجور والتعويضات</td>
+                            <td class="text-center">نموذج لاستكشاف الوظائف الحكومية و تحليل الرواتب والبدلات والتعويضات وبناء نماذج تنبؤية للسنوات القادمة.</td>
+                            <td class="text-center">تحسين اتخاذ القرار فيما يخص الرواتب والبدلات والتعويضات وتأثير تلك القرارات على الموظفين ، والمساهمة في تحسين إجراءات إعداد الميزانية للجهات الحكومية</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="pills-howToUse" role="tabpanel" aria-labelledby="pills-howToUse-tab" tabindex="0">
+            <div class="artical-content-wrapper">
+                <div class="mb-4">
+                    <div class="artical-title mb-2">كيفية الإستخدام</div>
+                    <div class="artical-text">يتوفر في مكتبة البيانات المفتوحة العديد من صيغ الملفات التي من الممكن استعراضها أو تحميلها، وقد تحتاج إلى تنصيب بعض المنتجات حتى تتمكن من الاستفادة القصوى من تلك البيانات.</div>
+                </div>
+
+                <div class="mb-5">
+                    <div class="artical-title mb-3">
+وفي ما يلي شرح لكل صيغة ملف وكيفية الاستفادة منه:
+                    </div>
+                    <ol class="artical-list">
+                        <li class="artical-list-item"><span class="fw-bold ms-2">EXCEL:</span> هي ملفات تحتوي على جداول أكسل، ويمكنك استعراض هذه الجداول بتنصيب برنامج مستعرض أكسل مجانا عبر الرابط مستعرض أكسل .</li>
+                        <li class="artical-list-item"><span class="fw-bold ms-2">PDF:</span> قد تحتاج إلى تنصيب برنامج قارئ ملفات أكروبات، والذي يتوفر مجانا عبر موقع أدوبي .</li>
+                        <li class="artical-list-item"><span class="fw-bold ms-2">CSV:</span> يمكنك فتح هذه الملفات بواسطة العديد من الأدوات، مثل مايكروسوفت أكسل، والمفكرة، وغيرها.</li>
+                        <li class="artical-list-item"><span class="fw-bold ms-2">XML:</span> يمكنك فتح هذه الملفات بواسطة متصفحات الويب المختلفة أو بواسطة مايكروسوفت وورد أو أكسل أو بواسطة برنامج المفكرة أو غيرها.</li>
+                        <li class="artical-list-item"><span class="fw-bold ms-2">HTML:</span> يمكنك استعراض هذه الملفات بواسطة متصفحات الويب المختلفة، أو برنامج المفكرة.</li>
+                        <li class="artical-list-item"><span class="fw-bold ms-2">TEXT:</span> يمكنك استعراض هذه الملفات بواسطة برنامج المفكرة والعديد من الأدوات الأخرى.</li>
+                    </ol>
+                </div>
+                </div>
+        </div>
+      </div>
+</div>

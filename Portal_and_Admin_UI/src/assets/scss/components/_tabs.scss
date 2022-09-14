@@ -1,0 +1,62 @@
+.tabs-card{
+    &.nav{
+    justify-content: space-between;
+
+        .nav-item{
+            .nav-link{
+                border: 1px solid rgba($color: $dark, $alpha: 0.1);
+                border-radius: 8px;
+                background-color: $white;
+                padding: 20px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+                width: 170px;
+                text-align: center;
+                margin-left: 16px;
+
+                &:last-child{
+                    margin-left: 0px;
+                }
+
+                img{
+                    width: 50px;
+                    margin-bottom: 10px;
+
+                }
+
+                h6{
+                    color: rgba($color: $dark, $alpha: 0.6);
+                    font-size: 15px;
+                    font-weight: 400;
+                    margin: auto 0px;
+                }
+
+                &.active{
+                    img{
+                        filter: none;
+                    }
+
+                    h6{
+                        color: rgba($color: $dark, $alpha: 0.9);
+                    }
+                }
+
+                &.active{
+                    background-color: $Primary-1;
+                    border: 1px solid $Primary-1;
+
+                    img{
+                        filter: brightness(0) invert(1);
+                    }
+
+                    h6{
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
