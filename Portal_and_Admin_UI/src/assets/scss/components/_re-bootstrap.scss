@@ -18,3 +18,83 @@
 .rounded-5{
   border-radius: 8px !important;
 }
+
+// filter image color to white
+.filter-img-white {
+  filter: brightness(0) invert(1) !important;
+}
+
+// min-width
+.mw-auto {
+  min-width: auto !important;
+}
+
+.mw-40 {
+  min-width: 40px !important;
+}
+
+.mw-50 {
+  min-width: 50px !important;
+}
+
+.mw-60 {
+  min-width: 60px !important;
+}
+
+.mw-70 {
+  min-width: 70px !important;
+}
+
+.mw-80 {
+  min-width: 80px !important;
+}
+
+.mw-90 {
+  min-width: 90px !important;
+}
+
+.mw-100 {
+  min-width: 100px !important;
+}
+
+.mw-120 {
+  min-width: 120px !important;
+}
+
+.mw-150 {
+  min-width: 150px !important;
+}
+
+.mw-200 {
+  min-width: 200px !important;
+}
+
+.mw-250 {
+  min-width: 250px !important;
+}
+
+.mw-300 {
+  min-width: 300px !important;
+}
+
+.mxh-auto {
+  max-height: fit-content !important;
+}
+
+// max-width
+.mxw-80 {
+  max-width: 80px;
+}
+
+// cursor events
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-text {
+  cursor: text !important;
+}
+
+.cursor-default {
+  cursor: default !important;
+}

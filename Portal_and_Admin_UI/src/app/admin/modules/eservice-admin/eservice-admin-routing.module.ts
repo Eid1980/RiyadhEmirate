@@ -97,8 +97,8 @@ const routes: Routes = [
   },
   //#endregion
 
-   //#region ElectronicCouncilBooard
-   {
+  //#region ElectronicCouncilBooard
+  {
     path: 'electronic-council-admin-preview-step/:id',
     component: ElectronicCouncilStepViewComponent,
     canActivate: [AuthGuard],
@@ -210,4 +210,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EServiceAdminRoutingModule {}
+export class EServiceAdminRoutingModule { }

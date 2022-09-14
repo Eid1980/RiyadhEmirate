@@ -23,14 +23,14 @@
 
   .form-control {
     height: 50px;
-    background-color: $light-lighter;
-    border-color: #e7e8ef;
+    background-color: $light-lighter !important;
+    border-color: #e7e8ef !important;
     color: rgba($color: $dark, $alpha: 0.6);
 
     &:not(:valid),
     &:focus {
-      background-color: $light-lighter;
-      border-color: #e7e8ef;
+      background-color: $light-lighter !important;
+      border-color: #e7e8ef !important;
 
       + {
         .label {
@@ -112,6 +112,45 @@
 
 .form-group {
   margin-bottom: 16px;
+}
+
+.input-group-append {
+  height: 50px !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  margin-right: 10px !important;
+  padding: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+
+  .btn {
+    font-size: 12px !important;
+    border-radius: 20px !important;
+    padding: 8px 16px !important;
+    border: 0 !important;
+    color: rgba($color: $dark, $alpha: 0.6) !important;
+
+    &:focus,
+    &.active {
+      box-shadow: none !important;
+      outline: 0 !important;
+    }
+
+    &:hover {
+      background-color: transparent !important;
+      color: $Primary-1 !important;
+    }
+
+    &.active {
+      background-color: $secondary-1 !important;
+      color: $white !important;
+      font-weight: 600 !important;
+
+      &:hover {
+        color: $white !important;
+      }
+    }
+  }
 }
 
 .form-select {
@@ -231,6 +270,30 @@ input[type=number] {
   }
 }
 
+// checkbox
+.container-check {
+  margin: 0px !important;
+  display: flex !important;
+  color: $primary-alt-1 !important;
+  padding-right: 28px !important;
+  font-size: 14px !important;
+  line-height: 25px !important;
+
+  .checkmark {
+    border-radius: 6px !important;
+    width: 22px !important;
+    height: 22px !important;
+    border: 1px solid #e7e8ef !important;
+
+    &::after {
+      width: 7px !important;
+      height: 12px !important;
+      right: 6px !important;
+      top: 3px !important;
+    }
+  }
+}
+
 // angular datepicker
 ngb-datepicker {
   &.dropdown-menu {
@@ -345,6 +408,13 @@ ngb-datepicker {
       margin: 0 !important;
       margin-right: 8px !important;
       border: 0px !important;
+      padding: 4px 10px !important;
+      display: inline-block !important;
+      border-radius: 4px !important;
+    }
+
+    .btn-secondary {
+      background-color: $primary-alt-1 !important;
     }
 
     .btn-primary {

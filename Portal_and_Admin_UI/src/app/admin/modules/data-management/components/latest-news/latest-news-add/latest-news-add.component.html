@@ -43,13 +43,13 @@
           <small *ngIf="(isFormSubmitted || form.get('DescriptionEn').touched) && form.get('DescriptionEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <!-- Date -->
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
           <hijri-gregorian-datepicker id="date" [placeHolder]="'سنة/شهر/يوم'" [(selectedDate)]="date" [isRequired]="true" [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" [selectedDateType]="selectedDateType" label="التاريخ" #datePicker>
           </hijri-gregorian-datepicker>
           <small *ngIf="(isFormSubmitted && isValidDate)" class="danger">هذاالحقل مطلوب</small>
         </div>
         <!-- Image Upload -->
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
           <label for="" class="form-lbl">تحميل الصورة<span class=danger>*</span></label>
           <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload" (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced" accept="image/*" [maxFileSize]="fileSize">
           </p-fileUpload>

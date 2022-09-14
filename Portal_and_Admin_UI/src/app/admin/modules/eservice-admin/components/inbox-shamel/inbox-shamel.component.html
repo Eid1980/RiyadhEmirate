@@ -20,7 +20,7 @@
             <option *ngFor="let service of services" [ngValue]="service.id">{{ service.name }}</option>
           </select>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-4 px-0">
           <hijri-gregorian-datepicker id="dateFrom" [placeHolder]="'سنة/شهر/يوم'"
                                       [isRequired]="false"
                                       [GregLabel]="'ميلادي'"
@@ -30,7 +30,7 @@
                                       #datePickerFrom>
           </hijri-gregorian-datepicker>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-4 px-0">
           <hijri-gregorian-datepicker id="dateTo" [placeHolder]="'سنة/شهر/يوم'"
                                       [isRequired]="false"
                                       [GregLabel]="'ميلادي'"
@@ -42,13 +42,13 @@
         </div>
       </div>
 
-      <div class="form-actions">
+      <div class="form-actions mb-4">
         <button type="button" class="btn btn-save" (click)="search()">بحث</button>
-        <button type="button" class="btn btn-save" (click)="search(true)">عرض الكل</button>
+        <button type="button" class="btn btn-secondary" (click)="search(true)">عرض الكل</button>
       </div>
     </form>
     <div class="row mx-0">
-      <p-table #inbox [value]="inboxListDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+      <p-table #inbox [value]="inboxListDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100 ps-0">
         <ng-template pTemplate="header" let-columns>
           <tr>
             <th>م</th>

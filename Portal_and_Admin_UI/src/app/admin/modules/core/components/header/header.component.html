@@ -1,44 +1,40 @@
-<nav class="navbar navbar-expand-lg fixed-top d-flex justify-content-between box-shadow-2 px-lg-4 px-2 py-0">
+<nav class="navbar navbar-expand-lg box-shadow-2 d-flex fixed-top justify-content-between px-2 py-2">
   <div class="d-flex justify-content-between align-items-center">
-    <div class="bar">
-      <a class="icon-toggle-side-menu primary-text fs-15 cursor-pointer">
-        <i class="fa fa-bars fs-30 primary-text"></i>
-      </a>
-    </div>
-    <a href="/admin/" class="navbar-brand p-0">
+    <a href="/admin/" class="navbar-brand p-0 m-0">
       <div class="d-flex align-items-center">
-        <img src="assets/images/logo.svg" style="width: 58%" />
+        <img src="assets/images/logo.svg" class="img-fluid" alt="logo" width="170px" />
       </div>
     </a>
+
+    <div class="bar icon-toggle-side-menu">
+      <i class="fa-solid fa-bars-staggered"></i>
+    </div>
   </div>
+
   <ul class="d-flex justify-content-between align-items-center list-unstyled mb-0">
-    <li class="nav-item dropdown mx-5 profile-dropdown">
-      <div class="nav-link dropdown-toggle p-0 primary-text cursor-pointer" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <li class="nav-item dropdown mx-3 profile-dropdown">
+      <div class="nav-link dropdown-toggle p-0 primary-text cursor-pointer" id="navbarDropdown" role="button"
+        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-flex align-items-center prrof">
-          <img src="/assets/images/businessman.png" width="30" height="30" alt="" class="rounded-circle mx-2 align-bottom" style="background-color: #5bbaa5" />
+          <img src="/assets/images/businessman.png" width="30" height="30" alt=""
+            class="rounded-circle mx-2 align-bottom border" style="background-color: #f8f8f8" />
           <div>
-            <p class="fs-15 mb-0">{{ userInfo?.shortNameAr }}</p>
+            <p class="fa-12 fw-normal text-primary-alt-3 ms-4 mb-0">{{ userInfo?.shortNameAr }}</p>
           </div>
         </div>
       </div>
       <div class="dropdown-menu p-0 border-0 box-shadow-1 py-2" aria-labelledby="navbarDropdown">
-        <a routerLink="/" class="dropdown-item d-flex justify-content-start align-items-center py-0 cursor-pointer">
-          <span class="menu-icon rounded-circle text-center mx-2">
-            <i class="fa fa-home primary-text"></i>
-          </span>
-          <span class="fs-13 text-right">الصفحة الرئيسية</span>
+        <a routerLink="/" class="dropdown-item">
+          <i class="fa fa-home"></i>
+          <span>الصفحة الرئيسية</span>
         </a>
-        <a class="dropdown-item d-flex justify-content-start align-items-center py-0 cursor-pointer">
-          <span class="menu-icon rounded-circle text-center mx-2">
-            <i class="fa fa-user primary-text"></i>
-          </span>
-          <span class="fs-13 text-right">الملف الشخصي</span>
+        <a class="dropdown-item">
+          <i class="fa fa-user"></i>
+          <span>الملف الشخصي</span>
         </a>
-        <a (click)="logOut()" class="dropdown-item d-flex justify-content-start align-items-center py-0 cursor-pointer">
-          <span class="menu-icon rounded-circle text-center mx-2">
-            <i class="fa fa-sign-out-alt primary-text"></i>
-          </span>
-          <span class="fs-13 text-right">تسجيل خروج</span>
+        <a (click)="logOut()" class="dropdown-item text-danger">
+          <i class="fa fa-sign-out-alt"></i>
+          <span>تسجيل خروج</span>
         </a>
       </div>
     </li>
