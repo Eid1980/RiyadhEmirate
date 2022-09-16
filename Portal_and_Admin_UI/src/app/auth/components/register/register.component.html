@@ -5,32 +5,66 @@
     </a>
   </div>
   <div class="w-100">
-    <h4 class="title">تسجيل مستخدم جديد</h4>
+    <h4 class="title">{{ "register.labels.createNewAccount" | translate }}</h4>
     <div class="row mx-0" *ngIf="showCheckUserRegisterForm">
       <div class="col-md-8 mx-auto">
-        <form [formGroup]="checkUserRegisterForm" (ngSubmit)="onCheck()" class="fs-13px">
+        <form
+          [formGroup]="checkUserRegisterForm"
+          (ngSubmit)="onCheck()"
+          class="fs-13px">
           <div class="form-group mb-4">
-            <label for="nationalId">رقم الهوية<span class="danger">*</span></label>
-            <input type="text" class="form-control" maxlength="10" formControlName="nationalId" id="nationalId" [ngClass]="{
-              invalid:
-                (isFormSubmitted || checkUserRegisterForm.get('nationalId').touched) &&
-                checkUserRegisterForm.get('nationalId').errors?.required}" />
-            <small *ngIf="(isFormSubmitted || checkUserRegisterForm.get('nationalId').touched) && checkUserRegisterForm.get('nationalId').errors?.required"
-                   class="danger">هذا الحقل مطلوب
+            <label for="nationalId">
+              {{ "register.labels.nationalIdOrResidentNumber" | translate}}
+              <span class="danger">*</span>
+              </label>
+            <input
+              type="text"
+              class="form-control"
+              maxlength="10"
+              formControlName="nationalId"
+              id="nationalId"
+              [ngClass]="{
+                invalid:
+                  (isFormSubmitted ||
+                    checkUserRegisterForm.get('nationalId').touched) &&
+                  checkUserRegisterForm.get('nationalId').errors?.required
+              }"
+            />
+            <small
+              *ngIf="
+                (isFormSubmitted ||
+                  checkUserRegisterForm.get('nationalId').touched) &&
+                checkUserRegisterForm.get('nationalId').errors?.required"
+              class="danger">
+              {{ "global.validators.requiredField" | translate }}
             </small>
           </div>
           <div class="form-group mb-4">
             <!--[minGreg]="minGreg" [minHijri]="minHigriDate"-->
-            <hijri-gregorian-datepicker id="date" [placeHolder]="'سنة/شهر/يوم'" [isRequired]="false"
-                                        [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" [maxGreg]="maxGreg" [maxHijri]="maxHigriDate"
-                                        [selectedDateType]="selectedDateType" label="تاريخ الميلاد *" #birthDate>
+            <hijri-gregorian-datepicker
+              id="date"
+              [placeHolder]="'register.labels.dateComponent' | translate"
+              [isRequired]="false"
+              [GregLabel]="'register.labels.nationalIdOrResidentNumbergreg' | translate "
+              [hijriLabel]="'register.labels.higri' | translate "
+              [maxGreg]="maxGreg"
+              [maxHijri]="maxHigriDate"
+              [selectedDateType]="selectedDateType"
+              [label]="'register.labels.dateComponent' | translate" *
+              #birthDate
+            >
             </hijri-gregorian-datepicker>
-            <small *ngIf="(isFormSubmitted && isValidDate)" class="danger">هذا الحقل مطلوب</small>
+            <small *ngIf="isFormSubmitted && isValidDate" class="danger">
+              {{"global.validators.requiredField" | translate }}</small>
           </div>
 
           <div class="pt-3">
-            <button type="submit" class="btn btn-primary submit">تحقق</button>
-            <a routerLink="/auth/login" class="btn btn-secondary submit mb-0">رجوع</a>
+            <button type="submit" class="btn btn-primary submit">
+              {{ 'register.labels.check' | translate }}
+            </button>
+            <a routerLink="/auth/login" class="btn btn-secondary submit mb-0">
+              {{ 'register.labels.back' | translate }}
+            </a>
           </div>
         </form>
       </div>
@@ -38,125 +72,358 @@
 
     <div class="row mx-0" *ngIf="showUserRegisterForm">
       <div class="col-md-10 mx-auto">
-        <form [formGroup]="userRegisterForm" (ngSubmit)="onRegister()" class="fs-13px">
+        <form
+          [formGroup]="userRegisterForm"
+          (ngSubmit)="onRegister()"
+          class="fs-13px"
+        >
           <div class="accordion" id="accordionRegister">
-
             <div class="accordion-item mb-4">
-              <div class="accordion-header collapsed" id="headingFirstForm" data-bs-toggle="collapse"
-                   data-bs-target="#firstForm" aria-expanded="true" aria-controls="firstForm">
-                <h6>البيانات الشخصية</h6>
+              <div
+                class="accordion-header collapsed"
+                id="headingFirstForm"
+                data-bs-toggle="collapse"
+                data-bs-target="#firstForm"
+                aria-expanded="true"
+                aria-controls="firstForm">
+                <h6>{{ 'register.labels.pesronalInfo' | translate }}</h6>
                 <div class="arrow bg-transparent">
                   <i class="fa-solid fa-chevron-down text-secondary"></i>
                 </div>
               </div>
-              <div id="firstForm" class="accordion-collapse collapse" aria-labelledby="headingFirstForm"
-                   data-bs-parent="#accordionRegister">
+              <div
+                id="firstForm"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingFirstForm"
+                data-bs-parent="#accordionRegister"
+              >
                 <div class="accordion-body bg-white">
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="userName">رقم الهوية<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="userName" id="userName" maxlength="10" readonly [ngClass]="{
-                          invalid:(isFormSubmitted || userRegisterForm.get('userName').touched) &&
-                          userRegisterForm.get('userName').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('userName').touched) && userRegisterForm.get('userName').errors?.required" class="danger">هذا الحقل مطلوب</small>
+                        <label for="userName">
+                          {{ 'register.labels.nationalIdOrResidentNumber' | translate}}
+                          <span class="danger">*</span></label >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="userName"
+                          id="userName"
+                          maxlength="10"
+                          readonly
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('userName').touched) &&
+                              userRegisterForm.get('userName').errors?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('userName').touched) &&
+                            userRegisterForm.get('userName').errors?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <hijri-gregorian-datepicker id="dateOfBirth" [placeHolder]="'سنة/شهر/يوم'" [isRequired]="false"
-                                                    [GregLabel]="'ميلادي'" [maxGreg]="maxGreg" [maxHijri]="maxHigriDate" [hijriLabel]="'هجري'"
-                                                    [selectedDateType]="selectedDateType" label="تاريخ الميلاد *" #birthDate>
+                        <hijri-gregorian-datepicker
+                          id="dateOfBirth"
+                          [placeHolder]="'سنة/شهر/يوم'"
+                          [isRequired]="false"
+                          [GregLabel]="'ميلادي'"
+                          [maxGreg]="maxGreg"
+                          [maxHijri]="maxHigriDate"
+                          [hijriLabel]="'هجري'"
+                          [selectedDateType]="selectedDateType"
+                          label="تاريخ الميلاد *"
+                          #birthDate
+                        >
                         </hijri-gregorian-datepicker>
-                        <small *ngIf="(isFormSubmitted && isValidDate)" class="danger">هذا الحقل مطلوب</small>
+                        <small
+                          *ngIf="isFormSubmitted && isValidDate"
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
                       </div>
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="firstNameAr">الاسم الأول عربي<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="firstNameAr" id="firstNameAr" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('firstNameAr').touched) &&
-                          userRegisterForm.get('firstNameAr').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('firstNameAr').touched) && userRegisterForm.get('firstNameAr').errors?.required" class="danger">هذا الحقل مطلوب</small>
+                        <label for="firstNameAr"
+                          >الاسم الأول عربي<span class="danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="firstNameAr"
+                          id="firstNameAr"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('firstNameAr').touched) &&
+                              userRegisterForm.get('firstNameAr').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('firstNameAr').touched) &&
+                            userRegisterForm.get('firstNameAr').errors?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="firstNameEn">الاسم الأول انجليزي<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="firstNameEn" id="firstNameEn" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('firstNameEn').touched) &&
-                          userRegisterForm.get('firstNameEn').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('firstNameEn').touched) && userRegisterForm.get('firstNameEn').errors?.required" class="danger">هذا الحقل مطلوب</small>
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <div class="form-group mb-4">
-                        <label for="secondNameAr">اسم الأب عربي<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="secondNameAr" id="secondNameAr" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('secondNameAr').touched) &&
-                          userRegisterForm.get('secondNameAr').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('secondNameAr').touched) && userRegisterForm.get('secondNameAr').errors?.required" class="danger">هذا الحقل مطلوب</small>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group mb-4">
-                        <label for="secondNameEn">اسم الأب انجليزي<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="secondNameEn" id="secondNameEn" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('secondNameEn').touched) &&
-                          userRegisterForm.get('secondNameEn').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('secondNameEn').touched) && userRegisterForm.get('secondNameEn').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <div class="form-group mb-4">
-                        <label for="thirdNameAr">اسم الجد عربي<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="thirdNameAr" id="thirdNameAr" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('thirdNameAr').touched) &&
-                          userRegisterForm.get('thirdNameAr').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('thirdNameAr').touched) && userRegisterForm.get('thirdNameAr').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group mb-4">
-                        <label for="thirdNameEn">اسم الجد انجليزي<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="secondNameEn" id="thirdNameEn" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('thirdNameEn').touched) &&
-                          userRegisterForm.get('thirdNameEn').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('thirdNameEn').touched) && userRegisterForm.get('thirdNameEn').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <div class="form-group mb-4">
-                        <label for="lastNameAr">اسم العائلة عربي<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="lastNameAr" id="lastNameAr" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('lastNameAr').touched) &&
-                          userRegisterForm.get('lastNameAr').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('lastNameAr').touched) && userRegisterForm.get('lastNameAr').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group mb-4">
-                        <label for="lastNameEn">اسم العائلة انجليزي<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="lastNameEn" id="lastNameEn" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('lastNameEn').touched) &&
-                          userRegisterForm.get('lastNameEn').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('lastNameEn').touched) && userRegisterForm.get('lastNameEn').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
+                        <label for="firstNameEn"
+                          >الاسم الأول انجليزي<span class="danger"
+                            >*</span
+                          ></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="firstNameEn"
+                          id="firstNameEn"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('firstNameEn').touched) &&
+                              userRegisterForm.get('firstNameEn').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('firstNameEn').touched) &&
+                            userRegisterForm.get('firstNameEn').errors?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
                       </div>
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="isMale" class="form-lbl">الجنس<span class="danger">*</span></label>
-                        <select class="form-control form-select" formControlName="isMale" id="isMale">
+                        <label for="secondNameAr"
+                          >اسم الأب عربي<span class="danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="secondNameAr"
+                          id="secondNameAr"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('secondNameAr').touched) &&
+                              userRegisterForm.get('secondNameAr').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('secondNameAr').touched) &&
+                            userRegisterForm.get('secondNameAr').errors
+                              ?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="secondNameEn"
+                          >اسم الأب انجليزي<span class="danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="secondNameEn"
+                          id="secondNameEn"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('secondNameEn').touched) &&
+                              userRegisterForm.get('secondNameEn').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('secondNameEn').touched) &&
+                            userRegisterForm.get('secondNameEn').errors
+                              ?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="thirdNameAr"
+                          >اسم الجد عربي<span class="danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="thirdNameAr"
+                          id="thirdNameAr"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('thirdNameAr').touched) &&
+                              userRegisterForm.get('thirdNameAr').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('thirdNameAr').touched) &&
+                            userRegisterForm.get('thirdNameAr').errors?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="thirdNameEn"
+                          >اسم الجد انجليزي<span class="danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="secondNameEn"
+                          id="thirdNameEn"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('thirdNameEn').touched) &&
+                              userRegisterForm.get('thirdNameEn').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('thirdNameEn').touched) &&
+                            userRegisterForm.get('thirdNameEn').errors?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="lastNameAr"
+                          >اسم العائلة عربي<span class="danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="lastNameAr"
+                          id="lastNameAr"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('lastNameAr').touched) &&
+                              userRegisterForm.get('lastNameAr').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('lastNameAr').touched) &&
+                            userRegisterForm.get('lastNameAr').errors?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="lastNameEn"
+                          >اسم العائلة انجليزي<span class="danger"
+                            >*</span
+                          ></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="lastNameEn"
+                          id="lastNameEn"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('lastNameEn').touched) &&
+                              userRegisterForm.get('lastNameEn').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('lastNameEn').touched) &&
+                            userRegisterForm.get('lastNameEn').errors?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="isMale" class="form-lbl"
+                          >الجنس<span class="danger">*</span></label
+                        >
+                        <select
+                          class="form-control form-select"
+                          formControlName="isMale"
+                          id="isMale"
+                        >
                           <option [ngValue]="null">اختر...</option>
                           <option [ngValue]="true">ذكر</option>
                           <option [ngValue]="false">انثى</option>
@@ -166,7 +433,12 @@
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
                         <label for="passportId">رقم جواز السفر</label>
-                        <input type="text" class="form-control" formControlName="passportId" id="passportId" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="passportId"
+                          id="passportId"
+                        />
                       </div>
                     </div>
                   </div>
@@ -175,35 +447,84 @@
             </div>
 
             <div class="accordion-item mb-4">
-              <div class="accordion-header collapsed" id="headingSecondForm" data-bs-toggle="collapse"
-                   data-bs-target="#secondForm" aria-expanded="true" aria-controls="secondForm">
-                <h6>بيانات التسجيل</h6>
+              <div
+                class="accordion-header collapsed"
+                id="headingSecondForm"
+                data-bs-toggle="collapse"
+                data-bs-target="#secondForm"
+                aria-expanded="true"
+                aria-controls="secondForm">
+                <h6>{{ 'register.labels.registerationInfo' | translate }}</h6>
                 <div class="arrow bg-transparent">
                   <i class="fa-solid fa-chevron-down text-secondary"></i>
                 </div>
               </div>
-              <div id="secondForm" class="accordion-collapse collapse" aria-labelledby="headingSecondForm"
-                   data-bs-parent="#accordionRegister">
+              <div
+                id="secondForm"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingSecondForm"
+                data-bs-parent="#accordionRegister">
                 <div class="accordion-body bg-white">
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="passWord">كلمة المرور<span class="danger">*</span></label>
-                        <input type="password" class="form-control" formControlName="passWord" id="passWord" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('passWord').touched) &&
-                          userRegisterForm.get('passWord').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('passWord').touched) && userRegisterForm.get('passWord').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
+                        <label for="passWord">
+                          {{ 'register.labels.password' | translate}}
+                          <span class="danger">*</span></label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          formControlName="passWord"
+                          id="passWord"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('passWord').touched) &&
+                              userRegisterForm.get('passWord').errors?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('passWord').touched) &&
+                            userRegisterForm.get('passWord').errors?.required "
+                          class="danger"
+                          >{{ "global.validators.requiredField" | translate }}</small
+                        >
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="confirmPassWord">تأكيد كلمة المرور<span class="danger">*</span></label>
-                        <input type="password" class="form-control" formControlName="confirmPassWord" id="confirmPassWord" [ngClass]="{
-                          invalid: (isFormSubmitted || userRegisterForm.get('confirmPassWord').touched) &&
-                          userRegisterForm.get('confirmPassWord').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('confirmPassWord').touched) && userRegisterForm.get('confirmPassWord').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
+                        <label for="confirmPassWord"
+                          >{{ "global.validators.requiredField" | translate }}<span class="danger">*</span></label
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          formControlName="confirmPassWord"
+                          id="confirmPassWord"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('confirmPassWord')
+                                  .touched) &&
+                              userRegisterForm.get('confirmPassWord').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('confirmPassWord')
+                                .touched) &&
+                            userRegisterForm.get('confirmPassWord').errors
+                              ?.required
+                          "
+                          class="danger"
+                          >{{
+                            "global.validators.requiredField" | translate
+                          }}</small
+                        >
                       </div>
                     </div>
                   </div>
@@ -212,44 +533,93 @@
             </div>
 
             <div class="accordion-item mb-4">
-              <div class="accordion-header collapsed" id="headingThirdForm" data-bs-toggle="collapse"
-                   data-bs-target="#thirdForm" aria-expanded="true" aria-controls="thirdForm">
+              <div
+                class="accordion-header collapsed"
+                id="headingThirdForm"
+                data-bs-toggle="collapse"
+                data-bs-target="#thirdForm"
+                aria-expanded="true"
+                aria-controls="thirdForm"
+              >
                 <h6>بيانات الإتصال</h6>
                 <div class="arrow bg-transparent">
                   <i class="fa-solid fa-chevron-down text-secondary"></i>
                 </div>
               </div>
-              <div id="thirdForm" class="accordion-collapse collapse" aria-labelledby="headingThirdForm"
-                   data-bs-parent="#accordionRegister">
+              <div
+                id="thirdForm"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingThirdForm"
+                data-bs-parent="#accordionRegister"
+              >
                 <div class="accordion-body bg-white">
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="phoneNumber">رقم الجوال<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="phoneNumber" id="phoneNumber" [ngClass]="{
-                            invalid: (isFormSubmitted || userRegisterForm.get('phoneNumber').touched) &&
-                            userRegisterForm.get('phoneNumber').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('phoneNumber').touched) && userRegisterForm.get('phoneNumber').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
+                        <label for="phoneNumber">رقم الجوال<span class="danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="phoneNumber"
+                          id="phoneNumber"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('phoneNumber').touched) &&
+                              userRegisterForm.get('phoneNumber').errors
+                                ?.required
+                          }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('phoneNumber').touched) &&
+                            userRegisterForm.get('phoneNumber').errors?.required"
+                          class="danger">
+                          {{ "global.validators.requiredField" | translate }}
+                          </small>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="email">البريد الالكتروني<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="email" id="email" [ngClass]="{
-                            invalid: (isFormSubmitted || userRegisterForm.get('email').touched) &&
-                            userRegisterForm.get('email').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('email').touched) && userRegisterForm.get('email').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
+                        <label for="email"
+                          >البريد الالكتروني<span class="danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="email"
+                          id="email"
+                          [ngClass]="{
+                            invalid:
+                              (isFormSubmitted ||
+                                userRegisterForm.get('email').touched) &&
+                              userRegisterForm.get('email').errors?.requiredField
+                            }"
+                        />
+                        <small
+                          *ngIf="
+                            (isFormSubmitted ||
+                              userRegisterForm.get('email').touched) &&
+                            userRegisterForm.get('email').errors?.required"
+                          class="danger">{{ "global.validators.requiredField" | translate }}</small>
                       </div>
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="nationalityId" class="form-lbl">الجنسية</label>
-                        <select class="form-control form-select" formControlName="nationalityId" id="nationalityId">
-                          <option [ngValue]="null">-- اختر الجنسية --</option>
-                          <option *ngFor="let nationality of nationalities" [ngValue]="nationality.id">
+                        <label for="nationalityId" class="form-lbl">
+                          الجنسية
+                        </label>
+                        <select
+                          class="form-control form-select"
+                          formControlName="nationalityId"
+                          id="nationalityId">
+                          <option [ngValue]="null">-- {{ 'register.label.selectNationality' }}  --</option>
+                          <option
+                            *ngFor="let nationality of nationalities"
+                            [ngValue]="nationality.id">
                             {{ nationality.name }}
                           </option>
                         </select>
@@ -257,10 +627,15 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="governorateId" class="form-lbl">المحافظة</label>
-                        <select class="form-control form-select" formControlName="governorateId" id="governorateId">
+                        <label for="governorateId" class="form-lbl" >المحافظة</label>
+                        <select
+                          class="form-control form-select"
+                          formControlName="governorateId"
+                          id="governorateId">
                           <option [ngValue]="null">-- اختر المحافظة --</option>
-                          <option *ngFor="let governorate of governorates" [ngValue]="governorate.id">
+                          <option
+                            *ngFor="let governorate of governorates"
+                            [ngValue]="governorate.id">
                             {{ governorate.name }}
                           </option>
                         </select>
@@ -270,19 +645,22 @@
                     <div class="col-lg-12 d-flex align-items-end">
                       <div class="form-group w-100 mb-4">
                         <label for="address">العنـــــوان</label>
-                        <input type="text" class="form-control" formControlName="address" id="address" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="address"
+                          id="address"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
-
           <div class="mt-5">
             <button type="submit" class="btn btn-primary submit">حفظ</button>
-            <a routerLink="/auth/login" class="btn btn-secondary submit">رجوع</a>
+            <a routerLink="/auth/login" class="btn btn-secondary submit">{{ 'register.labels.back' | translate }}</a>
           </div>
         </form>
       </div>

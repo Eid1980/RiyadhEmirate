@@ -1,7 +1,7 @@
 {
   "global": {
-      "message": {
-          "reqiuredField": "هذا الحقل مطلوب"
+      "validators": {
+          "requiredField": "هذا الحقل مطلوب"
       }
   },
 
@@ -25,7 +25,7 @@
   },
   "register": {
       "labels": {
-          "singUp": "حساب جديد",
+          "singUp": "إنشاء حساب جديد",
           "nationalIdOrResidentNumber": "رقم الهوية/الإقامة",
           "name": "الاسم",
           "nationality": "الجنسية",
@@ -33,13 +33,19 @@
           "dateComponent": "سنة/شهر/يوم",
           "higri": "هجري",
           "greg": "ميلادي",
+          "selectNationality": "اختر الجنسية",
           "phoneNumber": "رقم الجوال",
           "email": "البريد الالكتروني",
           "password": "كلمة المرور",
+          "passwordConfirmation": "",
           "createNewAccount": "إنشاء حساب جديد",
           "haveAnAccount": "لديك حساب سابق؟",
           "createAccount": "إنشاء حساب",
-          "backToLogin": "العودة إلي تسجل الدخول"
+          "backToLogin": "العودة إلي تسجل الدخول",
+          "check": "تحقق",
+          "back" : "رجوع",
+          "pesronalInfo": "البيانات الشخصية",
+          "registerationInfo": "بيانات التسجيل"
       },
       "validators": {
           "invalidNationalId": "رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام",

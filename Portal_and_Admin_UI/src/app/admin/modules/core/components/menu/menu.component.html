@@ -144,5 +144,35 @@
         <span>البريد الوارد لنطام شامل</span>
       </a>
     </li>
+
+    <div class="accordion" id="accordionSidemenu">
+    <li class="accordion-item">
+      <h2 class="accordion-header" id="headingEmirate">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseEmirate" aria-expanded="true" aria-controls="collapseEmirate">
+          <i class="fa-solid fa-hand-holding-medical"></i>
+          <span>الامارة</span>
+        </button>
+      </h2>
+
+      <div id="collapseEmirate" class="accordion-collapse collapse" aria-labelledby="headingEmirate"
+        data-bs-parent="#accordionSidemenu">
+        <div class="accordion-body">
+          <ul class="accordion-list">
+            <li class="accordion-list-item">
+              <a class="accordion-list-link" routerLink="/admin/data-management/edit-about-us" routerLinkActive="active">
+                <span>عن الامارة</span>
+              </a>
+            </li>
+            <li class="accordion-list-item">
+              <a class="accordion-list-link" routerLink="/admin/data-management/edit-woman-section" routerLinkActive="active">
+                <span>القسم النسوي</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    </div>
   </ul>
 </div>

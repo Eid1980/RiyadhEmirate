@@ -71,9 +71,20 @@ namespace Emirates.Core.Application.Services.LatestNews
             //    PagingMetaData = serchResult.GetMetaData()
             //});
         }
-        public IApiResponse GetByLang(bool isArabic = true)
+        public IApiResponse GetByLang(SearchModel searchModel, bool isArabic = true)
         {
-            var latestNewsQuerable = _emiratesUnitOfWork.LatestNews.GetQueryable().Where(x => x.IsActive).Include(x => x.NewsCateguery);
+            var serchResult = _emiratesUnitOfWork.LatestNews.GetQueryable()
+               .ProjectTo<GetLatestNewsListDto>(_mapConfig)
+               .DynamicSearch(searchModel)
+               .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetLatestNewsListDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
+
+           /* var latestNewsQuerable = _emiratesUnitOfWork.LatestNews.GetQueryable().Where(x => x.IsActive).Include(x => x.NewsCateguery);
             var filesQuerable = _emiratesUnitOfWork.UploadedFiles.GetQueryable();
             var query = (from latestNews in latestNewsQuerable
                          join files in filesQuerable on latestNews.Id.ToString() equals files.EntityId
@@ -89,7 +100,7 @@ namespace Emirates.Core.Application.Services.LatestNews
                              OpenComments = latestNews.OpenComments,
                              Image = _fileManagerService.GetBase64File(latestNews.Id, "LatestNews")
                          }).OrderByDescending(s => s.Date);
-            return GetResponse(data: query);
+            return GetResponse(data: query);*/
         }
         public IApiResponse GetByLangTop5(bool isArabic = true)
         {

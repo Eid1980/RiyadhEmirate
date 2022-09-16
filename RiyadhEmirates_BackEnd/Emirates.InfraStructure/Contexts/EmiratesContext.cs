@@ -70,7 +70,7 @@ namespace Emirates.InfraStructure.Contexts
             }
             catch (Exception ex)
             {
-                throw new BusinessException("خطأ في قاعدة البيانات برجاء التواصل مع مدير النظلم");
+                throw new BusinessException("خطأ في قاعدة البيانات برجاء التواصل مع مدير النظام");
             }
         }
 
