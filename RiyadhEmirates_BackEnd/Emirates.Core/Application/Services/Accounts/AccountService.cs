@@ -190,7 +190,7 @@ namespace Emirates.Core.Application.Services.Accounts
             addedModel.PasswordHash = passwordHash;
             addedModel.PasswordSalt = passwordSalt;
             addedModel.IsActive = true;
-            addedModel.IsAdmin = false;
+            addedModel.IsEmployee = false;
             addedModel.LastLoginDate = DateTime.Now;
 
             _emiratesUnitOfWork.Users.Add(addedModel);
