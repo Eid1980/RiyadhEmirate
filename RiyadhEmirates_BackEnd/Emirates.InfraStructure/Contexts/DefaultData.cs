@@ -51,6 +51,18 @@ namespace Emirates.InfraStructure.Contexts
             arrData[0] = new Religion { Id = 1, NameAr = "مسلم", NameEn = "Muslem", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             return arrData;
         }
+        public static Role[] Roles()
+        {
+            Role[] arrData = new Role[7];
+            arrData[0] = new Role { Id = 1, NameAr = "مدير عام النظام", NameEn = "Super System Admin", IsActive = false, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[1] = new Role { Id = 2, NameAr = "مدي النظام", NameEn = "System Admin", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[2] = new Role { Id = 3, NameAr = "صلاحيات الأخبار", NameEn = "News Permission", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[3] = new Role { Id = 4, NameAr = "صلاحيات الاعدادات", NameEn = "Setting Permission", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[4] = new Role { Id = 5, NameAr = "صلاحيات المستخدمين", NameEn = "Users Permission", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[5] = new Role { Id = 6, NameAr = "مراجعة الطلبات", NameEn = "Request Review", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[6] = new Role { Id = 7, NameAr = "مراجعة طلبات شامل", NameEn = "Shamel Request Review", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            return arrData;
+        }
         public static DefendantType[] DefendantTypes()
         {
             DefendantType[] arrData = new DefendantType[3];
@@ -472,7 +484,7 @@ namespace Emirates.InfraStructure.Contexts
                 Email = "quicksofting2020@gmail.com",
                 PhoneNumber = "0581643654",
                 TwoFactorEnabled = true,
-                IsAdmin = true,
+                IsEmployee = true,
                 IsActive = true
             };
             arrData[1] = new User
@@ -492,7 +504,7 @@ namespace Emirates.InfraStructure.Contexts
                 Email = "mohaalp_salah@yahoo.com",
                 PhoneNumber = "0581643654",
                 TwoFactorEnabled = true,
-                IsAdmin = false,
+                IsEmployee = false,
                 IsActive = true
             };
             return arrData;

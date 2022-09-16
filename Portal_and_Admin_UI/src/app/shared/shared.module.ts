@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { SharedRoutingModule } from './shared-routing.module';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { DialogModule } from 'primeng/dialog';
+import { TooltipModule } from 'primeng/tooltip';
 import { RatingModule } from 'primeng/rating';
 import { AuthGuard } from './guards/auth.guard';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
@@ -82,6 +83,7 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
     BreadcrumbModule,
     ToastModule,
     DialogModule,
+    TooltipModule,
     RatingModule,
     NgxHijriGregorianDatepickerModule
   ],
@@ -108,6 +110,7 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
     InputSwitchModule,
     ToastModule,
     DialogModule,
+    TooltipModule,
     DatePipe,
     FileUploadModule,
     ConfirmDialogModule,

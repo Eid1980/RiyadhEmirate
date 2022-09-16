@@ -146,9 +146,6 @@
                 <a class="nav-link" routerLink="/home/organization">الهيكل التنظيمي</a>
               </li>
               <li>
-                <a class="nav-link" routerLink="/services-guide">دليل إجراءات الخدمات</a>
-              </li>
-              <li>
                 <a class="nav-link" routerLink="/home/women-section">القسم النسوي</a>
               </li>
             </ul>
@@ -206,11 +203,11 @@
         أهلاً <span> {{userInfo.shortNameAr}}</span>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <a class="dropdown-item" routerLink="/admin/home" *ngIf="userInfo.isAdmin">
+        <a class="dropdown-item" routerLink="/admin/home" *ngIf="userInfo.isEmployee">
           <i class="fa fa-gear"></i>
           لوحة التحكم
         </a>
-        <a class="dropdown-item" routerLink="/eservice/my-requests" *ngIf="!userInfo.isAdmin">
+        <a class="dropdown-item" routerLink="/eservice/my-requests" *ngIf="!userInfo.isEmployee">
           <i class="fa fa-gear"></i>
           طلباتي
         </a>

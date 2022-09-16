@@ -19,24 +19,20 @@ export class ServicesGuideInnerComponent implements OnInit {
 
   constructor(private _serviceService : ServiceService,
     private _serviceConditionService: ServiceConditionService,
-    private _activatedRoute: ActivatedRoute,
-    public sanitizer: DomSanitizer) { }
+    private _activatedRoute: ActivatedRoute, public sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.serviceId = this._activatedRoute.snapshot.params['id'];
-
     this.getServiceById();
     this.getServiceConditions();
 
   }
 
   getServiceById(){
-    this._serviceService.getById(this.serviceId).subscribe(
-      (response) => {
-        this.service = response.data
-      },
-      (error) => {}
-    )
+    this._serviceService.getById(this.serviceId).subscribe((response) => {
+      debugger;
+      this.service = response.data
+    });
   }
 
   getServiceConditions() {

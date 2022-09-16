@@ -15,19 +15,18 @@
       <div class="d-flex justify-content-center mb-5">
         <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid rounded-3" alt="banner" />
       </div>
-
-      <h4 class="artical-head">
-        {{ service.nameAr }}
-      </h4>
-      <!--<p class="artical-text me-3">
-        {{ service.descriptionAr }}
-      </p>-->
-    </div>
-  </div>
-  <div class="py-4">
-    <div class="term-row" *ngFor="let serviceCondition of getServiceConditionListDto;let i=index;">
-      <span class="term-num">{{ i+1 }}</span>
-      <span class="term-desc">{{ serviceCondition.condition }}</span>
+      <h4 class="artical-head">{{ service.nameAr }}</h4>
+      <p class="artical-text me-3">{{ service.descriptionAr }}</p>
+      <div class="mb-5" *ngIf="getServiceConditionListDto.length > 0">
+        <div class="artical-title mb-3">
+          شروط الخدمة :
+        </div>
+        <ol class="artical-list">
+          <li class="artical-list-item" *ngFor="let serviceCondition of getServiceConditionListDto;">
+            {{ serviceCondition.condition }}
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </div>
