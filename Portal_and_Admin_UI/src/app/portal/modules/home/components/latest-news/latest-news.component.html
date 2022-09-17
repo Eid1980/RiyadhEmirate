@@ -25,22 +25,26 @@
       </a>
     </div>
 
-    <nav aria-label="Page navigation example">
+    <p-paginator [rows]="PAGESIZECONST" [totalRecords]="totalCount" [rowsPerPageOptions]="[12,16,24]" (onPageChange)="paginate($event)"></p-paginator>
+
+    <!--<nav aria-label="Page navigation example">
       <ul class="pagination pagination-sm">
         <li class="page-item  ">
-          <a class="page-link" href="#" aria-label="Previous">
+          <button aria-label="Previous" [disabled]="!hasPrevious" (click)="getPreviousPage()">
             <span aria-hidden="true">Previous</span>
-          </a>
+          </button>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" (click)="getLatestNews(pageNumber)">{{ pageNumber }}</a></li>
+        <li class="page-item"><a class="page-link" (click)="getLatestNews(nextPageNumber)">
+          {{ nextPageNumber }}
+        </a></li>
 
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
+          <button aria-label="Next" [disabled]="!hasNext" (click)="getNextPage()">
             <span aria-hidden="true">Next</span>
-          </a>
+          </button>
         </li>
       </ul>
-    </nav>
+    </nav>-->
   </div>
 </div>

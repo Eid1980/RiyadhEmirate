@@ -28,5 +28,8 @@
         </div>
       </a>
     </div>
+
+    <p-paginator [rows]="PAGESIZECONST" [totalRecords]="totalCount" [rowsPerPageOptions]="[12,16,24]" (onPageChange)="paginate($event)"></p-paginator>
+
   </div>
 </div>

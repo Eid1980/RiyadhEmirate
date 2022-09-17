@@ -73,22 +73,8 @@ namespace Emirates.Core.Application.Services.LatestNews
         }
         public IApiResponse GetByLang(SearchModel searchModel, bool isArabic = true)
         {
-            var serchResult = _emiratesUnitOfWork.LatestNews.GetQueryable()
-               .ProjectTo<GetLatestNewsListDto>(_mapConfig)
-               .DynamicSearch(searchModel)
-               .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
-
-            return GetResponse(data: new ListPageModel<GetLatestNewsListDto>
-            {
-                GridItemsVM = serchResult,
-                PagingMetaData = serchResult.GetMetaData()
-            });
-
-           /* var latestNewsQuerable = _emiratesUnitOfWork.LatestNews.GetQueryable().Where(x => x.IsActive).Include(x => x.NewsCateguery);
-            var filesQuerable = _emiratesUnitOfWork.UploadedFiles.GetQueryable();
-            var query = (from latestNews in latestNewsQuerable
-                         join files in filesQuerable on latestNews.Id.ToString() equals files.EntityId
-                         where files.EntityName == "LatestNews" && latestNews.IsArabic == isArabic
+            var query = (from latestNews in _emiratesUnitOfWork.LatestNews.GetQueryable()
+                         where latestNews.IsArabic == isArabic && latestNews.IsActive == true
                          select new GetLatestNewsListDto
                          {
                              Id = latestNews.Id,
@@ -99,8 +85,17 @@ namespace Emirates.Core.Application.Services.LatestNews
                              Date = latestNews.Date,
                              OpenComments = latestNews.OpenComments,
                              Image = _fileManagerService.GetBase64File(latestNews.Id, "LatestNews")
-                         }).OrderByDescending(s => s.Date);
-            return GetResponse(data: query);*/
+                         }).OrderByDescending(s => s.Date).AsQueryable();
+
+            var serchResult = query
+               .DynamicSearch(searchModel)
+               .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetLatestNewsListDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
         }
         public IApiResponse GetByLangTop5(bool isArabic = true)
         {
