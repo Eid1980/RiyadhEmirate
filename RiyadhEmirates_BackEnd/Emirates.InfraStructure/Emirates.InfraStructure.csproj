@@ -30,8 +30,4 @@
     <ProjectReference Include="..\Emirates.Core\Emirates.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

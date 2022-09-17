@@ -4,10 +4,10 @@
       <a routerLink="/" class="card-logo">
         <img src="assets/images/logo.svg" alt="logo" class="img-fluid" />
       </a>
-      <!--<span (click)="onChangeLang()" >
+      <span (click)="onChangeLang()" >
         <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
         <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
-      </span>-->
+      </span>
     </div>
   </div>
   <div class="w-100">
@@ -23,7 +23,7 @@
             </label>
             <input type="text" id="userName" class="form-control" maxlength="10" formControlName="userName" />
             <small *ngIf="(isFormSubmitted || loginForm.get('userName').touched) && loginForm.get('userName').errors?.required"
-                   class="danger">هذاالحقل مطلوب</small>
+                   class="danger">{{ 'global.validators.requiredField' | translate }}</small>
           </div>
           <div class="form-group">
             <label for="password">
@@ -31,7 +31,7 @@
             </label>
             <input type="password" id="password" class="form-control" formControlName="password" />
             <small *ngIf="(isFormSubmitted || loginForm.get('password').touched) && loginForm.get('password').errors?.required"
-                   class="danger">هذاالحقل مطلوب</small>
+                   class="danger">{{ 'global.validators.requiredField' | translate }}</small>
           </div>
           <div class="">
             <a [routerLink]="['/auth/forgot-password']">

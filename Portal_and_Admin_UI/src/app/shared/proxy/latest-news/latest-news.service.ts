@@ -20,8 +20,8 @@ export class LatestNewsService {
     );
   }
 
-  getByLang = (isArabic: boolean): Observable<ApiResponse<GetLatestNewsListDto[]>> => {
-    return this.httpClient.get<ApiResponse<GetLatestNewsListDto[]>>(`${this.serviceUrl}/GetByLang/${isArabic}`).pipe(
+  getByLang = (isArabic: boolean, searchModel : SearchModel): Observable<ApiResponse<GetLatestNewsListDto[]>> => {
+    return this.httpClient.post<ApiResponse<GetLatestNewsListDto[]>>(`${this.serviceUrl}/GetByLang/${isArabic}`, searchModel).pipe(
     );
   }
 

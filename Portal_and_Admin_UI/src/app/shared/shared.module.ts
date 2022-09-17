@@ -44,6 +44,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceFilterPipe } from './pipes/service-filter.pipe';
 
+
 @NgModule({
   declarations: [
     AuthLayoutComponent,
