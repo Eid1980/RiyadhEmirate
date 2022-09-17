@@ -106,7 +106,7 @@ export class RegisterComponent implements OnInit {
   onCheck() {
     this.isFormSubmitted = true;
     this.isValidDate = false;
-    if (this.birthDate.getSelectedDate() == 'Invalid date') {
+    if (this.birthDate?.getSelectedDate() == 'Invalid date') {
       this.isValidDate = true;
       return;
     }

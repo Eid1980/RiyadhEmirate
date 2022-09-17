@@ -1,8 +1,12 @@
 {
   "global": {
-      "validators": {
-          "requiredField": "هذا الحقل مطلوب"
-      }
+    "actions":{
+      "save" :"حفظ"
+
+    },
+    "validators": {
+        "requiredField": "هذا الحقل مطلوب"
+    }
   },
 
   "__comment1": "begin auth region",
@@ -37,7 +41,7 @@
           "phoneNumber": "رقم الجوال",
           "email": "البريد الالكتروني",
           "password": "كلمة المرور",
-          "passwordConfirmation": "",
+          "passwordConfirmation": "تأكيد كلمة المرور",
           "createNewAccount": "إنشاء حساب جديد",
           "haveAnAccount": "لديك حساب سابق؟",
           "createAccount": "إنشاء حساب",
@@ -45,8 +49,25 @@
           "check": "تحقق",
           "back" : "رجوع",
           "pesronalInfo": "البيانات الشخصية",
-          "registerationInfo": "بيانات التسجيل"
-      },
+          "firstNameAr": "الاسم الأول عربي",
+          "firstNameEn": "الاسم الأول إنجليزي",
+          "secondNameAr" : "اسم الأب عربي",
+          "secondNameEn": "اسم الأب انجليزي",
+          "thirdNameAr": "اسم الجد عربي",
+          "thirdNameEn": "اسم الجد انجليزي",
+          "lastNameAr": "اسم العائلة عربي",
+          "lastNameEn": "اسم العائلة انجليزي",
+          "gender": " : الجنس",
+          "select" : "اختر",
+          "male" : "ذكر",
+          "female" : "انثى",
+          "passportNo": "رقم جواز السفر",
+          "registerationInfo": "بيانات التسجيل",
+          "communicationInfo": "بيانات الإتصال",
+          "government": "المحافظة",
+          "selectGovernment": " اخترالمحافظة",
+          "address" : "العنوان"
+        },
       "validators": {
           "invalidNationalId": "رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام",
           "passwordPattern": "كلمة المرور يجب ان تحتوي علي حروف كبيرة و حروف صغيرة وارقام و حروف خاصة",
@@ -80,17 +101,28 @@
     "provinces": "المحافظات",
     "electronicServices": "الخدمات الالكترونية",
     "browseAllServices": "تصفح جميع الخدمات",
+    "browseAllReports": "تصفح جميع التقارير",
     "electronicCouncil": "المجلس الإلكتروني",
     "electronicCouncilTitle": "تقديم شكوي أو مقترح أو متابعة طلب لسمو أمير منطقة الرياض",
     "inquireyService": "استعلام عن خدمة أو معاملة",
     "inquireyServiceTitle": "استعلام عن خدمة برقم المعاملة أو رقم الطلب",
+    "latestNews": "آخر الأخبار",
     "news": "الاخبار",
+    "provincesNews":"أخبار المحافظات",
+    "serviceGuide":"دليل الخدمات",
     "relatedplatforms": "منصات ذات صلة",
     "mediaReports": "التقارير الإعلامية",
     "provincialNews": "أخبار المحافظات",
     "browseAllNews": "تصفح جميع الأخبار",
-    "advertisingReports": "تقارير إعلامية"
+    "advertisingReports": "تقارير إعلامية",
+    "explainService": "شرح الخدمة",
+    "numbersOfEmirate": "الإمارة بالأرقام",
+    "numberOfUsedWebsite": "عدد المستفدين من البوابة",
+    "totalNumberOfElectronicServices": "العدد الإجمالى للخدمات الإلكترونيه",
+    "numberOfOpenedInfo": "عدد طلبات البيانات المفتوحة",
+    "numberOfServicesInWaitingList": "عدد الخدمات على قائمة الإنتظار"
   },
+
   "electronicCouncil": {
       "shared": {
           "main": "الرئيسية",

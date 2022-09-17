@@ -39,6 +39,7 @@ export class GlobalService {
         break;
     }
   }
+
   public showMessage(msg: string): void {
     if (msg) {
       var msgArray = msg.split(',');
@@ -53,6 +54,7 @@ export class GlobalService {
   confirm() {
     this.confirmSubmit();
   }
+
   confirmSubmit: Function;
   public clearMessages() {
     this.messageService.clear('confirm');
@@ -86,9 +88,11 @@ export class GlobalService {
   navigate(url: string) {
     this.router.navigate([url]);
   }
+
   navigateToInbox() {
     this.router.navigate(["/admin/eservice-admin/inbox"]);
   }
+
   navigateToRequesterDashboard() {
     this.router.navigate(["/eservice/my-requests"]);
   }
@@ -98,6 +102,7 @@ export class GlobalService {
     const defaultOptions = { markAsDirty: true, updateValueAndValidity: true } as GlobalOptions.ControlOptions;
     this.markFormGroup(formGroup, { ...defaultOptions, ...options });
   }
+
   markFormGroup(formGroup: FormGroup, options: GlobalOptions.ControlOptions) {
     Object.keys(formGroup.controls).forEach(key => {
       if (formGroup.get(key) instanceof FormGroup) {
@@ -111,6 +116,7 @@ export class GlobalService {
       }
     });
   }
+
   markFormArray(formArray: FormArray, options: GlobalOptions.ControlOptions) {
     formArray.controls.forEach(control => {
       if (control instanceof FormGroup) {
@@ -124,6 +130,7 @@ export class GlobalService {
       }
     });
   }
+
   markFormControl(formControl: FormControl, options: GlobalOptions.ControlOptions) {
     if (options.markAsDirty) formControl.markAsDirty();
     if (options.updateValueAndValidity) formControl.updateValueAndValidity();
@@ -138,4 +145,55 @@ export class GlobalService {
     this.subject.next(this._breadcrumbItems);
   }
   //#end region
+
+
+  convertBase64ToBlobData(base64Data: string, contentType: string = 'image/png', sliceSize = 512) {
+    debugger
+    let byteCharacters ;
+    if(contentType == 'image/png'){
+      byteCharacters = atob(base64Data.split(',')[1]) // for image
+    }else{
+      byteCharacters = atob(base64Data)
+    }
+
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+
+      byteArrays.push(byteArray);
+    }
+
+    const blob = new Blob(byteArrays, { type: contentType });
+    return blob;
+  }
+
+
+  downloadAttachment(base64content, fileName) {
+
+    let fileType = ''
+    if (fileName.split('.')[1] == 'pdf') {
+      fileType = 'application/pdf'
+    } else {
+      fileType = 'image/png'
+    }
+
+    const blobData = this.convertBase64ToBlobData(base64content , fileType);
+
+    // chrome
+    const blob = new Blob([blobData], { type: fileType });
+    const url = window.URL.createObjectURL(blob);
+    // window.open(url);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'attachment';
+    link.click();
+  }
 }

@@ -8,6 +8,7 @@ using Emirates.Core.Application.DynamicSearch;
 using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Services.InternalPortal.FileManager;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -21,9 +22,12 @@ namespace Emirates.Core.Application.Services.Requests
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
         private readonly IConfigurationProvider _mapConfig;
-        public RequestService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper)
+        private readonly IFileManagerService _fileManagerService;
+
+        public RequestService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper, IFileManagerService fileManagerService)
         {
             _emiratesUnitOfWork = emiratesUnitOfWork;
+            _fileManagerService = fileManagerService;
             _mapper = mapper;
             _mapConfig = mapper.ConfigurationProvider;
         }
@@ -140,7 +144,10 @@ namespace Emirates.Core.Application.Services.Requests
                         {
                             Id = file.Id,
                             AttachmentName = type.NameAr,
-                            FileName = file.OriginalName
+                            FileName = file.OriginalName,
+
+                            Image = _fileManagerService.GetBase64File(id, file.EntityName)
+
                         };
             return GetResponse(data: query.ToList());
         }

@@ -14,10 +14,10 @@
   <div class="row mb-5 py-5">
     <div class="col-md-6 news">
       <div class="section-title">
-        <h3 class="title">آخر الأخبار</h3>
+        <h3 class="title">{{ 'home.latestNews' | translate }} </h3>
         <div class="more">
           <a routerLink="home/latest-news">
-            تصفح جميع الأخبار
+            {{ 'home.browseAllNews' | translate }}
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
           </a>
         </div>
@@ -90,7 +90,7 @@
           <!-- <img src="./assets/images/services-manual.svg" alt="" class="w-100"> -->
           <div class="services-details-container">
             <div class="section-title">
-              <h3 class="title">دليل الخدمات</h3>
+              <h3 class="title">{{ 'home.serviceGuide' | translate }}</h3>
             </div>
             <div class="owl__carousel">
               <owl-carousel-o [options]="servicesDetailsOptions" class="owl-rtl">
@@ -131,7 +131,7 @@
       <!-- Related Websites -->
       <div class="related-web">
         <div class="section-title">
-          <h3 class="title">منصات ذات صلة</h3>
+          <h3 class="title">{{ 'home.relatedplatforms' | translate}}</h3>
         </div>
         <div class="rel-web">
           <a href="#">
@@ -174,7 +174,7 @@
 <div class="row mx-0 section-padding e-services">
   <div class="col-md-12 my-5">
     <div class="section-title justify-content-center py-4">
-      <h3 class="title mb-3">الخدمات الإلكترونية</h3>
+      <h3 class="title mb-3">{{ 'home.electronicServices'| translate}}</h3>
     </div>
 
     <div class="serv-tabs">
@@ -222,7 +222,7 @@
                   <div class="service-link d-flex align-items-center">
                     <a [routerLink]="['/eservice/services/', service.id]"
                        class="px-3">
-                      شرح الخدمة
+                       {{ 'home.explainService' | translate}}
                     </a>
                     <span class="arrow">
                       <img src="./assets/images/icons/services/green-arrow-left.svg"
@@ -252,7 +252,7 @@
 
     <div class="py-5 d-flex justify-content-end">
       <a [routerLink]="['/eservice/services-list']" class="browse btn">
-        تصفح جميع الخدمات
+        {{ 'home.browseAllServices' | translate}}
         <img src="./assets/images/icons/feather-arrow-left.svg"
              alt=""
              class="mx-2" />
@@ -276,10 +276,10 @@
     <!-- Gov News -->
     <div class="col-md-6 offset-md-1 gov-news">
       <div class="section-title">
-        <h3 class="title">أخبار المحافظات</h3>
+        <h3 class="title">{{ 'home.provincesNews'  | translate}}</h3>
         <div class="more">
           <a routerLink="home/news" [queryParams]="{ newsTypeId: '2' }">
-            تصفح جميع الأخبار
+            {{ 'home.browseAllNews' | translate}}
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
           </a>
         </div>
@@ -313,10 +313,10 @@
     <!-- Advertising Reports -->
     <div class="col-md-5 advertise-report" style="height: fit-content">
       <div class="section-title">
-          <h3 class="title">تقارير إعلامية</h3>
+          <h3 class="title"> {{ 'home.advertisingReports'  | translate }}</h3>
           <div class="more">
             <a routerLink="home/news" [queryParams]="{ newsTypeId: '3' }">
-              تصفح جميع التقارير
+              {{ 'home.browseAllReports'  | translate }}
               <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>
           </div>
@@ -354,7 +354,7 @@
 
 <!-- Important Numbers -->
 <div class="process-wrapper">
-  <h3>الإمارة بالأرقام</h3>
+  <h3>{{ 'home.numbersOfEmirate' | translate }}</h3>
 
   <div class="container">
     <div class="row">
@@ -364,7 +364,7 @@
                class="img-fluid"
                alt="image" />
           <h5 id="processNumber1">0</h5>
-          <p>عدد المستفدين من البوابة</p>
+          <p>{{ 'home.numberOfUsedWebsite' | translate}}</p>
         </div>
       </div>
 
@@ -374,7 +374,7 @@
                class="img-fluid"
                alt="image" />
           <h5 id="processNumber2">0</h5>
-          <p>العدد الإجمالى للخدمات الإلكترونيه</p>
+          <p> {{'home.totalNumberOfElectronicServices' | translate}}</p>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-2">
@@ -383,7 +383,7 @@
                class="img-fluid"
                alt="image" />
           <h5 id="processNumber3">0</h5>
-          <p>عدد طلبات البيانات المفتوحة</p>
+          <p> {{ 'home.numberOfOpenedInfo' | translate}}</p>
         </div>
       </div>
 
@@ -393,7 +393,7 @@
                class="img-fluid"
                alt="image" />
           <h5 id="processNumber4">0</h5>
-          <p>عدد الخدمات على قائمة الإنتظار</p>
+          <p>{{ 'home.numberOfServicesInWaitingList' | translate}}</p>
         </div>
       </div>
     </div>

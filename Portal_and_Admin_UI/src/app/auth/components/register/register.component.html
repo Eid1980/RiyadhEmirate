@@ -45,12 +45,12 @@
               id="date"
               [placeHolder]="'register.labels.dateComponent' | translate"
               [isRequired]="false"
-              [GregLabel]="'register.labels.nationalIdOrResidentNumbergreg' | translate "
+              [GregLabel]="'register.labels.greg' | translate "
               [hijriLabel]="'register.labels.higri' | translate "
               [maxGreg]="maxGreg"
               [maxHijri]="maxHigriDate"
               [selectedDateType]="selectedDateType"
-              [label]="'register.labels.dateComponent' | translate" *
+              [label]="'register.labels.birthDate' | translate"
               #birthDate
             >
             </hijri-gregorian-datepicker>
@@ -132,17 +132,18 @@
                       </div>
                     </div>
                     <div class="col-sm-6">
+
                       <div class="form-group mb-4">
                         <hijri-gregorian-datepicker
                           id="dateOfBirth"
-                          [placeHolder]="'سنة/شهر/يوم'"
+                          [placeHolder]="'register.labels.dateComponent' | translate"
                           [isRequired]="false"
-                          [GregLabel]="'ميلادي'"
-                          [maxGreg]="maxGreg"
+                          [hijriLabel]="'register.labels.higri' | translate "
+                          [GregLabel]="'register.labels.greg' | translate "
                           [maxHijri]="maxHigriDate"
-                          [hijriLabel]="'هجري'"
+                          [maxGreg]="maxGreg"
                           [selectedDateType]="selectedDateType"
-                          label="تاريخ الميلاد *"
+                          [label]="'register.labels.birthDate' | translate"
                           #birthDate
                         >
                         </hijri-gregorian-datepicker>
@@ -158,9 +159,9 @@
 
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="firstNameAr"
-                          >الاسم الأول عربي<span class="danger">*</span></label
-                        >
+                        <label for="firstNameAr">
+                          {{ 'register.labels.firstNameAr' | translate}}
+                          <span class="danger">*</span></label>
                         <input
                           type="text"
                           class="form-control"
@@ -189,11 +190,9 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="firstNameEn"
-                          >الاسم الأول انجليزي<span class="danger"
-                            >*</span
-                          ></label
-                        >
+                        <label for="firstNameEn">
+                          {{ 'register.labels.firstNameAr' | translate }}<span class="danger">*</span
+                          ></label>
                         <input
                           type="text"
                           class="form-control"
@@ -216,15 +215,14 @@
                           class="danger"
                           >{{
                             "global.validators.requiredField" | translate
-                          }}</small
-                        >
+                          }}</small>
                       </div>
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="secondNameAr"
-                          >اسم الأب عربي<span class="danger">*</span></label
+                        <label for="secondNameAr">
+                          {{ 'register.labels.secondNameAr' | translate}} <span class="danger">*</span></label
                         >
                         <input
                           type="text"
@@ -255,9 +253,9 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="secondNameEn"
-                          >اسم الأب انجليزي<span class="danger">*</span></label
-                        >
+                        <label for="secondNameEn">
+                          {{ 'register.labels.secondNameEn' | translate}}
+                          <span class="danger">*</span></label>
                         <input
                           type="text"
                           class="form-control"
@@ -288,9 +286,9 @@
 
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="thirdNameAr"
-                          >اسم الجد عربي<span class="danger">*</span></label
-                        >
+                        <label for="thirdNameAr">
+                          {{ 'register.labels.thirdNameAr' | translate}}
+                          <span class="danger">*</span></label>
                         <input
                           type="text"
                           class="form-control"
@@ -319,9 +317,9 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="thirdNameEn"
-                          >اسم الجد انجليزي<span class="danger">*</span></label
-                        >
+                        <label for="thirdNameEn">
+                          {{ 'register.labels.thirdNameEn' | translate}}
+                          <span class="danger">*</span></label>
                         <input
                           type="text"
                           class="form-control"
@@ -351,9 +349,9 @@
 
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="lastNameAr"
-                          >اسم العائلة عربي<span class="danger">*</span></label
-                        >
+                        <label for="lastNameAr">
+                          {{ 'register.labels.lastNameAr' | translate}}
+                          <span class="danger">*</span></label>
                         <input
                           type="text"
                           class="form-control"
@@ -382,11 +380,11 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="lastNameEn"
-                          >اسم العائلة انجليزي<span class="danger"
-                            >*</span
-                          ></label
-                        >
+                        <label for="lastNameEn">
+                        {{ 'register.labels.lastNameEn' | translate}}
+
+                          <span class="danger"
+                            >*</span></label>
                         <input
                           type="text"
                           class="form-control"
@@ -416,23 +414,23 @@
 
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="isMale" class="form-lbl"
-                          >الجنس<span class="danger">*</span></label
-                        >
+                        <label for="isMale" class="form-lbl">
+                          {{ 'register.labels.gender' | translate}}<span class="danger">*</span></label>
                         <select
                           class="form-control form-select"
                           formControlName="isMale"
-                          id="isMale"
-                        >
-                          <option [ngValue]="null">اختر...</option>
-                          <option [ngValue]="true">ذكر</option>
-                          <option [ngValue]="false">انثى</option>
+                          id="isMale">
+                          <option [ngValue]="null">{{ 'register.labels.select' | translate }}...</option>
+                          <option [ngValue]="true">{{ 'register.labels.male' | translate }}</option>
+                          <option [ngValue]="false">{{ 'register.labels.female' | translate }}</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="passportId">رقم جواز السفر</label>
+                        <label for="passportId">
+                          {{ 'register.labels.passportNo' | translate}}
+                        </label>
                         <input
                           type="text"
                           class="form-control"
@@ -495,9 +493,9 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="confirmPassWord"
-                          >{{ "global.validators.requiredField" | translate }}<span class="danger">*</span></label
-                        >
+                        <label for="confirmPassWord">
+                          {{ 'register.labels.passwordConfirmation' | translate }}
+                          <span class="danger">*</span></label>
                         <input
                           type="password"
                           class="form-control"
@@ -539,9 +537,8 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#thirdForm"
                 aria-expanded="true"
-                aria-controls="thirdForm"
-              >
-                <h6>بيانات الإتصال</h6>
+                aria-controls="thirdForm">
+                <h6>{{ 'register.labels.communicationInfo' | translate }}</h6>
                 <div class="arrow bg-transparent">
                   <i class="fa-solid fa-chevron-down text-secondary"></i>
                 </div>
@@ -556,8 +553,9 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="phoneNumber">رقم الجوال<span class="danger">*</span></label
-                        >
+                        <label for="phoneNumber">
+                          {{ 'register.labels.phoneNumber' | translate}}
+                          <span class="danger">*</span></label>
                         <input
                           type="text"
                           class="form-control"
@@ -583,9 +581,9 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="email"
-                          >البريد الالكتروني<span class="danger">*</span></label
-                        >
+                        <label for="email">
+                          {{ 'register.labels.email' | translate}}
+                          <span class="danger">*</span></label>
                         <input
                           type="text"
                           class="form-control"
@@ -610,7 +608,7 @@
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
                         <label for="nationalityId" class="form-lbl">
-                          الجنسية
+                          {{ 'register.labels.nationality' | translate}}
                         </label>
                         <select
                           class="form-control form-select"
@@ -627,12 +625,12 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
-                        <label for="governorateId" class="form-lbl" >المحافظة</label>
+                        <label for="governorateId" class="form-lbl" >{{ 'register.label.government' | translate }}</label>
                         <select
                           class="form-control form-select"
                           formControlName="governorateId"
                           id="governorateId">
-                          <option [ngValue]="null">-- اختر المحافظة --</option>
+                          <option [ngValue]="null">-- {{ 'register.labels.selectGovernment' | translate}} --</option>
                           <option
                             *ngFor="let governorate of governorates"
                             [ngValue]="governorate.id">
@@ -644,7 +642,7 @@
 
                     <div class="col-lg-12 d-flex align-items-end">
                       <div class="form-group w-100 mb-4">
-                        <label for="address">العنـــــوان</label>
+                        <label for="address">{{ 'register.labels.address' | translate }}</label>
                         <input
                           type="text"
                           class="form-control"
@@ -659,7 +657,7 @@
             </div>
           </div>
           <div class="mt-5">
-            <button type="submit" class="btn btn-primary submit">حفظ</button>
+            <button type="submit" class="btn btn-primary submit">{{ 'global.actions.save' | translate}}</button>
             <a routerLink="/auth/login" class="btn btn-secondary submit">{{ 'register.labels.back' | translate }}</a>
           </div>
         </form>
