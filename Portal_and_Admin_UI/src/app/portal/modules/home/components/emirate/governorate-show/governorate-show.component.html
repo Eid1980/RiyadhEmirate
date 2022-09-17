@@ -1,0 +1,39 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+      <span class="breadcrumb-item fs-16 active">محافظات منطقة الرياض</span>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5 py-md-5">
+    <div class="col-md-6 mb-4" *ngFor="let governorate of governorateListDto">
+      <div class="card-basic">
+        <div class="card-basic-cover">
+          <img *ngIf="governorate?.image" [src]="sanitizer.bypassSecurityTrustResourceUrl(governorate?.image?.base64File)" class="img-fluid" [alt]="governorate?.nameAr" />
+          <img *ngIf="!governorate?.image" src="https://via.placeholder.com/550x260" class="img-fluid" [alt]="governorate?.nameAr" />
+        </div>
+        <div class="card-basic-body">
+          <h3>{{governorate?.nameAr}}</h3>
+          <h6>{{governorate?.descriptionAr}}</h6>
+        </div>
+        <ul class="card-basic-list pb-3 mt-auto border-top pt-4">
+          <li class="card-basic-list-item" *ngIf="governorate?.phoneNumber">
+            <i class="fa-solid fa-phone"></i>
+            <span>{{governorate?.phoneNumber}}</span>
+          </li>
+          <li class="card-basic-list-item" *ngIf="governorate?.locationLink">
+            <i class="fa-solid fa-location-dot"></i>
+            <a [attr.href]="governorate?.locationLink" target="_blank">خريطة المحافظة</a>
+          </li>
+          <li class="card-basic-list-item" *ngIf="governorate?.portalLink">
+            <i class="fa-solid fa-laptop"></i>
+            <a [attr.href]="governorate?.portalLink" target="_blank">البوابة الإلكترونية للمحافظة</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

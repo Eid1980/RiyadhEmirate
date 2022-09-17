@@ -29,6 +29,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public ICommentStageRepository CommentStages => commentStages ??= new CommentStageRepository(Context);
 
 
+        private GovernorateRepository governorates;
+        public IGovernorateRepository Governorates => governorates ??= new GovernorateRepository(Context);
+
+
         private NationalityRepository nationalities;
         public INationalityRepository Nationalities => nationalities ??= new NationalityRepository(Context);
 
@@ -109,6 +113,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public IRequestTypeRepository RequestTypes => requestTypes ??=  new RequestTypeRepository(Context);
 
 
+        private RoleRepository roles;
+        public IRoleRepository Roles => roles ??=  new RoleRepository(Context);
+
+
         private ServiceAudienceRepository serviceAudiences;
         public IServiceAudienceRepository ServiceAudiences => serviceAudiences ??= new ServiceAudienceRepository(Context);
 
@@ -143,6 +151,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
 
         private UserRepository users;
         public IUserRepository Users => users ??= new UserRepository(Context);
+
+
+        private UserRoleRepository userRoles;
+        public IUserRoleRepository UserRoles => userRoles ??= new UserRoleRepository(Context);
 
 
         private LookupRepository lookups;

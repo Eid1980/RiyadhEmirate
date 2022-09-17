@@ -54,6 +54,10 @@ import { EditAboutUsComponent } from './components/about-us/edit-about-us/edit-a
 import { LatestNewsArCommentsComponent } from './components/latest-news-ar/latest-news-ar-comments/latest-news-ar-comments.component';
 import { LatestNewsEnCommentsComponent } from './components/latest-news-en/latest-news-en-comments/latest-news-en-comments.component';
 import { EditWomanSectionComponent } from './components/woman-section/edit-woman-section/edit-woman-section.component';
+import { GovernorateAddComponent } from './components/governorates/governorate-add/governorate-add.component';
+import { GovernorateListComponent } from './components/governorates/governorate-list/governorate-list.component';
+import { GovernorateEditComponent } from './components/governorates/governorate-edit/governorate-edit.component';
+import { GovernorateViewComponent } from './components/governorates/governorate-view/governorate-view.component';
 
 @NgModule({
   declarations: [
@@ -108,6 +112,10 @@ import { EditWomanSectionComponent } from './components/woman-section/edit-woman
     LatestNewsArCommentsComponent,
     LatestNewsEnCommentsComponent,
     EditWomanSectionComponent,
+    GovernorateAddComponent,
+    GovernorateListComponent,
+    GovernorateEditComponent,
+    GovernorateViewComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

@@ -51,7 +51,7 @@ export class LatestNewsInnerComponent implements OnInit {
 
   buildForm() {
     this.createCommentForm = this.formBuilder.group({
-      createdBy: [this.createLatestNewsCommentDto.createdBy || ''],
+      createdByName: [this.createLatestNewsCommentDto.createdByName || ''],
       email: [this.createLatestNewsCommentDto.email || ''],
       comment: [this.createLatestNewsCommentDto.comment || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });

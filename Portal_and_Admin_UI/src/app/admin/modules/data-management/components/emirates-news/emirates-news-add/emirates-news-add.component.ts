@@ -86,9 +86,9 @@ export class EmiratesNewsAddComponent implements OnInit {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
           let id = response.data.toString();
-          this.fileManagerService.upload(id, 'News', '', [this.createNewsform.get('image').value]).subscribe(res =>{
+          this.fileManagerService.upload(id, 'News', '', [this.createNewsform.get('image').value]).subscribe(res => {
             this.globalService.navigate("/admin/data-management/emirates-news-list");
-          })
+          });
         }
       });
     }
