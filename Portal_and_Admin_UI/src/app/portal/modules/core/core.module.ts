@@ -9,6 +9,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SharedModule } from 'primeng/api';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,15 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     MenuComponent,
   ],
-  imports: [CommonModule, CoreRoutingModule, CarouselModule,    SharedModule,
+  imports: [
+    CommonModule,
+    CoreRoutingModule,
+    CarouselModule,
+    SharedModule,
     ReactiveFormsModule,
-    HttpClientModule],
+    HttpClientModule,
+    ButtonModule
+  ],
   exports: [
     CoreLayoutComponent,
     HeaderComponent,

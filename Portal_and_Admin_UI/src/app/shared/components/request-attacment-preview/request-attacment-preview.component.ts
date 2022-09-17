@@ -16,14 +16,14 @@ export class RequestAttacmentPreviewComponent implements OnInit {
   attachment: any;
 
   constructor(private requestService: RequestService, private fileManagerService: FileManagerService,
-    private globalService: GlobalService)
-  {
+    public globalService: GlobalService) {
   }
 
   ngOnInit(): void {
     if (this.requestId) {
       this.requestService.getRequestAttachments(this.requestId).subscribe((response) => {
-          this.requestAttachmentsDto = response.data;
+        debugger
+        this.requestAttachmentsDto = response.data;
       });
     }
   }
@@ -57,9 +57,12 @@ export class RequestAttacmentPreviewComponent implements OnInit {
 
     }
   }
+  /*
   downloadAttachment(id: string) {
     if (id) {
       this.fileManagerService.download(id);
     }
   }
+*/
+
 }

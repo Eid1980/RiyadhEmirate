@@ -221,6 +221,29 @@ namespace Emirates.Core.Application.Services.InternalPortal.FileManager
                 return null;
             }
         }
+
+        public UploadedFileBase64Model GetBase64File(Guid entityId, string entityName)
+        {
+            try
+            {
+                var file = _emiratesUnitOfWork.UploadedFiles.FirstOrDefault(f => f.EntityId == entityId.ToString() && f.EntityName == entityName && f.IsActive);
+                if (file == null)
+                    return null;
+                var bytes = File.ReadAllBytes(_config.GetSection("FileUploadPaths:UploadedFiles").Value + file.Name);
+                var base64String = Convert.ToBase64String(bytes);
+                return new UploadedFileBase64Model()
+                {
+                    FileName = file.OriginalName,
+                    Base64File = file.Extention == ".pdf" || file.Extention == ".docx" || file.Extention == ".doc" || file.Extention == ".xls" || file.Extention == ".xlsx"
+                                     ? base64String : file.Extention == ".svg" ? "data:image/svg+xml;base64," + base64String : $"data:image/{file.Extention.Substring(1)};base64," + base64String,
+                };
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public List<UploadedFileBase64Model> GetBase64BySubEntityName(string entityId, string entityName, string subEntityName)
         {
             try

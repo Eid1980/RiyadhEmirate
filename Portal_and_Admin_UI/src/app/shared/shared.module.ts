@@ -43,6 +43,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceFilterPipe } from './pipes/service-filter.pipe';
+import {ButtonModule} from 'primeng/button';
+
 
 
 @NgModule({
@@ -83,6 +85,7 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
     ConfirmDialogModule,
     BreadcrumbModule,
     ToastModule,
+    ButtonModule,
     DialogModule,
     TooltipModule,
     RatingModule,
@@ -124,7 +127,8 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
     RateServiceComponent,
     CustomSlicePipe,
     ServiceFilterPipe,
-    TranslateModule
+    TranslateModule,
+    ButtonModule
   ],
   providers: [
     HiddenAuthorizeColumnFilterPipe,

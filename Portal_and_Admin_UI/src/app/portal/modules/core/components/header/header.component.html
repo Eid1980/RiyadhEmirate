@@ -105,7 +105,28 @@
     <img src="./assets/images/icons/header/mobile.svg" alt="mobile" width="14">
     <img src="./assets/images/icons/header/maps.svg" alt="maps" width="16">
     <img src="./assets/images/icons/header/star.svg" alt="star" width="20">
-    <img src="./assets/images/icons/header/language.svg" alt="language" width="18">
+
+    <!--<img src="./assets/images/icons/header/language.svg" alt="language" width="18">-->
+
+    <div class="dropdown languages">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuLanguages" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="./assets/images/icons/header/language.svg" alt="languages" width="20">
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLanguages">
+        <div class="setting-card">
+          <div class="set">
+            <i class="fa fa-moon"></i>
+            <span class="txt" (click)="onChangeLang()">ع</span>
+          </div>
+          <div class="pt-4">
+            <div class="set">
+              <i class="fa fa-moon"></i>
+              <span class="txt" (click)="onChangeLang()">en</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="logo">
       <img src="./assets/images/icons/logo-2.svg" alt="logo" width="55">

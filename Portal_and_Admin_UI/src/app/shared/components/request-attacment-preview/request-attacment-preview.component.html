@@ -17,7 +17,7 @@
         <a class="btn btn-primary mx-1 px-1 py-0" title="عرض المرفق" (click)="showAttachment(requestAttachment.id)">
           <i class="fa fa-eye"></i>
         </a>
-        <a class="btn btn-primary mx-1 px-1 py-0" title="تنزيل المرفق" (click)="downloadAttachment(requestAttachment.id)">
+        <a class="btn btn-primary mx-1 px-1 py-0" title="تنزيل المرفق" (click)="globalService.downloadAttachment(requestAttachment.image?.base64File, requestAttachment.fileName)">
           <i class="fa fa-download"></i>
         </a>
       </td>

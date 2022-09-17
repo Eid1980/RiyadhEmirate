@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { PagingMetaData } from '@shared/models/paging-meta-data.model';
 import { LatestNewsService } from '@shared/proxy/latest-news/latest-news.service';
 import { GetLatestNewsListDto } from '@shared/proxy/latest-news/models';
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { GlobalService } from '@shared/services/global.service';
+import { TranslationServiceService } from '@shared/services/translation-service.service';
 
 @Component({
   selector: 'app-latest-news',
@@ -22,7 +24,10 @@ export class LatestNewsComponent implements OnInit {
 
   searchModel = {} as SearchModel
 
-  constructor(private _latestNewService: LatestNewsService, private globalService: GlobalService) {
+  constructor(
+    private _latestNewService: LatestNewsService,
+    private _translateService: TranslationServiceService,
+    private globalService: GlobalService) {
     this.firstPage = 1;
   }
 
@@ -36,7 +41,10 @@ export class LatestNewsComponent implements OnInit {
       return*/
 
     this.searchModel = { PageNumber: pageNumber, PageSize: this.PAGESIZECONST }
-    this._latestNewService.getByLang(true, this.searchModel).subscribe((result: any) => {
+
+    let isArabic = this._translateService.getCurrentLanguage().Name.toLowerCase() == 'ar'
+
+    this._latestNewService.getByLang(isArabic, this.searchModel).subscribe((result: any) => {
       this.latestNews = result.data.gridItemsVM;
 
       let pagingMetaData: PagingMetaData = result.data.pagingMetaData;
