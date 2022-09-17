@@ -83,29 +83,29 @@ namespace Emirates.InfraStructure.Contexts
         public static Governorate[] Governorates()
         {
             Governorate[] arrData = new Governorate[23];
-            arrData[0] = new Governorate { Id = 1, NameAr = "مدينة الرياض مقر الإمارة", NameEn = "Emirate of Riyadh City", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[1] = new Governorate { Id = 2, NameAr = "محافظةالدرعية", NameEn = "Diriyah", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[2] = new Governorate { Id = 3, NameAr = "محافظةالخرج", NameEn = "Al-Kharj", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[3] = new Governorate { Id = 4, NameAr = "محافظةالدوادمي", NameEn = "Dawadmi", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[4] = new Governorate { Id = 5, NameAr = "محافظةالمجمعة", NameEn = "Al Majma'ah", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[5] = new Governorate { Id = 6, NameAr = "محافظةالقويعية", NameEn = "Al Quwaiiyah", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[6] = new Governorate { Id = 7, NameAr = "محافظة وادي الدواسر", NameEn = "Wadi ad-Dawasir", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[7] = new Governorate { Id = 8, NameAr = "محافظةالأفلاج", NameEn = "Al-Aflaj", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[8] = new Governorate { Id = 9, NameAr = "محافظةالزلفي", NameEn = "Az Zulfi", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[9] = new Governorate { Id = 10, NameAr = "محافظة شـقراء", NameEn = "Shaqra", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[10] = new Governorate { Id = 11, NameAr = "محافظة حوطةبني تميم", NameEn = "Howtat Bani Tamim", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[11] = new Governorate { Id = 12, NameAr = "محافظة عفيـف", NameEn = "Afif", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[12] = new Governorate { Id = 13, NameAr = "محافظةالسليل", NameEn = "As Sulayyil", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[13] = new Governorate { Id = 14, NameAr = "محافظة ضـرمـا", NameEn = "Dhurma", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[14] = new Governorate { Id = 15, NameAr = "محافظةالمزاحمية", NameEn = "Al-Muzahmiya", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[15] = new Governorate { Id = 16, NameAr = "محافظة رمـاح", NameEn = "Rumah", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[16] = new Governorate { Id = 17, NameAr = "محافظة ثـادق", NameEn = "Thadiq", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[17] = new Governorate { Id = 18, NameAr = "محافظة حـريملاء", NameEn = "Huraymila", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[18] = new Governorate { Id = 19, NameAr = "محافظةالحريق", NameEn = "Al Hariq", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[19] = new Governorate { Id = 20, NameAr = "محافظةالغـاط", NameEn = "Al Ghat", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[20] = new Governorate { Id = 21, NameAr = "محافظة مرات", NameEn = "Marat", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[21] = new Governorate { Id = 22, NameAr = "محافظة الدلم", NameEn = "Ad-Dilam", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[22] = new Governorate { Id = 23, NameAr = "محافظة الرين", NameEn = "Rayn", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[0] = new Governorate { Id = 1, NameAr = "مدينة الرياض مقر الإمارة", NameEn = "Emirate of Riyadh City", DescriptionAr = "مدينة الرياض مقر الإمارة", DescriptionEn = "Emirate of Riyadh City", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[1] = new Governorate { Id = 2, NameAr = "محافظةالدرعية", NameEn = "Diriyah", DescriptionAr = "محافظةالدرعية", DescriptionEn = "Diriyah", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[2] = new Governorate { Id = 3, NameAr = "محافظةالخرج", NameEn = "Al-Kharj", DescriptionAr = "محافظةالخرج", DescriptionEn = "Al-Kharj", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[3] = new Governorate { Id = 4, NameAr = "محافظةالدوادمي", NameEn = "Dawadmi", DescriptionAr = "محافظةالدوادمي", DescriptionEn = "Dawadmi", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[4] = new Governorate { Id = 5, NameAr = "محافظةالمجمعة", NameEn = "Al Majma'ah", DescriptionAr = "محافظةالمجمعة", DescriptionEn = "Al Majma'ah", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[5] = new Governorate { Id = 6, NameAr = "محافظةالقويعية", NameEn = "Al Quwaiiyah", DescriptionAr = "محافظةالقويعية", DescriptionEn = "Al Quwaiiyah", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[6] = new Governorate { Id = 7, NameAr = "محافظة وادي الدواسر", NameEn = "Wadi ad-Dawasir", DescriptionAr = "محافظة وادي الدواسر", DescriptionEn = "Wadi ad-Dawasir", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[7] = new Governorate { Id = 8, NameAr = "محافظةالأفلاج", NameEn = "Al-Aflaj", DescriptionAr = "محافظةالأفلاج", DescriptionEn = "Al-Aflaj", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[8] = new Governorate { Id = 9, NameAr = "محافظةالزلفي", NameEn = "Az Zulfi", DescriptionAr = "محافظةالزلفي", DescriptionEn = "Az Zulfi", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[9] = new Governorate {Id = 10, NameAr = "محافظة شـقراء", NameEn = "Shaqra", DescriptionAr = "محافظة شـقراء", DescriptionEn = "Shaqra", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[10] = new Governorate { Id = 11, NameAr = "محافظة حوطةبني تميم", NameEn = "Howtat Bani Tamim", DescriptionAr = "محافظة حوطةبني تميم", DescriptionEn = "Howtat Bani Tamim", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[11] = new Governorate { Id = 12, NameAr = "محافظة عفيـف", NameEn = "Afif", DescriptionAr = "محافظة عفيـف", DescriptionEn = "Afif", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[12] = new Governorate { Id = 13, NameAr = "محافظةالسليل", NameEn = "As Sulayyil", DescriptionAr = "محافظةالسليل", DescriptionEn = "As Sulayyil", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[13] = new Governorate { Id = 14, NameAr = "محافظة ضـرمـا", NameEn = "Dhurma", DescriptionAr = "محافظة ضـرمـا", DescriptionEn = "Dhurma", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[14] = new Governorate { Id = 15, NameAr = "محافظةالمزاحمية", NameEn = "Al-Muzahmiya", DescriptionAr = "محافظةالمزاحمية", DescriptionEn = "Al-Muzahmiya", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[15] = new Governorate { Id = 16, NameAr = "محافظة رمـاح", NameEn = "Rumah", DescriptionAr = "محافظة رمـاح", DescriptionEn = "Rumah", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[16] = new Governorate { Id = 17, NameAr = "محافظة ثـادق", NameEn = "Thadiq", DescriptionAr = "محافظة ثـادق", DescriptionEn = "Thadiq", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[17] = new Governorate { Id = 18, NameAr = "محافظة حـريملاء", NameEn = "Huraymila", DescriptionAr = "محافظة حـريملاء", DescriptionEn = "Huraymila", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[18] = new Governorate { Id = 19, NameAr = "محافظةالحريق", NameEn = "Al Hariq", DescriptionAr = "محافظةالحريق", DescriptionEn = "Al Hariq", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[19] = new Governorate { Id = 20, NameAr = "محافظةالغـاط", NameEn = "Al Ghat", DescriptionAr = "محافظةالغـاط", DescriptionEn = "Al Ghat", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[20] = new Governorate { Id = 21, NameAr = "محافظة مرات", NameEn = "Marat", DescriptionAr = "محافظة مرات", DescriptionEn = "Marat", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[21] = new Governorate { Id = 22, NameAr = "محافظة الدلم", NameEn = "Ad-Dilam", DescriptionAr = "محافظة الدلم", DescriptionEn = "Ad-Dilam", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[22] = new Governorate { Id = 23, NameAr = "محافظة الرين", NameEn = "Rayn", DescriptionAr = "محافظة الرين", DescriptionEn = "Rayn", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             return arrData;
         }
         public static Nationality[] Nationalities()

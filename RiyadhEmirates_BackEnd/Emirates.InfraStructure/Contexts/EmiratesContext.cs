@@ -169,6 +169,11 @@ namespace Emirates.InfraStructure.Contexts
                 b.ToTable("Governorates", EmiratesDbSchemas.LookupSehema);
                 b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.DescriptionAr).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.DescriptionEn).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.PhoneNumber).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.LocationLink).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.PortalLink).HasMaxLength(EmiratesConstants.MaxLongNameLength);
                 b.Property(x => x.IsActive).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
 
@@ -207,7 +212,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.Comment).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.CommentStageId).IsRequired();
                 b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.CreatedBy).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.CreatedByName).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.CreatedDate).IsRequired();
 
                 b.HasOne<LatestNews>(x => x.LatestNews).WithMany(x => x.LatestNewsComments).HasForeignKey(x => x.LatestNewsId).OnDelete(DeleteBehavior.NoAction);

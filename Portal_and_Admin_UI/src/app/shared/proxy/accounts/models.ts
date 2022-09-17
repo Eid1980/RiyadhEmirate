@@ -19,7 +19,7 @@ export interface GetUserDto {
 
   passwordHash: [];
   passwordSalt: [];
-  isAdmin: boolean;
+  isEmployee: boolean;
   isActive: boolean;
   oTP: string;
   birthDate: string;

@@ -5,8 +5,13 @@ import { MessageModule } from "primeng/message";
 import { ToastModule } from "primeng/toast";
 import { HomeComponent } from "./components/home/home.component";
 import { HomeRoutingModule } from "./home-routing.module";
+import { UserListComponent } from './components/permission/user-list/user-list.component';
+import { UserAddComponent } from './components/permission/user-add/user-add.component';
+import { RoleListComponent } from './components/permission/role-list/role-list.component';
+import { RoleAddComponent } from './components/permission/role-add/role-add.component';
+import { UserRoleAddComponent } from './components/permission/user-role-add/user-role-add.component';
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, UserListComponent, UserAddComponent, RoleListComponent, RoleAddComponent, UserRoleAddComponent],
   imports: [
     SharedModule,
     HomeRoutingModule,
