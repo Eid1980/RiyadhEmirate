@@ -22,7 +22,6 @@ export class RequestAttacmentPreviewComponent implements OnInit {
   ngOnInit(): void {
     if (this.requestId) {
       this.requestService.getRequestAttachments(this.requestId).subscribe((response) => {
-        debugger
         this.requestAttachmentsDto = response.data;
       });
     }

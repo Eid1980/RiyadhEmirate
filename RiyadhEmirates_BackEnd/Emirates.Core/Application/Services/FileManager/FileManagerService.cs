@@ -5,7 +5,6 @@ using Emirates.Core.Application.Models.InternalPortal.Response.FileManager;
 using Emirates.Core.Application.Services.Shared;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
-using Emirates.Core.Domain.Interfaces.Repositories;
 
 namespace Emirates.Core.Application.Services.InternalPortal.FileManager
 {

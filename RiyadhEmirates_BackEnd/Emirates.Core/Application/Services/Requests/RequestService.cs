@@ -145,9 +145,7 @@ namespace Emirates.Core.Application.Services.Requests
                             Id = file.Id,
                             AttachmentName = type.NameAr,
                             FileName = file.OriginalName,
-
                             Image = _fileManagerService.GetBase64File(id, file.EntityName)
-
                         };
             return GetResponse(data: query.ToList());
         }

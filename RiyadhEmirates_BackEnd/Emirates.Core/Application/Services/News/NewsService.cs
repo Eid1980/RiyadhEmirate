@@ -15,13 +15,11 @@ namespace Emirates.Core.Application.Services.News
     {
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
-        private readonly IConfigurationProvider _mapConfig;
         private readonly IFileManagerService _fileManagerService;
         public NewsService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper, IFileManagerService fileManagerService)
         {
             _emiratesUnitOfWork = emiratesUnitOfWork;
             _mapper = mapper;
-            _mapConfig = mapper.ConfigurationProvider;
             _fileManagerService = fileManagerService;
         }
 
@@ -65,11 +63,8 @@ namespace Emirates.Core.Application.Services.News
 
         public IApiResponse GetByNewsTypeId(int typeId)
         {
-            var newsQuerable = _emiratesUnitOfWork.News.GetQueryable();
-            var filesQuerable = _emiratesUnitOfWork.UploadedFiles.GetQueryable();
-            var query = (from news in newsQuerable
-                         join files in filesQuerable on news.Id.ToString() equals files.EntityId
-                         where files.EntityName == "News" && news.IsActive == true && news.NewsTypeId == typeId
+            var query = (from news in _emiratesUnitOfWork.News.GetQueryable()
+                         where news.IsActive == true && news.NewsTypeId == typeId
                          select new GetNewsListDto
                          {
                              Id = news.Id,
@@ -80,7 +75,6 @@ namespace Emirates.Core.Application.Services.News
                              NewsTypeId = news.NewsTypeId,
                              Date = news.Date,
                              IsActive = news.IsActive,
-
                              Image = _fileManagerService.GetBase64File(news.Id, "News")
                          }).OrderByDescending(s => s.Date);
 
