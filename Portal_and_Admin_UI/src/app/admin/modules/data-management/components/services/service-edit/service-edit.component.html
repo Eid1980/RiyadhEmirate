@@ -8,11 +8,10 @@
 
 <form [formGroup]="updateServiceForm" (ngSubmit)="onSubmit()">
   <div class="form-card">
-    <div class="form-header">
-      <h5>تعديل الخدمة</h5>
+    <div class="form-header" style="border-bottom: 0px !important;">
+      <h5 class="mb-5">تعديل الخدمة</h5>
 
       <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
-
     </div>
     <div class="form-content">
       <div class="row mx-0">

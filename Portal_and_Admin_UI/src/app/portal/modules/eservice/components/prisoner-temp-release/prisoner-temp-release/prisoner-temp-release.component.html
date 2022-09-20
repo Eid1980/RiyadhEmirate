@@ -1,80 +1,89 @@
-<div class="d-lg-flex justify-content-between align-items-center bread-container">
-  <nav class="breadcrumb m-0 bg-transparent">
-    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
-    <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/services-list']">قائمة الخدمات</a>
-    <span class="breadcrumb-item fs-16 active">انشاء طلب جديد</span>
-  </nav>
-</div>
+<nav class="breadcrumb m-0 bg-transparent">
+  <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+  <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/services-list']">قائمة الخدمات</a>
+  <span class="breadcrumb-item fs-16 active">انشاء طلب جديد</span>
+</nav>
 
-<div class="p-5 row mx-0">
-  <div class="col-md-10 mx-auto">
+<div class="container my-5 px-0">
+  <div class="form-card mb-0">
+    <div class="form-header mt-3" style="border-bottom: 0px !important;">
+      <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+    </div>
 
-    <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
-
-    <div class="mt-4">
+    <div class="form-content py-0 px-4">
       <form [formGroup]="prisonerTempReleaseForm" (ngSubmit)="onSubmit()">
         <div class="form-card">
           <div class="form-header">
             <h5>خدمة الخروج المؤقت لسجين</h5>
           </div>
+
           <div class="form-content">
             <div class="row mx-0">
               <div class="form-group col-md-6" *ngIf="requestTypes?.length > 0">
                 <label for="requestTypeId" class="form-lbl">نوع الطلب<span class="danger">*</span></label>
                 <select class="form-control form-select" formControlName="requestTypeId" [ngClass]="{
-              invalid:
-                (isFormSubmitted || prisonerTempReleaseForm.get('requestTypeId').touched) &&
-                prisonerTempReleaseForm.get('requestTypeId').errors?.required
-            }">
+          invalid:
+            (isFormSubmitted || prisonerTempReleaseForm.get('requestTypeId').touched) &&
+            prisonerTempReleaseForm.get('requestTypeId').errors?.required
+        }">
                   <option [ngValue]="null">-- اختر نوع الطلب --</option>
-                  <option *ngFor="let requestType of requestTypes" [ngValue]="requestType.id">{{ requestType.name }}</option>
+                  <option *ngFor="let requestType of requestTypes" [ngValue]="requestType.id">{{ requestType.name }}
+                  </option>
                 </select>
-                <small *ngIf="(isFormSubmitted || prisonerTempReleaseForm.get('requestTypeId').touched) && prisonerTempReleaseForm.get('requestTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <small
+                  *ngIf="(isFormSubmitted || prisonerTempReleaseForm.get('requestTypeId').touched) && prisonerTempReleaseForm.get('requestTypeId').errors?.required"
+                  class="danger">هذاالحقل مطلوب</small>
               </div>
-              <div class="form-group col-md-6">
-              </div>
+       
               <div class="form-group col-md-6">
                 <label for="caseTypeId" class="form-lbl">نوع القضية<span class="danger">*</span></label>
                 <select class="form-control form-select" formControlName="caseTypeId" [ngClass]="{
-              invalid:
-                (isFormSubmitted || prisonerTempReleaseForm.get('caseTypeId').touched) &&
-                prisonerTempReleaseForm.get('caseTypeId').errors?.required
-            }">
+          invalid:
+            (isFormSubmitted || prisonerTempReleaseForm.get('caseTypeId').touched) &&
+            prisonerTempReleaseForm.get('caseTypeId').errors?.required
+        }">
                   <option [ngValue]="null">-- اختر نوع القضية --</option>
                   <option *ngFor="let caseType of caseTypes" [ngValue]="caseType.id">{{ caseType.name }}</option>
                 </select>
-                <small *ngIf="(isFormSubmitted || prisonerTempReleaseForm.get('caseTypeId').touched) && prisonerTempReleaseForm.get('caseTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <small
+                  *ngIf="(isFormSubmitted || prisonerTempReleaseForm.get('caseTypeId').touched) && prisonerTempReleaseForm.get('caseTypeId').errors?.required"
+                  class="danger">هذاالحقل مطلوب</small>
               </div>
               <div class="form-group col-md-6">
                 <label for="presonName" class="form-lbl">اسم السجن<span class="danger">*</span></label>
-                <input type="text" class="form-control" autocomplete="off" formControlName="presonName" id="presonName" [ngClass]="{
-              invalid:
-                (isFormSubmitted || prisonerTempReleaseForm.get('presonName').touched) &&
-                prisonerTempReleaseForm.get('presonName').errors?.required
-            }" />
-                <small *ngIf="(isFormSubmitted || prisonerTempReleaseForm.get('presonName').touched) && prisonerTempReleaseForm.get('presonName').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <input type="text" class="form-control" autocomplete="off" formControlName="presonName" id="presonName"
+                  [ngClass]="{
+          invalid:
+            (isFormSubmitted || prisonerTempReleaseForm.get('presonName').touched) &&
+            prisonerTempReleaseForm.get('presonName').errors?.required
+        }" />
+                <small
+                  *ngIf="(isFormSubmitted || prisonerTempReleaseForm.get('presonName').touched) && prisonerTempReleaseForm.get('presonName').errors?.required"
+                  class="danger">هذاالحقل مطلوب</small>
               </div>
               <div class="form-group col-md-12">
                 <label for="notes" class="form-lbl">سبب الخروج المؤقت<span class="danger">*</span></label>
-                <textarea type="text" class="form-control" autocomplete="off" formControlName="notes" id="notes" [ngClass]="{
-              invalid:
-                (isFormSubmitted || prisonerTempReleaseForm.get('notes').touched) &&
-                prisonerTempReleaseForm.get('notes').errors?.required
-            }">
-          </textarea>
-                <small *ngIf="(isFormSubmitted || prisonerTempReleaseForm.get('notes').touched) && prisonerTempReleaseForm.get('notes').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <textarea type="text" class="form-control" rows="6" autocomplete="off" formControlName="notes" id="notes"
+                  [ngClass]="{
+          invalid:
+            (isFormSubmitted || prisonerTempReleaseForm.get('notes').touched) &&
+            prisonerTempReleaseForm.get('notes').errors?.required
+        }">
+      </textarea>
+                <small
+                  *ngIf="(isFormSubmitted || prisonerTempReleaseForm.get('notes').touched) && prisonerTempReleaseForm.get('notes').errors?.required"
+                  class="danger">هذاالحقل مطلوب</small>
               </div>
 
             </div>
           </div>
         </div>
-
-        <div class="form-actions">
-          <button type="submit" class="btn btn-save">التالي</button>
-          <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
-        </div>
       </form>
     </div>
+  </div>
 
+  <div class="form-actions px-0">
+    <button type="submit" class="btn btn-primary ms-3">التالي</button>
+    <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
   </div>
 </div>

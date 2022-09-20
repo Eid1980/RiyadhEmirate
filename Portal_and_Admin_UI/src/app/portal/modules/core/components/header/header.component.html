@@ -5,131 +5,152 @@
     </a>
   </div> -->
 
-  <div>
-    <img src="./assets/images/icons/header/calender.svg" alt="calender" width="22.27" height="22.27">
-    <span class="date"><span>الخميس</span> ، 23 ربيع أول 1443 هـ، 22 مايو 2022</span>
-    <!-- <div class="dropdown topnav-user" *ngIf="isAuthenticate">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/user-img.svg" alt="">
-        {{ 'header.hello' | translate }} <span>{{userModel?.Name}}</span>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <a routerLink="/e-council/profile" class="dropdown-item">
-          <i class="fa fa-user"></i>
-          {{ 'header.profilePersonly' | translate }}
-        </a>
-        <a class="dropdown-item" (click)="logout()">
-          <i class="fa fa-arrow-right-from-bracket"></i>
-          {{ 'header.signOut' | translate }}
-        </a>
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- calender -->
+      <div class="col-md-4">
+        <div>
+          <img src="assets/images/icons/header/calender.svg" alt="calender" width="22.27" height="22.27">
+          <span class="date"><span>الخميس</span> ، 23 ربيع أول 1443 هـ، 22 مايو 2022</span>
+          <!-- <div class="dropdown topnav-user" *ngIf="isAuthenticate">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="./assets/images/user-img.svg" alt="">
+              {{ 'header.hello' | translate }} <span>{{userModel?.Name}}</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <a routerLink="/e-council/profile" class="dropdown-item">
+                <i class="fa fa-user"></i>
+                {{ 'header.profilePersonly' | translate }}
+              </a>
+              <a class="dropdown-item" (click)="logout()">
+                <i class="fa fa-arrow-right-from-bracket"></i>
+                {{ 'header.signOut' | translate }}
+              </a>
+            </div>
+          </div> -->
+          <!-- <div class="dropdown topnav-user" *ngIf="!isAuthenticate">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="./assets/images/user-img.svg" alt="">
+              {{ 'header.signIn' | translate }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <a routerLink="/e-council/profile" class="dropdown-item" [routerLink]="['/auth/login']">
+                <i class="fa fa-user"></i>
+                {{ 'header.signIn' | translate }}
+              </a>
+              <a class="dropdown-item" [routerLink]="['/auth/register']">
+                <i class="fa fa-arrow-right-from-bracket"></i>
+                {{ 'header.newRegistration' | translate }}
+              </a>
+            </div>
+          </div> -->
+          <!-- <span (click)="onChangeLang()">
+            <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
+            <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
+          </span> -->
+        </div>
       </div>
-    </div> -->
-    <!-- <div class="dropdown topnav-user" *ngIf="!isAuthenticate">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/user-img.svg" alt="">
-        {{ 'header.signIn' | translate }}
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <a routerLink="/e-council/profile" class="dropdown-item" [routerLink]="['/auth/login']">
-          <i class="fa fa-user"></i>
-          {{ 'header.signIn' | translate }}
-        </a>
-        <a class="dropdown-item" [routerLink]="['/auth/register']">
-          <i class="fa fa-arrow-right-from-bracket"></i>
-          {{ 'header.newRegistration' | translate }}
-        </a>
-      </div>
-    </div> -->
-    <!-- <span (click)="onChangeLang()">
-      <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
-      <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
-    </span> -->
-  </div>
 
-  <div class="options">
-    <div class="dropdown search">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/icons/header/search.svg" alt="search" width="20">
-      </button>
-      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-        <div class="search-card">
-          <div class="form-group">
-            <input type="text" name="" id="" class="form-control" placeholder="اكتب كلمات البحث هنا">
-            <img src="./assets/images/icons/header/prof-search.svg" alt="" class="s-icon">
-            <button type="submit" class="btn btn-submit">بحث</button>
+      <!-- options -->
+      <div class="col-md-8">
+        <div class="options justify-content-end">
+          <div class="dropdown search">
+            <button class="btn dropdown-toggle px-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="assets/images/icons/header/search.svg" alt="search" width="20">
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+              <div class="search-card">
+                <div class="form-group">
+                  <input type="text" name="" id="" class="form-control" placeholder="اكتب كلمات البحث هنا">
+                  <img src="assets/images/icons/header/prof-search.svg" alt="icon" class="s-icon">
+                  <button type="submit" class="btn btn-submit">بحث</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="dropdown settings">
+            <button class="btn dropdown-toggle px-0 disabled" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="assets/images/icons/header/setting.svg" alt="setting" width="20">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <div class="setting-card">
+                <span class="title">اعدادات الرؤية</span>
+                <div class="pt-4">
+                  <div class="set">
+                    <i class="fa fa-moon"></i>
+                    <span class="txt">الوضع الليلي</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                    </div>
+                  </div>
+                  <div class="set">
+                    <i class="fa fa-eye"></i>
+                    <span class="txt">وضع التباين</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                    </div>
+                  </div>
+                  <div class="set">
+                    <i class="fa fa-sun"></i>
+                    <span class="txt">وضع السطوع</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                    </div>
+                  </div>
+                  <div class="set">
+                    <i class="fa fa-font"></i>
+                    <span class="txt">خط كبير</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img src="assets/images/icons/header/mobile.svg" alt="mobile" width="14">
+          <img src="assets/images/icons/header/maps.svg" alt="maps" width="16">
+          <img src="assets/images/icons/header/star.svg" alt="star" width="20">
+      
+          <!--<img src="assets/images/icons/header/language.svg" alt="language" width="18">-->
+      
+          <div class="dropdown languages">
+            <button class="btn dropdown-toggle px-0" type="button" id="dropdownMenuLanguages" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="assets/images/icons/header/language.svg" alt="languages" width="20">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLanguages">
+              <a class="dropdown-item" (click)="onChangeLang()">
+                <img src="assets/images/icons/egypt-flag.svg" class="img-fluid" alt="flag" width="26px" />
+                <span>عربى</span>
+              </a>
+              <a class="dropdown-item" (click)="onChangeLang()">
+                <img src="assets/images/icons/united-states-flag.svg" class="img-fluid" alt="flag" width="26px" />
+                <span>EN</span>
+              </a>
+
+              <!-- <div class="setting-card">
+                <div class="set">
+                  <i class="fa fa-moon"></i>
+                  <span class="txt" >ع</span>
+                </div>
+                <div class="pt-4">
+                  <div class="set">
+                    <i class="fa fa-moon"></i>
+                    <span class="txt" (click)="onChangeLang()">en</span>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+      
+          <div class="logo">
+            <img src="assets/images/icons/logo-2.svg" class="img-fluid mx-0" alt="logo" width="55">
           </div>
         </div>
       </div>
     </div>
-
-    <div class="dropdown settings">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/icons/header/setting.svg" alt="setting" width="20">
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <div class="setting-card">
-          <span class="title">اعدادات الرؤية</span>
-          <div class="pt-4">
-            <div class="set">
-              <i class="fa fa-moon"></i>
-              <span class="txt">الوضع الليلي</span>
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-              </div>
-            </div>
-            <div class="set">
-              <i class="fa fa-eye"></i>
-              <span class="txt">وضع التباين</span>
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-              </div>
-            </div>
-            <div class="set">
-              <i class="fa fa-sun"></i>
-              <span class="txt">وضع السطوع</span>
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-              </div>
-            </div>
-            <div class="set">
-              <i class="fa fa-font"></i>
-              <span class="txt">خط كبير</span>
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <img src="./assets/images/icons/header/mobile.svg" alt="mobile" width="14">
-    <img src="./assets/images/icons/header/maps.svg" alt="maps" width="16">
-    <img src="./assets/images/icons/header/star.svg" alt="star" width="20">
-
-    <!--<img src="./assets/images/icons/header/language.svg" alt="language" width="18">-->
-
-    <div class="dropdown languages">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuLanguages" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/icons/header/language.svg" alt="languages" width="20">
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLanguages">
-        <div class="setting-card">
-          <div class="set">
-            <p-button pRipple label="ع" (click)="onChangeLang()"></p-button>
-          </div>
-          <div class="set">
-            <p-button pRipple label="en" (click)="onChangeLang()"></p-button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="logo">
-      <img src="./assets/images/icons/logo-2.svg" alt="logo" width="55">
-    </div>
-
-  </div>
-
+</div>
 </div>
 
 <header class="header" id="navabr">

@@ -114,6 +114,61 @@
   margin-bottom: 16px;
 }
 
+hijri-gregorian-datepicker{
+  .form-group{
+    padding: 0px !important;
+  }
+}
+
+// dropdown
+.dropdown{
+  .dropdown-toggle{
+    img{
+      margin: 0px;
+    }
+
+    &::after{
+      content: none;
+    }
+  }
+
+  .dropdown-menu {
+    background: $white;
+    border-radius: 6px;
+    padding: 8px !important;
+    margin: 0;
+    left: 0;
+    right: auto;
+    margin-top: 12px;
+  
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      padding: 7px;
+      font-size: 12px;
+      border-radius: 6px;
+      color: rgb(0 0 0 / 70%);
+      text-decoration: none;
+      cursor: pointer;
+  
+      i {
+        font-size: 15px;
+        margin-left: 6px;
+      }
+  
+      &:hover {
+        color: rgb(0 0 0 / 90%);
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+    }
+  
+    .dropdown-divider {
+      margin: 0.5rem 12px;
+  
+    }
+  }
+}
+
 .input-group-append {
   height: 50px !important;
   border-radius: 4px !important;
@@ -128,7 +183,13 @@
     border-radius: 20px !important;
     padding: 8px 16px !important;
     border: 0 !important;
-    color: rgba($color: $dark, $alpha: 0.6) !important;
+    color: $primary-alt-3 !important;
+    background-color: rgba($color: $primary-alt-3, $alpha: 0.15);
+    margin-left: 10px;
+
+    &:last-child{
+      margin-left: 0px;
+    }
 
     &:focus,
     &.active {
@@ -137,12 +198,12 @@
     }
 
     &:hover {
-      background-color: transparent !important;
-      color: $Primary-1 !important;
+      background-color: rgba($color: $primary-alt-3, $alpha: 0.15) !important;
+      color: $primary-alt-3 !important;
     }
 
     &.active {
-      background-color: $secondary-1 !important;
+      background-color: $primary-alt-3 !important;
       color: $white !important;
       font-weight: 600 !important;
 
@@ -163,8 +224,8 @@
   font-size: 14px !important;
 }
 
-// input switch
 .form-check {
+// input switch
   &.form-switch {
     display: flex;
     align-items: center;
@@ -245,22 +306,24 @@ input[type=number] {
 
 // input checkbox
 .form-check-input[type=checkbox] {
-  min-width: 12px;
-  min-height: 12px;
-  width: 12px;
-  height: 12px;
-  border-radius: 2px !important;
-  border: 1px solid #758196;
+  min-width: 20px;
+  min-height: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px !important;
+  border: 1px solid rgba($color: $dark, $alpha: 0.15);
   margin: 0px;
   cursor: pointer;
+  margin-left: 16px !important;
+  float: right !important;
 
   &:checked[type=checkbox] {
-    background-color: $success;
-    border: 1px solid $success;
+    background-color: $Primary-1;
+    border: 1px solid $Primary-1;
     // background-image: url(../images/icons/check-white.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 80%;
+    background-size: 90%;
   }
 
   &:focus,
@@ -268,6 +331,10 @@ input[type=number] {
     box-shadow: none !important;
     outline: 0px !important;
   }
+}
+.form-check-label{
+  color: rgba($color: $dark, $alpha: 0.7);
+  cursor: pointer;
 }
 
 // checkbox

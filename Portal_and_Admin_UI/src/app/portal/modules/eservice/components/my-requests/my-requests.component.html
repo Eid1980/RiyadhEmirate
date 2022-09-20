@@ -1,138 +1,108 @@
-<div class="form-card">
-  <div class="form-header">
-    <h5>البحث في طلباتي</h5>
-  </div>
-  <div class="form-content">
-    <form [formGroup]="myRequestSearchForm">
-      <div class="row mx-0">
-        <div class="form-group col-md-4">
-          <label for="requestNumber" class="form-lbl">رقم الطلب</label>
-          <input
-            type="text"
-            class="form-control"
-            autocomplete="off"
-            formControlName="requestNumber"
-            id="requestNumber"
-          />
+<div class="container px-0 my-5">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>البحث في طلباتي</h5>
+    </div>
+    
+    <div class="form-content">
+      <form [formGroup]="myRequestSearchForm">
+        <div class="row mx-0">
+          <div class="form-group col-md-4">
+            <label for="requestNumber" class="form-lbl">رقم الطلب</label>
+            <input type="text" class="form-control" autocomplete="off" formControlName="requestNumber"
+              id="requestNumber" />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="nameAr" class="form-lbl">الخدمة</label>
+            <select class="form-control form-select" formControlName="serviceId">
+              <option [ngValue]="null">-- عرض الكل --</option>
+              <option *ngFor="let service of services" [ngValue]="service.id">
+                {{ service.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="stageId" class="form-lbl">المرحلة<span class="danger">*</span></label>
+            <select class="form-control form-select" formControlName="stageId">
+              <option [ngValue]="null">-- عرض الكل --</option>
+              <option *ngFor="let stage of stages" [ngValue]="stage.id">
+                {{ stage.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <hijri-gregorian-datepicker id="dateFrom" [placeHolder]="'سنة/شهر/يوم'" [isRequired]="false"
+              [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" [selectedDateType]="selectedDateType" label="التاريخ من"
+              #datePickerFrom>
+            </hijri-gregorian-datepicker>
+          </div>
+          <div class="form-group col-md-4">
+            <hijri-gregorian-datepicker id="dateTo" [placeHolder]="'سنة/شهر/يوم'" [isRequired]="false"
+              [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" [selectedDateType]="selectedDateType" label="التاريخ الى"
+              #datePickerTo>
+            </hijri-gregorian-datepicker>
+          </div>
         </div>
-        <div class="form-group col-md-4">
-          <label for="nameAr" class="form-lbl">الخدمة</label>
-          <select class="form-control form-select" formControlName="serviceId">
-            <option [ngValue]="null">-- عرض الكل --</option>
-            <option *ngFor="let service of services" [ngValue]="service.id">
-              {{ service.name }}
-            </option>
-          </select>
+  
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary px-5 ms-3" (click)="search()">
+            بحث
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="search(true)">
+            عرض الكل
+          </button>
         </div>
-        <div class="form-group col-md-4">
-          <label for="stageId" class="form-lbl"
-            >المرحلة<span class="danger">*</span></label
-          >
-          <select class="form-control form-select" formControlName="stageId">
-            <option [ngValue]="null">-- عرض الكل --</option>
-            <option *ngFor="let stage of stages" [ngValue]="stage.id">
-              {{ stage.name }}
-            </option>
-          </select>
-        </div>
-        <div class="form-group col-md-4">
-          <hijri-gregorian-datepicker
-            id="dateFrom"
-            [placeHolder]="'سنة/شهر/يوم'"
-            [isRequired]="false"
-            [GregLabel]="'ميلادي'"
-            [hijriLabel]="'هجري'"
-            [selectedDateType]="selectedDateType"
-            label="التاريخ من"
-            #datePickerFrom
-          >
-          </hijri-gregorian-datepicker>
-        </div>
-        <div class="form-group col-md-4">
-          <hijri-gregorian-datepicker
-            id="dateTo"
-            [placeHolder]="'سنة/شهر/يوم'"
-            [isRequired]="false"
-            [GregLabel]="'ميلادي'"
-            [hijriLabel]="'هجري'"
-            [selectedDateType]="selectedDateType"
-            label="التاريخ الى"
-            #datePickerTo
-          >
-          </hijri-gregorian-datepicker>
-        </div>
+      </form>
+
+      <div class="row mt-3 mx-0">
+        <p-table #myRequests [value]="myRequestListDto" [paginator]="true"
+          [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10"
+          [totalRecords]="pagingMetaData?.totalItemCount" [scrollable]="true" [lazy]="true"
+          (onLazyLoad)="onTableLazyLoad($event)" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"
+          class="w-100">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th>م</th>
+              <th>الخدمة</th>
+              <th>رقم الطلب</th>
+              <th>تاريخ الطلب</th>
+              <th>حالة الطلب</th>
+              <th>ملاحظات</th>
+              <th>الإجراءات</th>
+            </tr>
+          </ng-template>
+  
+          <ng-template pTemplate="body" let-i="rowIndex" let-myRequest>
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ myRequest.serviceName }}</td>
+              <td>{{ myRequest.requestNumber }}</td>
+              <td>{{ myRequest.requestDate }}</td>
+              <td>{{ myRequest.stageName }}</td>
+              <td title="{{ myRequest.notes }}" *ngIf="myRequest.notes">
+                {{
+                  myRequest.notes.length > 20
+                    ? myRequest.notes.substring(0, 20) + " ..."
+                    : myRequest.notes
+                }}
+              </td>
+              <td title="{{ myRequest.notes }}" *ngIf="!myRequest.notes"></td>
+              <td>
+                <a class="btn btn-primary mx-1 p-2" *ngIf="myRequest.url" title="بيانات الطلب"
+                  [routerLink]="[myRequest.url, myRequest.id]">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </td>
+            </tr>
+          </ng-template>
+  
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+              <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+            </tr>
+          </ng-template>
+        </p-table>
       </div>
-
-      <div class="form-actions">
-        <button type="button" class="btn btn-save" (click)="search()">
-          بحث
-        </button>
-        <button type="button" class="btn btn-save" (click)="search(true)">
-          عرض الكل
-        </button>
-      </div>
-    </form>
-    <div class="row mx-0">
-      <p-table
-        #myRequests
-        [value]="myRequestListDto"
-        [paginator]="true"
-        [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10"
-        [totalRecords]="pagingMetaData?.totalItemCount"
-        [scrollable]="true"
-        [lazy]="true"
-        (onLazyLoad)="onTableLazyLoad($event)"
-        dataKey="id"
-        [autoLayout]="true"
-        [responsive]="true"
-        [scrollable]="true"
-        class="w-100">
-        <ng-template pTemplate="header" let-columns>
-          <tr>
-            <th>م</th>
-            <th>الخدمة</th>
-            <th>رقم الطلب</th>
-            <th>تاريخ الطلب</th>
-            <th>حالة الطلب</th>
-            <th>ملاحظات</th>
-            <th>الإجراءات</th>
-          </tr>
-        </ng-template>
-
-        <ng-template pTemplate="body" let-i="rowIndex" let-myRequest>
-          <tr>
-            <td>{{ i + 1 }}</td>
-            <td>{{ myRequest.serviceName }}</td>
-            <td>{{ myRequest.requestNumber }}</td>
-            <td>{{ myRequest.requestDate }}</td>
-            <td>{{ myRequest.stageName }}</td>
-            <td title="{{ myRequest.notes }}" *ngIf="myRequest.notes">
-              {{
-                myRequest.notes.length > 20
-                  ? myRequest.notes.substring(0, 20) + " ..."
-                  : myRequest.notes
-              }}
-            </td>
-            <td title="{{ myRequest.notes }}" *ngIf="!myRequest.notes"></td>
-            <td>
-              <a
-                class="btn btn-primary mx-1 px-1 py-0"
-                *ngIf="myRequest.url"
-                title="بيانات الطلب"
-                [routerLink]="[myRequest.url, myRequest.id]"
-              >
-                <i class="fa fa-eye"></i>
-              </a>
-            </td>
-          </tr>
-        </ng-template>
-
-        <ng-template pTemplate="emptymessage" let-columns>
-          <tr>
-            <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
-          </tr>
-        </ng-template>
-      </p-table>
     </div>
   </div>
 </div>

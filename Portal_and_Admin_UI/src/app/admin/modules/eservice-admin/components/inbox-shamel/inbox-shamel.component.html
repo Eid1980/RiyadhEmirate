@@ -20,7 +20,7 @@
             <option *ngFor="let service of services" [ngValue]="service.id">{{ service.name }}</option>
           </select>
         </div>
-        <div class="form-group col-md-4 px-0">
+        <div class="form-group col-md-4">
           <hijri-gregorian-datepicker id="dateFrom" [placeHolder]="'سنة/شهر/يوم'"
                                       [isRequired]="false"
                                       [GregLabel]="'ميلادي'"
@@ -30,7 +30,7 @@
                                       #datePickerFrom>
           </hijri-gregorian-datepicker>
         </div>
-        <div class="form-group col-md-4 px-0">
+        <div class="form-group col-md-4">
           <hijri-gregorian-datepicker id="dateTo" [placeHolder]="'سنة/شهر/يوم'"
                                       [isRequired]="false"
                                       [GregLabel]="'ميلادي'"
@@ -71,7 +71,7 @@
             <td title="{{inbox.notes}}" *ngIf="inbox.notes"> {{inbox.notes.length > 20 ? inbox.notes.substring(0, 20) + ' ...' : inbox.notes}} </td>
             <td title="{{inbox.notes}}" *ngIf="!inbox.notes"></td>
             <td>
-              <a class="btn btn-primary mx-1 px-1 py-0" title="بيانات الطلب" [routerLink]="[inbox.url, inbox.id] ">
+              <a class="btn btn-primary mx-1 p-2" title="بيانات الطلب" [routerLink]="[inbox.url, inbox.id] ">
                 <i class="fa fa-eye"></i>
               </a>
             </td>

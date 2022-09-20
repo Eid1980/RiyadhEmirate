@@ -9,15 +9,15 @@
 
 <div class="container">
   <div *ngIf="latestNews.length == 0">
-    <h4>لا يوجد بيانات</h4>
+    <div class="empty-container">
+      <img src="assets/images/404.png" class="img-fluid" alt="vector" />
+      <h4>لا يوجد بيانات</h4>
+    </div>
   </div>
 
   <div class="row my-5" *ngIf="latestNews.length > 0">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let news of latestNews">
-      <a
-        class="card-basic"
-        [routerLink]="['/home/news', news.id]"
-        routerLinkActive="router-link-active">
+      <a class="card-basic" [routerLink]="['/home/news', news.id]" routerLinkActive="router-link-active">
         <div class="card-basic-banner">
           <img [src]="news.image?.base64File" class="img-fluid" alt="banner" />
         </div>
@@ -29,7 +29,8 @@
       </a>
     </div>
 
-    <p-paginator [rows]="PAGESIZECONST" [totalRecords]="totalCount" [rowsPerPageOptions]="[12,16,24]" (onPageChange)="paginate($event)"></p-paginator>
+    <p-paginator [rows]="PAGESIZECONST" [totalRecords]="totalCount" [rowsPerPageOptions]="[12,16,24]"
+      (onPageChange)="paginate($event)"></p-paginator>
 
   </div>
 </div>

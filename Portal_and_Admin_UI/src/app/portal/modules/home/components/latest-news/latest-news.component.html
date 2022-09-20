@@ -9,7 +9,10 @@
 
 <div class="container">
   <div *ngIf="latestNews.length == 0">
-    <h4>لا يوجد بيانات</h4>
+    <div class="empty-container">
+      <img src="assets/images/404.png" class="img-fluid" alt="vector" />
+      <h4>لا يوجد بيانات</h4>
+    </div>
   </div>
 
   <div class="row my-5" *ngIf="latestNews.length > 0">

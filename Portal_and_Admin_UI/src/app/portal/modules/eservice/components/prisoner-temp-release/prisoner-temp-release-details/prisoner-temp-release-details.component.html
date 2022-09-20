@@ -1,5 +1,4 @@
-<div class="p-5">
-
+<div class="container">
   <div class="form-card">
     <div class="form-header">
       <h5>بيانات مقدم الطلب</h5>
@@ -60,7 +59,7 @@
     </div>
   </div>
 
-  <div class="form-card" *ngIf="showStatusLog">
+  <div class="form-card mb-0" *ngIf="showStatusLog">
     <div class="form-header">
       <h5>مراحل الطلب</h5>
     </div>
@@ -68,5 +67,4 @@
       <app-request-stage-log [requestId]="requestId"></app-request-stage-log>
     </div>
   </div>
-
 </div>
