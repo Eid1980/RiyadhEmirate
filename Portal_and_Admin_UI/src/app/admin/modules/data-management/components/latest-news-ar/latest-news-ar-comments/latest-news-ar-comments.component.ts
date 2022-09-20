@@ -44,7 +44,7 @@ export class LatestNewsArCommentsComponent implements OnInit {
 
       cols: [
         { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
-        { Field: 'createdBy', Header: 'الاسم' },
+        { Field: 'createdByName', Header: 'الاسم' },
         { Field: 'email', Header: 'البريد الالكتروني' },
         { Field: 'comment', Header: 'التعليق' },
         { Field: 'commentStageName', Header: 'مرحلة التعليق' },

@@ -22,7 +22,7 @@ export class RequestAttacmentComponent implements OnInit {
   attachment: any;
 
   constructor(private fileManagerService: FileManagerService, private requestService: RequestService,
-    private activatedRoute: ActivatedRoute, private globalService: GlobalService) {
+    private activatedRoute: ActivatedRoute, public globalService: GlobalService) {
   }
 
   ngOnInit(): void {
@@ -73,7 +73,14 @@ export class RequestAttacmentComponent implements OnInit {
   }
   downloadAttachment(id: string) {
     if (id) {
-      this.fileManagerService.download(id);
+      this.fileManagerService.getById(id).subscribe((response) => {
+        if (response) {
+          this.fileManagerService.downloadAttachment(response.base64File, response.fileName)
+        }
+        else {
+          this.globalService.messageAlert(MessageType.Error, 'فشل في تنزيل المرفق');
+        }
+      });
     }
   }
   deleteAttachment(id: string) {

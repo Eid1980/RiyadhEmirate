@@ -3,7 +3,7 @@ export interface CreateLatestNewsCommentDto {
   latestNewsId: number;
   comment: string;
   email: string;
-  createdBy: string;
+  createdByName: string;
 }
 
 export interface UpdateLatestNewsCommentDto {
@@ -16,7 +16,7 @@ export interface GetLatestNewsCommentDetailsDto {
   comment: string;
   commentStageName: string;
   email: string;
-  createdBy: string;
+  createdByName: string;
   createdDate: string;
 }
 
@@ -25,6 +25,6 @@ export interface GetLatestNewsCommentListDto {
   comment: string;
   commentStageName: string;
   email: string;
-  createdBy: string;
+  createdByName: string;
   createdDate: string;
 }

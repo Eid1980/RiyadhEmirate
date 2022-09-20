@@ -9,7 +9,7 @@ namespace Emirates.Core.Application.Dtos
         public string AttachmentName { get; set; }
         public string FileName { get; set; }
 
-        public UploadedFileBase64Model Image { get; set; }
+        //public UploadedFileBase64Model Image { get; set; }
 
     }
 }

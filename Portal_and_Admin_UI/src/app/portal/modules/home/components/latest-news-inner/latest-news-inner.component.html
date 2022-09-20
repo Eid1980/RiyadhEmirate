@@ -51,7 +51,7 @@
                    style="height: 50px;width: 60px;min-height: 50px;min-width: 55px;" />
             </div>
             <div class="content my-1">
-              <h5 class="fw-bold fa-18 mb-2">{{comment.createdBy}}</h5><b>{{comment.createdDate}}</b>
+              <h5 class="fw-bold fa-18 mb-2">{{comment.createdByName}}</h5><b>{{comment.createdDate}}</b>
               <p class="mb-0 fw-normal text-muted fa-14">{{comment.comment}}</p>
             </div>
           </div>
@@ -64,8 +64,8 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <div class="form-group">
-                <label for="createdBy">الاسم</label>
-                <input type="text" class="form-control" id="createdBy" formControlName="createdBy" />
+                <label for="createdByName">الاسم</label>
+                <input type="text" class="form-control" id="createdByName" formControlName="createdByName" />
               </div>
             </div>
             <div class="col-md-6 mb-3">

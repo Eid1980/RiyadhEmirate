@@ -97,9 +97,9 @@
                     <td *ngFor="let column of columns | HiddenAuthorizeColumnFilter">
                       <!-- Handle general data fields -->
                       <ng-container *ngIf="!column.Type || column.Type === 'data'">
-                        <span pTooltip="{{ dataItem[column.Field].length > 35 ? dataItem[column.Field] : ''}}" tooltipPosition="top">
+                        <span pTooltip="{{ dataItem[column.Field]?.length > 35 ? dataItem[column.Field] : ''}}" tooltipPosition="top">
                           {{
-                        !column.Pipe ? dataItem[column.Field].length > 35 ? dataItem[column.Field].substring(0, 35) + ' ...' : dataItem[column.Field]
+                        !column.Pipe ? dataItem[column.Field]?.length > 35 ? dataItem[column.Field]?.substring(0, 35) + ' ...' : dataItem[column.Field]
                         : column.Pipe === "date"
                         ? (dataItem[column.Field] | date: "dd-MM-yyyy")
                         : dataItem[column.Field]

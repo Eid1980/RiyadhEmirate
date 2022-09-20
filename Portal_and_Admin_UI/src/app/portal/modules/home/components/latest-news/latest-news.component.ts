@@ -42,7 +42,7 @@ export class LatestNewsComponent implements OnInit {
 
     this.searchModel = { PageNumber: pageNumber, PageSize: this.PAGESIZECONST }
 
-    let isArabic = this._translateService.getCurrentLanguage().Name.toLowerCase() == 'ar'
+    let isArabic = this._translateService.getCurrentLanguage().Name.toLowerCase() == 'ar';
 
     this._latestNewService.getByLang(isArabic, this.searchModel).subscribe((result: any) => {
       this.latestNews = result.data.gridItemsVM;

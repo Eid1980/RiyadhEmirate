@@ -29,14 +29,20 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<UploadedFile, GetUploadedFileModel>();
             #endregion
 
-            #region
+            #region MainPagePoint
             CreateMap<MainPagePoints, GetMainPagePoints>();
-            #endregion
-
-            #region
             CreateMap<CreateMainPoints, MainPagePoints>().ReverseMap();
             CreateMap<UpdateMainPoint, MainPagePoints>().ReverseMap();
             #endregion
+
+            #region Governorate
+            CreateMap<CreateGovernorateDto, Governorate>();
+            CreateMap<UpdateGovernorateDto, Governorate>();
+
+            CreateMap<Governorate, GetGovernorateDetailsDto>();
+            CreateMap<Governorate, GetGovernorateListDto>();
+            #endregion
+
             #region Nationality
             CreateMap<Nationality, NationalityResponse>();
             #endregion
@@ -325,6 +331,14 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr));
             #endregion
 
+            #region Role
+            CreateMap<CreateRoleDto, Role>();
+            CreateMap<UpdateRoleDto, Role>();
+
+            CreateMap<Role, GetRoleDetailsDto>();
+            CreateMap<Role, GetRoleListDto>();
+            #endregion
+
             #region Service
             CreateMap<CreateServiceDto, Service>();
             CreateMap<UpdateServiceDto, Service>();
@@ -366,6 +380,16 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<ServiceStage, GetServiceStageListDto>()
                 .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr));
+            #endregion
+
+            #region UserRole
+            CreateMap<UserRole, GetRolUsersDto>()
+                .ForMember(dest => dest.UserFullName, src => src.MapFrom(m => $"{m.User.FirstNameAr} {m.User.SecondNameAr} {m.User.ThirdNameAr} {m.User.LastNameAr}"))
+                .ForMember(dest => dest.UserNationalId, src => src.MapFrom(m => m.User.UserName))
+                .ForMember(dest => dest.UserPhoneNumber, src => src.MapFrom(m => m.User.PhoneNumber));
+            CreateMap<User, GetUserListDto>()
+                .ForMember(dest => dest.FullName, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
+                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
             #endregion
 
 

@@ -51,6 +51,10 @@ import { EditAboutUsComponent } from "./components/about-us/edit-about-us/edit-a
 import { EditWomanSectionComponent } from "./components/woman-section/edit-woman-section/edit-woman-section.component";
 import { LatestNewsEnCommentsComponent } from "./components/latest-news-en/latest-news-en-comments/latest-news-en-comments.component";
 import { LatestNewsArCommentsComponent } from "./components/latest-news-ar/latest-news-ar-comments/latest-news-ar-comments.component";
+import { GovernorateAddComponent } from "./components/governorates/governorate-add/governorate-add.component";
+import { GovernorateEditComponent } from "./components/governorates/governorate-edit/governorate-edit.component";
+import { GovernorateListComponent } from "./components/governorates/governorate-list/governorate-list.component";
+import { GovernorateViewComponent } from "./components/governorates/governorate-view/governorate-view.component";
 
 const routes: Routes = [
   //#region LatestNewsAr
@@ -197,6 +201,29 @@ const routes: Routes = [
   {
     path: "case-type-view/:id",
     component: CaseTypeViewComponent,
+    canActivate: [AuthGuard],
+  },
+  //#endregion
+
+  //#region Governorate
+  {
+    path: "governorate-add",
+    component: GovernorateAddComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "governorate-edit/:id",
+    component: GovernorateEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "governorate-list",
+    component: GovernorateListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "governorate-view/:id",
+    component: GovernorateViewComponent,
     canActivate: [AuthGuard],
   },
   //#endregion
