@@ -8,6 +8,7 @@ namespace Emirates.Core.Domain.Interfaces
         IAudienceRepository Audiences { get; }
         ICaseTypeRepository CaseTypes { get; }
         ICommentStageRepository CommentStages { get; }
+        IGovernorateRepository Governorates { get; }
         INationalityRepository Nationalities { get; }
         ILatestNewsRepository LatestNews { get; }
         ILatestNewsCommentRepository LatestNewsComments { get; }
@@ -29,6 +30,7 @@ namespace Emirates.Core.Domain.Interfaces
         IRequestStageLogRepository RequestStageLogs { get; }
         IRequestTreatmentRecommendationRepository RequestTreatmentRecommendations { get; }
         IRequestTypeRepository RequestTypes { get; }
+        IRoleRepository Roles { get; }
         IServiceAudienceRepository ServiceAudiences { get; }
         IServiceBenefitRepository ServiceBenefits { get; }
         IServiceConditionRepository ServiceConditions { get; }
@@ -38,6 +40,7 @@ namespace Emirates.Core.Domain.Interfaces
         IStageRepository Stages { get; }
         IUploadedFileRepository UploadedFiles { get; }
         IUserRepository Users { get; }
+        IUserRoleRepository UserRoles { get; }
         ILookupRepository Lookups { get; }
     }
 }

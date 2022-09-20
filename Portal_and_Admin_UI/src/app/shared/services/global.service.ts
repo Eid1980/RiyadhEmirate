@@ -39,6 +39,7 @@ export class GlobalService {
         break;
     }
   }
+
   public showMessage(msg: string): void {
     if (msg) {
       var msgArray = msg.split(',');
@@ -53,6 +54,7 @@ export class GlobalService {
   confirm() {
     this.confirmSubmit();
   }
+
   confirmSubmit: Function;
   public clearMessages() {
     this.messageService.clear('confirm');
@@ -86,9 +88,11 @@ export class GlobalService {
   navigate(url: string) {
     this.router.navigate([url]);
   }
+
   navigateToInbox() {
     this.router.navigate(["/admin/eservice-admin/inbox"]);
   }
+
   navigateToRequesterDashboard() {
     this.router.navigate(["/eservice/my-requests"]);
   }
@@ -98,6 +102,7 @@ export class GlobalService {
     const defaultOptions = { markAsDirty: true, updateValueAndValidity: true } as GlobalOptions.ControlOptions;
     this.markFormGroup(formGroup, { ...defaultOptions, ...options });
   }
+
   markFormGroup(formGroup: FormGroup, options: GlobalOptions.ControlOptions) {
     Object.keys(formGroup.controls).forEach(key => {
       if (formGroup.get(key) instanceof FormGroup) {
@@ -111,6 +116,7 @@ export class GlobalService {
       }
     });
   }
+
   markFormArray(formArray: FormArray, options: GlobalOptions.ControlOptions) {
     formArray.controls.forEach(control => {
       if (control instanceof FormGroup) {
@@ -124,6 +130,7 @@ export class GlobalService {
       }
     });
   }
+
   markFormControl(formControl: FormControl, options: GlobalOptions.ControlOptions) {
     if (options.markAsDirty) formControl.markAsDirty();
     if (options.updateValueAndValidity) formControl.updateValueAndValidity();
@@ -138,4 +145,6 @@ export class GlobalService {
     this.subject.next(this._breadcrumbItems);
   }
   //#end region
+
+
 }

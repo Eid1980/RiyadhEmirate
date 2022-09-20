@@ -1,7 +1,7 @@
 {
   "global": {
-      "message": {
-          "reqiuredField": "This field is required"
+      "validators": {
+          "requiredField": "This field is required"
       }
   },
   "_comment": "begin auth region",
@@ -32,13 +32,17 @@
           "dateComponent": "year/month/day",
           "higri": "Higri",
           "greg": "Gregorian",
+          "selectNationality": "select Nationality",
           "phoneNumber": "Phone Number",
           "email": "E-mail",
           "password": "Password",
           "createNewAccount": "Create new account",
           "haveAnAccount": "Do you have an account ?",
           "createAccount": "Create Account",
-          "backToLogin": "Back to Login"
+          "backToLogin": "Back to Login",
+          "check": "Check",
+          "back" : "Back"
+
       },
       "validators": {
           "passwordPattern": "The password contains uppercase letters, lowercase letters, and letter-specific numbers",

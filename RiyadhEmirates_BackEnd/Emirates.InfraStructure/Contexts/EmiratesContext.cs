@@ -2,6 +2,7 @@
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain;
 using Microsoft.AspNetCore.Http;
+using Emirates.Core.Application.CustomExceptions;
 
 namespace Emirates.InfraStructure.Contexts
 {
@@ -69,7 +70,7 @@ namespace Emirates.InfraStructure.Contexts
             }
             catch (Exception ex)
             {
-                return 0;
+                throw new BusinessException("خطأ في قاعدة البيانات برجاء التواصل مع مدير النظام");
             }
         }
 
@@ -168,6 +169,11 @@ namespace Emirates.InfraStructure.Contexts
                 b.ToTable("Governorates", EmiratesDbSchemas.LookupSehema);
                 b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.DescriptionAr).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.DescriptionEn).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.PhoneNumber).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.LocationLink).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.PortalLink).HasMaxLength(EmiratesConstants.MaxLongNameLength);
                 b.Property(x => x.IsActive).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
 
@@ -206,7 +212,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.Comment).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.CommentStageId).IsRequired();
                 b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.CreatedBy).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.CreatedByName).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.CreatedDate).IsRequired();
 
                 b.HasOne<LatestNews>(x => x.LatestNews).WithMany(x => x.LatestNewsComments).HasForeignKey(x => x.LatestNewsId).OnDelete(DeleteBehavior.NoAction);
@@ -578,7 +584,7 @@ namespace Emirates.InfraStructure.Contexts
             #region Role
             modelBuilder.Entity<Role>(b =>
             {
-                b.ToTable("Roles", EmiratesDbSchemas.SecuritySehema);
+                b.ToTable("Roles", EmiratesDbSchemas.AuthSehema);
                 b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.IsActive).IsRequired();
@@ -586,6 +592,8 @@ namespace Emirates.InfraStructure.Contexts
 
                 b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedRoles).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedRoles).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.Roles());
             });
             #endregion
 
@@ -719,7 +727,7 @@ namespace Emirates.InfraStructure.Contexts
             #region User
             modelBuilder.Entity<User>(b =>
             {
-                b.ToTable("Users", EmiratesDbSchemas.SecuritySehema);
+                b.ToTable("Users", EmiratesDbSchemas.AuthSehema);
                 b.Property(x => x.UserName).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
 
                 b.Property(x => x.FirstNameAr).HasMaxLength(EmiratesConstants.MaxShortLength);
@@ -744,6 +752,21 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<Governorate>(x => x.Governorate).WithMany(x => x.Users).HasForeignKey(x => x.GovernorateId).OnDelete(DeleteBehavior.NoAction);
 
                 b.HasData(DefaultData.Users());
+            });
+            #endregion
+
+            #region UserRole
+            modelBuilder.Entity<UserRole>(b =>
+            {
+                b.ToTable("UserRoles", EmiratesDbSchemas.AuthSehema);
+                b.Property(x => x.UserId).IsRequired();
+                b.Property(x => x.RoleId).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.User).WithMany(x => x.UserRoles).HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Role>(x => x.Role).WithMany(x => x.UserRoles).HasForeignKey(x => x.RoleId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedUserRoles).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedUserRoles).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -781,7 +804,6 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<RequestType> RequestType { get; set; }
 
         public DbSet<Role> Roles { get; set; }
-        public DbSet<RolesScreen> RolesScreens { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<ServiceAudience> ServiceAudiences { get; set; }
         public DbSet<ServiceBenefit> ServiceBenefits { get; set; }
@@ -791,6 +813,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<Stage> Stages { get; set; }
         public DbSet<UploadedFile> UploadedFiles { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 
 
         private int? GetUserId()

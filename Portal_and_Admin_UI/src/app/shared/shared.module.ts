@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { SharedRoutingModule } from './shared-routing.module';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { DialogModule } from 'primeng/dialog';
+import { TooltipModule } from 'primeng/tooltip';
 import { RatingModule } from 'primeng/rating';
 import { AuthGuard } from './guards/auth.guard';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
@@ -42,6 +43,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceFilterPipe } from './pipes/service-filter.pipe';
+import {ButtonModule} from 'primeng/button';
+
+
 
 @NgModule({
   declarations: [
@@ -81,7 +85,9 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
     ConfirmDialogModule,
     BreadcrumbModule,
     ToastModule,
+    ButtonModule,
     DialogModule,
+    TooltipModule,
     RatingModule,
     NgxHijriGregorianDatepickerModule
   ],
@@ -107,6 +113,8 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
     HiddenAuthorizeColumnFilterPipe,
     InputSwitchModule,
     ToastModule,
+    DialogModule,
+    TooltipModule,
     DatePipe,
     FileUploadModule,
     ConfirmDialogModule,
@@ -119,7 +127,8 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
     RateServiceComponent,
     CustomSlicePipe,
     ServiceFilterPipe,
-    TranslateModule
+    TranslateModule,
+    ButtonModule
   ],
   providers: [
     HiddenAuthorizeColumnFilterPipe,

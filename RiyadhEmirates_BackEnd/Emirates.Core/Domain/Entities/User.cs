@@ -30,7 +30,7 @@ namespace Emirates.Core.Domain.Entities
         public DateTime? IdentityExpireDate { get; set; }
         public string Address { get; set; }
 
-        public bool IsAdmin { get; set; }
+        public bool IsEmployee { get; set; }
         public bool IsActive { get; set; }
 
         public string Last2Factor { get; set; }
@@ -118,6 +118,10 @@ namespace Emirates.Core.Domain.Entities
 
         public virtual ICollection<CommentStage> CreatedCommentStages { get; set; }
         public virtual ICollection<CommentStage> ModifiedCommentStages { get; set; }
+
+        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<UserRole> CreatedUserRoles { get; set; }
+        public virtual ICollection<UserRole> ModifiedUserRoles { get; set; }
 
     }
 }

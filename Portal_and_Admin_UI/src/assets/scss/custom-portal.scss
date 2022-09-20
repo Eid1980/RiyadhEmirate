@@ -53,45 +53,6 @@
       font-size: 12px;
     }
 
-    .input-group-append {
-      height: 50px;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-right: 10px;
-      padding: 6px;
-      display: flex;
-      align-items: center;
-
-      .btn {
-        font-size: 12px;
-        border-radius: 20px;
-        padding: 8px 16px;
-        border: 0;
-        color: rgba($color: $dark, $alpha: 0.6);
-
-        &:focus,
-        &.active {
-          box-shadow: none;
-          outline: 0;
-        }
-
-        &:hover {
-          background-color: transparent;
-          color: $Primary-1;
-        }
-
-        &.active {
-          background-color: $secondary-1;
-          color: $white;
-          font-weight: 600;
-
-          &:hover {
-            color: $white;
-          }
-        }
-      }
-    }
-
     .forget-pass {
       font-size: 13px;
       text-align: left;
@@ -1193,7 +1154,7 @@
     display: inline-block;
     position: relative;
     padding-right: 28px;
-    margin: 1rem 0 2.5rem 1.5rem;
+    margin: 1rem 0rem 1rem 1.5rem;
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 600;
@@ -1506,7 +1467,7 @@
 
       .news-img {
         width: 100%;
-        height: 365px;
+        height: 390px;
         border-radius: 6px;
       }
 
@@ -1640,11 +1601,11 @@
     margin-bottom: 1rem;
 
     .title {
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: $text-color;
+      font-size: 20px;
+      font-weight: 600;
+      color: rgba($color: $dark, $alpha: 0.8);
       margin-bottom: 0;
-      color: $Primary-1;
+      line-height: 32px;
     }
 
     .more {
@@ -2368,22 +2329,24 @@
 
   // Service Details Page
   .service-details {
-    padding: 1.4rem 6.25rem;
+    padding: 26px 0px;
 
     .page-head {
       background-color: $white;
-      height: 4rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-radius: 6px;
-      border: 1px solid $dimmed;
+      border: 1px solid rgba($color: $dark, $alpha: 0.1);
       border-right: 6px solid $Primary-1;
+      padding: 6px 0px;
+      flex-wrap: wrap;
 
       .title {
-        font-size: 1rem;
+        font-size: 22px;
         font-weight: 600;
         margin-bottom: 0;
+        color: rgba($color: $dark, $alpha: 0.8);
       }
 
       .start-ser {
@@ -2415,48 +2378,53 @@
       .tab-content {
         .tab-pane {
           .title {
-            color: $primary-alt-2;
+            color: $Primary-1;
             display: block;
             font-weight: 600;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            font-size: 1rem;
+            margin: 0px;
+            margin-bottom: 10px;
+            font-size: 18px;
           }
 
           .desc {
-            color: $black;
+            color: rgba($color: $dark, $alpha: 0.7);
             display: block;
             font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 1rem;
+            font-weight: 400;
+            margin-bottom: 0px;
           }
 
           .customer-details {
             background: $white;
+            border: 1px solid rgba($color: $dark, $alpha: 0.1);
             display: inline-block;
-            width: 60%;
             border-radius: 6px;
+            width: 100%;
 
             .row-details {
               margin-bottom: 1rem;
 
+              &:last-child{
+                margin-bottom: 0px;
+              }
+
               .icon {
                 display: inline-block;
-                margin-left: 9px;
+                margin-left: 10px;
               }
 
               .key {
                 font-size: 14px;
-                color: #565656;
+                color: rgba($color: $dark, $alpha: 0.5);
                 display: inline-block;
-                width: 24%;
+                width: 22%;
                 font-weight: 400;
               }
 
               .value {
                 font-size: 14px;
-                color: $black;
-                font-weight: 700;
+                color: rgba($color: $dark, $alpha: 0.8);
+                font-weight: 400;
               }
             }
           }
@@ -2465,7 +2433,7 @@
             height: 434px;
             display: flex;
             position: relative;
-            margin-top: 7rem;
+            margin-top: 2rem;
             zoom: 0.89;
 
             .flow-card {
@@ -2492,7 +2460,7 @@
 
               .step-desc {
                 font-size: 14px;
-                font-weight: 700;
+                font-weight: 400;
                 color: $black;
                 padding-top: 45px;
                 padding-bottom: 45px;
@@ -2734,12 +2702,11 @@
     }
 
     .survey {
-      position: absolute;
-      bottom: 0;
-      width: 95%;
+      font-weight: 400;
+      font-size: 12px;
 
       .question {
-        color: $primary-alt-2;
+        color: rgba($color: $dark, $alpha: 0.7);
         margin-left: 6px;
         display: inline-block;
       }
@@ -2756,37 +2723,45 @@
       }
 
       .liked {
-        color: $primary-alt-2;
+        color: rgba($color: $dark, $alpha: 0.7);
       }
     }
 
     .sidebar {
       background-color: $white;
-      padding: 1.4rem 1rem 1rem;
-      box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
-      border: 1px solid $dimmed;
+      padding: 16px;
+      // box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+      border: 1px solid rgba($color: $dark, $alpha: 0.1);
       border-radius: 6px;
+      position: relative;
+      width: auto;
+      position: relative;
 
       .toast-detail {
-        border-bottom: 1px solid $dimmed;
-        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba($color: $dark, $alpha: 0.1);
+        padding-bottom: 16px;
+        margin-bottom: 16px;
 
         .title {
-          color: $primary-alt-3;
-          font-size: 0.9rem;
-          font-weight: bold;
-          padding: 1rem 0;
-          margin-bottom: 0;
+          color: $Primary-1;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 0;
+          margin-bottom: 10px;
         }
 
         .group {
-          width: 50%;
-          display: inline-block;
+          display: flex;
+          align-items: center;
+
+          img{
+            margin-left: 10px !important;
+          }
 
           .service {
-            font-size: 0.8rem;
-            margin-right: 0.8rem;
-            margin-bottom: 0.8rem;
+            font-size: 14px;
+            margin: 0px;
+            font-weight: 400;
           }
         }
 
@@ -2841,6 +2816,8 @@
 
         img {
           max-width: 70px;
+          max-height: 70px;
+          border-radius: 50%;
         }
       }
 
@@ -2867,7 +2844,7 @@
       .owl-dots {
         display: flex;
         align-items: center;
-        top: -32px;
+        top: -40px;
         position: absolute;
         left: 0;
         margin: 0;

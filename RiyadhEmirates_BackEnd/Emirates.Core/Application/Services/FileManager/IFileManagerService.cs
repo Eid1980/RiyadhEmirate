@@ -15,6 +15,7 @@ namespace Emirates.Core.Application.Services.InternalPortal.FileManager
         void ChangeStatus(Guid fileId);
         List<GetUploadedFileModel> GetByEntityNameAndActive(string entityName);
         UploadedFileBase64Model GetBase64File(int entityId, string entityName);
+        UploadedFileBase64Model GetBase64File(Guid entityId, string entityName);
         List<UploadedFileBase64Model> GetBase64BySubEntityName(string entityId, string entityName, string subEntityName);
     }
 }

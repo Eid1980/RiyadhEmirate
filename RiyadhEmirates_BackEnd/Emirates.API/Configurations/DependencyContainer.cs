@@ -3,8 +3,10 @@ using Emirates.Core.Application.Services.AboutUs;
 using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Services.CaseTypes;
 using Emirates.Core.Application.Services.Common;
+using Emirates.Core.Application.Services.Governorates;
 using Emirates.Core.Application.Services.InternalPortal.FileManager;
 using Emirates.Core.Application.Services.LatestNews;
+using Emirates.Core.Application.Services.LatestNewsComments;
 using Emirates.Core.Application.Services.Lookups;
 using Emirates.Core.Application.Services.Nationality;
 using Emirates.Core.Application.Services.News;
@@ -22,12 +24,14 @@ using Emirates.Core.Application.Services.RequestPrisonerTempReleases;
 using Emirates.Core.Application.Services.Requests;
 using Emirates.Core.Application.Services.RequestTreatmentRecommendations;
 using Emirates.Core.Application.Services.RequestTypes;
+using Emirates.Core.Application.Services.Roles;
 using Emirates.Core.Application.Services.ServiceAudiences;
 using Emirates.Core.Application.Services.ServiceBenefits;
 using Emirates.Core.Application.Services.ServiceConditions;
 using Emirates.Core.Application.Services.ServiceRates;
 using Emirates.Core.Application.Services.ServiceStages;
 using Emirates.Core.Application.Services.Shared;
+using Emirates.Core.Application.Services.UserRoles;
 using Emirates.Core.Application.Services.WomanSection;
 using Emirates.Core.Domain.Interfaces;
 using Emirates.InfraStructure.UnitsOfWork;
@@ -46,10 +50,12 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IAboutUsService, AboutUsService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICaseTypeService, CaseTypeService>();
+            builder.Services.AddScoped<IGovernorateService, GovernorateService>();
             builder.Services.AddScoped<ILocalizationService, LocalizationService>();
             builder.Services.AddScoped<IFileManagerService, FileManagerService>();
             builder.Services.AddScoped<IFileUploaderService, FileUploaderService>();
             builder.Services.AddScoped<ILatestNewsService, LatestNewsService>();
+            builder.Services.AddScoped<ILatestNewsCommentService, LatestNewsCommentService>();
             builder.Services.AddScoped<INewsService, NewsService>();
             builder.Services.AddScoped<INewsCategueryService, NewsCategueryService>();
             builder.Services.AddScoped<IPosterService, PosterService>();
@@ -71,12 +77,14 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IRequestLandsInfringementService, RequestLandsInfringementService>();
             builder.Services.AddScoped<IRequestMarriageCertificateService, RequestMarriageCertificateService>();
             builder.Services.AddScoped<IRequestTypeService, RequestTypeService>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<IRequestPrisonersServiceService, RequestPrisonersServiceService>();
             builder.Services.AddScoped<IRequestPrisonerTempReleaseService, RequestPrisonerTempReleaseService>();
             builder.Services.AddScoped<IRequestForeignersRealtyOwnerService, RequestForeignersRealtyOwnerService>();
             builder.Services.AddScoped<IRequestTreatmentRecommendationService, RequestTreatmentRecommendationService>();
 
             builder.Services.AddScoped<IWomanSectionService, WomanSectionService>();
+            builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 
         }
     }

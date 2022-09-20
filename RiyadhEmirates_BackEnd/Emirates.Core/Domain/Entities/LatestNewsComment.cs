@@ -8,7 +8,7 @@ namespace Emirates.Core.Domain.Entities
         public string Comment { get; set; }
         public int CommentStageId { get; set; }
         public string Email { get; set; }
-        public string CreatedBy { get; set; }
+        public string CreatedByName { get; set; }
         public DateTime CreatedDate { get; set; }
         public int? LastModifiedBy { get; set; }
         public DateTime? LastModifiedDate { get; set; }

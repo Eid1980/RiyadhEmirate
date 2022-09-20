@@ -7,11 +7,10 @@
 </div>
 
 <div class="form-card">
-  <div class="form-header">
-    <h5>استكمال بيانات الخدمة</h5>
+  <div class="form-header" style="border-bottom: 0px !important;">
+    <h5 class="mb-5">استكمال بيانات الخدمة</h5>
 
     <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
-
   </div>
   <form [formGroup]="serviceConditionForm" (ngSubmit)="onSubmit()">
     <div class="form-content">
@@ -32,7 +31,7 @@
         </div>
         <div class="form-group col-md-6">
           <div class="form-actions" *ngIf="!isUpdate">
-            <button type="submit" class="btn btn-save">اضافة</button>
+            <button type="submit" class="btn btn-primary">اضافة</button>
           </div>
           <div class="form-actions" *ngIf="isUpdate">
             <button type="submit" class="btn btn-save">تعديل</button>
@@ -43,7 +42,7 @@
     </div>
   </form>
 
-  <div class="row mx-0">
+  <div class="row mt-3 mx-0">
     <p-table #serviceConditions [value]="getServiceConditionListDto" dataKey="id"
              [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
       <ng-template pTemplate="header" let-columns>
@@ -81,7 +80,8 @@
 
 </div>
 <div class="form-actions">
-  <a [routerLink]="['/admin/data-management/service-list']" class="btn btn-save">حفظ</a>
-  <a [routerLink]="['/admin/data-management/service-audience/', id]" class="btn btn-cancel">السابق</a>
-  <a [routerLink]="['/admin/data-management/service-list']" class="btn btn-cancel">رجوع</a>
+  <a [routerLink]="['/admin/data-management/service-audience/', id]" class="btn my-1 ms-auto me-0 btn-outline-primary-alt">السابق</a>
+
+  <a [routerLink]="['/admin/data-management/service-list']" class="btn my-1 btn-save">حفظ</a>
+  <a [routerLink]="['/admin/data-management/service-list']" class="btn my-1 btn-cancel">رجوع</a>
 </div>

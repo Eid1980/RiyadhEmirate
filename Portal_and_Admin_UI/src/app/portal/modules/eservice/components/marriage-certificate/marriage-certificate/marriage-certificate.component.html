@@ -1,12 +1,12 @@
-<div class="p-5">
-
-  <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
-
+<div class="container py-5 px-0">
   <form [formGroup]="marriageCertificateForm" (ngSubmit)="onSubmit()">
-    <div class="form-card">
-      <div class="form-header">
-        <h5>خدمة توثيق الزواج</h5>
+    <div class="form-card mb-0">
+      <div class="form-header" style="border-bottom: 0px !important;">
+        <h5 class="mb-5">خدمة توثيق الزواج</h5>
+
+        <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
       </div>
+
       <div class="form-content">
         <div class="row mx-0">
           <div class="form-group col-md-6" *ngIf="requestTypes?.length > 0">
@@ -19,8 +19,6 @@
               <option *ngFor="let requestType of requestTypes" [ngValue]="requestType.id">{{ requestType.name }}</option>
             </select>
             <small *ngIf="(isFormSubmitted || marriageCertificateForm.get('requestTypeId').touched) && marriageCertificateForm.get('requestTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>
-          </div>
-          <div class="form-group col-md-6">
           </div>
           <div class="form-group col-md-6">
             <label for="employeeSide" class="form-lbl">جهة العمل<span class="danger">*</span></label>
@@ -59,7 +57,7 @@
           </div>
           <div class="form-group col-md-12">
             <label for="notes" class="form-lbl">ملاحظات<span class="danger">*</span></label>
-            <textarea type="text" class="form-control" autocomplete="off" formControlName="notes" id="notes" [ngClass]="{
+            <textarea type="text" class="form-control" rows="6" autocomplete="off" formControlName="notes" id="notes" [ngClass]="{
               invalid:
                 (isFormSubmitted || marriageCertificateForm.get('notes').touched) &&
                 marriageCertificateForm.get('notes').errors?.required}">
@@ -70,10 +68,9 @@
       </div>
     </div>
 
-    <div class="form-actions">
-      <button type="submit" class="btn btn-save">التالي</button>
-      <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+    <div class="form-actions px-0">
+      <button type="submit" class="btn btn-primary px-4 ms-3">التالي</button>
+      <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
     </div>
   </form>
-
 </div>

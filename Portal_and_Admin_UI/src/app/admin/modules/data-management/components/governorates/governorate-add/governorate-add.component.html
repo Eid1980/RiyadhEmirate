@@ -1,0 +1,74 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/governorate-list']">المحافظات</a>
+    <span class="breadcrumb-item fs-16 active">إضافة محافظة جديدة</span>
+  </nav>
+</div>
+<form [formGroup]="createGovernorateForm" (ngSubmit)="onSubmit()">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>إضافة محافظة جديدة</h5>
+    </div>
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="form-group col-md-6">
+          <label for="nameAr" class="form-lbl">الاسم عربي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" id="nameAr" [ngClass]="{
+              invalid: (isFormSubmitted || createGovernorateForm.get('nameAr').touched) && createGovernorateForm.get('nameAr').errors?.required}" />
+          <small *ngIf="(isFormSubmitted || createGovernorateForm.get('nameAr').touched) && createGovernorateForm.get('nameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nameEn" class="form-lbl">الاسم انجليزي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" id="nameEn" [ngClass]="{
+              invalid: (isFormSubmitted || createGovernorateForm.get('nameEn').touched) && createGovernorateForm.get('nameEn').errors?.required}" />
+          <small *ngIf="(isFormSubmitted || createGovernorateForm.get('nameEn').touched) && createGovernorateForm.get('nameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="descriptionAr" class="form-lbl">الوصف عربي<span class="danger">*</span></label>
+          <textarea rows="4" class="form-control" formControlName="descriptionAr" id="descriptionAr" [ngClass]="{
+              invalid: (isFormSubmitted || createGovernorateForm.get('descriptionAr').touched) && createGovernorateForm.get('descriptionAr').errors?.required}"></textarea>
+          <small *ngIf="(isFormSubmitted || createGovernorateForm.get('descriptionAr').touched) && createGovernorateForm.get('descriptionAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="descriptionEn" class="form-lbl">الوصف إنجليزي<span class="danger">*</span></label>
+          <textarea rows="4" class="form-control" formControlName="descriptionEn" id="descriptionEn" [ngClass]="{
+              invalid: (isFormSubmitted || createGovernorateForm.get('descriptionEn').touched) && createGovernorateForm.get('descriptionEn').errors?.required}"></textarea>
+          <small *ngIf="(isFormSubmitted || createGovernorateForm.get('descriptionEn').touched) &&createGovernorateForm.get('descriptionEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phoneNumber" class="form-lbl">رقم الهاتف</label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="phoneNumber" id="phoneNumber" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="locationLink" class="form-lbl">خريطة المحافظة</label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="locationLink" id="locationLink" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="portalLink" class="form-lbl">البوابة الالكترونية للموقع</label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="portalLink" id="portalLink" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
+          <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
+                        (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
+                        accept="image/*" [maxFileSize]="fileSize">
+          </p-fileUpload>
+          <small *ngIf="(isFormSubmitted || createGovernorateForm.get('image').touched) && createGovernorateForm.get('image').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-6">
+          <label class="container-check">
+            فعال
+            <input formControlName="isActive" type="checkbox" id="isActive" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-save">حفظ</button>
+    <a [routerLink]="['/admin/data-management/governorate-list']" class="btn btn-cancel">رجوع</a>
+  </div>
+</form>

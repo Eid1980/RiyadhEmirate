@@ -7,7 +7,7 @@ namespace Emirates.Core.Application.Services.LatestNews
     public interface ILatestNewsService
     {
         IApiResponse GetById(int id);
-        IApiResponse GetByLang(bool isArabic = true);
+        IApiResponse GetByLang(SearchModel searchModel, bool isArabic = true);
         IApiResponse GetByLangTop5(bool isArabic = true);
         IApiResponse GetAll(SearchModel searchModel);
         IApiResponse GetAll();

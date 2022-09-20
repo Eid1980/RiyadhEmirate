@@ -55,6 +55,7 @@ namespace Emirates.Core.Application.Services.LatestNewsComments
         public IApiResponse Create(CreateLatestNewsCommentDto createModel)
         {
             var addedModel = _emiratesUnitOfWork.LatestNewsComments.Add(_mapper.Map<LatestNewsComment>(createModel));
+            addedModel.CommentStageId = (int)SystemEnums.CommentStages.New;
             _emiratesUnitOfWork.Complete();
             return GetResponse(message: CustumMessages.MsgSuccess("تم اضافة التعليق بنجاح وسيتم عرضة بعد الموافقة عليه من قبل مدير النظام"), data: addedModel.Id);
         }
@@ -74,7 +75,7 @@ namespace Emirates.Core.Application.Services.LatestNewsComments
             if (latestNewsComment == null)
                 throw new NotFoundException(typeof(LatestNewsComment).Name);
 
-            _emiratesUnitOfWork.CaseTypes.Remove(latestNewsComment);
+            _emiratesUnitOfWork.LatestNewsComments.Remove(latestNewsComment);
             _emiratesUnitOfWork.Complete();
             return GetResponse(message: CustumMessages.DeleteSuccess());
         }

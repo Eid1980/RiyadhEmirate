@@ -21,7 +21,7 @@ namespace Emirates.Core.Application.Dtos
 
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public bool IsAdmin { get; set; }
+        public bool IsEmployee { get; set; }
         public bool IsDataComplete { get; set; }
         public bool IsActive { get; set; }
         public string OTP { get; set; }

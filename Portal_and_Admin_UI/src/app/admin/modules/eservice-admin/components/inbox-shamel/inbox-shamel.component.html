@@ -42,13 +42,13 @@
         </div>
       </div>
 
-      <div class="form-actions">
+      <div class="form-actions mb-4">
         <button type="button" class="btn btn-save" (click)="search()">بحث</button>
-        <button type="button" class="btn btn-save" (click)="search(true)">عرض الكل</button>
+        <button type="button" class="btn btn-secondary" (click)="search(true)">عرض الكل</button>
       </div>
     </form>
     <div class="row mx-0">
-      <p-table #inbox [value]="inboxListDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+      <p-table #inbox [value]="inboxListDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100 ps-0">
         <ng-template pTemplate="header" let-columns>
           <tr>
             <th>م</th>
@@ -71,7 +71,7 @@
             <td title="{{inbox.notes}}" *ngIf="inbox.notes"> {{inbox.notes.length > 20 ? inbox.notes.substring(0, 20) + ' ...' : inbox.notes}} </td>
             <td title="{{inbox.notes}}" *ngIf="!inbox.notes"></td>
             <td>
-              <a class="btn btn-primary mx-1 px-1 py-0" title="بيانات الطلب" [routerLink]="[inbox.url, inbox.id] ">
+              <a class="btn btn-primary mx-1 p-2" title="بيانات الطلب" [routerLink]="[inbox.url, inbox.id] ">
                 <i class="fa fa-eye"></i>
               </a>
             </td>

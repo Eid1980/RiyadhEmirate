@@ -1,68 +1,66 @@
-<!-- Poster, Flyer -->
-<div class="home-slider">
+<!-- poster banner section -->
+<div class="home-slider mb-5 pb-3">
   <div class="owl__carousel">
     <owl-carousel-o [options]="sliderOptions" class="owl-rtl">
       <ng-template carouselSlide *ngFor="let poster of posters">
-        <img [src]="sanitizer.bypassSecurityTrustResourceUrl(poster?.image?.base64File)" alt="" class="w-100 slider" />
+        <img [src]="sanitizer.bypassSecurityTrustResourceUrl(poster?.image?.base64File)" alt="banner"
+          class="img-fluid slider" />
       </ng-template>
     </owl-carousel-o>
   </div>
 </div>
 
-<!-- News -->
 <div class="container">
-  <div class="row mb-5 py-5">
-    <div class="col-md-6 news">
-      <div class="section-title">
-        <h3 class="title">آخر الأخبار</h3>
-        <div class="more">
-          <a routerLink="home/latest-news">
-            تصفح جميع الأخبار
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-          </a>
+  <!-- news & services section -->
+  <div class="row mb-5">
+    <!-- latest news -->
+    <div class="col-md-6 my-2">
+      <div class="news">
+        <div class="section-title">
+          <h3 class="title">{{ 'home.latestNews' | translate }} </h3>
+          <div class="more d-flex">
+            <a routerLink="home/latest-news">
+              {{ 'home.browseAllNews' | translate }}
+              <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div class="owl__carousel">
-        <owl-carousel-o [options]="newsOptions" class="owl-rtl">
-          <!-- Repeatable Item -->
-          <ng-template carouselSlide *ngFor="let news of latestNews">
-            <div class="owl-item">
-              <div class="item">
-                <div class="news-card" [routerLink]="['/emirate/latest-news' , news.id]">
-                  <img [src]="
+        <div class="owl__carousel">
+          <owl-carousel-o [options]="newsOptions" class="owl-rtl">
+            <!-- Repeatable Item -->
+            <ng-template carouselSlide *ngFor="let news of latestNews">
+              <div class="owl-item">
+                <div class="item">
+                  <div class="news-card" [routerLink]="['/home/latest-news' , news.id]">
+                    <img [src]="
                       sanitizer.bypassSecurityTrustResourceUrl(
-                        news?.image?.base64File)"
-                       alt=""
-                       class="news-img" />
-                  <img src="./assets/images/news-overlay.png"
-                       alt=""
-                       class="overlay" />
-                  <div class="news-caption">
-                    <h6 class="h2">
-                      {{ news?.title }}
-                    </h6>
-                    <span class="date">
-                      <img src="./assets/images/icons/date-white.svg"
-                           class="date-icon"
-                           alt="" />
-                      <span class="date-desc">
-                        {{
+                        news?.image?.base64File)" alt="image" class="img-fluid news-img" />
+                    <img src="assets/images/news-overlay.png" alt="overlay" class="img-fluid overlay" />
+                    <div class="news-caption">
+                      <h6 class="h2">
+                        {{ news?.title }}
+                      </h6>
+                      <span class="date">
+                        <img src="assets/images/icons/date-white.svg" class="date-icon" alt="icon" />
+                        <span class="date-desc">
+                          {{
                         formatDate(news?.date)
                         }}
+                        </span>
                       </span>
-                    </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </ng-template>
-        </owl-carousel-o>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
       </div>
     </div>
 
-    <!-- Navigation Links & Related Websites -->
-    <div class="col-md-6">
+    <!-- navigation links & related websites -->
+    <div class="col-md-6 my-2">
       <!-- Navigation Links -->
       <!-- <div class="row mx-0">
         <div class="col-md-6 nav-card">
@@ -85,272 +83,245 @@
         </div>
       </div> -->
 
-      <div class="row mx-0">
-        <div class="col-md-12 px-0">
-          <!-- <img src="./assets/images/services-manual.svg" alt="" class="w-100"> -->
-          <div class="services-details-container">
-            <div class="section-title">
-              <h3 class="title">دليل الخدمات</h3>
-            </div>
-            <div class="owl__carousel">
-              <owl-carousel-o [options]="servicesDetailsOptions" class="owl-rtl">
-                <ng-template carouselSlide *ngFor="let len of serviceGuidLength; let i=index;">
-                  <div class="owl-item item-box">
-                    <div class="item">
-                      <div class="services-details-box" *ngIf="i == 0">
-                        <a class="services-details-card" *ngFor="let service of serviceGuidFirst" [routerLink]="['/home/services-guide/' , service.id]">
-                          <div class="card-image">
-                            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="image" />
-                          </div>
-                          <div class="content">
-                            <h4>{{service.nameAr}}</h4>
-                            <p>{{service.descriptionAr}}</p>
-                          </div>
-                        </a>
+      <!-- <img src="./assets/images/services-manual.svg" alt="" class="w-100"> -->
+
+      <!-- services details section -->
+      <div class="services-details-container">
+        <div class="section-title">
+          <h3 class="title">{{ 'home.serviceGuide' | translate }}</h3>
+        </div>
+
+        <div class="owl__carousel">
+          <owl-carousel-o [options]="servicesDetailsOptions" class="owl-rtl">
+            <ng-template carouselSlide *ngFor="let len of serviceGuidLength; let i=index;">
+              <div class="owl-item item-box">
+                <div class="item">
+                  <div class="services-details-box" *ngIf="i == 0">
+                    <a class="services-details-card" *ngFor="let service of serviceGuidFirst"
+                      [routerLink]="['/home/services-guide/' , service.id]">
+                      <div class="card-image">
+                        <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)"
+                          class="img-fluid" alt="image" />
                       </div>
-                      <div class="services-details-box" *ngIf="i != 0">
-                        <a class="services-details-card" *ngFor="let service of services | servicefilter:i" [routerLink]="['/home/services-guide/' , service.id]">
-                          <div class="card-image">
-                            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="image" />
-                          </div>
-                          <div class="content">
-                            <h4>{{service.nameAr}}</h4>
-                            <p>{{service.descriptionAr}}</p>
-                          </div>
-                        </a>
+                      <div class="content">
+                        <h4>{{service.nameAr}}</h4>
+                        <p>{{service.descriptionAr}}</p>
                       </div>
-                    </div>
+                    </a>
                   </div>
-                </ng-template>
-              </owl-carousel-o>
-            </div>
-          </div>
+                  <div class="services-details-box" *ngIf="i != 0">
+                    <a class="services-details-card" *ngFor="let service of services | servicefilter:i"
+                      [routerLink]="['/home/services-guide/' , service.id]">
+                      <div class="card-image">
+                        <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)"
+                          class="img-fluid" alt="image" />
+                      </div>
+                      <div class="content">
+                        <h4>{{service.nameAr}}</h4>
+                        <p>{{service.descriptionAr}}</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </owl-carousel-o>
         </div>
       </div>
 
       <!-- Related Websites -->
       <div class="related-web">
         <div class="section-title">
-          <h3 class="title">منصات ذات صلة</h3>
+          <h3 class="title">{{ 'home.relatedplatforms' | translate}}</h3>
         </div>
         <div class="rel-web">
-          <a href="#">
-            <img src="./assets/images/icons/gov.svg"
-                 alt=""
-                 class="rel-web-logos" />
+          <a href="https://www.my.gov.sa/wps/portal/snp/main" target="_blank">
+            <img src="./assets/images/icons/gov.svg" alt="" class="rel-web-logos" />
           </a>
-          <a href="#">
-            <img src="./assets/images/icons/absher.svg"
-                 alt=""
-                 class="rel-web-logos" />
+          <a href="https://www.absher.sa/portal/landing.html" target="_blank">
+            <img src="./assets/images/icons/absher.svg" alt="" class="rel-web-logos" />
           </a>
-          <a href="#">
-            <img src="./assets/images/icons/najiz.svg"
-                 alt=""
-                 class="rel-web-logos" />
+          <a href="https://najiz.sa/applications/landing" target="_blank">
+            <img src="./assets/images/icons/najiz.svg" alt="" class="rel-web-logos" />
           </a>
-          <a href="#">
-            <img src="./assets/images/icons/riyadh-amanat.svg"
-                 alt=""
-                 class="rel-web-logos" />
+          <a href="https://eservices.alriyadh.gov.sa/" target="_blank">
+            <img src="./assets/images/icons/riyadh-amanat.svg" alt="" class="rel-web-logos" />
           </a>
-          <a href="#">
-            <img src="./assets/images/icons/logoarbeta.svg"
-                 alt=""
-                 class="rel-web-logos"
-                 style="
-                width: 100%;
-                background: #fff;
-                border: 1px solid #ececec;
-                border-radius: 8px;
-                padding: 5px;
-              " />
+          <a href="https://www.moj.gov.sa/ar/pages/default.aspx" target="_blank">
+            <img src="./assets/images/icons/logoarbeta.svg" alt=""
+                 class="rel-web-logos" style="width: 100%; background: #fff; border: 1px solid #ececec; border-radius: 8px; padding: 5px;" />
           </a>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Services Section -->
-<div class="row mx-0 section-padding e-services">
-  <div class="col-md-12 my-5">
-    <div class="section-title justify-content-center py-4">
-      <h3 class="title mb-3">الخدمات الإلكترونية</h3>
+  <!-- e-services section -->
+  <div class="row mb-5 py-4">
+    <div class="col-12">
+      <div class="e-services">
+        <div class="text-center mb-5">
+          <h3 class="fw-bold text-primary fa-26 mb-0">{{ 'home.electronicServices'| translate}}</h3>
+        </div>
+
+        <div class="serv-tabs">
+          <!-- <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+              <img src="./assets/images/icons/search.svg" alt="">
+              الخدمات الأكثر إستخداماً
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+              <img src="./assets/images/icons/couple.svg" alt="">
+              خدمات الزواج
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
+              <img src="./assets/images/icons/prisoner.svg" alt="">
+              خدمات السجناء
+            </button>
+          </li>
+        </ul>-->
+
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="owl__carousel">
+                <owl-carousel-o [options]="servicesOptions" class="owl-rtl">
+                  <!-- Repeatable Item -->
+                  <ng-template carouselSlide *ngFor="let service of services">
+                    <div class="card-item px-3">
+                      <img [src]="
+                        sanitizer.bypassSecurityTrustResourceUrl(
+                          service?.image?.base64File
+                        )
+                      " alt="service-icon" class="ser-icon" />
+                      <h5 class="title mb-5">{{ service.nameAr }}</h5>
+                      <!-- <p class="brief-description mb-5">{{service.titleAr}}</p> -->
+                      <p class="description h-3">{{ service.descriptionAr }}</p>
+                      <div class="service-link d-flex align-items-center">
+                        <a [routerLink]="['/eservice/services/', service.id]" class="px-3">
+                          {{ 'home.explainService' | translate}}
+                        </a>
+                        <span class="arrow">
+                          <img src="./assets/images/icons/services/green-arrow-left.svg" alt="" style="width: 14px" />
+                        </span>
+                      </div>
+                    </div>
+                  </ng-template>
+                </owl-carousel-o>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              2222
+            </div>
+
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              333
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-3 px-2">
+          <a [routerLink]="['/eservice/services-list']" class="btn btn-border-rd browse">
+            {{ 'home.browseAllServices' | translate}}
+            <img src="assets/images/icons/feather-arrow-left.svg" alt="icon" class="img-fluid me-3" width="20px" />
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="serv-tabs">
-      <!-- <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-            <img src="./assets/images/icons/search.svg" alt="">
-            الخدمات الأكثر إستخداماً
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-            <img src="./assets/images/icons/couple.svg" alt="">
-            خدمات الزواج
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
-            <img src="./assets/images/icons/prisoner.svg" alt="">
-            خدمات السجناء
-          </button>
-        </li>
-      </ul>-->
+  <!-- e-council banner section -->
+  <div class="row mb-5">
+    <div class="col-12">
+      <a class="d-flex" [routerLink]="['']">
+        <img src="assets/images/e-council.png" alt="banner" class="img-fluid rounded-4" />
+      </a>
+    </div>
+  </div>
 
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active"
-             id="home"
-             role="tabpanel"
-             aria-labelledby="home-tab">
+  <!-- News & Reports -->
+  <div class="news-reports bg-transparent py-0 mb-5 py-4">
+    <div class="row">
+      <!-- Gov News -->
+      <div class="col-md-6 my-2 offset-md-1">
+        <div class="gov-news">
+          <div class="section-title">
+            <h3 class="title">{{ 'home.provincesNews'  | translate}}</h3>
+            <div class="more d-flex">
+              <a routerLink="home/news" [queryParams]="{ newsTypeId: '2' }">
+                {{ 'home.browseAllNews' | translate}}
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- news cards -->
           <div class="owl__carousel">
-            <owl-carousel-o [options]="servicesOptions" class="owl-rtl">
+            <owl-carousel-o [options]="govNewsOptions" class="owl-rtl">
               <!-- Repeatable Item -->
-              <ng-template carouselSlide *ngFor="let service of services">
-                <div class="card-item px-3">
-                  <img [src]="
+              <ng-template carouselSlide *ngFor="let news of emiratesNews">
+                <div class="item">
+                  <div class="card" [routerLink]="['/news' , news.id]">
+                    <img [src]="
                       sanitizer.bypassSecurityTrustResourceUrl(
-                        service?.image?.base64File
-                      )
-                    "
-                       alt="service-icon"
-                       class="ser-icon" />
-                  <h5 class="title mb-5">{{ service.nameAr }}</h5>
-                  <!-- <p class="brief-description mb-5">{{service.titleAr}}</p> -->
-                  <p class="description h-3">{{ service.descriptionAr }}</p>
-                  <div class="service-link d-flex align-items-center">
-                    <a [routerLink]="['/eservice/services/', service.id]"
-                       class="px-3">
-                      شرح الخدمة
-                    </a>
-                    <span class="arrow">
-                      <img src="./assets/images/icons/services/green-arrow-left.svg"
-                           alt=""
-                           style="width: 14px" />
-                    </span>
+                        news?.image?.base64File )" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title h-2">{{ news?.titleAr }}</h5>
+                      <p class="card-text">
+                        <img src="./assets/images/icons/order-date.svg" alt="" />
+                        {{ formatDate(news?.date) }}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </ng-template>
             </owl-carousel-o>
           </div>
         </div>
-        <div class="tab-pane fade"
-             id="profile"
-             role="tabpanel"
-             aria-labelledby="profile-tab">
-          2222
-        </div>
-        <div class="tab-pane fade"
-             id="contact"
-             role="tabpanel"
-             aria-labelledby="contact-tab">
-          333
-        </div>
-      </div>
-    </div>
-
-    <div class="py-5 d-flex justify-content-end">
-      <a [routerLink]="['/eservice/services-list']" class="browse btn">
-        تصفح جميع الخدمات
-        <img src="./assets/images/icons/feather-arrow-left.svg"
-             alt=""
-             class="mx-2" />
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- E-Council -->
-<div class="row mx-0 section-padding">
-  <div class="col-md-12 my-5">
-    <a [routerLink]="['']">
-      <img src="./assets/images/e-council.svg" alt="" class="w-100" />
-    </a>
-  </div>
-</div>
-
-<!-- News & Reports -->
-<div class="news-reports">
-  <div class="row mx-0 my-5 section-padding">
-    <!-- Gov News -->
-    <div class="col-md-6 offset-md-1 gov-news">
-      <div class="section-title">
-        <h3 class="title">أخبار المحافظات</h3>
-        <div class="more">
-          <a routerLink="home/news" [queryParams]="{ newsTypeId: '2' }">
-            تصفح جميع الأخبار
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-          </a>
-        </div>
       </div>
 
-      <!-- news cards -->
-      <div class="owl__carousel">
-        <owl-carousel-o [options]="govNewsOptions" class="owl-rtl">
-          <!-- Repeatable Item -->
-          <ng-template carouselSlide *ngFor="let news of emiratesNews">
-            <div class="item">
-              <div class="card" [routerLink]="['/news' , news.id]">
-                <img [src]="
-                    sanitizer.bypassSecurityTrustResourceUrl(
-                      news?.image?.base64File )"
-                     class="card-img-top"
-                     alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title h-2">{{ news?.titleAr }}</h5>
-                  <p class="card-text">
-                    <img src="./assets/images/icons/order-date.svg" alt="" />
-                    {{ formatDate(news?.date) }}
-                  </p>
-                </div>
-              </div>
+      <!-- Advertising Reports -->
+      <div class="col-md-5 my-2" style="height: fit-content">
+        <div class="advertise-report">
+          <div class="section-title">
+            <h3 class="title"> {{ 'home.advertisingReports'  | translate }}</h3>
+            <div class="more d-flex">
+              <a routerLink="home/news" [queryParams]="{ newsTypeId: '3' }">
+                {{ 'home.browseAllReports'  | translate }}
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+              </a>
             </div>
-          </ng-template>
-        </owl-carousel-o>
-      </div>
-    </div>
-    <!-- Advertising Reports -->
-    <div class="col-md-5 advertise-report" style="height: fit-content">
-      <div class="section-title">
-        <h3 class="title">
-          <h3 class="title">تقارير إعلامية</h3>
-          <div class="more">
-            <a routerLink="home/news" [queryParams]="{ newsTypeId: '3' }">
-              تصفح جميع التقارير
-              <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            </a>
           </div>
-        </h3>
-      </div>
-      <!-- cards -->
-      <div class="owl__carousel">
-        <owl-carousel-o [options]="advertiseReportOptions" class="owl-rtl">
-          <!-- Repeatable Item -->
-          <ng-template carouselSlide *ngFor="let report of reports">
-            <div class="item">
-              <div class="ad-card" [routerLink]="['/news' , report.id]">
-                <img [src]="report.image?.base64File"
-                     alt=""
-                     class="ad-card-img" />
-                <img src="./assets/images/add-overlay.png"
-                     alt=""
-                     class="overlay" />
-                <div class="ad-card-content">
-                  <span class="desc">
-                    {{ report.titleAr }}
-                  </span>
-                  <span class="ad-calendar">
-                    <img src="./assets/images/icons/add-calendar.svg" alt="" />
-                    <span>{{ formatDate(report?.date) }}</span>
-                  </span>
+
+          <!-- cards -->
+          <div class="owl__carousel">
+            <owl-carousel-o [options]="advertiseReportOptions" class="owl-rtl">
+              <!-- Repeatable Item -->
+              <ng-template carouselSlide *ngFor="let report of reports">
+                <div class="item">
+                  <div class="ad-card" [routerLink]="['/news' , report.id]">
+                    <img [src]="report.image?.base64File" alt="" class="ad-card-img" />
+                    <img src="./assets/images/add-overlay.png" alt="" class="overlay" />
+                    <div class="ad-card-content">
+                      <span class="desc">
+                        {{ report.titleAr }}
+                      </span>
+                      <span class="ad-calendar">
+                        <img src="./assets/images/icons/add-calendar.svg" alt="" />
+                        <span>{{ formatDate(report?.date) }}</span>
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </ng-template>
-        </owl-carousel-o>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -358,54 +329,46 @@
 
 <!-- Important Numbers -->
 <div class="process-wrapper">
-  <h3>الإمارة بالأرقام</h3>
+  <h3>{{ 'home.numbersOfEmirate' | translate }}</h3>
 
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-4 col-sm-2">
         <div class="process-item">
-          <img src="assets/images/icons/search.svg"
-               class="img-fluid"
-               alt="image" />
+          <img src="assets/images/icons/search.svg" class="img-fluid" alt="image" />
           <h5 id="processNumber1">0</h5>
-          <p>عدد المستفدين من البوابة</p>
+          <p>{{ 'home.numberOfUsedWebsite' | translate}}</p>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4 col-sm-2">
         <div class="process-item">
-          <img src="assets/images/icons/search.svg"
-               class="img-fluid"
-               alt="image" />
+          <img src="assets/images/icons/search.svg" class="img-fluid" alt="image" />
           <h5 id="processNumber2">0</h5>
-          <p>العدد الإجمالى للخدمات الإلكترونيه</p>
+          <p> {{'home.totalNumberOfElectronicServices' | translate}}</p>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-2">
         <div class="process-item">
-          <img src="assets/images/icons/search.svg"
-               class="img-fluid"
-               alt="image" />
+          <img src="assets/images/icons/search.svg" class="img-fluid" alt="image" />
           <h5 id="processNumber3">0</h5>
-          <p>عدد طلبات البيانات المفتوحة</p>
+          <p> {{ 'home.numberOfOpenedInfo' | translate}}</p>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4 col-sm-2">
         <div class="process-item">
-          <img src="assets/images/icons/contract.svg"
-               class="img-fluid"
-               alt="image" />
+          <img src="assets/images/icons/contract.svg" class="img-fluid" alt="image" />
           <h5 id="processNumber4">0</h5>
-          <p>عدد الخدمات على قائمة الإنتظار</p>
+          <p>{{ 'home.numberOfServicesInWaitingList' | translate}}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- <div class="row mx-0">
-  <div class="col-md-12 px-0">
-    <img src="./assets/images/stats.svg" alt="" class="w-100">
+<!-- <div class="row">
+  <div class="col-12">
+    <img src="assets/images/stats.svg" alt="banner" class="img-fluid rounded-4">
   </div>
 </div>-->

@@ -9,11 +9,12 @@ import { ServicesGuideComponent } from "./components/services-guide/services-gui
 // emirate pages
 import { AboutusComponent } from "./components/emirate/aboutus/aboutus.component";
 import { OrganizationChartComponent } from "./components/emirate/organization-chart/organization-chart.component";
-import { RegionGovComponent } from "./components/emirate/region-gov/region-gov.component";
 import { RegionPrincesComponent } from "./components/emirate/region-princes/region-princes.component";
 import { WomenSectionComponent } from "./components/emirate/women-section/women-section.component";
 import { LatestNewsComponent } from "./components/latest-news/latest-news.component";
 import { LatestNewsInnerComponent } from "./components/latest-news-inner/latest-news-inner.component";
+import { OpenDataComponent } from "./components/open-data/open-data.component";
+import { GovernorateShowComponent } from "./components/emirate/governorate-show/governorate-show.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -24,11 +25,11 @@ const routes: Routes = [
   { path: "home/services-guide/:id", component: ServicesGuideInnerComponent },
   { path: "home/latest-news", component: LatestNewsComponent},
   { path: "home/latest-news/:id", component: LatestNewsInnerComponent},
-
+    { path: "open-data", component: OpenDataComponent },
   // emirate pages
   { path: "home/aboutus", component: AboutusComponent },
   { path: "home/regiion-princes", component: RegionPrincesComponent },
-  { path: "home/region-gov", component: RegionGovComponent },
+  { path: "home/governorate-show", component: GovernorateShowComponent },
   { path: "home/organization", component: OrganizationChartComponent },
   { path: "home/women-section", component: WomenSectionComponent },
 ];

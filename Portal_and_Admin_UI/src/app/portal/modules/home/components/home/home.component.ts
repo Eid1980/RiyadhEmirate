@@ -13,6 +13,7 @@ import { ApiResponse } from '@shared/proxy/shared/api-response.model';
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { GlobalService } from '@shared/services/global.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { TranslationServiceService } from '@shared/services/translation-service.service';
 declare let $: any;
 
 @Component({
@@ -194,6 +195,7 @@ export class HomeComponent implements OnInit {
     private _serviceService: ServiceService,
     private _posterService: PosterService,
     private _globalService: GlobalService,
+    private _translateService: TranslationServiceService,
     public sanitizer: DomSanitizer
   ) { }
 
@@ -242,8 +244,9 @@ export class HomeComponent implements OnInit {
   }
 
   getLatestNews() {
+    let isArabic = this._translateService.getCurrentLanguage().Name.toLowerCase() == 'ar';
     this._latestNewsService
-      .getByLangTop5(true)
+      .getByLangTop5(isArabic)
       .subscribe((result) => {
         this.latestNews = result.data;
       });
