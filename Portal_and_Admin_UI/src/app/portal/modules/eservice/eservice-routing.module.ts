@@ -44,39 +44,39 @@ const routes: Routes = [
   {
     path: 'my-requests',
     component: MyRequestsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'requester-dashboard',
     component: RequesterDashboardComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
 
   //#region PrisonersServices
   {
     path: 'prisoners-services',
     component: PrisonersServicesComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoners-services/:id',
     component: PrisonersServicesComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoners-services-attachments/:id',
     component: PrisonersServicesAttachmentsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoners-services-preview-step/:id',
     component: PrisonersServicesPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoners-services-view/:id',
     component: PrisonersServicesViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -84,27 +84,27 @@ const routes: Routes = [
   {
     path: 'prisoner-temp-release',
     component: PrisonerTempReleaseComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoner-temp-release/:id',
     component: PrisonerTempReleaseComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoner-temp-release-attachments/:id',
     component: PrisonerTempReleaseAttachmentsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoner-temp-release-preview-step/:id',
     component: PrisonerTempReleasePreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoner-temp-release-view/:id',
     component: PrisonerTempReleaseViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -112,27 +112,27 @@ const routes: Routes = [
   {
     path: 'electronic-summon',
     component: ElectronicSummonComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'electronic-summon/:id',
     component: ElectronicSummonComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'electronic-summon-attachments/:id',
     component: ElectronicSummonAttachmentsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'electronic-summon-preview-step/:id',
     component: ElectronicSummonPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'electronic-summon-view/:id',
     component: ElectronicSummonViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -140,27 +140,27 @@ const routes: Routes = [
   {
     path: 'lands-infringement',
     component: LandsInfringementComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'lands-infringement/:id',
     component: LandsInfringementComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'lands-infringement-attachments/:id',
     component: LandsInfringementAttachmentsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'lands-infringement-preview-step/:id',
     component: LandsInfringementPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'lands-infringement-view/:id',
     component: LandsInfringementViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -168,27 +168,27 @@ const routes: Routes = [
   {
     path: 'marriage-certificate',
     component: MarriageCertificateComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'marriage-certificate/:id',
     component: MarriageCertificateComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'marriage-certificate-attachments/:id',
     component: MarriageCertificateAttachmentsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'marriage-certificate-preview-step/:id',
     component: MarriageCertificatePreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'marriage-certificate-view/:id',
     component: MarriageCertificateViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -196,27 +196,27 @@ const routes: Routes = [
   {
     path: 'judgment-execution',
     component: JudgmentExecutionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'judgment-execution/:id',
     component: JudgmentExecutionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'judgment-execution-attachments/:id',
     component: JudgmentExecutionAttachmentsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'judgment-execution-preview-step/:id',
     component: JudgmentExecutionPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'judgment-execution-view/:id',
     component: JudgmentExecutionViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -224,27 +224,27 @@ const routes: Routes = [
   {
     path: 'foreigners-realty-owner',
     component: ForeignersRealtyOwnerComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'foreigners-realty-owner/:id',
     component: ForeignersRealtyOwnerComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'foreigners-realty-owner-attachments/:id',
     component: ForeignersRealtyOwnerAttachmentsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'foreigners-realty-owner-preview-step/:id',
     component: ForeignersRealtyOwnerPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'foreigners-realty-owner-view/:id',
     component: ForeignersRealtyOwnerViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -252,27 +252,27 @@ const routes: Routes = [
   {
     path: 'treatment-recommendation',
     component: TreatmentRecommendationComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'treatment-recommendation/:id',
     component: TreatmentRecommendationComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'treatment-recommendation-attachments/:id',
     component: TreatmentRecommendationAttachmentsComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'treatment-recommendation-preview-step/:id',
     component: TreatmentRecommendationPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'treatment-recommendation-view/:id',
     component: TreatmentRecommendationViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 

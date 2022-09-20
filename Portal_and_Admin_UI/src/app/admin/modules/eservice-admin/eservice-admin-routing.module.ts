@@ -35,29 +35,29 @@ const routes: Routes = [
   {
     path: 'inbox',
     component: InboxComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'inbox-shamel',
     component: InboxShamelComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
 
   //#region PrisonersServices
   {
     path: 'prisoners-services-admin-preview-step/:id',
     component: PrisonersServicesPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoners-services-admin-view/:id',
     component: PrisonersServicesViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoners-services-action/:id',
     component: PrisonersServicesActionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -65,17 +65,17 @@ const routes: Routes = [
   {
     path: 'electronic-summon-admin-preview-step/:id',
     component: ElectronicSummonPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'electronic-summon-admin-view/:id',
     component: ElectronicSummonViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'electronic-summon-action/:id',
     component: ElectronicSummonActionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -83,17 +83,17 @@ const routes: Routes = [
   {
     path: 'marriage-certificate-admin-preview-step/:id',
     component: MarriageCertificatePreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'marriage-certificate-admin-view/:id',
     component: MarriageCertificateViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'marriage-certificate-action/:id',
     component: MarriageCertificateActionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -101,17 +101,17 @@ const routes: Routes = [
   {
     path: 'electronic-council-admin-preview-step/:id',
     component: ElectronicCouncilStepViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'electronic-council-admin-view/:id',
     component: ElectronicCouncilViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'electronic-council-action/:id',
     component: ElectronicCouncilActionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -119,17 +119,17 @@ const routes: Routes = [
   {
     path: 'lands-infringement-admin-preview-step/:id',
     component: LandsInfringementPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'lands-infringement-admin-view/:id',
     component: LandsInfringementViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'lands-infringement-action/:id',
     component: LandsInfringementActionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -137,17 +137,17 @@ const routes: Routes = [
   {
     path: 'judgment-execution-admin-preview-step/:id',
     component: JudgmentExecutionPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'judgment-execution-admin-view/:id',
     component: JudgmentExecutionViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'judgment-execution-action/:id',
     component: JudgmentExecutionActionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -155,17 +155,17 @@ const routes: Routes = [
   {
     path: 'prisoner-temp-release-admin-preview-step/:id',
     component: PrisonerTempReleasePreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoner-temp-release-admin-view/:id',
     component: PrisonerTempReleaseViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'prisoner-temp-release-action/:id',
     component: PrisonerTempReleaseActionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -173,17 +173,17 @@ const routes: Routes = [
   {
     path: 'foreigners-realty-owner-admin-preview-step/:id',
     component: ForeignersRealtyOwnerPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'foreigners-realty-owner-admin-view/:id',
     component: ForeignersRealtyOwnerViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'foreigners-realty-owner-action/:id',
     component: ForeignersRealtyOwnerActionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -191,17 +191,17 @@ const routes: Routes = [
   {
     path: 'treatment-recommendation-admin-preview-step/:id',
     component: TreatmentRecommendationPreviewStepComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'treatment-recommendation-admin-view/:id',
     component: TreatmentRecommendationViewComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'treatment-recommendation-action/:id',
     component: TreatmentRecommendationActionComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   //#endregion
 ];
