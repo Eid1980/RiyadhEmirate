@@ -1,4 +1,5 @@
-﻿using Emirates.Core.Application.Response;
+﻿using Emirates.Core.Application.Dtos.Search;
+using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Shared;
 using Emirates.Core.Application.Services.UserRoles;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,11 @@ namespace Emirates.API.Controllers
         public IApiResponse GetUsersByRoleId(int roleId)
         {
             return _userRoleService.GetUsersByRoleId(roleId);
+        }
+        [HttpPost("GetListPage")]
+        public IApiResponse GetAdminUsers(SearchModel searchModelDto)
+        {
+            return _userRoleService.GetAdminUsers(searchModelDto);
         }
     }
 }

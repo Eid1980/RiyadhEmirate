@@ -387,7 +387,9 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.UserFullName, src => src.MapFrom(m => $"{m.User.FirstNameAr} {m.User.SecondNameAr} {m.User.ThirdNameAr} {m.User.LastNameAr}"))
                 .ForMember(dest => dest.UserNationalId, src => src.MapFrom(m => m.User.UserName))
                 .ForMember(dest => dest.UserPhoneNumber, src => src.MapFrom(m => m.User.PhoneNumber));
-
+            CreateMap<User, GetUserListDto>()
+                .ForMember(dest => dest.FullName, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
+                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
             #endregion
 
 

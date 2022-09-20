@@ -22,7 +22,6 @@ export class RequestAttacmentPreviewComponent implements OnInit {
   ngOnInit(): void {
     if (this.requestId) {
       this.requestService.getRequestAttachments(this.requestId).subscribe((response) => {
-        debugger
         this.requestAttachmentsDto = response.data;
       });
     }
@@ -57,12 +56,19 @@ export class RequestAttacmentPreviewComponent implements OnInit {
 
     }
   }
-  /*
+
   downloadAttachment(id: string) {
     if (id) {
-      this.fileManagerService.download(id);
+      this.fileManagerService.getById(id).subscribe((response) => {
+        if (response) {
+          this.fileManagerService.downloadAttachment(response.base64File, response.fileName)
+        }
+        else {
+          this.globalService.messageAlert(MessageType.Error, 'فشل في تنزيل المرفق');
+        }
+      });
     }
   }
-*/
+
 
 }

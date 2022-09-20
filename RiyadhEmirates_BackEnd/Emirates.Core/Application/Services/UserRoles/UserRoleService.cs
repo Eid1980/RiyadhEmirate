@@ -30,5 +30,19 @@ namespace Emirates.Core.Application.Services.UserRoles
             var roleUsers = _emiratesUnitOfWork.UserRoles.Where(l => l.RoleId.Equals(roleId)).Include(x => x.User);
             return GetResponse(data: _mapper.Map<List<GetRolUsersDto>>(roleUsers));
         }
+        public IApiResponse GetAdminUsers(SearchModel searchModel)
+        {
+            searchModel.SearchFields.Add(new SearchField { FieldName = "IsEmployee", Operator = "Equal", Value = true.ToString() });
+            var serchResult = _emiratesUnitOfWork.Users.GetQueryable()
+               .ProjectTo<GetUserListDto>(_mapConfig)
+               .DynamicSearch(searchModel)
+               .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetUserListDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
+        }
     }
 }
