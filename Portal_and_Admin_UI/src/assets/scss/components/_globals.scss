@@ -33,6 +33,63 @@ body {
   margin-bottom: 26px;
 }
 
+.form-card{
+  background-color: $white;
+  padding: 16px;
+  margin-top: 16px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  border: 1px solid #EBEBEB !important;
+  box-shadow: none !important;
+
+  .form-header{
+    padding: 12px 0 20px !important;
+    border-bottom: 1px solid rgb(0 0 0 / 10%) !important;
+    margin-bottom: 16px !important;
+
+    h5{
+      font-size: 22px !important;
+      color: $primary-alt-1 !important;
+    }
+  }
+
+  .form-content{
+    .form-lbl{
+      font-size: 14px !important;
+      margin-bottom: 4px !important;
+      color: rgb(0 0 0 / 70%) !important;
+    }
+
+    .form-group{
+      margin-bottom: 16px !important;
+    }
+
+    small{
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+}
+
+.empty-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px 26px;
+
+  img{
+    margin-bottom: 8px;
+    max-width: 140px;
+  }
+  h4{
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0px;
+    color: $primary-alt-1;
+  }
+}
+
 .page-not-found {
   display: flex;
   flex-wrap: nowrap;
@@ -82,6 +139,24 @@ body {
 
     .not-found-banner {
       margin-bottom: 30px;
+    }
+  }
+}
+
+p-rating{
+  .p-rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .p-rating-icon{
+      font-size: 14px;
+      color: rgba($color: $dark, $alpha: 0.4);
+      margin-left: 6px !important;
+
+      &:last-child{
+        margin-left: 0px !important;
+      }
     }
   }
 }

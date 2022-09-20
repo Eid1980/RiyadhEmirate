@@ -8,11 +8,10 @@
 
 <form [formGroup]="createServiceForm" (ngSubmit)="onSubmit()">
   <div class="form-card">
-    <div class="form-header">
-      <h5>إضافة خدمة جديدة</h5>
+    <div class="form-header" style="border-bottom: 0px !important;">
+      <h5 class="mb-5">إضافة خدمة جديدة</h5>
 
       <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
-
     </div>
     <div class="form-content">
       <div class="row mx-0">
@@ -102,8 +101,8 @@
           </p-fileUpload>
           <small *ngIf="(isFormSubmitted || createServiceForm.get('image').touched) && createServiceForm.get('image').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
-        <div class="col-md-6 d-flex mt-3">
-          <div class="row w-100 mt-4">
+        <div class="form-group col-md-6">
+          <div class="row w-100">
             <div class="form-group col-6">
               <label class="container-check">
                 فعال

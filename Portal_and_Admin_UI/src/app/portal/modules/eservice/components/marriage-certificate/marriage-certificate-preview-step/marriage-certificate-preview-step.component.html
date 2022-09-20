@@ -1,22 +1,31 @@
-<div class="p-5">
+<div class="container px-0 py-5">
+  <div class="form-card mb-0">
+    <div class="form-header mt-3" style="border-bottom: 0px !important;">
+      <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+    </div>
 
-  <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+    <div class="form-content py-0 px-4">
+      <app-marriage-certificate-details [showStatusLog]="false"></app-marriage-certificate-details>
+    </div>
 
-  <app-marriage-certificate-details [showStatusLog]="false"></app-marriage-certificate-details>
-
-  <div class="form-group col-6">
-    <label class="container-check">
-      أوافق علي الشروط والأحكام
-      <input [(ngModel)]="accept" type="checkbox" id="accept" />
-      <span class="checkmark"></span>
-    </label>
+    <div class="form-group col-6">
+      <div class="form-check px-3 mt-5">
+        <input [(ngModel)]="accept" class="form-check-input" type="checkbox" id="accept" />
+        <label class="form-check-label" for="accept">
+          أوافق علي الشروط والأحكام
+        </label>
+      </div>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <button type="button" class="btn btn-save" (click)="sendRequest()">ارسال الطلب</button>
-    <a [routerLink]="['/eservice/marriage-certificate-attachments/', requestId]" class="btn btn-cancel">السابق</a>
-    <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+  <div class="form-actions px-0">
+    <a [routerLink]="['/eservice/marriage-certificate-attachments/', requestId]"
+      class="btn btn-outline-primary px-4 ms-auto">السابق</a>
+
+    <button type="button" class="btn btn-primary ms-3" (click)="sendRequest()">ارسال الطلب</button>
+    <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
   </div>
 
-  <app-rate-service [showServiceRate]="showServiceRate" [serviceId]="serviceId" [redirectUrl]="redirectUrl" (canRateEvent)="navigate($event)"></app-rate-service>
+  <app-rate-service [showServiceRate]="showServiceRate" [serviceId]="serviceId" [redirectUrl]="redirectUrl"
+    (canRateEvent)="navigate($event)"></app-rate-service>
 </div>

@@ -61,27 +61,27 @@ const routes: Routes = [
   {
     path: "latest-news-ar-list",
     component: LatestNewsArListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "latest-news-ar-add",
     component: LatestNewsArAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "latest-news-ar-edit/:id",
     component: LatestNewsArEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "latest-news-ar-view/:id",
     component: LatestNewsArViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "latest-news-ar-comments",
     component: LatestNewsArCommentsComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -89,27 +89,27 @@ const routes: Routes = [
   {
     path: "latest-news-en-list",
     component: LatestNewsEnListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "latest-news-en-add",
     component: LatestNewsEnAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "latest-news-en-edit/:id",
     component: LatestNewsEnEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "latest-news-en-view/:id",
     component: LatestNewsEnViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "latest-news-en-comments",
     component: LatestNewsEnCommentsComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -117,22 +117,22 @@ const routes: Routes = [
   {
     path: "reports-list",
     component: ReportsListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "reports-add",
     component: ReportsAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "reports-edit/:id",
     component: ReportsEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "reports-view/:id",
     component: ReportsViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -140,22 +140,22 @@ const routes: Routes = [
   {
     path: "poster-list",
     component: ListPosterComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "poster-add",
     component: AddPosterComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "poster-edit/:id",
     component: EditPosterComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "poster-view/:id",
     component: ViewPosterComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -163,22 +163,22 @@ const routes: Routes = [
   {
     path: "emirates-news-add",
     component: EmiratesNewsAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "emirates-news-edit/:id",
     component: EmiratesNewsEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "emirates-news-list",
     component: EmiratesNewsListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "emirates-news-view/:id",
     component: EmiratesNewsViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -186,22 +186,22 @@ const routes: Routes = [
   {
     path: "case-type-add",
     component: CaseTypeAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "case-type-edit/:id",
     component: CaseTypeEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "case-type-list",
     component: CaseTypeListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "case-type-view/:id",
     component: CaseTypeViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -209,22 +209,22 @@ const routes: Routes = [
   {
     path: "governorate-add",
     component: GovernorateAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "governorate-edit/:id",
     component: GovernorateEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "governorate-list",
     component: GovernorateListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "governorate-view/:id",
     component: GovernorateViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -232,22 +232,22 @@ const routes: Routes = [
   {
     path: "news-categuery-add",
     component: NewsCategueryAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "news-categuery-edit/:id",
     component: NewsCategueryEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "news-categuery-list",
     component: NewsCategueryListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "news-categuery-view/:id",
     component: NewsCategueryViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -255,22 +255,22 @@ const routes: Routes = [
   {
     path: "request-attachment-type-add",
     component: RequestAttachmentTypeAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "request-attachment-type-edit/:id",
     component: RequestAttachmentTypeEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "request-attachment-type-list",
     component: RequestAttachmentTypeListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "request-attachment-type-view/:id",
     component: RequestAttachmentTypeViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -278,22 +278,22 @@ const routes: Routes = [
   {
     path: "request-type-add",
     component: RequestTypeAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "request-type-edit/:id",
     component: RequestTypeEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "request-type-list",
     component: RequestTypeListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "request-type-view/:id",
     component: RequestTypeViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -301,32 +301,32 @@ const routes: Routes = [
   {
     path: "service-list",
     component: ServiceListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "service-add",
     component: ServiceAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "service-edit/:id",
     component: ServiceEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "service-audience/:id",
     component: ServiceAudienceComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "service-condition/:id",
     component: ServiceConditionComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "service-view/:id",
     component: ServiceViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -334,22 +334,22 @@ const routes: Routes = [
   {
     path: "service-stage-list",
     component: ServiceStageListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "service-stage-add",
     component: ServiceStageAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "service-stage-edit/:id",
     component: ServiceStageEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "service-stage-view/:id",
     component: ServiceStageViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 
@@ -357,13 +357,13 @@ const routes: Routes = [
   {
     path: "edit-about-us",
     component: EditAboutUsComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
 
   {
     path: "edit-woman-section",
     component: EditWomanSectionComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endRegion
 

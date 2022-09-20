@@ -10,57 +10,66 @@
   <div class="form-header">
     <h5>تعديل بيانات عن الاماره</h5>
   </div>
+
   <form [formGroup]="aboutUsDetaislForm" (ngSubmit)="onSubmit()">
     <div class="form-content">
       <div class="row mx-0">
         <div class="form-group col-md-6">
           <label for="descriptionAr" class="form-lbl">عن الامارة عربي<span class="danger">*</span></label>
-          <input type="text" class="form-control" autocomplete="off" formControlName="descriptionAr" id="descriptionAr" [ngClass]="{
+          <input type="text" class="form-control" autocomplete="off" formControlName="descriptionAr" id="descriptionAr"
+            [ngClass]="{
               invalid:
                 (isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionAr').touched) &&
                 aboutUsDetaislForm?.get('descriptionAr').errors?.required}" />
-          <small *ngIf="(isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionAr').touched) && aboutUsDetaislForm?.get('descriptionAr').errors?.required"
-                 class="danger">هذاالحقل مطلوب</small>
+          <small
+            *ngIf="(isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionAr').touched) && aboutUsDetaislForm?.get('descriptionAr').errors?.required"
+            class="danger">هذاالحقل مطلوب</small>
         </div>
 
         <div class="form-group col-md-6">
           <label for="descriptionEn" class="form-lbl">عن الامارة انجليزي<span class="danger">*</span></label>
-          <input type="text" class="form-control" autocomplete="off" formControlName="descriptionEn" id="descriptionEn" [ngClass]="{
+          <input type="text" class="form-control" autocomplete="off" formControlName="descriptionEn" id="descriptionEn"
+            [ngClass]="{
               invalid:
                 (isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionEn').touched) &&
                 aboutUsDetaislForm?.get('descriptionEn').errors?.required}" />
-          <small *ngIf="(isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionEn').touched) && aboutUsDetaislForm?.get('descriptionEn').errors?.required"
-                 class="danger">هذاالحقل مطلوب</small>
+          <small
+            *ngIf="(isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionEn').touched) && aboutUsDetaislForm?.get('descriptionEn').errors?.required"
+            class="danger">هذاالحقل مطلوب</small>
         </div>
 
         <div>
           <div formGroupName="mainPoints">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-12 px-0">
               <label for="condition" class="form-lbl">اليند<span class="danger">*</span></label>
               <input type="text" class="form-control" formControlName="nameAr" maxlength="4000" id="nameAr" [ngClass]="{
                     invalid: (isFormSubmitted || aboutUsDetaislForm.get('mainPoints.nameAr').touched) &&
                     aboutUsDetaislForm.get('mainPoints.nameAr').errors?.required}" />
-              <small *ngIf="(isFormSubmitted || aboutUsDetaislForm.get('mainPoints.nameAr').touched) && aboutUsDetaislForm.get('mainPoints.nameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              <small
+                *ngIf="(isFormSubmitted || aboutUsDetaislForm.get('mainPoints.nameAr').touched) && aboutUsDetaislForm.get('mainPoints.nameAr').errors?.required"
+                class="danger">هذاالحقل مطلوب</small>
             </div>
             <div class="row">
-            <div class="form-group col-md-6">
-              <label for="order" class="form-lbl">الترتيب<span class="danger">*</span></label>
-              <input type="text" class="form-control" autocomplete="off" formControlName="order" id="order" [ngClass]="{
+              <div class="form-group col-md-6">
+                <label for="order" class="form-lbl">الترتيب<span class="danger">*</span></label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="order" id="order" [ngClass]="{
                     invalid: (isFormSubmitted || aboutUsDetaislForm.get('mainPoints.order').touched) &&
                     aboutUsDetaislForm.get('mainPoints.order').errors?.required}" />
-              <small *ngIf="(isFormSubmitted || aboutUsDetaislForm.get('mainPoints.order').touched) && aboutUsDetaislForm.get('mainPoints.order').errors?.required" class="danger">هذاالحقل مطلوب</small>
-            </div>
+                <small
+                  *ngIf="(isFormSubmitted || aboutUsDetaislForm.get('mainPoints.order').touched) && aboutUsDetaislForm.get('mainPoints.order').errors?.required"
+                  class="danger">هذاالحقل مطلوب</small>
+              </div>
 
-            <div class="form-group col-md-6">
-              <div class="form-actions" *ngIf="!isUpdate">
-                <button type="submit" class="btn btn-save">اضافة</button>
-              </div>
-              <div class="form-actions" *ngIf="isUpdate">
-                <button type="submit" class="btn btn-save">تعديل</button>
-                <button type="button" class="btn btn-cancel" (click)="clear()">الغاء</button>
+              <div class="form-group col-md-6">
+                <div class="form-actions" *ngIf="!isUpdate">
+                  <button type="submit" class="btn btn-primary">اضافة</button>
+                </div>
+                <div class="form-actions" *ngIf="isUpdate">
+                  <button type="submit" class="btn btn-save">تعديل</button>
+                  <button type="button" class="btn btn-cancel" (click)="clear()">الغاء</button>
+                </div>
               </div>
             </div>
-          </div>
           </div>
 
         </div>
@@ -68,9 +77,9 @@
     </div>
   </form>
 
-  <div class="row mx-0">
-    <p-table #mainPoints [value]="aboutUsDetails.mainPoints" dataKey="id"
-             [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+  <div class="row mt-3 mx-0">
+    <p-table #mainPoints [value]="aboutUsDetails.mainPoints" dataKey="id" [autoLayout]="true" [responsive]="true"
+      [scrollable]="true" class="w-100">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th>م</th>
@@ -89,7 +98,7 @@
             <a class="btn btn-primary mx-1 px-1 py-0" title="تعديل" (click)="fillData(mainPoint.id)">
               <i class="fa fa-edit"></i>
             </a>
-            <a class="btn btn-danger mx-1 px-1 py-0" title="حذف" (click)="delete(mainPoint.id)" >
+            <a class="btn btn-danger mx-1 px-1 py-0" title="حذف" (click)="delete(mainPoint.id)">
               <i class="la-trash las"></i>
             </a>
           </td>
@@ -105,8 +114,10 @@
   </div>
 
 </div>
+
 <div class="form-actions">
+  <!--<a [routerLink]="['/admin/data-management/service-audience/', id]" class="btn my-1 ms-auto me-0 btn-outline-primary-alt">السابق</a>-->
+
   <a (click)="editAboutUsDescription()" class="btn btn-save">حفظ</a>
-  <!--<a [routerLink]="['/admin/data-management/service-audience/', id]" class="btn btn-cancel">السابق</a>-->
   <a [routerLink]="['/admin/data-management/service-list']" class="btn btn-cancel">رجوع</a>
 </div>

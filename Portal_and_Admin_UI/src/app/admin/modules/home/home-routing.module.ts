@@ -15,37 +15,37 @@ const routes: Routes = [
   {
     path: "role-add",
     component: RoleAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "role-edit/:id",
     component: RoleEditComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "role-list",
     component: RoleListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "role-view/:id",
     component: RoleViewComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "user-add",
     component: UserAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "user-list",
     component: UserListComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "user-role-add/:id",
     component: UserRoleAddComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //#endregion
 

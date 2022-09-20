@@ -7,11 +7,10 @@
 </div>
 
 <div class="form-card">
-  <div class="form-header">
-    <h5>استكمال بيانات الخدمة</h5>
+  <div class="form-header" style="border-bottom: 0px !important;">
+    <h5 class="mb-5">استكمال بيانات الخدمة</h5>
 
     <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
-
   </div>
   <div class="form-content">
     <div class="row mx-0">
@@ -33,7 +32,8 @@
   </div>
 </div>
 <div class="form-actions">
-  <a [routerLink]="['/admin/data-management/service-condition/', id]" class="btn btn-save">التالي</a>
-  <a [routerLink]="['/admin/data-management/service-edit/', id]" class="btn btn-cancel">السابق</a>
-  <a [routerLink]="['/admin/data-management/service-list']" class="btn btn-cancel">رجوع</a>
+  <a [routerLink]="['/admin/data-management/service-edit/', id]" class="btn my-1 ms-auto me-0 btn-outline-primary-alt">السابق</a>
+
+  <a [routerLink]="['/admin/data-management/service-condition/', id]" class="btn my-1 btn-save">التالي</a>
+  <a [routerLink]="['/admin/data-management/service-list']" class="btn my-1 btn-cancel">رجوع</a>
 </div>

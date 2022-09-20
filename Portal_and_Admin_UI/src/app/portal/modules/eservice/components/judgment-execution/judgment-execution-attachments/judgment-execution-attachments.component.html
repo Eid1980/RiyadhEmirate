@@ -1,14 +1,18 @@
-<div class="p-5">
+<div class="container px-0 my-5">
+  <div class="form-card mb-0">
+    <div class="form-header mt-3" style="border-bottom: 0px !important;">
+      <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+    </div>
 
-  <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
-
-  <app-request-attacment allowedExtensions="image/*"></app-request-attacment>
-
-  <div class="form-actions">
-    <button type="button" class="btn btn-save" (click)="onSubmit()">التالي</button>
-    <a [routerLink]="['/eservice/judgment-execution/', requestId]" class="btn btn-cancel">السابق</a>
-    <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+    <div class="form-content">
+      <app-request-attacment allowedExtensions="image/*"></app-request-attacment>
+    </div>
   </div>
 
-</div>
+  <div class="form-actions px-0">
+    <a [routerLink]="['/eservice/judgment-execution/', requestId]" class="btn btn-outline-primary ms-auto">السابق</a>
 
+    <button type="button" class="btn btn-primary ms-3" (click)="onSubmit()">التالي</button>
+    <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
+  </div>
+</div>
