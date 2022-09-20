@@ -12,6 +12,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { MessageType } from '@shared/enums/message-type.enum';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
