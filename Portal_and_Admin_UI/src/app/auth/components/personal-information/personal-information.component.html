@@ -1,0 +1,292 @@
+<div class="accordion-item mb-4">
+  <div
+    class="accordion-header collapsed"
+    id="headingFirstForm"
+    data-bs-toggle="collapse"
+    data-bs-target="#firstForm"
+    aria-expanded="true"
+    aria-controls="firstForm">
+    <h6>{{ 'register.labels.pesronalInfo' | translate }}</h6>
+    <div class="arrow bg-transparent">
+      <i class="fa-solid fa-chevron-down text-secondary"></i>
+    </div>
+  </div>
+  <div
+    id="firstForm"
+    class="accordion-collapse collapse"
+    aria-labelledby="headingFirstForm"
+    data-bs-parent="#accordionRegister">
+
+    <div class="accordion-body bg-white">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="userName">
+              {{ 'register.labels.nationalIdOrResidentNumber' | translate}}
+              <span class="danger">*</span></label >
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              maxlength="10"
+              readonly
+            />
+            <!--<small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('userName').touched) &&
+                userRegisterForm.get('userName').errors?.required
+              "
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small
+            >-->
+          </div>
+        </div>
+        <div class="col-sm-6">
+
+          <div class="form-group mb-4">
+            <hijri-gregorian-datepicker
+              id="dateOfBirth"
+              [placeHolder]="'register.labels.dateComponent' | translate"
+              [isRequired]="false"
+              [hijriLabel]="'register.labels.higri' | translate "
+              [GregLabel]="'register.labels.greg' | translate "
+              [label]="'register.labels.birthDate' | translate"
+              #birthDate
+            >
+            </hijri-gregorian-datepicker>
+           <!-- <small
+              *ngIf="isFormSubmitted && isValidDate"
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small
+            >-->
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="firstNameAr">
+              {{ 'register.labels.firstNameAr' | translate}}
+              <span class="danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstNameAr"
+
+            />
+            <!--<small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('firstNameAr').touched) &&
+                userRegisterForm.get('firstNameAr').errors?.required
+              "
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small
+            >-->
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="firstNameEn">
+              {{ 'register.labels.firstNameAr' | translate }}<span class="danger">*</span
+              ></label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstNameEn"
+            />
+           <!-- <small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('firstNameEn').touched) &&
+                userRegisterForm.get('firstNameEn').errors?.required
+              "
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small>-->
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="secondNameAr">
+              {{ 'register.labels.secondNameAr' | translate}} <span class="danger">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="secondNameAr"
+            />
+            <!--<small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('secondNameAr').touched) &&
+                userRegisterForm.get('secondNameAr').errors
+                  ?.required
+              "
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small
+            >-->
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="secondNameEn">
+              {{ 'register.labels.secondNameEn' | translate}}
+              <span class="danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="secondNameEn"
+            />
+            <!--<small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('secondNameEn').touched) &&
+                userRegisterForm.get('secondNameEn').errors
+                  ?.required
+              "
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small
+            >-->
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="thirdNameAr">
+              {{ 'register.labels.thirdNameAr' | translate}}
+              <span class="danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="thirdNameAr"
+            />
+            <!--<small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('thirdNameAr').touched) &&
+                userRegisterForm.get('thirdNameAr').errors?.required
+              "
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small
+            >-->
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="thirdNameEn">
+              {{ 'register.labels.thirdNameEn' | translate}}
+              <span class="danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="thirdNameEn"
+
+            />
+           <!-- <small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('thirdNameEn').touched) &&
+                userRegisterForm.get('thirdNameEn').errors?.required
+              "
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small
+            >-->
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="lastNameAr">
+              {{ 'register.labels.lastNameAr' | translate}}
+              <span class="danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastNameAr"
+            />
+            <!--<small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('lastNameAr').touched) &&
+                userRegisterForm.get('lastNameAr').errors?.required
+              "
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small
+            >-->
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="lastNameEn">
+            {{ 'register.labels.lastNameEn' | translate}}
+
+              <span class="danger"
+                >*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastNameEn"
+            />
+            <!--<small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('lastNameEn').touched) &&
+                userRegisterForm.get('lastNameEn').errors?.required
+              "
+              class="danger"
+              >{{
+                "global.validators.requiredField" | translate
+              }}</small
+            >-->
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="isMale" class="form-lbl">
+              {{ 'register.labels.gender' | translate}}<span class="danger">*</span></label>
+            <select
+              class="form-control form-select"
+              formControlName="isMale"
+              id="isMale">
+              <option [ngValue]="null">{{ 'register.labels.select' | translate }}...</option>
+              <option [ngValue]="true">{{ 'register.labels.male' | translate }}</option>
+              <option [ngValue]="false">{{ 'register.labels.female' | translate }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="passportId">
+              {{ 'register.labels.passportNo' | translate}}
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="passportId"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

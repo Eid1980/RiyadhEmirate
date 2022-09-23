@@ -44,6 +44,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceFilterPipe } from './pipes/service-filter.pipe';
 import {ButtonModule} from 'primeng/button';
+import {StepsModule} from 'primeng/steps';
+
 
 
 
@@ -89,7 +91,8 @@ import {ButtonModule} from 'primeng/button';
     DialogModule,
     TooltipModule,
     RatingModule,
-    NgxHijriGregorianDatepickerModule
+    NgxHijriGregorianDatepickerModule,
+    StepsModule
   ],
   exports: [
     AuthLayoutComponent,
@@ -128,7 +131,8 @@ import {ButtonModule} from 'primeng/button';
     CustomSlicePipe,
     ServiceFilterPipe,
     TranslateModule,
-    ButtonModule
+    ButtonModule,
+    StepsModule
   ],
   providers: [
     HiddenAuthorizeColumnFilterPipe,

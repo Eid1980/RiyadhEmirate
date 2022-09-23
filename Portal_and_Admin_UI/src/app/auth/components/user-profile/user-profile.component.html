@@ -1,3 +1,82 @@
-<div>
-  <h1>User Profile</h1>
+<div class="accordion" id="accordionRegister">
+
+  <p-steps [model]="items"></p-steps>
+  <app-personal-information></app-personal-information>
+  <div class="accordion-item mb-4">
+    <div
+      class="accordion-header collapsed"
+      id="headingSecondForm"
+      data-bs-toggle="collapse"
+      data-bs-target="#secondForm"
+      aria-expanded="true"
+      aria-controls="secondForm">
+      <h6>{{ 'register.labels.registerationInfo' | translate }}</h6>
+      <div class="arrow bg-transparent">
+        <i class="fa-solid fa-chevron-down text-secondary"></i>
+      </div>
+    </div>
+    <div
+      id="secondForm"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingSecondForm"
+      data-bs-parent="#accordionRegister">
+      <div class="accordion-body bg-white">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group mb-4">
+              <label for="passWord">
+                {{ 'register.labels.password' | translate}}
+                <span class="danger">*</span></label>
+              <input
+                type="password"
+                class="form-control"
+                id="passWord"
+              />
+             <!-- <small
+                *ngIf="
+                  (isFormSubmitted ||
+                    userRegisterForm.get('passWord').touched) &&
+                  userRegisterForm.get('passWord').errors?.required "
+                class="danger"
+                >{{ "global.validators.requiredField" | translate }}</small
+              >-->
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group mb-4">
+              <label for="confirmPassWord">
+                {{ 'register.labels.passwordConfirmation' | translate }}
+                <span class="danger">*</span></label>
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassWord"
+              />
+              <!--<small
+                *ngIf="
+                  (isFormSubmitted ||
+                    userRegisterForm.get('confirmPassWord')
+                      .touched) &&
+                  userRegisterForm.get('confirmPassWord').errors
+                    ?.required
+                "
+                class="danger"
+                >{{
+                  "global.validators.requiredField" | translate
+                }}</small
+              >-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-communication-information></app-communication-information>
+
+  <div class="form-actions">
+    <button class="btn btn-save btn-success">التالي</button>
+    <a  class="btn btn-cancel btn btn-secondary">السابق</a>
+    <a  class="btn btn-cancel">رجوع</a>
+  </div>
+
 </div>

@@ -1,0 +1,95 @@
+<div class="accordion-item mb-4">
+  <div
+
+  >
+    <div class="accordion-body bg-white">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="phoneNumber">
+              {{ 'register.labels.phoneNumber' | translate}}
+              <span class="danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="phoneNumber"
+            />
+            <!--<small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('phoneNumber').touched) &&
+                userRegisterForm.get('phoneNumber').errors?.required"
+              class="danger">
+              {{ "global.validators.requiredField" | translate }}
+              </small>-->
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="email">
+              {{ 'register.labels.email' | translate}}
+              <span class="danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+
+            />
+            <!--<small
+              *ngIf="
+                (isFormSubmitted ||
+                  userRegisterForm.get('email').touched) &&
+                userRegisterForm.get('email').errors?.required"
+              class="danger">{{ "global.validators.requiredField" | translate }}</small>-->
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <!--<div class="form-group mb-4">
+            <label for="nationalityId" class="form-lbl">
+              {{ 'register.labels.nationality' | translate}}
+            </label>
+            <select
+              class="form-control form-select"
+              formControlName="nationalityId"
+              id="nationalityId">
+              <option [ngValue]="null">-- {{ 'register.label.selectNationality' }}  --</option>
+              <option
+                *ngFor="let nationality of nationalities"
+                [ngValue]="nationality.id">
+                {{ nationality.name }}
+              </option>
+            </select>
+          </div>-->
+        </div>
+        <!--<div class="col-sm-6">
+          <div class="form-group mb-4">
+            <label for="governorateId" class="form-lbl" >{{ 'register.label.government' | translate }}</label>
+            <select
+              class="form-control form-select"
+              formControlName="governorateId"
+              id="governorateId">
+              <option [ngValue]="null">-- {{ 'register.labels.selectGovernment' | translate}} --</option>
+              <option
+                *ngFor="let governorate of governorates"
+                [ngValue]="governorate.id">
+                {{ governorate.name }}
+              </option>
+            </select>
+          </div>
+        </div>-->
+
+        <div class="col-lg-12 d-flex align-items-end">
+          <div class="form-group w-100 mb-4">
+            <label for="address">{{ 'register.labels.address' | translate }}</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
