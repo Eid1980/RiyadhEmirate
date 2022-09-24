@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Dtos.Accounts;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Common;
@@ -66,8 +67,8 @@ namespace Emirates.Core.Application.Services.Accounts
             if(user == null)
                 throw new BusinessException("اسم المستخدم غير مضاف على النظام");
 
-            /*if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
-                throw new BusinessException("كلمة المرور غير صحيحة");*/
+            if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
+                throw new BusinessException("كلمة المرور غير صحيحة");
             return GetResponse(data: user);
         }
 
@@ -129,6 +130,46 @@ namespace Emirates.Core.Application.Services.Accounts
             }
             return GetResponse(data: isUpdated);
         }
+
+        public IApiResponse UpdateUserProfile(UpdateUserProfileDto updateUserProfileDto)
+        {
+            try
+            {
+                var user = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == updateUserProfileDto.Id);
+                if (user == null)
+                    throw new BusinessException("اسم المستخدم غير مضاف على النظام");
+
+
+                CreatePasswordHash(updateUserProfileDto.NewPassWord, out byte[] passwordHash, out byte[] passwordSalt);
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+
+                user.FirstNameAr = updateUserProfileDto.FirstNameAr;
+                user.FirstNameEn = updateUserProfileDto.FirstNameEn;
+                user.SecondNameAr = updateUserProfileDto.SecondNameAr;
+                user.SecondNameEn = updateUserProfileDto.SecondNameEn;
+                user.ThirdNameAr = updateUserProfileDto.ThirdNameAr;
+                user.ThirdNameEn = updateUserProfileDto.ThirdNameEn;
+
+                user.PhoneNumber = updateUserProfileDto.PhoneNumber;
+                user.Email = updateUserProfileDto.Email;
+                user.IsMale = updateUserProfileDto.IsMale;
+                user.NationalityId = updateUserProfileDto.NationalityId;
+                user.GovernorateId = updateUserProfileDto.GovernorateId;
+                user.IdentityExpireDate = updateUserProfileDto.IdentityExpireDate;
+
+                user.Address = updateUserProfileDto.FirstNameAr;
+
+                _emiratesUnitOfWork.Complete();
+
+                return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateUserProfileDto.Id);
+            }
+            catch (Exception ex)
+            {
+                return GetResponse(message: CustumMessages.UpdateRequestFailed(), data: updateUserProfileDto.Id);
+            }
+        }
+
         public IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto)
         {
             bool isValid = false;

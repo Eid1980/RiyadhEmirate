@@ -11,6 +11,7 @@ using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Interfaces.Helpers;
+using Emirates.Core.Application.Dtos.Accounts;
 
 namespace Emirates.API.Controllers
 {
@@ -134,6 +135,7 @@ namespace Emirates.API.Controllers
         {
             return _accountService.CheckUserRegister(checkUserRegisterDto);
         }
+
         [HttpPost("Register")]
         public IApiResponse Register(CreateUserDto createUserDto)
         {
@@ -146,5 +148,11 @@ namespace Emirates.API.Controllers
             return _accountService.Register(createUserDto);
         }
 
+        //[Authorize]
+        [HttpPost("UpdateUserProfile")]
+        public IApiResponse UpdateUserProfile(UpdateUserProfileDto updateUserProfileDto)
+        {
+            return _accountService.UpdateUserProfile(updateUserProfileDto);
+        }
     }
 }
