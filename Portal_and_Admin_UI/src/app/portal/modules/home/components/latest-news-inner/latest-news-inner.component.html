@@ -1,9 +1,11 @@
 <div class="ser-bg">
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
-      <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
-      <a class="breadcrumb-item fs-16" [routerLink]="['/home/latest-news']">أخبار الإمارة</a>
-      <span class="breadcrumb-item fs-16 active">تفاصيل الخبر</span>
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <a class="breadcrumb-item fs-16" [routerLink]="['/home/latest-news']">أخبار الإمارة</a>
+        <span class="breadcrumb-item fs-16 active">تفاصيل الخبر</span>
+      </div>
     </nav>
   </div>
 </div>
@@ -42,13 +44,15 @@
       </div>
     </div>
     <div class="container">
-      <div class="bg-white rounded-4 border p-3 p-md-5 mt-md-5 mt-3 mb-4" *ngIf="getLatestNewsCommentListDto?.length > 0">
+      <div class="bg-white rounded-4 border p-3 p-md-5 mt-md-5 mt-3 mb-4"
+        *ngIf="getLatestNewsCommentListDto?.length > 0">
         <h4 class="text-primary fa-22 fw-bold mb-md-5 mb-3">التعليقات</h4>
         <div class="comments-container">
-          <div class="comment-item d-flex border-bottom pb-4 mb-4 flex-md-nowrap flex-wrap justify-content-center" *ngFor="let comment of getLatestNewsCommentListDto">
+          <div class="comment-item d-flex border-bottom pb-4 mb-4 flex-md-nowrap flex-wrap justify-content-center"
+            *ngFor="let comment of getLatestNewsCommentListDto">
             <div class="avatar ms-3 my-1">
               <img src="assets/images/businessman.png" class="img-fluid border rounded-circle" alt="avatar"
-                   style="height: 50px;width: 60px;min-height: 50px;min-width: 55px;" />
+                style="height: 50px;width: 60px;min-height: 50px;min-width: 55px;" />
             </div>
             <div class="content my-1">
               <h5 class="fw-bold fa-18 mb-2">{{comment.createdByName}}</h5><b>{{comment.createdDate}}</b>
@@ -78,8 +82,9 @@
               <div class="form-group">
                 <label for="comment">التعليق</label>
                 <textarea class="form-control" id="comment" rows="5" formControlName="comment"></textarea>
-                <small *ngIf="(isFormSubmitted || createCommentForm.get('comment').touched) && createCommentForm.get('comment').errors?.required"
-                       class="danger">هذاالحقل مطلوب</small>
+                <small
+                  *ngIf="(isFormSubmitted || createCommentForm.get('comment').touched) && createCommentForm.get('comment').errors?.required"
+                  class="danger">هذاالحقل مطلوب</small>
               </div>
             </div>
             <div class="col-12 d-flex justify-content-end mt-4">

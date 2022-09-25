@@ -19,6 +19,8 @@ import { LatestNewsComponent } from './components/latest-news/latest-news.compon
 import { LatestNewsInnerComponent } from './components/latest-news-inner/latest-news-inner.component';
 import { OpenDataComponent } from './components/open-data/open-data.component';
 import { GovernorateShowComponent } from './components/emirate/governorate-show/governorate-show.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { GovernorateShowComponent } from './components/emirate/governorate-show/
      RegionPrincesComponent,
         OrganizationChartComponent,
         OpenDataComponent,
-        GovernorateShowComponent
+        GovernorateShowComponent,
+        ProfileComponent,
+        EditProfileComponent
     ],
   imports: [
     SharedModule,

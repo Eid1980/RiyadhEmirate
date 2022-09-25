@@ -1,0 +1,118 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">تعديل الملف الشخصى</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container py-5">
+    <form [formGroup]="editProfileForm">
+        <div class="main-card pt-5">
+            <div class="mb-5">
+              <h3 class="fw-bold fa-22 text-primary mb-4">البيانات الشخصيه</h3>
+              <div class="row">
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">رقم الهويه</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="nationalId" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">تاريخ الميلاد</label>
+                  <input class="form-control input-lg" type="date" formControlName="birthdate" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">النوع</label>
+                  <select class="form-select input-lg" formControlName="gender">
+                    <option value="">اختر</option>
+                    <option value="male">ذكر</option>
+                    <option value="female">انثى</option>
+                  </select>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">رقم جواز السفر</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="passportID" />
+                </div>
+        
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الاسم الاول عربى</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="firstNameAr" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الاسم الثانى عربى</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="secondNameAr" />
+                </div>
+        
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الاسم الثالث عربى</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="thirdNameAr" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الاسم الأخير عربى</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="lastNameAr" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الاسم الاول إنجليزى</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="firstNameEn" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الاسم الثانى إنجليزى</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="secondNameEn" />
+                </div>
+        
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الاسم الثالث إنجليزى</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="thirdNameEn" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الاسم الاخير إنجليزى</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="lastNameEn" />
+                </div>
+              </div>
+            </div>
+        
+            <div class="mb-5">
+              <h3 class="fw-bold fa-22 text-primary mb-4">بيانات التسجيل</h3>
+              <div class="row">
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">كلمة المرور</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="password" />
+                </div>
+              </div>
+            </div>
+        
+            <div>
+              <h3 class="fw-bold fa-22 text-primary mb-4">بيانات الإتصال</h3>
+              <div class="row">
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">رقم الهاتف</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="mobileNumber" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الايميل</label>
+                  <input class="form-control input-lg" type="email" formControlName="userEmail" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">الجنسيه</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="nationality" />
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">المحافظة</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="gov" />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">العنوان</label>
+                  <textarea class="form-control input-lg" rows="4" formControlName="address"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-end mt-3">
+            <button type="submit" class="btn btn-primary ms-3 px-4">حفظ</button>
+            <a class="btn btn-secondary" routerLink="/profile">رجوع</a>
+          </div>
+    </form>
+</div>

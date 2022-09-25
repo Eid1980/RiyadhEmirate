@@ -121,26 +121,13 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLanguages">
               <a class="dropdown-item" (click)="onChangeLang()">
-                <img src="assets/images/icons/egypt-flag.svg" class="img-fluid" alt="flag" width="26px" />
+                <img src="assets/images/icons/pic/ksa-flag.png" class="img-fluid" alt="flag" width="26px" />
                 <span>عربى</span>
               </a>
               <a class="dropdown-item" (click)="onChangeLang()">
-                <img src="assets/images/icons/united-states-flag.svg" class="img-fluid" alt="flag" width="26px" />
+                <img src="assets/images/icons/pic/usa-flag.png" class="img-fluid" alt="flag" width="26px" />
                 <span>EN</span>
               </a>
-
-              <!-- <div class="setting-card">
-                <div class="set">
-                  <i class="fa fa-moon"></i>
-                  <span class="txt" >ع</span>
-                </div>
-                <div class="pt-4">
-                  <div class="set">
-                    <i class="fa fa-moon"></i>
-                    <span class="txt" (click)="onChangeLang()">en</span>
-                  </div>
-                </div>
-              </div> -->
             </div>
           </div>
       
@@ -236,32 +223,33 @@
     </div>
 
     <div class="dropdown topnav-user" *ngIf="isAuthenticated">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/icons/header/user-img.svg" alt="" width="40">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuUserOptions" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="assets/images/icons/header/user-img.svg" alt="avatar" width="40">
         أهلاً <span> {{userInfo.shortNameAr}}</span>
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuUserOptions">
         <a class="dropdown-item" routerLink="/admin/home" *ngIf="userInfo.isEmployee">
           <i class="fa fa-gear"></i>
-          لوحة التحكم
+          <span>لوحة التحكم</span>
         </a>
         <a class="dropdown-item" routerLink="/eservice/my-requests" *ngIf="!userInfo.isEmployee">
           <i class="fa fa-gear"></i>
-          طلباتي
+          <span>طلباتي</span>
         </a>
-        <a class="dropdown-item">
+        <a class="dropdown-item" routerLink="/profile">
           <i class="fa fa-user"></i>
-          الملف الشخصي
+          <span>الملف الشخصي</span>
         </a>
-        <a class="dropdown-item" (click)="logOut()">
+        <a class="dropdown-item text-danger" (click)="logOut()">
           <i class="fa fa-arrow-right-from-bracket"></i>
-          تسجل خروج
+          <span>تسجل خروج</span>
         </a>
       </div>
     </div>
+
     <a routerLink="/auth/login" class="btn btn-primary sign-in" *ngIf="!isAuthenticated">
       <i class="fa fa-user"></i>
-      تسجيل الدخول
+      <span>تسجيل الدخول</span>
     </a>
 
     <!--<div class="dropdown topnav-user" *ngIf="!isAuthenticated">

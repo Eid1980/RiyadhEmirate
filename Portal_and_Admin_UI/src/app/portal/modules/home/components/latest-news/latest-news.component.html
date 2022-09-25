@@ -1,8 +1,10 @@
 <div class="ser-bg">
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
-      <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
-      <span class="breadcrumb-item fs-16 active">آخر الأخبار</span>
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">آخر الأخبار</span>
+      </div>
     </nav>
   </div>
 </div>
@@ -10,7 +12,7 @@
 <div class="container">
   <div *ngIf="latestNews.length == 0">
     <div class="empty-container">
-      <img src="assets/images/404.png" class="img-fluid" alt="vector" />
+      <img src="assets/images/icons/pic/no-result.png" class="img-fluid" alt="vector" />
       <h4>لا يوجد بيانات</h4>
     </div>
   </div>
@@ -28,7 +30,8 @@
       </a>
     </div>
 
-    <p-paginator [rows]="PAGESIZECONST" [totalRecords]="totalCount" [rowsPerPageOptions]="[12,16,24]" (onPageChange)="paginate($event)"></p-paginator>
+    <p-paginator [rows]="PAGESIZECONST" [totalRecords]="totalCount" [rowsPerPageOptions]="[12,16,24]"
+      (onPageChange)="paginate($event)"></p-paginator>
 
     <!--<nav aria-label="Page navigation example">
       <ul class="pagination pagination-sm">
