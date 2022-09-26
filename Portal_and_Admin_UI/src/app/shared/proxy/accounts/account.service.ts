@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ForgetPasswordDto, GetUserDataDto, GetUserDto, ResetPasswordDto, UserLoginDto, ValidateOTPDto } from './models';
+import { ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserProfileData, ResetPasswordDto, UpdateUserProfileDto, UserLoginDto, ValidateOTPDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { CheckUserRegisterDto, CreateUserDto } from './register.model';
 
@@ -82,6 +82,10 @@ export class AccountService {
     return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetById/${id}`).pipe();
   }
 
+  getUserProfileData = (id: number): Observable<ApiResponse<GetUserProfileData>> => {
+    return this.httpClient.get<ApiResponse<GetUserProfileData>>(`${this.serviceUrl}/GetUserProfileData/${id}`).pipe();
+  }
+
   forgetPassword(foregetPassword : ForgetPasswordDto ){
     return this.httpClient.post(`${this.serviceUrl}/forgetPassword` , foregetPassword );
   }
@@ -92,6 +96,10 @@ export class AccountService {
 
   resetPassword(resetPassword : ResetPasswordDto){
     return this.httpClient.post(`${this.serviceUrl}/resetPassword` , resetPassword );
+  }
+
+  updateUserProfile = (userProfileDto : UpdateUserProfileDto): Observable<ApiResponse<number>> => {
+    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/UpdateUserProfile` , userProfileDto).pipe();
   }
 
 }

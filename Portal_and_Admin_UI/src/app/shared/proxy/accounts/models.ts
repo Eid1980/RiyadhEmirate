@@ -25,6 +25,28 @@ export interface GetUserDto {
   birthDate: string;
 }
 
+export interface GetUserProfileData {
+  id: number;
+  firstNameAr: string;
+  secondNameAr: string;
+  thirdNameAr: string;
+  lastNameAr: string;
+  firstNameEn: string;
+  secondNameEn: string;
+  thirdNameEn: string;
+  lastNameEn: string;
+  isMale: boolean;
+  birthDate: string;
+  email: string;
+  phoneNumber: string;
+  passportId: string;
+  nationalityId: number;
+  nationalityName: string;
+  governorateId: number;
+  governorateName: string;
+  address: string;
+}
+
 export interface GetUserDataDto {
   id: number;
   userName: string;
@@ -39,6 +61,33 @@ export interface GetUserDataDto {
   email: string;
 }
 
+export interface UpdateUserProfileDto {
+  id: number;
+
+  newPassWord: string;
+
+  ConfirmNewPassWord: string;
+
+  firstNameAr: string;
+  secondNameAr: string;
+  thirdNameAr: string;
+  lastNameAr: string
+
+  firstNameEn: string
+  secondNameEn: string
+  thirdNameEn: string
+  lastNameEn: string
+
+  isMale: boolean;
+  email: string;
+  phoneNumber: string;
+
+
+  nationalityId: number;
+  governorateId: number;
+  identityExpireDate: string
+  address: string
+}
 
 export interface UserLoginDto {
   userName: string;

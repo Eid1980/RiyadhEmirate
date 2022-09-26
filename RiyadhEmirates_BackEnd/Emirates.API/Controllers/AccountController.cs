@@ -154,5 +154,11 @@ namespace Emirates.API.Controllers
         {
             return _accountService.UpdateUserProfile(updateUserProfileDto);
         }
+
+        [HttpGet("GetUserProfileData/{id}")]
+        public IApiResponse GetUserProfileData(int id)
+        {
+            return _accountService.GetUserProfileData(id);
+        }
     }
 }

@@ -21,5 +21,8 @@ namespace Emirates.Core.Application.Services.Accounts
         IApiResponse Register(CreateUserDto createUserDto);
         IApiResponse UpdateUserProfile(UpdateUserProfileDto updateUserProfileDto);
 
+        IApiResponse GetUserProfileData(int id);
+
+
     }
 }

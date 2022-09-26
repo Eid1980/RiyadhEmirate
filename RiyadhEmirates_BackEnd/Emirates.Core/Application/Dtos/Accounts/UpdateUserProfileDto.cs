@@ -6,9 +6,9 @@ namespace Emirates.Core.Application.Dtos.Accounts
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "كلمة المرور الزامية")]
+        //[Required(ErrorMessage = "كلمة المرور الزامية")]
         public string NewPassWord { get; set; }
-        [Required(ErrorMessage = "تأكيد كلمة المرور الزامية")]
+        //[Required(ErrorMessage = "تأكيد كلمة المرور الزامية")]
         [Compare(nameof(NewPassWord), ErrorMessage = "كلمة المرور غير متطابقة")]
         public string ConfirmNewPassWord { get; set; }
 

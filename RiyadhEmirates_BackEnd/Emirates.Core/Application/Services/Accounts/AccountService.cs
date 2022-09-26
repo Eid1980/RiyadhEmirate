@@ -139,10 +139,12 @@ namespace Emirates.Core.Application.Services.Accounts
                 if (user == null)
                     throw new BusinessException("اسم المستخدم غير مضاف على النظام");
 
-
-                CreatePasswordHash(updateUserProfileDto.NewPassWord, out byte[] passwordHash, out byte[] passwordSalt);
-                user.PasswordHash = passwordHash;
-                user.PasswordSalt = passwordSalt;
+                if (!string.IsNullOrEmpty(updateUserProfileDto.NewPassWord) && !string.IsNullOrEmpty(updateUserProfileDto.ConfirmNewPassWord))
+                {
+                    CreatePasswordHash(updateUserProfileDto.NewPassWord, out byte[] passwordHash, out byte[] passwordSalt);
+                    user.PasswordHash = passwordHash;
+                    user.PasswordSalt = passwordSalt;
+                }
 
                 user.FirstNameAr = updateUserProfileDto.FirstNameAr;
                 user.FirstNameEn = updateUserProfileDto.FirstNameEn;
@@ -158,7 +160,7 @@ namespace Emirates.Core.Application.Services.Accounts
                 user.GovernorateId = updateUserProfileDto.GovernorateId;
                 user.IdentityExpireDate = updateUserProfileDto.IdentityExpireDate;
 
-                user.Address = updateUserProfileDto.FirstNameAr;
+                user.Address = updateUserProfileDto.Address;
 
                 _emiratesUnitOfWork.Complete();
 
@@ -168,6 +170,45 @@ namespace Emirates.Core.Application.Services.Accounts
             {
                 return GetResponse(message: CustumMessages.UpdateRequestFailed(), data: updateUserProfileDto.Id);
             }
+        }
+
+        public IApiResponse GetUserProfileData(int id) 
+        {
+            var userProfile =
+                (from user in _emiratesUnitOfWork.Users.GetQueryable()
+                 join nationality in _emiratesUnitOfWork.Nationalities.GetQueryable() on user.NationalityId equals nationality.Id
+                 join governorate in _emiratesUnitOfWork.Governorates.GetQueryable() on user.GovernorateId equals governorate.Id
+                 where user.Id == id
+                 select new UserProfileDto
+                 {
+                     Id = user.Id,
+                     FirstNameAr = user.FirstNameAr,
+                     SecondNameAr = user.SecondNameAr,
+                     ThirdNameAr = user.ThirdNameAr,
+                     LastNameAr = user.LastNameAr,
+                     FirstNameEn = user.FirstNameEn,
+                     SecondNameEn = user.SecondNameEn,
+                     ThirdNameEn = user.ThirdNameEn,
+                     LastNameEn = user.LastNameEn,
+                     IsMale = user.IsMale,
+                     BirthDate = user.BirthDate.ToString("yyyy-MM-dd"),
+                     Email = user.Email,
+                     PhoneNumber = user.PhoneNumber,
+                     PassportId = user.PassportId,
+                     NationalityId = user.NationalityId,
+                     NationalityName = nationality.NameAr,
+                     GovernorateId = user.GovernorateId,
+                     GovernorateName = governorate.NameAr,
+                     Address = user.Address
+                 }).FirstOrDefault();
+
+
+            if (userProfile == null) 
+            {
+                return GetResponse(isSuccess: false);
+            }
+
+            return GetResponse(data: userProfile);
         }
 
         public IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto)
@@ -266,6 +307,7 @@ namespace Emirates.Core.Application.Services.Accounts
             }
             return true;
         }
+
 
         #endregion
 
