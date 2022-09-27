@@ -1951,6 +1951,10 @@
   .service-details {
     padding: 26px 0px;
 
+    .sidebar{
+      z-index: 10;
+    }
+
     .page-head {
       background-color: $white;
       display: flex;

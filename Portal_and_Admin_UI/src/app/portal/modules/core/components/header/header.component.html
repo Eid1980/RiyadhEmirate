@@ -227,13 +227,18 @@
             </a>
           </li>
         </ul>
+
+        <a routerLink="/auth/login" class="btn px-0 text-primary-2 me-auto pe-3 justify-content-start" *ngIf="!isAuthenticated">
+          <i class="fa fa-user fa-20 ms-2"></i>
+          <span class="fa-14">تسجيل الدخول</span>
+        </a>
       </div>
 
       <div class="dropdown topnav-user" *ngIf="isAuthenticated">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuUserOptions" data-bs-toggle="dropdown"
           aria-expanded="false">
           <img src="assets/images/icons/header/user-img.svg" alt="avatar" width="40">
-          <span class="text">أهلاً</span> <span> {{userInfo.shortNameAr}}</span>
+          <span class="text">أهلاً</span> <span> {{userInfo.shortName}}</span>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuUserOptions">
           <a class="dropdown-item" routerLink="/admin/home" *ngIf="userInfo.isEmployee">
@@ -254,11 +259,6 @@
           </a>
         </div>
       </div>
-
-      <a routerLink="/auth/login" class="btn btn-primary sign-in" *ngIf="!isAuthenticated">
-        <i class="fa fa-user"></i>
-        <span>تسجيل الدخول</span>
-      </a>
 
       <!--<div class="dropdown topnav-user" *ngIf="!isAuthenticated">
       <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
