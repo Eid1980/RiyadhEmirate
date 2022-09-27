@@ -489,16 +489,6 @@
           li.nav-item {
             a.nav-link {
               margin-bottom: 16px;
-              color: $white;
-
-              &:active,
-              &:hover {
-                color: $white;
-              }
-
-              &::before {
-                color: $white !important;
-              }
             }
           }
 
@@ -510,6 +500,11 @@
             left: 0 !important;
             margin-top: 12px !important;
             margin-bottom: 16px !important;
+            border: 1px solid rgba($color: $dark, $alpha: 0.1);
+
+            &::after{
+                display: none;
+            }
 
             li {
               .nav-link {
@@ -527,7 +522,8 @@
         .navbar-collapse {
           position: fixed;
           top: 152px;
-          background: $secondary-1;
+          background: $white;
+          border-top: 1px solid rgba($color: $dark, $alpha: 0.1);
           right: 0;
           height: 100%;
           bottom: 0;
@@ -546,20 +542,6 @@
             img {
               width: 70px;
             }
-          }
-        }
-
-        .sign-in {
-          background-color: $Primary-1;
-          color: $white;
-          display: inline-block;
-          border-radius: 2rem;
-          min-width: 152px;
-          border: none;
-
-          &:hover {
-            background-color: $white;
-            color: $Primary-1;
           }
         }
       }
