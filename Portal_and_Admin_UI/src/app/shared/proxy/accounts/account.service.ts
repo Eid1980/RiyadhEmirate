@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserProfileData, ResetPasswordDto, UpdateUserProfileDto, UserLoginDto, ValidateOTPDto } from './models';
+import { ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserProfileData, GetUserSessionDto, ResetPasswordDto, UpdateUserProfileDto, UserLoginDto, ValidateOTPDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { CheckUserRegisterDto, CreateUserDto } from './register.model';
 

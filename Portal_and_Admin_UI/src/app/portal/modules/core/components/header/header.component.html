@@ -225,7 +225,7 @@
     <div class="dropdown topnav-user" *ngIf="isAuthenticated">
       <button class="btn dropdown-toggle" type="button" id="dropdownMenuUserOptions" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="assets/images/icons/header/user-img.svg" alt="avatar" width="40">
-        أهلاً <span> {{userInfo.shortNameAr}}</span>
+        أهلاً <span> {{userInfo.shortName}}</span>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuUserOptions">
         <a class="dropdown-item" routerLink="/admin/home" *ngIf="userInfo.isEmployee">
