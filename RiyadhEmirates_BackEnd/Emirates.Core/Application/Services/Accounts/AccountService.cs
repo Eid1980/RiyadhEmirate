@@ -72,8 +72,8 @@ namespace Emirates.Core.Application.Services.Accounts
             if(user == null)
                 throw new BusinessException("اسم المستخدم غير مضاف على النظام");
 
-            if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
-                throw new BusinessException("كلمة المرور غير صحيحة");
+            //if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
+            //    throw new BusinessException("كلمة المرور غير صحيحة");
             return GetResponse(data: user);
         }
 
@@ -179,41 +179,35 @@ namespace Emirates.Core.Application.Services.Accounts
 
         public IApiResponse GetUserProfileData(int id) 
         {
-            var userProfile =
-                (from user in _emiratesUnitOfWork.Users.GetQueryable()
-                 join nationality in _emiratesUnitOfWork.Nationalities.GetQueryable() on user.NationalityId equals nationality.Id
-                 join governorate in _emiratesUnitOfWork.Governorates.GetQueryable() on user.GovernorateId equals governorate.Id
-                 where user.Id == id
-                 select new UserProfileDto
-                 {
-                     Id = user.Id,
-                     FirstNameAr = user.FirstNameAr,
-                     SecondNameAr = user.SecondNameAr,
-                     ThirdNameAr = user.ThirdNameAr,
-                     LastNameAr = user.LastNameAr,
-                     FirstNameEn = user.FirstNameEn,
-                     SecondNameEn = user.SecondNameEn,
-                     ThirdNameEn = user.ThirdNameEn,
-                     LastNameEn = user.LastNameEn,
-                     IsMale = user.IsMale,
-                     BirthDate = user.BirthDate.ToString("yyyy-MM-dd"),
-                     Email = user.Email,
-                     PhoneNumber = user.PhoneNumber,
-                     PassportId = user.PassportId,
-                     NationalityId = user.NationalityId,
-                     NationalityName = nationality.NameAr,
-                     GovernorateId = user.GovernorateId,
-                     GovernorateName = governorate.NameAr,
-                     Address = user.Address
-                 }).FirstOrDefault();
-
-
-            if (userProfile == null) 
-            {
+            var userProfile = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate);
+            if (userProfile == null)
                 return GetResponse(isSuccess: false);
+            else
+            {
+                var response = new UserProfileDto
+                {
+                    Id = userProfile.Id,
+                    FirstNameAr = userProfile.FirstNameAr,
+                    SecondNameAr = userProfile.SecondNameAr,
+                    ThirdNameAr = userProfile.ThirdNameAr,
+                    LastNameAr = userProfile.LastNameAr,
+                    FirstNameEn = userProfile.FirstNameEn,
+                    SecondNameEn = userProfile.SecondNameEn,
+                    ThirdNameEn = userProfile.ThirdNameEn,
+                    LastNameEn = userProfile.LastNameEn,
+                    IsMale = userProfile.IsMale,
+                    BirthDate = userProfile.BirthDate.ToString("yyyy-MM-dd"),
+                    Email = userProfile.Email,
+                    PhoneNumber = userProfile.PhoneNumber,
+                    PassportId = userProfile.PassportId,
+                    NationalityId = userProfile.NationalityId,
+                    NationalityName = userProfile.Nationality == null ? "" : userProfile.Nationality.NameAr,
+                    GovernorateId = userProfile.GovernorateId,
+                    GovernorateName = userProfile.Governorate == null ? "" : userProfile.Governorate.NameAr,
+                    Address = userProfile.Address
+                };
+                return GetResponse(data: response);
             }
-
-            return GetResponse(data: userProfile);
         }
 
         public IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto)

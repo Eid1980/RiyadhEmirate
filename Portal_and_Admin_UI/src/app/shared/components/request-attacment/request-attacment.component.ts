@@ -39,6 +39,7 @@ export class RequestAttacmentComponent implements OnInit {
   getRequestDetails() {
     this.requestService.getAttachments(this.requestId).subscribe((response) => {
       this.attachmentsDto = response.data;
+      debugger;
     });
   }
 

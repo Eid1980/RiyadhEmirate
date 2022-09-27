@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
-import { LookupDto } from '../shared/lookup-dto.model';
+import { LookupDto, LookupExtention } from '../shared/lookup-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +40,15 @@ export class LookupService {
   getCommentStageLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
     return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetCommentStageLookupList`).pipe(
     );
+  }
+
+  getExtentionList = (): LookupExtention[] => {
+    return [
+      { name: 'Images', code: 'image/*' },
+      { name: 'Pdf', code: '.pdf' },
+      { name: 'Word', code: 'application/msmsword' },
+      { name: 'Excell', code: 'application/msexcel' }
+      //{ name: 'Excell', code: 'xlsm,application/msexcel' }
+    ];
   }
 }

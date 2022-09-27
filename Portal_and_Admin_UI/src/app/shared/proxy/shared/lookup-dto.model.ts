@@ -4,3 +4,8 @@ export interface LookupDto<Type> {
   id: Type;
   name: string;
 }
+
+export interface LookupExtention {
+  name: string,
+  code: string
+}
