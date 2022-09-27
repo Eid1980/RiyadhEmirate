@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '@shared/services/global.service';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { UpdateRoleDto } from '@shared/proxy/roles/models';
@@ -17,7 +17,7 @@ export class RoleEditComponent implements OnInit {
   updateRoleDto = {} as UpdateRoleDto;
 
   constructor(private formBuilder: FormBuilder, private roleService: RoleService,
-    private router: Router, private activatedRoute: ActivatedRoute, private globalService: GlobalService) {
+    private activatedRoute: ActivatedRoute, private globalService: GlobalService) {
   }
 
   ngOnInit(): void {

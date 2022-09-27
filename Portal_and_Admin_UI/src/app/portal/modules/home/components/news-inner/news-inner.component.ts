@@ -26,7 +26,6 @@ export class NewsInnerComponent implements OnInit {
   getNewsById(){
     this._newService.getById(this.newsId).subscribe(
       (response) => {
-        debugger
         this.news = response.data
       },
       (error) => {}

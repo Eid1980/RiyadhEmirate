@@ -6,7 +6,9 @@ import { ActionButtonIcon } from '@shared/enums/action-button-icon';
 import { ColumnType } from '@shared/enums/column-type.enum';
 import { GlobalService } from '@shared/services/global.service';
 import { UserRoleService } from '@shared/proxy/user-roles/user-role.service';
-import { GetRolUsersDto } from '@shared/proxy/user-roles/models';
+import { AccountService } from '@shared/proxy/accounts/account.service';
+import { UserDataViewComponent } from '@shared/components/user-data-view/user-data-view.component';
+import { GetUserRoleListDto } from '@shared/proxy/user-roles/models';
 
 @Component({
   selector: 'app-user-list',
@@ -14,11 +16,14 @@ import { GetRolUsersDto } from '@shared/proxy/user-roles/models';
 })
 export class UserListComponent implements OnInit {
   @ViewChild(PageListComponent, { static: true }) list: PageListComponent;
+  @ViewChild(UserDataViewComponent, { static: true }) userDataView: UserDataViewComponent;
   pageListSettings: PageListSetting;
-  showDialog: boolean = false;
-  rolUsersDto = [] as GetRolUsersDto[]
+  showRolesDialog: boolean = false;
+  showDetailsDialog: boolean = false;
+  userRolesDto = [] as GetUserRoleListDto[];
 
-  constructor(private userRoleService: UserRoleService, private globalService: GlobalService) {
+  constructor(private userRoleService: UserRoleService, private accountService: AccountService,
+    private globalService: GlobalService) {
   }
 
   ngOnInit() {
@@ -28,10 +33,10 @@ export class UserListComponent implements OnInit {
 
   pageSetting() {
     this.pageListSettings = {
-      PageTitle: 'البحث في الصلاحيات',
+      PageTitle: 'البحث في المستخدمين',
       listPermissionCode: '*',
-      createButtonLink: '/admin/home/role-add',
-      createButtonText: 'اضافة نوع قضية جديد',
+      createButtonLink: '/admin/home/user-add',
+      createButtonText: 'اضافة مستخدم جديد',
       Url: this.userRoleService.serviceUrl,
 
       cols: [
@@ -40,13 +45,6 @@ export class UserListComponent implements OnInit {
         { Field: 'userName', Header: 'اسم المستخدم' },
         { Field: 'phoneNumber', Header: 'رقم الجوال' },
         { Field: 'governorateName', Header: 'المحافظة' },
-        {
-          Field: 'isActive',
-          Header: 'الحالة',
-          Searchable: false,
-          Type: ColumnType.Status,
-          FuncName: (id, event) => this.changeStatus(id, event),
-        },
         {
           Field: 'Action',
           Header: 'الإجراءات',
@@ -57,24 +55,23 @@ export class UserListComponent implements OnInit {
 
       actions: [
         {
-          title: 'تعديل',
-          routerLink: '/admin/home/role-edit',
+          title: 'اضافة صلاحيات',
+          routerLink: '/admin/home/user-role-add',
           IsQueryParams: true,
           buttonclass: ActionButtonClass.Edit,
-          buttonIcon: ActionButtonIcon.Edit,
+          buttonIcon: ActionButtonIcon.Add,
         },
         {
-          title: 'التفاصيل',
-          routerLink: '/admin/home/role-view',
-          IsQueryParams: true,
+          title: 'تفاصيل المستخدم',
+          FuncName: (id) => this.previewDetails(id),
           buttonclass: ActionButtonClass.View,
           buttonIcon: ActionButtonIcon.View,
         },
         {
           title: 'الصلاحيات المضافة',
-          FuncName: (id) => this.preview(id),
+          FuncName: (id) => this.previewRoles(id),
           buttonclass: ActionButtonClass.View,
-          buttonIcon: ActionButtonIcon.Users,
+          buttonIcon: ActionButtonIcon.Roles,
         },
         {
           title: 'حذف',
@@ -86,25 +83,27 @@ export class UserListComponent implements OnInit {
     };
   }
 
-  preview(id: number) {
+  previewRoles(id: number) {
     if (id) {
-      this.userRoleService.getUsersByRoleId(id).subscribe((response) => {
-        this.rolUsersDto = response.data;
+      this.userRoleService.getRolesByUserId(id).subscribe((response) => {
+        this.userRolesDto = response.data;
       });
-      this.showDialog = true;
+      this.showRolesDialog = true;
     }
   }
-  closeDialog() {
-    this.rolUsersDto = [];
-    this.showDialog = false;
+  closeRolesDialog() {
+    this.userRolesDto = [];
+    this.showRolesDialog = false;
   }
 
-  changeStatus(id: number, e: any) {
-    //this.roleService.changeStatus(id).subscribe((result) => {
-    //  if (result.isSuccess) {
-    //    this.list.getData();
-    //  }
-    //});
+  previewDetails(id: number) {
+    if (id) {
+      this.userDataView.initializeForm(id);
+      this.showDetailsDialog = true;
+    }
+  }
+  closeDetailsDialog() {
+    this.showDetailsDialog = false;
   }
 
   delete(id: number) {
@@ -112,12 +111,12 @@ export class UserListComponent implements OnInit {
     this.globalService.confirmSubmit = () => this.isconfirm(id);
   }
   isconfirm(id: number) {
-    //this.roleService.delete(id).subscribe((result) => {
-    //  if (result.isSuccess) {
-    //    this.globalService.clearMessages();
-    //    this.list.getData();
-    //  }
-    //  this.globalService.showMessage(result.message);
-    //});
+    this.accountService.deleteEmployee(id).subscribe((result) => {
+      if (result.isSuccess) {
+        this.globalService.clearMessages();
+        this.list.getData();
+      }
+      this.globalService.showMessage(result.message);
+    });
   }
 }

@@ -80,7 +80,6 @@ export class NewsComponent implements OnInit {
   }
 
   paginate(event) {
-    debugger
     this.getNewsByTypeId(event.page + 1)
   }
 }

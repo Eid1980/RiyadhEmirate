@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ForgetPasswordDto, GetUserDataDto, GetUserDto, ResetPasswordDto, UserLoginDto, ValidateOTPDto } from './models';
+import { ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserSessionDto, ResetPasswordDto, UserLoginDto, ValidateOTPDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { CheckUserRegisterDto, CreateUserDto } from './register.model';
 
@@ -24,6 +24,12 @@ export class AccountService {
   }
   register = (createUserDto: CreateUserDto): Observable<ApiResponse<number>> => {
     return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Register`, createUserDto).pipe();
+  }
+  createEmployee = (userId: number): Observable<ApiResponse<any>> => {
+    return this.httpClient.get<ApiResponse<any>>(`${this.serviceUrl}/CreateEmployee/${userId}`).pipe();
+  }
+  deleteEmployee = (userId: number): Observable<ApiResponse<any>> => {
+    return this.httpClient.get<ApiResponse<any>>(`${this.serviceUrl}/DeleteEmployee/${userId}`).pipe();
   }
 
   //isAuthorizedComponent = (componentURL): Observable<ApiResponse<GetUserDto>> => {
@@ -57,29 +63,33 @@ export class AccountService {
   }
 
   logOut = (): void => {
-    localStorage.removeItem('Employee_Token');
-    this.router.navigate(['/auth']);
+    localStorage.removeItem('EmiratesToken');
+    localStorage.removeItem('AuthUser');
+    this.router.navigate(['/auth/login']);
   }
 
-  getCurrentUserInfo = (): GetUserDto => {
-    if (localStorage.getItem('AuthUser') != null) {
-      return JSON.parse(localStorage.getItem('AuthUser'));
+  getCurrentUserInfo = (): GetUserSessionDto => {
+    if (localStorage.getItem('AuthUser') === null || localStorage.getItem('AuthUser') === undefined) {
+      this.router.navigate(['/auth/login']);
+      return null;
     }
     else {
-      this.router.navigate(['/auth']);
-      return null;
+      return JSON.parse(localStorage.getItem('AuthUser'));
     }
   }
 
   getUserData = (id?: number): Observable<ApiResponse<GetUserDataDto>> => {
-    return this.httpClient.get<ApiResponse<GetUserDataDto>>(`${this.serviceUrl}/GetGetUserDataDto/${id}`).pipe();
+    return this.httpClient.get<ApiResponse<GetUserDataDto>>(`${this.serviceUrl}/GetUserData/${id}`).pipe();
   }
 
-  getAuthUser = (): Observable<ApiResponse<GetUserDto>> => {
-    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetAuthUser`).pipe();
+  getAuthUser = (): Observable<ApiResponse<GetUserSessionDto>> => {
+    return this.httpClient.get<ApiResponse<GetUserSessionDto>>(`${this.serviceUrl}/GetAuthUser`).pipe();
   }
   getById = (id: number): Observable<ApiResponse<GetUserDto>> => {
     return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetById/${id}`).pipe();
+  }
+  getByUserName = (userName: string): Observable<ApiResponse<GetUserDto>> => {
+    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetByUserName/${userName}`).pipe();
   }
 
   forgetPassword(foregetPassword : ForgetPasswordDto ){

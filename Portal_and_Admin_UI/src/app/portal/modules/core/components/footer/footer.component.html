@@ -44,19 +44,19 @@
           <h5 class="title">منصات وبرامج ذات صلة</h5>
           <div class="platforms">
             <div>
-              <a href="#">ناجز</a>
+              <a href="https://www.my.gov.sa/wps/portal/snp/main" target="_blank">المنصة الوطنية الموحدة</a>
             </div>
             <div>
-              <a href="#">إنماء</a>
+              <a href="https://www.absher.sa/portal/landing.html" target="_blank">أبشر</a>
             </div>
             <div>
-              <a href="#">أبشر</a>
+              <a href="https://najiz.sa/applications/landing" target="_blank">ناجز</a>
             </div>
             <div>
-              <a href="#">المنصة الوطنية الموحدة</a>
+              <a href="https://eservices.alriyadh.gov.sa/" target="_blank">أمانة منطقة الرياض</a>
             </div>
             <div>
-              <a href="#">أمانة منطقة الرياض</a>
+              <a href="https://www.moj.gov.sa/ar/pages/default.aspx" target="_blank">وزارة العدل</a>
             </div>
           </div>
         </div>
@@ -64,22 +64,19 @@
           <h5 class="title">روابط سريعة</h5>
           <div class="platforms">
             <div>
-              <a href="#">نبذة عن الإمارة</a>
+              <a routerLink="/home/aboutus">نبذة عن الإمارة</a>
             </div>
             <div>
-              <a href="#">وظائف شاغرة</a>
+              <a routerLink="/eservice">الخدمات الإلكترونية</a>
             </div>
             <div>
-              <a href="#">الخدمات الإلكترونية</a>
+              <a routerLink="/home/news" [queryParams]="{ newsTypeId: '2' }">أخبار المحافظات</a>
             </div>
             <div>
-              <a href="#">أخبار المحافظات</a>
+              <a routerLink="/home/news" [queryParams]="{ newsTypeId: '3' }">التقارير الإعلامية</a>
             </div>
             <div>
-              <a href="#">التقارير الإعلامية</a>
-            </div>
-            <div>
-              <a href="#">البيانات الفتوحة</a>
+              <a routerLink="/open-data">البيانات الفتوحة</a>
             </div>
           </div>
         </div>

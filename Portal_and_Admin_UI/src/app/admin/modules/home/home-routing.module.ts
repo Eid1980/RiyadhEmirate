@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AuthGuard } from "@shared/guards/auth.guard";
+import { Role } from "@shared/enums/role.enum";
 import { HomeComponent } from "./components/home/home.component";
 import { RoleAddComponent } from "./components/permission/role-add/role-add.component";
 import { RoleEditComponent } from "./components/permission/role-edit/role-edit.component";
@@ -16,41 +17,63 @@ const routes: Routes = [
     path: "role-add",
     component: RoleAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin]
+    }
   },
   {
     path: "role-edit/:id",
     component: RoleEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.UsersPermission]
+    }
   },
   {
     path: "role-list",
     component: RoleListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.UsersPermission]
+    }
   },
   {
     path: "role-view/:id",
     component: RoleViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.UsersPermission]
+    }
   },
   {
     path: "user-add",
     component: UserAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.UsersPermission]
+    }
   },
   {
     path: "user-list",
     component: UserListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.UsersPermission]
+    }
   },
   {
     path: "user-role-add/:id",
     component: UserRoleAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.UsersPermission]
+    }
   },
   //#endregion
 
   { path: "", component: HomeComponent, canActivate: [AuthGuard] },
 ];
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],

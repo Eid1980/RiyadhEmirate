@@ -43,11 +43,9 @@ export class LoginComponent implements OnInit {
         (response) => {
           if (response.isSuccess) {
             localStorage.setItem('EmiratesToken', response.data);
-            this._accountService.getAuthUser().subscribe(
-              (res) => {
-                localStorage.setItem('AuthUser', JSON.stringify(res.data));
-              }
-            );
+            this._accountService.getAuthUser().subscribe((res) => {
+              localStorage.setItem('AuthUser', JSON.stringify(res.data));
+            });
             if (this.returnUrl) {
               this.router.navigateByUrl(this.returnUrl);
             } else {

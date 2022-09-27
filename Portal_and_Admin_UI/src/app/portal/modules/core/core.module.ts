@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CoreLayoutComponent } from './components/core-layout/core-layout.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SharedModule } from 'primeng/api';
@@ -16,7 +15,6 @@ import { ButtonModule } from 'primeng/button';
     CoreLayoutComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +29,6 @@ import { ButtonModule } from 'primeng/button';
     CoreLayoutComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent,
     CarouselModule,
   ],
 })

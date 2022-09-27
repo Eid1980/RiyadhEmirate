@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@shared/guards/auth.guard';
+import { Role } from '@shared/enums/role.enum';
 import { ElectronicCouncilActionComponent } from './components/electronic-council/electronic-council-action/electronic-council-action.component';
 import { ElectronicCouncilStepViewComponent } from './components/electronic-council/electronic-council-step-view/electronic-council-step-view.component';
 import { ElectronicCouncilViewComponent } from './components/electronic-council/electronic-council-view/electronic-council-view.component';
@@ -36,11 +37,17 @@ const routes: Routes = [
     path: 'inbox',
     component: InboxComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview]
+    }
   },
   {
     path: 'inbox-shamel',
     component: InboxShamelComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.ShamelRequestReview]
+    }
   },
 
   //#region PrisonersServices
@@ -48,16 +55,25 @@ const routes: Routes = [
     path: 'prisoners-services-admin-preview-step/:id',
     component: PrisonersServicesPreviewStepComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'prisoners-services-admin-view/:id',
     component: PrisonersServicesViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'prisoners-services-action/:id',
     component: PrisonersServicesActionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   //#endregion
 
@@ -66,16 +82,25 @@ const routes: Routes = [
     path: 'electronic-summon-admin-preview-step/:id',
     component: ElectronicSummonPreviewStepComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'electronic-summon-admin-view/:id',
     component: ElectronicSummonViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'electronic-summon-action/:id',
     component: ElectronicSummonActionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   //#endregion
 
@@ -84,16 +109,25 @@ const routes: Routes = [
     path: 'marriage-certificate-admin-preview-step/:id',
     component: MarriageCertificatePreviewStepComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'marriage-certificate-admin-view/:id',
     component: MarriageCertificateViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'marriage-certificate-action/:id',
     component: MarriageCertificateActionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   //#endregion
 
@@ -102,16 +136,25 @@ const routes: Routes = [
     path: 'electronic-council-admin-preview-step/:id',
     component: ElectronicCouncilStepViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'electronic-council-admin-view/:id',
     component: ElectronicCouncilViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'electronic-council-action/:id',
     component: ElectronicCouncilActionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   //#endregion
 
@@ -120,16 +163,25 @@ const routes: Routes = [
     path: 'lands-infringement-admin-preview-step/:id',
     component: LandsInfringementPreviewStepComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'lands-infringement-admin-view/:id',
     component: LandsInfringementViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'lands-infringement-action/:id',
     component: LandsInfringementActionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   //#endregion
 
@@ -138,16 +190,25 @@ const routes: Routes = [
     path: 'judgment-execution-admin-preview-step/:id',
     component: JudgmentExecutionPreviewStepComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'judgment-execution-admin-view/:id',
     component: JudgmentExecutionViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'judgment-execution-action/:id',
     component: JudgmentExecutionActionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   //#endregion
 
@@ -156,16 +217,25 @@ const routes: Routes = [
     path: 'prisoner-temp-release-admin-preview-step/:id',
     component: PrisonerTempReleasePreviewStepComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'prisoner-temp-release-admin-view/:id',
     component: PrisonerTempReleaseViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'prisoner-temp-release-action/:id',
     component: PrisonerTempReleaseActionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   //#endregion
 
@@ -174,16 +244,25 @@ const routes: Routes = [
     path: 'foreigners-realty-owner-admin-preview-step/:id',
     component: ForeignersRealtyOwnerPreviewStepComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'foreigners-realty-owner-admin-view/:id',
     component: ForeignersRealtyOwnerViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'foreigners-realty-owner-action/:id',
     component: ForeignersRealtyOwnerActionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   //#endregion
 
@@ -192,16 +271,25 @@ const routes: Routes = [
     path: 'treatment-recommendation-admin-preview-step/:id',
     component: TreatmentRecommendationPreviewStepComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'treatment-recommendation-admin-view/:id',
     component: TreatmentRecommendationViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   {
     path: 'treatment-recommendation-action/:id',
     component: TreatmentRecommendationActionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
+    }
   },
   //#endregion
 ];

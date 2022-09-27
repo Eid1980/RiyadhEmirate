@@ -19,7 +19,7 @@ namespace Emirates.API.Controllers
             _latestNewsService = latestNewsService;
         }
 
-        [HttpGet("GetById/{id}")]
+        [AllowAnonymous, HttpGet("GetById/{id}")]
         public IApiResponse GetById(int id)
         {
             return _latestNewsService.GetById(id);

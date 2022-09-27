@@ -10,18 +10,13 @@
       <h2 class="title px-3">{{serviceDetailsDto?.nameAr}}</h2>
 
       <button type="button" class="btn me-2" [hidden]="serviceDetailsDto?.isExternal">
-        <a [routerLink]="serviceDetailsDto?.requestLink" class="btn btn-primary px-3">
-          إبدأ الخدمة
-          <img src="assets/images/icons/services/arrowTwo.svg" alt="icon" width="15" class="mx-1">
-        </a>
-
-        <a *ngIf="!serviceDetailsDto?.isExternal" href="serviceDetailsDto?.requestLink" class="btn btn-primary px-3 me-2">
+        <a *ngIf="!serviceDetailsDto?.isExternal" [routerLink]="serviceDetailsDto?.requestLink" class="btn btn-primary px-3">
           إبدأ الخدمة
           <img src="assets/images/icons/services/arrowTwo.svg" alt="icon" width="15" class="mx-1">
         </a>
       </button>
 
-      <button type="button" class="btn me-2" [hidden]="!serviceDetailsDto?.isExternal">
+      <button type="button" class="btn me-2" [hidden]="serviceDetailsDto?.isExternal">
         <a [href]="serviceDetailsDto?.requestLink" class="btn btn-primary px-3">
           إبدأ الخدمة
           <img src="assets/images/icons/services/arrowTwo.svg" alt="icon" width="15" class="mx-1">

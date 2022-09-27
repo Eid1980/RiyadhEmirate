@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AccountService } from '@proxy/accounts/account.service';
-import { GetUserDto } from '@shared/proxy/accounts/models';
+import { GetUserSessionDto } from '@shared/proxy/accounts/models';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
 
 @Component({
@@ -9,13 +8,12 @@ import { TranslationServiceService } from '@shared/services/translation-service.
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
-  userInfo: GetUserDto;
+  userInfo = {} as GetUserSessionDto;
   isAuthenticated: boolean;
 
-  constructor(
-    private accountService: AccountService,
-    private _translateService: TranslationServiceService,
-    private router: Router) {}
+  constructor(private accountService: AccountService, private _translateService: TranslationServiceService)
+  {
+  }
 
   ngOnInit() {
     this.isAuthenticated = this.isUserAuthenticate();
@@ -24,18 +22,14 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    localStorage.removeItem('EmiratesToken');
-    localStorage.removeItem('userInfo');
-    this.router.navigate(['/auth/login']);
+    this.accountService.logOut();
   }
 
   isUserAuthenticate(): boolean {
-    if (
-      localStorage.getItem('EmiratesToken') === null ||
-      localStorage.getItem('EmiratesToken') === undefined
-    ) {
+    if (localStorage.getItem('EmiratesToken') === null || localStorage.getItem('EmiratesToken') === undefined) {
       return false;
-    } else {
+    }
+    else {
       return true;
     }
   }
@@ -45,7 +39,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onChangeLang() {
-    debugger
     this._translateService.switchLanguage();
   }
 }

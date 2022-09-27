@@ -15,19 +15,17 @@ namespace Emirates.Core.Application.Services.Accounts
     {
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
-        private readonly IFileUploaderService _fileUploaderService;
         private readonly ICommonService _commonService;
         public AccountService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper,
-            IFileUploaderService fileUploaderService, ICommonService commonService)
+            ICommonService commonService)
         {
             _mapper = mapper;
             _emiratesUnitOfWork = emiratesUnitOfWork;
-            _fileUploaderService = fileUploaderService;
             _commonService = commonService;
 
         }
 
-        public IApiResponse GetGetUserDataDto(int id)
+        public IApiResponse GetUserData(int id)
         {
             var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate));
             if (user != null)
@@ -36,14 +34,21 @@ namespace Emirates.Core.Application.Services.Accounts
         }
         public IApiResponse GetById(int id)
         {
-            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id));
+            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
         }
+        public IApiResponse GetAuthUser(int id)
+        {
+            var user = _mapper.Map<GetUserSessionDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id));
+            if (user == null)
+                throw new BusinessException("غير مصرح بالدخول لك بالدخول على النظام");
+            return GetResponse(data: user);
+        }
         public IApiResponse GetByUserName(string userName)
         {
-            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName == userName));
+            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName == userName, x => x.Governorate, x => x.Nationality));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
@@ -198,6 +203,33 @@ namespace Emirates.Core.Application.Services.Accounts
 
             return GetResponse(message: CustumMessages.MsgSuccess("تم التسجيل بنجاح"), data: addedModel.Id);
         }
+        public IApiResponse CreateEmployee(int userId)
+        {
+            var user = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == userId);
+            if (user == null)
+                throw new BusinessException("رقم الهوية غير مسجل بالنظام برجاء التسجيل أولا");
+            if(user.IsEmployee)
+                throw new BusinessException("المستخدم مضاف مسبقا");
+
+            user.IsEmployee = true;
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.SaveSuccess());
+        }
+        public IApiResponse DeleteEmployee(int userId)
+        {
+            var user = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == userId);
+            if (user == null)
+                throw new BusinessException("رقم الهوية غير مسجل بالنظام برجاء التسجيل أولا");
+            if (!user.IsEmployee)
+                throw new BusinessException("المستخدم محذوف مسبقا");
+
+            user.IsEmployee = false;
+            var userRoles = _emiratesUnitOfWork.UserRoles.Where(x => x.UserId == userId).ToList();
+            if (userRoles.Any())
+                _emiratesUnitOfWork.UserRoles.RemoveRange(userRoles);
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
 
         #region Helper Functions
         private string GenerateToken()
@@ -225,7 +257,6 @@ namespace Emirates.Core.Application.Services.Accounts
             }
             return true;
         }
-
         #endregion
 
     }

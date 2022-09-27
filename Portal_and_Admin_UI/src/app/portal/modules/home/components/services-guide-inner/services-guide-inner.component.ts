@@ -11,15 +11,14 @@ import { ServiceService } from '@shared/proxy/services/service.service';
   templateUrl: './services-guide-inner.component.html'
 })
 export class ServicesGuideInnerComponent implements OnInit {
-
   serviceId : number
   service = {} as GetServiceDetailsDto
   getServiceConditionListDto = [] as GetServiceConditionListDto[];
 
-
-  constructor(private _serviceService : ServiceService,
-    private _serviceConditionService: ServiceConditionService,
-    private _activatedRoute: ActivatedRoute, public sanitizer: DomSanitizer) { }
+  constructor(private _serviceService : ServiceService, private _serviceConditionService: ServiceConditionService,
+    private _activatedRoute: ActivatedRoute, public sanitizer: DomSanitizer)
+  {
+  }
 
   ngOnInit(): void {
     this.serviceId = this._activatedRoute.snapshot.params['id'];
@@ -30,7 +29,6 @@ export class ServicesGuideInnerComponent implements OnInit {
 
   getServiceById(){
     this._serviceService.getById(this.serviceId).subscribe((response) => {
-      debugger;
       this.service = response.data
     });
   }

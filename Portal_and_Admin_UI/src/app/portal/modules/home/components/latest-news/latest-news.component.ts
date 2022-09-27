@@ -76,7 +76,6 @@ export class LatestNewsComponent implements OnInit {
   }*/
 
   paginate(event){
-    debugger
     this.getLatestNews(event.page + 1)
   }
 

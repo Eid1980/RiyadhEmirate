@@ -25,7 +25,7 @@ namespace Emirates.API.Controllers
         /// </summary>
         /// <param name="id">News identifier</param>
         /// <returns></returns>
-        [HttpGet("GetById/{id}")]
+        [AllowAnonymous, HttpGet("GetById/{id}")]
         public IApiResponse GetById(int id)
         {
             return _newsService.GetById(id);
@@ -36,7 +36,7 @@ namespace Emirates.API.Controllers
         /// </summary>
         /// <param name="searchModelDto">Search criteria</param>
         /// <returns></returns>
-        [HttpPost("GetListPage")]
+        [AllowAnonymous, HttpPost("GetListPage")]
         public IApiResponse GetAll(SearchModel searchModelDto)
         {
             return _newsService.GetAll(searchModelDto);

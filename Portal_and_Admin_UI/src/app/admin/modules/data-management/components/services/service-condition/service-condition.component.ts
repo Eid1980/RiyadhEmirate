@@ -43,15 +43,12 @@ export class ServiceConditionComponent implements OnInit {
     });
   }
   onSubmit() {
-    debugger;
     this.isFormSubmitted = true;
     if (this.serviceConditionForm.valid) {
       if (this.serviceConditionId == 0) {
         this.createServiceConditionDto = { ...this.serviceConditionForm.value } as CreateServiceConditionDto;
         this.createServiceConditionDto.serviceId = this.id;
-        debugger;
         this.serviceConditionService.create(this.createServiceConditionDto).subscribe((response) => {
-          debugger;
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {
             this.clear();

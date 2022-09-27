@@ -17,7 +17,7 @@ namespace Emirates.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class AccountController : BaseController, IAccountService
+    public class AccountController : BaseController
     {
         private readonly IAccountService _accountService;
         private readonly IConfiguration _config;
@@ -29,24 +29,20 @@ namespace Emirates.API.Controllers
             _config = config;
         }
 
-        [HttpGet("GetGetUserDataDto/{id?}")]
+        [HttpGet("GetUserData/{id?}")]
         [Authorize]
-        public IApiResponse GetGetUserDataDto(int id=0)
+        public IApiResponse GetUserData(int id=0)
         {
             if (id == 0)
                 id = UserId;
-
-            return _accountService.GetGetUserDataDto(id);
+            return _accountService.GetUserData(id);
         }
 
         [HttpGet("GetAuthUser")]
         [Authorize]
         public IApiResponse GetAuthUser()
         {
-            var user = _accountService.GetById(UserId);
-            if (!user.IsSuccess)
-                throw new BusinessException("غير مصرح بالدخول لك بالدخول على النظام");
-            return user;
+            return _accountService.GetAuthUser(UserId);
         }
 
         [HttpGet("GetById/{id}")]
@@ -87,8 +83,8 @@ namespace Emirates.API.Controllers
                     Subject = new ClaimsIdentity(new Claim[]
                     {
                     new Claim("UserId",user.Id.ToString()),
-                    new Claim("Name", user.NameAr.ToString()),
-                    new Claim("Phone",user.PhoneNumber.ToString())
+                    //new Claim("Name", user.NameAr.ToString()),
+                    //new Claim("Phone",user.PhoneNumber.ToString())
                    }),
 
                     Expires = DateTime.UtcNow.AddDays(360),
@@ -134,6 +130,7 @@ namespace Emirates.API.Controllers
         {
             return _accountService.CheckUserRegister(checkUserRegisterDto);
         }
+        
         [HttpPost("Register")]
         public IApiResponse Register(CreateUserDto createUserDto)
         {
@@ -144,6 +141,18 @@ namespace Emirates.API.Controllers
                     Message = CustumMessages.MsgWarning("رجاء التأكد من صحة البيانات المدخلة")
                 };
             return _accountService.Register(createUserDto);
+        }
+        
+        [HttpGet("CreateEmployee/{userId}")]
+        public IApiResponse CreateEmployee(int userId)
+        {
+            return _accountService.CreateEmployee(userId);
+        }
+        
+        [HttpGet("DeleteEmployee/{userId}")]
+        public IApiResponse DeleteEmployee(int userId)
+        {
+            return _accountService.DeleteEmployee(userId);
         }
 
     }

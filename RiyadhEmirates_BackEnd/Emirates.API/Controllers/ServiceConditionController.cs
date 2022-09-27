@@ -2,6 +2,7 @@
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.ServiceConditions;
 using Emirates.Core.Application.Services.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emirates.API.Controllers
@@ -23,7 +24,7 @@ namespace Emirates.API.Controllers
             return _serviceConditionService.GetById(id);
         }
 
-        [HttpGet("GetByServiceId/{serviceId}")]
+        [AllowAnonymous, HttpGet("GetByServiceId/{serviceId}")]
         public IApiResponse GetByServiceId(int serviceId)
         {
             return _serviceConditionService.GetByServiceId(serviceId);

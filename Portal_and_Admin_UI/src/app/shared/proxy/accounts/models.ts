@@ -25,6 +25,12 @@ export interface GetUserDto {
   birthDate: string;
 }
 
+export interface GetUserSessionDto {
+  id: number;
+  shortName: string;
+  isEmployee: boolean;
+}
+
 export interface GetUserDataDto {
   id: number;
   userName: string;
