@@ -1,4 +1,5 @@
 ﻿using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Dtos.Accounts;
 using Emirates.Core.Application.Response;
 
 namespace Emirates.Core.Application.Services.Accounts
@@ -19,6 +20,11 @@ namespace Emirates.Core.Application.Services.Accounts
         IApiResponse ResetPassword(ResetPasswordDto resetPasswordDto);
         IApiResponse CheckUserRegister(CheckUserRegisterDto checkUserRegisterDto);
         IApiResponse Register(CreateUserDto createUserDto);
+        IApiResponse UpdateUserProfile(UpdateUserProfileDto updateUserProfileDto);
+
+        IApiResponse GetUserProfileData(int id);
+
+
         IApiResponse CreateEmployee(int userId);
         IApiResponse DeleteEmployee(int userId);
     }

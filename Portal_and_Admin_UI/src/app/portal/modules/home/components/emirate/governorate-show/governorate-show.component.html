@@ -1,8 +1,10 @@
 <div class="ser-bg">
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
-      <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
-      <span class="breadcrumb-item fs-16 active">محافظات منطقة الرياض</span>
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">محافظات منطقة الرياض</span>
+      </div>
     </nav>
   </div>
 </div>
@@ -12,8 +14,11 @@
     <div class="col-md-6 mb-4" *ngFor="let governorate of governorateListDto">
       <div class="card-basic">
         <div class="card-basic-cover">
-          <img *ngIf="governorate?.image" [src]="sanitizer.bypassSecurityTrustResourceUrl(governorate?.image?.base64File)" class="img-fluid" [alt]="governorate?.nameAr" />
-          <img *ngIf="!governorate?.image" src="https://via.placeholder.com/550x260" class="img-fluid" [alt]="governorate?.nameAr" />
+          <img *ngIf="governorate?.image"
+            [src]="sanitizer.bypassSecurityTrustResourceUrl(governorate?.image?.base64File)" class="img-fluid"
+            [alt]="governorate?.nameAr" />
+          <img *ngIf="!governorate?.image" src="https://via.placeholder.com/550x260" class="img-fluid"
+            [alt]="governorate?.nameAr" />
         </div>
         <div class="card-basic-body">
           <h3>{{governorate?.nameAr}}</h3>

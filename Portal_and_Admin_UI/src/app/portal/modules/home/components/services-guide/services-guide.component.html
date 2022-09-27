@@ -1,14 +1,16 @@
 <div class="ser-bg">
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
-      <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
-      <span class="breadcrumb-item fs-16 active">دليل إجراءات الخدمات</span>
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">دليل إجراءات الخدمات</span>
+      </div>
     </nav>
   </div>
 </div>
 
 <div class="container">
-  <div class="row my-5" >
+  <div class="row my-5">
     <div class="col-md-6 mb-4" *ngFor="let service of services">
       <a class="card-basic-h" [routerLink]="['/home/services-guide' , service.id]">
         <div class="card-basic-banner">

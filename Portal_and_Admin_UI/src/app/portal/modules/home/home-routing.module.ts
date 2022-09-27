@@ -15,6 +15,8 @@ import { LatestNewsComponent } from "./components/latest-news/latest-news.compon
 import { LatestNewsInnerComponent } from "./components/latest-news-inner/latest-news-inner.component";
 import { OpenDataComponent } from "./components/open-data/open-data.component";
 import { GovernorateShowComponent } from "./components/emirate/governorate-show/governorate-show.component";
+import { ProfileComponent } from "./components/profile/profile.component";
+import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -23,9 +25,11 @@ const routes: Routes = [
   { path: "home/news/:id", component: NewsInnerComponent },
   { path: "home/services-guide", component: ServicesGuideComponent },
   { path: "home/services-guide/:id", component: ServicesGuideInnerComponent },
-  { path: "home/latest-news", component: LatestNewsComponent},
-  { path: "home/latest-news/:id", component: LatestNewsInnerComponent},
-    { path: "open-data", component: OpenDataComponent },
+  { path: "home/latest-news", component: LatestNewsComponent },
+  { path: "home/latest-news/:id", component: LatestNewsInnerComponent },
+  { path: "profile", component: ProfileComponent },
+  { path: "edit-profile", component: EditProfileComponent },
+  { path: "open-data", component: OpenDataComponent },
   // emirate pages
   { path: "home/aboutus", component: AboutusComponent },
   { path: "home/regiion-princes", component: RegionPrincesComponent },

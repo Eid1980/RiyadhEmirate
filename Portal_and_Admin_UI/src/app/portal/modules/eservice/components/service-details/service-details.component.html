@@ -1,7 +1,9 @@
 <nav class="breadcrumb m-0 bg-transparent">
-  <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
-  <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/services-list']">قائمة الخدمات</a>
-  <span class="breadcrumb-item fs-16 active">تفاصيل خدمة</span>
+  <div class="container d-flex align-items-center">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/services-list']">قائمة الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل خدمة</span>
+  </div>
 </nav>
 
 <section class="service-details">
@@ -30,22 +32,26 @@
           <!-- tabs -->
           <ul class="main-tabs nav nav-tabs mb-2" id="myTab" role="tablist">
             <li class="nav-item w-25" role="presentation">
-              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">
                 معلومات عن الخدمة
               </button>
             </li>
             <li class="nav-item w-25" role="presentation">
-              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">
                 مخطط سير الخدمة
               </button>
             </li>
             <li class="nav-item w-25" role="presentation">
-              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">
                 شرح الخدمة
               </button>
             </li>
             <li class="nav-item w-25" role="presentation">
-              <button class="nav-link" id="conditions-tab" data-bs-toggle="tab" data-bs-target="#conditions" type="button" role="tab" aria-controls="contact" aria-selected="false">
+              <button class="nav-link" id="conditions-tab" data-bs-toggle="tab" data-bs-target="#conditions"
+                type="button" role="tab" aria-controls="contact" aria-selected="false">
                 شروط ووثائق الخدمة
               </button>
             </li>
@@ -169,7 +175,8 @@
                   شرح خدمة {{serviceDetailsDto?.nameAr}}
                 </span>
                 <div class="mt-4" style="zoom: .7;">
-                  <img *ngIf="imageExplain" [src]="sanitizer.bypassSecurityTrustResourceUrl(imageExplain?.base64File) " />
+                  <img *ngIf="imageExplain"
+                    [src]="sanitizer.bypassSecurityTrustResourceUrl(imageExplain?.base64File) " />
                 </div>
               </div>
 
@@ -202,7 +209,8 @@
 
             <div class="liked mb-1">
               <span class="text-primary"> {{getAllCountDto?.benefitCount}} </span>
-              <span>من الزوار أعجبهم محتوى الصفحة من أصل <span class="text-primary"> {{getAllCountDto?.allCount}} </span> مشاركة</span>
+              <span>من الزوار أعجبهم محتوى الصفحة من أصل <span class="text-primary"> {{getAllCountDto?.allCount}}
+                </span> مشاركة</span>
             </div>
           </div>
         </div>
@@ -232,8 +240,11 @@
             <h4 class="title">تكلفة الخدمة</h4>
             <div class="group">
               <img src="assets/images/icons/details/feather-check-circle.svg" alt="feather-check-circle.svg" width="16">
-              <span class="service" *ngIf="serviceDetailsDto?.serviceCost && serviceDetailsDto?.serviceCost != 0">{{serviceDetailsDto?.serviceCost}} ريـال</span>
-              <span class="service" *ngIf="!serviceDetailsDto?.serviceCost || serviceDetailsDto?.serviceCost == 0">مجانا</span>
+              <span class="service"
+                *ngIf="serviceDetailsDto?.serviceCost && serviceDetailsDto?.serviceCost != 0">{{serviceDetailsDto?.serviceCost}}
+                ريـال</span>
+              <span class="service"
+                *ngIf="!serviceDetailsDto?.serviceCost || serviceDetailsDto?.serviceCost == 0">مجانا</span>
             </div>
           </div>
 
@@ -244,7 +255,8 @@
                 <tr class="border-top">
                   <td class="fa-12 fw-normal py-3 px-2">التقييم</td>
                   <td class="info py-3 px-2 text-center">
-                    <p-rating [cancel]="false" [(ngModel)]="rate" [readonly]="!canRate" (onRate)="rateService()"></p-rating>
+                    <p-rating [cancel]="false" [(ngModel)]="rate" [readonly]="!canRate" (onRate)="rateService()">
+                    </p-rating>
                     <span class="service mx-2">{{getServiceRateDto?.serviceRatePercentage}}</span>
                   </td>
                 </tr>

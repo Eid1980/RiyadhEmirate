@@ -108,6 +108,12 @@
     border: 1px solid $danger !important;
     color: $danger;
   }
+
+  &.disabled{
+    background-color: rgba($color: $dark, $alpha: 0.1);
+    color: rgba($color: $dark, $alpha: 0.5);
+    pointer-events: none;
+  }
 }
 
 .form-group {
