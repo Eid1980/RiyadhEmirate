@@ -27,6 +27,7 @@ export interface GetUserDto {
 
 export interface GetUserProfileData {
   id: number;
+  userName: string;
   firstNameAr: string;
   secondNameAr: string;
   thirdNameAr: string;

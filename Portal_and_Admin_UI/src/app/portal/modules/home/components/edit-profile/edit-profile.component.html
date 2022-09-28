@@ -134,18 +134,31 @@
 
                 <small *ngIf="(isFormSubmitted || editProfileForm.get('lastNameEn').touched) && editProfileForm.get('lastNameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
+
+                <div class="form-group col-md-6">
+                <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
+                <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
+                              (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)"  mode="advanced"
+                              accept="image/*" [maxFileSize]="fileSize">
+                </p-fileUpload>
+                </div>
               </div>
             </div>
 
-            <!--<div class="mb-5">
+            <div class="mb-5">
               <h3 class="fw-bold fa-22 text-primary mb-4">بيانات التسجيل</h3>
               <div class="row">
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                   <label class="fa-14 mb-1 fw-normal">كلمة المرور</label>
-                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="password" />
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="newPassword" />
+                </div>
+
+                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                  <label class="fa-14 mb-1 fw-normal">تاكيد كلمة المرور</label>
+                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="confirmNewpassword" />
                 </div>
               </div>
-            </div>-->
+            </div>
 
             <div>
               <h3 class="fw-bold fa-22 text-primary mb-4">بيانات الإتصال</h3>

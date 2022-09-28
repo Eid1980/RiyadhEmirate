@@ -103,7 +103,7 @@ export class EditProfileComponent implements OnInit {
     this.editProfileForm = this.formBuilder.group({
       id : [this.userProfileData.id , [Validators.required]],
       //nationalId: [{value: this.userProfileData.nationalId, disabled: false }, [Validators.required]],
-      nationalId: [{value: null, disabled: false }, [Validators.required]],
+      nationalId: [{value: this.userProfileData.userName, disabled: false }, [Validators.required]],
       birthdate: [{ value: this.userProfileData.birthDate, disabled: false }, [Validators.required]],
       isMale: [this.userProfileData.isMale? 1 : 2, [Validators.required]],
       passportId: [{value: this.userProfileData.passportId, disabled: false }, [Validators.required]],
@@ -115,6 +115,8 @@ export class EditProfileComponent implements OnInit {
       secondNameEn: [{ value: this.userProfileData.secondNameAr, disabled: false }, [Validators.required]],
       thirdNameEn: [{ value: this.userProfileData.thirdNameAr, disabled: false }, [Validators.required]],
       lastNameEn: [{ value: this.userProfileData.lastNameAr, disabled: false }, [Validators.required]],
+      newPassword: [null],
+      confirmNewpassword: [null],
       image: [null],
       //password: [{ value: '1234', disabled: false }, [Validators.required]],
       phoneNumber: [{ value: this.userProfileData.phoneNumber, disabled: false }, [Validators.required]],
@@ -166,7 +168,7 @@ export class EditProfileComponent implements OnInit {
         if (response.isSuccess) {
           let id = response.data.toString();
           this.fileManagerService.upload(id, 'LatestNews', '', [this.editProfileForm.get('image').value]).subscribe(res => {
-            this.globalService.navigate("/admin/data-management/latest-news-ar-list");
+            //this.globalService.navigate("/admin/data-management/latest-news-ar-list");
           })
         }
       });
