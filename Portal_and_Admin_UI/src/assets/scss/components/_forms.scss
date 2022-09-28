@@ -109,7 +109,7 @@
     color: $danger;
   }
 
-  &.disabled{
+  &.disabled {
     background-color: rgba($color: $dark, $alpha: 0.1);
     color: rgba($color: $dark, $alpha: 0.5);
     pointer-events: none;
@@ -120,20 +120,162 @@
   margin-bottom: 16px;
 }
 
-hijri-gregorian-datepicker{
-  .form-group{
+// hijri calender datepicker
+hijri-gregorian-datepicker {
+  .form-group {
     padding: 0px !important;
   }
 }
 
+// p multiselect
+p-multiselect {
+  display: block;
+  width: 100%;
+
+  .p-multiselect {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    font-family: 'Almarai';
+    font-size: 14px;
+    border: 1px solid #e7e8ef;
+    background-color: #fafbff !important;
+    border-radius: 4px !important;
+
+    &:hover,
+    &:focus {
+      border: 1px solid $Primary-1;
+      box-shadow: none !important;
+      outline: 0 !important;
+    }
+
+    .p-multiselect-label-container {
+      .p-multiselect-token {
+        padding: 8px 6px;
+        margin: 0;
+        margin-left: 8px;
+        background: #e3f2fd;
+        border-radius: 6px;
+        color: #495057;
+
+        .p-multiselect-token-label {
+          font-family: 'Almarai';
+          font-size: 12px;
+        }
+
+        .p-multiselect-token-icon {
+          margin-right: 10px;
+          font-size: 14px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .p-multiselect-trigger {
+      margin-left: 0px;
+
+      .p-multiselect-trigger-icon {
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+
+    .p-multiselect-panel {
+      border-radius: 4px;
+      top: 56px !important;
+      box-shadow: -1px 6px 12px #00000048;
+
+      .p-multiselect-header {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        padding: 4px 12px;
+        border-radius: 4px;
+        background: transparent;
+
+        .p-multiselect-close {
+          margin: 0;
+          color: rgba($color: $dark, $alpha: 0.7);
+        }
+      }
+
+      .p-multiselect-items-wrapper {
+        .p-multiselect-items {
+          margin: 0px 10px;
+
+          .p-multiselect-item {
+            margin: 0;
+            padding: 6px;
+            border: 0;
+            border-radius: 6px;
+            color: rgba($color: $dark, $alpha: 0.5);
+            font-size: 14px;
+            font-family: 'Almarai';
+            margin-bottom: 2px;
+
+            &:hover {
+              background-color: transparent;
+              color: rgba($color: $dark, $alpha: 0.9);
+            }
+
+            &:focus{
+              box-shadow: none !important;
+              outline: 0 !important;
+            }
+
+            .p-checkbox {
+              width: 16px;
+              height: 16px;
+              margin: 0px;
+
+              .p-checkbox-box {
+                border: 1px solid rgba($color: $dark, $alpha: 0.4);
+                background: $white;
+                width: 16px;
+                height: 16px;
+                color: #495057;
+                border-radius: 4px;
+
+                &.p-highlight {
+                  background-color: $Primary-1;
+                  border: 1px solid $Primary-1;
+
+                  .p-checkbox-icon {
+                    font-size: 9px;
+                    font-weight: 600;
+                  }
+                }
+              }
+            }
+
+            span {
+              margin: 0 8px;
+            }
+
+            &.p-highlight{
+              background-color: rgba($color: $dark, $alpha: 0.04);
+              color: rgba($color: $dark, $alpha: 0.8);
+
+              &:hover {
+                background-color: rgba($color: $dark, $alpha: 0.04);
+                color: rgba($color: $dark, $alpha: 0.8);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 // dropdown
-.dropdown{
-  .dropdown-toggle{
-    img{
+.dropdown {
+  .dropdown-toggle {
+    img {
       margin: 0px;
     }
 
-    &::after{
+    &::after {
       content: none;
     }
   }
@@ -146,7 +288,7 @@ hijri-gregorian-datepicker{
     left: 0;
     right: auto;
     margin-top: 12px;
-  
+
     .dropdown-item {
       display: flex;
       align-items: center;
@@ -156,21 +298,21 @@ hijri-gregorian-datepicker{
       color: rgb(0 0 0 / 70%);
       text-decoration: none;
       cursor: pointer;
-  
+
       i {
         font-size: 15px;
         margin-left: 6px;
       }
-  
+
       &:hover {
         color: rgb(0 0 0 / 90%);
         background-color: rgba(0, 0, 0, 0.03);
       }
     }
-  
+
     .dropdown-divider {
       margin: 0.5rem 12px;
-  
+
     }
   }
 }
@@ -193,7 +335,7 @@ hijri-gregorian-datepicker{
     background-color: rgba($color: $primary-alt-3, $alpha: 0.15);
     margin-left: 10px;
 
-    &:last-child{
+    &:last-child {
       margin-left: 0px;
     }
 
@@ -231,7 +373,8 @@ hijri-gregorian-datepicker{
 }
 
 .form-check {
-// input switch
+
+  // input switch
   &.form-switch {
     display: flex;
     align-items: center;
@@ -289,7 +432,6 @@ textarea {
   height: auto !important;
 }
 
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -338,7 +480,8 @@ input[type=number] {
     outline: 0px !important;
   }
 }
-.form-check-label{
+
+.form-check-label {
   color: rgba($color: $dark, $alpha: 0.7);
   cursor: pointer;
 }
