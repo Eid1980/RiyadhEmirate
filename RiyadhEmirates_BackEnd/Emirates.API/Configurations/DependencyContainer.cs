@@ -9,7 +9,6 @@ using Emirates.Core.Application.Services.InternalPortal.FileManager;
 using Emirates.Core.Application.Services.LatestNews;
 using Emirates.Core.Application.Services.LatestNewsComments;
 using Emirates.Core.Application.Services.Lookups;
-using Emirates.Core.Application.Services.Nationality;
 using Emirates.Core.Application.Services.News;
 using Emirates.Core.Application.Services.NewsCategueries;
 using Emirates.Core.Application.Services.Posters;
@@ -49,6 +48,8 @@ namespace Emirates.API.Configurations
 
             builder.Services.AddScoped<ILookupService, LookupService>();
             builder.Services.AddScoped<IHomeService, HomeService>();
+            builder.Services.AddScoped<ICommonService, CommonService>();
+
             builder.Services.AddScoped<IAboutUsService, AboutUsService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICaseTypeService, CaseTypeService>();
@@ -61,15 +62,14 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<INewsService, NewsService>();
             builder.Services.AddScoped<INewsCategueryService, NewsCategueryService>();
             builder.Services.AddScoped<IPosterService, PosterService>();
+            builder.Services.AddScoped<IWomanSectionService, WomanSectionService>();
+            builder.Services.AddScoped<IUserRoleService, UserRoleService>();
             builder.Services.AddScoped<IServicesService, ServicesService>();
             builder.Services.AddScoped<IServiceAudienceService, ServiceAudienceService>();
             builder.Services.AddScoped<IServiceConditionService, ServiceConditionService>();
             builder.Services.AddScoped<IServiceBenefitService, ServiceBenefitService>();
             builder.Services.AddScoped<IServiceRateService, ServiceRateService>();
             builder.Services.AddScoped<IServiceStageService, ServiceStageService>();
-            builder.Services.AddScoped<INationalityService, NationalityService>();
-
-            builder.Services.AddScoped<ICommonService, CommonService>();
 
             builder.Services.AddScoped<IRequestService, RequestService>();
             builder.Services.AddScoped<IRequestAttachmentTypeService, RequestAttachmentTypeService>();
@@ -85,8 +85,6 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IRequestForeignersRealtyOwnerService, RequestForeignersRealtyOwnerService>();
             builder.Services.AddScoped<IRequestTreatmentRecommendationService, RequestTreatmentRecommendationService>();
 
-            builder.Services.AddScoped<IWomanSectionService, WomanSectionService>();
-            builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 
         }
     }

@@ -14,6 +14,7 @@ import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { GlobalService } from '@shared/services/global.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
+import { HomeService } from '@shared/proxy/home/home.service';
 declare let $: any;
 
 @Component({
@@ -189,14 +190,10 @@ export class HomeComponent implements OnInit {
     animateIn: 'slideInUp'
   };
 
-  constructor(
-    private _newService: NewsService,
-    private _latestNewsService: LatestNewsService,
-    private _serviceService: ServiceService,
-    private _posterService: PosterService,
-    private _globalService: GlobalService,
-    private _translateService: TranslationServiceService,
-    public sanitizer: DomSanitizer
+  constructor(private _newService: NewsService, private _latestNewsService: LatestNewsService,
+    private _serviceService: ServiceService, private _posterService: PosterService,
+    private _globalService: GlobalService, private _translateService: TranslationServiceService,
+    public sanitizer: DomSanitizer, private homeService: HomeService
   ) { }
 
   ngOnInit() {
@@ -211,22 +208,20 @@ export class HomeComponent implements OnInit {
     let processNumber3 = document.getElementById("processNumber3");
     let processNumber4 = document.getElementById("processNumber4");
 
-    this.animateValue(processNumber1, 0, 135.661, 5000);
-    this.animateValue(processNumber2, 0, 22.123, 5000);
-    this.animateValue(processNumber3, 0, 435, 5000);
-    this.animateValue(processNumber4, 0, 89, 5000);
+    this.homeService.getCounts().subscribe(result => {
+      this.animateValue(processNumber1, 0, result.data.userCount, 5000);
+      this.animateValue(processNumber2, 0, result.data.serviceCount, 5000);
+      this.animateValue(processNumber3, 0, result.data.requestCount, 5000);
+      this.animateValue(processNumber4, 0, result.data.rateCount, 5000);
+    });
   }
 
   getAllNews() {
-    this._newService
-      .getAll()
-      .subscribe((result: ApiResponse<GetNewsDetailsDto[]>) => {
-        this.news = result.data;
-
-        this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
-
-        this.reports = this.getNewsByNewsTypeId(NewsTypes.Reports);
-      });
+    this._newService.getAll().subscribe((result) => {
+      this.news = result.data;
+      this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
+      this.reports = this.getNewsByNewsTypeId(NewsTypes.Reports);
+    });
   }
 
   getNewsByNewsTypeId(newsTypeId: number): GetNewsDetailsDto[] {

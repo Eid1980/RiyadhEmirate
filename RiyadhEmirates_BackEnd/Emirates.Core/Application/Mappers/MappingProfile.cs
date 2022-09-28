@@ -7,7 +7,6 @@ using Emirates.Core.Application.Dtos.Requests;
 using Emirates.Core.Application.Dtos.WomanSection;
 using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
 using Emirates.Core.Application.Models.InternalPortal.Response.FileManager;
-using Emirates.Core.Application.Models.Response.Nationality;
 using Emirates.Core.Domain.Entities;
 
 namespace Emirates.Core.Application.Mappers
@@ -41,10 +40,6 @@ namespace Emirates.Core.Application.Mappers
 
             CreateMap<Governorate, GetGovernorateDetailsDto>();
             CreateMap<Governorate, GetGovernorateListDto>();
-            #endregion
-
-            #region Nationality
-            CreateMap<Nationality, NationalityResponse>();
             #endregion
 
             #region LatestNews

@@ -21,6 +21,12 @@ import { OpenDataComponent } from './components/open-data/open-data.component';
 import { GovernorateShowComponent } from './components/emirate/governorate-show/governorate-show.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { ConditionsComponent } from './components/conditions/conditions.component';
+import { SLAComponent } from './components/sla/sla.component';
+import { RSSComponent } from './components/rss/rss.component';
+import { MobileApplicationsComponent } from './components/mobile-applications/mobile-applications.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,13 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
         OpenDataComponent,
         GovernorateShowComponent,
         ProfileComponent,
-        EditProfileComponent
+        EditProfileComponent,
+        PrivacyComponent,
+        ConditionsComponent,
+        SLAComponent,
+        RSSComponent,
+        MobileApplicationsComponent,
+        ContactUsComponent
     ],
   imports: [
     SharedModule,
