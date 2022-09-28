@@ -48,7 +48,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="extentionAllowed" class="form-lbl">امتداد الملف</label>
-          <input type="text" class="form-control" autocomplete="off" formControlName="extentionAllowed" id="extentionAllowed" />
+          <p-multiSelect class="multiselect-custom-virtual-scroll" [filter]="false" [options]="extentions" [showToggleAll]="false" formControlName="selectedExtentions" optionLabel="name" optionValue="code" defaultLabel="-- اختر الامتداد --" display="chip" id="extentionAllowed"></p-multiSelect>
         </div>
         <div class="form-group col-md-6">
           <label for="maxFileSize" class="form-lbl">مساحة الملف</label>

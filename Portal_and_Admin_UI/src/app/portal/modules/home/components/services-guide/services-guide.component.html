@@ -1,4 +1,3 @@
-<!-- breadcrumb -->
 <div class="ser-bg">
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
@@ -15,10 +14,9 @@
     <div class="col-md-6 mb-4" *ngFor="let service of services">
       <a class="card-basic-h" [routerLink]="['/home/services-guide' , service.id]">
         <div class="card-basic-banner">
-          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid"
-            alt="banner" />
+          <img *ngIf="service.image" [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="banner" />
+          <img *ngIf="!service.image" src="assets/images/favicon/fav-logo.png" [alt]="service.nameAr" class="ser-icon" />
         </div>
-
         <div class="card-basic-body">
           <h4> {{ service.nameAr }} </h4>
           <p>{{ service.descriptionAr }}</p>

@@ -48,6 +48,12 @@ export interface GetUserProfileData {
   address: string;
 }
 
+export interface GetUserSessionDto {
+  id: number;
+  shortName: string;
+  isEmployee: boolean;
+}
+
 export interface GetUserDataDto {
   id: number;
   userName: string;

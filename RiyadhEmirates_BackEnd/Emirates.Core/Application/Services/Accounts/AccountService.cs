@@ -16,19 +16,17 @@ namespace Emirates.Core.Application.Services.Accounts
     {
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
-        private readonly IFileUploaderService _fileUploaderService;
         private readonly ICommonService _commonService;
         public AccountService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper,
-            IFileUploaderService fileUploaderService, ICommonService commonService)
+            ICommonService commonService)
         {
             _mapper = mapper;
             _emiratesUnitOfWork = emiratesUnitOfWork;
-            _fileUploaderService = fileUploaderService;
             _commonService = commonService;
 
         }
 
-        public IApiResponse GetGetUserDataDto(int id)
+        public IApiResponse GetUserData(int id)
         {
             var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate));
             if (user != null)
@@ -37,14 +35,21 @@ namespace Emirates.Core.Application.Services.Accounts
         }
         public IApiResponse GetById(int id)
         {
-            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id));
+            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
         }
+        public IApiResponse GetAuthUser(int id)
+        {
+            var user = _mapper.Map<GetUserSessionDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id));
+            if (user == null)
+                throw new BusinessException("غير مصرح بالدخول لك بالدخول على النظام");
+            return GetResponse(data: user);
+        }
         public IApiResponse GetByUserName(string userName)
         {
-            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName == userName));
+            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName == userName, x => x.Governorate, x => x.Nationality));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
@@ -67,8 +72,8 @@ namespace Emirates.Core.Application.Services.Accounts
             if(user == null)
                 throw new BusinessException("اسم المستخدم غير مضاف على النظام");
 
-            if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
-                throw new BusinessException("كلمة المرور غير صحيحة");
+            //if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
+            //    throw new BusinessException("كلمة المرور غير صحيحة");
             return GetResponse(data: user);
         }
 
@@ -174,41 +179,35 @@ namespace Emirates.Core.Application.Services.Accounts
 
         public IApiResponse GetUserProfileData(int id) 
         {
-            var userProfile =
-                (from user in _emiratesUnitOfWork.Users.GetQueryable()
-                 join nationality in _emiratesUnitOfWork.Nationalities.GetQueryable() on user.NationalityId equals nationality.Id
-                 join governorate in _emiratesUnitOfWork.Governorates.GetQueryable() on user.GovernorateId equals governorate.Id
-                 where user.Id == id
-                 select new UserProfileDto
-                 {
-                     Id = user.Id,
-                     FirstNameAr = user.FirstNameAr,
-                     SecondNameAr = user.SecondNameAr,
-                     ThirdNameAr = user.ThirdNameAr,
-                     LastNameAr = user.LastNameAr,
-                     FirstNameEn = user.FirstNameEn,
-                     SecondNameEn = user.SecondNameEn,
-                     ThirdNameEn = user.ThirdNameEn,
-                     LastNameEn = user.LastNameEn,
-                     IsMale = user.IsMale,
-                     BirthDate = user.BirthDate.ToString("yyyy-MM-dd"),
-                     Email = user.Email,
-                     PhoneNumber = user.PhoneNumber,
-                     PassportId = user.PassportId,
-                     NationalityId = user.NationalityId,
-                     NationalityName = nationality.NameAr,
-                     GovernorateId = user.GovernorateId,
-                     GovernorateName = governorate.NameAr,
-                     Address = user.Address
-                 }).FirstOrDefault();
-
-
-            if (userProfile == null) 
-            {
+            var userProfile = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate);
+            if (userProfile == null)
                 return GetResponse(isSuccess: false);
+            else
+            {
+                var response = new UserProfileDto
+                {
+                    Id = userProfile.Id,
+                    FirstNameAr = userProfile.FirstNameAr,
+                    SecondNameAr = userProfile.SecondNameAr,
+                    ThirdNameAr = userProfile.ThirdNameAr,
+                    LastNameAr = userProfile.LastNameAr,
+                    FirstNameEn = userProfile.FirstNameEn,
+                    SecondNameEn = userProfile.SecondNameEn,
+                    ThirdNameEn = userProfile.ThirdNameEn,
+                    LastNameEn = userProfile.LastNameEn,
+                    IsMale = userProfile.IsMale,
+                    BirthDate = userProfile.BirthDate.ToString("yyyy-MM-dd"),
+                    Email = userProfile.Email,
+                    PhoneNumber = userProfile.PhoneNumber,
+                    PassportId = userProfile.PassportId,
+                    NationalityId = userProfile.NationalityId,
+                    NationalityName = userProfile.Nationality == null ? "" : userProfile.Nationality.NameAr,
+                    GovernorateId = userProfile.GovernorateId,
+                    GovernorateName = userProfile.Governorate == null ? "" : userProfile.Governorate.NameAr,
+                    Address = userProfile.Address
+                };
+                return GetResponse(data: response);
             }
-
-            return GetResponse(data: userProfile);
         }
 
         public IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto)
@@ -279,6 +278,33 @@ namespace Emirates.Core.Application.Services.Accounts
             _emiratesUnitOfWork.Complete();
 
             return GetResponse(message: CustumMessages.MsgSuccess("تم التسجيل بنجاح"), data: addedModel.Id);
+        }
+        public IApiResponse CreateEmployee(int userId)
+        {
+            var user = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == userId);
+            if (user == null)
+                throw new BusinessException("رقم الهوية غير مسجل بالنظام برجاء التسجيل أولا");
+            if(user.IsEmployee)
+                throw new BusinessException("المستخدم مضاف مسبقا");
+
+            user.IsEmployee = true;
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.SaveSuccess());
+        }
+        public IApiResponse DeleteEmployee(int userId)
+        {
+            var user = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == userId);
+            if (user == null)
+                throw new BusinessException("رقم الهوية غير مسجل بالنظام برجاء التسجيل أولا");
+            if (!user.IsEmployee)
+                throw new BusinessException("المستخدم محذوف مسبقا");
+
+            user.IsEmployee = false;
+            var userRoles = _emiratesUnitOfWork.UserRoles.Where(x => x.UserId == userId).ToList();
+            if (userRoles.Any())
+                _emiratesUnitOfWork.UserRoles.RemoveRange(userRoles);
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.DeleteSuccess());
         }
 
         #region Helper Functions

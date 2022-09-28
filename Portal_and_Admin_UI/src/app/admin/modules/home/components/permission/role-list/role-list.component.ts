@@ -33,7 +33,7 @@ export class RoleListComponent implements OnInit {
       PageTitle: 'البحث في الصلاحيات',
       listPermissionCode: '*',
       createButtonLink: '/admin/home/role-add',
-      createButtonText: 'اضافة نوع قضية جديد',
+      createButtonText: 'اضافة صلاحية جديدة',
       Url: this.roleService.serviceUrl,
 
       cols: [

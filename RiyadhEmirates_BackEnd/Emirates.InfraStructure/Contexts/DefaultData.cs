@@ -1,5 +1,6 @@
 ﻿using Emirates.Core.Application.Enums;
 using Emirates.Core.Domain.Entities;
+using System.Text;
 
 namespace Emirates.InfraStructure.Contexts
 {
@@ -55,7 +56,7 @@ namespace Emirates.InfraStructure.Contexts
         {
             Role[] arrData = new Role[7];
             arrData[0] = new Role { Id = 1, NameAr = "مدير عام النظام", NameEn = "Super System Admin", IsActive = false, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
-            arrData[1] = new Role { Id = 2, NameAr = "مدي النظام", NameEn = "System Admin", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
+            arrData[1] = new Role { Id = 2, NameAr = "مدير النظام", NameEn = "System Admin", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[2] = new Role { Id = 3, NameAr = "صلاحيات الأخبار", NameEn = "News Permission", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[3] = new Role { Id = 4, NameAr = "صلاحيات الاعدادات", NameEn = "Setting Permission", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
             arrData[4] = new Role { Id = 5, NameAr = "صلاحيات المستخدمين", NameEn = "Users Permission", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 1, 1) };
@@ -467,10 +468,16 @@ namespace Emirates.InfraStructure.Contexts
         public static User[] Users()
         {
             User[] arrData = new User[2];
+
+            using var hmac = new System.Security.Cryptography.HMACSHA512();
+            var passwordSalt = hmac.Key;
+            var passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("123"));
             arrData[0] = new User
             {
                 Id = 1,
                 UserName = "myoussef",
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
                 BirthDate = new DateTime(2022, 1, 1),
                 FirstNameAr = "محمد",
                 SecondNameAr = "صلاح",
@@ -491,6 +498,8 @@ namespace Emirates.InfraStructure.Contexts
             {
                 Id = 2,
                 UserName = "2440573661",
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
                 BirthDate = new DateTime(1989, 1, 1),
                 FirstNameAr = "محمد",
                 SecondNameAr = "صلاح",

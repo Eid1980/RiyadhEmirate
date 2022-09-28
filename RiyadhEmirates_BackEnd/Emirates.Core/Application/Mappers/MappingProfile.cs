@@ -113,8 +113,11 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.ShortNameAr, src => src.MapFrom(m => $"{m.FirstNameAr} {m.LastNameAr}"))
                 .ForMember(dest => dest.NameEn, src => src.MapFrom(m => $"{m.FirstNameEn} {m.SecondNameEn} {m.ThirdNameEn} {m.LastNameEn}"))
                 .ForMember(dest => dest.ShortNameEn, src => src.MapFrom(m => $"{m.FirstNameEn} {m.LastNameEn}"))
+                .ForMember(dest => dest.GenderName, src => src.MapFrom(m => m.IsMale ? "ذكر" : "أنثى"))
                 .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr))
                 .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
+            CreateMap<User, GetUserSessionDto>()
+                .ForMember(dest => dest.ShortName, src => src.MapFrom(m => $"{m.FirstNameAr} {m.LastNameAr}"));
             CreateMap<User, GetUserDataDto>()
                 .ForMember(dest => dest.Name, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
                 .ForMember(dest => dest.BirthDate, src => src.MapFrom(m => m.BirthDate.ToString("yyyy-MM-dd")))
@@ -383,6 +386,8 @@ namespace Emirates.Core.Application.Mappers
             #endregion
 
             #region UserRole
+            CreateMap<CreateUserRoleDto, UserRole>();
+
             CreateMap<UserRole, GetRolUsersDto>()
                 .ForMember(dest => dest.UserFullName, src => src.MapFrom(m => $"{m.User.FirstNameAr} {m.User.SecondNameAr} {m.User.ThirdNameAr} {m.User.LastNameAr}"))
                 .ForMember(dest => dest.UserNationalId, src => src.MapFrom(m => m.User.UserName))
@@ -390,6 +395,10 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<User, GetUserListDto>()
                 .ForMember(dest => dest.FullName, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
                 .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
+
+            CreateMap<UserRole, GetUserRoleListDto>()
+                .ForMember(dest => dest.RoleNameAr, src => src.MapFrom(m => m.Role.NameAr))
+                .ForMember(dest => dest.RoleNameEn, src => src.MapFrom(m => m.Role.NameEn));
             #endregion
 
 

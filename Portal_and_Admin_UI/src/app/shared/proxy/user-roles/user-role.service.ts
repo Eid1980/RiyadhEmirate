@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
-import { GetRolUsersDto } from './models';
+import { CreateUserRoleDto, GetRolUsersDto, GetUserRoleListDto } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -17,20 +17,21 @@ export class UserRoleService {
     return this.httpClient.get<ApiResponse<GetRolUsersDto[]>>(`${this.serviceUrl}/GetUsersByRoleId/${roleId}`).pipe(
     );
   }
+  getRolesByUserId = (userId: number): Observable<ApiResponse<GetUserRoleListDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetUserRoleListDto[]>>(`${this.serviceUrl}/GetRolesByUserId/${userId}`).pipe(
+    );
+  }
+  isAuthorize = (roles: string): Observable<ApiResponse<GetRolUsersDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetRolUsersDto[]>>(`${this.serviceUrl}/IsAuthorize/${roles}`).pipe(
+    );
+  }
 
-  //create = (createdDto: CreateRoleDto): Observable<ApiResponse<number>> => {
-  //  return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
-  //}
-  //update = (updatedDto: UpdateRoleDto): Observable<ApiResponse<number>> => {
-  //  return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
-  //}
+  create = (createdDto: CreateUserRoleDto): Observable<ApiResponse<number>> => {
+    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  }
 
-  //changeStatus = (id: number): Observable<ApiResponse<boolean>> => {
-  //  return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeStatus/${id}`).pipe();
-  //}
-
-  //delete = (id: number): Observable<ApiResponse<boolean>> => {
-  //  return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
-  //}
+  delete = (id: number): Observable<ApiResponse<boolean>> => {
+    return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
+  }
 
 }

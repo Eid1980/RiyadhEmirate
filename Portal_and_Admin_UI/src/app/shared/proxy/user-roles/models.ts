@@ -13,3 +13,14 @@ export interface GetUserListDto {
   phoneNumber: string;
   governorateName: string;
 }
+
+export interface CreateUserRoleDto {
+  userId: number;
+  roleId: number;
+}
+
+export interface GetUserRoleListDto {
+  id: number;
+  roleNameAr: number;
+  roleNameEn: number;
+}

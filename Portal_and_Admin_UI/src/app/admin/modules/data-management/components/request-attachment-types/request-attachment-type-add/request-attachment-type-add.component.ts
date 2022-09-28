@@ -4,8 +4,9 @@ import { CreateRequestAttachmentTypeDto } from '@proxy/request-attachment-types/
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GlobalService } from '@shared/services/global.service';
 import { ServiceService } from '@proxy/services/service.service';
-import { LookupDto } from '@proxy/shared/lookup-dto.model';
+import { LookupDto, LookupExtention } from '@proxy/shared/lookup-dto.model';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { LookupService } from '@shared/proxy/shared/lookup.service';
 
 @Component({
   selector: 'app-request-attachment-type-add',
@@ -16,9 +17,12 @@ export class RequestAttachmentTypeAddComponent implements OnInit {
   isFormSubmitted: boolean;
   createRequestAttachmentTypeDto: CreateRequestAttachmentTypeDto = {} as CreateRequestAttachmentTypeDto;
   services = [] as LookupDto<number>[];
+  extentions = [] as LookupExtention[];
+  selectedExtentions = [] as string[];
 
   constructor(private formBuilder: FormBuilder, private requestAttachmentTypeService: RequestAttachmentTypeService,
-    private serviceService: ServiceService, private globalService: GlobalService) {
+    private serviceService: ServiceService, private lookupService: LookupService,
+    private globalService: GlobalService) {
   }
 
   ngOnInit(): void {
@@ -31,6 +35,7 @@ export class RequestAttachmentTypeAddComponent implements OnInit {
     this.serviceService.getLookupList().subscribe((response) => {
       this.services = response.data;
     });
+    this.extentions = this.lookupService.getExtentionList();
   }
 
   buildForm() {
@@ -39,6 +44,7 @@ export class RequestAttachmentTypeAddComponent implements OnInit {
       nameEn: [this.createRequestAttachmentTypeDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       serviceId: [this.createRequestAttachmentTypeDto.serviceId || null, Validators.required],
       extentionAllowed: [this.createRequestAttachmentTypeDto.extentionAllowed || null],
+      selectedExtentions: [this.selectedExtentions],
       maxFileSize: [this.createRequestAttachmentTypeDto.maxFileSize || null],
       isRequired: [this.createRequestAttachmentTypeDto.isRequired || true, Validators.required],
       isActive: [this.createRequestAttachmentTypeDto.isActive || true, Validators.required]
@@ -49,6 +55,9 @@ export class RequestAttachmentTypeAddComponent implements OnInit {
     this.isFormSubmitted = true;
     if (this.createRequestAttachmentTypeForm.valid) {
       this.createRequestAttachmentTypeDto = { ...this.createRequestAttachmentTypeForm.value } as CreateRequestAttachmentTypeDto;
+      if (this.createRequestAttachmentTypeForm.value.selectedExtentions.length > 0) {
+        this.createRequestAttachmentTypeDto.extentionAllowed = this.createRequestAttachmentTypeForm.value.selectedExtentions.toString();
+      }
       this.requestAttachmentTypeService.create(this.createRequestAttachmentTypeDto).subscribe((response) => {
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {

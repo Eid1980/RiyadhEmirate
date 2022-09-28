@@ -4,6 +4,7 @@ using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Services.CaseTypes;
 using Emirates.Core.Application.Services.Common;
 using Emirates.Core.Application.Services.Governorates;
+using Emirates.Core.Application.Services.Home;
 using Emirates.Core.Application.Services.InternalPortal.FileManager;
 using Emirates.Core.Application.Services.LatestNews;
 using Emirates.Core.Application.Services.LatestNewsComments;
@@ -47,6 +48,7 @@ namespace Emirates.API.Configurations
             #endregion
 
             builder.Services.AddScoped<ILookupService, LookupService>();
+            builder.Services.AddScoped<IHomeService, HomeService>();
             builder.Services.AddScoped<IAboutUsService, AboutUsService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICaseTypeService, CaseTypeService>();

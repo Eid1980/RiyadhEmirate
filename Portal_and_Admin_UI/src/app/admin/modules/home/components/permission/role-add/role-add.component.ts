@@ -14,7 +14,7 @@ export class RoleAddComponent implements OnInit {
   isFormSubmitted: boolean;
   createRoleDto = {} as CreateRoleDto;
 
-  constructor(private formBuilder: FormBuilder, private caseTypeService: RoleService,
+  constructor(private formBuilder: FormBuilder, private roleService: RoleService,
     private globalService: GlobalService) {
   }
 
@@ -35,7 +35,7 @@ export class RoleAddComponent implements OnInit {
     this.isFormSubmitted = true;
     if (this.createRoleForm.valid) {
       this.createRoleDto = { ...this.createRoleForm.value } as CreateRoleDto;
-      this.caseTypeService.create(this.createRoleDto)
+      this.roleService.create(this.createRoleDto)
         .subscribe((response) => {
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {

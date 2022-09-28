@@ -35,7 +35,7 @@ namespace Emirates.API.Controllers
         {
             return _latestNewsCommentService.GetAll(searchModelDto);
         }
-        [HttpPost("Create")]
+        [AllowAnonymous, HttpPost("Create")]
         public IApiResponse Create(CreateLatestNewsCommentDto createDto)
         {
             return _latestNewsCommentService.Create(createDto);

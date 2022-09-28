@@ -55,6 +55,7 @@ import { GovernorateAddComponent } from "./components/governorates/governorate-a
 import { GovernorateEditComponent } from "./components/governorates/governorate-edit/governorate-edit.component";
 import { GovernorateListComponent } from "./components/governorates/governorate-list/governorate-list.component";
 import { GovernorateViewComponent } from "./components/governorates/governorate-view/governorate-view.component";
+import { Role } from "@shared/enums/role.enum";
 
 const routes: Routes = [
   //#region LatestNewsAr
@@ -62,26 +63,41 @@ const routes: Routes = [
     path: "latest-news-ar-list",
     component: LatestNewsArListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "latest-news-ar-add",
     component: LatestNewsArAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "latest-news-ar-edit/:id",
     component: LatestNewsArEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "latest-news-ar-view/:id",
     component: LatestNewsArViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "latest-news-ar-comments",
     component: LatestNewsArCommentsComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   //#endregion
 
@@ -90,72 +106,41 @@ const routes: Routes = [
     path: "latest-news-en-list",
     component: LatestNewsEnListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "latest-news-en-add",
     component: LatestNewsEnAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "latest-news-en-edit/:id",
     component: LatestNewsEnEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "latest-news-en-view/:id",
     component: LatestNewsEnViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "latest-news-en-comments",
     component: LatestNewsEnCommentsComponent,
     canActivate: [AuthGuard],
-  },
-  //#endregion
-
-  //#region Reports
-  {
-    path: "reports-list",
-    component: ReportsListComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "reports-add",
-    component: ReportsAddComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "reports-edit/:id",
-    component: ReportsEditComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "reports-view/:id",
-    component: ReportsViewComponent,
-    canActivate: [AuthGuard],
-  },
-  //#endregion
-
-  //#region Poster
-  {
-    path: "poster-list",
-    component: ListPosterComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "poster-add",
-    component: AddPosterComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "poster-edit/:id",
-    component: EditPosterComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "poster-view/:id",
-    component: ViewPosterComponent,
-    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   //#endregion
 
@@ -164,21 +149,104 @@ const routes: Routes = [
     path: "emirates-news-add",
     component: EmiratesNewsAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "emirates-news-edit/:id",
     component: EmiratesNewsEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "emirates-news-list",
     component: EmiratesNewsListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
   },
   {
     path: "emirates-news-view/:id",
     component: EmiratesNewsViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  //#endregion
+
+  //#region Reports
+  {
+    path: "reports-list",
+    component: ReportsListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "reports-add",
+    component: ReportsAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "reports-edit/:id",
+    component: ReportsEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "reports-view/:id",
+    component: ReportsViewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  //#endregion
+
+
+  //#region Poster
+  {
+    path: "poster-list",
+    component: ListPosterComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "poster-add",
+    component: AddPosterComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "poster-edit/:id",
+    component: EditPosterComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "poster-view/:id",
+    component: ViewPosterComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   //#endregion
 
@@ -187,21 +255,33 @@ const routes: Routes = [
     path: "case-type-add",
     component: CaseTypeAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   {
     path: "case-type-edit/:id",
     component: CaseTypeEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   {
     path: "case-type-list",
     component: CaseTypeListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   {
     path: "case-type-view/:id",
     component: CaseTypeViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   //#endregion
 
@@ -210,21 +290,33 @@ const routes: Routes = [
     path: "governorate-add",
     component: GovernorateAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   {
     path: "governorate-edit/:id",
     component: GovernorateEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   {
     path: "governorate-list",
     component: GovernorateListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   {
     path: "governorate-view/:id",
     component: GovernorateViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   //#endregion
 
@@ -233,44 +325,69 @@ const routes: Routes = [
     path: "news-categuery-add",
     component: NewsCategueryAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   {
     path: "news-categuery-edit/:id",
     component: NewsCategueryEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   {
     path: "news-categuery-list",
     component: NewsCategueryListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   {
     path: "news-categuery-view/:id",
     component: NewsCategueryViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
   //#endregion
+
 
   //#region RequestAttachmentType
   {
     path: "request-attachment-type-add",
     component: RequestAttachmentTypeAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "request-attachment-type-edit/:id",
     component: RequestAttachmentTypeEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "request-attachment-type-list",
     component: RequestAttachmentTypeListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "request-attachment-type-view/:id",
     component: RequestAttachmentTypeViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   //#endregion
 
@@ -279,21 +396,33 @@ const routes: Routes = [
     path: "request-type-add",
     component: RequestTypeAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "request-type-edit/:id",
     component: RequestTypeEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "request-type-list",
     component: RequestTypeListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "request-type-view/:id",
     component: RequestTypeViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   //#endregion
 
@@ -302,31 +431,49 @@ const routes: Routes = [
     path: "service-list",
     component: ServiceListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "service-add",
     component: ServiceAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin]
+    }
   },
   {
     path: "service-edit/:id",
     component: ServiceEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "service-audience/:id",
     component: ServiceAudienceComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "service-condition/:id",
     component: ServiceConditionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   {
     path: "service-view/:id",
     component: ServiceViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
   },
   //#endregion
 
@@ -335,38 +482,56 @@ const routes: Routes = [
     path: "service-stage-list",
     component: ServiceStageListComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin]
+    }
   },
   {
     path: "service-stage-add",
     component: ServiceStageAddComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin]
+    }
   },
   {
     path: "service-stage-edit/:id",
     component: ServiceStageEditComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin]
+    }
   },
   {
     path: "service-stage-view/:id",
     component: ServiceStageViewComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin]
+    }
   },
   //#endregion
 
-  //#region
+
+  //#region AboutUs
   {
     path: "edit-about-us",
     component: EditAboutUsComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
 
   {
     path: "edit-woman-section",
     component: EditWomanSectionComponent,
     canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
   },
-  //#endRegion
-
+  //#endregion
 
   {
     path: "",

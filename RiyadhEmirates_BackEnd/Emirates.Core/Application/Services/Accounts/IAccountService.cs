@@ -6,8 +6,9 @@ namespace Emirates.Core.Application.Services.Accounts
 {
     public interface IAccountService
     {
-        IApiResponse GetGetUserDataDto(int id);
+        IApiResponse GetUserData(int id);
         IApiResponse GetById(int id);
+        IApiResponse GetAuthUser(int id);
         IApiResponse GetByUserName(string userName);
         IApiResponse GetByPhone(string phoneNumber);
         IApiResponse UserExist(string userName);
@@ -24,5 +25,7 @@ namespace Emirates.Core.Application.Services.Accounts
         IApiResponse GetUserProfileData(int id);
 
 
+        IApiResponse CreateEmployee(int userId);
+        IApiResponse DeleteEmployee(int userId);
     }
 }

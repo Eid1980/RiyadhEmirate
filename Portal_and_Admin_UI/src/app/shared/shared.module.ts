@@ -14,6 +14,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { DialogModule } from 'primeng/dialog';
 import { TooltipModule } from 'primeng/tooltip';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { RatingModule } from 'primeng/rating';
 import { AuthGuard } from './guards/auth.guard';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
@@ -38,10 +39,9 @@ import { RateServiceComponent } from './components/rate-service/rate-service.com
 import { RequestStageLogComponent } from './components/request-stage-log/request-stage-log.component';
 import { ToastModule } from 'primeng/toast';
 import { CustomSlicePipe } from './pipes/custom-slice.pipe';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { BrowserModule } from '@angular/platform-browser';
 import { ServiceFilterPipe } from './pipes/service-filter.pipe';
 import {ButtonModule} from 'primeng/button';
 
@@ -88,6 +88,7 @@ import {ButtonModule} from 'primeng/button';
     ButtonModule,
     DialogModule,
     TooltipModule,
+    MultiSelectModule,
     RatingModule,
     NgxHijriGregorianDatepickerModule
   ],
@@ -115,6 +116,7 @@ import {ButtonModule} from 'primeng/button';
     ToastModule,
     DialogModule,
     TooltipModule,
+    MultiSelectModule,
     DatePipe,
     FileUploadModule,
     ConfirmDialogModule,
