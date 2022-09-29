@@ -17,6 +17,12 @@ import { OpenDataComponent } from "./components/open-data/open-data.component";
 import { GovernorateShowComponent } from "./components/emirate/governorate-show/governorate-show.component";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
+import { PrivacyComponent } from "./components/privacy/privacy.component";
+import { RSSComponent } from "./components/rss/rss.component";
+import { MobileApplicationsComponent } from "./components/mobile-applications/mobile-applications.component";
+import { ContactUsComponent } from "./components/contact-us/contact-us.component";
+import { SLAComponent } from "./components/sla/sla.component";
+import { ConditionsComponent } from "./components/conditions/conditions.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -30,6 +36,12 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "edit-profile", component: EditProfileComponent },
   { path: "open-data", component: OpenDataComponent },
+  { path: "home/privacy", component: PrivacyComponent },
+  { path: "home/conditions", component: ConditionsComponent },
+  { path: "home/sla", component: SLAComponent },
+  { path: "home/rss", component: RSSComponent },
+  { path: "home/mobile-applications", component: MobileApplicationsComponent },
+  { path: "home/contact-us", component: ContactUsComponent },
   // emirate pages
   { path: "home/aboutus", component: AboutusComponent },
   { path: "home/regiion-princes", component: RegionPrincesComponent },
