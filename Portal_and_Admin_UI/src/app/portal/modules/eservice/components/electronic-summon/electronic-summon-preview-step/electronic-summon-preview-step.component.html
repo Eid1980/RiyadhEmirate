@@ -1,3 +1,11 @@
+<nav class="breadcrumb m-0 bg-transparent">
+  <div class="container d-flex align-items-center">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/services-list']">قائمة الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">انشاء طلب استدعاء الكتروني</span>
+  </div>
+</nav>
+
 <div class="container px-0 py-5">
   <div class="form-card mb-0">
     <div class="form-header mt-3" style="border-bottom: 0px !important;">
@@ -20,12 +28,12 @@
 
   <div class="form-actions px-0">
     <a [routerLink]="['/eservice/electronic-summon-attachments/', requestId]"
-      class="btn btn-outline-primary px-4 ms-auto">السابق</a>
+       class="btn btn-outline-primary px-4 ms-auto">السابق</a>
 
     <button type="button" class="btn btn-primary ms-3" (click)="sendRequest()">ارسال الطلب</button>
     <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
   </div>
 
   <app-rate-service [showServiceRate]="showServiceRate" [serviceId]="serviceId" [redirectUrl]="redirectUrl"
-    (canRateEvent)="navigate($event)"></app-rate-service>
+                    (canRateEvent)="navigate($event)"></app-rate-service>
 </div>

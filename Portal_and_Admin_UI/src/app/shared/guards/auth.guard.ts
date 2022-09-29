@@ -37,8 +37,8 @@ export class AuthGuard implements CanActivate {
           if (!res.isSuccess) {
             next.data = {};
             // redirect to not authorize Page
-            this.router.navigate(['/auth/login'], {
-              queryParams: { returnUrl: state.url },
+            this.router.navigate(['/admin/home/not-authorize'], {
+              queryParams: { },
             });
           }
           return res.isSuccess;
@@ -46,8 +46,8 @@ export class AuthGuard implements CanActivate {
           catchError((error: HttpErrorResponse) => {
             if (error.status === 401) {
               // redirect to not authorize Page
-              this.router.navigate(['/auth/login'], {
-                queryParams: { returnUrl: state.url },
+              this.router.navigate(['/admin/home/not-authorize'], {
+                queryParams: { },
               });
             }
             return throwError(error);

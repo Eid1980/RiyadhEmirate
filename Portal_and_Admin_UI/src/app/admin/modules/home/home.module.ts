@@ -12,8 +12,9 @@ import { RoleAddComponent } from './components/permission/role-add/role-add.comp
 import { UserRoleAddComponent } from './components/permission/user-role-add/user-role-add.component';
 import { RoleEditComponent } from './components/permission/role-edit/role-edit.component';
 import { RoleViewComponent } from './components/permission/role-view/role-view.component';
+import { NotAuthorizeComponent } from './components/not-authorize/not-authorize.component';
 @NgModule({
-  declarations: [HomeComponent, UserListComponent, UserAddComponent, RoleListComponent, RoleAddComponent, UserRoleAddComponent, RoleEditComponent, RoleViewComponent],
+  declarations: [HomeComponent, UserListComponent, UserAddComponent, RoleListComponent, RoleAddComponent, UserRoleAddComponent, RoleEditComponent, RoleViewComponent, NotAuthorizeComponent],
   imports: [
     SharedModule,
     HomeRoutingModule,

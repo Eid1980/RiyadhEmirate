@@ -1,6 +1,7 @@
 ﻿using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Home;
 using Emirates.Core.Application.Services.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace Emirates.API.Controllers
             _homeService = homeService;
         }
 
-        [HttpGet("GetCounts")]
+        [AllowAnonymous, HttpGet("GetCounts")]
         public IApiResponse GetCounts()
         {
             return _homeService.GetCounts();

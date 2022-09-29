@@ -51,6 +51,7 @@ export interface GetUserSessionDto {
   id: number;
   shortName: string;
   isEmployee: boolean;
+  roleIds: string;
 }
 
 export interface GetUserDataDto {

@@ -10,6 +10,7 @@ import { RoleViewComponent } from "./components/permission/role-view/role-view.c
 import { UserAddComponent } from "./components/permission/user-add/user-add.component";
 import { UserListComponent } from "./components/permission/user-list/user-list.component";
 import { UserRoleAddComponent } from "./components/permission/user-role-add/user-role-add.component";
+import { NotAuthorizeComponent } from "./components/not-authorize/not-authorize.component";
 
 const routes: Routes = [
   //#region Permission
@@ -71,6 +72,7 @@ const routes: Routes = [
   },
   //#endregion
 
+  { path: 'not-authorize', component: NotAuthorizeComponent },
   { path: "", component: HomeComponent, canActivate: [AuthGuard] },
 ];
 

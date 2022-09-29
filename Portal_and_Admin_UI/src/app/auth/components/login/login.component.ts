@@ -39,8 +39,7 @@ export class LoginComponent implements OnInit {
     this.isFormSubmitted = true;
     if (this.loginForm.valid) {
       this.userLoginDto = { ...this.loginForm.value } as UserLoginDto;
-      this._accountService.login(this.userLoginDto).subscribe(
-        (response) => {
+      this._accountService.login(this.userLoginDto).subscribe(response => {
           if (response.isSuccess) {
             localStorage.setItem('EmiratesToken', response.data);
             this._accountService.getAuthUser().subscribe((res) => {
@@ -49,7 +48,7 @@ export class LoginComponent implements OnInit {
             if (this.returnUrl) {
               this.router.navigateByUrl(this.returnUrl);
             } else {
-              this.router.navigate(['/home/']);
+              this.router.navigate(['/']);
             }
           }
         });

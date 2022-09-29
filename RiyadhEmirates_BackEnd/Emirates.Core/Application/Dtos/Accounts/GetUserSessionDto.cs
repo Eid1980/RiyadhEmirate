@@ -6,5 +6,6 @@ namespace Emirates.Core.Application.Dtos
         public int Id { get; set; }
         public string ShortName { get; set; }
         public bool IsEmployee { get; set; }
+        public string RoleIds { get; set; }
     }
 }

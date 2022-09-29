@@ -42,9 +42,11 @@ namespace Emirates.Core.Application.Services.Accounts
         }
         public IApiResponse GetAuthUser(int id)
         {
-            var user = _mapper.Map<GetUserSessionDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id));
+            var userResponse = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.UserRoles);
+            var user = _mapper.Map<GetUserSessionDto>(userResponse);
             if (user == null)
                 throw new BusinessException("غير مصرح بالدخول لك بالدخول على النظام");
+            user.RoleIds = string.Join(",", userResponse.UserRoles.Select(x => x.RoleId).ToArray());
             return GetResponse(data: user);
         }
         public IApiResponse GetByUserName(string userName)
@@ -72,8 +74,8 @@ namespace Emirates.Core.Application.Services.Accounts
             if(user == null)
                 throw new BusinessException("اسم المستخدم غير مضاف على النظام");
 
-            //if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
-            //    throw new BusinessException("كلمة المرور غير صحيحة");
+            if (!VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt))
+                throw new BusinessException("كلمة المرور غير صحيحة");
             return GetResponse(data: user);
         }
 

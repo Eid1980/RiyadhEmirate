@@ -1,12 +1,18 @@
+<nav class="breadcrumb m-0 bg-transparent">
+  <div class="container d-flex align-items-center">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/services-list']">قائمة الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">انشاء طلب خدمات سجناء</span>
+  </div>
+</nav>
+
 <div class="container py-5 px-0">
   <form [formGroup]="prisonersServicesForm" (ngSubmit)="onSubmit()">
     <div class="form-card mb-0">
       <div class="form-header" style="border-bottom: 0px !important;">
-        <h5 class="mb-5">خدمة الخروج المؤقت لسجين</h5>
-
+        <h5 class="mb-5">خدمات السجناء</h5>
         <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
       </div>
-
       <div class="form-content">
         <div class="row mx-0">
           <div class="form-group col-md-6" *ngIf="requestTypes?.length > 0">
@@ -17,12 +23,12 @@
                 prisonersServicesForm.get('requestTypeId').errors?.required
             }">
               <option [ngValue]="null">-- اختر نوع الطلب --</option>
-              <option *ngFor="let requestType of requestTypes" [ngValue]="requestType.id">{{ requestType.name }}
+              <option *ngFor="let requestType of requestTypes" [ngValue]="requestType.id">
+                {{ requestType.name }}
               </option>
             </select>
-            <small
-              *ngIf="(isFormSubmitted || prisonersServicesForm.get('requestTypeId').touched) && prisonersServicesForm.get('requestTypeId').errors?.required"
-              class="danger">هذاالحقل مطلوب</small>
+            <small *ngIf="(isFormSubmitted || prisonersServicesForm.get('requestTypeId').touched) && prisonersServicesForm.get('requestTypeId').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
           </div>
           <div class="form-group col-md-6">
             <label for="caseTypeId" class="form-lbl">نوع القضية<span class="danger">*</span></label>
@@ -34,34 +40,31 @@
               <option [ngValue]="null">-- اختر نوع القضية --</option>
               <option *ngFor="let caseType of caseTypes" [ngValue]="caseType.id">{{ caseType.name }}</option>
             </select>
-            <small
-              *ngIf="(isFormSubmitted || prisonersServicesForm.get('caseTypeId').touched) && prisonersServicesForm.get('caseTypeId').errors?.required"
-              class="danger">هذاالحقل مطلوب</small>
+            <small *ngIf="(isFormSubmitted || prisonersServicesForm.get('caseTypeId').touched) && prisonersServicesForm.get('caseTypeId').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
           </div>
           <div class="form-group col-md-6">
             <label for="presonName" class="form-lbl">اسم السجن<span class="danger">*</span></label>
             <input type="text" class="form-control" autocomplete="off" formControlName="presonName" id="presonName"
-              [ngClass]="{
+                   [ngClass]="{
               invalid:
                 (isFormSubmitted || prisonersServicesForm.get('presonName').touched) &&
                 prisonersServicesForm.get('presonName').errors?.required
             }" />
-            <small
-              *ngIf="(isFormSubmitted || prisonersServicesForm.get('presonName').touched) && prisonersServicesForm.get('presonName').errors?.required"
-              class="danger">هذاالحقل مطلوب</small>
+            <small *ngIf="(isFormSubmitted || prisonersServicesForm.get('presonName').touched) && prisonersServicesForm.get('presonName').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
           </div>
           <div class="form-group col-md-12">
             <label for="notes" class="form-lbl">ملاحظات<span class="danger">*</span></label>
             <textarea type="text" class="form-control" autocomplete="off" rows="6" formControlName="notes" id="notes"
-              [ngClass]="{
+                      [ngClass]="{
               invalid:
                 (isFormSubmitted || prisonersServicesForm.get('notes').touched) &&
                 prisonersServicesForm.get('notes').errors?.required
             }">
           </textarea>
-            <small
-              *ngIf="(isFormSubmitted || prisonersServicesForm.get('notes').touched) && prisonersServicesForm.get('notes').errors?.required"
-              class="danger">هذاالحقل مطلوب</small>
+            <small *ngIf="(isFormSubmitted || prisonersServicesForm.get('notes').touched) && prisonersServicesForm.get('notes').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
           </div>
         </div>
       </div>
