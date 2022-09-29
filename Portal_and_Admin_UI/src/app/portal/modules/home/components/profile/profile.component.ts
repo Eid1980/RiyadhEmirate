@@ -14,7 +14,6 @@ export class ProfileComponent implements OnInit {
   constructor(private _accountService : AccountService) { }
 
   ngOnInit(): void {
-    debugger;
     let userId =  JSON.parse(localStorage.getItem("AuthUser")).id;
 
     this._accountService.getUserProfileData(userId).subscribe(

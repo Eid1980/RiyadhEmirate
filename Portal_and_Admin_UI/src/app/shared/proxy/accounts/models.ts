@@ -46,12 +46,16 @@ export interface GetUserProfileData {
   governorateId: number;
   governorateName: string;
   address: string;
+
+  image: any;
 }
 
 export interface GetUserSessionDto {
   id: number;
   shortName: string;
   isEmployee: boolean;
+
+  image: any;
 }
 
 export interface GetUserDataDto {

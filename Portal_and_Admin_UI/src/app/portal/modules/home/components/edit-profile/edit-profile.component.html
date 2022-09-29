@@ -17,7 +17,9 @@
               <div class="row">
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                   <label class="fa-14 mb-1 fw-normal">رقم الهويه</label>
-                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="nationalId" />
+                  <input type="text" class="form-control input-lg" placeholder="اكتب..." formControlName="userName" />
+
+
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                   <!--[minGreg]="minGreg" [minHijri]="minHigriDate"-->
@@ -165,11 +167,21 @@
               <div class="row">
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                   <label class="fa-14 mb-1 fw-normal">رقم الهاتف</label>
-                  <input class="form-control input-lg" type="text" placeholder="اكتب..." formControlName="phoneNumber" />
+                  <input type="text" class="form-control input-lg" placeholder="اكتب..." formControlName="phoneNumber" [ngClass]="{
+                    invalid:
+                      (isFormSubmitted || editProfileForm.get('phoneNumber').touched) && editProfileForm.get('phoneNumber').errors?.required
+                  }"/>
+
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('phoneNumber').touched) && editProfileForm.get('phoneNumber').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                   <label class="fa-14 mb-1 fw-normal">الايميل</label>
-                  <input class="form-control input-lg" type="email" formControlName="email" />
+                  <input type="text" class="form-control input-lg" placeholder="اكتب..." formControlName="email" [ngClass]="{
+                    invalid:
+                      (isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.required
+                  }"/>
+
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                   <label class="fa-14 mb-1 fw-normal">الجنسيه</label>
@@ -177,13 +189,14 @@
                   class="form-control form-select"
                   formControlName="nationalityId"
                   id="nationalityId">
-                  <option [ngValue]="null">-- {{ 'register.label.selectNationality' }}  --</option>
+                  <option [ngValue]="null">-- {{ 'register.labels.selectNationality' | translate }}  --</option>
                   <option
                     *ngFor="let nationality of nationalities"
                     [ngValue]="nationality.id">
                     {{ nationality.name }}
                   </option>
                 </select>
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('nationalityId').touched) && editProfileForm.get('nationalityId').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                   <label class="fa-14 mb-1 fw-normal">المحافظة</label>
@@ -198,10 +211,16 @@
                     {{ governorate.name }}
                   </option>
                 </select>
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('governorateId').touched) && editProfileForm.get('governorateId').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="fa-14 mb-1 fw-normal">العنوان</label>
-                  <textarea class="form-control input-lg" rows="4" formControlName="address"></textarea>
+                  <textarea  class="form-control input-lg" placeholder="اكتب..." rows="4" formControlName="address" [ngClass]="{
+                    invalid:
+                      (isFormSubmitted || editProfileForm.get('address').touched) && editProfileForm.get('address').errors?.required
+                  }"></textarea>
+
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('address').touched) && editProfileForm.get('address').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
               </div>
             </div>

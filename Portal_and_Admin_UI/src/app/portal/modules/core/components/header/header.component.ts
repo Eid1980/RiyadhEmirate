@@ -17,8 +17,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isAuthenticated = this.isUserAuthenticate();
-    if (this.isAuthenticated)
+    if (this.isAuthenticated){
       this.userInfo = this.accountService.getCurrentUserInfo();
+    }
   }
 
   logOut() {

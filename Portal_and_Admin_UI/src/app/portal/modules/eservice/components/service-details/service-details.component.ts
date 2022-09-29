@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetServiceDetailsDto } from '@shared/proxy/services/models';
 import { ServiceService } from '@shared/proxy/services/service.service';
@@ -31,6 +31,9 @@ export class ServiceDetailsComponent implements OnInit {
   imageExplain: any;
   reportUrl: string;
 
+  @ViewChild("serviceDetails") serviceDetailsDiv: ElementRef;
+
+
   constructor(private serviceService: ServiceService, private serviceBenefitService: ServiceBenefitService,
     private serviceRateService: ServiceRateService, private serviceAudienceService: ServiceAudienceService,
     private serviceConditionService: ServiceConditionService, public sanitizer: DomSanitizer,
@@ -40,6 +43,7 @@ export class ServiceDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.globalService.setTitle('تفاصيل الخدمة');
     this.id = this.activatedRoute.snapshot.params['id'];
+    debugger
     if (this.id) {
       this.getDetails();
     }
@@ -50,6 +54,7 @@ export class ServiceDetailsComponent implements OnInit {
 
   getDetails() {
     this.serviceService.getById(this.id).subscribe((response) => {
+      debugger
       this.serviceDetailsDto = response.data;
       if (!this.serviceDetailsDto.isActive) {
         this.globalService.navigate("/admin/data-management/service-list");
@@ -105,8 +110,6 @@ export class ServiceDetailsComponent implements OnInit {
   }
 
   print() {
-    debugger
-    var element = document.getElementById('serviceDetails');
     var opt = {
       margin: 1,
       filename: 'output.pdf',
@@ -117,7 +120,7 @@ export class ServiceDetailsComponent implements OnInit {
 
     html2pdf()
       .set(opt)
-      .from(element)
+      .from(this.serviceDetailsDiv.nativeElement)
       .toPdf()
       .save();
       /*.output('blob')

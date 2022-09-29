@@ -26,7 +26,7 @@
       </button>
     </div>
 
-    <div class="row my-4" id="serviceDetails">
+    <div class="row my-4">
       <div class="col-lg-9 col-md-8 my-1 position-relative d-flex flex-column h-auto">
         <div class="serv-tabs">
           <!-- tabs -->
@@ -69,10 +69,10 @@
             </button>
           </div>
 
-          <div class="tab-content" id="myTabContent">
+          <div #serviceDetails class="tab-content" id="myTabContent" >
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
               <div class="mb-4">
-                <h4 class="title">القطاع</h4>
+                <h4 class="title" >القطاع</h4>
                 <p class="desc">{{serviceDetailsDto?.sectorAr}}</p>
               </div>
 
