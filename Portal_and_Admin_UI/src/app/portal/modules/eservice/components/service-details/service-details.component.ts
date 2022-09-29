@@ -12,7 +12,7 @@ import { GetServiceAudienceListDto } from '@shared/proxy/service-audience/models
 import { ServiceConditionService } from '@shared/proxy/service-condition/service-condition.service';
 import { GetServiceConditionListDto } from '@shared/proxy/service-condition/models';
 import { DomSanitizer } from '@angular/platform-browser';
-import * as html2pdf from 'html2pdf.js';
+// import * as html2pdf from 'html2pdf.js';
 declare let $: any;
 
 @Component({
@@ -118,16 +118,16 @@ export class ServiceDetailsComponent implements OnInit {
       jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' },
     };
 
-    html2pdf()
-      .set(opt)
-      .from(this.serviceDetailsDiv.nativeElement)
-      .toPdf()
-      .save();
-      /*.output('blob')
-      .then((data: Blob) => {
-        this.reportUrl = URL.createObjectURL(data);
-        $('#report').attr('src', this.reportUrl);
-      });*/
+    // html2pdf()
+    //   .set(opt)
+    //   .from(this.serviceDetailsDiv.nativeElement)
+    //   .toPdf()
+    //   .save();
+    /*.output('blob')
+    .then((data: Blob) => {
+      this.reportUrl = URL.createObjectURL(data);
+      $('#report').attr('src', this.reportUrl);
+    });*/
   }
 
 }
