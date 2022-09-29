@@ -27,6 +27,7 @@ export interface GetUserDto {
 
 export interface GetUserProfileData {
   id: number;
+  userName: string;
   firstNameAr: string;
   secondNameAr: string;
   thirdNameAr: string;
@@ -45,12 +46,16 @@ export interface GetUserProfileData {
   governorateId: number;
   governorateName: string;
   address: string;
+
+  image: any;
 }
 
 export interface GetUserSessionDto {
   id: number;
   shortName: string;
   isEmployee: boolean;
+
+  image: any;
   roleIds: string;
 }
 

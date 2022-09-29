@@ -20,7 +20,7 @@
     <div class="d-flex justify-content-center mb-5">
       <div class="mx-auto d-flex flex-column align-items-center">
         <div class="mb-2">
-          <img src="assets/images/icons/header/user-img.svg" alt="avatar"
+          <img [src]="userProfileData.image?.base64File" alt="avatar"
             class="border border-2 border-secondary img-fluid p-1 rounded-circle" style="width: 120px;height: 120px;" />
         </div>
         <h4 class="fa-22 fw-bold text-primary-2 mb-0">{{userProfileData.firstNameAr + userProfileData.lastNameAr}}</h4>
@@ -32,7 +32,7 @@
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
           <h6 class="fa-14 text-black-50 mb-1 fw-bold">رقم الهويه</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">1006589652</p>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.userName }}</p>
         </div>
         <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
           <h6 class="fa-14 text-black-50 mb-1 fw-bold">تاريخ الميلاد</h6>

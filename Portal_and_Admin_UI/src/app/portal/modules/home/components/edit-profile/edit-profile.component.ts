@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { AccountService } from '@shared/proxy/accounts/account.service';
 import { GetUserProfileData, UpdateUserProfileDto } from '@shared/proxy/accounts/models';
 import { LookupDto } from '@shared/proxy/shared/lookup-dto.model';
@@ -103,25 +104,27 @@ export class EditProfileComponent implements OnInit {
     this.editProfileForm = this.formBuilder.group({
       id : [this.userProfileData.id , [Validators.required]],
       //nationalId: [{value: this.userProfileData.nationalId, disabled: false }, [Validators.required]],
-      nationalId: [{value: null, disabled: false }, [Validators.required]],
+      userName: [{value: this.userProfileData.userName, disabled: true }, [Validators.required]],
       birthdate: [{ value: this.userProfileData.birthDate, disabled: false }, [Validators.required]],
       isMale: [this.userProfileData.isMale? 1 : 2, [Validators.required]],
-      passportId: [{value: this.userProfileData.passportId, disabled: false }, [Validators.required]],
-      firstNameAr: [{ value: this.userProfileData.firstNameAr, disabled: false }, [Validators.required]],
-      secondNameAr: [{ value: this.userProfileData.secondNameAr, disabled: false }, [Validators.required]],
-      thirdNameAr: [{ value: this.userProfileData.thirdNameAr, disabled: false }, [Validators.required]],
-      lastNameAr: [{ value: this.userProfileData.lastNameAr, disabled: false }, [Validators.required]],
-      firstNameEn: [{value: this.userProfileData.firstNameEn, disabled: false }, [Validators.required]],
-      secondNameEn: [{ value: this.userProfileData.secondNameAr, disabled: false }, [Validators.required]],
-      thirdNameEn: [{ value: this.userProfileData.thirdNameAr, disabled: false }, [Validators.required]],
-      lastNameEn: [{ value: this.userProfileData.lastNameAr, disabled: false }, [Validators.required]],
+      passportId: [{value: this.userProfileData.passportId, disabled: false }],
+      firstNameAr: [{ value: this.userProfileData.firstNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      secondNameAr: [{ value: this.userProfileData.secondNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      thirdNameAr: [{ value: this.userProfileData.thirdNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      lastNameAr: [{ value: this.userProfileData.lastNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      firstNameEn: [{value: this.userProfileData.firstNameEn, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      secondNameEn: [{ value: this.userProfileData.secondNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      thirdNameEn: [{ value: this.userProfileData.thirdNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      lastNameEn: [{ value: this.userProfileData.lastNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      newPassword: [null],
+      confirmNewpassword: [null],
       image: [null],
       //password: [{ value: '1234', disabled: false }, [Validators.required]],
-      phoneNumber: [{ value: this.userProfileData.phoneNumber, disabled: false }, [Validators.required]],
-      email: [{ value: this.userProfileData.email, disabled: false }, [Validators.required]],
+      phoneNumber: [{ value: this.userProfileData.phoneNumber, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      email: [{ value: this.userProfileData.email, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       nationalityId: [this.userProfileData.nationalityId, [Validators.required]],
       governorateId: [this.userProfileData.governorateId, [Validators.required]],
-      address: [{ value: this.userProfileData.address, disabled: false }, [Validators.required]]
+      address: [{ value: this.userProfileData.address, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });
 
   }
@@ -165,9 +168,11 @@ export class EditProfileComponent implements OnInit {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
           let id = response.data.toString();
-          this.fileManagerService.upload(id, 'LatestNews', '', [this.editProfileForm.get('image').value]).subscribe(res => {
-            this.globalService.navigate("/admin/data-management/latest-news-ar-list");
+          this.fileManagerService.deleteByEntityName(id, 'LatestNews').subscribe((res) => {
+            this.fileManagerService.upload(id, 'Profile', '', [this.editProfileForm.get('image').value]).subscribe(res => {
+            //this.globalService.navigate("/admin/data-management/latest-news-ar-list");
           })
+        })
         }
       });
     }

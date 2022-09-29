@@ -5,6 +5,7 @@ using Emirates.Core.Application.Dtos.Accounts;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Common;
+using Emirates.Core.Application.Services.InternalPortal.FileManager;
 using Emirates.Core.Application.Services.Shared;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
@@ -17,13 +18,16 @@ namespace Emirates.Core.Application.Services.Accounts
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
         private readonly ICommonService _commonService;
+        private readonly IFileManagerService _fileManagerService;
+
         public AccountService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper,
-            ICommonService commonService)
+            ICommonService commonService,
+            IFileManagerService fileManagerService)
         {
             _mapper = mapper;
             _emiratesUnitOfWork = emiratesUnitOfWork;
             _commonService = commonService;
-
+            _fileManagerService = fileManagerService;
         }
 
         public IApiResponse GetUserData(int id)
@@ -47,6 +51,9 @@ namespace Emirates.Core.Application.Services.Accounts
             if (user == null)
                 throw new BusinessException("غير مصرح بالدخول لك بالدخول على النظام");
             user.RoleIds = string.Join(",", userResponse.UserRoles.Select(x => x.RoleId).ToArray());
+
+            user.Image = _fileManagerService.GetBase64File(id, "Profile");
+
             return GetResponse(data: user);
         }
         public IApiResponse GetByUserName(string userName)
@@ -189,6 +196,7 @@ namespace Emirates.Core.Application.Services.Accounts
                 var response = new UserProfileDto
                 {
                     Id = userProfile.Id,
+                    UserName  = userProfile.UserName,
                     FirstNameAr = userProfile.FirstNameAr,
                     SecondNameAr = userProfile.SecondNameAr,
                     ThirdNameAr = userProfile.ThirdNameAr,
@@ -206,8 +214,11 @@ namespace Emirates.Core.Application.Services.Accounts
                     NationalityName = userProfile.Nationality == null ? "" : userProfile.Nationality.NameAr,
                     GovernorateId = userProfile.GovernorateId,
                     GovernorateName = userProfile.Governorate == null ? "" : userProfile.Governorate.NameAr,
-                    Address = userProfile.Address
-                };
+                    Address = userProfile.Address,
+
+                    Image = _fileManagerService.GetBase64File(id, "Profile")
+
+            };
                 return GetResponse(data: response);
             }
         }

@@ -32,7 +32,7 @@
             <ng-template carouselSlide *ngFor="let news of latestNews">
               <div class="owl-item">
                 <div class="item">
-                  <div class="news-card" [routerLink]="['/home/latest-news' , news.id]">
+                  <div class="news-card" [routerLink]="['home/latest-news' , news.id]">
                     <img [src]="sanitizer.bypassSecurityTrustResourceUrl(news?.image?.base64File)" alt="image" class="img-fluid news-img" />
                     <img src="assets/images/news-overlay.png" alt="overlay" class="img-fluid overlay" />
                     <div class="news-caption">
@@ -70,7 +70,7 @@
                 <div class="item">
                   <div class="services-details-box" *ngIf="i == 0">
                     <a class="services-details-card" *ngFor="let service of serviceGuidFirst"
-                      [routerLink]="['/home/services-guide/' , service.id]">
+                      [routerLink]="['home/services-guide/' , service.id]">
                       <div class="card-image">
                         <img *ngIf="service.image" [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="image" />
                         <img *ngIf="!service.image" src="assets/images/favicon/fav-logo.png" class="img-fluid" [alt]="service.nameAr" />

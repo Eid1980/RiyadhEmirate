@@ -1,8 +1,14 @@
 ﻿
+using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
+
 namespace Emirates.Core.Application.Dtos.Accounts
 {
     public class UserProfileDto
     {
+        public int Id { get; set; }
+
+        public string UserName { get; set; }
+
         public string FirstNameAr { get; set; }
         public string SecondNameAr { get; set; }
         public string ThirdNameAr { get; set; }
@@ -22,6 +28,8 @@ namespace Emirates.Core.Application.Dtos.Accounts
         public string GovernorateName { get; set; }
         public string Address { get; set; }
         public string PassportId { get; set; }
-        public int Id { get; internal set; }
+
+        public UploadedFileBase64Model Image { get; set; }
+
     }
 }

@@ -16,8 +16,12 @@
       <div class="nav-link dropdown-toggle p-0 primary-text cursor-pointer" id="navbarDropdown" role="button"
         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-flex align-items-center prrof">
-          <img src="/assets/images/businessman.png" width="30" height="30" alt=""
+          <img src="/assets/images/businessman.png" width="30" height="30" alt="" *ngIf="userInfo.image == null"
             class="rounded-circle mx-2 align-bottom border" style="background-color: #f8f8f8" />
+
+            <img [src]="userInfo.image?.base64File" width="30" height="30" alt="" *ngIf="userInfo.image != null"
+            class="rounded-circle mx-2 align-bottom border" style="background-color: #f8f8f8" />
+
           <div>
             <p class="fa-12 fw-normal text-primary-alt-3 ms-4 mb-0">{{ userInfo?.shortName }}</p>
           </div>
