@@ -123,11 +123,11 @@ export class ServiceDetailsComponent implements OnInit {
       .from(this.serviceDetailsDiv.nativeElement)
       .toPdf()
       .save();
-      /*.output('blob')
-      .then((data: Blob) => {
-        this.reportUrl = URL.createObjectURL(data);
-        $('#report').attr('src', this.reportUrl);
-      });*/
+    /*.output('blob')
+    .then((data: Blob) => {
+      this.reportUrl = URL.createObjectURL(data);
+      $('#report').attr('src', this.reportUrl);
+    });*/
   }
 
 }
