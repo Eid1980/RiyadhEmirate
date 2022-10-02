@@ -15,6 +15,7 @@ namespace Emirates.Core.Application.Dtos
         public string WorkDays { get; set; }
         public string ServiceCost { get; set; }
         public bool IsActive { get; set; }
+        public bool IsExternal { get; set; }
         public UploadedFileBase64Model Image { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Emirates.Core.Application.Response;
+﻿using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Home;
 using Emirates.Core.Application.Services.Shared;
 using Microsoft.AspNetCore.Authorization;
@@ -22,6 +23,26 @@ namespace Emirates.API.Controllers
         public IApiResponse GetCounts()
         {
             return _homeService.GetCounts();
+        }
+
+
+        [AllowAnonymous, HttpPost("CreateDesignEvaluation")]
+        public IApiResponse CreateDesignEvaluation(CreateDesignEvaluationDto createDto)
+        {
+            return _homeService.CreateDesignEvaluation(createDto);
+        }
+
+        [AllowAnonymous, HttpPost("CreateNewsSubscriper")]
+        public IApiResponse CreateNewsSubscriper(CreateNewsSubscriperDto createDto)
+        {
+            return _homeService.CreateNewsSubscriper(createDto);
+        }
+
+
+        [AllowAnonymous, HttpGet("GetAllServices")]
+        public IApiResponse GetAllServices()
+        {
+            return _homeService.GetAllServices();
         }
     }
 }

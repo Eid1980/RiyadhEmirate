@@ -17,7 +17,7 @@
           <img *ngIf="governorate?.image"
             [src]="sanitizer.bypassSecurityTrustResourceUrl(governorate?.image?.base64File)" class="img-fluid"
             [alt]="governorate?.nameAr" />
-          <img *ngIf="!governorate?.image" src="https://via.placeholder.com/550x260" class="img-fluid"
+          <img *ngIf="!governorate?.image" src="assets/images/550x260.png" class="img-fluid"
             [alt]="governorate?.nameAr" />
         </div>
         <div class="card-basic-body">

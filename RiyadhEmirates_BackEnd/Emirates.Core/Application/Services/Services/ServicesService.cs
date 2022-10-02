@@ -77,8 +77,8 @@ namespace Emirates.Core.Application.Services
         }
         public IApiResponse SearchByFilter(string filter)
         {
-            var services = _emiratesUnitOfWork.Services.Where(x => x.IsActive &&
-                (x.NameAr.Contains(filter) || x.NameEn.Contains(filter) ||
+            var services = _emiratesUnitOfWork.Services.Where(x => x.IsActive && !x.IsExternal &&
+                (string.IsNullOrEmpty(filter) || filter.Equals("null") || x.NameAr.Contains(filter) || x.NameEn.Contains(filter) ||
                 x.SectorAr.Contains(filter) || x.SectorEn.Contains(filter) ||
                 x.DescriptionAr.Contains(filter) || x.DescriptionEn.Contains(filter)));
             var mappedList = _mapper.Map<List<GetServiceListDto>>(services);

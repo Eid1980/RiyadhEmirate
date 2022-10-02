@@ -44,7 +44,7 @@ const routes: Routes = [
   { path: "home/contact-us", component: ContactUsComponent },
   // emirate pages
   { path: "home/aboutus", component: AboutusComponent },
-  { path: "home/regiion-princes", component: RegionPrincesComponent },
+  { path: "home/region-princes", component: RegionPrincesComponent },
   { path: "home/governorate-show", component: GovernorateShowComponent },
   { path: "home/organization", component: OrganizationChartComponent },
   { path: "home/women-section", component: WomenSectionComponent },

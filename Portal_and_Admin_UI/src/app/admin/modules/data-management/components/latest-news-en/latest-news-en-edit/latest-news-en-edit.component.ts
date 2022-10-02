@@ -79,7 +79,7 @@ export class LatestNewsEnEditComponent implements OnInit {
       }
       let date = new Date(this.updateLatestNewsDto.date);
       let ngbDateStructGregorian = {
-        day: date.getUTCDate() + 1,
+        day: date.getUTCDate(),
         month: date.getUTCMonth() + 1,
         year: date.getUTCFullYear(),
       };

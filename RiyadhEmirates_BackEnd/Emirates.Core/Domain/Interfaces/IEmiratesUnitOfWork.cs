@@ -8,6 +8,8 @@ namespace Emirates.Core.Domain.Interfaces
         IAudienceRepository Audiences { get; }
         ICaseTypeRepository CaseTypes { get; }
         ICommentStageRepository CommentStages { get; }
+        IDesignEvaluationRepository DesignEvaluations { get; }
+        IEmiratesPrinceRepository EmiratesPrinces { get; }
         IGovernorateRepository Governorates { get; }
         INationalityRepository Nationalities { get; }
         ILatestNewsRepository LatestNews { get; }
@@ -15,6 +17,7 @@ namespace Emirates.Core.Domain.Interfaces
         IPageMainPointsRepository PageMainPoints { get; }
         INewsRepository News { get; }
         INewsCategueryRepository NewsCategueries { get; }
+        INewsSubscriperRepository NewsSubscripers { get; }
         IPageContentRepository PageContent { get; }
         IPosterRepository Posters { get; }
         IRequestRepository Requests { get; }

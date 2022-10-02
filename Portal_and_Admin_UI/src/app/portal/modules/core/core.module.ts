@@ -6,7 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SharedModule } from 'primeng/api';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 
@@ -23,6 +23,7 @@ import { ButtonModule } from 'primeng/button';
     SharedModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
     ButtonModule
   ],
   exports: [

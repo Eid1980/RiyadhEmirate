@@ -29,6 +29,14 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public ICommentStageRepository CommentStages => commentStages ??= new CommentStageRepository(Context);
 
 
+        private DesignEvaluationRepository designEvaluations;
+        public IDesignEvaluationRepository DesignEvaluations => designEvaluations ??= new DesignEvaluationRepository(Context);
+
+
+        private EmiratesPrinceRepository emiratesPrinces;
+        public IEmiratesPrinceRepository EmiratesPrinces => emiratesPrinces ??= new EmiratesPrinceRepository(Context);
+
+
         private GovernorateRepository governorates;
         public IGovernorateRepository Governorates => governorates ??= new GovernorateRepository(Context);
 
@@ -50,11 +58,17 @@ namespace Emirates.InfraStructure.UnitsOfWork
         private NewsRepository news;
         public INewsRepository News => news ??= new NewsRepository(Context);
 
+
         private PageContentRepository pageContent;
         public IPageContentRepository PageContent => pageContent ??= new PageContentRepository(Context);
 
+
         private NewsCategueryRepository newsCategueries;
         public INewsCategueryRepository NewsCategueries => newsCategueries ??= new NewsCategueryRepository(Context);
+
+
+        private NewsSubscriperRepository newsSubscripers;
+        public INewsSubscriperRepository NewsSubscripers => newsSubscripers ??= new NewsSubscriperRepository(Context);
 
 
         private PosterRepository posters;

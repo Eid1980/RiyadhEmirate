@@ -18,8 +18,8 @@ export class ServicesListComponent implements OnInit {
     public sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.getServices();
     this.buildSearchForm();
+    this.servicSearch();
   }
 
   buildSearchForm() {
@@ -27,23 +27,17 @@ export class ServicesListComponent implements OnInit {
       filter: ['' || null]
     });
   }
-  getServices() {
-    this.contentTitle = 'جميع الخدمات';
-    this.serviceService.getAll().subscribe((result) => {
-      this.services = result.data;
-    });
-  }
   servicSearch() {
     let searchFilter: string = this.serviceSearchForm.get('filter').value;
     if (searchFilter) {
-      this.serviceService.searchByFilter(searchFilter).subscribe((result) => {
-        this.services = result.data;
-        this.contentTitle = 'نتائج البحث';
-      });
+      this.contentTitle = 'نتائج البحث';
     }
     else {
-      this.getServices();
+      this.contentTitle = 'جميع الخدمات';
     }
+    this.serviceService.searchByFilter(searchFilter).subscribe((result) => {
+      this.services = result.data;
+    });
   }
   sortServices(sortBy: number) {
     if (this.services.length > 0) {

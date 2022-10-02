@@ -52,8 +52,7 @@ namespace Emirates.Core.Application.Services.Governorates
         public IApiResponse GetAll()
         {
             var governoratesQuerable = _emiratesUnitOfWork.Governorates.GetQueryable().OrderByDescending(s => s.CreatedDate);
-            var filesQuerable = _emiratesUnitOfWork.UploadedFiles.GetQueryable();
-            var query = (from governorate in governoratesQuerable
+            var query = from governorate in governoratesQuerable
                          where  governorate.IsActive
                          select new GetGovernorateListDto
                          {
@@ -66,8 +65,8 @@ namespace Emirates.Core.Application.Services.Governorates
                              LocationLink = governorate.LocationLink,
                              PortalLink = governorate.PortalLink,
                              Image = _fileManagerService.GetBase64File(governorate.Id, "Governorate")
-                         }).ToList();
-            return GetResponse(data: query);
+                         };
+            return GetResponse(data: query.ToList());
         }
 
         public IApiResponse Create(CreateGovernorateDto createModel)

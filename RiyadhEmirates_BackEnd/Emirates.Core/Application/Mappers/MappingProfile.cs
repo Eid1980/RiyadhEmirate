@@ -34,12 +34,30 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<UpdateMainPoint, MainPagePoints>().ReverseMap();
             #endregion
 
+            #region EmiratesPrince
+            CreateMap<CreateEmiratesPrinceDto, EmiratesPrince>();
+            CreateMap<UpdateEmiratesPrinceDto, EmiratesPrince>();
+
+            CreateMap<EmiratesPrince, GetEmiratesPrinceDetailsDto>()
+                .ForMember(dest => dest.FromDate, src => src.MapFrom(m => m.FromDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.ToDate, src => src.MapFrom(m => m.ToDate == null? "حتى الان" : m.ToDate.Value.ToString("yyyy-MM-dd")));
+            CreateMap<EmiratesPrince, GetEmiratesPrinceListDto>()
+                .ForMember(dest => dest.FromDate, src => src.MapFrom(m => m.FromDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.ToDate, src => src.MapFrom(m => m.ToDate == null ? "حتى الان" : m.ToDate.Value.ToString("yyyy-MM-dd")));
+            #endregion
+
             #region Governorate
             CreateMap<CreateGovernorateDto, Governorate>();
             CreateMap<UpdateGovernorateDto, Governorate>();
 
             CreateMap<Governorate, GetGovernorateDetailsDto>();
             CreateMap<Governorate, GetGovernorateListDto>();
+            #endregion
+
+            #region Home
+            CreateMap<CreateDesignEvaluationDto, DesignEvaluation>();
+            CreateMap<CreateNewsSubscriperDto, NewsSubscriper>()
+                .ForMember(dest => dest.IsActive, src => src.MapFrom(m => true));
             #endregion
 
             #region LatestNews

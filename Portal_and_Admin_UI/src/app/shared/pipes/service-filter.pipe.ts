@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { GetServiceListDto } from '../proxy/services/models';
+import { GetAllServiceListDto } from '../proxy/home/models';
 
 @Pipe({
   name: 'servicefilter',
   pure: false
 })
 export class ServiceFilterPipe implements PipeTransform {
-  transform(items: GetServiceListDto[], take: number): any {
+  transform(items: GetAllServiceListDto[], take: number): any {
     if (!items || !take) {
       return items;
     }

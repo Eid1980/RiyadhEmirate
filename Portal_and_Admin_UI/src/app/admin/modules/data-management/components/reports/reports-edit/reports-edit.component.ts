@@ -72,7 +72,7 @@ export class ReportsEditComponent implements OnInit {
       this.editVM = response.data;
       var date = new Date(this.editVM.date);
       var ngbDateStructGregorian = {
-        day: date.getUTCDate() + 1,
+        day: date.getUTCDate(),
         month: date.getUTCMonth() + 1,
         year: date.getUTCFullYear(),
       };

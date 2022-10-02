@@ -163,6 +163,33 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region DesignEvaluation
+            modelBuilder.Entity<DesignEvaluation>(b =>
+            {
+                b.ToTable("DesignEvaluations", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.Evaluate).IsRequired();
+            });
+            #endregion
+
+            #region EmiratesPrince
+            modelBuilder.Entity<EmiratesPrince>(b =>
+            {
+                b.ToTable("EmiratesPrinces", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxDescriptionLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxDescriptionLength).IsRequired();
+                b.Property(x => x.BehalfToAr).HasMaxLength(EmiratesConstants.MaxDescriptionLength);
+                b.Property(x => x.BehalfToEn).HasMaxLength(EmiratesConstants.MaxDescriptionLength);
+                b.Property(x => x.FromDate).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedEmiratesPrinces).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedEmiratesPrinces).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.EmiratesPrinces());
+            });
+            #endregion
+
             #region Governorate
             modelBuilder.Entity<Governorate>(b =>
             {
@@ -301,6 +328,15 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNewsCategueries).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
 
                 b.HasData(DefaultData.NewsCategueries());
+            });
+            #endregion
+
+            #region NewsSubscriper
+            modelBuilder.Entity<NewsSubscriper>(b =>
+            {
+                b.ToTable("NewsSubscripers", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
             });
             #endregion
 
@@ -767,6 +803,8 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<Role>(x => x.Role).WithMany(x => x.UserRoles).HasForeignKey(x => x.RoleId).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedUserRoles).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedUserRoles).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.UserRoles());
             });
             #endregion
 
@@ -777,6 +815,8 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<CaseType> CaseTypes { get; set; }
         public DbSet<CommentStage> CommentStages { get; set; }
         public DbSet<DefendantType> DefendantTypes { get; set; }
+        public DbSet<DesignEvaluation> DesignEvaluations { get; set; }
+        public DbSet<EmiratesPrince> EmiratesPrinces { get; set; }
         public DbSet<Governorate> Governorates { get; set; }
         public DbSet<LatestNews> LatestNews { get; set; }
         public DbSet<LatestNewsComment> LatestNewsComments { get; set; }
@@ -785,6 +825,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<NewsCateguery> NewsCategueries { get; set; }
+        public DbSet<NewsSubscriper> NewsSubscripers { get; set; }
         public DbSet<NewsType> NewTypes { get; set; }
         public DbSet<PageContent> PageContent { get; set; }
         public DbSet<Poster> Posters { get; set; }

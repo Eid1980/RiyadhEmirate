@@ -56,6 +56,10 @@ import { GovernorateEditComponent } from "./components/governorates/governorate-
 import { GovernorateListComponent } from "./components/governorates/governorate-list/governorate-list.component";
 import { GovernorateViewComponent } from "./components/governorates/governorate-view/governorate-view.component";
 import { Role } from "@shared/enums/role.enum";
+import { EmiratesPrinceViewComponent } from "./components/emirates-prince/emirates-prince-view/emirates-prince-view.component";
+import { EmiratesPrinceListComponent } from "./components/emirates-prince/emirates-prince-list/emirates-prince-list.component";
+import { EmiratesPrinceEditComponent } from "./components/emirates-prince/emirates-prince-edit/emirates-prince-edit.component";
+import { EmiratesPrinceAddComponent } from "./components/emirates-prince/emirates-prince-add/emirates-prince-add.component";
 
 const routes: Routes = [
   //#region LatestNewsAr
@@ -179,6 +183,41 @@ const routes: Routes = [
   },
   //#endregion
 
+  //#region EmiratesPrince
+  {
+    path: "emirates-prince-add",
+    component: EmiratesPrinceAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "emirates-prince-edit/:id",
+    component: EmiratesPrinceEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "emirates-prince-list",
+    component: EmiratesPrinceListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "emirates-prince-view/:id",
+    component: EmiratesPrinceViewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  //#endregion
+
   //#region Reports
   {
     path: "reports-list",
@@ -213,7 +252,6 @@ const routes: Routes = [
     }
   },
   //#endregion
-
 
   //#region Poster
   {

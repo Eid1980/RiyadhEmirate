@@ -43,7 +43,6 @@ export class ServiceDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.globalService.setTitle('تفاصيل الخدمة');
     this.id = this.activatedRoute.snapshot.params['id'];
-    debugger
     if (this.id) {
       this.getDetails();
     }
@@ -54,7 +53,6 @@ export class ServiceDetailsComponent implements OnInit {
 
   getDetails() {
     this.serviceService.getById(this.id).subscribe((response) => {
-      debugger
       this.serviceDetailsDto = response.data;
       if (!this.serviceDetailsDto.isActive) {
         this.globalService.navigate("/admin/data-management/service-list");

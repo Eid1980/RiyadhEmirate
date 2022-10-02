@@ -1,4 +1,3 @@
-<!-- breadcrumb -->
 <div class="ser-bg">
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
@@ -15,16 +14,16 @@
     <div class="col-12">
       <div class="timeline-container">
         <ul class="timeline">
-          <li [attr.data-text]="item?.description" *ngFor="let item of regionPrincesList">
+          <li *ngFor="let item of emiratesPrinceListDto">
             <div class="dots"></div>
-
             <div class="timeline-item">
               <div class="avatar">
-                <img [src]="item?.avatar" class="img-fluid" [attr.alt]="item?.name" />
+                <img *ngIf="item?.image" [src]="sanitizer.bypassSecurityTrustResourceUrl(item?.image?.base64File)" [alt]="item?.nameAr" class="img-fluid" />
+                <img *ngIf="!item?.image" src="assets/images/120.png" [alt]="item?.nameAr" class="img-fluid" />
               </div>
-              <h4 class="title">{{item?.name}}</h4>
-              <h6 class="subtitle">{{item?.subtitle}}</h6>
-              <p class="desc">{{item?.dateFrom}} - {{item?.dateTo}}</p>
+              <h4 class="title">{{item?.nameAr}}</h4>
+              <h6 class="subtitle" *ngIf="item?.behalfToAr">بالنيابة عن  {{item?.behalfToAr}}</h6>
+              <p class="desc">{{item?.fromDate}} : {{item?.toDate}}</p>
             </div>
           </li>
         </ul>

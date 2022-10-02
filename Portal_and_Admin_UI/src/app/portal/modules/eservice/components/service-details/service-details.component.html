@@ -11,15 +11,12 @@
     <div class="page-head">
       <h2 class="title px-3">{{serviceDetailsDto?.nameAr}}</h2>
 
-      <button type="button" class="btn me-2" [hidden]="serviceDetailsDto?.isExternal">
-        <a [routerLink]="serviceDetailsDto?.requestLink" class="btn btn-primary px-3">
+      <button type="button" class="btn me-2">
+        <a [routerLink]="serviceDetailsDto?.requestLink" class="btn btn-primary px-3" [hidden]="serviceDetailsDto?.isExternal">
           إبدأ الخدمة
           <img src="assets/images/icons/services/arrowTwo.svg" alt="icon" width="15" class="mx-1">
         </a>
-      </button>
-
-      <button type="button" class="btn me-2" [hidden]="!serviceDetailsDto?.isExternal">
-        <a [href]="serviceDetailsDto?.requestLink" class="btn btn-primary px-3">
+        <a [href]="serviceDetailsDto?.requestLink" class="btn btn-primary px-3" [hidden]="!serviceDetailsDto?.isExternal">
           إبدأ الخدمة
           <img src="assets/images/icons/services/arrowTwo.svg" alt="icon" width="15" class="mx-1">
         </a>

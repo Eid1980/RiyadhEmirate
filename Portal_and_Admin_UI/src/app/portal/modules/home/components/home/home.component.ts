@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { LatestNewsService } from '@shared/proxy/latest-news/latest-news.service';
@@ -7,14 +7,13 @@ import { GetNewsDetailsDto } from '@shared/proxy/news/models';
 import { NewsService } from '@shared/proxy/news/news.service';
 import { GetPosterDetailsDto } from '@shared/proxy/posters/models';
 import { PosterService } from '@shared/proxy/posters/poster.service';
-import { GetServiceListDto } from '@shared/proxy/services/models';
-import { ServiceService } from '@shared/proxy/services/service.service';
 import { ApiResponse } from '@shared/proxy/shared/api-response.model';
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { GlobalService } from '@shared/services/global.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
 import { HomeService } from '@shared/proxy/home/home.service';
+import { GetAllServiceListDto } from '@shared/proxy/home/models';
 declare let $: any;
 
 @Component({
@@ -29,8 +28,11 @@ export class HomeComponent implements OnInit {
   latestNews = [] as GetLatestNewsListDto[];
   reports: GetNewsDetailsDto[] = [];
   posters: GetPosterDetailsDto[] = [];
-  services: GetServiceListDto[] = [];
-  serviceGuidFirst: GetServiceListDto[] = [];
+
+  internalServices = [] as GetAllServiceListDto[];
+  internalServicesTop = [] as GetAllServiceListDto[];
+  externalServices = [] as GetAllServiceListDto[];
+  serviceGuidFirst = [] as GetAllServiceListDto[];
   serviceGuidLength = [];
 
   sliderOptions: OwlOptions = {
@@ -191,10 +193,10 @@ export class HomeComponent implements OnInit {
   };
 
   constructor(private _newService: NewsService, private _latestNewsService: LatestNewsService,
-    private _serviceService: ServiceService, private _posterService: PosterService,
-    private _globalService: GlobalService, private _translateService: TranslationServiceService,
-    public sanitizer: DomSanitizer, private homeService: HomeService
-  ) { }
+    private _posterService: PosterService, private _globalService: GlobalService, private homeService: HomeService,
+    private _translateService: TranslationServiceService, public sanitizer: DomSanitizer)
+  {
+  }
 
   ngOnInit() {
     this._globalService.setTitle('الصفحة الرئيسية');
@@ -229,13 +231,14 @@ export class HomeComponent implements OnInit {
   }
 
   getServices() {
-    this._serviceService
-      .getAll()
-      .subscribe((result: ApiResponse<GetServiceListDto[]>) => {
-        this.services = result.data;
-        this.serviceGuidLength = Array(Math.round(result.data?.length / 2)).fill(1);
-        this.serviceGuidFirst = this.services.slice(0,  2)
-      });
+    this.homeService.getAllServices().subscribe(result => {
+      this.internalServices = result.data.filter(i => i.isExternal === false);
+      this.externalServices = result.data.filter(i => i.isExternal === true);
+
+      this.internalServicesTop = this.internalServices.slice(0, 4);
+      this.serviceGuidLength = Array(Math.round(this.internalServices?.length / 2)).fill(1);
+      this.serviceGuidFirst = this.internalServices.slice(0, 2);
+    });
   }
 
   getLatestNews() {
@@ -271,6 +274,7 @@ export class HomeComponent implements OnInit {
   }
 
   formatDate(date: any) {
+    debugger;
     let newDate = new Date(date);
     var months = [
       'يناير',

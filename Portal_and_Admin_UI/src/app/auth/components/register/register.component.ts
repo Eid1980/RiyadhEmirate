@@ -123,7 +123,7 @@ export class RegisterComponent implements OnInit {
           this.createUserDto = response.data;
           let date = new Date(response.data.birthDate);
           let ngbDateStructGregorian = {
-            day: date.getUTCDate() + 1,
+            day: date.getUTCDate(),
             month: date.getUTCMonth() + 1,
             year: date.getUTCFullYear(),
           };

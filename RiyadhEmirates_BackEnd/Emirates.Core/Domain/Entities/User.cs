@@ -123,5 +123,7 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<UserRole> CreatedUserRoles { get; set; }
         public virtual ICollection<UserRole> ModifiedUserRoles { get; set; }
 
+        public virtual ICollection<EmiratesPrince> CreatedEmiratesPrinces { get; set; }
+        public virtual ICollection<EmiratesPrince> ModifiedEmiratesPrinces { get; set; }
     }
 }

@@ -74,7 +74,7 @@ export class EmiratesNewsEditComponent implements OnInit {
       this.updateNewsDto = response.data as UpdateNewsDto;
       let date = new Date(this.updateNewsDto.date);
       let ngbDateStructGregorian = {
-        day: date.getUTCDate() + 1,
+        day: date.getUTCDate(),
         month: date.getUTCMonth() + 1,
         year: date.getUTCFullYear(),
       };

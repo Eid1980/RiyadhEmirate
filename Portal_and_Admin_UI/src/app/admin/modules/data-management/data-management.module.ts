@@ -58,6 +58,10 @@ import { GovernorateAddComponent } from './components/governorates/governorate-a
 import { GovernorateListComponent } from './components/governorates/governorate-list/governorate-list.component';
 import { GovernorateEditComponent } from './components/governorates/governorate-edit/governorate-edit.component';
 import { GovernorateViewComponent } from './components/governorates/governorate-view/governorate-view.component';
+import { EmiratesPrinceListComponent } from './components/emirates-prince/emirates-prince-list/emirates-prince-list.component';
+import { EmiratesPrinceAddComponent } from './components/emirates-prince/emirates-prince-add/emirates-prince-add.component';
+import { EmiratesPrinceEditComponent } from './components/emirates-prince/emirates-prince-edit/emirates-prince-edit.component';
+import { EmiratesPrinceViewComponent } from './components/emirates-prince/emirates-prince-view/emirates-prince-view.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +120,10 @@ import { GovernorateViewComponent } from './components/governorates/governorate-
     GovernorateListComponent,
     GovernorateEditComponent,
     GovernorateViewComponent,
+    EmiratesPrinceListComponent,
+    EmiratesPrinceAddComponent,
+    EmiratesPrinceEditComponent,
+    EmiratesPrinceViewComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

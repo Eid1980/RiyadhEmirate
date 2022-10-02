@@ -12,7 +12,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.roleIds = this.accountService.getCurrentUserInfo().roleIds;
-    debugger;
   }
 
   logOut() {

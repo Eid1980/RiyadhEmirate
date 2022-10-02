@@ -262,14 +262,14 @@ namespace Emirates.Core.Application.Services.Accounts
             {
                 UserName = checkUserRegisterDto.NationalId,
                 BirthDate = checkUserRegisterDto.BirthDate,
-                FirstNameAr = "محمد",
-                SecondNameAr = "احمد",
-                ThirdNameAr = "علي",
-                LastNameAr = "الجوهري",
-                FirstNameEn = "Mohamed",
-                SecondNameEn = "Ahmad",
-                ThirdNameEn = "Ali",
-                LastNameEn = "Algohary",
+                FirstNameAr = "",
+                SecondNameAr = "",
+                ThirdNameAr = "",
+                LastNameAr = "",
+                FirstNameEn = "",
+                SecondNameEn = "",
+                ThirdNameEn = "",
+                LastNameEn = "",
                 IsMale = true
             };
             return GetResponse(data: nicUser);

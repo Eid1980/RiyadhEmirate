@@ -1,4 +1,4 @@
-<!-- begin::Footer -->
+
 <footer class="footer pt-100 pb-100">
   <div class="row mx-0 pl-100 pr-100">
     <div class="col-md-4 col-12 col-one">
@@ -6,33 +6,33 @@
       <div class="mb-5">
         <label class="custom-radio">
           ممتاز
-          <input type="radio" name="vote" />
+          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="1"/>
           <span class="checkmark"></span>
         </label>
         <label class="custom-radio">
           جيد جدا
-          <input type="radio" name="vote" />
+          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="2" />
           <span class="checkmark"></span>
         </label>
         <label class="custom-radio">
           جيد
-          <input type="radio" name="vote" />
+          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="3" />
           <span class="checkmark"></span>
         </label>
         <label class="custom-radio">
           مقبول
-          <input type="radio" name="vote" />
+          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="4" />
           <span class="checkmark"></span>
         </label>
-        <button type="submit" class="btn vote-btn me-auto ms-3">تصويت</button>
+        <button type="button" class="btn vote-btn me-auto ms-3" (click)="evaluate()">تصويت</button>
       </div>
       <h5 class="title">الإشتراك في النشرة البريدية</h5>
       <div class="form-group">
         <span class="icon">
           <i class="fa fa-envelope" aria-hidden="true"></i>
         </span>
-        <input type="text" class="form-control" placeholder="البريد الإلكتروني">
-        <button type="submit" class="btn btn-subs">
+        <input type="text" class="form-control" [(ngModel)]="email" placeholder="البريد الإلكتروني">
+        <button type="button" class="btn btn-subs" (click)="subscripe()">
           إشتراك
           <i class="fa fa-paper-plane" aria-hidden="true"></i>
         </button>

@@ -3,6 +3,7 @@ using Emirates.Core.Application.Services.AboutUs;
 using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Services.CaseTypes;
 using Emirates.Core.Application.Services.Common;
+using Emirates.Core.Application.Services.EmiratesPrinces;
 using Emirates.Core.Application.Services.Governorates;
 using Emirates.Core.Application.Services.Home;
 using Emirates.Core.Application.Services.InternalPortal.FileManager;
@@ -53,6 +54,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IAboutUsService, AboutUsService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICaseTypeService, CaseTypeService>();
+            builder.Services.AddScoped<IEmiratesPrinceService, EmiratesPrinceService>();
             builder.Services.AddScoped<IGovernorateService, GovernorateService>();
             builder.Services.AddScoped<ILocalizationService, LocalizationService>();
             builder.Services.AddScoped<IFileManagerService, FileManagerService>();

@@ -1,0 +1,56 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/emirates-prince-list']">أمراء المنطقة</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل أمير المنطقة</span>
+  </nav>
+</div>
+
+
+<div class="form-card">
+  <div class="form-header">
+    <h5>تفاصيل أمير المنطقة</h5>
+  </div>
+  <div class="form-content">
+    <div class="row mx-0">
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاسم عربي</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.nameAr }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاسم انجليزي</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.nameEn }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">بالنيابة عن عربي</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.behalfToArAr }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">بالنيابة عن انجليزي</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.behalfToArEn }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الفترة من</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.fromDate }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الفترة الى</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.toDate }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12" *ngIf="emiratesPrinceDetailsDto?.image">
+        <span class="form-lbl lbl-33">الصورة</span>
+        <span class="form-val">
+          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(emiratesPrinceDetailsDto?.image?.base64File)" alt="" style="width: 180px" />
+        </span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الحالة</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions">
+  <a [routerLink]="['/admin/data-management/emirates-prince-list']" class="btn btn-cancel">رجوع</a>
+</div>
