@@ -74,8 +74,13 @@ export class EditWomanSectionComponent implements OnInit {
           (response) => {
             this._globalService.showMessage(response.message);
             if (response.isSuccess) {
-              this.clear();
-              this.getPageContent();
+              let mainPoint : GetMainPoints = {id : response.data, nameAr: createMainPoint.nameAr, nameEn: createMainPoint.nameEn ,order: createMainPoint.order, pageContentType: '' }
+
+              this.isFormSubmitted = false;
+              this.aboutUsMainPointsForm.reset();
+
+              this.aboutUsDetails.mainPoints.push(mainPoint)
+
             }
           },
           (error) => { }
@@ -112,6 +117,7 @@ export class EditWomanSectionComponent implements OnInit {
 
       this._womanSectionService.update(editAboutUs).subscribe(
         (response) => {
+          this._globalService.showMessage(response.message);
           this.getPageContent();
         },
         (error) => { }

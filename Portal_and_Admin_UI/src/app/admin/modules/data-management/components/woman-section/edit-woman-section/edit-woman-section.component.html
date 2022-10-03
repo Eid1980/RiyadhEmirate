@@ -106,6 +106,6 @@
 
 </div>
 <div class="form-actions">
-  <a (click)="editAboutUsDescription()" class="btn btn-save">حفظ</a>
+  <button (click)="editAboutUsDescription()" class="btn btn-save" [disabled]="aboutUsDetails.descriptionAr == aboutUsDetaislForm?.get('descriptionAr').value && aboutUsDetaislForm?.get('descriptionEn').value == aboutUsDetails.descriptionEn ">حفظ</button>
   <a [routerLink]="['/admin/data-management/service-list']" class="btn btn-cancel">رجوع</a>
 </div>
