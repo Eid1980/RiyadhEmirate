@@ -53,7 +53,7 @@ export class EditAboutUsComponent implements OnInit {
   getPageContent() {
     this._aboutUsService.getAboutUs().subscribe(
       (response: any) => {
-        this.aboutUsDetails = response.data[0]
+        this.aboutUsDetails = response.data
         this.buildForm();
       },
       (error) => {

@@ -54,7 +54,7 @@ export class EditWomanSectionComponent implements OnInit {
   getPageContent() {
     this._womanSectionService.getAboutUs().subscribe(
       (response: any) => {
-        this.aboutUsDetails = response.data[0]
+        this.aboutUsDetails = response.data
         this.buildForm();
       },
       (error) => {
