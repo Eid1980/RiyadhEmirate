@@ -21,7 +21,7 @@ export class AboutusComponent implements OnInit {
   getAboutUs(){
     this. _aboutService.getAboutUs().subscribe(
       (response) => {
-        this.aboutUs = response.data[0]
+        this.aboutUs = response.data
       },
       (error) => {}
     )

@@ -69,8 +69,11 @@ namespace Emirates.Core.Application.Services.WomanSection
         {
             try
             {
-                var aboutUsContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).Where(p => p.PageContentType == PageContentTypeEnum.WomanSection.ToString());
-                return GetResponse(data: _mapper.Map<List<GetWomanSectionDto>>(aboutUsContent));
+                var aboutUsContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).FirstOrDefault(p => p.PageContentType == PageContentTypeEnum.WomanSection.ToString());
+
+                aboutUsContent.MainPagePoints = aboutUsContent.MainPagePoints.OrderBy(p => p.Order).ToList();
+
+                return GetResponse(data: _mapper.Map<GetWomanSectionDto>(aboutUsContent));
             }
             catch (Exception ex)
             {
