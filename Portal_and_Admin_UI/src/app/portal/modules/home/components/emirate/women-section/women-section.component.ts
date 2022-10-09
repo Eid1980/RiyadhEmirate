@@ -24,7 +24,7 @@ export class WomenSectionComponent implements OnInit {
   getWomanSection(){
     this. _womanSectionService.getAboutUs().subscribe(
       (response) => {
-        this.womanSection = response.data[0]
+        this.womanSection = response.data
       },
       (error) => {}
     )

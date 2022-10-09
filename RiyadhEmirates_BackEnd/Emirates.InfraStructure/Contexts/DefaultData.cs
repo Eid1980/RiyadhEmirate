@@ -547,12 +547,12 @@ namespace Emirates.InfraStructure.Contexts
 
 
             arrData[63] = new ServiceStage { Id = 64, ServiceId = 1, StageId = 1, RequesterUrl = "/e-council/update", AdminUrl = "", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[64] = new ServiceStage { Id = 65, ServiceId = 1, StageId = 2, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-preview-step", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[64] = new ServiceStage { Id = 65, ServiceId = 1, StageId = 2, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-council-admin-preview-step", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[65] = new ServiceStage { Id = 66, ServiceId = 1, StageId = 3, RequesterUrl = "/e-council/update", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[66] = new ServiceStage { Id = 67, ServiceId = 1, StageId = 4, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[67] = new ServiceStage { Id = 68, ServiceId = 1, StageId = 5, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[68] = new ServiceStage { Id = 69, ServiceId = 1, StageId = 6, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[69] = new ServiceStage { Id = 70, ServiceId = 1, StageId = 7, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[66] = new ServiceStage { Id = 67, ServiceId = 1, StageId = 4, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-council-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[67] = new ServiceStage { Id = 68, ServiceId = 1, StageId = 5, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-council-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[68] = new ServiceStage { Id = 69, ServiceId = 1, StageId = 6, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-council-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[69] = new ServiceStage { Id = 70, ServiceId = 1, StageId = 7, RequesterUrl = "/e-council/electronic-board-view", AdminUrl = "/admin/eservice-admin/electronic-council-admin-view", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
 
             return arrData;
         }

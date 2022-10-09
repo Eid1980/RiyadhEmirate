@@ -70,8 +70,10 @@ namespace Emirates.Core.Application.Services.AboutUs
         {
             try
             {
-                var aboutUsContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).Where(p => p.PageContentType == PageContentTypeEnum.AboutUs.ToString());
-                return GetResponse(data: _mapper.Map<List<GetAboutUsDto>>(aboutUsContent));
+                var aboutUsContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).FirstOrDefault(p => p.PageContentType == PageContentTypeEnum.AboutUs.ToString());
+
+                aboutUsContent.MainPagePoints = aboutUsContent.MainPagePoints.OrderBy(p => p.Order).ToList();
+                return GetResponse(data: _mapper.Map<GetAboutUsDto>(aboutUsContent));
             }
             catch (Exception ex)
             {

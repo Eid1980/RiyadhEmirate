@@ -53,7 +53,7 @@ export class EditAboutUsComponent implements OnInit {
   getPageContent() {
     this._aboutUsService.getAboutUs().subscribe(
       (response: any) => {
-        this.aboutUsDetails = response.data[0]
+        this.aboutUsDetails = response.data
         this.buildForm();
       },
       (error) => {
@@ -73,8 +73,13 @@ export class EditAboutUsComponent implements OnInit {
           (response) => {
             this._globalService.showMessage(response.message);
             if (response.isSuccess) {
-              this.clear();
-              this.getPageContent();
+              let mainPoint : GetMainPoints = {id : response.data, nameAr: createMainPoint.nameAr, nameEn: createMainPoint.nameEn ,order: createMainPoint.order, pageContentType: '' }
+              this.aboutUsMainPointsForm.reset();
+              this.isFormSubmitted = false;
+
+              this.aboutUsDetails.mainPoints.push(mainPoint)
+
+
             }
           },
           (error) => { }
@@ -90,6 +95,8 @@ export class EditAboutUsComponent implements OnInit {
            if (response.isSuccess) {
              this.clear();
              this.getPageContent();
+             this.isFormSubmitted = false;
+
            }
         });
       }
@@ -110,7 +117,9 @@ export class EditAboutUsComponent implements OnInit {
       }
 
       this._aboutUsService.update(editAboutUs).subscribe(
+
         (response) => {
+          this._globalService.showMessage(response.message);
           this.getPageContent();
         },
         (error) => { }
