@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from '@shared/proxy/home/home.service';
 import { GlobalService } from '@shared/services/global.service';
 import { MessageType } from '@shared/enums/message-type.enum';
-import { CreateDesignEvaluationDto, CreateNewsSubscriperDto } from '@shared/proxy/home/models';
+import { CreateDesignEvaluationDto } from '@shared/proxy/home/models';
+import { environment } from 'src/environments/environment';
+import { TranslationServiceService } from '@shared/services/translation-service.service';
 
 @Component({
   selector: 'app-footer',
@@ -11,28 +13,17 @@ import { CreateDesignEvaluationDto, CreateNewsSubscriperDto } from '@shared/prox
 export class FooterComponent implements OnInit {
   email: string = '';
   designEvaluate: number;
+  lastSieUpdate: string;
 
-  constructor(private homeService: HomeService, private globalService: GlobalService)
+  constructor(private homeService: HomeService, private translateService: TranslationServiceService,
+    private globalService: GlobalService)
   {
   }
 
   ngOnInit() {
+    this.lastSieUpdate = this.globalService.getFullDate(new Date(environment.lastSieUpdate), this.translateService.getCurrentLanguage().Name.toLowerCase());
   }
 
-  subscripe() {
-    if (this.email) {
-      const createNewsSubscriperDto = { email: this.email } as CreateNewsSubscriperDto;
-      this.homeService.createNewsSubscriper(createNewsSubscriperDto).subscribe((response) => {
-          this.globalService.showMessage(response.message);
-          if (response.isSuccess) {
-            this.email = '';
-          }
-        });
-    }
-    else {
-      this.globalService.messageAlert(MessageType.Warning, "برجاء ادخال البريد الالكتروني");
-    }
-  }
   evaluate() {
     if (this.designEvaluate) {
       const createDesignEvaluationDto = { evaluate: this.designEvaluate } as CreateDesignEvaluationDto;

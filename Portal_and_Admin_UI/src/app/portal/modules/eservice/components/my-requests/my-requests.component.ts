@@ -40,7 +40,7 @@ export class MyRequestsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.globalService.setAdminTitle('طلباتي');
+    this.globalService.setTitle('طلباتي');
     this.buildForm();
     this.serviceService.getLookupList().subscribe((response) => {
       this.services = response.data;

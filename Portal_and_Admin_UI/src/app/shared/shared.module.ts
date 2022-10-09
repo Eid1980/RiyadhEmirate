@@ -44,6 +44,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ServiceFilterPipe } from './pipes/service-filter.pipe';
 import {ButtonModule} from 'primeng/button';
+import { FullDatePipe } from './pipes/full-date.pipe';
+import { ListStringPipe } from './pipes/list-string.pipe';
 
 
 
@@ -66,6 +68,8 @@ import {ButtonModule} from 'primeng/button';
     RateServiceComponent,
     CustomSlicePipe,
     ServiceFilterPipe,
+    FullDatePipe,
+    ListStringPipe,
   ],
   imports: [
     CommonModule,
@@ -112,6 +116,8 @@ import {ButtonModule} from 'primeng/button';
     InputMaskModule,
     PaginatorModule,
     HiddenAuthorizeColumnFilterPipe,
+    FullDatePipe,
+    ListStringPipe,
     InputSwitchModule,
     ToastModule,
     DialogModule,

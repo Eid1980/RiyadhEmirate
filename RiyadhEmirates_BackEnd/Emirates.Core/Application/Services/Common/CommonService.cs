@@ -3,15 +3,14 @@
 namespace Emirates.Core.Application.Services.Common
 {
     using Emirates.Core.Application.Dtos;
-    using Emirates.Core.Application.Models.Request.Mail;
     using MailKit.Net.Smtp;
     using MailKit.Security;
     using Microsoft.Extensions.Options;
     using MimeKit;
     public class CommonService : ICommonService
     {
-        private readonly MailSettings _mailSettings;
-        public CommonService(IOptions<MailSettings> mailSettings)
+        private readonly MailSettingsDto _mailSettings;
+        public CommonService(IOptions<MailSettingsDto> mailSettings)
         {
             _mailSettings = mailSettings.Value;
         }

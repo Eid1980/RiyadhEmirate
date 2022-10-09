@@ -27,31 +27,33 @@ import { SLAComponent } from './components/sla/sla.component';
 import { RSSComponent } from './components/rss/rss.component';
 import { MobileApplicationsComponent } from './components/mobile-applications/mobile-applications.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { NewsSearchComponent } from './components/news-search/news-search.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-     NewsComponent,
-     NewsInnerComponent ,
-     LatestNewsComponent,
-     LatestNewsInnerComponent,
-     ServicesGuideComponent,
-     ServicesGuideInnerComponent,
-     AboutusComponent,
-     WomenSectionComponent,
-     RegionPrincesComponent,
-        OrganizationChartComponent,
-        OpenDataComponent,
-        GovernorateShowComponent,
-        ProfileComponent,
-        EditProfileComponent,
-        PrivacyComponent,
-        ConditionsComponent,
-        SLAComponent,
-        RSSComponent,
-        MobileApplicationsComponent,
-        ContactUsComponent
-    ],
+    NewsComponent,
+    NewsInnerComponent,
+    LatestNewsComponent,
+    LatestNewsInnerComponent,
+    ServicesGuideComponent,
+    ServicesGuideInnerComponent,
+    AboutusComponent,
+    WomenSectionComponent,
+    RegionPrincesComponent,
+    OrganizationChartComponent,
+    OpenDataComponent,
+    GovernorateShowComponent,
+    ProfileComponent,
+    EditProfileComponent,
+    PrivacyComponent,
+    ConditionsComponent,
+    SLAComponent,
+    RSSComponent,
+    MobileApplicationsComponent,
+    ContactUsComponent,
+    NewsSearchComponent
+  ],
   imports: [
     SharedModule,
     HomeRoutingModule,

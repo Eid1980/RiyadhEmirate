@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '@shared/services/global.service';
 import { EmiratesPrinceService } from '@shared/proxy/emirates-princes/emirates-prince.service';
 import { GetEmiratesPrinceDetailsDto } from '@shared/proxy/emirates-princes/models';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-emirates-prince-view',
@@ -13,7 +12,7 @@ export class EmiratesPrinceViewComponent implements OnInit {
   id: number;
   emiratesPrinceDetailsDto = {} as GetEmiratesPrinceDetailsDto;
 
-  constructor(private emiratesPrinceService: EmiratesPrinceService, public sanitizer: DomSanitizer,
+  constructor(private emiratesPrinceService: EmiratesPrinceService,
     private globalService: GlobalService, private activatedRoute: ActivatedRoute) {
   }
 

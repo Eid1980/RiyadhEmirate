@@ -6,7 +6,7 @@ using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.DynamicSearch;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
-using Emirates.Core.Application.Services.InternalPortal.FileManager;
+using Emirates.Core.Application.Services.FileManagers;
 using Emirates.Core.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;

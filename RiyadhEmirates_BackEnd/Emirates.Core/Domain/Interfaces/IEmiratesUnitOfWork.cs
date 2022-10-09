@@ -17,7 +17,6 @@ namespace Emirates.Core.Domain.Interfaces
         IPageMainPointsRepository PageMainPoints { get; }
         INewsRepository News { get; }
         INewsCategueryRepository NewsCategueries { get; }
-        INewsSubscriperRepository NewsSubscripers { get; }
         IPageContentRepository PageContent { get; }
         IPosterRepository Posters { get; }
         IRequestRepository Requests { get; }

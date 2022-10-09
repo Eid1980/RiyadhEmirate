@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Emirates.API.Dtos.Request.UploadedFile;
-using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
-using Emirates.Core.Application.Services.InternalPortal.FileManager;
 using Emirates.Core.Application.Services.Shared;
+using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Services.FileManagers;
 
 namespace Emirates.API.Controllers.InternalPortal
 {
@@ -29,7 +28,7 @@ namespace Emirates.API.Controllers.InternalPortal
         {
             var formCollection = await Request.ReadFormAsync();
 
-            CreateUploadedFileModel createUploadedFileModel = new()
+            CreateUploadedFileDto createUploadedFileDto = new()
             {
                 EntityId = Request.Form["entityId"].ToString(),
                 EntityName = Request.Form["entityName"].ToString(),
@@ -37,7 +36,7 @@ namespace Emirates.API.Controllers.InternalPortal
                 Files = formCollection.Files
             };
 
-            _fileManager.Upload(createUploadedFileModel);
+            _fileManager.Upload(createUploadedFileDto);
 
             return StatusCode(201);
         }
@@ -56,14 +55,8 @@ namespace Emirates.API.Controllers.InternalPortal
             return NoContent();
         }
 
-    
-        /// <summary>
-        /// To Delete By EntityName and EntityIds
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
         [HttpPost("DeleteByEntityName")]
-        public IActionResult DeleteByEntityName(DeleteFilesByEntityNameAndId model)
+        public IActionResult DeleteByEntityName(DeleteFilesByEntityNameAndIdDto model)
         {
             _fileManager.DeleteByEntityName(model.EntityId, model.EntityName);
             return Ok(true);
@@ -98,6 +91,28 @@ namespace Emirates.API.Controllers.InternalPortal
         public IActionResult GetByEntityNameAndActive(string entityName)
         {
             return Ok(_fileManager.GetByEntityNameAndActive(entityName));
+        }
+
+
+        // added by salah
+        [HttpPost("UploadFile"), DisableRequestSizeLimit]
+        public async Task<IActionResult> UploadFile()
+        {
+            var formCollection = await Request.ReadFormAsync();
+            UploadedFileDto uploadedFileDto = new()
+            {
+                CategueryName = Request.Form["categueryName"].ToString(),
+                Name = Request.Form["name"].ToString(),
+                File = formCollection.Files.Any() ? formCollection.Files[0] : null
+            };
+            _fileManager.Upload(uploadedFileDto);
+            return StatusCode(201);
+        }
+        [HttpPost("DeleteFile")]
+        public IActionResult DeleteFile(DeleteFileDto deleteFileDto)
+        {
+            _fileManager.Delete(deleteFileDto);
+            return NoContent();
         }
     }
 }

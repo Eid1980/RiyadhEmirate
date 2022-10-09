@@ -5,7 +5,7 @@ using Emirates.Core.Application.Dtos.Accounts;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Common;
-using Emirates.Core.Application.Services.InternalPortal.FileManager;
+using Emirates.Core.Application.Services.FileManagers;
 using Emirates.Core.Application.Services.Shared;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;

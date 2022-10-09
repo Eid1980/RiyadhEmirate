@@ -11,6 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\AuthController.cs" />
     <Compile Remove="Controllers\EmiratesNewsController.cs" />
     <Compile Remove="Controllers\NationalitiesController.cs" />
@@ -40,10 +47,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Emirates.Core\Emirates.Core.csproj" />
     <ProjectReference Include="..\Emirates.InfraStructure\Emirates.InfraStructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>

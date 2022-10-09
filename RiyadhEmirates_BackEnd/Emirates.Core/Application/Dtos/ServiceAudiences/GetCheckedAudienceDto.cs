@@ -1,11 +1,10 @@
-﻿using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
-
+﻿
 namespace Emirates.Core.Application.Dtos
 {
     public class GetCheckedAudienceDto
     {
         public List<CheckedAudience> CheckedAudiences { get; set; }
-        public UploadedFileBase64Model Image { get; set; }
+        public UploadedFileBase64Dto Image { get; set; }
     }
 
     public class CheckedAudience

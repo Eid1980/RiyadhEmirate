@@ -73,6 +73,36 @@ export class GlobalService {
     return date.toLocaleString(lang + '-u-ca-islamic', options);
   }
 
+  getFullDate(date, lang) {
+    if (!date) {
+      date = new Date();
+    }
+    if (!lang) {
+      lang = 'ar';
+    }
+
+    let hijrioptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+    };
+    let hijriDate = date.toLocaleString(lang + '-u-ca-islamic', hijrioptions);
+    let gregorianoptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    if (lang != 'ar') {
+      let gregorianDate = date.toLocaleString(lang + '-sa-u-nu-latn', gregorianoptions);
+      return `${hijriDate} - ${gregorianDate}`;
+    }
+    else {
+      let months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+      return `${hijriDate} - ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()} م`;
+    }
+  }
+
   errorHandler(error: HttpErrorResponse) {
     if (error.status === 401) {
       this.messageService.add({ severity: 'error', summary: '', detail: 'ليس لديك صلاحية لدخول هذة الصفحة' });
@@ -87,6 +117,9 @@ export class GlobalService {
 
   navigate(url: string) {
     this.router.navigate([url]);
+  }
+  navigateParams(url: string, params: any) {
+    this.router.navigate([url, params]);
   }
 
   navigateToInbox() {

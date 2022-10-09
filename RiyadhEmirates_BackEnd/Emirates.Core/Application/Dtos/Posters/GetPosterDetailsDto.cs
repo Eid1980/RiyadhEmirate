@@ -1,7 +1,4 @@
 ﻿
-
-using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
-
 namespace Emirates.Core.Application.Dtos.Posters
 {
     public class GetPosterDetailsDto
@@ -11,6 +8,6 @@ namespace Emirates.Core.Application.Dtos.Posters
         public string TitleEn { get; set; }
         public int Order { get; set; }
         public bool IsActive { get; set; }
-        public UploadedFileBase64Model Image { get; set; }
+        public UploadedFileBase64Dto Image { get; set; }
     }
 }

@@ -27,24 +27,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Testing - Kestrel": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:7173;http://localhost:5173",
-      "dotnetRunMessages": true
-    },
-    "Testing - IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
     "Staging - Kestrel": {
       "commandName": "Project",
       "launchBrowser": true,

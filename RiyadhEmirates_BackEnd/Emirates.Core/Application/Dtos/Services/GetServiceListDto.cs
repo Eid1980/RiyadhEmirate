@@ -1,5 +1,4 @@
-﻿using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
-
+﻿
 namespace Emirates.Core.Application.Dtos
 {
     public class GetServiceListDto
@@ -15,6 +14,6 @@ namespace Emirates.Core.Application.Dtos
         public string WorkDays { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
-        public UploadedFileBase64Model Image { get; set; }
+        public UploadedFileBase64Dto Image { get; set; }
     }
 }

@@ -12,8 +12,7 @@ import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 
 @Component({
   selector: 'app-edit-profile',
-  templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.scss']
+  templateUrl: './edit-profile.component.html'
 })
 export class EditProfileComponent implements OnInit {
 
@@ -44,14 +43,10 @@ export class EditProfileComponent implements OnInit {
   governorates = [] as LookupDto<number>[];
   nationalities = [] as LookupDto<number>[];
 
-  constructor(private _accountService : AccountService,
-    private formBuilder: FormBuilder,
-    private fileManagerService: FileManagerService,
-    private _dateFormatterService: DateFormatterService,
-    private globalService: GlobalService,
-    private lookupService: LookupService,
-    ) {
-
+  constructor(private _accountService : AccountService, private formBuilder: FormBuilder,
+    private fileManagerService: FileManagerService, private _dateFormatterService: DateFormatterService,
+    private globalService: GlobalService, private lookupService: LookupService)
+  {
       let nowDate = new Date();
       let nowDateHijri = _dateFormatterService.GetTodayHijri();
       this.maxHigriDate = {
@@ -68,13 +63,10 @@ export class EditProfileComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.globalService.setTitle("تعديل الملف الشخصى");
     this.buildForm();
-
     let userId =  JSON.parse(localStorage.getItem("AuthUser")).id;
-
-    this._accountService.getUserProfileData(userId).subscribe(
-      (response) => {
-        debugger
+    this._accountService.getUserProfileData(userId).subscribe((response) => {
         if(response.isSuccess)
         this.userProfileData = response.data
         let date = new Date(this.userProfileData.birthDate);

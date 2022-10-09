@@ -7,8 +7,8 @@ import { UpdateEmiratesPrinceDto } from '@shared/proxy/emirates-princes/models';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { FileCateguery } from '@shared/enums/file-categuery.enum';
 
 @Component({
   selector: 'app-emirates-prince-edit',
@@ -18,7 +18,6 @@ export class EmiratesPrinceEditComponent implements OnInit {
   updateEmiratesPrinceForm: FormGroup;
   isFormSubmitted: boolean;
   id: number;
-  oldImage: any;
   updateEmiratesPrinceDto = {} as UpdateEmiratesPrinceDto;
 
   //#region for uploader
@@ -41,7 +40,7 @@ export class EmiratesPrinceEditComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private emiratesPrinceService: EmiratesPrinceService,
     private fileManagerService: FileManagerService, private globalService: GlobalService,
-    private activatedRoute: ActivatedRoute, private dateFormatterService: DateFormatterService, public sanitizer: DomSanitizer) {
+    private activatedRoute: ActivatedRoute, private dateFormatterService: DateFormatterService) {
   }
 
   ngOnInit(): void {
@@ -60,10 +59,11 @@ export class EmiratesPrinceEditComponent implements OnInit {
     this.updateEmiratesPrinceForm = this.formBuilder.group({
       nameAr: [this.updateEmiratesPrinceDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       nameEn: [this.updateEmiratesPrinceDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      behalfToArAr: [this.updateEmiratesPrinceDto.behalfToArAr || null],
-      behalfToArEn: [this.updateEmiratesPrinceDto.behalfToArEn || null],
+      behalfToAr: [this.updateEmiratesPrinceDto.behalfToAr || ''],
+      behalfToEn: [this.updateEmiratesPrinceDto.behalfToEn || ''],
       fromDate: [this.updateEmiratesPrinceDto.fromDate || null],
       toDate: [this.updateEmiratesPrinceDto.toDate || null],
+      cv: [this.updateEmiratesPrinceDto.cv || ''],
       image: [null],
       isActive: [this.updateEmiratesPrinceDto.isActive, Validators.required]
     });
@@ -71,6 +71,7 @@ export class EmiratesPrinceEditComponent implements OnInit {
   getDetails() {
     this.emiratesPrinceService.getById(this.id).subscribe((response) => {
       this.updateEmiratesPrinceDto = response.data as UpdateEmiratesPrinceDto;
+      debugger;
       //#region Set FromDate
       let from_date = new Date(this.updateEmiratesPrinceDto.fromDate);
       let ngbDateStructGregorian = {
@@ -91,9 +92,7 @@ export class EmiratesPrinceEditComponent implements OnInit {
         this.dateTo = this.dateFormatterService.ToHijri(ngbDateStructGregorian_to);
       }
       //#endregion
-
       this.buildForm();
-      this.oldImage = response.data.image;
     });
   }
   onUpload(event: any) {
@@ -118,20 +117,20 @@ export class EmiratesPrinceEditComponent implements OnInit {
       if (this.toDate.getSelectedDate() != 'Invalid date') {
         this.updateEmiratesPrinceDto.toDate = this.toDate.getSelectedDate();
       }
+      let imageContent = this.updateEmiratesPrinceForm.get('image').value;
+      if (imageContent) {
+        this.updateEmiratesPrinceDto.imageName = imageContent.name;
+      }
       this.emiratesPrinceService.update(this.updateEmiratesPrinceDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
-          if (this.updateEmiratesPrinceForm.get('image').value) {
-            this.fileManagerService.deleteByEntityName(this.id, 'EmiratesPrince').subscribe((res) => {
-              this.fileManagerService.upload(this.id.toString(), 'EmiratesPrince', '', [this.updateEmiratesPrinceForm.get('image').value]).subscribe((res) => {
-                this.globalService.navigate('/admin/data-management/emirates-prince-list');
-              });
+          if (imageContent) {
+            this.fileManagerService.uploadFile(FileCateguery.Princes, response.data.fileName, [imageContent]).subscribe(res => {
+              this.globalService.navigate("/admin/data-management/emirates-prince-list");
             });
           }
           else {
-            this.globalService.navigate(
-              '/admin/data-management/emirates-prince-list'
-            );
+            this.globalService.navigate('/admin/data-management/emirates-prince-list');
           }
         }
       });

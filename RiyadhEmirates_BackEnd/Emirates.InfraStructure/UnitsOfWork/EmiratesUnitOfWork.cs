@@ -67,10 +67,6 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public INewsCategueryRepository NewsCategueries => newsCategueries ??= new NewsCategueryRepository(Context);
 
 
-        private NewsSubscriperRepository newsSubscripers;
-        public INewsSubscriperRepository NewsSubscripers => newsSubscripers ??= new NewsSubscriperRepository(Context);
-
-
         private PosterRepository posters;
         public IPosterRepository Posters => posters ??= new PosterRepository(Context);
 

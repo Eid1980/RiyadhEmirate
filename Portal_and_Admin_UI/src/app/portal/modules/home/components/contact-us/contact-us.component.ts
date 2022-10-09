@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from '@shared/services/global.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private globalService: GlobalService) {
+  }
 
   ngOnInit(): void {
+    this.globalService.setTitle("تواصل معنا");
   }
 
 }

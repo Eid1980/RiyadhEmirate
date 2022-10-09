@@ -1,6 +1,4 @@
 ﻿
-using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
-
 namespace Emirates.Core.Application.Dtos
 {
     public class GetEmiratesPrinceListDto
@@ -12,7 +10,7 @@ namespace Emirates.Core.Application.Dtos
         public string BehalfToEn { get; set; }
         public string FromDate { get; set; }
         public string ToDate { get; set; }
+        public string ImageName { get; set; }
         public bool IsActive { get; set; }
-        public UploadedFileBase64Model Image { get; set; }
     }
 }

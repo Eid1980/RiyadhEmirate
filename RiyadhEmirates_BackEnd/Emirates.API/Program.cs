@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Emirates.API.Configurations.AutoMapper;
-using Emirates.API.Extensions;
 using Emirates.API.Filters.Swagger;
 using Emirates.Core.Application.CustomExceptions;
 using Emirates.InfraStructure.Contexts;
@@ -16,9 +15,9 @@ using System.Globalization;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using Emirates.Core.Application.Models.Request.Mail;
 using Emirates.API.Configurations;
 using System.Text.Json;
+using Emirates.Core.Application.Dtos;
 
 Serilog.Debugging.SelfLog.Enable(msg => Debug.WriteLine(msg));
 //Read Configuration from appSettings
@@ -177,7 +176,7 @@ try
     //builder.Services.AddScoped<INationalityService, NationalityService>();
     //builder.Services.AddScoped<IMailService, MailService>();
     
-    builder.Services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
+    builder.Services.Configure<MailSettingsDto>(configuration.GetSection("MailSettings"));
     
 
 

@@ -179,6 +179,8 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxDescriptionLength).IsRequired();
                 b.Property(x => x.BehalfToAr).HasMaxLength(EmiratesConstants.MaxDescriptionLength);
                 b.Property(x => x.BehalfToEn).HasMaxLength(EmiratesConstants.MaxDescriptionLength);
+                b.Property(x => x.ImageName).HasMaxLength(EmiratesConstants.MaxDescriptionLength);
+                b.Property(x => x.Cv).HasColumnType(EmiratesConstants.MaxColumnType);
                 b.Property(x => x.FromDate).IsRequired();
                 b.Property(x => x.IsActive).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
@@ -193,7 +195,7 @@ namespace Emirates.InfraStructure.Contexts
             #region Governorate
             modelBuilder.Entity<Governorate>(b =>
             {
-                b.ToTable("Governorates", EmiratesDbSchemas.LookupSehema);
+                b.ToTable("Governorates", EmiratesDbSchemas.DataManagement);
                 b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.DescriptionAr).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
@@ -201,6 +203,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.PhoneNumber).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.LocationLink).HasMaxLength(EmiratesConstants.MaxLongNameLength);
                 b.Property(x => x.PortalLink).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.ImageName).HasMaxLength(EmiratesConstants.MaxDescriptionLength);
                 b.Property(x => x.IsActive).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
 
@@ -328,15 +331,6 @@ namespace Emirates.InfraStructure.Contexts
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNewsCategueries).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
 
                 b.HasData(DefaultData.NewsCategueries());
-            });
-            #endregion
-
-            #region NewsSubscriper
-            modelBuilder.Entity<NewsSubscriper>(b =>
-            {
-                b.ToTable("NewsSubscripers", EmiratesDbSchemas.DataManagement);
-                b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
-                b.Property(x => x.IsActive).IsRequired();
             });
             #endregion
 
@@ -825,7 +819,6 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<NewsCateguery> NewsCategueries { get; set; }
-        public DbSet<NewsSubscriper> NewsSubscripers { get; set; }
         public DbSet<NewsType> NewTypes { get; set; }
         public DbSet<PageContent> PageContent { get; set; }
         public DbSet<Poster> Posters { get; set; }

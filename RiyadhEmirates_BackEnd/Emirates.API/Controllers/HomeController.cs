@@ -32,17 +32,16 @@ namespace Emirates.API.Controllers
             return _homeService.CreateDesignEvaluation(createDto);
         }
 
-        [AllowAnonymous, HttpPost("CreateNewsSubscriper")]
-        public IApiResponse CreateNewsSubscriper(CreateNewsSubscriperDto createDto)
-        {
-            return _homeService.CreateNewsSubscriper(createDto);
-        }
-
-
         [AllowAnonymous, HttpGet("GetAllServices")]
         public IApiResponse GetAllServices()
         {
             return _homeService.GetAllServices();
+        }
+
+        [AllowAnonymous, HttpGet("GetNewsSearch/{filter}")]
+        public IApiResponse GetNewsSearch(string filter)
+        {
+            return _homeService.GetNewsSearch(filter);
         }
     }
 }

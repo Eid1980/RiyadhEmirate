@@ -1,54 +1,13 @@
-<!-- top bar -->
-<div class="top-bar">
-  <!-- <div>
-    <a [routerLink]="['/']">
-      <img src="./assets/images/logo.svg" alt="" width="180">
-    </a>
-  </div> -->
 
+
+<div class="top-bar">
   <div class="container">
     <div class="row align-items-center">
       <!-- calender -->
       <div class="col-md-5 d-md-flex d-none">
         <div class="date">
           <img src="assets/images/icons/header/calender.svg" class="img-fluid filter-img-white" alt="calender" width="22.27" height="22.27">
-          <span class="date"><span>الخميس</span> ، 23 ربيع أول 1443 هـ، 22 مايو 2022</span>
-          <!-- <div class="dropdown topnav-user" *ngIf="isAuthenticate">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="./assets/images/user-img.svg" alt="">
-              {{ 'header.hello' | translate }} <span>{{userModel?.Name}}</span>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <a routerLink="/e-council/profile" class="dropdown-item">
-                <i class="fa fa-user"></i>
-                {{ 'header.profilePersonly' | translate }}
-              </a>
-              <a class="dropdown-item" (click)="logout()">
-                <i class="fa fa-arrow-right-from-bracket"></i>
-                {{ 'header.signOut' | translate }}
-              </a>
-            </div>
-          </div> -->
-          <!-- <div class="dropdown topnav-user" *ngIf="!isAuthenticate">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="./assets/images/user-img.svg" alt="">
-              {{ 'header.signIn' | translate }}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <a routerLink="/e-council/profile" class="dropdown-item" [routerLink]="['/auth/login']">
-                <i class="fa fa-user"></i>
-                {{ 'header.signIn' | translate }}
-              </a>
-              <a class="dropdown-item" [routerLink]="['/auth/register']">
-                <i class="fa fa-arrow-right-from-bracket"></i>
-                {{ 'header.newRegistration' | translate }}
-              </a>
-            </div>
-          </div> -->
-          <!-- <span (click)="onChangeLang()">
-            <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
-            <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
-          </span> -->
+          <span class="date">{{currentDate}}</span>
         </div>
       </div>
 
@@ -56,16 +15,15 @@
       <div class="col-md-7">
         <div class="options justify-content-md-end justify-content-center">
           <div class="dropdown search">
-            <button class="btn dropdown-toggle px-0" type="button" id="dropdownSearch" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <button class="btn dropdown-toggle px-0" type="button" id="dropdownSearch" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="assets/images/icons/header/search.svg" class="img-fluid filter-img-white" alt="search" width="20">
             </button>
             <div class="dropdown-menu search-dropdown" aria-labelledby="dropdownSearch">
               <div class="search-card">
                 <div class="form-group">
-                  <input type="text" name="" id="" class="form-control" placeholder="اكتب كلمات البحث هنا">
+                  <input type="text" [(ngModel)]="newsSearch" class="form-control" placeholder="اكتب كلمات البحث هنا">
                   <img src="assets/images/icons/header/prof-search.svg" alt="icon" class="s-icon">
-                  <button type="submit" class="btn btn-primary-alt-2">بحث</button>
+                  <button type="button" class="btn btn-primary-alt-2" (click)="newsSearchSubmit()">بحث</button>
                 </div>
               </div>
             </div>
@@ -136,7 +94,9 @@
           </div>
 
           <div class="logo me-3">
-            <img src="assets/images/icons/logo-2.svg" class="img-fluid filter-img-white mx-0" alt="logo" width="55">
+            <a href="https://www.vision2030.gov.sa/ar/" target="_blank">
+              <img src="assets/images/icons/logo-2.svg" class="img-fluid filter-img-white mx-0" alt="logo" width="55">
+            </a>
           </div>
         </div>
       </div>
@@ -245,8 +205,8 @@
             <i class="fa fa-gear"></i>
             <span>لوحة التحكم</span>
           </a>
-          <a class="dropdown-item" routerLink="/eservice/my-requests" *ngIf="!userInfo.isEmployee">
-            <i class="fa fa-gear"></i>
+          <a class="dropdown-item" routerLink="/eservice/my-requests">
+            <i class="fa fa-list-ul"></i>
             <span>طلباتي</span>
           </a>
           <a class="dropdown-item" routerLink="/profile">

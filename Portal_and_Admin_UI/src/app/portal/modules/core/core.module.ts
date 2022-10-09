@@ -24,7 +24,7 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
   ],
   exports: [
     CoreLayoutComponent,

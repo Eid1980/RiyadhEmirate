@@ -4,6 +4,12 @@
     <div class="form-content">
       <div class="row mx-0">
         <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">رقم الخبر</span>
+          <span class="form-val">{{ getLatestNewsCommentDetailsDto?.id }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+        </div>
+        <div class="info-col col-md-6 col-12">
           <span class="form-lbl lbl-33">الاسم</span>
           <span class="form-val">{{ getLatestNewsCommentDetailsDto?.createdByName }}</span>
         </div>
@@ -27,7 +33,7 @@
     </div>
   </div>
   <div class="form-actions">
-    <button type="button" class="btn btn-save" (click)="updateCommentStage(2)">الموافقة على الطلب</button>
-    <button type="button" class="btn btn-cancel" (click)="updateCommentStage(3)">رفض الطلب</button>
+    <button type="button" class="btn btn-save" (click)="updateCommentStage(2)">الموافقة على التعليق</button>
+    <button type="button" class="btn btn-cancel" (click)="updateCommentStage(3)">رفض التعليق</button>
   </div>
 </p-dialog>

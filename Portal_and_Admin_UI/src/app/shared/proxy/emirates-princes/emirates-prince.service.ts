@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
 import { CreateEmiratesPrinceDto, GetEmiratesPrinceDetailsDto, GetEmiratesPrinceListDto, UpdateEmiratesPrinceDto } from './models';
+import { FileToUploadDto } from '../shared/file-to-upload-dto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,11 +23,11 @@ export class EmiratesPrinceService {
     return this.httpClient.get<ApiResponse<GetEmiratesPrinceListDto[]>>(`${this.serviceUrl}/GetAll`)
   }
 
-  create = (createdDto: CreateEmiratesPrinceDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  create = (createdDto: CreateEmiratesPrinceDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.post<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Create`, createdDto).pipe();
   }
-  update = (updatedDto: UpdateEmiratesPrinceDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  update = (updatedDto: UpdateEmiratesPrinceDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.put<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }
 
   changeStatus = (id: number): Observable<ApiResponse<boolean>> => {

@@ -37,14 +37,13 @@ namespace Emirates.API.Controllers
             return _serviceService.GetAll(searchModel);
         }
 
-        [AllowAnonymous]
-        [HttpPost("GetAllServiceGuide")]
+        [AllowAnonymous, HttpPost("GetAllServiceGuide")]
         public IApiResponse GetAllServiceGuide(SearchModel searchModel)
         {
             return _serviceService.GetAllServiceGuide(searchModel);
         }
 
-        [HttpGet("SearchByFilter/{filter}")]
+        [AllowAnonymous, HttpGet("SearchByFilter/{filter}")]
         public IApiResponse SearchByFilter(string filter)
         {
             return _serviceService.SearchByFilter(filter);

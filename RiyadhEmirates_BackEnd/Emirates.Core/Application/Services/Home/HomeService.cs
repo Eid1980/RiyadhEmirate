@@ -4,7 +4,7 @@ using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
-using Emirates.Core.Application.Services.InternalPortal.FileManager;
+using Emirates.Core.Application.Services.FileManagers;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using System;
@@ -45,15 +45,6 @@ namespace Emirates.Core.Application.Services.Home
             _emiratesUnitOfWork.Complete();
             return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
         }
-        public IApiResponse CreateNewsSubscriper(CreateNewsSubscriperDto createDto)
-        {
-            if (_emiratesUnitOfWork.NewsSubscripers.Where(x => x.Email.Equals(createDto.Email)).Any())
-                throw new BusinessException("البريد الالكتروني مضاف مسبقا");
-
-            var addedModel = _emiratesUnitOfWork.NewsSubscripers.Add(_mapper.Map<NewsSubscriper>(createDto));
-            _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
-        }
 
         public IApiResponse GetAllServices()
         {
@@ -73,6 +64,35 @@ namespace Emirates.Core.Application.Services.Home
                             Image = _fileManagerService.GetBase64File(service.Id, "Services")
                         }).OrderByDescending(r => r.RequestCount);
             return GetResponse(data: query.ToList());
+        }
+        public IApiResponse GetNewsSearch(string filter)
+        {
+            var newsResult = _emiratesUnitOfWork.News.GetQueryable().Where(x =>
+            x.TitleAr.Contains(filter) || x.TitleEn.Contains(filter) ||
+            x.DescriptionAr.Contains(filter) || x.DescriptionEn.Contains(filter)).Select(model=>
+            new GetNewsSearchListDto
+            {
+                Id = model.Id,
+                Title = model.TitleAr,
+                Description = model.DescriptionAr,
+                Date = model.Date.ToString("yyyy-MM-dd"),
+                IsLatestNews = false,
+                Image = _fileManagerService.GetBase64File(model.Id, "News"),
+            }).ToList();
+
+            var latestResult = _emiratesUnitOfWork.LatestNews.GetQueryable().Where(x =>
+            x.Title.Contains(filter) || x.Content.Contains(filter) || x.NewsOrigin.Contains(filter) || 
+            x.NewsCateguery.NameAr.Contains(filter) || x.NewsCateguery.NameEn.Contains(filter)).Select(model =>
+            new GetNewsSearchListDto
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Description = model.Content,
+                Date = model.Date.ToString("yyyy-MM-dd"),
+                IsLatestNews = true,
+                Image = _fileManagerService.GetBase64File(model.Id, "LatestNews"),
+            }).ToList();
+            return GetResponse(data: newsResult.Concat(latestResult).ToList());
         }
     }
 }

@@ -2,10 +2,12 @@
 export interface CreateEmiratesPrinceDto {
   nameAr: string;
   nameEn: string;
-  behalfToArAr: string;
-  behalfToArEn: string;
+  behalfToAr: string;
+  behalfToEn: string;
   fromDate: string;
   toDate: string;
+  imageName: string;
+  cv: string;
   isActive: boolean;
 
   image: any;
@@ -15,10 +17,12 @@ export interface UpdateEmiratesPrinceDto {
   id: number;
   nameAr: string;
   nameEn: string;
-  behalfToArAr: string;
-  behalfToArEn: string;
+  behalfToAr: string;
+  behalfToEn: string;
   fromDate: string;
   toDate: string;
+  imageName: string;
+  cv: string;
   isActive: boolean;
 
   image: any;
@@ -28,12 +32,13 @@ export interface GetEmiratesPrinceDetailsDto {
   id: number;
   nameAr: string;
   nameEn: string;
-  behalfToArAr: string;
-  behalfToArEn: string;
+  behalfToAr: string;
+  behalfToEn: string;
   fromDate: string;
   toDate: string;
+  imageName: string;
+  cv: string;
   isActive: boolean;
-  image: any;
 }
 
 export interface GetEmiratesPrinceListDto {
@@ -43,7 +48,7 @@ export interface GetEmiratesPrinceListDto {
   behalfToAr: string;
   behalfToEn: string;
   fromDate: string;
+  imageName: string;
   toDate: string;
   isActive: boolean;
-  image: any;
 }

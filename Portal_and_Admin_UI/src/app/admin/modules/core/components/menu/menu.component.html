@@ -8,7 +8,7 @@
         </a>
       </li>
 
-      <li class="accordion-item" *ngIf="roleIds.includes('1') || roleIds.includes('2') || roleIds.includes('3')">
+      <li class="accordion-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin || newsPermission)">
         <h2 class="accordion-header" id="headingNews">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">
@@ -56,7 +56,50 @@
         </div>
       </li>
 
-      <li class="accordion-item" *ngIf="roleIds.includes('1') || roleIds.includes('2')">
+      <li class="accordion-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin || settingPermission)">
+        <h2 class="accordion-header" id="headingEmirate">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseEmirate" aria-expanded="true" aria-controls="collapseEmirate">
+            <i class="fa-solid fa-font-awesome"></i>
+            <span>الامارة</span>
+          </button>
+        </h2>
+
+        <div id="collapseEmirate" class="accordion-collapse collapse" aria-labelledby="headingEmirate"
+             data-bs-parent="#accordionSidemenu">
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/poster-list" routerLinkActive="active">
+                  <span>الإعلانات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/edit-about-us" routerLinkActive="active">
+                  <span>عن الامارة</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/emirates-prince-list" routerLinkActive="active">
+                  <span>أمراء المنطقة</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/governorate-list" routerLinkActive="active">
+                  <span>المحافظات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/edit-woman-section" routerLinkActive="active">
+                  <span>القسم النسوي</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="accordion-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin)">
         <h2 class="accordion-header" id="headingSevices">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseSevices" aria-expanded="true" aria-controls="collapseSevices">
@@ -85,7 +128,7 @@
                   <span>مرفقات الخدمات</span>
                 </a>
               </li>
-              <li class="accordion-list-item" *ngIf="roleIds.includes('1')">
+              <li class="accordion-list-item" *ngIf="roleIds.includes(superSystemAdmin)">
                 <a class="accordion-list-link" routerLink="/admin/data-management/service-stage-list" routerLinkActive="active">
                   <span>مراحل الخدمات</span>
                 </a>
@@ -95,7 +138,7 @@
         </div>
       </li>
 
-      <li class="accordion-item" *ngIf="roleIds.includes('1') || roleIds.includes('2') || roleIds.includes('4')">
+      <li class="accordion-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin || settingPermission)">
         <h2 class="accordion-header" id="headingSettings">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
@@ -107,21 +150,6 @@
              data-bs-parent="#accordionSidemenu">
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li class="accordion-list-item">
-                <a class="accordion-list-link" routerLink="/admin/data-management/poster-list" routerLinkActive="active">
-                  <span>الإعلانات</span>
-                </a>
-              </li>
-              <li class="accordion-list-item">
-                <a class="accordion-list-link" routerLink="/admin/data-management/emirates-prince-list" routerLinkActive="active">
-                  <span>أمراء المنطقة</span>
-                </a>
-              </li>
-              <li class="accordion-list-item">
-                <a class="accordion-list-link" routerLink="/admin/data-management/governorate-list" routerLinkActive="active">
-                  <span>المحافظات</span>
-                </a>
-              </li>
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/case-type-list" routerLinkActive="active">
                   <span>أنواع القضايا</span>
@@ -137,7 +165,7 @@
         </div>
       </li>
 
-      <li class="accordion-item" *ngIf="roleIds.includes('1') || roleIds.includes('2') || roleIds.includes('5')">
+      <li class="accordion-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin || usersPermission)">
         <h2 class="accordion-header" id="headingPermissions">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapsePermissions" aria-expanded="true" aria-controls="collapsePermissions">
@@ -164,45 +192,24 @@
         </div>
       </li>
 
-      <li class="accordion-item"  *ngIf="roleIds.includes('1') || roleIds.includes('2') || roleIds.includes('4')">
-        <h2 class="accordion-header" id="headingEmirate">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseEmirate" aria-expanded="true" aria-controls="collapseEmirate">
-            <i class="fa-solid fa-font-awesome"></i>
-            <span>الامارة</span>
-          </button>
-        </h2>
-
-        <div id="collapseEmirate" class="accordion-collapse collapse" aria-labelledby="headingEmirate"
-             data-bs-parent="#accordionSidemenu">
-          <div class="accordion-body">
-            <ul class="accordion-list">
-              <li class="accordion-list-item">
-                <a class="accordion-list-link" routerLink="/admin/data-management/edit-about-us" routerLinkActive="active">
-                  <span>عن الامارة</span>
-                </a>
-              </li>
-              <li class="accordion-list-item">
-                <a class="accordion-list-link" routerLink="/admin/data-management/edit-woman-section" routerLinkActive="active">
-                  <span>القسم النسوي</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="sidebar-list-item" *ngIf="roleIds.includes('1') || roleIds.includes('2') || roleIds.includes('6')">
+      <li class="sidebar-list-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin || requestReview)">
         <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox" routerLinkActive="active">
           <i class="fa-solid fa-envelope"></i>
           <span>البريد الوارد</span>
         </a>
       </li>
 
-      <li class="sidebar-list-item" *ngIf="roleIds.includes('1') || roleIds.includes('2') || roleIds.includes('7')">
+      <li class="sidebar-list-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin || shamelRequestReview)">
         <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox-shamel" routerLinkActive="active">
           <i class="fa-solid fa-envelope-open-text"></i>
           <span>البريد الوارد لنطام شامل</span>
+        </a>
+      </li>
+
+      <li class="sidebar-list-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin || requestReview)">
+        <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox-shamel" routerLinkActive="active">
+          <i class="fa-solid fa-search"></i>
+          <span>البحث في الطلبات</span>
         </a>
       </li>
 

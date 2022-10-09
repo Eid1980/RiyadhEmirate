@@ -1,5 +1,4 @@
-﻿using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
-
+﻿
 namespace Emirates.Core.Application.Dtos
 {
     public class GetNewsListDto
@@ -12,6 +11,6 @@ namespace Emirates.Core.Application.Dtos
         public int NewsTypeId { get; set; }
         public DateTime Date { get; set; }
         public bool IsActive { get; set; }
-        public UploadedFileBase64Model Image { get; set; }
+        public UploadedFileBase64Dto Image { get; set; }
     }
 }

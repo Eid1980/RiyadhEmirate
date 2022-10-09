@@ -3,3 +3,8 @@ export interface UploadedFileBase64Model {
   fileName: string;
   extention: string;
 }
+
+export interface DeleteFileDto {
+  categueryName: string;
+  name: string;
+}

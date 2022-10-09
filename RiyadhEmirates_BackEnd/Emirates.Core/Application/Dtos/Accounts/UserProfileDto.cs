@@ -1,6 +1,4 @@
 ﻿
-using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
-
 namespace Emirates.Core.Application.Dtos.Accounts
 {
     public class UserProfileDto
@@ -29,7 +27,7 @@ namespace Emirates.Core.Application.Dtos.Accounts
         public string Address { get; set; }
         public string PassportId { get; set; }
 
-        public UploadedFileBase64Model Image { get; set; }
+        public UploadedFileBase64Dto Image { get; set; }
 
     }
 }

@@ -10,10 +10,6 @@ export interface CreateDesignEvaluationDto {
   evaluate: number;
 }
 
-export interface CreateNewsSubscriperDto {
-  email: string;
-}
-
 export interface GetAllServiceListDto {
   id: number;
   nameAr: string;
@@ -23,5 +19,14 @@ export interface GetAllServiceListDto {
   requestLink: string;
   isExternal: boolean;
   requestCount: number;
+  image: any;
+}
+
+export interface GetNewsSearchListDto {
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  isLatestNews: boolean;
   image: any;
 }

@@ -36,5 +36,14 @@ namespace Emirates.Core.Application.Helpers
             RequestRejected = 6,
             RequestApproved = 7
         }
+
+        public static class FileCateguery
+        {
+            public static string News = "news";
+            public static string Posters = "posters";
+            public static string Princes = "princes";
+            public static string Regions = "regions";
+            public static string Services = "services";
+        }
     }
 }

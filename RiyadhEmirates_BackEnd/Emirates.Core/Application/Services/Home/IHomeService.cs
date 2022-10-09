@@ -7,7 +7,7 @@ namespace Emirates.Core.Application.Services.Home
     {
         IApiResponse GetCounts();
         IApiResponse CreateDesignEvaluation(CreateDesignEvaluationDto createDto);
-        IApiResponse CreateNewsSubscriper(CreateNewsSubscriperDto createDto);
         IApiResponse GetAllServices();
+        IApiResponse GetNewsSearch(string filter);
     }
 }

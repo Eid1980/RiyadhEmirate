@@ -23,11 +23,11 @@
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">بالنيابة عن عربي</span>
-        <span class="form-val">{{ emiratesPrinceDetailsDto?.behalfToArAr }}</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.behalfToAr }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">بالنيابة عن انجليزي</span>
-        <span class="form-val">{{ emiratesPrinceDetailsDto?.behalfToArEn }}</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.behalfToEn }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">الفترة من</span>
@@ -37,11 +37,12 @@
         <span class="form-lbl lbl-33">الفترة الى</span>
         <span class="form-val">{{ emiratesPrinceDetailsDto?.toDate }}</span>
       </div>
-      <div class="info-col col-md-6 col-12" *ngIf="emiratesPrinceDetailsDto?.image">
-        <span class="form-lbl lbl-33">الصورة</span>
-        <span class="form-val">
-          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(emiratesPrinceDetailsDto?.image?.base64File)" alt="" style="width: 180px" />
-        </span>
+      <div class="info-col col-md-12 col-12">
+        <span class="form-lbl lbl-33">السيرة الذاتية</span>
+        <span class="form-val">{{ emiratesPrinceDetailsDto?.cv }}</span>
+      </div>
+      <div class="form-group col-6" *ngIf="emiratesPrinceDetailsDto?.imageName">
+        <img [src]="['/assets/images/uploads/princes/'+emiratesPrinceDetailsDto?.imageName]" [alt]="emiratesPrinceDetailsDto?.nameEn" style="width: 100%; height: 200px;" />
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">الحالة</span>

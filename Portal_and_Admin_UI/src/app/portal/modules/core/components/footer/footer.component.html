@@ -6,7 +6,7 @@
       <div class="mb-5">
         <label class="custom-radio">
           ممتاز
-          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="1"/>
+          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="1" />
           <span class="checkmark"></span>
         </label>
         <label class="custom-radio">
@@ -25,17 +25,6 @@
           <span class="checkmark"></span>
         </label>
         <button type="button" class="btn vote-btn me-auto ms-3" (click)="evaluate()">تصويت</button>
-      </div>
-      <h5 class="title">الإشتراك في النشرة البريدية</h5>
-      <div class="form-group">
-        <span class="icon">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-        </span>
-        <input type="text" class="form-control" [(ngModel)]="email" placeholder="البريد الإلكتروني">
-        <button type="button" class="btn btn-subs" (click)="subscripe()">
-          إشتراك
-          <i class="fa fa-paper-plane" aria-hidden="true"></i>
-        </button>
       </div>
     </div>
     <div class="col-md-5 col-12 col-two">
@@ -140,9 +129,7 @@
         <div class="col-md-4">
           <img src="./assets/images/icons/footer/refresh.svg" alt="" class="mx-1">
           <span class="mx-1">آخر تحديت للموقع فى</span>
-          <span class="mx-1">19/08/1443</span>
-          <span class="mx-1">02:12 </span>
-          <span class="">م </span>
+          <span class="mx-1">{{lastSieUpdate}}</span>
         </div>
       </div>
     </div>
@@ -160,7 +147,9 @@
           <span>جميع الحقوق محفوظة</span>
           <span>&nbsp; &copy; &nbsp;</span>
           <span> لإمارة منطقة الرياض - المملكة العربية السعودية </span>
-          <img src="./assets/images/icons/footer/vision-opacity.svg" alt="" class="mr-opacity">
+          <a href="https://www.vision2030.gov.sa/ar/" target="_blank">
+            <img src="./assets/images/icons/footer/vision-opacity.svg" alt="" class="mr-opacity">
+          </a>
         </div>
       </div>
     </div>

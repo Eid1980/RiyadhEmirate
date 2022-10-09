@@ -5,8 +5,6 @@ using Emirates.Core.Application.Dtos.MainPoints;
 using Emirates.Core.Application.Dtos.Posters;
 using Emirates.Core.Application.Dtos.Requests;
 using Emirates.Core.Application.Dtos.WomanSection;
-using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
-using Emirates.Core.Application.Models.InternalPortal.Response.FileManager;
 using Emirates.Core.Domain.Entities;
 
 namespace Emirates.Core.Application.Mappers
@@ -24,8 +22,8 @@ namespace Emirates.Core.Application.Mappers
             #endregion
 
             #region FileManager
-            CreateMap<CreateUploadedFileModel, UploadedFile>();
-            CreateMap<UploadedFile, GetUploadedFileModel>();
+            CreateMap<CreateUploadedFileDto, UploadedFile>();
+            CreateMap<UploadedFile, GetUploadedFileDto>();
             #endregion
 
             #region MainPagePoint
@@ -35,8 +33,10 @@ namespace Emirates.Core.Application.Mappers
             #endregion
 
             #region EmiratesPrince
-            CreateMap<CreateEmiratesPrinceDto, EmiratesPrince>();
-            CreateMap<UpdateEmiratesPrinceDto, EmiratesPrince>();
+            CreateMap<CreateEmiratesPrinceDto, EmiratesPrince>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
+            CreateMap<UpdateEmiratesPrinceDto, EmiratesPrince>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
 
             CreateMap<EmiratesPrince, GetEmiratesPrinceDetailsDto>()
                 .ForMember(dest => dest.FromDate, src => src.MapFrom(m => m.FromDate.ToString("yyyy-MM-dd")))
@@ -56,8 +56,6 @@ namespace Emirates.Core.Application.Mappers
 
             #region Home
             CreateMap<CreateDesignEvaluationDto, DesignEvaluation>();
-            CreateMap<CreateNewsSubscriperDto, NewsSubscriper>()
-                .ForMember(dest => dest.IsActive, src => src.MapFrom(m => true));
             #endregion
 
             #region LatestNews

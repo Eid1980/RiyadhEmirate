@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UploadedFileBase64Model } from '../models/file-manager.model';
+import { DeleteFileDto, UploadedFileBase64Model } from '../models/file-manager.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,12 +10,7 @@ import { UploadedFileBase64Model } from '../models/file-manager.model';
 export class FileManagerService {
   constructor(private http: HttpClient) {}
 
-  upload(
-    entityId: string,
-    entityName: string,
-    subEntityName: string,
-    files: File[]
-  ) {
+  upload(entityId: string, entityName: string, subEntityName: string, files: File[]) {
     const formData = new FormData();
     formData.append('entityId', entityId);
     formData.append('entityName', entityName);
@@ -138,4 +133,17 @@ export class FileManagerService {
   }
 
 
+  // added by salah
+  uploadFile = (categueryName: string, name: string, files: File[]) => {
+    const formData = new FormData();
+    formData.append('categueryName', categueryName);
+    formData.append('name', name);
+    Array.from(files).map((file, index) => {
+      formData.append('file' + index, file, file.name);
+    });
+    return this.http.post(`${environment.ApiUrl}/api/FileManager/UploadFile`, formData);
+  }
+  deleteFile = (deleteFileDto: DeleteFileDto) => {
+    return this.http.post(`${environment.ApiUrl}/api/FileManager/DeleteFile`, deleteFileDto);
+  }
 }

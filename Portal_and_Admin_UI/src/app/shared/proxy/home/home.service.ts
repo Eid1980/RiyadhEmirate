@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
-import { CreateDesignEvaluationDto, CreateNewsSubscriperDto, GetAllServiceListDto, HomeCountsDto } from './models';
+import { CreateDesignEvaluationDto, GetAllServiceListDto, GetNewsSearchListDto, HomeCountsDto } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -21,12 +21,14 @@ export class HomeService {
   createDesignEvaluation = (createdDto: CreateDesignEvaluationDto): Observable<ApiResponse<number>> => {
     return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/CreateDesignEvaluation`, createdDto).pipe();
   }
-  createNewsSubscriper = (createdDto: CreateNewsSubscriperDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/CreateNewsSubscriper`, createdDto).pipe();
-  }
 
   getAllServices = (): Observable<ApiResponse<GetAllServiceListDto[]>> => {
     return this.httpClient.get<ApiResponse<GetAllServiceListDto[]>>(`${this.serviceUrl}/GetAllServices`).pipe(
+    );
+  }
+
+  getNewsSearch = (filter: string): Observable<ApiResponse<GetNewsSearchListDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetNewsSearchListDto[]>>(`${this.serviceUrl}/GetNewsSearch/${filter}`).pipe(
     );
   }
 }
