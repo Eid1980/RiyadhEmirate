@@ -12,6 +12,12 @@ export class PrivacyComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalService.setTitle("سياسة الخصوصية");
+
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
 }

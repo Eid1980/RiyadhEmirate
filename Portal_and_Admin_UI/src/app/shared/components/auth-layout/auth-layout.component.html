@@ -2,7 +2,7 @@
 
 <div class="row mx-0 h-100">
   <div class="col-lg-6 auth-wrapper">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
   </div>
   <div class="col-lg-6 auth-wrapper position-relative">
     <img src="assets/images/login-bg.png" alt="login-banner" class="w-100 h-100">

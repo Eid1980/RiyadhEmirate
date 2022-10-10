@@ -18,14 +18,22 @@ export class AppComponent implements OnInit, AfterViewChecked {
   isActive: Subject<boolean>;
   title = "Admin Dashboard";
 
-  constructor(private progressSpinner: ProgressSpinnerService, private _translateService : TranslationServiceService,
-     private cdRef: ChangeDetectorRef, private router: Router, private globalService: GlobalService
+  constructor(private progressSpinner: ProgressSpinnerService, private _translateService: TranslationServiceService,
+    private cdRef: ChangeDetectorRef, private router: Router, private globalService: GlobalService
 
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this._translateService.initializeLanguage();
     document.body.style.direction = this._translateService.getCurrentLanguage().Direction;
+  }
+
+  onActivate(event: any) {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   ngAfterViewChecked() {
