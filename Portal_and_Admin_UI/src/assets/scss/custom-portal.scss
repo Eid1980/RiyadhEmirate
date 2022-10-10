@@ -29,15 +29,15 @@
       display: none;
     }
 
-    .auth-head{
+    .auth-head {
       text-align: initial;
 
-      .card-logo{
+      .card-logo {
         display: inline-flex;
         padding: 16px;
         margin-bottom: 16px;
 
-        img{
+        img {
           width: 300px;
         }
       }
@@ -130,14 +130,14 @@
 
   @media screen and (max-width: $min-md) {
     .auth-card {
-      .auth-head{
-        .card-logo{
-          img{
+      .auth-head {
+        .card-logo {
+          img {
             width: 220px;
           }
         }
       }
-  
+
       .title {
         margin-bottom: 40px;
         font-size: 22px;
@@ -147,12 +147,14 @@
 }
 
 .portal-layout {
+
   // Footer
   .footer {
-    height: 600px;
+    // height: 600px;
     background-image: url("../../assets/images/footer.png");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     color: $white;
 
     // padding: 100px 100px 0;
@@ -244,8 +246,8 @@
         content: "";
         display: block;
         height: 77%;
-        background: $light-lighter;
-        width: 0.1px;
+        background: #529a8d;
+        width: 1px;
         position: absolute;
         top: 40px;
         left: 0;
@@ -259,8 +261,8 @@
         content: "";
         display: block;
         height: 77%;
-        background: #fafbff;
-        width: 0.1px;
+        background: #529a8d;
+        width: 1px;
         position: absolute;
         top: 40px;
         left: 25px;
@@ -1951,7 +1953,7 @@
   .service-details {
     padding: 26px 0px;
 
-    .sidebar{
+    .sidebar {
       z-index: 10;
     }
 
@@ -2028,7 +2030,7 @@
             .row-details {
               margin-bottom: 1rem;
 
-              &:last-child{
+              &:last-child {
                 margin-bottom: 0px;
               }
 
@@ -2378,7 +2380,7 @@
           display: flex;
           align-items: center;
 
-          img{
+          img {
             margin-left: 10px !important;
           }
 
@@ -2496,11 +2498,11 @@
 
   // process numbers section
   .process-wrapper {
-    background-image: url('../../assets/images/serv_bg.png');
+    // background-image: url('../../assets/images/serv_bg.png');
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 60px 32px 120px;
-    background-color: #f7f8f9;
+    padding: 80px 26px 80px;
+    background-color: $white;
 
     h3 {
       font-size: 28px;
@@ -2512,27 +2514,51 @@
 
     .process-item {
       margin: 8px 0;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 26px 16px;
+      height: 100%;
+      border: 1px solid transparent;
 
-      img {
-        margin-bottom: 22px;
-        width: 50px;
+      .icon-cover {
+        margin-bottom: 10px;
+        background: $primary-alt-2;
+        border-radius: 20px;
+        padding: 18px;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          filter: brightness(0) invert(1);
+          width: 62px;
+          max-width: 62px;
+        }
       }
 
       h5 {
-        font-size: 36px;
-        color: $Primary-2;
-        margin-bottom: 8px;
+        color: rgba($color: $black, $alpha: 0.6);
+        font-size: 40px;
+        margin-bottom: 6px;
+        margin-top: auto;
       }
 
       p {
-        color: rgba($color: #000, $alpha: 0.6);
-        border-bottom: 1px solid rgba($color: #000, $alpha: 0.2);
         margin-bottom: 0px;
         font-size: 14px;
         display: inline-block;
         color: rgba(0, 0, 0, 0.6);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-        padding-bottom: 2px;
+        font-weight: 500;
+      }
+
+      &:hover {
+        border: 1px solid rgba(0, 0, 0, .04);
+        box-shadow: -10px 40px 28px #abafc74d;
       }
     }
   }

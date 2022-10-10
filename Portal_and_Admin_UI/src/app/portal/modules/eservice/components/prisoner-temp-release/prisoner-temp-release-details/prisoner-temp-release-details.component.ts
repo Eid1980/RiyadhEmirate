@@ -5,7 +5,7 @@ import { GetRequestPrisonerTempReleaseDetailsDto } from '@proxy/request-prisoner
 import { MessageType } from '@shared/enums/message-type.enum';
 import { GlobalService } from '@shared/services/global.service';
 import { UserDataViewComponent } from '@shared/components/user-data-view/user-data-view.component';
-import * as html2pdf from 'html2pdf.js';
+// import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-prisoner-temp-release-details',
@@ -46,7 +46,7 @@ export class PrisonerTempReleaseDetailsComponent implements OnInit {
       html2canvas: { scale: 3 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' },
     };
-    html2pdf().set(opt).from(this.requestDataDiv.nativeElement).toPdf().save();
+    // html2pdf().set(opt).from(this.requestDataDiv.nativeElement).toPdf().save();
 
   }
 
