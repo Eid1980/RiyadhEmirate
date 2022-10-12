@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NewsTypes } from '@shared/enums/news-types.enum';
-import { LatestNewsService } from '@shared/proxy/latest-news/latest-news.service';
-import { GetLatestNewsListDto } from '@shared/proxy/latest-news/models';
-import { GetNewsDetailsDto } from '@shared/proxy/news/models';
-import { NewsService } from '@shared/proxy/news/news.service';
 import { GetPosterDetailsDto } from '@shared/proxy/posters/models';
 import { PosterService } from '@shared/proxy/posters/poster.service';
 import { ApiResponse } from '@shared/proxy/shared/api-response.model';
@@ -13,7 +9,7 @@ import { GlobalService } from '@shared/services/global.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
 import { HomeService } from '@shared/proxy/home/home.service';
-import { GetAllServiceListDto } from '@shared/proxy/home/models';
+import { GetAllServiceListDto, GetNewsSearchListDto } from '@shared/proxy/home/models';
 declare let $: any;
 
 @Component({
@@ -21,13 +17,13 @@ declare let $: any;
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
+  currentLang: string;
   searchModel: SearchModel = {};
-
-  news: GetNewsDetailsDto[] = [];
-  emiratesNews: GetNewsDetailsDto[] = [];
-  latestNews = [] as GetLatestNewsListDto[];
-  reports: GetNewsDetailsDto[] = [];
   posters: GetPosterDetailsDto[] = [];
+
+  latestNews = [] as GetNewsSearchListDto[];
+  governorateNews: GetNewsSearchListDto[] = [];
+  reports: GetNewsSearchListDto[] = [];
 
   internalServices = [] as GetAllServiceListDto[];
   internalServicesTop = [] as GetAllServiceListDto[];
@@ -35,6 +31,7 @@ export class HomeComponent implements OnInit {
   serviceGuidFirst = [] as GetAllServiceListDto[];
   serviceGuidLength = [];
 
+  //#region Sliders Options
   sliderOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -143,7 +140,6 @@ export class HomeComponent implements OnInit {
     },
     nav: true,
   };
-
   servicesOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -169,7 +165,6 @@ export class HomeComponent implements OnInit {
     },
     nav: true,
   };
-
   servicesDetailsOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -191,63 +186,30 @@ export class HomeComponent implements OnInit {
     animateOut: 'slideOutUp',
     animateIn: 'slideInUp'
   };
+ //#endregion
 
-  constructor(private _newService: NewsService, private _latestNewsService: LatestNewsService,
-    private _posterService: PosterService, private _globalService: GlobalService, private homeService: HomeService,
-    private _translateService: TranslationServiceService, public sanitizer: DomSanitizer)
+  constructor(private homeService: HomeService, private _posterService: PosterService, public sanitizer: DomSanitizer,
+    private _globalService: GlobalService, private translateService: TranslationServiceService)
   {
   }
 
   ngOnInit() {
     this._globalService.setTitle('الصفحة الرئيسية');
-    this.getAllNews();
-    this.getServices();
+    this.currentLang = this.translateService.getCurrentLanguage().Name.toLowerCase();
     this.getPosters();
-    this.getLatestNews();
+    this.getServices();
+    this.getAllNews();
 
     let processNumber1 = document.getElementById("processNumber1");
     let processNumber2 = document.getElementById("processNumber2");
     let processNumber3 = document.getElementById("processNumber3");
     let processNumber4 = document.getElementById("processNumber4");
-
     this.homeService.getCounts().subscribe(result => {
       this.animateValue(processNumber1, 0, result.data.userCount, 5000);
       this.animateValue(processNumber2, 0, result.data.serviceCount, 5000);
       this.animateValue(processNumber3, 0, result.data.requestCount, 5000);
       this.animateValue(processNumber4, 0, result.data.rateCount, 5000);
     });
-  }
-
-  getAllNews() {
-    this._newService.getAll().subscribe((result) => {
-      this.news = result.data;
-      this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
-      this.reports = this.getNewsByNewsTypeId(NewsTypes.Reports);
-    });
-  }
-
-  getNewsByNewsTypeId(newsTypeId: number): GetNewsDetailsDto[] {
-    return this.news.filter((n) => n.newsTypeId == newsTypeId);
-  }
-
-  getServices() {
-    this.homeService.getAllServices().subscribe(result => {
-      this.internalServices = result.data.filter(i => i.isExternal === false);
-      this.externalServices = result.data.filter(i => i.isExternal === true);
-
-      this.internalServicesTop = this.internalServices.slice(0, 4);
-      this.serviceGuidLength = Array(Math.round(this.internalServices?.length / 2)).fill(1);
-      this.serviceGuidFirst = this.internalServices.slice(0, 2);
-    });
-  }
-
-  getLatestNews() {
-    let isArabic = this._translateService.getCurrentLanguage().Name.toLowerCase() == 'ar';
-    this._latestNewsService
-      .getByLangTop5(isArabic)
-      .subscribe((result) => {
-        this.latestNews = result.data;
-      });
   }
 
   getPosters() {
@@ -263,50 +225,23 @@ export class HomeComponent implements OnInit {
       (err) => { }
     );
   }
+  getServices() {
+    this.homeService.getAllServices().subscribe(result => {
+      this.internalServices = result.data.filter(i => i.isExternal === false);
+      this.externalServices = result.data.filter(i => i.isExternal === true);
 
-
-  navigateTo() {
-    /*if (this._userService.currentUser.IsAdmin) {
-      this._router.navigate(['/e-council/incoming-orders']);
-    } else {
-      this._router.navigate(['/e-council/create']);
-    }*/
+      this.internalServicesTop = this.internalServices.slice(0, 4);
+      this.serviceGuidLength = Array(Math.round(this.internalServices?.length / 2)).fill(1);
+      this.serviceGuidFirst = this.internalServices.slice(0, 2);
+    });
   }
-
-  formatDate(date: any) {
-    debugger;
-    let newDate = new Date(date);
-    var months = [
-      'يناير',
-      'فبراير',
-      'مارس',
-      'إبريل',
-      'مايو',
-      'يونيو',
-      'يوليو',
-      'أغسطس',
-      'سبتمبر',
-      'أكتوبر',
-      'نوفمبر',
-      'ديسمبر',
-    ];
-    let hijriDate = this._globalService.convertToHijri(newDate, 'ar');
-    return (
-      hijriDate.toString() +
-      '     -     ' +
-      newDate.getDay().toString() +
-      ' ' +
-      months[newDate.getMonth()] +
-      ' ' +
-      newDate.getFullYear().toString() +
-      ' م '
-    );
-  }
-
-  getHijriDate(date: any) {
-    let newDate = new Date(date);
-    let hijriDate = this._globalService.convertToHijri(newDate, 'ar');
-    return hijriDate.toString();
+  getAllNews() {
+    this.homeService.getTop5NewsByLang(this.currentLang == 'ar').subscribe((result) => {
+      let news = result.data as GetNewsSearchListDto[];
+      this.latestNews = news.filter((n) => n.newsTypeId == NewsTypes.LatestNews);
+      this.governorateNews = news.filter((n) => n.newsTypeId == NewsTypes.GovernorateNews);
+      this.reports = news.filter((n) => n.newsTypeId == NewsTypes.Reports);
+    });
   }
 
   animateValue(obj: any, start: any, end: any, duration: any) {

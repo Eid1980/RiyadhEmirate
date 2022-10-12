@@ -1,39 +1,60 @@
 
 export interface CreateNewsDto {
-  titleAr: string;
-  titleEn: string;
-  descriptionAr: string;
-  descriptionEn: string;
-  newsType: number;
-  newsTypeId : number;
+  title: string;
+  content: string;
+  isArabic: boolean;
+  newsTypeId: number;
+  newsCategueryId: number;
   date: string;
+  newsOrigin: string;
+  imageName: string;
   isActive: boolean;
+  openComments: boolean;
 
   image: any;
 }
 
 export interface UpdateNewsDto {
   id: number;
-  titleAr: string;
-  titleEn: string;
-  descriptionAr: string;
-  descriptionEn: string;
+  title: string;
+  content: string;
+  isArabic: boolean;
   newsTypeId: number;
+  newsCategueryId: number;
   date: string;
+  newsOrigin: string;
+  imageName: string;
   isActive: boolean;
-
-  image: any;
+  openComments: boolean;
 }
 
 export interface GetNewsDetailsDto {
   id: number;
-  titleAr: string;
-  titleEn: string;
-  descriptionAr: string;
-  descriptionEn: string;
+  title: string;
+  content: string;
+  isArabic: boolean;
   newsTypeId: number;
+  newsCategueryId: number;
+  newsCategueryName: string;
   date: string;
+  newsDate: string;
+  newsOrigin: string;
+  imageName: string;
   isActive: boolean;
+  openComments: boolean;
+}
 
-  image: any;
+export interface GetNewsListDto {
+  id: number;
+  title: string;
+  content: string;
+  isArabic: boolean;
+  newsTypeId: number;
+  newsCategueryId: number;
+  newsCategueryName: string;
+  date: string;
+  newsOrigin: string;
+  imageName: string;
+  isActive: boolean;
+  openComments: boolean;
 }

@@ -4,7 +4,7 @@ using Emirates.InfraStructure.Contexts;
 
 namespace Emirates.InfraStructure.Repositories
 {
-    public class NewsRepository: Repository<News, EmiratesContext>, INewsRepository
+    public class NewsRepository : Repository<News, EmiratesContext>, INewsRepository
     {
         public NewsRepository(EmiratesContext context) : base(context)
         {

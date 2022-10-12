@@ -4,88 +4,61 @@ using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.News;
 using Emirates.Core.Application.Services.Shared;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emirates.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NewsController : BaseController
+    public class NewsController : BaseController, INewsService
     {
-        private readonly INewsService _newsService;
+        private readonly INewsService _latestNewsService;
         public NewsController(ILocalizationService localizationService,
-            INewsService newsService) : base(localizationService)
+            INewsService latestNewsService) : base(localizationService)
         {
-            _newsService = newsService;
+            _latestNewsService = latestNewsService;
         }
 
-        /// <summary>
-        /// Get news by id
-        /// </summary>
-        /// <param name="id">News identifier</param>
-        /// <returns></returns>
         [AllowAnonymous, HttpGet("GetById/{id}")]
         public IApiResponse GetById(int id)
         {
-            return _newsService.GetById(id);
+            return _latestNewsService.GetById(id);
         }
 
-        /// <summary>
-        /// Get news based on search criteria, search on all the columns based on search criteria
-        /// </summary>
-        /// <param name="searchModelDto">Search criteria</param>
-        /// <returns></returns>
-        [AllowAnonymous, HttpPost("GetListPage")]
-        public IApiResponse GetAll(SearchModel searchModelDto)
+        [HttpPost("GetListPage")]
+        public IApiResponse GetAll(SearchModel searchModel)
         {
-            return _newsService.GetAll(searchModelDto);
-        }
-
-        /// <summary>
-        /// Get news based on news Type
-        /// </summary>
-        /// <param name="newsTypeId">News type identifier</param>
-        /// <returns></returns>
-        [HttpGet("GetByNewsTypeId/{newsTypeId}")]
-        public IApiResponse GetByNewsTypeId(int newsTypeId)
-        {
-            return _newsService.GetByNewsTypeId(newsTypeId);
-        }
-
-        /// <summary>
-        /// Get all news
-        /// </summary>
-        /// <returns></returns>
-        [AllowAnonymous, HttpGet("GetAll")]
-        public IApiResponse GetAll()
-        {
-            return _newsService.GetAll();
+            return _latestNewsService.GetAll(searchModel);
         }
 
         [HttpPost("Create")]
         public IApiResponse Create(CreateNewsDto createDto)
         {
-            return _newsService.Create(createDto);
+            return _latestNewsService.Create(createDto);
         }
 
         [HttpPut("Update")]
         public IApiResponse Update(UpdateNewsDto updateDto)
         {
-            return _newsService.Update(updateDto);
+            return _latestNewsService.Update(updateDto);
         }
 
         [HttpGet("ChangeStatus/{id}")]
         public IApiResponse ChangeStatus(int id)
         {
-            return _newsService.ChangeStatus(id);
+            return _latestNewsService.ChangeStatus(id);
+        }
+
+        [HttpGet("ChangecommentStatus/{id}")]
+        public IApiResponse ChangecommentStatus(int id)
+        {
+            return _latestNewsService.ChangecommentStatus(id);
         }
 
         [HttpDelete("Delete/{id}")]
         public IApiResponse Delete(int id)
         {
-            return _newsService.Delete(id);
+            return _latestNewsService.Delete(id);
         }
-
     }
 }

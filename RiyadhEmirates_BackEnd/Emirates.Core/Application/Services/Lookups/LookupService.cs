@@ -75,5 +75,14 @@ namespace Emirates.Core.Application.Services.Lookups
                 Name = item.NameAr
             }).ToList());
         }
+        public IApiResponse GetContactUsMessageTypeLookupList()
+        {
+            return GetResponse(data: _emiratesUnitOfWork.Lookups.GetContactUsMessageTypes().Where(l => l.IsActive).Select(item =>
+            new LookupDto<int>
+            {
+                Id = item.Id,
+                Name = item.NameAr
+            }).ToList());
+        }
     }
 }

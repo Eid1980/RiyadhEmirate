@@ -88,10 +88,10 @@ namespace Emirates.Core.Application.Services.NewsCategueries
         }
         public IApiResponse Delete(int id)
         {
-            var newsCateguery = _emiratesUnitOfWork.NewsCategueries.FirstOrDefault(n => n.Id == id, x => x.LatestNews);
+            var newsCateguery = _emiratesUnitOfWork.NewsCategueries.FirstOrDefault(n => n.Id == id, x => x.News);
             if (newsCateguery == null)
                 throw new NotFoundException(typeof(NewsCateguery).Name);
-            if (newsCateguery.LatestNews.Count > 0)
+            if (newsCateguery.News.Count > 0)
                 throw new BusinessException("تصنيف الخبر مضاف على أخبار");
 
             _emiratesUnitOfWork.NewsCategueries.Remove(newsCateguery);

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { GovernorateService } from '@shared/proxy/governorates/governorate.service';
 import { GetGovernorateListDto } from '@shared/proxy/governorates/models';
 import { GlobalService } from '@shared/services/global.service';
@@ -11,8 +10,7 @@ import { GlobalService } from '@shared/services/global.service';
 export class GovernorateShowComponent implements OnInit {
   governorateListDto = [] as GetGovernorateListDto[];
 
-  constructor(private governorateService: GovernorateService, private globalService: GlobalService,
-    public sanitizer: DomSanitizer  ) {
+  constructor(private governorateService: GovernorateService, private globalService: GlobalService) {
   }
 
   ngOnInit(): void {

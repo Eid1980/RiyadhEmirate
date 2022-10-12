@@ -5,6 +5,8 @@ import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.valida
 import { CreateGovernorateDto } from '@shared/proxy/governorates/models';
 import { GovernorateService } from '@shared/proxy/governorates/governorate.service';
 import { FileManagerService } from '@shared/services/file-manager.service';
+import { FileCateguery } from '@shared/enums/file-categuery.enum';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-governorate-add',
@@ -17,8 +19,8 @@ export class GovernorateAddComponent implements OnInit {
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 10000000;
-  acceptType: 'image/*';
+  fileSize: number = environment.governoratesfileSize ? environment.governoratesfileSize : environment.fileSize;
+  acceptType: string = environment.governoratesallowedExtensions ? environment.governoratesallowedExtensions : environment.allowedExtensions;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion
@@ -41,7 +43,7 @@ export class GovernorateAddComponent implements OnInit {
       phoneNumber: [this.createGovernorateDto.phoneNumber || ''],
       locationLink: [this.createGovernorateDto.locationLink || ''],
       portalLink: [this.createGovernorateDto.portalLink || ''],
-      image: [null, Validators.required],
+      image: [this.createGovernorateDto.image || null],
       isActive: [this.createGovernorateDto.isActive || true, Validators.required]
     });
   }
@@ -58,16 +60,23 @@ export class GovernorateAddComponent implements OnInit {
     this.isFormSubmitted = true;
     if (this.createGovernorateForm.valid) {
       this.createGovernorateDto = { ...this.createGovernorateForm.value } as CreateGovernorateDto;
-      this.caseTypeService.create(this.createGovernorateDto)
-        .subscribe((response) => {
-          this.globalService.showMessage(response.message);
-          if (response.isSuccess) {
-            let id = response.data.toString();
-            this.fileManagerService.upload(id, 'Governorate', '', [this.createGovernorateForm.get('image').value]).subscribe(res => {
+      let imageContent = this.createGovernorateForm.get('image').value;
+      if (imageContent) {
+        this.createGovernorateDto.imageName = imageContent.name;
+      }
+      this.caseTypeService.create(this.createGovernorateDto).subscribe((response) => {
+        this.globalService.showMessage(response.message);
+        if (response.isSuccess) {
+          if (imageContent) {
+            this.fileManagerService.uploadFile(FileCateguery.Governorates, response.data.fileName, [imageContent]).subscribe(res => {
               this.globalService.navigate("/admin/data-management/governorate-list");
             });
           }
-        });
+          else {
+            this.globalService.navigate("/admin/data-management/governorate-list");
+          }
+        }
+      });
     }
   }
 }

@@ -1,7 +1,21 @@
 export const environment = {
   production: true,
+
   ApiUrl: "http://localhost:4201",
-  allowedExtensions: 'image/*',
-  fileSize: 1000000,
   lastSieUpdate: "2022/10/10",
+
+  allowedExtensions: 'image/*',
+  fileSize: 4000000,
+
+  governoratesallowedExtensions: 'image/*',
+  governoratesfileSize: 2000000,
+  newsallowedExtensions: 'image/*',
+  newsfileSize: 1500000,
+  postersallowedExtensions: 'image/*',
+  postersfileSize: 3000000,
+  princesallowedExtensions: 'image/*',
+  princesfileSize: 2000000,
+  servicesallowedExtensions: 'image/*',
+  servicesfileSize: 2000000,
+
 };

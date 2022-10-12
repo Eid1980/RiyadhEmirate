@@ -6,8 +6,6 @@ import { ToastModule } from 'primeng/toast';
 import { CoreModule } from '../core/core.module';
 import { HomeComponent } from './components/home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { NewsComponent } from './components/news/news.component';
-import { NewsInnerComponent } from './components/news-inner/news-inner.component';
 import { ServicesGuideComponent } from './components/services-guide/services-guide.component';
 import { ServicesGuideInnerComponent } from './components/services-guide-inner/services-guide-inner.component';
 // emirate pages
@@ -16,7 +14,7 @@ import { WomenSectionComponent } from './components/emirate/women-section/women-
 import { RegionPrincesComponent } from './components/emirate/region-princes/region-princes.component';
 import { OrganizationChartComponent } from './components/emirate/organization-chart/organization-chart.component';
 import { LatestNewsComponent } from './components/latest-news/latest-news.component';
-import { LatestNewsInnerComponent } from './components/latest-news-inner/latest-news-inner.component';
+import { NewsDetailsComponent } from './components/news-details/news-details.component';
 import { OpenDataComponent } from './components/open-data/open-data.component';
 import { GovernorateShowComponent } from './components/emirate/governorate-show/governorate-show.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -28,14 +26,14 @@ import { RSSComponent } from './components/rss/rss.component';
 import { MobileApplicationsComponent } from './components/mobile-applications/mobile-applications.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { NewsSearchComponent } from './components/news-search/news-search.component';
+import { GovernorateNewsComponent } from './components/governorate-news/governorate-news.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    NewsComponent,
-    NewsInnerComponent,
     LatestNewsComponent,
-    LatestNewsInnerComponent,
+    NewsDetailsComponent,
     ServicesGuideComponent,
     ServicesGuideInnerComponent,
     AboutusComponent,
@@ -52,7 +50,9 @@ import { NewsSearchComponent } from './components/news-search/news-search.compon
     RSSComponent,
     MobileApplicationsComponent,
     ContactUsComponent,
-    NewsSearchComponent
+    NewsSearchComponent,
+    GovernorateNewsComponent,
+    ReportsComponent
   ],
   imports: [
     SharedModule,

@@ -22,11 +22,11 @@
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">الوصف عربي</span>
-        <span class="form-val">{{ governorateDetailsDto?.descriptionAr }}</span>
+        <span class="form-val" *ngIf="governorateDetailsDto?.descriptionEn" [outerHTML]="governorateDetailsDto?.descriptionAr | listString"></span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">الوصف إنجليزي</span>
-        <span class="form-val">{{ governorateDetailsDto?.descriptionEn }}</span>
+        <span *ngIf="governorateDetailsDto?.descriptionEn" [outerHTML]="governorateDetailsDto?.descriptionEn | listString"></span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">رقم الهاتف</span>
@@ -44,11 +44,8 @@
         <span class="form-lbl lbl-33">البوابة الالكترونية للموقع</span>
         <a [href]="governorateDetailsDto?.portalLink" *ngIf="governorateDetailsDto?.portalLink" class="btn btn-save" target="_blank">عرض البوابة الالكترونية</a>
       </div>
-      <div class="info-col col-md-6 col-12" *ngIf="governorateDetailsDto?.image">
-        <span class="form-lbl lbl-33">الصورة</span>
-        <span class="form-val">
-          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(governorateDetailsDto?.image?.base64File)" alt="" style="width: 180px" />
-        </span>
+      <div class="form-group col-6" *ngIf="governorateDetailsDto?.imageName">
+        <img [src]="['/assets/images/uploads/governorates/'+governorateDetailsDto?.imageName]" [alt]="governorateDetailsDto?.nameEn" style="width: 100%; height: 200px;" />
       </div>
     </div>
   </div>

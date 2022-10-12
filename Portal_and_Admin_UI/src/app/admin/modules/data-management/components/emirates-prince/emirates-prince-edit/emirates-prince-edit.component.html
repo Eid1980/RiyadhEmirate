@@ -53,7 +53,7 @@
           <label for="" class="form-lbl">تحميل الصورة</label>
           <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
                         (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
-                        accept="image/*" [maxFileSize]="fileSize">
+                        [accept]="acceptType" [maxFileSize]="fileSize">
           </p-fileUpload>
         </div>
         <div class="form-group col-6">

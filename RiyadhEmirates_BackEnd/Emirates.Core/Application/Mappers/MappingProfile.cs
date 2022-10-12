@@ -47,8 +47,10 @@ namespace Emirates.Core.Application.Mappers
             #endregion
 
             #region Governorate
-            CreateMap<CreateGovernorateDto, Governorate>();
-            CreateMap<UpdateGovernorateDto, Governorate>();
+            CreateMap<CreateGovernorateDto, Governorate>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
+            CreateMap<UpdateGovernorateDto, Governorate>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
 
             CreateMap<Governorate, GetGovernorateDetailsDto>();
             CreateMap<Governorate, GetGovernorateListDto>();
@@ -58,35 +60,29 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<CreateDesignEvaluationDto, DesignEvaluation>();
             #endregion
 
-            #region LatestNews
-            CreateMap<CreateLatestNewsDto, LatestNews>();
-            CreateMap<UpdateLatestNewsDto, LatestNews>();
+            #region News
+            CreateMap<CreateNewsDto, News>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
+            CreateMap<UpdateNewsDto, News>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
 
-            CreateMap<LatestNews, GetLatestNewsDetailsDto>()
+            CreateMap<News, GetNewsDetailsDto>()
                 .ForMember(dest => dest.NewsCategueryName, src => src.MapFrom(m => m.NewsCateguery.NameAr))
-                .ForMember(dest => dest.LatestNewsDate, src => src.MapFrom(m => m.Date.ToString("yyyy-MM-dd")));
-            CreateMap<LatestNews, GetLatestNewsListDto>()
+                .ForMember(dest => dest.NewsDate, src => src.MapFrom(m => m.Date.ToString("yyyy-MM-dd")));
+            CreateMap<News, GetNewsListDto>()
                 .ForMember(dest => dest.NewsCategueryName, src => src.MapFrom(m => m.NewsCateguery.NameAr));
             #endregion
 
-            #region LatestNewsComment
-            CreateMap<CreateLatestNewsCommentDto, LatestNewsComment>();
+            #region NewsComment
+            CreateMap<CreateNewsCommentDto, NewsComment>();
 
-            CreateMap<LatestNewsComment, GetLatestNewsCommentDetailsDto>()
+            CreateMap<NewsComment, GetNewsCommentDetailsDto>()
                 .ForMember(dest => dest.CommentStageName, src => src.MapFrom(m => m.CommentStage.NameAr))
                 .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
-            CreateMap<LatestNewsComment, GetLatestNewsCommentListDto>()
+            CreateMap<NewsComment, GetNewsCommentListDto>()
                 .ForMember(dest => dest.CommentStageName, src => src.MapFrom(m => m.CommentStage.NameAr))
-                .ForMember(dest => dest.IsArabic, src => src.MapFrom(m => m.LatestNews.IsArabic))
+                .ForMember(dest => dest.IsArabic, src => src.MapFrom(m => m.News.IsArabic))
                 .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
-            #endregion
-
-            #region News
-            CreateMap<CreateNewsDto, News>();
-            CreateMap<UpdateNewsDto, News>();
-
-            CreateMap<News, GetNewsDetailsDto>();
-            CreateMap<News, GetNewsListDto>();
             #endregion
 
             #region NewsCateguery

@@ -147,6 +147,33 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region ContactUsMessage
+            modelBuilder.Entity<ContactUsMessage>(b =>
+            {
+                b.ToTable("ContactUsMessages", EmiratesDbSchemas.RequestSehema);
+                b.Property(x => x.FullName).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.ContactUsMessageTypeId).IsRequired();
+                b.Property(x => x.Title).HasMaxLength(EmiratesConstants.MaxNameLength).IsRequired();
+                b.Property(x => x.Content).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.IsReplied).IsRequired().HasDefaultValue(false);
+
+                b.HasOne<ContactUsMessageType>(x => x.ContactUsMessageType).WithMany(x => x.ContactUsMessages).HasForeignKey(x => x.ContactUsMessageTypeId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedContactUsMessages).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region ContactUsMessageType
+            modelBuilder.Entity<ContactUsMessageType>(b =>
+            {
+                b.ToTable("ContactUsMessageTypes", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxNameLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.HasData(DefaultData.ContactUsMessageTypes());
+            });
+            #endregion
+
             #region DefendantType
             modelBuilder.Entity<DefendantType>(b =>
             {
@@ -214,43 +241,6 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
-            #region LatestNews
-            modelBuilder.Entity<LatestNews>(b =>
-            {
-                b.ToTable("LatestNews", EmiratesDbSchemas.DataManagement);
-                b.Property(x => x.Title).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.Content).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
-                b.Property(x => x.IsArabic).IsRequired();
-                b.Property(x => x.NewsCategueryId).IsRequired();
-                b.Property(x => x.Date).IsRequired();
-                b.Property(x => x.NewsOrigin).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.IsActive).IsRequired();
-                b.Property(x => x.OpenComments).IsRequired();
-                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
-
-                b.HasOne<NewsCateguery>(x => x.NewsCateguery).WithMany(x => x.LatestNews).HasForeignKey(x => x.NewsCategueryId).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedLatestNews).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedLatestNews).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
-            });
-            #endregion
-
-            #region LatestNewsComment
-            modelBuilder.Entity<LatestNewsComment>(b =>
-            {
-                b.ToTable("LatestNewsComments", EmiratesDbSchemas.DataManagement);
-                b.Property(x => x.LatestNewsId).IsRequired();
-                b.Property(x => x.Comment).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.CommentStageId).IsRequired();
-                b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.CreatedByName).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.CreatedDate).IsRequired();
-
-                b.HasOne<LatestNews>(x => x.LatestNews).WithMany(x => x.LatestNewsComments).HasForeignKey(x => x.LatestNewsId).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<CommentStage>(x => x.CommentStage).WithMany(x => x.LatestNewsComments).HasForeignKey(x => x.CommentStageId).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedLatestNewsComments).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
-            });
-            #endregion
-
             #region MainPagePoints
             modelBuilder.Entity<MainPagePoints>(b =>
             {
@@ -304,15 +294,18 @@ namespace Emirates.InfraStructure.Contexts
             modelBuilder.Entity<News>(b =>
             {
                 b.ToTable("News", EmiratesDbSchemas.DataManagement);
-                b.Property(x => x.TitleAr).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.TitleEn).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.DescriptionAr).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
-                b.Property(x => x.DescriptionEn).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.Title).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.Content).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.IsArabic).IsRequired();
+                b.Property(x => x.NewsTypeId).IsRequired();
                 b.Property(x => x.Date).IsRequired();
+                b.Property(x => x.NewsOrigin).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.ImageName).HasMaxLength(EmiratesConstants.MaxDescriptionLength).IsRequired();
                 b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.OpenComments).IsRequired().HasDefaultValue(false);
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
-               
-                b.HasOne<NewsType>(x => x.NewsTypesCode).WithMany(x => x.News).HasForeignKey(x => x.NewsTypeId).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasOne<NewsCateguery>(x => x.NewsCateguery).WithMany(x => x.News).HasForeignKey(x => x.NewsCategueryId).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedNews).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNews).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
             });
@@ -334,22 +327,20 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
-            #region NewsTypes
-            modelBuilder.Entity<NewsType>(b =>
+            #region NewsComment
+            modelBuilder.Entity<NewsComment>(b =>
             {
-                b.ToTable("NewsTypes", EmiratesDbSchemas.DataManagement);
-                b.Property(x => x.TitleAr).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.TitleEn).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.Date).IsRequired();
-                b.Property(x => x.IsActive).IsRequired();
-                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+                b.ToTable("NewsComments", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.NewsId).IsRequired();
+                b.Property(x => x.Comment).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.CommentStageId).IsRequired();
+                b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.CreatedByName).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.CreatedDate).IsRequired();
 
-                b.HasIndex(x => x.NewsTypeCode).IsUnique();
-                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedNewsType).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNewsType).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
-                    
-                b.HasData(DefaultData.NewsTypes());
-
+                b.HasOne<News>(x => x.News).WithMany(x => x.NewsComments).HasForeignKey(x => x.NewsId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<CommentStage>(x => x.CommentStage).WithMany(x => x.NewsComments).HasForeignKey(x => x.CommentStageId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedNewsComments).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
 
@@ -808,18 +799,18 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<BuildingType> BuildingTypes { get; set; }
         public DbSet<CaseType> CaseTypes { get; set; }
         public DbSet<CommentStage> CommentStages { get; set; }
+        public DbSet<ContactUsMessage> ContactUsMessages { get; set; }
+        public DbSet<ContactUsMessageType> ContactUsMessageTypes { get; set; }
         public DbSet<DefendantType> DefendantTypes { get; set; }
         public DbSet<DesignEvaluation> DesignEvaluations { get; set; }
         public DbSet<EmiratesPrince> EmiratesPrinces { get; set; }
         public DbSet<Governorate> Governorates { get; set; }
-        public DbSet<LatestNews> LatestNews { get; set; }
-        public DbSet<LatestNewsComment> LatestNewsComments { get; set; }
         public DbSet<MainPagePoints> MainPagePoints { get; set; }
         public DbSet<MaritalStatus> MaritalStatuses { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<NewsCateguery> NewsCategueries { get; set; }
-        public DbSet<NewsType> NewTypes { get; set; }
+        public DbSet<NewsComment> NewsComments { get; set; }
         public DbSet<PageContent> PageContent { get; set; }
         public DbSet<Poster> Posters { get; set; }
         public DbSet<Religion> Religions { get; set; }

@@ -1,5 +1,4 @@
-﻿using Emirates.Core.Domain.Entities;
-using Emirates.Core.Domain.Interfaces.Repositories;
+﻿using Emirates.Core.Domain.Interfaces.Repositories;
 
 namespace Emirates.Core.Domain.Interfaces
 {
@@ -8,15 +7,15 @@ namespace Emirates.Core.Domain.Interfaces
         IAudienceRepository Audiences { get; }
         ICaseTypeRepository CaseTypes { get; }
         ICommentStageRepository CommentStages { get; }
+        IContactUsMessageRepository ContactUsMessages { get; }
         IDesignEvaluationRepository DesignEvaluations { get; }
         IEmiratesPrinceRepository EmiratesPrinces { get; }
         IGovernorateRepository Governorates { get; }
         INationalityRepository Nationalities { get; }
-        ILatestNewsRepository LatestNews { get; }
-        ILatestNewsCommentRepository LatestNewsComments { get; }
-        IPageMainPointsRepository PageMainPoints { get; }
         INewsRepository News { get; }
         INewsCategueryRepository NewsCategueries { get; }
+        INewsCommentRepository NewsComments { get; }
+        IPageMainPointsRepository PageMainPoints { get; }
         IPageContentRepository PageContent { get; }
         IPosterRepository Posters { get; }
         IRequestRepository Requests { get; }

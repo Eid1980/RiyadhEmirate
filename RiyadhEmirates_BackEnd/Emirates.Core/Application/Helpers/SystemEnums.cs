@@ -5,7 +5,8 @@ namespace Emirates.Core.Application.Helpers
     {
         public enum NewsTypes
         {
-            LatestNews = 2,
+            LatestNews = 1,
+            GovernorateNews = 2,
             Reports = 3
         }
         public enum CommentStages
@@ -42,7 +43,7 @@ namespace Emirates.Core.Application.Helpers
             public static string News = "news";
             public static string Posters = "posters";
             public static string Princes = "princes";
-            public static string Regions = "regions";
+            public static string Governorates = "governorates";
             public static string Services = "services";
         }
     }

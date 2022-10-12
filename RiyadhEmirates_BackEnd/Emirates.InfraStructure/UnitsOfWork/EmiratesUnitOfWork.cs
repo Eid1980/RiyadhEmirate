@@ -29,6 +29,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public ICommentStageRepository CommentStages => commentStages ??= new CommentStageRepository(Context);
 
 
+        private ContactUsMessageRepository contactUsMessages;
+        public IContactUsMessageRepository ContactUsMessages => contactUsMessages ??= new ContactUsMessageRepository(Context);
+
+
         private DesignEvaluationRepository designEvaluations;
         public IDesignEvaluationRepository DesignEvaluations => designEvaluations ??= new DesignEvaluationRepository(Context);
 
@@ -45,26 +49,24 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public INationalityRepository Nationalities => nationalities ??= new NationalityRepository(Context);
 
 
-        private LatestNewsRepository latestNews;
-        public ILatestNewsRepository LatestNews => latestNews ??= new LatestNewsRepository(Context);
-
-
-        private LatestNewsCommentRepository latestNewsComments;
-        public ILatestNewsCommentRepository LatestNewsComments => latestNewsComments ??= new LatestNewsCommentRepository(Context);
-
-        private PageMainPointsRepository pageMainPoints;
-        public IPageMainPointsRepository PageMainPoints => pageMainPoints ??= new PageMainPointsRepository(Context);
-
         private NewsRepository news;
         public INewsRepository News => news ??= new NewsRepository(Context);
 
 
-        private PageContentRepository pageContent;
-        public IPageContentRepository PageContent => pageContent ??= new PageContentRepository(Context);
-
-
         private NewsCategueryRepository newsCategueries;
         public INewsCategueryRepository NewsCategueries => newsCategueries ??= new NewsCategueryRepository(Context);
+
+
+        private NewsCommentRepository newsComments;
+        public INewsCommentRepository NewsComments => newsComments ??= new NewsCommentRepository(Context);
+
+
+        private PageMainPointsRepository pageMainPoints;
+        public IPageMainPointsRepository PageMainPoints => pageMainPoints ??= new PageMainPointsRepository(Context);
+
+
+        private PageContentRepository pageContent;
+        public IPageContentRepository PageContent => pageContent ??= new PageContentRepository(Context);
 
 
         private PosterRepository posters;

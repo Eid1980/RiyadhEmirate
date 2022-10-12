@@ -1,80 +1,63 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { PagingMetaData } from '@shared/models/paging-meta-data.model';
-import { LatestNewsService } from '@shared/proxy/latest-news/latest-news.service';
-import { GetLatestNewsListDto } from '@shared/proxy/latest-news/models';
+import { GetNewsListDto } from '@shared/proxy/news/models';
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { GlobalService } from '@shared/services/global.service';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
+import { HomeService } from '@shared/proxy/home/home.service';
+import { NewsTypes } from '@shared/enums/news-types.enum';
 
 @Component({
   selector: 'app-latest-news',
   templateUrl: './latest-news.component.html'
 })
 export class LatestNewsComponent implements OnInit {
-  latestNews = [] as GetLatestNewsListDto[];
+  currentLang: string;
+  latestNews = [] as GetNewsListDto[];
 
   firstPage: number;
   activePageNumber: number
-
   totalCount: number
   pageSize: number
-
-  PAGESIZECONST: number = 12;
-
+  PAGESIZECONST: number = 10;
   searchModel = {} as SearchModel
 
-  constructor(
-    private _latestNewService: LatestNewsService,
-    private _translateService: TranslationServiceService,
+  constructor(private homeService: HomeService, private translateService: TranslationServiceService,
     private globalService: GlobalService) {
     this.firstPage = 1;
   }
 
   ngOnInit(): void {
     this.globalService.setTitle('أخر الأخبار');
+    this.currentLang = this.translateService.getCurrentLanguage().Name.toLowerCase();
     this.getLatestNews(this.firstPage);
   }
 
   getLatestNews(pageNumber) {
-    /*if (pageNumber == this.activePageNumber)
-      return*/
-
-    this.searchModel = { PageNumber: pageNumber, PageSize: this.PAGESIZECONST }
-
-    let isArabic = this._translateService.getCurrentLanguage().Name.toLowerCase() == 'ar';
-
-    this._latestNewService.getByLang(isArabic, this.searchModel).subscribe((result: any) => {
+    let isArabic = this.currentLang == 'ar';
+    this.searchModel = {
+      PageNumber: pageNumber, PageSize: this.PAGESIZECONST,
+      SearchFields: [
+        {
+          FieldName: "IsArabic",
+          Operator: "Equal",
+          Value: isArabic.toString()
+        },
+        {
+          FieldName: "NewsTypeId",
+          Operator: "Equal",
+          Value: NewsTypes.LatestNews.toString()
+        }
+      ]
+    }
+    this.homeService.getAllNews(this.searchModel).subscribe((result: any) => {
       this.latestNews = result.data.gridItemsVM;
-
       let pagingMetaData: PagingMetaData = result.data.pagingMetaData;
-
       this.activePageNumber = pagingMetaData.pageNumber;
-
       this.totalCount = pagingMetaData.totalItemCount;
       this.pageSize = pagingMetaData.pageSize;
     });
   }
-
-  /*getNextPage() {
-    if (this.hasNext) {
-      if (Math.round(this.totalCount / this.pageSize) > this.nextPageNumber) {
-        this.hasPrevious = true;
-        this.pageNumber = this.pageNumber + 1;
-        this.nextPageNumber = this.nextPageNumber + 1
-      }
-    }
-  }
-
-  getPreviousPage() {
-    if (this.hasPrevious) {
-      if (this.pageNumber > 1) {
-        this.pageNumber = this.pageNumber - 1;
-        this.nextPageNumber = this.nextPageNumber - 1
-      }
-    }
-  }*/
-
   paginate(event){
     this.getLatestNews(event.page + 1)
   }

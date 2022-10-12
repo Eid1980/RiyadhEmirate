@@ -6,6 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ListStringPipe implements PipeTransform {
 
   transform(content: string) {
+    if (!content) {
+      return '';
+    }
     let myContent = content.split("\n");
     if (myContent.length <= 1) {
       return `<span>${content}</span>`;

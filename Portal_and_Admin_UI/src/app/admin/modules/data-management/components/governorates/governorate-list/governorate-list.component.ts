@@ -34,6 +34,7 @@ export class GovernorateListComponent implements OnInit {
         { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
         { Field: 'nameAr', Header: 'الاسم عربي' },
         { Field: 'nameEn', Header: 'الاسم انجليزي' },
+        { Field: 'phoneNumber', Header: 'رقم الهاتف' },
         {
           Field: 'isActive',
           Header: 'الحالة',

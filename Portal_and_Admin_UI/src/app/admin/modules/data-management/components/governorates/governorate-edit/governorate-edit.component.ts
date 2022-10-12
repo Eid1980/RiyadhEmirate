@@ -7,6 +7,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { GovernorateService } from '@shared/proxy/governorates/governorate.service';
 import { UpdateGovernorateDto } from '@shared/proxy/governorates/models';
+import { FileCateguery } from '@shared/enums/file-categuery.enum';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-governorate-edit',
@@ -16,14 +18,13 @@ export class GovernorateEditComponent implements OnInit {
   updateGovernorateform: FormGroup;
   isFormSubmitted: boolean;
   id: number;
-  oldImage: any;
   updateGovernorateDto = {} as UpdateGovernorateDto;
 
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 10000000;
-  acceptType: 'image/*';
+  fileSize: number = environment.governoratesfileSize ? environment.governoratesfileSize : environment.fileSize;
+  acceptType: string = environment.governoratesallowedExtensions ? environment.governoratesallowedExtensions : environment.allowedExtensions;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion
@@ -62,7 +63,6 @@ export class GovernorateEditComponent implements OnInit {
     this.governorateService.getById(this.id).subscribe((response) => {
       this.updateGovernorateDto = response.data as UpdateGovernorateDto;
       this.buildForm();
-      this.oldImage = response.data.image;
     });
   }
   onUpload(event: any) {
@@ -71,19 +71,22 @@ export class GovernorateEditComponent implements OnInit {
   onRemove(event) {
     this.updateGovernorateform.get('image').setValue(null);
   }
+
   onSubmit() {
     this.isFormSubmitted = true;
     if (this.updateGovernorateform.valid) {
       this.updateGovernorateDto = { ...this.updateGovernorateform.value } as UpdateGovernorateDto;
       this.updateGovernorateDto.id = this.id;
+      let imageContent = this.updateGovernorateform.get('image').value;
+      if (imageContent) {
+        this.updateGovernorateDto.imageName = imageContent.name;
+      }
       this.governorateService.update(this.updateGovernorateDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
-          if (this.updateGovernorateform.get('image').value) {
-            this.fileManagerService.deleteByEntityName(this.id, 'Governorate').subscribe((res) => {
-              this.fileManagerService.upload(this.id.toString(), 'Governorate', '', [this.updateGovernorateform.get('image').value]).subscribe((res) => {
-                this.globalService.navigate('/admin/data-management/governorate-list');
-              });
+          if (imageContent) {
+            this.fileManagerService.uploadFile(FileCateguery.Governorates, response.data.fileName, [imageContent]).subscribe(res => {
+              this.globalService.navigate('/admin/data-management/governorate-list');
             });
           }
           else {

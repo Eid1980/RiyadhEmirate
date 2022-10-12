@@ -7,6 +7,7 @@ import { CreateEmiratesPrinceDto } from '@shared/proxy/emirates-princes/models';
 import { DateType } from 'ngx-hijri-gregorian-datepicker';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { FileCateguery } from '@shared/enums/file-categuery.enum';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-emirates-prince-add',
@@ -20,8 +21,8 @@ export class EmiratesPrinceAddComponent implements OnInit {
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 10000000;
-  acceptType: 'image/*';
+  fileSize: number = environment.princesfileSize ? environment.princesfileSize : environment.fileSize;
+  acceptType: string = environment.princesallowedExtensions ? environment.princesallowedExtensions : environment.allowedExtensions;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion

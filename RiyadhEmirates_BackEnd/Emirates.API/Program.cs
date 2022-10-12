@@ -161,25 +161,8 @@ try
     #endregion
 
     #region services
-    DependencyContainer.RegisterServices(builder);
-
-    //builder.Services.AddScoped<IUserService, UserService>();
-    //builder.Services.AddScoped<IRequestService, RequestService>();
-    //builder.Services.AddScoped<ILocalizationService, LocalizationService>();
-    //builder.Services.AddScoped<IFileManagerService, FileManagerService>();
-    //builder.Services.AddScoped<IFileUploaderService, FileUploaderService>();
-    //builder.Services.AddScoped<ILatestNewsService, LatestNewsService>();
-    //builder.Services.AddScoped<IReportsService, ReportsService>();
-    //builder.Services.AddScoped<IEmiratesNewsService, EmiratesNewsService>();
-    //builder.Services.AddScoped<IServiceService, ServiceService>();
-    //builder.Services.AddScoped<IServiceRateService, ServiceRateService>();
-    //builder.Services.AddScoped<INationalityService, NationalityService>();
-    //builder.Services.AddScoped<IMailService, MailService>();
-    
+    DependencyContainer.RegisterServices(builder);    
     builder.Services.Configure<MailSettingsDto>(configuration.GetSection("MailSettings"));
-    
-
-
     #endregion
 
     builder.Services.AddHttpContextAccessor();

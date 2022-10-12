@@ -1,4 +1,5 @@
 ﻿using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Home;
 using Emirates.Core.Application.Services.Shared;
@@ -38,10 +39,24 @@ namespace Emirates.API.Controllers
             return _homeService.GetAllServices();
         }
 
+        #region News
         [AllowAnonymous, HttpGet("GetNewsSearch/{filter}")]
         public IApiResponse GetNewsSearch(string filter)
         {
             return _homeService.GetNewsSearch(filter);
         }
+
+        [AllowAnonymous, HttpPost("GetAllNews")]
+        public IApiResponse GetAllNews(SearchModel searchModel)
+        {
+            return _homeService.GetAllNews(searchModel);
+        }
+
+        [AllowAnonymous, HttpGet("GetTop5NewsByLang/{isArabic}")]
+        public IApiResponse GetTop5NewsByLang(bool isArabic = true)
+        {
+            return _homeService.GetTop5NewsByLang(isArabic);
+        }
+        #endregion
     }
 }

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CreateGovernorateDto, GetGovernorateDetailsDto, GetGovernorateListDto, UpdateGovernorateDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { LookupDto } from '../shared/lookup-dto.model';
+import { FileToUploadDto } from '../shared/file-to-upload-dto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,11 +24,11 @@ export class GovernorateService {
     );
   }
 
-  create = (createdDto: CreateGovernorateDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  create = (createdDto: CreateGovernorateDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.post<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Create`, createdDto).pipe();
   }
-  update = (updatedDto: UpdateGovernorateDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  update = (updatedDto: UpdateGovernorateDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.put<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }
 
   changeStatus = (id: number): Observable<ApiResponse<boolean>> => {

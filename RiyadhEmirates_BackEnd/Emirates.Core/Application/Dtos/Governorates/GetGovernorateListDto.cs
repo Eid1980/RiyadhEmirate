@@ -11,8 +11,7 @@ namespace Emirates.Core.Application.Dtos
         public string PhoneNumber { get; set; }
         public string LocationLink { get; set; }
         public string PortalLink { get; set; }
+        public string ImageName { get; set; }
         public bool IsActive { get; set; }
-
-        public UploadedFileBase64Dto Image { get; set; }
     }
 }

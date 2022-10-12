@@ -9,7 +9,7 @@ export class FullDatePipe implements PipeTransform {
   constructor(private globalService: GlobalService) { }
 
   transform(date: string, lang: string | null | undefined) {
-    return this.globalService.getFullDate(date, lang);
+    return this.globalService.getFullDate(new Date(date), lang);
   }
 
 }

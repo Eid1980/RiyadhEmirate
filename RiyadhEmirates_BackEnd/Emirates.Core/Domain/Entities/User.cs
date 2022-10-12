@@ -80,17 +80,11 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<UploadedFile> CreatedUploadedFiles { get; set; }
         public virtual ICollection<UploadedFile> ModifiedUploadedFiles { get; set; }
 
-        public virtual ICollection<LatestNews> CreatedLatestNews { get; set; }
-        public virtual ICollection<LatestNews> ModifiedLatestNews { get; set; }
-
         public virtual ICollection<News> CreatedNews { get; set; }
         public virtual ICollection<News> ModifiedNews { get; set; }
 
         public virtual ICollection<NewsCateguery> CreatedNewsCategueries { get; set; }
         public virtual ICollection<NewsCateguery> ModifiedNewsCategueries { get; set; }
-
-        public virtual ICollection<NewsType> CreatedNewsType { get; set; }
-        public virtual ICollection<NewsType> ModifiedNewsType { get; set; }
 
         public virtual ICollection<ServiceRate> CreatedServiceRates { get; set; }
 
@@ -114,7 +108,7 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<ServiceCondition> CreatedServiceConditions { get; set; }
         public virtual ICollection<ServiceCondition> ModifiedServiceConditions { get; set; }
 
-        public virtual ICollection<LatestNewsComment> ModifiedLatestNewsComments { get; set; }
+        public virtual ICollection<NewsComment> ModifiedNewsComments { get; set; }
 
         public virtual ICollection<CommentStage> CreatedCommentStages { get; set; }
         public virtual ICollection<CommentStage> ModifiedCommentStages { get; set; }
@@ -125,5 +119,7 @@ namespace Emirates.Core.Domain.Entities
 
         public virtual ICollection<EmiratesPrince> CreatedEmiratesPrinces { get; set; }
         public virtual ICollection<EmiratesPrince> ModifiedEmiratesPrinces { get; set; }
+
+        public virtual ICollection<ContactUsMessage> ModifiedContactUsMessages { get; set; }
     }
 }

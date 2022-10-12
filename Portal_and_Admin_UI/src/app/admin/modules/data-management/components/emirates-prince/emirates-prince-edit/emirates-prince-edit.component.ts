@@ -9,6 +9,7 @@ import { FileManagerService } from '@shared/services/file-manager.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { FileCateguery } from '@shared/enums/file-categuery.enum';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-emirates-prince-edit',
@@ -23,8 +24,8 @@ export class EmiratesPrinceEditComponent implements OnInit {
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 10000000;
-  acceptType: 'image/*';
+  fileSize: number = environment.princesfileSize ? environment.princesfileSize : environment.fileSize;
+  acceptType: string = environment.princesallowedExtensions ? environment.princesallowedExtensions : environment.allowedExtensions;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion
@@ -71,7 +72,6 @@ export class EmiratesPrinceEditComponent implements OnInit {
   getDetails() {
     this.emiratesPrinceService.getById(this.id).subscribe((response) => {
       this.updateEmiratesPrinceDto = response.data as UpdateEmiratesPrinceDto;
-      debugger;
       //#region Set FromDate
       let from_date = new Date(this.updateEmiratesPrinceDto.fromDate);
       let ngbDateStructGregorian = {

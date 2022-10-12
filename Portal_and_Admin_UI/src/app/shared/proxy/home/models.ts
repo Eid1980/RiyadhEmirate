@@ -25,8 +25,8 @@ export interface GetAllServiceListDto {
 export interface GetNewsSearchListDto {
   id: number;
   title: string;
-  description: string;
+  content: string;
   date: string;
-  isLatestNews: boolean;
-  image: any;
+  newsTypeId: number;
+  imageName: any;
 }

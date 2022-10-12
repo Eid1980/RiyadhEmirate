@@ -40,5 +40,9 @@ namespace Emirates.InfraStructure.Repositories
         {
             return _context.CommentStages.AsQueryable();
         }
+        public IQueryable<ContactUsMessageType> GetContactUsMessageTypes()
+        {
+            return _context.ContactUsMessageTypes.AsQueryable();
+        }
     }
 }

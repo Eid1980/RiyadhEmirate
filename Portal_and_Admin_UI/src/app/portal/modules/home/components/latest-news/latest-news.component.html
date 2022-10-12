@@ -18,39 +18,26 @@
   </div>
 
   <div class="row my-5" *ngIf="latestNews.length > 0">
-    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let news of latestNews">
-      <a class="card-basic" [routerLink]="['/home/latest-news', news.id]" routerLinkActive="router-link-active">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of latestNews">
+      <a class="card-basic" [routerLink]="['/home/news-details', item.id]" routerLinkActive="router-link-active">
         <div class="card-basic-banner">
-          <img [src]="news.image?.base64File" class="img-fluid" alt="banner" />
+          <img *ngIf="item?.imageName" [src]="['/assets/images/uploads/news/'+item.imageName]" [alt]="item?.title" class="img-fluid" />
+          <img *ngIf="!item?.imageName" src="assets/images/120.png" [alt]="item?.title" class="img-fluid" />
         </div>
         <div class="card-basic-body">
-          <h4>{{ news.title }}</h4>
-          <p>{{ news.content }}</p>
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.content| customSlice: 40 }} ...</p>
+          <span class="date">
+            <img src="assets/images/icons/date-white.svg" class="date-icon" alt="icon" />
+            <span class="date-desc">
+              {{item?.date | fullDate: currentLang}}
+            </span>
+          </span>
         </div>
       </a>
     </div>
 
-    <p-paginator [rows]="PAGESIZECONST" [totalRecords]="totalCount" [rowsPerPageOptions]="[12,16,24]"
+    <p-paginator [rows]="PAGESIZECONST" [totalRecords]="totalCount" [rowsPerPageOptions]="[10, 25, 50, 100]"
       (onPageChange)="paginate($event)"></p-paginator>
-
-    <!--<nav aria-label="Page navigation example">
-      <ul class="pagination pagination-sm">
-        <li class="page-item  ">
-          <button aria-label="Previous" [disabled]="!hasPrevious" (click)="getPreviousPage()">
-            <span aria-hidden="true">Previous</span>
-          </button>
-        </li>
-        <li class="page-item"><a class="page-link" (click)="getLatestNews(pageNumber)">{{ pageNumber }}</a></li>
-        <li class="page-item"><a class="page-link" (click)="getLatestNews(nextPageNumber)">
-          {{ nextPageNumber }}
-        </a></li>
-
-        <li class="page-item">
-          <button aria-label="Next" [disabled]="!hasNext" (click)="getNextPage()">
-            <span aria-hidden="true">Next</span>
-          </button>
-        </li>
-      </ul>
-    </nav>-->
   </div>
 </div>

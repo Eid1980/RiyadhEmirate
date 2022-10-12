@@ -19,22 +19,20 @@
 
   <div class="row my-5" *ngIf="newsSearchListDto.length > 0">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let news of newsSearchListDto">
-      <a *ngIf="news.isLatestNews" class="card-basic" [routerLink]="['/home/latest-news', news.id]" routerLinkActive="router-link-active">
+      <a class="card-basic" [routerLink]="['/home/news-details', news.id]" routerLinkActive="router-link-active">
         <div class="card-basic-banner">
-          <img [src]="news.image?.base64File" class="img-fluid" alt="banner" />
+          <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]" [alt]="news?.title" class="img-fluid" />
+          <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title" class="img-fluid" />
         </div>
         <div class="card-basic-body">
           <h4>{{ news.title }}</h4>
-          <p>{{ news.description }}</p>
-        </div>
-      </a>
-      <a *ngIf="!news.isLatestNews" class="card-basic" [routerLink]="['/home/news', news.id]" routerLinkActive="router-link-active">
-        <div class="card-basic-banner">
-          <img [src]="news.image?.base64File" class="img-fluid" alt="banner" />
-        </div>
-        <div class="card-basic-body">
-          <h4>{{ news.title }}</h4>
-          <p>{{ news.description }}</p>
+          <p>{{ news.content | customSlice: 40 }} ...</p>
+          <span class="date">
+            <img src="assets/images/icons/date-white.svg" class="date-icon" alt="icon" />
+            <span class="date-desc">
+              {{news?.date | fullDate: currentLang}}
+            </span>
+          </span>
         </div>
       </a>
     </div>

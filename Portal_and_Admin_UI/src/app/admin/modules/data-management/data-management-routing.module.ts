@@ -4,14 +4,6 @@ import { AuthGuard } from "@shared/guards/auth.guard";
 import { ListPosterComponent } from "./components/poster/list-poster/list-poster.component";
 import { AddPosterComponent } from "./components/poster/add-poster/add-poster.component";
 import { EditPosterComponent } from "./components/poster/edit-poster/edit-poster.component";
-import { EmiratesNewsAddComponent } from "./components/emirates-news/emirates-news-add/emirates-news-add.component";
-import { EmiratesNewsListComponent } from "./components/emirates-news/emirates-news-list/emirates-news-list.component";
-import { EmiratesNewsEditComponent } from "./components/emirates-news/emirates-news-edit/emirates-news-edit.component";
-import { EmiratesNewsViewComponent } from "./components/emirates-news/emirates-news-view/emirates-news-view.component";
-import { ReportsListComponent } from "./components/reports/reports-list/reports-list.component";
-import { ReportsAddComponent } from "./components/reports/reports-add/reports-add.component";
-import { ReportsEditComponent } from "./components/reports/reports-edit/reports-edit.component";
-import { ReportsViewComponent } from "./components/reports/reports-view/reports-view.component";
 import { ServiceViewComponent } from "./components/services/service-view/service-view.component";
 import { ServiceEditComponent } from "./components/services/service-edit/service-edit.component";
 import { ServiceAddComponent } from "./components/services/service-add/service-add.component";
@@ -39,18 +31,18 @@ import { NewsCategueryAddComponent } from "./components/news-categueries/news-ca
 import { NewsCategueryEditComponent } from "./components/news-categueries/news-categuery-edit/news-categuery-edit.component";
 import { NewsCategueryListComponent } from "./components/news-categueries/news-categuery-list/news-categuery-list.component";
 import { NewsCategueryViewComponent } from "./components/news-categueries/news-categuery-view/news-categuery-view.component";
-import { LatestNewsArListComponent } from "./components/latest-news-ar/latest-news-ar-list/latest-news-ar-list.component";
-import { LatestNewsArAddComponent } from "./components/latest-news-ar/latest-news-ar-add/latest-news-ar-add.component";
-import { LatestNewsArEditComponent } from "./components/latest-news-ar/latest-news-ar-edit/latest-news-ar-edit.component";
-import { LatestNewsArViewComponent } from "./components/latest-news-ar/latest-news-ar-view/latest-news-ar-view.component";
-import { LatestNewsEnEditComponent } from "./components/latest-news-en/latest-news-en-edit/latest-news-en-edit.component";
-import { LatestNewsEnListComponent } from "./components/latest-news-en/latest-news-en-list/latest-news-en-list.component";
-import { LatestNewsEnAddComponent } from "./components/latest-news-en/latest-news-en-add/latest-news-en-add.component";
-import { LatestNewsEnViewComponent } from "./components/latest-news-en/latest-news-en-view/latest-news-en-view.component";
+import { LatestNewsArListComponent } from "./components/news/latest-news-ar/latest-news-ar-list/latest-news-ar-list.component";
+import { LatestNewsArAddComponent } from "./components/news/latest-news-ar/latest-news-ar-add/latest-news-ar-add.component";
+import { LatestNewsArEditComponent } from "./components/news/latest-news-ar/latest-news-ar-edit/latest-news-ar-edit.component";
+import { LatestNewsArViewComponent } from "./components/news/latest-news-ar/latest-news-ar-view/latest-news-ar-view.component";
+import { LatestNewsEnEditComponent } from "./components/news/latest-news-en/latest-news-en-edit/latest-news-en-edit.component";
+import { LatestNewsEnListComponent } from "./components/news/latest-news-en/latest-news-en-list/latest-news-en-list.component";
+import { LatestNewsEnAddComponent } from "./components/news/latest-news-en/latest-news-en-add/latest-news-en-add.component";
+import { LatestNewsEnViewComponent } from "./components/news/latest-news-en/latest-news-en-view/latest-news-en-view.component";
+import { LatestNewsEnCommentsComponent } from "./components/news/latest-news-en/latest-news-en-comments/latest-news-en-comments.component";
+import { LatestNewsArCommentsComponent } from "./components/news/latest-news-ar/latest-news-ar-comments/latest-news-ar-comments.component";
 import { EditAboutUsComponent } from "./components/about-us/edit-about-us/edit-about-us.component";
 import { EditWomanSectionComponent } from "./components/woman-section/edit-woman-section/edit-woman-section.component";
-import { LatestNewsEnCommentsComponent } from "./components/latest-news-en/latest-news-en-comments/latest-news-en-comments.component";
-import { LatestNewsArCommentsComponent } from "./components/latest-news-ar/latest-news-ar-comments/latest-news-ar-comments.component";
 import { GovernorateAddComponent } from "./components/governorates/governorate-add/governorate-add.component";
 import { GovernorateEditComponent } from "./components/governorates/governorate-edit/governorate-edit.component";
 import { GovernorateListComponent } from "./components/governorates/governorate-list/governorate-list.component";
@@ -60,8 +52,94 @@ import { EmiratesPrinceViewComponent } from "./components/emirates-prince/emirat
 import { EmiratesPrinceListComponent } from "./components/emirates-prince/emirates-prince-list/emirates-prince-list.component";
 import { EmiratesPrinceEditComponent } from "./components/emirates-prince/emirates-prince-edit/emirates-prince-edit.component";
 import { EmiratesPrinceAddComponent } from "./components/emirates-prince/emirates-prince-add/emirates-prince-add.component";
+import { GovernorateNewsArListComponent } from "./components/news/governorate-news-ar/governorate-news-ar-list/governorate-news-ar-list.component";
+import { GovernorateNewsArAddComponent } from "./components/news/governorate-news-ar/governorate-news-ar-add/governorate-news-ar-add.component";
+import { GovernorateNewsArEditComponent } from "./components/news/governorate-news-ar/governorate-news-ar-edit/governorate-news-ar-edit.component";
+import { GovernorateNewsArViewComponent } from "./components/news/governorate-news-ar/governorate-news-ar-view/governorate-news-ar-view.component";
+import { GovernorateNewsEnListComponent } from "./components/news/governorate-news-en/governorate-news-en-list/governorate-news-en-list.component";
+import { GovernorateNewsEnAddComponent } from "./components/news/governorate-news-en/governorate-news-en-add/governorate-news-en-add.component";
+import { GovernorateNewsEnEditComponent } from "./components/news/governorate-news-en/governorate-news-en-edit/governorate-news-en-edit.component";
+import { GovernorateNewsEnViewComponent } from "./components/news/governorate-news-en/governorate-news-en-view/governorate-news-en-view.component";
+import { ReportsArListComponent } from "./components/news/report-ar/reports-ar-list/reports-ar-list.component";
+import { ReportsArAddComponent } from "./components/news/report-ar/reports-ar-add/reports-ar-add.component";
+import { ReportsArEditComponent } from "./components/news/report-ar/reports-ar-edit/reports-ar-edit.component";
+import { ReportsArViewComponent } from "./components/news/report-ar/reports-ar-view/reports-ar-view.component";
+import { ReportsEnListComponent } from "./components/news/report-en/reports-en-list/reports-en-list.component";
+import { ReportsEnAddComponent } from "./components/news/report-en/reports-en-add/reports-en-add.component";
+import { ReportsEnEditComponent } from "./components/news/report-en/reports-en-edit/reports-en-edit.component";
+import { ReportsEnViewComponent } from "./components/news/report-en/reports-en-view/reports-en-view.component";
 
 const routes: Routes = [
+
+  //#region GovernorateNewsAr
+  {
+    path: "governorate-news-ar-list",
+    component: GovernorateNewsArListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "governorate-news-ar-add",
+    component: GovernorateNewsArAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "governorate-news-ar-edit/:id",
+    component: GovernorateNewsArEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "governorate-news-ar-view/:id",
+    component: GovernorateNewsArViewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  //#endregion
+  //#region GovernorateNewsEn
+  {
+    path: "governorate-news-en-list",
+    component: GovernorateNewsEnListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "governorate-news-en-add",
+    component: GovernorateNewsEnAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "governorate-news-en-edit/:id",
+    component: GovernorateNewsEnEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "governorate-news-en-view/:id",
+    component: GovernorateNewsEnViewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  //#endregion
+
   //#region LatestNewsAr
   {
     path: "latest-news-ar-list",
@@ -104,7 +182,6 @@ const routes: Routes = [
     }
   },
   //#endregion
-
   //#region LatestNewsEn
   {
     path: "latest-news-en-list",
@@ -148,40 +225,75 @@ const routes: Routes = [
   },
   //#endregion
 
-  //#region EmiratesNews
+  //#region ReportsAr
   {
-    path: "emirates-news-add",
-    component: EmiratesNewsAddComponent,
+    path: "reports-ar-list",
+    component: ReportsArListComponent,
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
     }
   },
   {
-    path: "emirates-news-edit/:id",
-    component: EmiratesNewsEditComponent,
+    path: "reports-ar-add",
+    component: ReportsArAddComponent,
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
     }
   },
   {
-    path: "emirates-news-list",
-    component: EmiratesNewsListComponent,
+    path: "reports-ar-edit/:id",
+    component: ReportsArEditComponent,
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
     }
   },
   {
-    path: "emirates-news-view/:id",
-    component: EmiratesNewsViewComponent,
+    path: "reports-ar-view/:id",
+    component: ReportsArViewComponent,
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
     }
   },
   //#endregion
+  //#region ReportsEn
+  {
+    path: "reports-en-list",
+    component: ReportsEnListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "reports-en-add",
+    component: ReportsEnAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "reports-en-edit/:id",
+    component: ReportsEnEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  {
+    path: "reports-en-view/:id",
+    component: ReportsEnViewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
+    }
+  },
+  //#endregion
+
 
   //#region EmiratesPrince
   {
@@ -211,41 +323,6 @@ const routes: Routes = [
   {
     path: "emirates-prince-view/:id",
     component: EmiratesPrinceViewComponent,
-    canActivate: [AuthGuard],
-    data: {
-      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
-    }
-  },
-  //#endregion
-
-  //#region Reports
-  {
-    path: "reports-list",
-    component: ReportsListComponent,
-    canActivate: [AuthGuard],
-    data: {
-      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
-    }
-  },
-  {
-    path: "reports-add",
-    component: ReportsAddComponent,
-    canActivate: [AuthGuard],
-    data: {
-      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
-    }
-  },
-  {
-    path: "reports-edit/:id",
-    component: ReportsEditComponent,
-    canActivate: [AuthGuard],
-    data: {
-      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]
-    }
-  },
-  {
-    path: "reports-view/:id",
-    component: ReportsViewComponent,
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission]

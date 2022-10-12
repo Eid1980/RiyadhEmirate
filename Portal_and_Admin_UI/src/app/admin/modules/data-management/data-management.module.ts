@@ -4,14 +4,6 @@ import { DataManagementRoutingModule } from './data-management-routing.module';
 import { AddPosterComponent } from './components/poster/add-poster/add-poster.component';
 import { EditPosterComponent } from './components/poster/edit-poster/edit-poster.component';
 import { ListPosterComponent } from './components/poster/list-poster/list-poster.component';
-import { EmiratesNewsAddComponent } from './components/emirates-news/emirates-news-add/emirates-news-add.component';
-import { EmiratesNewsListComponent } from './components/emirates-news/emirates-news-list/emirates-news-list.component';
-import { EmiratesNewsEditComponent } from './components/emirates-news/emirates-news-edit/emirates-news-edit.component';
-import { EmiratesNewsViewComponent } from './components/emirates-news/emirates-news-view/emirates-news-view.component';
-import { ReportsAddComponent } from './components/reports/reports-add/reports-add.component';
-import { ReportsEditComponent } from './components/reports/reports-edit/reports-edit.component';
-import { ReportsListComponent } from './components/reports/reports-list/reports-list.component';
-import { ReportsViewComponent } from './components/reports/reports-view/reports-view.component';
 import { ServiceAddComponent } from './components/services/service-add/service-add.component';
 import { ServiceEditComponent } from './components/services/service-edit/service-edit.component';
 import { ServiceListComponent } from './components/services/service-list/service-list.component';
@@ -41,18 +33,18 @@ import { NewsCategueryAddComponent } from './components/news-categueries/news-ca
 import { NewsCategueryEditComponent } from './components/news-categueries/news-categuery-edit/news-categuery-edit.component';
 import { NewsCategueryListComponent } from './components/news-categueries/news-categuery-list/news-categuery-list.component';
 import { NewsCategueryViewComponent } from './components/news-categueries/news-categuery-view/news-categuery-view.component';
-import { LatestNewsArAddComponent } from './components/latest-news-ar/latest-news-ar-add/latest-news-ar-add.component';
-import { LatestNewsArEditComponent } from './components/latest-news-ar/latest-news-ar-edit/latest-news-ar-edit.component';
-import { LatestNewsArListComponent } from './components/latest-news-ar/latest-news-ar-list/latest-news-ar-list.component';
-import { LatestNewsArViewComponent } from './components/latest-news-ar/latest-news-ar-view/latest-news-ar-view.component';
-import { LatestNewsEnViewComponent } from './components/latest-news-en/latest-news-en-view/latest-news-en-view.component';
-import { LatestNewsEnAddComponent } from './components/latest-news-en/latest-news-en-add/latest-news-en-add.component';
-import { LatestNewsEnListComponent } from './components/latest-news-en/latest-news-en-list/latest-news-en-list.component';
-import { LatestNewsEnEditComponent } from './components/latest-news-en/latest-news-en-edit/latest-news-en-edit.component';
+import { LatestNewsArAddComponent } from './components/news/latest-news-ar/latest-news-ar-add/latest-news-ar-add.component';
+import { LatestNewsArEditComponent } from './components/news/latest-news-ar/latest-news-ar-edit/latest-news-ar-edit.component';
+import { LatestNewsArListComponent } from './components/news/latest-news-ar/latest-news-ar-list/latest-news-ar-list.component';
+import { LatestNewsArViewComponent } from './components/news/latest-news-ar/latest-news-ar-view/latest-news-ar-view.component';
+import { LatestNewsEnViewComponent } from './components/news/latest-news-en/latest-news-en-view/latest-news-en-view.component';
+import { LatestNewsEnAddComponent } from './components/news/latest-news-en/latest-news-en-add/latest-news-en-add.component';
+import { LatestNewsEnListComponent } from './components/news/latest-news-en/latest-news-en-list/latest-news-en-list.component';
+import { LatestNewsEnEditComponent } from './components/news/latest-news-en/latest-news-en-edit/latest-news-en-edit.component';
+import { LatestNewsArCommentsComponent } from './components/news/latest-news-ar/latest-news-ar-comments/latest-news-ar-comments.component';
+import { LatestNewsEnCommentsComponent } from './components/news/latest-news-en/latest-news-en-comments/latest-news-en-comments.component';
 import { AddAboutUsComponent } from './components/about-us/add-about-us/add-about-us.component';
 import { EditAboutUsComponent } from './components/about-us/edit-about-us/edit-about-us.component';
-import { LatestNewsArCommentsComponent } from './components/latest-news-ar/latest-news-ar-comments/latest-news-ar-comments.component';
-import { LatestNewsEnCommentsComponent } from './components/latest-news-en/latest-news-en-comments/latest-news-en-comments.component';
 import { EditWomanSectionComponent } from './components/woman-section/edit-woman-section/edit-woman-section.component';
 import { GovernorateAddComponent } from './components/governorates/governorate-add/governorate-add.component';
 import { GovernorateListComponent } from './components/governorates/governorate-list/governorate-list.component';
@@ -62,20 +54,28 @@ import { EmiratesPrinceListComponent } from './components/emirates-prince/emirat
 import { EmiratesPrinceAddComponent } from './components/emirates-prince/emirates-prince-add/emirates-prince-add.component';
 import { EmiratesPrinceEditComponent } from './components/emirates-prince/emirates-prince-edit/emirates-prince-edit.component';
 import { EmiratesPrinceViewComponent } from './components/emirates-prince/emirates-prince-view/emirates-prince-view.component';
+import { GovernorateNewsArAddComponent } from './components/news/governorate-news-ar/governorate-news-ar-add/governorate-news-ar-add.component';
+import { GovernorateNewsArEditComponent } from './components/news/governorate-news-ar/governorate-news-ar-edit/governorate-news-ar-edit.component';
+import { GovernorateNewsArListComponent } from './components/news/governorate-news-ar/governorate-news-ar-list/governorate-news-ar-list.component';
+import { GovernorateNewsArViewComponent } from './components/news/governorate-news-ar/governorate-news-ar-view/governorate-news-ar-view.component';
+import { GovernorateNewsEnViewComponent } from './components/news/governorate-news-en/governorate-news-en-view/governorate-news-en-view.component';
+import { GovernorateNewsEnListComponent } from './components/news/governorate-news-en/governorate-news-en-list/governorate-news-en-list.component';
+import { GovernorateNewsEnEditComponent } from './components/news/governorate-news-en/governorate-news-en-edit/governorate-news-en-edit.component';
+import { GovernorateNewsEnAddComponent } from './components/news/governorate-news-en/governorate-news-en-add/governorate-news-en-add.component';
+import { ReportsArAddComponent } from './components/news/report-ar/reports-ar-add/reports-ar-add.component';
+import { ReportsArEditComponent } from './components/news/report-ar/reports-ar-edit/reports-ar-edit.component';
+import { ReportsArListComponent } from './components/news/report-ar/reports-ar-list/reports-ar-list.component';
+import { ReportsArViewComponent } from './components/news/report-ar/reports-ar-view/reports-ar-view.component';
+import { ReportsEnViewComponent } from './components/news/report-en/reports-en-view/reports-en-view.component';
+import { ReportsEnListComponent } from './components/news/report-en/reports-en-list/reports-en-list.component';
+import { ReportsEnEditComponent } from './components/news/report-en/reports-en-edit/reports-en-edit.component';
+import { ReportsEnAddComponent } from './components/news/report-en/reports-en-add/reports-en-add.component';
 
 @NgModule({
   declarations: [
     AddPosterComponent,
     EditPosterComponent,
     ListPosterComponent,
-    EmiratesNewsAddComponent,
-    EmiratesNewsListComponent,
-    EmiratesNewsEditComponent,
-    EmiratesNewsViewComponent,
-    ReportsAddComponent,
-    ReportsEditComponent,
-    ReportsListComponent,
-    ReportsViewComponent,
     ServiceAddComponent,
     ServiceEditComponent,
     ServiceListComponent,
@@ -124,6 +124,22 @@ import { EmiratesPrinceViewComponent } from './components/emirates-prince/emirat
     EmiratesPrinceAddComponent,
     EmiratesPrinceEditComponent,
     EmiratesPrinceViewComponent,
+    GovernorateNewsArAddComponent,
+    GovernorateNewsArEditComponent,
+    GovernorateNewsArListComponent,
+    GovernorateNewsArViewComponent,
+    GovernorateNewsEnViewComponent,
+    GovernorateNewsEnListComponent,
+    GovernorateNewsEnEditComponent,
+    GovernorateNewsEnAddComponent,
+    ReportsArAddComponent,
+    ReportsArEditComponent,
+    ReportsArListComponent,
+    ReportsArViewComponent,
+    ReportsEnViewComponent,
+    ReportsEnListComponent,
+    ReportsEnEditComponent,
+    ReportsEnAddComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

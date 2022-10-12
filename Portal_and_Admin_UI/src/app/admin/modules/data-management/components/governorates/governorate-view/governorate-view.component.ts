@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { GlobalService } from "@shared/services/global.service";
-import { DomSanitizer } from "@angular/platform-browser";
 import { GetGovernorateDetailsDto } from "@shared/proxy/governorates/models";
 import { GovernorateService } from "@shared/proxy/governorates/governorate.service";
 
@@ -14,7 +13,7 @@ export class GovernorateViewComponent implements OnInit {
   governorateDetailsDto = {} as GetGovernorateDetailsDto;
 
   constructor(private governorateService: GovernorateService, private activatedRoute: ActivatedRoute,
-    public sanitizer: DomSanitizer, private globalService: GlobalService) {
+    private globalService: GlobalService) {
   }
 
   ngOnInit() {

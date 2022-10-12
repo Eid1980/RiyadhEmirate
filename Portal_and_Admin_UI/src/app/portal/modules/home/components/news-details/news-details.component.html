@@ -1,0 +1,99 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <a class="breadcrumb-item fs-16" [routerLink]="['/home/latest-news']">أخر الأخبار</a>
+        <span class="breadcrumb-item fs-16 active">تفاصيل الخبر</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="artical-content-wrapper">
+      <div class="d-flex justify-content-center mb-5">
+        <img *ngIf="newsDetailsDto?.imageName" [src]="['/assets/images/uploads/news/'+newsDetailsDto.imageName]" [alt]="newsDetailsDto?.title" class="img-fluid" />
+        <img *ngIf="!newsDetailsDto?.imageName" src="assets/images/120.png" [alt]="newsDetailsDto?.title" class="img-fluid" />
+      </div>
+      <div class="row">
+        <div class="col-lg-10">
+          <div class="my-2 ms-lg-1">
+            <h4 class="artical-head">{{ newsDetailsDto.title }}</h4>
+            <p class="artical-text me-3" *ngIf="newsDetailsDto?.content" [outerHTML]="newsDetailsDto?.content | listString"></p>
+          </div>
+        </div>
+        <div class="col-lg-2 d-flex">
+          <div class="my-2 me-auto">
+            <div class="d-flex text-black-50 fa-16 mb-2">
+              <i class="fa-regular fa-calendar-days"></i>
+              <span class="fa-12 me-2">{{ newsDetailsDto.newsDate }}</span>
+            </div>
+            <!--<div class="d-flex text-black-50 fa-16 mb-2">
+              <i class="fa-solid fa-clipboard"></i>
+              <span class="fa-12 me-2"><b>التصنيف: </b>{{newsDetailsDto.newsCategueryName}}</span>
+            </div>-->
+            <div class="d-flex text-black-50 fa-16 mb-2">
+              <i class="fa-solid fa-pen-clip"></i>
+              <span class="fa-12 me-2"><b>المصدر: </b>{{newsDetailsDto.newsOrigin}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" *ngIf="canComments">
+      <div class="bg-white rounded-4 border p-3 p-md-5 mt-md-5 mt-3 mb-4" *ngIf="getNewsCommentListDto?.length > 0">
+        <h4 class="text-primary fa-22 fw-bold mb-md-5 mb-3">التعليقات</h4>
+        <div class="comments-container">
+          <div class="comment-item d-flex border-bottom pb-4 mb-4 flex-md-nowrap flex-wrap"
+            *ngFor="let comment of getNewsCommentListDto">
+            <div class="avatar ms-3 my-1">
+              <img src="assets/images/businessman.png" class="img-fluid border rounded-circle" alt="avatar"
+                style="height: 50px;width: 60px;min-height: 50px;min-width: 55px;" />
+            </div>
+            <div class="content my-1">
+              <h5 class="fw-bold fa-18 mb-2">{{comment.createdByName}}</h5><b>{{comment.createdDate}}</b>
+              <p class="mb-0 fw-normal text-muted fa-14">{{comment.comment}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-4 border p-md-5 p-3 pt-4" *ngIf="newsDetailsDto.openComments">
+        <h4 class="text-black fa-22 fw-bold mb-md-4 mb-3">إضافة تعليق</h4>
+        <form [formGroup]="createCommentForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="form-group">
+                <label for="createdByName">الاسم</label>
+                <input type="text" class="form-control" id="createdByName" formControlName="createdByName" />
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="form-group">
+                <label for="email">البريد الإلكترونى</label>
+                <input type="email" class="form-control" id="email" formControlName="email" />
+              </div>
+            </div>
+            <div class="col-12 mb-3">
+              <div class="form-group">
+                <label for="comment">التعليق</label>
+                <textarea class="form-control" id="comment" rows="5" formControlName="comment"></textarea>
+                <small
+                  *ngIf="(isFormSubmitted || createCommentForm.get('comment').touched) && createCommentForm.get('comment').errors?.required"
+                  class="danger">هذاالحقل مطلوب</small>
+              </div>
+            </div>
+            <div class="col-12 d-flex justify-content-end mt-4">
+              <button type="submit" class="btn btn-primary px-5 pt-2 d-flex">
+                إرسال
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

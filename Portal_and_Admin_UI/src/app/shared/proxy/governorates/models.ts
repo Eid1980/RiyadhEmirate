@@ -7,7 +7,10 @@ export interface CreateGovernorateDto {
   phoneNumber: string;
   locationLink: string;
   portalLink: string;
+  imageName: string;
   isActive: boolean;
+
+  image: any;
 }
 
 export interface UpdateGovernorateDto {
@@ -19,7 +22,10 @@ export interface UpdateGovernorateDto {
   phoneNumber: string;
   locationLink: string;
   portalLink: string;
+  imageName: string;
   isActive: boolean;
+
+  image: any;
 }
 
 export interface GetGovernorateDetailsDto {
@@ -31,9 +37,8 @@ export interface GetGovernorateDetailsDto {
   phoneNumber: string;
   locationLink: string;
   portalLink: string;
+  imageName: string;
   isActive: boolean;
-
-  image: any;
 }
 
 export interface GetGovernorateListDto {
@@ -45,7 +50,6 @@ export interface GetGovernorateListDto {
   phoneNumber: string;
   locationLink: string;
   portalLink: string;
+  imageName: string;
   isActive: boolean;
-
-  image: any;
 }

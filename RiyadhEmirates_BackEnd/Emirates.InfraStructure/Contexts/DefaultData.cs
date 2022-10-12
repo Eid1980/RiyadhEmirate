@@ -37,6 +37,14 @@ namespace Emirates.InfraStructure.Contexts
             arrData[2] = new CommentStage { Id = 3, NameAr = "مرفوض", NameEn = "Rejected", CanShowComment = false, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             return arrData;
         }
+        public static ContactUsMessageType[] ContactUsMessageTypes()
+        {
+            ContactUsMessageType[] arrData = new ContactUsMessageType[3];
+            arrData[0] = new ContactUsMessageType { Id = 1, NameAr = "سؤال", NameEn = "Question", IsActive = true};
+            arrData[1] = new ContactUsMessageType { Id = 2, NameAr = "اقتراح", NameEn = "Suggestion", IsActive = true};
+            arrData[2] = new ContactUsMessageType { Id = 3, NameAr = "طلب مساعدة", NameEn = "Help", IsActive = true};
+            return arrData;
+        }
         public static EmiratesPrince[] EmiratesPrinces()
         {
             EmiratesPrince[] arrData = new EmiratesPrince[14];
@@ -614,30 +622,6 @@ namespace Emirates.InfraStructure.Contexts
             UserRole[] arrData = new UserRole[2];
             arrData[0] = new UserRole { Id = 1, UserId = 1, RoleId = 1, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[1] = new UserRole { Id = 2, UserId = 2, RoleId = 2, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            return arrData;
-        }
-
-        public static NewsType[] NewsTypes()
-        {
-            NewsType[] arrData = new NewsType[2];
-            arrData[0] = new NewsType
-            {
-                Id = 2,
-                TitleAr = "اخر المحافظات",
-                TitleEn = "Provinces news",
-                NewsTypeCode = 2,
-                CreatedBy = 1,
-                CreatedDate = new DateTime(2022, 10, 1)
-            };
-            arrData[1] = new NewsType
-            {
-                Id = 3,
-                TitleAr = "التقارير الاعلانيه",
-                TitleEn = "Advertisments reports",
-                NewsTypeCode = 3,
-                CreatedBy = 1,
-                CreatedDate = new DateTime(2022, 10, 1)
-            };
             return arrData;
         }
 

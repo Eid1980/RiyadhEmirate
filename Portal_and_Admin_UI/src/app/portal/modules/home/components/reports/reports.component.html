@@ -1,0 +1,43 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">آخر الأخبار</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div *ngIf="reports.length == 0">
+    <div class="empty-container">
+      <img src="assets/images/icons/pic/no-result.png" class="img-fluid" alt="vector" />
+      <h4>لا يوجد بيانات</h4>
+    </div>
+  </div>
+
+  <div class="row my-5" *ngIf="reports.length > 0">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of reports">
+      <a class="card-basic" [routerLink]="['/home/news-details', item.id]" routerLinkActive="router-link-active">
+        <div class="card-basic-banner">
+          <img *ngIf="item?.imageName" [src]="['/assets/images/uploads/news/'+item.imageName]" [alt]="item?.title" class="img-fluid" />
+          <img *ngIf="!item?.imageName" src="assets/images/120.png" [alt]="item?.title" class="img-fluid" />
+        </div>
+        <div class="card-basic-body">
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.content| customSlice: 40 }} ...</p>
+          <span class="date">
+            <img src="assets/images/icons/date-white.svg" class="date-icon" alt="icon" />
+            <span class="date-desc">
+              {{item?.date | fullDate: currentLang}}
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <p-paginator [rows]="PAGESIZECONST" [totalRecords]="totalCount" [rowsPerPageOptions]="[10, 25, 50, 100]"
+                 (onPageChange)="paginate($event)"></p-paginator>
+  </div>
+</div>

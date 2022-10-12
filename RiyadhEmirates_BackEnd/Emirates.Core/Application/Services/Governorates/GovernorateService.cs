@@ -4,6 +4,7 @@ using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.DynamicSearch;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.FileManagers;
@@ -32,9 +33,7 @@ namespace Emirates.Core.Application.Services.Governorates
             var governorate = _emiratesUnitOfWork.Governorates.FirstOrDefault(l => l.Id.Equals(id));
             if (governorate == null)
                 throw new NotFoundException(typeof(Governorate).Name);
-            var mappedModel = _mapper.Map<GetGovernorateDetailsDto>(governorate);
-            mappedModel.Image = _fileManagerService.GetBase64File(id, "Governorate");
-            return GetResponse(data: mappedModel);
+            return GetResponse(data: _mapper.Map<GetGovernorateDetailsDto>(governorate));
         }
         public IApiResponse GetAll(SearchModel searchModel)
         {
@@ -51,22 +50,8 @@ namespace Emirates.Core.Application.Services.Governorates
         }
         public IApiResponse GetAll()
         {
-            var governoratesQuerable = _emiratesUnitOfWork.Governorates.GetQueryable().OrderByDescending(s => s.CreatedDate);
-            var query = from governorate in governoratesQuerable
-                         where  governorate.IsActive
-                         select new GetGovernorateListDto
-                         {
-                             Id = governorate.Id,
-                             NameAr = governorate.NameAr,
-                             NameEn = governorate.NameEn,
-                             DescriptionAr = governorate.DescriptionAr,
-                             DescriptionEn = governorate.DescriptionEn,
-                             PhoneNumber = governorate.PhoneNumber,
-                             LocationLink = governorate.LocationLink,
-                             PortalLink = governorate.PortalLink,
-                             Image = _fileManagerService.GetBase64File(governorate.Id, "Governorate")
-                         };
-            return GetResponse(data: query.ToList());
+            var governorates = _emiratesUnitOfWork.Governorates.Where(l => l.IsActive).OrderByDescending(d => d.CreatedDate);
+            return GetResponse(data: _mapper.Map<List<GetGovernorateListDto>>(governorates));
         }
 
         public IApiResponse Create(CreateGovernorateDto createModel)
@@ -78,7 +63,7 @@ namespace Emirates.Core.Application.Services.Governorates
 
             var addedModel = _emiratesUnitOfWork.Governorates.Add(_mapper.Map<Governorate>(createModel));
             _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
+            return GetResponse(message: CustumMessages.SaveSuccess(), data: new FileToUploadDto { Id = addedModel.Id, FileName = addedModel.ImageName });
         }
         public IApiResponse Update(UpdateGovernorateDto updateModel)
         {
@@ -91,9 +76,21 @@ namespace Emirates.Core.Application.Services.Governorates
             if (_emiratesUnitOfWork.Governorates.Where(x => x.Id != updateModel.Id && x.NameEn.Equals(updateModel.NameEn)).Any())
                 throw new BusinessException("الاسم انجليزي مضاف مسبقا");
 
-            _emiratesUnitOfWork.Governorates.Update(governorate, _mapper.Map<Governorate>(updateModel));
-            _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
+            var newGovernorate = _mapper.Map<Governorate>(updateModel);
+            newGovernorate.ImageName = string.IsNullOrEmpty(newGovernorate.ImageName) ? governorate.ImageName : newGovernorate.ImageName;
+            string oldImageName = governorate.ImageName;
+
+            _emiratesUnitOfWork.Governorates.Update(governorate, newGovernorate);
+            if (_emiratesUnitOfWork.Complete() > 0)
+            {
+                if (!string.IsNullOrEmpty(updateModel.ImageName) && !string.IsNullOrEmpty(oldImageName))
+                    _fileManagerService.Delete(new DeleteFileDto
+                    {
+                        CategueryName = SystemEnums.FileCateguery.Governorates,
+                        Name = oldImageName
+                    });
+            }
+            return GetResponse(message: CustumMessages.UpdateSuccess(), data: new FileToUploadDto { Id = updateModel.Id, FileName = newGovernorate.ImageName });
         }
         public IApiResponse ChangeStatus(int id)
         {
@@ -116,7 +113,12 @@ namespace Emirates.Core.Application.Services.Governorates
                 throw new BusinessException("المحافظة مرتبطة بطلبات في خدمات تملك عقار للأجانب");
 
             _emiratesUnitOfWork.Governorates.Remove(governorate);
-            _emiratesUnitOfWork.Complete();
+            if (_emiratesUnitOfWork.Complete() > 0)
+                _fileManagerService.Delete(new DeleteFileDto
+                {
+                    CategueryName = SystemEnums.FileCateguery.Governorates,
+                    Name = governorate.ImageName
+                });
             return GetResponse(message: CustumMessages.DeleteSuccess());
         }
 
