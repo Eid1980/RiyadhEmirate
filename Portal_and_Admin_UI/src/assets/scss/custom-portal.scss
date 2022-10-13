@@ -1331,6 +1331,16 @@
       }
     }
 
+    @media screen and (max-width: $min-lg) {
+      .owl-prev {
+        right: 0px;
+      }
+  
+      .owl-next {
+        left: 0px;
+      }
+    }
+
     .owl-nav {
       margin-top: 0;
 

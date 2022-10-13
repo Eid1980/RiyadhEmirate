@@ -240,6 +240,7 @@
 
 .p-autocomplete .p-autocomplete-loader {
   right: 0.5rem;
+  background-color: red;
 }
 .p-autocomplete.p-autocomplete-dd .p-autocomplete-loader {
   right: 2.857rem;

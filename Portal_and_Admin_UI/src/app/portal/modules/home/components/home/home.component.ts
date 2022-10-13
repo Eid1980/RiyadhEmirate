@@ -126,7 +126,7 @@ export class HomeComponent implements OnInit {
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
-    dots: true,
+    dots: false,
     navSpeed: 700,
     rtl: true,
     navText: ['', ''],
@@ -186,11 +186,10 @@ export class HomeComponent implements OnInit {
     animateOut: 'slideOutUp',
     animateIn: 'slideInUp'
   };
- //#endregion
+  //#endregion
 
   constructor(private homeService: HomeService, private _posterService: PosterService, public sanitizer: DomSanitizer,
-    private _globalService: GlobalService, private translateService: TranslationServiceService)
-  {
+    private _globalService: GlobalService, private translateService: TranslationServiceService) {
   }
 
   ngOnInit() {

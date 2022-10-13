@@ -30,8 +30,10 @@
               <div class="owl-item">
                 <div class="item">
                   <div class="news-card cursor-pointer" [routerLink]="['home/news-details' , news.id]">
-                    <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]" [alt]="news?.title" class="iimg-fluid news-img" />
-                    <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title" class="img-fluid news-img" />
+                    <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]"
+                      [alt]="news?.title" class="iimg-fluid news-img" />
+                    <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title"
+                      class="img-fluid news-img" />
                     <img src="assets/images/news-overlay.png" alt="overlay" class="img-fluid overlay" />
                     <div class="news-caption">
                       <h6 class="h2">
@@ -67,7 +69,7 @@
                 <div class="item">
                   <div class="services-details-box" *ngIf="i == 0">
                     <a class="services-details-card" *ngFor="let service of serviceGuidFirst"
-                       [routerLink]="['home/services-guide/' , service.id]">
+                      [routerLink]="['home/services-guide/' , service.id]">
                       <div class="card-image">
                         <img *ngIf="service.image"
                           [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid"
@@ -83,7 +85,7 @@
                   </div>
                   <div class="services-details-box" *ngIf="i != 0">
                     <a class="services-details-card" *ngFor="let service of internalServices | servicefilter:i"
-                       [routerLink]="['/home/services-guide/' , service.id]">
+                      [routerLink]="['/home/services-guide/' , service.id]">
                       <div class="card-image">
                         <img *ngIf="service.image"
                           [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid"
@@ -214,13 +216,17 @@
               <ng-template carouselSlide *ngFor="let news of governorateNews">
                 <div class="item">
                   <div class="card cursor-pointer" [routerLink]="['home/news-details' , news.id]">
-                    <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]" [alt]="news?.title" class="card-img-top" />
-                    <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title" class="card-img-top" />
-                    <div class="card-body">
-                      <h5 class="card-title h-2">{{ news?.title }}</h5>
-                      <p class="card-text">
-                        <img src="./assets/images/icons/order-date.svg" alt="" />
-                        {{ news?.date| fullDate: currentLang }}
+                    <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]"
+                      [alt]="news?.title" class="card-img-top" />
+                    <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title"
+                      class="card-img-top" />
+                    <div class="card-body ps-2">
+                      <h5 class="card-title h-2 fa-16">{{ news?.title }}</h5>
+                      <p class="card-text fa-11">
+                        <img src="assets/images/icons/order-date.svg" alt="icon" class="img-fluid" />
+                        <span>
+                          {{ news?.date| fullDate: currentLang }}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -231,8 +237,8 @@
         </div>
       </div>
 
-      <div class="col-md-5 my-2" style="height: fit-content">
-        <div class="advertise-report">
+      <div class="col-md-5 my-2">
+        <div class="news">
           <div class="section-title">
             <h3 class="title"> {{ 'home.advertisingReports' | translate }}</h3>
             <div class="more d-flex">
@@ -245,19 +251,26 @@
           <div class="owl__carousel">
             <owl-carousel-o [options]="advertiseReportOptions" class="owl-rtl">
               <ng-template carouselSlide *ngFor="let report of reports">
-                <div class="item">
-                  <div class="ad-card cursor-pointer" [routerLink]="['home/news-details' , report.id]">
-                    <img *ngIf="report?.imageName" [src]="['/assets/images/uploads/news/'+report.imageName]" [alt]="report?.title" class="ad-card-img" />
-                    <img *ngIf="!report?.imageName" src="assets/images/120.png" [alt]="report?.title" class="ad-card-img" />
-                    <img src="./assets/images/add-overlay.png" alt="" class="overlay" />
-                    <div class="ad-card-content">
-                      <span class="desc">
-                        {{ report.title }}
-                      </span>
-                      <span class="ad-calendar">
-                        <img src="./assets/images/icons/add-calendar.svg" alt="" />
-                        <span>{{ report?.date| fullDate: currentLang }}</span>
-                      </span>
+                <div class="owl-item">
+                  <div class="item">
+                    <div class="news-card cursor-pointer" [routerLink]="['home/news-details' , report.id]">
+                      <img *ngIf="report?.imageName" [src]="['/assets/images/uploads/news/'+report.imageName]"
+                        [alt]="report?.title" class="iimg-fluid news-img" style="height: 335px;" />
+                      <img *ngIf="!report?.imageName" src="assets/images/120.png" [alt]="report?.title"
+                        class="img-fluid news-img" style="height: 335px;" />
+                      <img src="assets/images/news-overlay.png" alt="overlay" class="img-fluid overlay" />
+
+                      <div class="news-caption">
+                        <h6 class="h2">
+                          {{ report.title }}
+                        </h6>
+                        <span class="date">
+                          <img src="assets/images/icons/date-white.svg" class="date-icon" alt="icon" />
+                          <span class="date-desc">
+                            {{ report?.date| fullDate: currentLang }}
+                          </span>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

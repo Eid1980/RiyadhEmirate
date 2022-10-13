@@ -48,8 +48,8 @@
         }
 
         &.active {
-          background-color: $Primary-1;
-          border: 1px solid $Primary-1;
+          background-color: $primary-alt-3;
+          border: 1px solid $primary-alt-3;
 
           img {
             filter: brightness(0) invert(1);
