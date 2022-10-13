@@ -7,9 +7,8 @@ import { ColumnType } from '@shared/enums/column-type.enum';
 import { PageListSetting } from '@shared/interfaces/page-list-setting';
 import { DatePipeOptions } from '@shared/models/date-pipe-options.model';
 import { GlobalService } from '@shared/services/global.service';
-import { FileManagerService } from '@shared/services/file-manager.service';
 import { NewsService } from '@shared/proxy/news/news.service';
-import { NewsTypes } from '../../../../../../../shared/enums/news-types.enum';
+import { NewsTypes } from '@shared/enums/news-types.enum';
 
 @Component({
   selector: 'app-latest-news-ar-list',
@@ -20,7 +19,7 @@ export class LatestNewsArListComponent implements OnInit {
   pageListSettings: PageListSetting;
   checked: true;
 
-  constructor(private newsService: NewsService, private fileManagerService: FileManagerService, private globalService: GlobalService) {
+  constructor(private newsService: NewsService, private globalService: GlobalService) {
   }
 
   ngOnInit() {
@@ -130,8 +129,6 @@ export class LatestNewsArListComponent implements OnInit {
   isconfirm(id: number) {
     this.newsService.delete(id).subscribe((result) => {
       if (result.isSuccess) {
-        this.fileManagerService.deleteByEntityName(id, 'LatestNews').subscribe((res) => {
-        });
         this.globalService.clearMessages();
         this.list.getData();
       }
