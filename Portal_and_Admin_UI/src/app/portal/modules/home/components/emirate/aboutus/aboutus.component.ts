@@ -11,8 +11,7 @@ export class AboutusComponent implements OnInit {
 
   aboutUs = {} as GetAboutUsDto
 
-  constructor(private aboutService: AboutUsService, private globalService: GlobalService)
-  {
+  constructor(private aboutService: AboutUsService, private globalService: GlobalService) {
   }
 
   ngOnInit(): void {
@@ -20,12 +19,12 @@ export class AboutusComponent implements OnInit {
     this.getAboutUs();
   }
 
-  getAboutUs(){
-    this. aboutService.getAboutUs().subscribe(
+  getAboutUs() {
+    this.aboutService.getAboutUs().subscribe(
       (response) => {
         this.aboutUs = response.data
       },
-      (error) => {}
+      (error) => { }
     )
   }
 

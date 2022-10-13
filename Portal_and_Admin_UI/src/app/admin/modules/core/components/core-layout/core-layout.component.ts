@@ -12,15 +12,24 @@ declare let Layout: any;
 export class CoreLayoutComponent implements OnInit, AfterViewInit {
   items = [] as MenuItem[];
 
-  constructor(private globalService: GlobalService) {}
+  constructor(private globalService: GlobalService) { }
 
   ngOnInit() {
     Layout();
   }
+
   ngAfterViewInit() {
     this.items = [{ label: 'الرئيسية', url: '/', icon: 'pi pi-home' }];
     this.globalService.subject.subscribe((newItems: any) => {
       this.items = this.items.concat(newItems);
+    });
+  }
+
+  onActivate(event: any) {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
     });
   }
 }
