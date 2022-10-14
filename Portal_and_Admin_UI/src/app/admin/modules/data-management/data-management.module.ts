@@ -70,6 +70,10 @@ import { ReportsEnViewComponent } from './components/news/report-en/reports-en-v
 import { ReportsEnListComponent } from './components/news/report-en/reports-en-list/reports-en-list.component';
 import { ReportsEnEditComponent } from './components/news/report-en/reports-en-edit/reports-en-edit.component';
 import { ReportsEnAddComponent } from './components/news/report-en/reports-en-add/reports-en-add.component';
+import { AuctionAddComponent } from './components/auction/auction-add/auction-add.component';
+import { AuctionEditComponent } from './components/auction/auction-edit/auction-edit.component';
+import { AuctionListComponent } from './components/auction/auction-list/auction-list.component';
+import { AuctionViewComponent } from './components/auction/auction-view/auction-view.component';
 
 @NgModule({
   declarations: [
@@ -140,6 +144,10 @@ import { ReportsEnAddComponent } from './components/news/report-en/reports-en-ad
     ReportsEnListComponent,
     ReportsEnEditComponent,
     ReportsEnAddComponent,
+    AuctionAddComponent,
+    AuctionEditComponent,
+    AuctionListComponent,
+    AuctionViewComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

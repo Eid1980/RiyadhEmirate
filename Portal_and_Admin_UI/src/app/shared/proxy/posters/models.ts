@@ -3,6 +3,7 @@ export interface CreatePosterDto {
   titleAr: string;
   titleEn: string;
   order: number;
+  imageName: string;
   isActive: boolean;
   image: any;
 }
@@ -12,6 +13,7 @@ export interface UpdatePosterDto {
   titleAr: string;
   titleEn: string;
   order: number;
+  imageName: string;
   isActive: boolean;
   image: any;
 }
@@ -21,8 +23,8 @@ export interface GetPosterDetailsDto {
   titleAr: string;
   titleEn: string;
   order: number;
+  imageName: string;
   isActive: boolean;
-  image: any;
 }
 
 export interface GetPosterListDto {
@@ -30,5 +32,6 @@ export interface GetPosterListDto {
   titleAr: string;
   titleEn: string;
   order: number;
+  imageName: string;
   isActive: boolean;
 }

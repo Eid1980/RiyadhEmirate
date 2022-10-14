@@ -6,6 +6,7 @@ namespace Emirates.Core.Domain.Entities
         public string TitleAr { get; set; }
         public string TitleEn { get; set; }
         public int Order { get; set; }
+        public string ImageName { get; set; }
         public bool IsActive { get; set; }
 
         public virtual User CreatedUser { get; set; }

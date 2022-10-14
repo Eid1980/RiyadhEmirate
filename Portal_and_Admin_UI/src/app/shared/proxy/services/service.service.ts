@@ -6,6 +6,7 @@ import { ApiResponse } from '../shared/api-response.model';
 import { CreateServiceDto, GetServiceDetailsDto, GetServiceListDto, UpdateServiceDto } from './models';
 import { LookupDto } from '../shared/lookup-dto.model';
 import { SearchModel } from '../shared/search-model.model';
+import { FileToUploadDto } from '../shared/file-to-upload-dto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -32,12 +33,12 @@ export class ServiceService {
     );
   }
 
-  create = (createdDto: CreateServiceDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  create = (createdDto: CreateServiceDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.post<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Create`, createdDto).pipe();
   }
 
-  update = (updatedDto: UpdateServiceDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  update = (updatedDto: UpdateServiceDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.put<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }
 
   changeStatus = (id: number): Observable<ApiResponse<boolean>> => {

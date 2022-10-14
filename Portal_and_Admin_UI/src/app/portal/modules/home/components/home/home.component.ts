@@ -3,7 +3,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { NewsTypes } from '@shared/enums/news-types.enum';
 import { GetPosterDetailsDto } from '@shared/proxy/posters/models';
 import { PosterService } from '@shared/proxy/posters/poster.service';
-import { ApiResponse } from '@shared/proxy/shared/api-response.model';
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { GlobalService } from '@shared/services/global.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -19,7 +18,7 @@ declare let $: any;
 export class HomeComponent implements OnInit {
   currentLang: string;
   searchModel: SearchModel = {};
-  posters: GetPosterDetailsDto[] = [];
+  posters = [] as GetPosterDetailsDto[];
 
   latestNews = [] as GetNewsSearchListDto[];
   governorateNews: GetNewsSearchListDto[] = [];
@@ -188,7 +187,7 @@ export class HomeComponent implements OnInit {
   };
   //#endregion
 
-  constructor(private homeService: HomeService, private _posterService: PosterService, public sanitizer: DomSanitizer,
+  constructor(private homeService: HomeService, private posterService: PosterService, public sanitizer: DomSanitizer,
     private _globalService: GlobalService, private translateService: TranslationServiceService) {
   }
 
@@ -212,17 +211,9 @@ export class HomeComponent implements OnInit {
   }
 
   getPosters() {
-    this._posterService.getAll().subscribe(
-      (res: ApiResponse<GetPosterDetailsDto[]>) => {
-        if (res.isSuccess) {
-          this.posters = res.data;
-        } else {
-          // TODO
-          // display error message
-        }
-      },
-      (err) => { }
-    );
+    this.posterService.getAll().subscribe((res) => {
+      this.posters = res.data;
+    });
   }
   getServices() {
     this.homeService.getAllServices().subscribe(result => {

@@ -7,6 +7,8 @@ import { UpdatePosterDto } from '@shared/proxy/posters/models';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { environment } from 'src/environments/environment';
+import { FileCateguery } from '@shared/enums/file-categuery.enum';
 
 @Component({
   selector: 'app-edit-poster',
@@ -16,14 +18,13 @@ export class EditPosterComponent implements OnInit {
   updatePosterform: FormGroup;
   isFormSubmitted: boolean;
   id: number;
-  oldImage: any;
   updatePosterDto = {} as UpdatePosterDto;
 
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 10000000;
-  acceptType: 'image/*';
+  fileSize: number = environment.postersfileSize ? environment.postersfileSize : environment.fileSize;
+  acceptType: string = environment.postersallowedExtensions ? environment.postersallowedExtensions : environment.allowedExtensions;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion
@@ -60,7 +61,6 @@ export class EditPosterComponent implements OnInit {
     this.posterService.getById(this.id).subscribe((response) => {
       this.updatePosterDto = response.data as UpdatePosterDto;
       this.buildForm();
-      this.oldImage = response.data.image;
     });
   }
   onUpload(event: any) {
@@ -75,16 +75,17 @@ export class EditPosterComponent implements OnInit {
     if (this.updatePosterform.valid) {
       this.updatePosterDto = { ...this.updatePosterform.value } as UpdatePosterDto;
       this.updatePosterDto.id = this.id;
-
+      let imageContent = this.updatePosterform.get('image').value;
+      if (imageContent) {
+        this.updatePosterDto.imageName = imageContent.name;
+      }
       this.posterService.update(this.updatePosterDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
-          if (this.updatePosterform.get('image').value) {
-            this.fileManagerService.deleteByEntityName(this.id, 'Poster').subscribe(res => {
-              this.fileManagerService.upload(this.id.toString(), 'Poster', '', [this.updatePosterform.get('image').value]).subscribe(res => {
-                this.globalService.navigate("/admin/data-management/poster-list");
-              })
-            })
+          if (imageContent) {
+            this.fileManagerService.uploadFile(FileCateguery.Posters, response.data.fileName, [imageContent]).subscribe(res => {
+              this.globalService.navigate("/admin/data-management/poster-list");
+            });
           }
           else {
             this.globalService.navigate("/admin/data-management/poster-list");

@@ -4,6 +4,7 @@ using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.DynamicSearch;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.FileManagers;
@@ -34,19 +35,7 @@ namespace Emirates.Core.Application.Services
             var service = _emiratesUnitOfWork.Services.FirstOrDefault(l => l.Id.Equals(id));
             if (service == null)
                 throw new NotFoundException(typeof(Service).Name);
-            var mappedModel = _mapper.Map<GetServiceDetailsDto>(service);
-            mappedModel.Image = _fileManagerService.GetBase64File(id, "Services");
-            return GetResponse(data: mappedModel);
-        }
-        public IApiResponse GetAll()
-        {
-            var services = _emiratesUnitOfWork.Services.Where(l => l.IsActive).OrderByDescending(s => s.CreatedDate);
-            var mappedList = _mapper.Map<List<GetServiceListDto>>(services);
-            foreach (var item in mappedList)
-            {
-                item.Image = _fileManagerService.GetBase64File(item.Id, "Services");
-            }
-            return GetResponse(data: mappedList);
+            return GetResponse(data: _mapper.Map<GetServiceDetailsDto>(service));
         }
         public IApiResponse GetAll(SearchModel searchModel)
         {
@@ -60,6 +49,11 @@ namespace Emirates.Core.Application.Services
                 GridItemsVM = serchResult,
                 PagingMetaData = serchResult.GetMetaData()
             });
+        }
+        public IApiResponse GetAll()
+        {
+            var services = _emiratesUnitOfWork.Services.Where(l => l.IsActive).OrderByDescending(s => s.CreatedDate);
+            return GetResponse(data: _mapper.Map<List<GetServiceListDto>>(services));
         }
         public IApiResponse GetAllServiceGuide(SearchModel searchModel)
         {
@@ -81,12 +75,7 @@ namespace Emirates.Core.Application.Services
                 (string.IsNullOrEmpty(filter) || filter.Equals("null") || x.NameAr.Contains(filter) || x.NameEn.Contains(filter) ||
                 x.SectorAr.Contains(filter) || x.SectorEn.Contains(filter) ||
                 x.DescriptionAr.Contains(filter) || x.DescriptionEn.Contains(filter)));
-            var mappedList = _mapper.Map<List<GetServiceListDto>>(services);
-            foreach (var item in mappedList)
-            {
-                item.Image = _fileManagerService.GetBase64File(item.Id, "Services");
-            }
-            return GetResponse(data: mappedList);
+            return GetResponse(data: _mapper.Map<List<GetServiceListDto>>(services));
         }
 
         public IApiResponse Create(CreateServiceDto createModel)
@@ -98,7 +87,7 @@ namespace Emirates.Core.Application.Services
 
             var addedModel = _emiratesUnitOfWork.Services.Add(_mapper.Map<Service>(createModel));
             _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
+            return GetResponse(message: CustumMessages.SaveSuccess(), data: new FileToUploadDto { Id = addedModel.Id, FileName = addedModel.ImageName });
         }
         public IApiResponse Update(UpdateServiceDto updateModel)
         {
@@ -111,9 +100,21 @@ namespace Emirates.Core.Application.Services
             if (_emiratesUnitOfWork.Services.Where(x => x.Id != updateModel.Id && x.NameEn.Equals(updateModel.NameEn)).Any())
                 throw new BusinessException("الاسم انجليزي مضاف مسبقا");
 
-            _emiratesUnitOfWork.Services.Update(service, _mapper.Map<Service>(updateModel));
-            _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
+            var newService = _mapper.Map<EmiratesPrince>(updateModel);
+            newService.ImageName = string.IsNullOrEmpty(newService.ImageName) ? service.ImageName : newService.ImageName;
+            string oldImageName = service.ImageName;
+
+            _emiratesUnitOfWork.Services.Update(service, newService);
+            if (_emiratesUnitOfWork.Complete() > 0)
+            {
+                if (!string.IsNullOrEmpty(updateModel.ImageName) && !string.IsNullOrEmpty(oldImageName))
+                    _fileManagerService.Delete(new DeleteFileDto
+                    {
+                        CategueryName = SystemEnums.FileCateguery.Services,
+                        Name = oldImageName
+                    });
+            }
+            return GetResponse(message: CustumMessages.UpdateSuccess(), data: new FileToUploadDto { Id = updateModel.Id, FileName = newService.ImageName });
         }
         public IApiResponse ChangeStatus(int id)
         {
@@ -141,7 +142,12 @@ namespace Emirates.Core.Application.Services
                 throw new BusinessException("الخدمة مرتبطة بطلبات في طلبات الخدمات");
 
             _emiratesUnitOfWork.Services.Remove(service);
-            _emiratesUnitOfWork.Complete();
+            if (_emiratesUnitOfWork.Complete() > 0)
+                _fileManagerService.Delete(new DeleteFileDto
+                {
+                    CategueryName = SystemEnums.FileCateguery.Services,
+                    Name = service.ImageName
+                });
             return GetResponse(message: CustumMessages.DeleteSuccess());
         }
         public IApiResponse GetLookupList()

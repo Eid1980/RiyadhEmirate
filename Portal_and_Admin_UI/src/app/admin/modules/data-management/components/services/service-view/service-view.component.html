@@ -44,12 +44,8 @@
         <span class="form-lbl lbl-33">الوصف باللغة الإنجليزية</span>
         <span class="form-val">{{ serviceDetailsDto?.descriptionEn }}</span>
       </div>
-      <div class="info-col col-md-6 col-12" *ngIf="serviceDetailsDto?.image">
-        <span class="form-lbl lbl-33">الصورة</span>
-        <span class="form-val">
-          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(serviceDetailsDto?.image?.base64File)" alt="" style="width: 180px" />
-
-        </span>
+      <div class="form-group col-6" *ngIf="serviceDetailsDto?.imageName">
+        <img [src]="['/assets/images/uploads/services/'+serviceDetailsDto?.imageName]" [alt]="serviceDetailsDto?.nameEn" style="width: 100%; height: 200px;" />
       </div>
     </div>
   </div>

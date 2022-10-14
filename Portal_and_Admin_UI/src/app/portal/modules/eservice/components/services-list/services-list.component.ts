@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '@shared/proxy/services/service.service';
 import { GetServiceListDto } from '@shared/proxy/services/models';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { GlobalService } from '@shared/services/global.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class ServicesListComponent implements OnInit {
   sortTitle = 'أبجدي - من أ إلى ي';
 
   constructor(private formBuilder: FormBuilder, private serviceService: ServiceService,
-    public sanitizer: DomSanitizer, private globalService: GlobalService)
+    private globalService: GlobalService)
   {
   }
 
@@ -38,6 +37,7 @@ export class ServicesListComponent implements OnInit {
     }
     else {
       this.contentTitle = 'جميع الخدمات';
+      searchFilter = null;
     }
     this.serviceService.searchByFilter(searchFilter).subscribe((result) => {
       this.services = result.data;

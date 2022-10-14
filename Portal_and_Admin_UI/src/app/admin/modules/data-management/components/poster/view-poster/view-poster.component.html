@@ -30,11 +30,8 @@
         <span class="form-lbl lbl-33">الحالة</span>
         <span class="form-val">{{ posterDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
       </div>
-      <div class="info-col col-md-6 col-12" *ngIf="posterDetailsDto?.image">
-        <span class="form-lbl lbl-33">الصورة</span>
-        <span class="form-val">
-          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(posterDetailsDto?.image?.base64File)" alt="" style="width: 180px" />
-        </span>
+      <div class="form-group col-6" *ngIf="posterDetailsDto?.imageName">
+        <img [src]="['/assets/images/uploads/posters/'+posterDetailsDto?.imageName]" [alt]="posterDetailsDto?.titleEn" style="width: 100%; height: 200px;" />
       </div>
     </div>
   </div>

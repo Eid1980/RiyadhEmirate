@@ -28,6 +28,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { NewsSearchComponent } from './components/news-search/news-search.component';
 import { GovernorateNewsComponent } from './components/governorate-news/governorate-news.component';
 import { ReportsComponent } from './components/reports/reports.component';
+import { TransactionInquiryComponent } from './components/transaction-inquiry/transaction-inquiry.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ReportsComponent } from './components/reports/reports.component';
     ContactUsComponent,
     NewsSearchComponent,
     GovernorateNewsComponent,
-    ReportsComponent
+    ReportsComponent,
+    TransactionInquiryComponent
   ],
   imports: [
     SharedModule,

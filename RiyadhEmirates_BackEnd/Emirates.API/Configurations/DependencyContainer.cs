@@ -37,6 +37,8 @@ using Emirates.Core.Application.Services.UserRoles;
 using Emirates.Core.Application.Services.WomanSection;
 using Emirates.Core.Domain.Interfaces;
 using Emirates.InfraStructure.UnitsOfWork;
+using Emirates.Core.Application.Services.OpenDataRequests;
+using Emirates.Core.Application.Services.Auctions;
 
 namespace Emirates.API.Configurations
 {
@@ -52,6 +54,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IHomeService, HomeService>();
             builder.Services.AddScoped<ICommonService, CommonService>();
 
+            builder.Services.AddScoped<IAuctionService, AuctionService>();
             builder.Services.AddScoped<IAboutUsService, AboutUsService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICaseTypeService, CaseTypeService>();
@@ -64,6 +67,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<INewsService, NewsService>();
             builder.Services.AddScoped<INewsCommentService, NewsCommentService>();
             builder.Services.AddScoped<INewsCategueryService, NewsCategueryService>();
+            builder.Services.AddScoped<IOpenDataRequestService, OpenDataRequestService>();
             builder.Services.AddScoped<IPosterService, PosterService>();
             builder.Services.AddScoped<IWomanSectionService, WomanSectionService>();
             builder.Services.AddScoped<IUserRoleService, UserRoleService>();

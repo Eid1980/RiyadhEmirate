@@ -5,9 +5,10 @@ import { FileManagerService } from '@shared/services/file-manager.service';
 import { GlobalService } from '@shared/services/global.service';
 import { ServiceService } from '@proxy/services/service.service';
 import { UpdateServiceDto } from '@proxy/services/models';
-import { DomSanitizer } from '@angular/platform-browser';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { MenuItem } from 'primeng/api';
+import { environment } from 'src/environments/environment';
+import { FileCateguery } from '@shared/enums/file-categuery.enum';
 
 @Component({
   selector: 'app-service-edit',
@@ -20,25 +21,20 @@ export class ServiceEditComponent implements OnInit {
   isFormSubmitted: boolean;
   id: number;
   updateServiceDto = {} as UpdateServiceDto;
-  oldImage: any;
 
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 1000000;
-  acceptType: 'image/*';
+  fileSize: number = environment.servicesfileSize ? environment.servicesfileSize : environment.fileSize;
+  acceptType: string = environment.servicesallowedExtensions ? environment.servicesallowedExtensions : environment.allowedExtensions;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private serviceService: ServiceService,
-    private fileManagerService: FileManagerService,
-    private globalService: GlobalService,
-    private activatedRoute: ActivatedRoute,
-    public sanitizer: DomSanitizer
-  ) { }
+  constructor(private formBuilder: FormBuilder, private serviceService: ServiceService,
+    private fileManagerService: FileManagerService, private globalService: GlobalService,
+    private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.globalService.setAdminTitle('تعديل الخدمة');
@@ -80,7 +76,6 @@ export class ServiceEditComponent implements OnInit {
       this.updateServiceDto = response.data as UpdateServiceDto;
       this.updateServiceDto.cost = response.data.serviceCost;
       this.buildForm();
-      this.oldImage = response.data.image;
     });
   }
 
@@ -90,16 +85,21 @@ export class ServiceEditComponent implements OnInit {
       this.updateServiceDto = { ...this.updateServiceForm.value } as UpdateServiceDto;
       this.updateServiceDto.id = this.id;
       this.updateServiceDto.cost = this.updateServiceDto.cost?.toString() == '' ? null : this.updateServiceDto.cost;
+      let imageContent = this.updateServiceForm.get('image').value;
+      if (imageContent) {
+        this.updateServiceDto.imageName = imageContent.name;
+      }
       this.serviceService.update(this.updateServiceDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
-          if (this.updateServiceForm.get('image').value) {
-            this.fileManagerService.deleteByEntityName(this.id.toString(), 'Services').subscribe((res) => {
-              this.fileManagerService.upload(this.id.toString(), 'Services', '', [this.updateServiceForm.get('image').value]).subscribe((res) => {
-              });
+          if (imageContent) {
+            this.fileManagerService.uploadFile(FileCateguery.Posters, response.data.fileName, [imageContent]).subscribe(res => {
+              this.globalService.navigate(`/admin/data-management/service-audience/${this.id}`);
             });
           }
-          this.globalService.navigate(`/admin/data-management/service-audience/${this.id}`);
+          else {
+            this.globalService.navigate(`/admin/data-management/service-audience/${this.id}`);
+          }
         }
       });
     }

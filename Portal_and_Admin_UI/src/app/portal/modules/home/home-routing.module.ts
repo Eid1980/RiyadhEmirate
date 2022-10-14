@@ -22,10 +22,12 @@ import { ConditionsComponent } from "./components/conditions/conditions.componen
 import { NewsSearchComponent } from "./components/news-search/news-search.component";
 import { GovernorateNewsComponent } from "./components/governorate-news/governorate-news.component";
 import { ReportsComponent } from "./components/reports/reports.component";
+import { TransactionInquiryComponent } from "./components/transaction-inquiry/transaction-inquiry.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent },
+  { path: "home/transaction-inquiry", component: TransactionInquiryComponent },
   { path: "home/news-search", component: NewsSearchComponent },
   { path: "home/services-guide", component: ServicesGuideComponent },
   { path: "home/services-guide/:id", component: ServicesGuideInnerComponent },

@@ -12,8 +12,9 @@ namespace Emirates.Core.Application.Dtos
         public string DescriptionEn { get; set; }
         public string RequestLink { get; set; }
         public string WorkDays { get; set; }
+        public string ImageName { get; set; }
         public bool IsActive { get; set; }
+        public bool IsExternal { get; set; }
         public DateTime CreatedDate { get; set; }
-        public UploadedFileBase64Dto Image { get; set; }
     }
 }

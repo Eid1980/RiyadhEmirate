@@ -1,11 +1,10 @@
-﻿
-
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Emirates.Core.Application.CustomExceptions;
-using Emirates.Core.Application.Dtos.Posters;
+using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.DynamicSearch;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.FileManagers;
@@ -34,9 +33,7 @@ namespace Emirates.Core.Application.Services.Posters
             var poster = _emiratesUnitOfWork.Posters.FirstOrDefault(l => l.Id.Equals(id));
             if (poster == null)
                 throw new NotFoundException(typeof(Poster).Name);
-            var mappedModel = _mapper.Map<GetPosterDetailsDto>(poster);
-            mappedModel.Image = _fileManagerService.GetBase64File(id, "Poster");
-            return GetResponse(data: mappedModel);
+            return GetResponse(data: _mapper.Map<GetPosterDetailsDto>(poster));
         }
         public IApiResponse GetAll(SearchModel searchModel)
         {
@@ -53,27 +50,15 @@ namespace Emirates.Core.Application.Services.Posters
         }
         public IApiResponse GetAll()
         {
-            var query = (from poster in _emiratesUnitOfWork.Posters
-                         where poster.IsActive == true
-                         select new GetPosterDetailsDto
-                         {
-                             Id = poster.Id,
-                             TitleAr = poster.TitleAr,
-                             TitleEn = poster.TitleEn,
-                             IsActive = poster.IsActive,
-                             Order = poster.Order,
-                             Image = _fileManagerService.GetBase64File(poster.Id, "Poster")
-                         }).OrderBy(s => s.Order);
-
-            return GetResponse(data: query);
-
+            var emiratesPrinces = _emiratesUnitOfWork.Posters.Where(l => l.IsActive).OrderBy(d => d.Order);
+            return GetResponse(data: _mapper.Map<List<GetPosterListDto>>(emiratesPrinces));
         }
 
         public IApiResponse Create(CreatePosterDto createModel)
         {
             var addedModel = _emiratesUnitOfWork.Posters.Add(_mapper.Map<Poster>(createModel));
             _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
+            return GetResponse(message: CustumMessages.SaveSuccess(), data: new FileToUploadDto { Id = addedModel.Id, FileName = addedModel.ImageName });
         }
         public IApiResponse Update(UpdatePosterDto updateModel)
         {
@@ -81,9 +66,21 @@ namespace Emirates.Core.Application.Services.Posters
             if (poster == null)
                 throw new NotFoundException(typeof(Poster).Name);
 
-            _emiratesUnitOfWork.Posters.Update(poster, _mapper.Map<Poster>(updateModel));
-            _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
+            var newPoster = _mapper.Map<Poster>(updateModel);
+            newPoster.ImageName = string.IsNullOrEmpty(newPoster.ImageName) ? poster.ImageName : newPoster.ImageName;
+            string oldImageName = poster.ImageName;
+
+            _emiratesUnitOfWork.Posters.Update(poster, newPoster);
+            if (_emiratesUnitOfWork.Complete() > 0)
+            {
+                if (!string.IsNullOrEmpty(updateModel.ImageName) && !string.IsNullOrEmpty(oldImageName))
+                    _fileManagerService.Delete(new DeleteFileDto
+                    {
+                        CategueryName = SystemEnums.FileCateguery.Posters,
+                        Name = oldImageName
+                    });
+            }
+            return GetResponse(message: CustumMessages.UpdateSuccess(), data: new FileToUploadDto { Id = updateModel.Id, FileName = newPoster.ImageName });
         }
         public IApiResponse ChangeStatus(int id)
         {
@@ -102,7 +99,12 @@ namespace Emirates.Core.Application.Services.Posters
                 throw new NotFoundException(typeof(Poster).Name);
 
             _emiratesUnitOfWork.Posters.Remove(poster);
-            _emiratesUnitOfWork.Complete();
+            if (_emiratesUnitOfWork.Complete() > 0)
+                _fileManagerService.Delete(new DeleteFileDto
+                {
+                    CategueryName = SystemEnums.FileCateguery.Posters,
+                    Name = poster.ImageName
+                });
             return GetResponse(message: CustumMessages.DeleteSuccess());
         }
     }

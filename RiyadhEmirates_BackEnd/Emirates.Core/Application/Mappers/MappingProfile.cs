@@ -2,7 +2,6 @@
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.AboutUs;
 using Emirates.Core.Application.Dtos.MainPoints;
-using Emirates.Core.Application.Dtos.Posters;
 using Emirates.Core.Application.Dtos.Requests;
 using Emirates.Core.Application.Dtos.WomanSection;
 using Emirates.Core.Domain.Entities;
@@ -13,6 +12,14 @@ namespace Emirates.Core.Application.Mappers
     {
         public MappingProfile()
         {
+            #region Auction
+            CreateMap<CreateAuctionDto, Auction>();
+            CreateMap<UpdateAuctionDto, Auction>();
+
+            CreateMap<Auction, GetAuctionDetailsDto>();
+            CreateMap<Auction, GetAuctionListDto>();
+            #endregion
+
             #region CaseType
             CreateMap<CreateCaseTypeDto, CaseType>();
             CreateMap<UpdateCaseTypeDto, CaseType>();
@@ -46,6 +53,15 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.ToDate, src => src.MapFrom(m => m.ToDate == null ? "حتى الان" : m.ToDate.Value.ToString("yyyy-MM-dd")));
             #endregion
 
+            #region ContactUsMessage
+            CreateMap<CreateContactUsMessageDto, ContactUsMessage>();
+
+            CreateMap<ContactUsMessage, GetContactUsMessageDetailsDto>()
+                .ForMember(dest => dest.ContactUsMessageTypeName, src => src.MapFrom(m => m.ContactUsMessageType.NameAr));
+            CreateMap<ContactUsMessage, GetContactUsMessageListDto>()
+                .ForMember(dest => dest.ContactUsMessageTypeName, src => src.MapFrom(m => m.ContactUsMessageType.NameAr));
+            #endregion
+
             #region Governorate
             CreateMap<CreateGovernorateDto, Governorate>()
                 .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
@@ -73,6 +89,14 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.NewsCategueryName, src => src.MapFrom(m => m.NewsCateguery.NameAr));
             #endregion
 
+            #region NewsCateguery
+            CreateMap<CreateNewsCategueryDto, NewsCateguery>();
+            CreateMap<UpdateNewsCategueryDto, NewsCateguery>();
+
+            CreateMap<NewsCateguery, GetNewsCategueryDetailsDto>();
+            CreateMap<NewsCateguery, GetNewsCategueryListDto>();
+            #endregion
+
             #region NewsComment
             CreateMap<CreateNewsCommentDto, NewsComment>();
 
@@ -85,12 +109,11 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
             #endregion
 
-            #region NewsCateguery
-            CreateMap<CreateNewsCategueryDto, NewsCateguery>();
-            CreateMap<UpdateNewsCategueryDto, NewsCateguery>();
+            #region OpenDataRequest
+            CreateMap<CreateOpenDataRequestDto, OpenDataRequest>();
 
-            CreateMap<NewsCateguery, GetNewsCategueryDetailsDto>();
-            CreateMap<NewsCateguery, GetNewsCategueryListDto>();
+            CreateMap<OpenDataRequest, GetOpenDataRequestDetailsDto>();
+            CreateMap<OpenDataRequest, GetOpenDataRequestListDto>();
             #endregion
 
             #region PageContent
@@ -106,8 +129,10 @@ namespace Emirates.Core.Application.Mappers
             #endregion
 
             #region Poster
-            CreateMap<CreatePosterDto, Poster>();
-            CreateMap<UpdatePosterDto, Poster>();
+            CreateMap<CreatePosterDto, Poster>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
+            CreateMap<UpdatePosterDto, Poster>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
 
             CreateMap<Poster, GetPosterDetailsDto>();
             CreateMap<Poster, GetPosterListDto>();
@@ -350,12 +375,16 @@ namespace Emirates.Core.Application.Mappers
             #endregion
 
             #region Service
-            CreateMap<CreateServiceDto, Service>();
-            CreateMap<UpdateServiceDto, Service>();
+            CreateMap<CreateServiceDto, Service>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
+            CreateMap<UpdateServiceDto, Service>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
 
             CreateMap<Service, GetServiceDetailsDto>()
                 .ForMember(dest => dest.ServiceCost, src => src.MapFrom(m => m.Cost));
             CreateMap<Service, GetServiceListDto>();
+            CreateMap<Service, GetAllServiceListDto>()
+                .ForMember(dest => dest.RequestCount, src => src.MapFrom(m => m.Requests.Count));
             #endregion
 
             #region ServiceAudience

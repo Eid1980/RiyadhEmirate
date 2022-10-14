@@ -50,22 +50,9 @@ namespace Emirates.Core.Application.Services.Home
         }
         public IApiResponse GetAllServices()
         {
-            var servicesQuerable = _emiratesUnitOfWork.Services.GetQueryable();
-            var query = (from service in servicesQuerable
-                        where service.IsActive
-                        select new GetAllServiceListDto
-                        {
-                            Id = service.Id,
-                            NameAr = service.NameAr,
-                            NameEn = service.NameEn,
-                            DescriptionAr = service.DescriptionAr,
-                            DescriptionEn = service.DescriptionEn,
-                            RequestLink = service.RequestLink,
-                            IsExternal = service.IsExternal,
-                            RequestCount = service.Requests.Count,
-                            Image = _fileManagerService.GetBase64File(service.Id, "Services")
-                        }).OrderByDescending(r => r.RequestCount);
-            return GetResponse(data: query.ToList());
+            var services = _emiratesUnitOfWork.Services.Where(l => l.IsActive).Include(x => x.Requests);
+            var serviceMapped = _mapper.Map<List<GetAllServiceListDto>>(services);
+            return GetResponse(data: serviceMapped.OrderByDescending(r => r.RequestCount).ToList());
         }
 
         #region News

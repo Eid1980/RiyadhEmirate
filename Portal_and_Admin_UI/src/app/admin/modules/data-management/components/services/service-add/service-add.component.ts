@@ -6,6 +6,8 @@ import { ServiceService } from '@proxy/services/service.service';
 import { CreateServiceDto } from '@proxy/services/models';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { MenuItem } from 'primeng/api';
+import { environment } from 'src/environments/environment';
+import { FileCateguery } from '@shared/enums/file-categuery.enum';
 
 @Component({
   selector: 'app-service-add',
@@ -21,8 +23,8 @@ export class ServiceAddComponent implements OnInit {
   //#region for uploader
   @ViewChild('uploader',{static:true}) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 1000000;
-  acceptType: 'image/*';
+  fileSize: number = environment.servicesfileSize ? environment.servicesfileSize : environment.fileSize;
+  acceptType: string = environment.servicesallowedExtensions ? environment.servicesallowedExtensions : environment.allowedExtensions;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion
@@ -67,13 +69,21 @@ export class ServiceAddComponent implements OnInit {
     this.isFormSubmitted = true;
     if (this.createServiceForm.valid) {
       this.createServiceDto = { ...this.createServiceForm.value } as CreateServiceDto;
+      let imageContent = this.createServiceForm.get('image').value;
+      if (imageContent) {
+        this.createServiceDto.imageName = imageContent.name;
+      }
       this.serviceService.create(this.createServiceDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
-          let id = response.data.toString();
-          this.fileManagerService.upload(id, 'Services', '', [this.createServiceForm.get('image').value]).subscribe(res =>{
-            this.globalService.navigate(`/admin/data-management/service-audience/${id}`);
-          })
+          if (imageContent) {
+            this.fileManagerService.uploadFile(FileCateguery.Services, response.data.fileName, [imageContent]).subscribe(res => {
+              this.globalService.navigate(`/admin/data-management/service-audience/${response.data.toString() }`);
+            });
+          }
+          else {
+            this.globalService.navigate(`/admin/data-management/service-audience/${response.data.toString() }`);
+          }
         }
       });
     }

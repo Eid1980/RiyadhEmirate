@@ -82,6 +82,20 @@ namespace Emirates.InfraStructure.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region Auction
+            modelBuilder.Entity<Auction>(b =>
+            {
+                b.ToTable("Auctions", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.Title).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.Content).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedAuctions).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedAuctions).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
             #region Audience
             modelBuilder.Entity<Audience>(b =>
             {
@@ -344,6 +358,20 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region OpenDataRequest
+            modelBuilder.Entity<OpenDataRequest>(b =>
+            {
+                b.ToTable("OpenDataRequests", EmiratesDbSchemas.RequestSehema);
+                b.Property(x => x.FullName).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.Title).HasMaxLength(EmiratesConstants.MaxNameLength).IsRequired();
+                b.Property(x => x.Content).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.IsReplied).IsRequired().HasDefaultValue(false);
+
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedOpenDataRequests).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
             #region PageContent
             modelBuilder.Entity<PageContent>(b =>
             {
@@ -362,14 +390,17 @@ namespace Emirates.InfraStructure.Contexts
             modelBuilder.Entity<Poster>(b =>
             {
                 b.ToTable("Posters", EmiratesDbSchemas.DataManagement);
-                b.Property(x => x.TitleAr).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.TitleEn).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.TitleAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.TitleEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.Order).IsRequired();
+                b.Property(x => x.ImageName).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.IsActive).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
 
                 b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedPosters).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedPosters).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+                
+                b.HasData(DefaultData.Posters());
             });
             #endregion
 
@@ -630,6 +661,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.DescriptionEn).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.RequestLink).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.WorkDays).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.ImageName).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.IsActive).IsRequired();
                 b.Property(x => x.IsExternal).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
@@ -795,6 +827,7 @@ namespace Emirates.InfraStructure.Contexts
 
         }
 
+        public DbSet<Auction> Auctions { get; set; }
         public DbSet<Audience> Audiences { get; set; }
         public DbSet<BuildingType> BuildingTypes { get; set; }
         public DbSet<CaseType> CaseTypes { get; set; }
@@ -811,6 +844,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<News> News { get; set; }
         public DbSet<NewsCateguery> NewsCategueries { get; set; }
         public DbSet<NewsComment> NewsComments { get; set; }
+        public DbSet<OpenDataRequest> OpenDataRequests { get; set; }
         public DbSet<PageContent> PageContent { get; set; }
         public DbSet<Poster> Posters { get; set; }
         public DbSet<Religion> Religions { get; set; }

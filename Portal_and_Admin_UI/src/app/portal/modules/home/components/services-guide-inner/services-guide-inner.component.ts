@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { GetServiceConditionListDto } from '@shared/proxy/service-condition/models';
 import { ServiceConditionService } from '@shared/proxy/service-condition/service-condition.service';
 import { GetServiceDetailsDto } from '@shared/proxy/services/models';
 import { ServiceService } from '@shared/proxy/services/service.service';
+import { GlobalService } from '@shared/services/global.service';
 
 @Component({
   selector: 'app-services-guide-inner',
@@ -16,11 +16,12 @@ export class ServicesGuideInnerComponent implements OnInit {
   getServiceConditionListDto = [] as GetServiceConditionListDto[];
 
   constructor(private _serviceService : ServiceService, private _serviceConditionService: ServiceConditionService,
-    private _activatedRoute: ActivatedRoute, public sanitizer: DomSanitizer)
+    private _activatedRoute: ActivatedRoute, private globalService: GlobalService)
   {
   }
 
   ngOnInit(): void {
+    this.globalService.setTitle('تفاصيل دليل اجراءات الخدمة');
     this.serviceId = this._activatedRoute.snapshot.params['id'];
     this.getServiceById();
     this.getServiceConditions();

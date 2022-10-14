@@ -121,5 +121,9 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<EmiratesPrince> ModifiedEmiratesPrinces { get; set; }
 
         public virtual ICollection<ContactUsMessage> ModifiedContactUsMessages { get; set; }
+        public virtual ICollection<OpenDataRequest> ModifiedOpenDataRequests { get; set; }
+
+        public virtual ICollection<Auction> CreatedAuctions { get; set; }
+        public virtual ICollection<Auction> ModifiedAuctions { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Emirates.Core.Application.Dtos.Posters;
+﻿using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.Response;
 

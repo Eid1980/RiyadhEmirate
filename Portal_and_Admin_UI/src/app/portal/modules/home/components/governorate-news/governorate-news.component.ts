@@ -28,7 +28,7 @@ export class GovernorateNewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.globalService.setTitle('أخر الأخبار');
+    this.globalService.setTitle('أخبار المحافظات');
     this.currentLang = this.translateService.getCurrentLanguage().Name.toLowerCase();
     this.getGovernorateNewsNews(this.firstPage);
   }

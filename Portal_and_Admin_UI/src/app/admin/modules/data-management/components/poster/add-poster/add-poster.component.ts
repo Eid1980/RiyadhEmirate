@@ -5,6 +5,8 @@ import { GlobalService } from '@shared/services/global.service';
 import { CreatePosterDto } from '@shared/proxy/posters/models';
 import { PosterService } from '@shared/proxy/posters/poster.service';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { environment } from 'src/environments/environment';
+import { FileCateguery } from '@shared/enums/file-categuery.enum';
 
 @Component({
   selector: 'app-add-poster',
@@ -18,18 +20,16 @@ export class AddPosterComponent implements OnInit {
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
   isMultiple: boolean = false;
-  fileSize: number = 100000000;
-  acceptType: 'image/*';
+  fileSize: number = environment.postersfileSize ? environment.postersfileSize : environment.fileSize;
+  acceptType: string = environment.postersallowedExtensions ? environment.postersallowedExtensions : environment.allowedExtensions;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;
   //#endregion
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private fileManagerService: FileManagerService,
-    private posterService: PosterService,
-    private globalService: GlobalService
-  ) {}
+  constructor(private formBuilder: FormBuilder, private fileManagerService: FileManagerService,
+    private posterService: PosterService, private globalService: GlobalService)
+  {
+  }
 
   ngOnInit() {
     this.globalService.setAdminTitle('إضافة اعلان جديد');
@@ -57,20 +57,22 @@ export class AddPosterComponent implements OnInit {
   onSubmit() {
     this.isFormSubmitted = true;
     if (this.createPosterform.valid) {
-      this.createPosterDto = {
-        ...this.createPosterform.value,
-      } as CreatePosterDto;
+      this.createPosterDto = { ...this.createPosterform.value } as CreatePosterDto;
+      let imageContent = this.createPosterform.get('image').value;
+      if (imageContent) {
+        this.createPosterDto.imageName = imageContent.name;
+      }
       this.posterService.create(this.createPosterDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
-          let id = response.data.toString();
-          this.fileManagerService
-            .upload(id, 'Poster', '', [
-              this.createPosterform.get('image').value,
-            ])
-            .subscribe((res) => {
+          if (imageContent) {
+            this.fileManagerService.uploadFile(FileCateguery.Posters, response.data.fileName, [imageContent]).subscribe(res => {
               this.globalService.navigate('/admin/data-management/poster-list');
             });
+          }
+          else {
+            this.globalService.navigate('/admin/data-management/poster-list');
+          }
         }
       });
     }

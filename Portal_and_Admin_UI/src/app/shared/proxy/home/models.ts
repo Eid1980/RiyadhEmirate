@@ -19,7 +19,7 @@ export interface GetAllServiceListDto {
   requestLink: string;
   isExternal: boolean;
   requestCount: number;
-  image: any;
+  imageName: string;
 }
 
 export interface GetNewsSearchListDto {

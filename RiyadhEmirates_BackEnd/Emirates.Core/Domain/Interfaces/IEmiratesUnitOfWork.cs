@@ -4,6 +4,7 @@ namespace Emirates.Core.Domain.Interfaces
 {
     public interface IEmiratesUnitOfWork : IUnitOfWork
     {
+        IAuctionRepository Auctions { get; }
         IAudienceRepository Audiences { get; }
         ICaseTypeRepository CaseTypes { get; }
         ICommentStageRepository CommentStages { get; }
@@ -15,6 +16,7 @@ namespace Emirates.Core.Domain.Interfaces
         INewsRepository News { get; }
         INewsCategueryRepository NewsCategueries { get; }
         INewsCommentRepository NewsComments { get; }
+        IOpenDataRequestRepository OpenDataRequests { get; }
         IPageMainPointsRepository PageMainPoints { get; }
         IPageContentRepository PageContent { get; }
         IPosterRepository Posters { get; }

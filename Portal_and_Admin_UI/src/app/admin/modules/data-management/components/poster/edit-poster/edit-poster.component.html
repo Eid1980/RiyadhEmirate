@@ -40,7 +40,6 @@
         </div>
         <div class="form-group col-md-6">
           <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
-          <img width="200px" height="100px" *ngIf="oldImage" [src]="sanitizer.bypassSecurityTrustResourceUrl(oldImage?.base64File)" />
           <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
                         (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
                         accept="image/*" [maxFileSize]="fileSize">
@@ -53,6 +52,9 @@
             <input formControlName="isActive" type="checkbox" id="isActive" />
             <span class="checkmark"></span>
           </label>
+        </div>
+        <div class="form-group col-6" *ngIf="updatePosterDto?.imageName">
+          <img [src]="['/assets/images/uploads/posters/'+updatePosterDto?.imageName]" [alt]="updatePosterDto?.titleEn" style="width: 100%; height: 200px;" />
         </div>
       </div>
     </div>

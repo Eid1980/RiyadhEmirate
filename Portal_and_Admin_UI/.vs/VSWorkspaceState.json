@@ -2,9 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\assets",
-    "\\src\\assets\\images"
+    "\\src\\app",
+    "\\src\\app\\admin",
+    "\\src\\app\\admin\\modules",
+    "\\src\\app\\admin\\modules\\data-management",
+    "\\src\\app\\admin\\modules\\data-management\\components",
+    "\\src\\app\\admin\\modules\\data-management\\components\\auction",
+    "\\src\\app\\admin\\modules\\data-management\\components\\auction\\auction-add",
+    "\\src\\app\\admin\\modules\\data-management\\components\\case-type"
   ],
-  "SelectedNode": "\\src\\assets\\images",
+  "SelectedNode": "\\src\\app\\admin\\modules\\data-management\\components\\auction\\auction-add\\auction-add.component.ts",
   "PreviewInSolutionExplorer": false
 }

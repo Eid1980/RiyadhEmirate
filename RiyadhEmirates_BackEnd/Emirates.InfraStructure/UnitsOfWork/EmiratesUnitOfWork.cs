@@ -17,6 +17,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
         #endregion
 
         #region Repositories
+        private AuctionRepository auctions;
+        public IAuctionRepository Auctions => auctions ??= new AuctionRepository(Context);
+
+
         private AudienceRepository audiences;
         public IAudienceRepository Audiences => audiences ??= new AudienceRepository(Context);
 
@@ -59,6 +63,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
 
         private NewsCommentRepository newsComments;
         public INewsCommentRepository NewsComments => newsComments ??= new NewsCommentRepository(Context);
+
+
+        private OpenDataRequestRepository openDataRequests;
+        public IOpenDataRequestRepository OpenDataRequests => openDataRequests ??= new OpenDataRequestRepository(Context);
 
 
         private PageMainPointsRepository pageMainPoints;

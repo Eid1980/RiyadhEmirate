@@ -14,8 +14,8 @@
     <div class="col-md-6 mb-4" *ngFor="let service of services">
       <a class="card-basic-h" [routerLink]="['/home/services-guide' , service.id]">
         <div class="card-basic-banner">
-          <img *ngIf="service.image" [src]="sanitizer.bypassSecurityTrustResourceUrl(service.image?.base64File)" class="img-fluid" alt="banner" />
-          <img *ngIf="!service.image" src="assets/images/favicon/fav-logo.png" [alt]="service.nameAr" class="ser-icon" />
+          <img *ngIf="service.imageName" [src]="['/assets/images/uploads/services/'+service.imageName]" [alt]="service.nameEn" class="ser-icon" />
+          <img *ngIf="!service.imageName" src="assets/images/favicon/fav-logo.png" [alt]="service.nameEn" class="ser-icon" />
         </div>
         <div class="card-basic-body">
           <h4> {{ service.nameAr }} </h4>

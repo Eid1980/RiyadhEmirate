@@ -12,6 +12,7 @@ namespace Emirates.Core.Domain.Entities
         public string RequestLink { get; set; }
         public string WorkDays { get; set; }
         public double? Cost { get; set; }
+        public string ImageName { get; set; }
         public bool IsActive { get; set; }
         public bool IsExternal { get; set; }
 

@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ServiceService } from '@proxy/services/service.service';
 import { GetServiceDetailsDto } from '@proxy/services/models';
 import { GlobalService } from '@shared/services/global.service';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-service-view',
@@ -14,11 +13,9 @@ export class ServiceViewComponent implements OnInit {
   serviceDetailsDto: GetServiceDetailsDto;
 
   constructor(
-    private serviceService: ServiceService,
-    private activatedRoute: ActivatedRoute,
-    private globalService: GlobalService,
-    public sanitizer: DomSanitizer
-  ) {}
+    private serviceService: ServiceService, private activatedRoute: ActivatedRoute,
+    private globalService: GlobalService) {
+  }
 
   ngOnInit(): void {
     this.globalService.setAdminTitle('تفاصيل الخدمة');

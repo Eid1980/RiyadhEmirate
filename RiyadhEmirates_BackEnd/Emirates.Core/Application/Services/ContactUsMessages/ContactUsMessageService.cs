@@ -26,10 +26,10 @@ namespace Emirates.Core.Application.Services.ContactUsMessages
 
         public IApiResponse GetById(int id)
         {
-            var ContactUsMessage = _emiratesUnitOfWork.ContactUsMessages.FirstOrDefault(l => l.Id.Equals(id));
-            if (ContactUsMessage == null)
+            var contactUsMessage = _emiratesUnitOfWork.ContactUsMessages.FirstOrDefault(l => l.Id.Equals(id));
+            if (contactUsMessage == null)
                 throw new NotFoundException(typeof(ContactUsMessage).Name);
-            return GetResponse(data: _mapper.Map<GetContactUsMessageDetailsDto>(ContactUsMessage));
+            return GetResponse(data: _mapper.Map<GetContactUsMessageDetailsDto>(contactUsMessage));
         }
         public IApiResponse GetAll(SearchModel searchModel)
         {

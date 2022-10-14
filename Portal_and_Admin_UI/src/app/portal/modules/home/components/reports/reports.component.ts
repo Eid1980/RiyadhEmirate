@@ -28,7 +28,7 @@ export class ReportsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.globalService.setTitle('أخر الأخبار');
+    this.globalService.setTitle('التقارير الاعلامية');
     this.currentLang = this.translateService.getCurrentLanguage().Name.toLowerCase();
     this.getReports(this.firstPage);
   }
