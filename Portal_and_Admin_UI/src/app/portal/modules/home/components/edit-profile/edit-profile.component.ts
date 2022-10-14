@@ -36,6 +36,8 @@ export class EditProfileComponent implements OnInit {
     maxHigriDate: NgbDateStruct;
     maxGreg: NgbDateStruct;
 
+    oldImage : any;
+
   userProfileData = {} as GetUserProfileData;
 
   updateUserProfileDto = {} as UpdateUserProfileDto;
@@ -77,6 +79,9 @@ export class EditProfileComponent implements OnInit {
         };
         this.date = this._dateFormatterService.ToHijri(ngbDateStructGregorian);
         this.buildForm();
+
+        this.oldImage = response.data.image;
+
       } , () => {});
 
       this.fillLookup();

@@ -46,7 +46,8 @@ export class PrisonerTempReleaseDetailsComponent implements OnInit {
       html2canvas: { scale: 3 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' },
     };
-    html2pdf().set(opt).from(this.requestDataDiv.nativeElement).toPdf().save();
+    debugger
+    var x = html2pdf().set(opt).from(this.requestDataDiv.nativeElement).toCanvas().open();
 
   }
 

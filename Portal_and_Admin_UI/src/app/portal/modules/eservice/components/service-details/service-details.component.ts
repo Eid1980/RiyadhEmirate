@@ -31,6 +31,10 @@ export class ServiceDetailsComponent implements OnInit {
   imageExplain: any;
   reportUrl: string;
 
+
+  @ViewChild('displayReport', { static: true }) displayReport;
+
+
   @ViewChild("serviceDetails") serviceDetailsDiv: ElementRef;
 
 
@@ -119,13 +123,16 @@ export class ServiceDetailsComponent implements OnInit {
     html2pdf()
       .set(opt)
       .from(this.serviceDetailsDiv.nativeElement)
-      .toPdf()
-      .save();
-    /*.output('blob')
+    .output('blob')
     .then((data: Blob) => {
+      debugger
       this.reportUrl = URL.createObjectURL(data);
+
+      this.displayReport.nativeElement.click()
+     // window.open(this.reportUrl)
       $('#report').attr('src', this.reportUrl);
-    });*/
+      $('#report').click()
+    });
   }
 
 }

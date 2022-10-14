@@ -195,7 +195,7 @@ namespace Emirates.InfraStructure.Contexts
             #region Governorate
             modelBuilder.Entity<Governorate>(b =>
             {
-                b.ToTable("Governorates", EmiratesDbSchemas.DataManagement);
+                b.ToTable("Governorates", EmiratesDbSchemas.LookupSehema);
                 b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.DescriptionAr).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
