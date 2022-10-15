@@ -46,8 +46,8 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
 import {ButtonModule} from 'primeng/button';
 import { FullDatePipe } from './pipes/full-date.pipe';
 import { ListStringPipe } from './pipes/list-string.pipe';
-
-
+import { AgmCoreModule } from '@agm/core';
+import { NgxCaptchaModule } from 'ngx-captcha'
 
 @NgModule({
   declarations: [
@@ -69,7 +69,7 @@ import { ListStringPipe } from './pipes/list-string.pipe';
     CustomSlicePipe,
     ServiceFilterPipe,
     FullDatePipe,
-    ListStringPipe,
+    ListStringPipe
   ],
   imports: [
     CommonModule,
@@ -94,7 +94,11 @@ import { ListStringPipe } from './pipes/list-string.pipe';
     TooltipModule,
     MultiSelectModule,
     RatingModule,
-    NgxHijriGregorianDatepickerModule
+    NgxHijriGregorianDatepickerModule,
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    }),
+    NgxCaptchaModule
   ],
   exports: [
     AuthLayoutComponent,
@@ -136,7 +140,9 @@ import { ListStringPipe } from './pipes/list-string.pipe';
     CustomSlicePipe,
     ServiceFilterPipe,
     TranslateModule,
-    ButtonModule
+    ButtonModule,
+    AgmCoreModule,
+    NgxCaptchaModule
   ],
   providers: [
     HiddenAuthorizeColumnFilterPipe,
