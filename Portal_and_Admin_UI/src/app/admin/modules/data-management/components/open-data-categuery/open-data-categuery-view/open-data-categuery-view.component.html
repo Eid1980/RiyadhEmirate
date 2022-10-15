@@ -1,1 +1,38 @@
-<p>open-data-categuery-view works!</p>
+
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/open-data-categuery-list']">مجموعات البيانات المفتوحة</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل المجموعة</span>
+  </nav>
+</div>
+
+<div class="form-card">
+  <div class="form-header">
+    <h5>تفاصيل المجموعة</h5>
+  </div>
+  <div class="form-content">
+    <div class="row mx-0">
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاسم عربي</span>
+        <span class="form-val">{{ openDataCategueryDetailsDto?.nameAr }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاسم انجليزي</span>
+        <span class="form-val">{{ openDataCategueryDetailsDto?.nameEn }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">التصنيف</span>
+        <span class="form-val">{{ openDataCategueryDetailsDto?.openDataSubCategueryName }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الحالة</span>
+        <span class="form-val">{{ openDataCategueryDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions">
+  <a [routerLink]="['/admin/data-management/open-data-categuery-list']" class="btn btn-cancel">رجوع</a>
+</div>
