@@ -68,6 +68,10 @@ import { ReportsEnListComponent } from "./components/news/report-en/reports-en-l
 import { ReportsEnAddComponent } from "./components/news/report-en/reports-en-add/reports-en-add.component";
 import { ReportsEnEditComponent } from "./components/news/report-en/reports-en-edit/reports-en-edit.component";
 import { ReportsEnViewComponent } from "./components/news/report-en/reports-en-view/reports-en-view.component";
+import { AuctionAddComponent } from "./components/auction/auction-add/auction-add.component";
+import { AuctionListComponent } from "./components/auction/auction-list/auction-list.component";
+import { AuctionEditComponent } from "./components/auction/auction-edit/auction-edit.component";
+import { AuctionViewComponent } from "./components/auction/auction-view/auction-view.component";
 
 const routes: Routes = [
 
@@ -358,6 +362,41 @@ const routes: Routes = [
   {
     path: "poster-view/:id",
     component: ViewPosterComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  //#endregion
+
+  //#region Auction
+  {
+    path: "auction-list",
+    component: AuctionListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "auction-add",
+    component: AuctionAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "auction-edit/:id",
+    component: AuctionEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "auction-view/:id",
+    component: AuctionViewComponent,
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]

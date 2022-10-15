@@ -26,7 +26,7 @@ namespace Emirates.Core.Application.Services.ContactUsMessages
 
         public IApiResponse GetById(int id)
         {
-            var contactUsMessage = _emiratesUnitOfWork.ContactUsMessages.FirstOrDefault(l => l.Id.Equals(id));
+            var contactUsMessage = _emiratesUnitOfWork.ContactUsMessages.FirstOrDefault(l => l.Id.Equals(id), x => x.ContactUsMessageType);
             if (contactUsMessage == null)
                 throw new NotFoundException(typeof(ContactUsMessage).Name);
             return GetResponse(data: _mapper.Map<GetContactUsMessageDetailsDto>(contactUsMessage));

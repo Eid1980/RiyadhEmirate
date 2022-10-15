@@ -54,7 +54,7 @@
           <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
           <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
                         (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
-                        accept="image/*" [maxFileSize]="fileSize">
+                        [accept]="acceptType" [maxFileSize]="fileSize">
           </p-fileUpload>
           <small *ngIf="(isFormSubmitted || createNewsform.get('image').touched) && createNewsform.get('image').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>

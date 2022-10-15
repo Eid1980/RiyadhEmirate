@@ -125,5 +125,15 @@ namespace Emirates.Core.Domain.Entities
 
         public virtual ICollection<Auction> CreatedAuctions { get; set; }
         public virtual ICollection<Auction> ModifiedAuctions { get; set; }
+
+        public virtual ICollection<OpenDataSubCateguery> CreatedOpenDataSubCategueries { get; set; }
+        public virtual ICollection<OpenDataSubCateguery> ModifiedOpenDataSubCategueries { get; set; }
+
+        public virtual ICollection<OpenDataCateguery> CreatedOpenDataCategueries { get; set; }
+        public virtual ICollection<OpenDataCateguery> ModifiedOpenDataCategueries { get; set; }
+
+        public virtual ICollection<OpenDataReport> CreatedOpenDataReports { get; set; }
+        public virtual ICollection<OpenDataReport> ModifiedOpenDataReports { get; set; }
+
     }
 }

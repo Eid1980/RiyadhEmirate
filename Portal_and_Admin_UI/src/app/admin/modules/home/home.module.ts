@@ -13,8 +13,10 @@ import { UserRoleAddComponent } from './components/permission/user-role-add/user
 import { RoleEditComponent } from './components/permission/role-edit/role-edit.component';
 import { RoleViewComponent } from './components/permission/role-view/role-view.component';
 import { NotAuthorizeComponent } from './components/not-authorize/not-authorize.component';
+import { OpenDataRequestListComponent } from './components/other-requests/open-data-request-list/open-data-request-list.component';
+import { ContactUsMessageListComponent } from './components/other-requests/contact-us-message-list/contact-us-message-list.component';
 @NgModule({
-  declarations: [HomeComponent, UserListComponent, UserAddComponent, RoleListComponent, RoleAddComponent, UserRoleAddComponent, RoleEditComponent, RoleViewComponent, NotAuthorizeComponent],
+  declarations: [HomeComponent, UserListComponent, UserAddComponent, RoleListComponent, RoleAddComponent, UserRoleAddComponent, RoleEditComponent, RoleViewComponent, NotAuthorizeComponent, OpenDataRequestListComponent, ContactUsMessageListComponent],
   imports: [
     SharedModule,
     HomeRoutingModule,

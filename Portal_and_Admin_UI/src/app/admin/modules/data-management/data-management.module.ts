@@ -74,6 +74,14 @@ import { AuctionAddComponent } from './components/auction/auction-add/auction-ad
 import { AuctionEditComponent } from './components/auction/auction-edit/auction-edit.component';
 import { AuctionListComponent } from './components/auction/auction-list/auction-list.component';
 import { AuctionViewComponent } from './components/auction/auction-view/auction-view.component';
+import { OpenDataReportAddComponent } from './components/open-data-report/open-data-report-add/open-data-report-add.component';
+import { OpenDataReportEditComponent } from './components/open-data-report/open-data-report-edit/open-data-report-edit.component';
+import { OpenDataReportListComponent } from './components/open-data-report/open-data-report-list/open-data-report-list.component';
+import { OpenDataReportViewComponent } from './components/open-data-report/open-data-report-view/open-data-report-view.component';
+import { OpenDataCategueryAddComponent } from './components/open-data-categuery/open-data-categuery-add/open-data-categuery-add.component';
+import { OpenDataCategueryEditComponent } from './components/open-data-categuery/open-data-categuery-edit/open-data-categuery-edit.component';
+import { OpenDataCategueryListComponent } from './components/open-data-categuery/open-data-categuery-list/open-data-categuery-list.component';
+import { OpenDataCategueryViewComponent } from './components/open-data-categuery/open-data-categuery-view/open-data-categuery-view.component';
 
 @NgModule({
   declarations: [
@@ -148,6 +156,14 @@ import { AuctionViewComponent } from './components/auction/auction-view/auction-
     AuctionEditComponent,
     AuctionListComponent,
     AuctionViewComponent,
+    OpenDataReportAddComponent,
+    OpenDataReportEditComponent,
+    OpenDataReportListComponent,
+    OpenDataReportViewComponent,
+    OpenDataCategueryAddComponent,
+    OpenDataCategueryEditComponent,
+    OpenDataCategueryListComponent,
+    OpenDataCategueryViewComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

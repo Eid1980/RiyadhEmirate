@@ -78,11 +78,11 @@ export class ServiceAddComponent implements OnInit {
         if (response.isSuccess) {
           if (imageContent) {
             this.fileManagerService.uploadFile(FileCateguery.Services, response.data.fileName, [imageContent]).subscribe(res => {
-              this.globalService.navigate(`/admin/data-management/service-audience/${response.data.toString() }`);
+              this.globalService.navigate(`/admin/data-management/service-audience/${response.data.id.toString()}`);
             });
           }
           else {
-            this.globalService.navigate(`/admin/data-management/service-audience/${response.data.toString() }`);
+            this.globalService.navigate(`/admin/data-management/service-audience/${response.data.id.toString() }`);
           }
         }
       });

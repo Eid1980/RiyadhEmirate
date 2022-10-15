@@ -29,6 +29,7 @@ import { NewsSearchComponent } from './components/news-search/news-search.compon
 import { GovernorateNewsComponent } from './components/governorate-news/governorate-news.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { TransactionInquiryComponent } from './components/transaction-inquiry/transaction-inquiry.component';
+import { AuctionDetailsComponent } from './components/auction-details/auction-details.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { TransactionInquiryComponent } from './components/transaction-inquiry/tr
     NewsSearchComponent,
     GovernorateNewsComponent,
     ReportsComponent,
-    TransactionInquiryComponent
+    TransactionInquiryComponent,
+    AuctionDetailsComponent
   ],
   imports: [
     SharedModule,

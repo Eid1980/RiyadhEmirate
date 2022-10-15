@@ -13,8 +13,10 @@ namespace Emirates.Core.Application.Mappers
         public MappingProfile()
         {
             #region Auction
-            CreateMap<CreateAuctionDto, Auction>();
-            CreateMap<UpdateAuctionDto, Auction>();
+            CreateMap<CreateAuctionDto, Auction>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
+            CreateMap<UpdateAuctionDto, Auction>()
+                .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
 
             CreateMap<Auction, GetAuctionDetailsDto>();
             CreateMap<Auction, GetAuctionListDto>();
@@ -57,7 +59,8 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<CreateContactUsMessageDto, ContactUsMessage>();
 
             CreateMap<ContactUsMessage, GetContactUsMessageDetailsDto>()
-                .ForMember(dest => dest.ContactUsMessageTypeName, src => src.MapFrom(m => m.ContactUsMessageType.NameAr));
+                .ForMember(dest => dest.ContactUsMessageTypeName, src => src.MapFrom(m => m.ContactUsMessageType.NameAr))
+                .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
             CreateMap<ContactUsMessage, GetContactUsMessageListDto>()
                 .ForMember(dest => dest.ContactUsMessageTypeName, src => src.MapFrom(m => m.ContactUsMessageType.NameAr));
             #endregion
@@ -109,10 +112,27 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
             #endregion
 
+            #region OpenDataCateguery
+            CreateMap<CreateOpenDataCategueryDto, OpenDataCateguery>();
+            CreateMap<UpdateOpenDataCategueryDto, OpenDataCateguery>();
+
+            CreateMap<OpenDataCateguery, GetOpenDataCategueryDetailsDto>();
+            CreateMap<OpenDataCateguery, GetOpenDataCategueryListDto>();
+            #endregion
+
+            #region OpenDataReport
+            CreateMap<CreateOpenDataReportDto, OpenDataReport>();
+            CreateMap<UpdateOpenDataReportDto, OpenDataReport>();
+
+            CreateMap<OpenDataReport, GetOpenDataReportDetailsDto>();
+            CreateMap<OpenDataReport, GetOpenDataReportListDto>();
+            #endregion
+
             #region OpenDataRequest
             CreateMap<CreateOpenDataRequestDto, OpenDataRequest>();
 
-            CreateMap<OpenDataRequest, GetOpenDataRequestDetailsDto>();
+            CreateMap<OpenDataRequest, GetOpenDataRequestDetailsDto>()
+                .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd"))); ;
             CreateMap<OpenDataRequest, GetOpenDataRequestListDto>();
             #endregion
 
@@ -436,7 +456,6 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.RoleNameAr, src => src.MapFrom(m => m.Role.NameAr))
                 .ForMember(dest => dest.RoleNameEn, src => src.MapFrom(m => m.Role.NameEn));
             #endregion
-
 
         }
     }

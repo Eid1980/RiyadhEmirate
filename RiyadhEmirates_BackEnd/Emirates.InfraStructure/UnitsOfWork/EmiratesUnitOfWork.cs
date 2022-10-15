@@ -65,6 +65,14 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public INewsCommentRepository NewsComments => newsComments ??= new NewsCommentRepository(Context);
 
 
+        private OpenDataCategueryRepository openDataCategueries;
+        public IOpenDataCategueryRepository OpenDataCategueries => openDataCategueries ??= new OpenDataCategueryRepository(Context);
+
+
+        private OpenDataReportRepository openDataReports;
+        public IOpenDataReportRepository OpenDataReports => openDataReports ??= new OpenDataReportRepository(Context);
+
+
         private OpenDataRequestRepository openDataRequests;
         public IOpenDataRequestRepository OpenDataRequests => openDataRequests ??= new OpenDataRequestRepository(Context);
 

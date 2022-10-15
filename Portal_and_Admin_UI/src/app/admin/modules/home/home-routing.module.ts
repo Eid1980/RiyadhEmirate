@@ -11,6 +11,8 @@ import { UserAddComponent } from "./components/permission/user-add/user-add.comp
 import { UserListComponent } from "./components/permission/user-list/user-list.component";
 import { UserRoleAddComponent } from "./components/permission/user-role-add/user-role-add.component";
 import { NotAuthorizeComponent } from "./components/not-authorize/not-authorize.component";
+import { OpenDataRequestListComponent } from "./components/other-requests/open-data-request-list/open-data-request-list.component";
+import { ContactUsMessageListComponent } from "./components/other-requests/contact-us-message-list/contact-us-message-list.component";
 
 const routes: Routes = [
   //#region Permission
@@ -72,6 +74,22 @@ const routes: Routes = [
   },
   //#endregion
 
+  {
+    path: "open-data-request-list",
+    component: OpenDataRequestListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "contact-us-message-list",
+    component: ContactUsMessageListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
   { path: 'not-authorize', component: NotAuthorizeComponent },
   { path: "", component: HomeComponent, canActivate: [AuthGuard] },
 ];

@@ -39,6 +39,8 @@ using Emirates.Core.Domain.Interfaces;
 using Emirates.InfraStructure.UnitsOfWork;
 using Emirates.Core.Application.Services.OpenDataRequests;
 using Emirates.Core.Application.Services.Auctions;
+using Emirates.Core.Application.Services.OpenDataCategueries;
+using Emirates.Core.Application.Services.OpenDataReports;
 
 namespace Emirates.API.Configurations
 {
@@ -67,6 +69,8 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<INewsService, NewsService>();
             builder.Services.AddScoped<INewsCommentService, NewsCommentService>();
             builder.Services.AddScoped<INewsCategueryService, NewsCategueryService>();
+            builder.Services.AddScoped<IOpenDataCategueryService, OpenDataCategueryService>();
+            builder.Services.AddScoped<IOpenDataReportService, OpenDataReportService>();
             builder.Services.AddScoped<IOpenDataRequestService, OpenDataRequestService>();
             builder.Services.AddScoped<IPosterService, PosterService>();
             builder.Services.AddScoped<IWomanSectionService, WomanSectionService>();

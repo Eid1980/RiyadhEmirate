@@ -93,7 +93,7 @@ export class ServiceEditComponent implements OnInit {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
           if (imageContent) {
-            this.fileManagerService.uploadFile(FileCateguery.Posters, response.data.fileName, [imageContent]).subscribe(res => {
+            this.fileManagerService.uploadFile(FileCateguery.Services, response.data.fileName, [imageContent]).subscribe(res => {
               this.globalService.navigate(`/admin/data-management/service-audience/${this.id}`);
             });
           }

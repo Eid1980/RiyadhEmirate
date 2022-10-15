@@ -12,5 +12,6 @@ namespace Emirates.Core.Application.Services.Lookups
         IApiResponse GetReligionLookupList();
         IApiResponse GetCommentStageLookupList();
         IApiResponse GetContactUsMessageTypeLookupList();
+        IApiResponse GetOpenDataSubCategueryLookupList();
     }
 }

@@ -124,8 +124,6 @@ export class LatestNewsEnListComponent implements OnInit {
   isconfirm(id: number) {
     this.newsService.delete(id).subscribe((result) => {
       if (result.isSuccess) {
-        this.fileManagerService.deleteByEntityName(id, 'LatestNews').subscribe((res) => {
-        });
         this.globalService.clearMessages();
         this.list.getData();
       }

@@ -21,16 +21,16 @@ export class ListPosterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalService.setAdminTitle('الاعلانات');
+    this.globalService.setAdminTitle('الملصقات');
     this.pageSetting();
   }
 
   pageSetting() {
     this.pageListSettings = {
-      PageTitle: "قائمة الاعلانات",
+      PageTitle: "قائمة الملصقات",
       listPermissionCode: "*",
       createButtonLink: "/admin/data-management/poster-add",
-      createButtonText: "انشاء اعلان جديد",
+      createButtonText: "انشاء ملصق جديد",
       Url: this.posterService.serviceUrl,
 
       cols: [
@@ -93,8 +93,6 @@ export class ListPosterComponent implements OnInit {
   isconfirm(id: number) {
     this.posterService.delete(id).subscribe((result) => {
       if (result.isSuccess) {
-        this.fileManagerService.deleteByEntityName(id, 'Poster').subscribe((res) => {
-        });
         this.globalService.clearMessages();
         this.list.getData();
       }

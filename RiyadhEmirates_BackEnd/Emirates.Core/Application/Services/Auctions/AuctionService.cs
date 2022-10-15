@@ -4,8 +4,10 @@ using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.DynamicSearch;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Services.FileManagers;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using X.PagedList;
@@ -17,11 +19,13 @@ namespace Emirates.Core.Application.Services.Auctions
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
         private readonly IConfigurationProvider _mapConfig;
-        public AuctionService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper)
+        private readonly IFileManagerService _fileManagerService;
+        public AuctionService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper, IFileManagerService fileManagerService)
         {
             _emiratesUnitOfWork = emiratesUnitOfWork;
             _mapper = mapper;
             _mapConfig = mapper.ConfigurationProvider;
+            _fileManagerService = fileManagerService;
         }
 
         public IApiResponse GetById(int id)
@@ -54,7 +58,7 @@ namespace Emirates.Core.Application.Services.Auctions
         {
             var addedModel = _emiratesUnitOfWork.Auctions.Add(_mapper.Map<Auction>(createModel));
             _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
+            return GetResponse(message: CustumMessages.SaveSuccess(), data: new FileToUploadDto { Id = addedModel.Id, FileName = addedModel.ImageName });
         }
         public IApiResponse Update(UpdateAuctionDto updateModel)
         {
@@ -62,9 +66,21 @@ namespace Emirates.Core.Application.Services.Auctions
             if (auction == null)
                 throw new NotFoundException(typeof(Auction).Name);
 
-            _emiratesUnitOfWork.Auctions.Update(auction, _mapper.Map<Auction>(updateModel));
-            _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
+            var newAuction = _mapper.Map<Auction>(updateModel);
+            newAuction.ImageName = string.IsNullOrEmpty(newAuction.ImageName) ? auction.ImageName : newAuction.ImageName;
+            string oldImageName = auction.ImageName;
+
+            _emiratesUnitOfWork.Auctions.Update(auction, newAuction);
+            if (_emiratesUnitOfWork.Complete() > 0)
+            {
+                if (!string.IsNullOrEmpty(updateModel.ImageName) && !string.IsNullOrEmpty(oldImageName))
+                    _fileManagerService.Delete(new DeleteFileDto
+                    {
+                        CategueryName = SystemEnums.FileCateguery.Auctions,
+                        Name = oldImageName
+                    });
+            }
+            return GetResponse(message: CustumMessages.UpdateSuccess(), data: new FileToUploadDto { Id = updateModel.Id, FileName = newAuction.ImageName });
         }
         public IApiResponse ChangeStatus(int id)
         {
@@ -82,7 +98,12 @@ namespace Emirates.Core.Application.Services.Auctions
             if (auction == null)
                 throw new NotFoundException(typeof(Auction).Name);
             _emiratesUnitOfWork.Auctions.Remove(auction);
-            _emiratesUnitOfWork.Complete();
+            if (_emiratesUnitOfWork.Complete() > 0)
+                _fileManagerService.Delete(new DeleteFileDto
+                {
+                    CategueryName = SystemEnums.FileCateguery.Auctions,
+                    Name = auction.ImageName
+                });
             return GetResponse(message: CustumMessages.DeleteSuccess());
         }
     }

@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { ServiceAudienceService } from '@shared/proxy/service-audience/service-audience.service';
 import { CreateServiceAudienceDto, GetCheckedAudienceDto } from '@shared/proxy/service-audience/models';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-service-audience',
@@ -20,8 +21,8 @@ export class ServiceAudienceComponent implements OnInit {
 
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
-  fileSize: number = 10000000;
-  acceptType: 'image/*';
+  fileSize: number = environment.ServiceExplainfileSize ? environment.ServiceExplainfileSize : environment.fileSize;
+  acceptType: string = environment.ServiceExplainallowedExtensions ? environment.ServiceExplainallowedExtensions : environment.allowedExtensions;
   isMultiple: boolean = false;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;

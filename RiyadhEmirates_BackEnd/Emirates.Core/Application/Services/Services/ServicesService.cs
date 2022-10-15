@@ -100,7 +100,7 @@ namespace Emirates.Core.Application.Services
             if (_emiratesUnitOfWork.Services.Where(x => x.Id != updateModel.Id && x.NameEn.Equals(updateModel.NameEn)).Any())
                 throw new BusinessException("الاسم انجليزي مضاف مسبقا");
 
-            var newService = _mapper.Map<EmiratesPrince>(updateModel);
+            var newService = _mapper.Map<Service>(updateModel);
             newService.ImageName = string.IsNullOrEmpty(newService.ImageName) ? service.ImageName : newService.ImageName;
             string oldImageName = service.ImageName;
 
@@ -129,6 +129,7 @@ namespace Emirates.Core.Application.Services
         public IApiResponse Delete(int id)
         {
             var service = _emiratesUnitOfWork.Services.FirstOrDefault(n => n.Id == id,
+                x => x.ServiceAudiences, x => x.ServiceBenefits,
                 x => x.ServiceStages, x => x.RequestTypes, x => x.RequestAttachmentTypes, x => x.Requests);
             if (service == null)
                 throw new NotFoundException(typeof(Service).Name);
@@ -141,6 +142,8 @@ namespace Emirates.Core.Application.Services
             if (service.Requests.Count > 0)
                 throw new BusinessException("الخدمة مرتبطة بطلبات في طلبات الخدمات");
 
+            _emiratesUnitOfWork.ServiceAudiences.RemoveRange(service.ServiceAudiences);
+            _emiratesUnitOfWork.ServiceBenefits.RemoveRange(service.ServiceBenefits);
             _emiratesUnitOfWork.Services.Remove(service);
             if (_emiratesUnitOfWork.Complete() > 0)
                 _fileManagerService.Delete(new DeleteFileDto

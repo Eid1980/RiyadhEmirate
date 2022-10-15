@@ -84,5 +84,14 @@ namespace Emirates.Core.Application.Services.Lookups
                 Name = item.NameAr
             }).ToList());
         }
+        public IApiResponse GetOpenDataSubCategueryLookupList()
+        {
+            return GetResponse(data: _emiratesUnitOfWork.Lookups.GetOpenDataSubCateguerys().Where(l => l.IsActive).Select(item =>
+            new LookupDto<int>
+            {
+                Id = item.Id,
+                Name = item.NameAr
+            }).ToList());
+        }
     }
 }

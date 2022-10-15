@@ -5,6 +5,7 @@ namespace Emirates.Core.Application.Dtos
     {
         public string Title { get; set; }
         public string Content { get; set; }
+        public string ImageName { get; set; }
         public bool IsActive { get; set; }
     }
 }

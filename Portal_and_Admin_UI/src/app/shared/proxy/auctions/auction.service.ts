@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { CreateAuctionDto, GetAuctionDetailsDto, UpdateAuctionDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
+import { FileToUploadDto } from '../shared/file-to-upload-dto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,11 +19,11 @@ export class AuctionService {
     );
   }
 
-  create = (createdDto: CreateAuctionDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  create = (createdDto: CreateAuctionDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.post<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Create`, createdDto).pipe();
   }
-  update = (updatedDto: UpdateAuctionDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  update = (updatedDto: UpdateAuctionDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.put<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }
 
   changeStatus = (id: number): Observable<ApiResponse<boolean>> => {

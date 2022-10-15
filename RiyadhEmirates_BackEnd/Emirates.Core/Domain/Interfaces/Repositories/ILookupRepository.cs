@@ -13,5 +13,6 @@ namespace Emirates.Core.Domain.Interfaces.Repositories
         IQueryable<Religion> GetReligions();
         IQueryable<CommentStage> GetCommentStages();
         IQueryable<ContactUsMessageType> GetContactUsMessageTypes();
+        IQueryable<OpenDataSubCateguery> GetOpenDataSubCateguerys();
     }
 }

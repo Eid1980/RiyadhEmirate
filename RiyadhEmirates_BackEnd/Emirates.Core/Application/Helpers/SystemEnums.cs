@@ -45,6 +45,7 @@ namespace Emirates.Core.Application.Helpers
             public static string Princes = "princes";
             public static string Governorates = "governorates";
             public static string Services = "services";
+            public static string Auctions = "auctions";
         }
     }
 }

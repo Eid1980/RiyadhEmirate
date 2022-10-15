@@ -6,6 +6,7 @@ import { ColumnType } from '@shared/enums/column-type.enum';
 import { PageListSetting } from '@shared/interfaces/page-list-setting';
 import { ServiceService } from '@proxy/services/service.service';
 import { GlobalService } from '@shared/services/global.service';
+import { FileManagerService } from '@shared/services/file-manager.service';
 
 @Component({
   selector: 'app-service-list',
@@ -16,7 +17,8 @@ export class ServiceListComponent implements OnInit {
   pageListSettings: PageListSetting;
   checked: true;
 
-  constructor(private serviceService: ServiceService, private globalService: GlobalService)
+  constructor(private serviceService: ServiceService, private fileManagerService: FileManagerService,
+    private globalService: GlobalService)
   {
   }
 
@@ -94,6 +96,8 @@ export class ServiceListComponent implements OnInit {
   isconfirm(id: number) {
     this.serviceService.delete(id).subscribe((result) => {
       if (result.isSuccess) {
+        this.fileManagerService.deleteByEntityName(id.toString(), 'ServiceExplain').subscribe((res) => {
+        });
         this.globalService.clearMessages();
         this.list.getData();
       }

@@ -2,15 +2,15 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
     <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
-    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/poster-list']">الاعلانات</a>
-    <span class="breadcrumb-item fs-16 active">تعديل الإعلان</span>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/poster-list']">الملصقات</a>
+    <span class="breadcrumb-item fs-16 active">تعديل الملصق</span>
   </nav>
 </div>
 
 <form [formGroup]="updatePosterform" (ngSubmit)="onSubmit()">
   <div class="form-card">
     <div class="form-header">
-      <h5>إضافة إعلان جديد</h5>
+      <h5>تعديل الملصق</h5>
     </div>
     <div class="form-content">
       <div class="row mx-0">
@@ -42,7 +42,7 @@
           <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
           <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
                         (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
-                        accept="image/*" [maxFileSize]="fileSize">
+                        [accept]="acceptType" [maxFileSize]="fileSize">
           </p-fileUpload>
           <small *ngIf="(isFormSubmitted || updatePosterform.get('image').touched) && updatePosterform.get('image').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>

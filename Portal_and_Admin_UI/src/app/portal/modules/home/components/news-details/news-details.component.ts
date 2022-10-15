@@ -32,7 +32,6 @@ export class NewsDetailsComponent implements OnInit {
     this.id = this._activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.getNewsById();
-      this.getNewsComments();
     }
     else {
       this.globalService.navigate("/");
@@ -44,6 +43,9 @@ export class NewsDetailsComponent implements OnInit {
     this.newsService.getById(this.id).subscribe((response) => {
       this.newsDetailsDto = response.data
       this.canComments = this.newsDetailsDto.newsTypeId == NewsTypes.LatestNews;
+      if (this.canComments) {
+        this.getNewsComments();
+      }
     });
   }
   getNewsComments() {

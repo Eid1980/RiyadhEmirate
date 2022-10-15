@@ -96,7 +96,7 @@
                         (onRemove)="onRemove($event)"
                         [multiple]="isMultiple"
                         mode="advanced"
-                        accept="image/*"
+                        [accept]="acceptType"
                         [maxFileSize]="fileSize">
           </p-fileUpload>
           <small *ngIf="(isFormSubmitted || createServiceForm.get('image').touched) && createServiceForm.get('image').errors?.required" class="danger">هذاالحقل مطلوب</small>

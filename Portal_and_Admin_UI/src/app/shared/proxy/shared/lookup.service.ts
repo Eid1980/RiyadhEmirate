@@ -45,6 +45,10 @@ export class LookupService {
     return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetContactUsMessageTypeLookupList`).pipe(
     );
   }
+  getOpenDataSubCategueryLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
+    return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetOpenDataSubCategueryLookupList`).pipe(
+    );
+  }
 
   getExtentionList = (): LookupExtention[] => {
     return [

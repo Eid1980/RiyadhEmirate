@@ -103,8 +103,6 @@ export class LatestNewsEnCommentsComponent implements OnInit {
   isconfirm(id: number) {
     this.newsCommentService.delete(id).subscribe((result) => {
       if (result.isSuccess) {
-        this.fileManagerService.deleteByEntityName(id, 'LatestNews').subscribe((res) => {
-        });
         this.globalService.clearMessages();
         this.list.getData();
       }

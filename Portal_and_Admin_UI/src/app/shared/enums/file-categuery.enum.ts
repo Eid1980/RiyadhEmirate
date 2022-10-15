@@ -3,5 +3,6 @@ export enum FileCateguery {
   Posters = 'posters',
   Princes = 'princes',
   Governorates = 'governorates',
-  Services = 'services'
+  Services = 'services',
+  Auctions = 'auctions'
 }

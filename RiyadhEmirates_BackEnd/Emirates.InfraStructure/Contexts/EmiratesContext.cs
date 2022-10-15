@@ -88,6 +88,7 @@ namespace Emirates.InfraStructure.Contexts
                 b.ToTable("Auctions", EmiratesDbSchemas.DataManagement);
                 b.Property(x => x.Title).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.Content).HasColumnType(EmiratesConstants.MaxColumnType).IsRequired();
+                b.Property(x => x.ImageName).HasMaxLength(EmiratesConstants.MaxDescriptionLength);
                 b.Property(x => x.IsActive).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
 
@@ -358,6 +359,41 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region OpenDataCateguery
+            modelBuilder.Entity<OpenDataCateguery>(b =>
+            {
+                b.ToTable("OpenDataCategueries", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.OpenDataSubCategueryId).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<OpenDataSubCateguery>(x => x.OpenDataSubCateguery).WithMany(x => x.OpenDataCategueries).HasForeignKey(x => x.OpenDataSubCategueryId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedOpenDataCategueries).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedOpenDataCategueries).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.OpenDataCategueries());
+            });
+            #endregion
+
+            #region OpenDataReport
+            modelBuilder.Entity<OpenDataReport>(b =>
+            {
+                b.ToTable("OpenDataReports", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.OpenDataCategueryId).IsRequired();
+                b.Property(x => x.FileUrl).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<OpenDataCateguery>(x => x.OpenDataCateguery).WithMany(x => x.OpenDataReports).HasForeignKey(x => x.OpenDataCategueryId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedOpenDataReports).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedOpenDataReports).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
             #region OpenDataRequest
             modelBuilder.Entity<OpenDataRequest>(b =>
             {
@@ -369,6 +405,22 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.IsReplied).IsRequired().HasDefaultValue(false);
 
                 b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedOpenDataRequests).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region OpenDataSubCateguery
+            modelBuilder.Entity<OpenDataSubCateguery>(b =>
+            {
+                b.ToTable("OpenDataSubCategueries", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedOpenDataSubCategueries).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedOpenDataSubCategueries).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.OpenDataSubCategueries());
             });
             #endregion
 
@@ -844,7 +896,10 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<News> News { get; set; }
         public DbSet<NewsCateguery> NewsCategueries { get; set; }
         public DbSet<NewsComment> NewsComments { get; set; }
+        public DbSet<OpenDataCateguery> OpenDataCategueries { get; set; }
+        public DbSet<OpenDataReport> OpenDataReports { get; set; }
         public DbSet<OpenDataRequest> OpenDataRequests { get; set; }
+        public DbSet<OpenDataSubCateguery> OpenDataSubCategueries { get; set; }
         public DbSet<PageContent> PageContent { get; set; }
         public DbSet<Poster> Posters { get; set; }
         public DbSet<Religion> Religions { get; set; }

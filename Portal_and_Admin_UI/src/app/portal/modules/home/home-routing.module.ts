@@ -23,6 +23,7 @@ import { NewsSearchComponent } from "./components/news-search/news-search.compon
 import { GovernorateNewsComponent } from "./components/governorate-news/governorate-news.component";
 import { ReportsComponent } from "./components/reports/reports.component";
 import { TransactionInquiryComponent } from "./components/transaction-inquiry/transaction-inquiry.component";
+import { AuctionDetailsComponent } from "./components/auction-details/auction-details.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: "home/governorate-news", component: GovernorateNewsComponent },
   { path: "home/reports-news", component: ReportsComponent },
   { path: "home/news-details/:id", component: NewsDetailsComponent },
+  { path: "home/auction-details/:id", component: AuctionDetailsComponent },
   { path: "profile", component: ProfileComponent },
   { path: "edit-profile", component: EditProfileComponent },
   { path: "open-data", component: OpenDataComponent },

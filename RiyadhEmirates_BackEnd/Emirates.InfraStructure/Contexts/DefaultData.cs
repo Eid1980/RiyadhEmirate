@@ -404,6 +404,24 @@ namespace Emirates.InfraStructure.Contexts
 
             return arrData;
         }
+        public static OpenDataCateguery[] OpenDataCategueries()
+        {
+            OpenDataCateguery[] arrData = new OpenDataCateguery[4];
+            arrData[0] = new OpenDataCateguery { Id = 1, NameAr = "تقارير الخدمات الإلكترونية", NameEn = "E-Services Reports", OpenDataSubCategueryId = 2, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[1] = new OpenDataCateguery { Id = 2, NameAr = "تقارير المعاملات", NameEn = "Transaction Reports", OpenDataSubCategueryId = 2, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[2] = new OpenDataCateguery { Id = 3, NameAr = "المعاملات لصفة صاحب المعاملة", NameEn = "Transactions for the owner of the transaction", OpenDataSubCategueryId = 2, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[3] = new OpenDataCateguery { Id = 4, NameAr = "الحصر", NameEn = "Limitation", OpenDataSubCategueryId = 1, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            return arrData;
+        }
+        public static OpenDataSubCateguery[] OpenDataSubCategueries()
+        {
+            OpenDataSubCateguery[] arrData = new OpenDataSubCateguery[4];
+            arrData[0] = new OpenDataSubCateguery { Id = 1, NameAr = "سنوي", NameEn = "Annual", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[1] = new OpenDataSubCateguery { Id = 2, NameAr = "نصف سنوي", NameEn = "Semi-annual", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[2] = new OpenDataSubCateguery { Id = 3, NameAr = "ربع سنوي", NameEn = "Quarterly", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[3] = new OpenDataSubCateguery { Id = 4, NameAr = "شهري", NameEn = "Monthly", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            return arrData;
+        }
 
         public static Poster[] Posters()
         {

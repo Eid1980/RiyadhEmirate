@@ -9,5 +9,6 @@ namespace Emirates.Core.Application.Dtos
         public string Title { get; set; }
         public string Content { get; set; }
         public bool IsReplied { get; set; }
+        public string CreatedDate { get; set; }
     }
 }

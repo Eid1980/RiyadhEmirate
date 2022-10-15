@@ -44,5 +44,9 @@ namespace Emirates.InfraStructure.Repositories
         {
             return _context.ContactUsMessageTypes.AsQueryable();
         }
+        public IQueryable<OpenDataSubCateguery> GetOpenDataSubCateguerys()
+        {
+            return _context.OpenDataSubCategueries.AsQueryable();
+        }
     }
 }

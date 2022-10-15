@@ -1,0 +1,41 @@
+<app-page-list [PageListSetting]="pageListSettings"></app-page-list>
+
+<p-dialog [modal]="true" header="الرد على طلب تواصل معنا" [(visible)]="showDialog">
+  <div class="form-card">
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">الاسم</span>
+          <span class="form-val">{{ getContactUsMessageDetailsDto?.fullName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">البريد الالكتروني</span>
+          <span class="form-val">{{ getContactUsMessageDetailsDto?.email }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">تاريخ الطلب</span>
+          <span class="form-val">{{ getContactUsMessageDetailsDto?.createdDate }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">نوع الطلب</span>
+          <span class="form-val">{{ getContactUsMessageDetailsDto?.contactUsMessageTypeName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">عنوان الرسالة</span>
+          <span class="form-val">{{ getContactUsMessageDetailsDto?.title }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">تم الرد على الطلب</span>
+          <span class="form-val">{{ getContactUsMessageDetailsDto?.isReplied ? "نعم" : "لا" }}</span>
+        </div>
+        <div class="info-col col-md-12 col-12">
+          <span class="form-lbl lbl-33">الرسالة</span>
+          <span class="form-val" *ngIf="getContactUsMessageDetailsDto?.content" [outerHTML]="getContactUsMessageDetailsDto?.content | listString"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="btn" [ngClass]="getContactUsMessageDetailsDto?.isReplied ? 'btn-cancel' : 'btn-primary'" (click)="changeStatus(getContactUsMessageDetailsDto?.id)">{{ getContactUsMessageDetailsDto?.isReplied ? "الغاء الرد على الطلب" : "تم الرد على الطلب" }}</button>
+  </div>
+</p-dialog>

@@ -57,5 +57,10 @@ namespace Emirates.API.Controllers
         {
             return _lookupService.GetContactUsMessageTypeLookupList();
         }
+        [HttpGet("GetOpenDataSubCategueryLookupList")]
+        public IApiResponse GetOpenDataSubCategueryLookupList()
+        {
+            return _lookupService.GetOpenDataSubCategueryLookupList();
+        }
     }
 }

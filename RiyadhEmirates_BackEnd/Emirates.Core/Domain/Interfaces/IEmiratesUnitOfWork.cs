@@ -16,6 +16,8 @@ namespace Emirates.Core.Domain.Interfaces
         INewsRepository News { get; }
         INewsCategueryRepository NewsCategueries { get; }
         INewsCommentRepository NewsComments { get; }
+        IOpenDataCategueryRepository OpenDataCategueries { get; }
+        IOpenDataReportRepository OpenDataReports { get; }
         IOpenDataRequestRepository OpenDataRequests { get; }
         IPageMainPointsRepository PageMainPoints { get; }
         IPageContentRepository PageContent { get; }

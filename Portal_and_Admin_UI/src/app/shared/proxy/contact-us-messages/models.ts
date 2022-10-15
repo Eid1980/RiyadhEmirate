@@ -17,6 +17,7 @@ export interface GetContactUsMessageDetailsDto {
   title: string;
   content: string;
   isReplied: boolean;
+  createdDate: string;
 }
 
 export interface GetContactUsMessageListDto {
