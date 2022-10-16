@@ -185,6 +185,28 @@ export class HomeComponent implements OnInit {
     animateOut: 'slideOutUp',
     animateIn: 'slideInUp'
   };
+  bannerOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    rtl: true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+    },
+    nav: false,
+  };
   //#endregion
 
   constructor(private homeService: HomeService, private posterService: PosterService, public sanitizer: DomSanitizer,

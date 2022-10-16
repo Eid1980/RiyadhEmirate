@@ -1,8 +1,8 @@
 <!-- poster banner section -->
-<div class="home-slider mb-5 pb-3" *ngIf="posters.length > 0">
+  <div class="home-slider mb-5 pb-3" *ngIf="posters.length > 0">
   <div class="owl__carousel">
     <owl-carousel-o [options]="sliderOptions" class="owl-rtl">
-      <ng-template carouselSlide *ngFor="let poster of posters">
+        <ng-template carouselSlide *ngFor="let poster of posters">
         <img *ngIf="poster?.imageName" [src]="['/assets/images/uploads/posters/'+poster.imageName]" [alt]="poster?.titleEn" class="img-fluid slider" />
       </ng-template>
     </owl-carousel-o>
@@ -56,7 +56,7 @@
 
     <!-- navigation links & related websites -->
     <div class="col-md-6 my-2">
-      <div class="row mx-0">
+      <div class="row mx-0 mb-5">
         <div class="col-md-6 nav-card">
           <a href="">
             <img src="./assets/images/icons/electronic-council-icon.svg"
@@ -203,12 +203,31 @@
   </div>
 
   <!-- e-council banner section -->
-  <div class="row mb-5" *ngFor="let service of externalServices">
+    <div class="row mb-5" *ngFor="let service of externalServices">
     <div class="col-12">
-      <a class="d-flex" [href]="service.requestLink">
+        <a class="d-flex cursor-pointer" [href]="service.requestLink">
         <img [src]="['/assets/images/uploads/services/'+service.imageName]" [alt]="service?.nameEn" class="img-fluid rounded-4" />
         <!-- <img src="https://picsum.photos/id/10/1200/400" alt="banner" class="img-fluid rounded-4" /> -->
       </a>
+    </div>
+  </div>
+
+  <!-- banner slider -->
+  <div class="row">
+    <div class="col-12">
+      <div class="home-slider mb-5 pb-3">
+        <div class="owl__carousel">
+          <owl-carousel-o [options]="bannerOptions" class="owl-rtl">
+            <ng-template carouselSlide>
+              <img src="https://picsum.photos/id/10/1200/400" class="img-fluid slider rounded-4" />
+            </ng-template>
+
+            <ng-template carouselSlide>
+              <img src="assets/images/uploads/posters/slider.png" class="img-fluid slider rounded-4" />
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+      </div>
     </div>
   </div>
 
