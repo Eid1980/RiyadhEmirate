@@ -147,6 +147,12 @@ export class EditProfileComponent implements OnInit {
 
   onSubmit() {
     this.isFormSubmitted = true;
+
+    if(this.editProfileForm.value.newPassword != this.editProfileForm.value.newConfirmNewpassword){
+      this.globalService.showMessage("خطأ, ,كلمة المرور غير متطابقة");
+      return
+
+    }
     //let date = this.startDatePicker.getSelectedDate();
     this.isValidDate = false;
     if (this.birthDate?.getSelectedDate() == 'Invalid date') {
@@ -171,6 +177,12 @@ export class EditProfileComponent implements OnInit {
           })
         })
         }
+        else{
+          this.globalService.showMessage(response.message);
+        }
+      },
+      (error)=>{
+        this.globalService.showMessage(error);
       });
     }
   }

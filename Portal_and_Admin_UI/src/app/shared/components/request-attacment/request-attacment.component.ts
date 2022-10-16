@@ -39,7 +39,6 @@ export class RequestAttacmentComponent implements OnInit {
   getRequestDetails() {
     this.requestService.getAttachments(this.requestId).subscribe((response) => {
       this.attachmentsDto = response.data;
-      debugger;
     });
   }
 
@@ -106,6 +105,6 @@ export class RequestAttacmentComponent implements OnInit {
       this.globalService.messageAlert(MessageType.Success, 'تم رفع المرفق بنجاح');
       this.getRequestDetails();
     })
-    
+
   }
 }
