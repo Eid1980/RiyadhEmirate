@@ -26,7 +26,7 @@ namespace Emirates.Core.Application.Services.OpenDataCategueries
 
         public IApiResponse GetById(int id)
         {
-            var openDataCateguery = _emiratesUnitOfWork.OpenDataCategueries.FirstOrDefault(l => l.Id.Equals(id));
+            var openDataCateguery = _emiratesUnitOfWork.OpenDataCategueries.FirstOrDefault(l => l.Id.Equals(id), x => x.OpenDataSubCateguery);
             if (openDataCateguery == null)
                 throw new NotFoundException(typeof(OpenDataCateguery).Name);
             return GetResponse(data: _mapper.Map<GetOpenDataCategueryDetailsDto>(openDataCateguery));
@@ -97,6 +97,16 @@ namespace Emirates.Core.Application.Services.OpenDataCategueries
             _emiratesUnitOfWork.OpenDataCategueries.Remove(openDataCateguery);
             _emiratesUnitOfWork.Complete();
             return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
+
+        public IApiResponse GetLookupList()
+        {
+            return GetResponse(data: _emiratesUnitOfWork.OpenDataCategueries.Where(l => l.IsActive).Select(item =>
+            new LookupDto<int>
+            {
+                Id = item.Id,
+                Name = item.NameAr
+            }).ToList());
         }
     }
 }

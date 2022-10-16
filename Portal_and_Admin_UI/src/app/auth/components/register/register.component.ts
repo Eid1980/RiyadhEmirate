@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CheckUserRegisterDto, CreateUserDto} from '@shared/proxy/accounts/register.model';
+import { CreateUserDto} from '@shared/proxy/accounts/register.model';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { GlobalService } from '@shared/services/global.service';
 import { AccountService } from '@shared/proxy/accounts/account.service';
@@ -18,13 +18,10 @@ import { MessageType } from '@shared/enums/message-type.enum';
   templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
-  checkUserRegisterForm: FormGroup;
   userRegisterForm: FormGroup;
   isFormSubmitted: boolean = false;
   showCheckUserRegisterForm: boolean = true;
-  showUserRegisterForm: boolean = false;
 
-  checkUserRegisterDto = {} as CheckUserRegisterDto;
   createUserDto = {} as CreateUserDto;
   governorates = [] as LookupDto<number>[];
   nationalities = [] as LookupDto<number>[];
@@ -67,14 +64,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalService.setAdminTitle('تسجيل مستخدم جديد');
-    this.buildCheckForm();
-  }
-
-  buildCheckForm() {
-    this.checkUserRegisterForm = this.formBuilder.group({
-      nationalId: [this.checkUserRegisterDto.nationalId || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      birthDate: [this.checkUserRegisterDto.birthDate || null],
-    });
+    this.fillLookup();
+    this.buildRegisterForm();
   }
   buildRegisterForm() {
     this.userRegisterForm = this.formBuilder.group({
@@ -104,41 +95,6 @@ export class RegisterComponent implements OnInit {
       address: [this.createUserDto.address || ''],
     });
   }
-  onCheck() {
-    this.isFormSubmitted = true;
-    this.isValidDate = false;
-    if (this.birthDate?.getSelectedDate() == 'Invalid date') {
-      this.isValidDate = true;
-      return;
-    }
-    if (this.checkUserRegisterForm.valid) {
-      this.checkUserRegisterDto = {
-        ...this.checkUserRegisterForm.value,
-      } as CheckUserRegisterDto;
-      this.checkUserRegisterDto.birthDate = this.birthDate.getSelectedDate();
-
-      this.accountService
-        .checkUserRegister(this.checkUserRegisterDto)
-        .subscribe((response) => {
-          this.createUserDto = response.data;
-          let date = new Date(response.data.birthDate);
-          let ngbDateStructGregorian = {
-            day: date.getUTCDate(),
-            month: date.getUTCMonth() + 1,
-            year: date.getUTCFullYear(),
-          };
-          this.dateOfBirth = this.dateFormatterService.ToHijri(ngbDateStructGregorian);
-
-          if (response.isSuccess) {
-            this.showCheckUserRegisterForm = false;
-            this.showUserRegisterForm = true;
-            this.isFormSubmitted = false;
-            this.fillLookup();
-            this.buildRegisterForm();
-          }
-        });
-    }
-  }
   onRegister() {
     this.isFormSubmitted = true;
     this.isValidDate = false;
@@ -146,13 +102,12 @@ export class RegisterComponent implements OnInit {
       this.isValidDate = true;
       return;
     }
-    if (this.checkUserRegisterForm.valid) {
+    if (this.userRegisterForm.valid) {
       this.createUserDto = { ...this.userRegisterForm.value } as CreateUserDto;
-      this.checkUserRegisterDto.birthDate = this.birthDate.getSelectedDate();
+      this.createUserDto.birthDate = this.birthDate.getSelectedDate();
       this.accountService.register(this.createUserDto).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
-          //login
           this.login();
         }
       });
@@ -170,12 +125,8 @@ export class RegisterComponent implements OnInit {
     });
   }
   login() {
-    let userLoginDto = {
-      userName: this.createUserDto.userName,
-      password: this.createUserDto.passWord,
-    } as UserLoginDto;
-    this.accountService.login(userLoginDto).subscribe(
-      (response) => {
+    let userLoginDto = { userName: this.createUserDto.userName, password: this.createUserDto.passWord } as UserLoginDto;
+    this.accountService.login(userLoginDto).subscribe((response) => {
         if (response.isSuccess) {
           localStorage.setItem('EmiratesToken', response.data);
           this.router.navigate(['/home/']);

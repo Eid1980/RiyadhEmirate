@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserProfileData, GetUserSessionDto, ResetPasswordDto, UpdateUserProfileDto, UserLoginDto, ValidateOTPDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
-import { CheckUserRegisterDto, CreateUserDto } from './register.model';
+import { CreateUserDto } from './register.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +19,6 @@ export class AccountService {
     return this.httpClient.post<ApiResponse<string>>(`${this.serviceUrl}/Login`, userLoginDto).pipe();
   }
 
-  checkUserRegister = (checkUserRegisterDto: CheckUserRegisterDto): Observable<ApiResponse<CreateUserDto>> => {
-    return this.httpClient.post<ApiResponse<CreateUserDto>>(`${this.serviceUrl}/CheckUserRegister`, checkUserRegisterDto).pipe();
-  }
   register = (createUserDto: CreateUserDto): Observable<ApiResponse<number>> => {
     return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Register`, createUserDto).pipe();
   }

@@ -42,6 +42,9 @@ export class NewsDetailsComponent implements OnInit {
   getNewsById(){
     this.newsService.getById(this.id).subscribe((response) => {
       this.newsDetailsDto = response.data
+      if (!this.newsDetailsDto.isActive) {
+        this.globalService.navigate("/");
+      }
       this.canComments = this.newsDetailsDto.newsTypeId == NewsTypes.LatestNews;
       if (this.canComments) {
         this.getNewsComments();

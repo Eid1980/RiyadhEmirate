@@ -56,7 +56,7 @@ export class LatestNewsArAddComponent implements OnInit {
   buildForm() {
     this.createNewsform = this.formBuilder.group({
       title: [this.createNewsDto.title || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      newsCategueryId: [this.createNewsDto.newsCategueryId || '', [Validators.required]],
+      newsCategueryId: [this.createNewsDto.newsCategueryId || null, [Validators.required]],
       content: [this.createNewsDto.content || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       newsOrigin: [this.createNewsDto.newsOrigin || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       date: [this.createNewsDto.date || null],

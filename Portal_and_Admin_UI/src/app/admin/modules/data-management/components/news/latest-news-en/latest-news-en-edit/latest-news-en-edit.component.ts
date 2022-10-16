@@ -66,7 +66,7 @@ export class LatestNewsEnEditComponent implements OnInit {
   buildForm() {
     this.updateNewsform = this.formBuilder.group({
       title: [this.updateNewsDto.title || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      newsCategueryId: [this.updateNewsDto.newsCategueryId || '', [Validators.required]],
+      newsCategueryId: [this.updateNewsDto.newsCategueryId || null, [Validators.required]],
       content: [this.updateNewsDto.content || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       newsOrigin: [this.updateNewsDto.newsOrigin || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       date: [null],

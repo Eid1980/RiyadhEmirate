@@ -13,5 +13,6 @@ namespace Emirates.Core.Application.Services.OpenDataCategueries
         IApiResponse Update(UpdateOpenDataCategueryDto updateModel);
         IApiResponse ChangeStatus(int id);
         IApiResponse Delete(int id);
+        IApiResponse GetLookupList();
     }
 }

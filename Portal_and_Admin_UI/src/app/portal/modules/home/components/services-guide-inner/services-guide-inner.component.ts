@@ -31,6 +31,9 @@ export class ServicesGuideInnerComponent implements OnInit {
   getServiceById(){
     this._serviceService.getById(this.serviceId).subscribe((response) => {
       this.service = response.data
+      if (!this.service.isActive) {
+        this.globalService.navigate("/");
+      }
     });
   }
 
