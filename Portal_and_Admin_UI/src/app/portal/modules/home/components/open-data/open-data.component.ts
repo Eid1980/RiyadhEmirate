@@ -4,6 +4,9 @@ import { OpenDataRequestService } from '@shared/proxy/open-data-requests/open-da
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreateOpenDataRequestDto } from '@shared/proxy/open-data-requests/models';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { OpenDataCategueryService } from '@shared/proxy/open-data-categueries/open-data-categuery.service';
+import { OpenDataReportService } from '@shared/proxy/open-data-reports/open-data-report.service';
+import { SearchModel } from '@shared/proxy/shared/search-model.model';
 
 @Component({
   selector: 'app-open-data',
@@ -14,14 +17,28 @@ export class OpenDataComponent implements OnInit {
   isFormSubmitted: boolean;
   createOpenDataRequestDto = {} as CreateOpenDataRequestDto;
 
-  constructor(private formBuilder: FormBuilder, private openDataRequestService: OpenDataRequestService,
-    private globalService: GlobalService)
-  {
+  openDataCategoryReport : any = {};
+
+  constructor(private openDataRequestService: OpenDataRequestService,
+    private openDataCategoryService: OpenDataCategueryService,
+    private openDataReportService: OpenDataReportService,
+    private formBuilder: FormBuilder,
+    private globalService: GlobalService){
+
   }
 
   ngOnInit(): void {
     this.globalService.setTitle('البيانات المفتوحة');
     this.buildForm();
+
+    this.openDataCategoryService.getAllCategoryWithReports().subscribe(
+      (response) => {
+        if(response.isSuccess){
+          this.openDataCategoryReport = response.data;
+        }
+      },
+      () => {}
+    )
   }
 
   buildForm() {
@@ -48,4 +65,38 @@ export class OpenDataComponent implements OnInit {
     }
   }
 
+  paginate(event , openDataCategoryId: number) {
+    console.log(event ,openDataCategoryId)
+
+    let searchModel : SearchModel = {
+      PageNumber : event.pageCount,
+      PageSize: event.rows,
+      SearchFields : [{
+        FieldName:"OpenDataCategueryId",
+        Operator: "Equal",
+        Value: openDataCategoryId.toString()
+      }]
+    }
+
+    this.getListPage(searchModel, openDataCategoryId);
+
+  }
+
+  getListPage(searchModel : SearchModel, openDataCategoryId: number){
+    this.openDataReportService.getListPage(searchModel).subscribe(
+      (response:any) => {
+        if(response.isSuccess){
+          // Update outer Model
+
+          this.openDataCategoryReport.forEach(element => {
+            if(element.key.id == openDataCategoryId){
+              element.pagingMetaData = response.data.pagingMetaData
+              element.dataReports = response.data.gridItemsVM
+            }
+          });
+        }
+      },
+      (error) => {}
+    )
+  }
 }

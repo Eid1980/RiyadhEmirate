@@ -23,6 +23,7 @@ namespace Emirates.API.Controllers
         {
             return _openDataReportService.GetById(id);
         }
+
         [HttpPost("GetListPage")]
         public IApiResponse GetAll(SearchModel searchModelDto)
         {

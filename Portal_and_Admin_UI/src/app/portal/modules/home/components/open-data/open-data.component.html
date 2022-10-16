@@ -186,7 +186,7 @@
               <td class="text-center"></td>
               <td class="text-center"></td>
             </tr>
-            
+
             <tr>
               <td class="text-center">
                 <a class="text-primary-2" href="" target="_blank">التقرير الإجمالى للخدمات الإلكترونية للنصف الثانى من عام 1443 هـ</a>
@@ -215,39 +215,40 @@
           </tbody>
         </table>
       </div> -->
-    
+
       <div class="row">
-        <div class="col-md-6 mb-5">
+
+        <div class="col-md-6 mb-5" *ngFor="let cat of openDataCategoryReport">
           <div class="border border-2 rounded-5 border-primary p-3 pt-4 d-flex flex-column h-100">
             <div class="d-flex align-items-center mb-5">
               <div class="bg-primary rounded-5 p-2" style="width: 80px; height: 80px;">
                 <img src="assets/images/icons/files.svg" class="img-fluid filter-img-white" alt="icon" width="100px" />
               </div>
               <div class="mx-3">
-                <h4 class="text-primary fw-bold">تقارير الخدمات الإلكترونية</h4>
-              <h6 class="text-muted mb-0">نص سنوى</h6>
+                <h4 class="text-primary fw-bold">{{cat.key.nameAr}}</h4>
+              <h6 class="text-muted mb-0">{{cat.key.openDataSubCategueryNameAr}}</h6>
               </div>
             </div>
             <ul class="mb-4">
-              <li class="d-flex align-items-center mb-3">
+              <li class="d-flex align-items-center mb-3" *ngFor="let report of cat.dataReports">
+                <i class="fa-solid fa-link fa-18 text-primary-alt-3 ms-2"></i>
+                <a class="fw-normal text-muted fa-16 cursor-pointer" target="_blank"  [href]="report.fileUrl">{{report.nameAr}}</a>
+              </li>
+              <!--<li class="d-flex align-items-center mb-3">
                 <i class="fa-solid fa-link fa-18 text-primary-alt-3 ms-2"></i>
                 <a class="fw-normal text-muted fa-16" target="_blank" href="#">التقرير الإجمالى للخدمات الإلكترونية للنصف الثانى من عام 1443 هـ</a>
               </li>
               <li class="d-flex align-items-center mb-3">
                 <i class="fa-solid fa-link fa-18 text-primary-alt-3 ms-2"></i>
                 <a class="fw-normal text-muted fa-16" target="_blank" href="#">التقرير الإجمالى للخدمات الإلكترونية للنصف الثانى من عام 1443 هـ</a>
-              </li>
-              <li class="d-flex align-items-center mb-3">
-                <i class="fa-solid fa-link fa-18 text-primary-alt-3 ms-2"></i>
-                <a class="fw-normal text-muted fa-16" target="_blank" href="#">التقرير الإجمالى للخدمات الإلكترونية للنصف الثانى من عام 1443 هـ</a>
-              </li>
+              </li>-->
             </ul>
-
-            <p-paginator class="mt-auto" [rows]="10" [rowsPerPageOptions]="[10, 25, 50, 100]"></p-paginator>
+            <p-paginator class="mt-auto" [rows]="5" [rowsPerPageOptions]="[5,10]"
+            (onPageChange)="paginate($event, cat.key.id)" [totalRecords]="cat?.pagingMetaData?.totalItemCount" ></p-paginator>
           </div>
         </div>
 
-        <div class="col-md-6 mb-5">
+        <!--<div class="col-md-6 mb-5">
           <div class="border border-2 rounded-5 border-secondary p-3 pt-4 d-flex flex-column h-100">
             <div class="d-flex align-items-center mb-5">
               <div class="bg-secondary rounded-5 p-2" style="width: 80px; height: 80px;">
@@ -343,7 +344,7 @@
 
             <p-paginator class="mt-auto" [rows]="10" [rowsPerPageOptions]="[10, 25, 50, 100]"></p-paginator>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
 

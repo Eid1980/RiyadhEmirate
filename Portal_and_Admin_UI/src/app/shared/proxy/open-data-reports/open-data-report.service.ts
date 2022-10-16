@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { CreateOpenDataReportDto, GetOpenDataReportDetailsDto, UpdateOpenDataReportDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
+import { SearchModel } from '../shared/search-model.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,10 @@ export class OpenDataReportService {
   getById = (id: number): Observable<ApiResponse<GetOpenDataReportDetailsDto>> => {
     return this.httpClient.get<ApiResponse<GetOpenDataReportDetailsDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
     );
+  }
+
+  getListPage = (searchModel: SearchModel): Observable<ApiResponse<GetOpenDataReportDetailsDto[]>> => {
+    return this.httpClient.post<ApiResponse<GetOpenDataReportDetailsDto[]>>(`${this.serviceUrl}/GetListPage` , searchModel).pipe();
   }
 
   create = (createdDto: CreateOpenDataReportDto): Observable<ApiResponse<number>> => {

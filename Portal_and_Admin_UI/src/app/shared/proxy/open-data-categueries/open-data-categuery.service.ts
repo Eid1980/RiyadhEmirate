@@ -18,9 +18,15 @@ export class OpenDataCategueryService {
     );
   }
 
+  getAllCategoryWithReports = ():Observable<ApiResponse<any>> => {
+    return this.httpClient.get<ApiResponse<any>>(`${this.serviceUrl}/GetAllCategoryWithReports`).pipe(
+    );
+  }
+
   create = (createdDto: CreateOpenDataCategueryDto): Observable<ApiResponse<number>> => {
     return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
   }
+
   update = (updatedDto: UpdateOpenDataCategueryDto): Observable<ApiResponse<number>> => {
     return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }

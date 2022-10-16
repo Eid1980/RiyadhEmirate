@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Dtos.OpenDataCategueries;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.DynamicSearch;
 using Emirates.Core.Application.Interfaces.Helpers;
@@ -43,6 +44,25 @@ namespace Emirates.Core.Application.Services.OpenDataCategueries
                 GridItemsVM = serchResult,
                 PagingMetaData = serchResult.GetMetaData()
             });
+        }
+
+        public IApiResponse GetAllCategoryWithReports()
+        {
+            SearchModel searchModel = new SearchModel();
+            searchModel.PageNumber = 1;
+            searchModel.PageSize = 5;
+
+            var result = _emiratesUnitOfWork.OpenDataCategueries.IncludeMultiple(d=> d.OpenDataSubCateguery , d => d.OpenDataReports).ToList()
+                .GroupBy(h => new { h.Id, h.NameAr, OpenDataSubCategueryNameAr = h.OpenDataSubCateguery.NameAr}, (key, g) => new
+                {
+                    key = key,
+                    PagingMetaData = g.Select(r => r.OpenDataReports).FirstOrDefault().ToPagedList(searchModel.PageNumber, searchModel.PageSize).GetMetaData(),
+                    DataReports = g.Select(r=> r.OpenDataReports).FirstOrDefault().ToPagedList(searchModel.PageNumber, searchModel.PageSize)
+
+                }).ToList();
+
+            return GetResponse(data: result);
+
         }
         public IApiResponse GetAll()
         {

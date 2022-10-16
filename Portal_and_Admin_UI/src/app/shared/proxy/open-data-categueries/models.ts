@@ -31,3 +31,4 @@ export interface GetOpenDataCategueryListDto {
   openDataSubCategueryName: string;
   isActive: boolean;
 }
+

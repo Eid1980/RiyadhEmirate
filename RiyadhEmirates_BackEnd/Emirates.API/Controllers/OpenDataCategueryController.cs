@@ -3,6 +3,7 @@ using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.OpenDataCategueries;
 using Emirates.Core.Application.Services.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emirates.API.Controllers
@@ -23,15 +24,24 @@ namespace Emirates.API.Controllers
         {
             return _openDataCategueryService.GetById(id);
         }
+
         [HttpPost("GetListPage")]
         public IApiResponse GetAll(SearchModel searchModelDto)
         {
             return _openDataCategueryService.GetAll(searchModelDto);
         }
+
         [HttpGet("GetAll")]
         public IApiResponse GetAll()
         {
             return _openDataCategueryService.GetAll();
+        }
+
+        [AllowAnonymous]
+        [HttpGet("GetAllCategoryWithReports")]
+        public IApiResponse GetAllCategoryWithReports()
+        {
+            return _openDataCategueryService.GetAllCategoryWithReports();
         }
 
         [HttpPost("Create")]
@@ -44,6 +54,7 @@ namespace Emirates.API.Controllers
         {
             return _openDataCategueryService.Update(updateDto);
         }
+
         [HttpGet("ChangeStatus/{id}")]
         public IApiResponse ChangeStatus(int id)
         {
