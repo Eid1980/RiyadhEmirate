@@ -24,6 +24,7 @@ import { GovernorateNewsComponent } from "./components/governorate-news/governor
 import { ReportsComponent } from "./components/reports/reports.component";
 import { TransactionInquiryComponent } from "./components/transaction-inquiry/transaction-inquiry.component";
 import { AuctionDetailsComponent } from "./components/auction-details/auction-details.component";
+import { InquiriesComponent } from "./components/inquiries/inquiries.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: "home/governorate-show", component: GovernorateShowComponent },
   { path: "home/organization", component: OrganizationChartComponent },
   { path: "home/women-section", component: WomenSectionComponent },
+  { path: "home/inquiries", component: InquiriesComponent }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

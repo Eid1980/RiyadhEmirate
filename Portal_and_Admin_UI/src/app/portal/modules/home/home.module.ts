@@ -30,6 +30,7 @@ import { GovernorateNewsComponent } from './components/governorate-news/governor
 import { ReportsComponent } from './components/reports/reports.component';
 import { TransactionInquiryComponent } from './components/transaction-inquiry/transaction-inquiry.component';
 import { AuctionDetailsComponent } from './components/auction-details/auction-details.component';
+import { InquiriesComponent } from './components/inquiries/inquiries.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AuctionDetailsComponent } from './components/auction-details/auction-de
     GovernorateNewsComponent,
     ReportsComponent,
     TransactionInquiryComponent,
-    AuctionDetailsComponent
+    AuctionDetailsComponent,
+    InquiriesComponent
   ],
   imports: [
     SharedModule,
