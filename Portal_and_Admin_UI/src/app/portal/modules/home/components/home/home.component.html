@@ -58,7 +58,7 @@
     <div class="col-md-6 my-2">
       <div class="row mx-0 mb-5">
         <div class="col-md-6 nav-card">
-          <a href="">
+          <a [href]="electronicUrl" target="_blank">
             <img src="./assets/images/icons/electronic-council-icon.svg"
                  alt=""
                  class="d-block mx-auto" />
@@ -68,7 +68,7 @@
           </a>
         </div>
         <div class="col-md-6 nav-card">
-          <a  href="">
+          <a  routerLink="/home/transaction-inquiry">
             <img src="./assets/images/icons/search-service.svg"
                  alt=""
                  class="d-block mx-auto" />
@@ -213,17 +213,16 @@
   </div>
 
   <!-- banner slider -->
-  <div class="row">
+  <div class="row" *ngIf="auctions.length > 0">
     <div class="col-12">
       <div class="home-slider mb-5 pb-3">
         <div class="owl__carousel">
           <owl-carousel-o [options]="bannerOptions" class="owl-rtl">
-            <ng-template carouselSlide>
-              <img src="https://picsum.photos/id/10/1200/400" class="img-fluid slider rounded-4" />
-            </ng-template>
-
-            <ng-template carouselSlide>
-              <img src="assets/images/uploads/posters/slider.png" class="img-fluid slider rounded-4" />
+            <ng-template carouselSlide *ngFor="let auction of auctions">
+              <a [routerLink]="['home/auction-details' , auction.id]" [title]="auction.title">
+                <img *ngIf="auction?.imageName" [src]="['/assets/images/uploads/auctions/'+auction.imageName]" [alt]="auction?.title" class="img-fluid slider rounded-4" />
+                <img *ngIf="!auction?.imageName" src="https://picsum.photos/id/10/1200/400" class="img-fluid slider rounded-4" />
+              </a>
             </ng-template>
           </owl-carousel-o>
         </div>
@@ -234,7 +233,7 @@
   <!-- Governorate News & Reports -->
   <div class="news-reports bg-transparent py-0 mb-5 py-4">
     <div class="row">
-      <div class="col-md-6 my-2 offset-md-1">
+      <div class="col-md-6 my-2 offset-md-1" *ngIf="governorateNews.length > 0">
         <div class="gov-news">
           <div class="section-title">
             <h3 class="title">{{ 'home.provincesNews' | translate}}</h3>
@@ -271,7 +270,7 @@
         </div>
       </div>
 
-      <div class="col-md-5 my-2">
+      <div class="col-md-5 my-2" *ngIf="reports.length > 0">
         <div class="news">
           <div class="section-title">
             <h3 class="title"> {{ 'home.advertisingReports' | translate }}</h3>
