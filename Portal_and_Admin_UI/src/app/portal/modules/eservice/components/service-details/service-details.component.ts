@@ -47,7 +47,7 @@ export class ServiceDetailsComponent implements OnInit {
       this.getDetails();
     }
     else {
-      this.globalService.navigate("/admin/data-management/service-list");
+      this.globalService.navigate("/");
     }
   }
 
@@ -55,7 +55,7 @@ export class ServiceDetailsComponent implements OnInit {
     this.serviceService.getById(this.id).subscribe((response) => {
       this.serviceDetailsDto = response.data;
       if (!this.serviceDetailsDto.isActive) {
-        this.globalService.navigate("/admin/data-management/service-list");
+        this.globalService.navigate("/");
       }
     });
     this.serviceAudienceService.getByServiceId(this.id).subscribe((response) => {

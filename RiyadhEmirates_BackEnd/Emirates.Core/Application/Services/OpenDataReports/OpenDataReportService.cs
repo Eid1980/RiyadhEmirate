@@ -26,7 +26,7 @@ namespace Emirates.Core.Application.Services.OpenDataReports
 
         public IApiResponse GetById(int id)
         {
-            var openDataReport = _emiratesUnitOfWork.OpenDataReports.FirstOrDefault(l => l.Id.Equals(id));
+            var openDataReport = _emiratesUnitOfWork.OpenDataReports.FirstOrDefault(l => l.Id.Equals(id), x => x.OpenDataCateguery);
             if (openDataReport == null)
                 throw new NotFoundException(typeof(OpenDataReport).Name);
             return GetResponse(data: _mapper.Map<GetOpenDataReportDetailsDto>(openDataReport));

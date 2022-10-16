@@ -66,5 +66,11 @@ namespace Emirates.API.Controllers
         {
             return _openDataCategueryService.Delete(id);
         }
+
+        [HttpGet("GetLookupList")]
+        public IApiResponse GetLookupList()
+        {
+            return _openDataCategueryService.GetLookupList();
+        }
     }
 }

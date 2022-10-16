@@ -1,9 +1,4 @@
 
-export interface CheckUserRegisterDto {
-  nationalId: string;
-  birthDate: string;
-}
-
 export interface CreateUserDto {
   userName: string;
   birthDate: string;

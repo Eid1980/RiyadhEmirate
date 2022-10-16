@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { CreateAuctionDto, GetAuctionDetailsDto, UpdateAuctionDto } from './models';
+import { CreateAuctionDto, GetAuctionDetailsDto, GetAuctionListDto, UpdateAuctionDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { FileToUploadDto } from '../shared/file-to-upload-dto.model';
 
@@ -17,6 +17,9 @@ export class AuctionService {
   getById = (id: number): Observable<ApiResponse<GetAuctionDetailsDto>> => {
     return this.httpClient.get<ApiResponse<GetAuctionDetailsDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
     );
+  }
+  getAll = (): Observable<ApiResponse<GetAuctionListDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetAuctionListDto[]>>(`${this.serviceUrl}/GetAll`).pipe();
   }
 
   create = (createdDto: CreateAuctionDto): Observable<ApiResponse<FileToUploadDto>> => {

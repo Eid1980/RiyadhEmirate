@@ -116,16 +116,20 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<CreateOpenDataCategueryDto, OpenDataCateguery>();
             CreateMap<UpdateOpenDataCategueryDto, OpenDataCateguery>();
 
-            CreateMap<OpenDataCateguery, GetOpenDataCategueryDetailsDto>();
-            CreateMap<OpenDataCateguery, GetOpenDataCategueryListDto>();
+            CreateMap<OpenDataCateguery, GetOpenDataCategueryDetailsDto>()
+                .ForMember(dest => dest.OpenDataSubCategueryName, src => src.MapFrom(m => m.OpenDataSubCateguery.NameAr));
+            CreateMap<OpenDataCateguery, GetOpenDataCategueryListDto>()
+                .ForMember(dest => dest.OpenDataSubCategueryName, src => src.MapFrom(m => m.OpenDataSubCateguery.NameAr));
             #endregion
 
             #region OpenDataReport
             CreateMap<CreateOpenDataReportDto, OpenDataReport>();
             CreateMap<UpdateOpenDataReportDto, OpenDataReport>();
 
-            CreateMap<OpenDataReport, GetOpenDataReportDetailsDto>();
-            CreateMap<OpenDataReport, GetOpenDataReportListDto>();
+            CreateMap<OpenDataReport, GetOpenDataReportDetailsDto>()
+                .ForMember(dest => dest.OpenDataCategueryName, src => src.MapFrom(m => m.OpenDataCateguery.NameAr));
+            CreateMap<OpenDataReport, GetOpenDataReportListDto>()
+                .ForMember(dest => dest.OpenDataCategueryName, src => src.MapFrom(m => m.OpenDataCateguery.NameAr));
             #endregion
 
             #region OpenDataRequest

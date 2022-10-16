@@ -14,15 +14,16 @@
     <div class="col-12">
       <div class="timeline-container">
         <ul class="timeline">
-          <li *ngFor="let item of emiratesPrinceListDto">
+          <li *ngFor="let item of emiratesPrinceListDto" class="cursor-pointer">
             <div class="dots"></div>
             <div class="timeline-item" title="السيرة الذاتية" (click)="showCv(item.id)">
               <div class="avatar">
-                <img *ngIf="item?.imageName" [src]="['/assets/images/uploads/princes/'+item.imageName]" [alt]="item?.nameAr" class="img-fluid" />
+                <img *ngIf="item?.imageName" [src]="['/assets/images/uploads/princes/'+item.imageName]"
+                  [alt]="item?.nameAr" class="img-fluid" />
                 <img *ngIf="!item?.imageName" src="assets/images/120.png" [alt]="item?.nameAr" class="img-fluid" />
               </div>
               <h4 class="title">{{item?.nameAr}}</h4>
-              <h6 class="subtitle" *ngIf="item?.behalfToAr">بالنيابة عن  {{item?.behalfToAr}}</h6>
+              <h6 class="subtitle" *ngIf="item?.behalfToAr">بالنيابة عن {{item?.behalfToAr}}</h6>
               <p class="desc">{{item?.fromDate}} : {{item?.toDate}}</p>
             </div>
           </li>
@@ -33,14 +34,15 @@
 </div>
 
 <p-dialog [modal]="true" header="السيرة الذاتية" [(visible)]="showDialog">
-  <div class="form-card">
-    <div class="form-content">
-      <div class="row mx-0">
-        <div class="info-col col-md-12 col-12" *ngIf="emiratesPrinceDetailsDto?.imageName">
-          <img [src]="['/assets/images/uploads/princes/'+emiratesPrinceDetailsDto?.imageName]" [alt]="emiratesPrinceDetailsDto?.nameEn" style="width: 100%; height: 200px;" />
-        </div>
-        <div class="info-col col-md-12 col-12" *ngIf="emiratesPrinceDetailsDto?.cv" [outerHTML]="emiratesPrinceDetailsDto?.cv | listString">
-        </div>
+  <div class="row mt-4">
+    <div class="col-12" *ngIf="emiratesPrinceDetailsDto?.imageName">
+      <div class="text-center mb-4">
+        <img [src]="['/assets/images/uploads/princes/'+emiratesPrinceDetailsDto?.imageName]"
+          [alt]="emiratesPrinceDetailsDto?.nameEn" class="img-fluid rounded-4" alt="avatar"
+          style="width: 120px; height: 120px;" />
+      </div>
+
+      <div class="content" *ngIf="emiratesPrinceDetailsDto?.cv" [outerHTML]="emiratesPrinceDetailsDto?.cv | listString">
       </div>
     </div>
   </div>
