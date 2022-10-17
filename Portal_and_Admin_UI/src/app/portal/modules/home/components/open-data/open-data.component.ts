@@ -69,7 +69,7 @@ export class OpenDataComponent implements OnInit {
     console.log(event ,openDataCategoryId)
 
     let searchModel : SearchModel = {
-      PageNumber : event.pageCount,
+      PageNumber : event.page + 1,
       PageSize: event.rows,
       SearchFields : [{
         FieldName:"OpenDataCategueryId",
