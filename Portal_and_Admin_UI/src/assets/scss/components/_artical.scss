@@ -5,8 +5,8 @@
         font-size: 26px;
         font-weight: 600;
         color: #000;
-        border-right: 4px solid $Primary-1;
-        padding-right: 16px;
+        border-inline-start: 4px solid $Primary-1;
+        padding-inline-start: 16px;
         margin-bottom: 26px;
     }
 
@@ -52,7 +52,7 @@
             justify-content: center;
             font-size: 14px;
             font-weight: 400;
-            margin-left: 12px;
+            margin-inline-end: 12px;
         }
       }
 }

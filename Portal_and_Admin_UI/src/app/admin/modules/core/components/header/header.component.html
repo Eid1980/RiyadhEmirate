@@ -22,8 +22,9 @@
             <img [src]="userInfo.image?.base64File" width="30" height="30" alt="" *ngIf="userInfo.image != null"
             class="rounded-circle mx-2 align-bottom border" style="background-color: #f8f8f8" />
 
-          <div>
-            <p class="fa-12 fw-normal text-primary-alt-3 ms-4 mb-0">{{ userInfo?.shortName }}</p>
+          <div class="d-flex align-items-center">
+            <p class="fa-12 fw-normal text-primary-alt-3 ms-3 mb-0">{{ userInfo?.shortName }}</p>
+            <i class="fa-solid fa-chevron-down fa-10 text-muted"></i>
           </div>
         </div>
       </div>

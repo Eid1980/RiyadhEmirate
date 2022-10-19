@@ -7,7 +7,7 @@ body {
   height: 100%;
   direction: rtl;
   background: #F5F8FD;
-  text-align: right;
+  text-align: start;
   font-family: $ar-font;
   font-weight: 400;
 }
@@ -15,7 +15,8 @@ body {
 .admin-layout {
   height: 100%;
 
-  .card , .form-card{
+  .card,
+  .form-card {
     background-color: $white;
     padding: 16px;
     margin-top: 16px;
@@ -24,29 +25,29 @@ body {
     border: 1px solid #EBEBEB !important;
     box-shadow: none !important;
 
-    .form-header{
+    .form-header {
       padding: 12px 0 20px !important;
       border-bottom: 1px solid rgb(0 0 0 / 10%) !important;
       margin-bottom: 16px !important;
 
-      h5{
+      h5 {
         font-size: 22px !important;
         color: $primary-alt-1 !important;
       }
     }
 
-    .form-content{
-      .form-lbl{
+    .form-content {
+      .form-lbl {
         font-size: 14px !important;
         margin-bottom: 4px !important;
         color: rgb(0 0 0 / 70%) !important;
       }
 
-      .form-group{
+      .form-group {
         margin-bottom: 16px !important;
       }
 
-      small{
+      small {
         font-size: 12px;
         font-weight: 400;
       }
@@ -81,13 +82,13 @@ body {
 
   .login-icon {
     top: 35px;
-    left: 20px;
+    inset-inline-end: 20px;
     font-size: 24px;
     color: #00624d;
   }
 
   ul {
-    padding-right: 0;
+    padding-inline-start: 0;
   }
 
   .navbar {
@@ -98,7 +99,7 @@ body {
   .navbar {
     .bar {
       font-size: 22px;
-      margin-right: 20px;
+      margin-inline-start: 20px;
       color: $primary-alt-3;
       border-radius: 4px;
       padding: 0;
@@ -112,8 +113,8 @@ body {
         border-radius: 6px;
         padding: 8px !important;
         margin: 0;
-        left: 0;
-        right: auto;
+        inset-inline-end: 0;
+        inset-inline-start: auto;
         margin-top: 12px;
 
         .dropdown-item {
@@ -128,7 +129,7 @@ body {
 
           i {
             font-size: 15px;
-            margin-left: 6px;
+            margin-inline-end: 6px;
           }
 
           &:hover {
@@ -157,23 +158,23 @@ body {
   /* up trinagle */
   .navbar .profile-dropdown .profile-info:after {
     position: absolute;
-    right: 70%;
+    inset-inline-start: 70%;
     top: -20px;
     width: 0;
     height: 0;
     content: "";
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
+    border-inline-end: 12px solid transparent;
+    border-inline-start: 12px solid transparent;
     border-bottom: 12px solid #00624d;
   }
 
   .navbar .dropdown-toggle::after {
     border-top: 0.4em solid $primary-alt-3;
-    border-right: 0.4em solid transparent;
+    border-inline-start: 0.4em solid transparent;
     border-bottom: 0;
-    border-left: 0.4em solid transparent;
+    border-inline-end: 0.4em solid transparent;
     position: absolute;
-    left: 0;
+    inset-inline-end: 0;
     top: 44%;
   }
 
@@ -203,8 +204,8 @@ body {
 
   .main .content {
     position: absolute;
-    right: 220px;
-    left: 0;
+    inset-inline-start: 220px;
+    inset-inline-end: 0;
     top: 0;
     bottom: 0;
     transition: all 0.5s ease-in-out;
@@ -213,8 +214,8 @@ body {
 
   .main .content.expand {
     position: absolute;
-    right: 0px;
-    left: 0;
+    inset-inline-start: 0px;
+    inset-inline-end: 0;
     top: 0;
     bottom: 0;
   }
@@ -226,7 +227,7 @@ body {
   .container-check {
     display: inline-block;
     position: relative;
-    padding-right: 25px;
+    padding-inline-start: 25px;
     /* margin-bottom: 12px; */
     cursor: pointer;
     -webkit-user-select: none;
@@ -249,7 +250,7 @@ body {
   .checkmark {
     position: absolute;
     top: 2px;
-    right: 0;
+    inset-inline-start: 0;
     height: 20px;
     width: 20px;
     background-color: #fff;
@@ -272,7 +273,7 @@ body {
   }
 
   .container-check .checkmark:after {
-    right: 7px;
+    inset-inline-start: 7px;
     top: 4px;
     width: 5px;
     height: 10px;
@@ -310,7 +311,7 @@ body {
     .sidebar {
       background: #fff;
       position: absolute;
-      right: 0;
+      inset-inline-start: 0;
       top: 0;
       z-index: 1;
     }
@@ -324,12 +325,12 @@ body {
     }
 
     .main .content {
-      right: 0;
+      inset-inline-start: 0;
       padding: 5px !important;
     }
 
     .main .content.expand {
-      right: 0;
+      inset-inline-start: 0;
     }
 
     .sidebar.collapse li a .nav-label {
@@ -341,7 +342,7 @@ body {
       font-family: "Line Awesome Free";
       position: absolute;
       top: 13px;
-      left: 10px;
+      inset-inline-end: 10px;
       font-weight: 900;
       font-size: 16px;
     }
@@ -351,7 +352,7 @@ body {
       font-family: "Line Awesome Free";
       position: absolute;
       top: 13px;
-      right: 10px;
+      inset-inline-start: 10px;
       font-weight: 900;
       color: #636363;
     }
@@ -362,7 +363,7 @@ body {
     font-family: "Line Awesome Free";
     position: absolute;
     top: 13px;
-    left: 10px;
+    inset-inline-end: 10px;
     font-weight: 900;
     font-size: 16px;
   }
@@ -372,7 +373,7 @@ body {
     font-family: "Line Awesome Free";
     position: absolute;
     top: 13px;
-    left: 10px;
+    inset-inline-end: 10px;
     font-weight: 900;
     color: #636363;
   }
@@ -381,8 +382,8 @@ body {
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
+    inset-inline-end: 0;
+    inset-inline-start: 0;
     background: transparent;
     z-index: 9999;
     width: 100%;
@@ -428,7 +429,7 @@ body {
         .form-val {
           display: inline-block;
           font-size: 0.8rem;
-          text-align: right;
+          text-align: start;
         }
 
         .form-lbl {
@@ -455,7 +456,7 @@ body {
       &::before {
         content: "";
         position: absolute;
-        right: 0;
+        inset-inline-start: 0;
         top: 0;
         bottom: 0;
         width: 0.1px;
@@ -465,7 +466,7 @@ body {
       &::after {
         content: "";
         position: absolute;
-        left: 0;
+        inset-inline-end: 0;
         top: 0;
         bottom: 0;
         width: 0.1px;
@@ -474,8 +475,8 @@ body {
     }
 
     .form-group {
-      padding-left: 0.9rem;
-      padding-right: 0.9rem;
+      padding-inline-end: 0.9rem;
+      padding-inline-start: 0.9rem;
       margin-bottom: 1rem;
       position: relative;
 
@@ -521,17 +522,17 @@ body {
     margin-top: 26px;
     flex-wrap: wrap;
 
-    .btn{
+    .btn {
       font-weight: 400;
       font-size: 14px;
       padding: 10px 32px !important;
-      margin-right: 16px;
+      margin-inline-start: 16px;
 
       &:focus {
         box-shadow: none;
         outline: 0;
       }
-    } 
+    }
 
     .btn-save {
       background-color: $primary-alt-1;
@@ -588,7 +589,7 @@ body {
 
     .vision-logo {
       position: absolute;
-      left: 3%;
+      inset-inline-end: 3%;
       top: 3%;
     }
 
@@ -607,7 +608,7 @@ body {
 
       .forget-pass {
         font-size: 12px;
-        text-align: left;
+        text-align: end;
         display: block;
         margin-top: 11px;
         font-weight: 500;
@@ -620,7 +621,7 @@ body {
       .label {
         transition: 0.3s all ease-in-out;
         position: absolute;
-        right: 12px;
+        inset-inline-start: 12px;
         top: 14px;
         font-size: 11px;
       }
@@ -635,7 +636,7 @@ body {
             .label {
               transition: 0.3s all ease-in-out;
               position: absolute;
-              right: 6px;
+              inset-inline-start: 6px;
               top: -9px;
               padding: 0px 8px;
               color: $text-color;
@@ -651,7 +652,7 @@ body {
             .label {
               transition: 0.3s all ease-in-out;
               position: absolute;
-              right: 6px;
+              inset-inline-start: 6px;
               top: -9px;
               padding: 0px 8px;
               color: $text-color;
@@ -670,7 +671,7 @@ body {
 
       .form-switch {
         position: absolute;
-        left: 0;
+        inset-inline-end: 0;
         width: 105px;
         display: flex;
         justify-content: space-between;

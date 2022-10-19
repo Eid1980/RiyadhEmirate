@@ -16,7 +16,7 @@
     font-size: 14px;
     font-weight: 400;
     color: rgba($color: $dark, $alpha: 0.5);
-    right: 12px;
+    inset-inline-start: 12px;
     top: 15px;
     cursor: initial;
   }
@@ -36,7 +36,7 @@
         .label {
           transition: 0.3s all ease-in-out;
           position: absolute;
-          right: 0;
+          inset-inline-start: 0;
           top: -28px;
           color: rgba($color: $dark, $alpha: 0.7);
           padding: 0;
@@ -153,7 +153,7 @@ p-multiselect {
       .p-multiselect-token {
         padding: 8px 6px;
         margin: 0;
-        margin-left: 8px;
+        margin-inline-end: 8px;
         background: #e3f2fd;
         border-radius: 6px;
         color: #495057;
@@ -164,7 +164,7 @@ p-multiselect {
         }
 
         .p-multiselect-token-icon {
-          margin-right: 10px;
+          margin-inline-start: 10px;
           font-size: 14px;
           cursor: pointer;
         }
@@ -172,7 +172,7 @@ p-multiselect {
     }
 
     .p-multiselect-trigger {
-      margin-left: 0px;
+      margin-inline-end: 0px;
 
       .p-multiselect-trigger-icon {
         font-size: 12px;
@@ -285,8 +285,8 @@ p-multiselect {
     border-radius: 6px;
     padding: 8px !important;
     margin: 0;
-    left: 0;
-    right: auto;
+    inset-inline-end: 0;
+    inset-inline-start: 0;
     margin-top: 12px;
 
     .dropdown-item {
@@ -301,7 +301,7 @@ p-multiselect {
 
       i {
         font-size: 15px;
-        margin-left: 6px;
+        margin-inline-end: 6px;
       }
 
       &:hover {
@@ -321,7 +321,7 @@ p-multiselect {
   height: 50px !important;
   border-radius: 4px !important;
   overflow: hidden !important;
-  margin-right: 10px !important;
+  margin-inline-start: 10px !important;
   padding: 6px !important;
   display: flex !important;
   align-items: center !important;
@@ -333,10 +333,10 @@ p-multiselect {
     border: 0 !important;
     color: $primary-alt-3 !important;
     background-color: rgba($color: $primary-alt-3, $alpha: 0.15);
-    margin-left: 10px;
+    margin-inline-end: 10px;
 
     &:last-child {
-      margin-left: 0px;
+      margin-inline-end: 0px;
     }
 
     &:focus,
@@ -402,8 +402,8 @@ p-multiselect {
         box-shadow: 0px 2px 3px #00000029;
         position: absolute;
         top: 2px;
-        left: 3px;
-        right: auto;
+        inset-inline-end: 3px;
+        inset-inline-start: auto;
         background-color: $white;
       }
 
@@ -412,8 +412,8 @@ p-multiselect {
         border: 0px;
 
         &::after {
-          left: auto;
-          right: 3px;
+          inset-inline-end: auto;
+          inset-inline-start: 3px;
         }
       }
     }
@@ -421,7 +421,7 @@ p-multiselect {
     .form-check-label {
       font-size: 12px;
       color: rgba($color: $dark, $alpha: 0.7) !important;
-      margin-left: 8px;
+      margin-inline-end: 8px;
       cursor: pointer;
     }
   }
@@ -462,7 +462,7 @@ input[type=number] {
   border: 1px solid rgba($color: $dark, $alpha: 0.15);
   margin: 0px;
   cursor: pointer;
-  margin-left: 16px !important;
+  margin-inline-end: 16px !important;
   float: right !important;
 
   &:checked[type=checkbox] {
@@ -491,7 +491,7 @@ input[type=number] {
   margin: 0px !important;
   display: flex !important;
   color: $primary-alt-1 !important;
-  padding-right: 28px !important;
+  padding-inline-start: 28px !important;
   font-size: 14px !important;
   line-height: 25px !important;
 
@@ -504,7 +504,7 @@ input[type=number] {
     &::after {
       width: 7px !important;
       height: 12px !important;
-      right: 6px !important;
+      inset-inline-start: 6px !important;
       top: 3px !important;
     }
   }
@@ -622,7 +622,7 @@ ngb-datepicker {
     .btn-primary {
       font-size: 12px !important;
       margin: 0 !important;
-      margin-right: 8px !important;
+      margin-inline-start: 8px !important;
       border: 0px !important;
       padding: 4px 10px !important;
       display: inline-block !important;
@@ -664,4 +664,22 @@ textarea::-webkit-input-placeholder {
       border: 1px solid $danger;
     }
   }
+}
+
+html[dir="ltr"] ,
+html[lang="en"] {
+// dropdown
+.dropdown {
+  .dropdown-menu {
+    inset-inline-end: auto;
+    inset-inline-start: 0px;
+
+    .dropdown-item {
+      i {
+        margin-inline-start: 6px;
+        margin-inline-end: 0px;
+      }
+    }
+  }
+}
 }

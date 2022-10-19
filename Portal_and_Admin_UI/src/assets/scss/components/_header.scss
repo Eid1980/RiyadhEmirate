@@ -47,8 +47,9 @@
 
       .search {
         .dropdown-menu {
-          margin-top: 8px !important;
+          margin-top: 60px !important;
           border-radius: 6px;
+          transform: none !important;
         }
 
         .dropdown-toggle {
@@ -131,9 +132,8 @@
 
     .search-dropdown {
       position: fixed !important;
-      left: auto !important;
-      right: 57% !important;
-      margin-top: 10px !important;
+      left: calc(72% - 566px) !important;
+      right: auto !important;
 
       .search-card {
         padding: 1.2rem;
@@ -185,6 +185,87 @@
             .btn {
               padding: 0 16px !important;
               margin-right: 8px;
+            }
+          }
+        }
+      }
+    }
+
+    html[dir="ltr"] &,
+    html[lang="en"] & {
+      .date {
+        margin-left: 10px;
+        margin-right: 0px;
+      }
+
+      .options {
+        img {
+          margin-right: 1rem;
+          margin-left: 0px;
+        }
+
+        .settings {
+          .setting-card {
+            .set {
+              i {
+                margin-right: 12px;
+                margin-left: 0px;
+              }
+
+              .txt {
+                text-align: left;
+              }
+
+              .form-check {
+                float: right;
+              }
+            }
+          }
+        }
+      }
+
+      .search-dropdown {
+        right: calc(72% - 566px) !important;
+        left: auto !important;
+
+        .search-card {
+          .form-group {
+            .form-control {
+              padding-left: 46px;
+              padding-right: 0px;
+            }
+
+            .s-icon {
+              left: 10px;
+              right: auto;
+            }
+
+            .btn {
+              margin-left: 12px;
+              margin-right: 0px;
+            }
+          }
+        }
+      }
+
+      @media screen and (max-width: $min-lg) {
+        .search-dropdown {
+          .search-card {
+            .form-group {
+              .form-control {
+                padding-left: 38px;
+                padding-right: 0px;
+              }
+
+              .s-icon {
+                left: 10px;
+                right: auto;
+              }
+
+              .btn {
+                margin-left: 8px;
+                margin-right: 0px;
+              }
             }
           }
         }
@@ -503,8 +584,8 @@
             margin-bottom: 16px !important;
             border: 1px solid rgba($color: $dark, $alpha: 0.1);
 
-            &::after{
-                display: none;
+            &::after {
+              display: none;
             }
 
             li {
@@ -561,8 +642,8 @@
         }
 
         .navbar-collapse {
-            top: 122px;
-          }
+          top: 122px;
+        }
 
         .topnav-user {
           .dropdown-toggle {
@@ -585,6 +666,117 @@
             &::after {
               right: auto;
               left: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    html[dir="ltr"] &,
+    html[lang="en"] & {
+      .navbar {
+        .navbar-toggler {
+          margin-right: 12px;
+          margin-left: 0px;
+        }
+
+        ul.navbar-nav {
+          li.nav-item {
+            a.nav-link {
+              svg {
+                margin-right: 4px;
+                margin-left: 0px;
+              }
+
+              .ic-open-data {
+                margin-right: 6px;
+                margin-left: 0px;
+              }
+
+              &.sub-link {
+                &::before {
+                  float: right;
+                  right: 0;
+                  left: auto;
+                  margin-left: 10px;
+                  margin-right: 0px;
+                }
+              }
+            }
+          }
+
+          .nav-dropdown {
+            right: auto;
+            left: 0;
+
+            &::after {
+              left: 18px;
+              right: 0px;
+            }
+          }
+        }
+
+        .topnav-user {
+          margin-left: auto;
+          margin-right: 0px;
+
+          .dropdown-toggle {
+            img {
+              margin-right: 8px;
+              margin-left: 0px;
+            }
+
+            &::after {
+              right: 0px;
+              left: auto;
+              margin-left: 4px;
+              margin-right: auto;
+            }
+          }
+
+          .dropdown-menu {
+            &::after {
+              left: 14px;
+              right: auto;
+            }
+          }
+        }
+
+        .navbar-collapse {
+          .head-vision {
+            margin-right: 100px;
+            margin-left: auto;
+          }
+        }
+      }
+
+      @media screen and (max-width: $min-lg) {
+        .navbar {
+          .navbar-collapse {
+            .head-vision {
+              margin-right: 100px;
+              margin-left: auto;
+            }
+          }
+        }
+      }
+
+      @media screen and (max-width: $min-sm) {
+        .navbar {
+
+          .topnav-user {
+            .dropdown-toggle {
+              img {
+                margin-right: 0px;
+                margin-left: 0px;
+              }
+            }
+
+            .dropdown-menu {
+              &::after {
+                left: auto;
+                right: 16px;
+              }
             }
           }
         }

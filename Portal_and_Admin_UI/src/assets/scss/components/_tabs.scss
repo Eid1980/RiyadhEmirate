@@ -5,10 +5,10 @@
     // overflow-x: auto;
 
     .nav-item {
-      margin-left: 20px;
+      margin-inline-end: 20px;
 
       &:last-child {
-        margin-left: 0px;
+        margin-inline-end: 0px;
       }
 
       .nav-link {
@@ -94,8 +94,8 @@
       //     padding: 20px;
       //     position: absolute;
       //     top: 4px;
-      //     left: 0;
-      //     right: auto;
+      // inset-inline-end: 0;
+      // inset-inline-start: auto;
       //     z-index: 2;
       //     transform: rotate(135deg);
       //     -webkit-transform: rotate(135deg);
@@ -126,7 +126,7 @@
       overflow-x: auto;
 
       .nav-item {
-        margin-left: 16px;
+        margin-inline-end: 16px;
 
         .nav-link {
           padding: 16px 8px;
