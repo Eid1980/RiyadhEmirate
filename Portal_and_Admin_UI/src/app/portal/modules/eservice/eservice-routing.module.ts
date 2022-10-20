@@ -37,6 +37,10 @@ import { TreatmentRecommendationComponent } from './components/treatment-recomme
 import { TreatmentRecommendationAttachmentsComponent } from './components/treatment-recommendation/treatment-recommendation-attachments/treatment-recommendation-attachments.component';
 import { TreatmentRecommendationPreviewStepComponent } from './components/treatment-recommendation/treatment-recommendation-preview-step/treatment-recommendation-preview-step.component';
 import { TreatmentRecommendationViewComponent } from './components/treatment-recommendation/treatment-recommendation-view/treatment-recommendation-view.component';
+import { ElectronicCouncilViewComponent } from './components/electronic-council/electronic-council-view/electronic-council-view.component';
+import { ElectronicCouncilPreviewStepComponent } from './components/electronic-council/electronic-council-preview-step/electronic-council-preview-step.component';
+import { ElectronicCouncilAttachmentsComponent } from './components/electronic-council/electronic-council-attachments/electronic-council-attachments.component';
+import { ElectronicCouncilComponent } from './components/electronic-council/electronic-council/electronic-council.component';
 
 const routes: Routes = [
   { path: 'services-list', component: ServicesListComponent },
@@ -107,6 +111,34 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   //#endregion
+
+    //#region ElectronicCouncil
+    {
+      path: 'electronic-council',
+      component: ElectronicCouncilComponent,
+      canActivate: [AuthGuard],
+    },
+    {
+      path: 'electronic-council/:id',
+      component: ElectronicCouncilComponent,
+      canActivate: [AuthGuard],
+    },
+    {
+      path: 'electronic-council-attachments/:id',
+      component: ElectronicCouncilAttachmentsComponent,
+      canActivate: [AuthGuard],
+    },
+    {
+      path: 'electronic-council-preview-step/:id',
+      component: ElectronicCouncilPreviewStepComponent,
+      canActivate: [AuthGuard],
+    },
+    {
+      path: 'electronic-council-view/:id',
+      component: ElectronicCouncilViewComponent,
+      canActivate: [AuthGuard],
+    },
+    //#endregion
 
   //#region ElectronicSummon
   {
