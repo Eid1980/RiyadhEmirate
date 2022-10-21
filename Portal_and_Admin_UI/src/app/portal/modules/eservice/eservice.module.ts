@@ -52,6 +52,10 @@ import { TreatmentRecommendationAttachmentsComponent } from './components/treatm
 import { TreatmentRecommendationPreviewStepComponent } from './components/treatment-recommendation/treatment-recommendation-preview-step/treatment-recommendation-preview-step.component';
 import { TreatmentRecommendationViewComponent } from './components/treatment-recommendation/treatment-recommendation-view/treatment-recommendation-view.component';
 import { ServiceConditionsComponent } from './components/service-conditions/service-conditions.component';
+import { ElectronicCouncilPreviewStepComponent } from './components/electronic-council/electronic-council-preview-step/electronic-council-preview-step.component';
+import { ElectronicCouncilAttachmentsComponent } from './components/electronic-council/electronic-council-attachments/electronic-council-attachments.component';
+import { ElectronicCouncilViewComponent } from './components/electronic-council/electronic-council-view/electronic-council-view.component';
+import { ElectronicCouncilComponent } from './components/electronic-council/electronic-council/electronic-council.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +78,11 @@ import { ServiceConditionsComponent } from './components/service-conditions/serv
     LandsInfringementDetailsComponent,
     LandsInfringementPreviewStepComponent,
     LandsInfringementViewComponent,
+    ElectronicCouncilComponent,
+    ElectronicCouncilAttachmentsComponent,
+    ElectronicCouncilDetailsComponent,
+    ElectronicCouncilViewComponent,
+    ElectronicCouncilPreviewStepComponent,
     ElectronicSummonComponent,
     ElectronicSummonAttachmentsComponent,
     ElectronicSummonDetailsComponent,
@@ -99,7 +108,6 @@ import { ServiceConditionsComponent } from './components/service-conditions/serv
     TreatmentRecommendationAttachmentsComponent,
     TreatmentRecommendationPreviewStepComponent,
     TreatmentRecommendationViewComponent,
-    ElectronicCouncilDetailsComponent,
     ServiceConditionsComponent
   ],
   imports: [

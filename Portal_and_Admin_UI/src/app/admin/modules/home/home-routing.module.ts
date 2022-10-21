@@ -91,7 +91,7 @@ const routes: Routes = [
     }
   },
   { path: 'not-authorize', component: NotAuthorizeComponent },
-  { path: "", component: HomeComponent, canActivate: [AuthGuard] },
+  { path: "", component: HomeComponent },
 ];
 
 @NgModule({

@@ -123,7 +123,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("944c9613-c1cb-4259-a6ff-b6fd0cb89d64"),
+=======
+                            ConcurrencyStamp = new Guid("9c0c32e8-36d8-41e1-9ce2-2a0df270b13c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -133,7 +137,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4b92cb4f-a8c2-4ea6-ac34-8e6c432471a0"),
+=======
+                            ConcurrencyStamp = new Guid("67733725-0512-4ef5-a6e6-2ceb172f9dbe"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -143,7 +151,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("1db08a03-369a-4c1d-ac7b-8c10c4873ed1"),
+=======
+                            ConcurrencyStamp = new Guid("7e07d86c-d1ce-4d74-9a5e-bee5d3f6b4a3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -201,7 +213,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("378883d1-65dd-4922-89ce-a241108363d7"),
+=======
+                            ConcurrencyStamp = new Guid("3b80dc24-e390-437a-80af-34995ce61256"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -211,7 +227,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0ba87b67-9485-44ef-8de5-bf0e7f3e3d6e"),
+=======
+                            ConcurrencyStamp = new Guid("c624c02c-d57f-4ece-922e-b11f6f1e2cf3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -221,7 +241,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2ade19d4-ee2b-4209-a97d-bf3b1fddebe3"),
+=======
+                            ConcurrencyStamp = new Guid("b95348ed-f753-412f-bf2a-9aca05177f5b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -231,7 +255,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("8c8385ac-d021-4971-990f-02eab17d1ba3"),
+=======
+                            ConcurrencyStamp = new Guid("144fa4f1-07f2-451d-b174-6b798173e8a2"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -289,7 +317,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("8efd029f-b74c-49bd-bb61-ec17470ce302"),
+=======
+                            ConcurrencyStamp = new Guid("12cbed44-9d52-4c6f-b942-0288f1d14794"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -351,7 +383,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 1,
                             CanShowComment = false,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("77434558-8cd0-4e1e-b8e7-0faca56e0471"),
+=======
+                            ConcurrencyStamp = new Guid("3390bb3a-109b-4158-b3c5-7f762ee5d9e1"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -362,7 +398,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 2,
                             CanShowComment = false,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("9b9e2f21-9630-47e8-b4de-20d3ebda2bc8"),
+=======
+                            ConcurrencyStamp = new Guid("8754d622-a36e-41a7-8957-61776be567f0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -373,7 +413,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 3,
                             CanShowComment = false,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("66d1077a-3fe5-46f5-a3cd-82128c58cc2a"),
+=======
+                            ConcurrencyStamp = new Guid("3b01045f-ecd6-4db3-a25c-62091c7098f4"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -534,7 +578,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ea78e98f-29b0-411c-a04f-4c428696e775"),
+=======
+                            ConcurrencyStamp = new Guid("b0297d20-2abd-4169-9cdd-61557aab01e5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -544,7 +592,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a0b83433-93c4-4e25-9896-af23412a9a3b"),
+=======
+                            ConcurrencyStamp = new Guid("33460eab-e98e-4cc3-ba51-7ed465a5ed88"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -554,7 +606,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("608d30e1-ba63-4586-b37d-dfd8619f3041"),
+=======
+                            ConcurrencyStamp = new Guid("f287dfc6-f51b-4d99-901b-77cfaf80e0e4"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -652,7 +708,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6ce99413-3bcf-4ffc-9262-35b091db4236"),
+=======
+                            ConcurrencyStamp = new Guid("7960fe0a-9342-48a6-962d-eda018c295b3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1937, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -665,7 +725,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("055be23d-8da5-45f4-b418-aebff851b906"),
+=======
+                            ConcurrencyStamp = new Guid("3300e826-36cc-49a9-961f-a3804e4d5da3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1947, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -680,7 +744,11 @@ namespace Emirates.InfraStructure.Migrations
                             Id = 3,
                             BehalfToAr = "الأمير ​سلطان",
                             BehalfToEn = "prince Sultan bin Abdul-Aziz",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c09601eb-6b67-4c26-b712-d0b59682633b"),
+=======
+                            ConcurrencyStamp = new Guid("507a3c37-51d1-4b22-8757-5d14a4366277"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1952, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -693,7 +761,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("9903944c-6d9e-487e-8c73-ba6fb581a8b8"),
+=======
+                            ConcurrencyStamp = new Guid("ccd27f9d-cfc3-433f-a824-8222f47dbfcf"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1952, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -708,7 +780,11 @@ namespace Emirates.InfraStructure.Migrations
                             Id = 5,
                             BehalfToAr = "الأمير نايف",
                             BehalfToEn = "prince Naif",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("64f34c3f-7837-43e9-b3be-a13fb879e466"),
+=======
+                            ConcurrencyStamp = new Guid("32d60fd1-605c-4d75-8f2c-509c37f01607"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1954, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -721,7 +797,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 6,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("13921e31-8275-4dbd-a86c-a3bb80d8613c"),
+=======
+                            ConcurrencyStamp = new Guid("04327279-0fd1-48ea-a8a7-05b88ecea1fa"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1955, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -736,7 +816,11 @@ namespace Emirates.InfraStructure.Migrations
                             Id = 7,
                             BehalfToAr = "الملك سلمان",
                             BehalfToEn = "king Salman",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f76a09d1-95cd-4ff2-a8af-21c12e0a55a2"),
+=======
+                            ConcurrencyStamp = new Guid("81af3364-e311-4317-8d1b-7b9528d2bafa"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1957, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -749,7 +833,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 8,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ed9d0fef-58a3-48ad-903b-cbd41adc50c9"),
+=======
+                            ConcurrencyStamp = new Guid("0223a9d3-6345-44cc-8bdf-5f9f67a8974b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1960, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -762,7 +850,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 9,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e7b1767c-9029-4d89-b164-0b0919b6100a"),
+=======
+                            ConcurrencyStamp = new Guid("b8406e87-07fe-4562-97c0-9b5d3900de51"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1961, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -775,7 +867,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 10,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("fb959134-56b7-48a8-84c8-dd02adcad5d4"),
+=======
+                            ConcurrencyStamp = new Guid("236bf162-ad89-485c-8ea8-12a92a14b8a3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(1963, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -788,7 +884,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 11,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3f388ab8-66ff-47d0-a670-2ab8e24c146a"),
+=======
+                            ConcurrencyStamp = new Guid("032bd64b-8318-4ca5-837c-14cbd251165b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2011, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -801,7 +901,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 12,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0e3e6678-6504-47f6-a10b-1e932890961b"),
+=======
+                            ConcurrencyStamp = new Guid("9b48f945-a3b0-4a58-b6f5-f4aec20452b2"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2013, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -814,7 +918,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 13,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("79c1b83a-b29b-4b74-8a9c-70b2e932b5ae"),
+=======
+                            ConcurrencyStamp = new Guid("0adbe2b4-7949-4a95-b8f9-ca64d8443ffa"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2014, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -827,7 +935,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 14,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d2e7a1a7-1b4a-4597-aa73-bc370b33578b"),
+=======
+                            ConcurrencyStamp = new Guid("25c1dffc-95b6-4d8f-bac8-740a2d374d78"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FromDate = new DateTime(2015, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -911,7 +1023,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("8c56cc22-89fe-4b95-8cba-9933f0790cd4"),
+=======
+                            ConcurrencyStamp = new Guid("2b17b3e9-a546-4a96-8ef0-fd02b30d4308"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "مدينة الرياض مقر الإمارة",
@@ -923,7 +1039,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7db7ea5b-41d2-487e-a7df-a1bb514b84d5"),
+=======
+                            ConcurrencyStamp = new Guid("b2b2571e-611a-4d82-b70f-768891500f21"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "هي المحافظة الأولى في المملكة و يحدها من الشمال محافظة حريملاء و من الجنوب محافظة ضرما ومدينة الرياض و من الشرق مدينة الرياض و من الغرب حريملاء و محافظة ضرما وتبلغ مساحتها 2020 كلم2 و يبلغ عدد سكانها 73668 نسمة ( ثلاثة وسبعون ألفا و ستمائة وثمانية وستون ) نسمة و هي عاصمة الدولة السعودية الأولى و الثانية و يوجد بها بيوت أثرية للأسرة السعودية المالكة بنيت قديما على أنقاض مدينة حجر عاصمة اليمامة .",
@@ -937,7 +1057,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("dd0517dd-9a88-4ae1-8566-c2a5bf7145a4"),
+=======
+                            ConcurrencyStamp = new Guid("68400d3b-4ae9-41bb-9732-c0db9e7ae621"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "وتقع جنوب منطقة الرياض و يحدها من الشرق المنطقة الشرقية و من الغرب محافظة المزاحمية و محافظة الحريق و من الجنوب محافظة الأفلاج و من الشمال مدينة الرياض . و تبلغ مساحتها 19790كلم2 و يبلغ عدد سكانها 376325 نسمة و من الآثار و الأماكن التاريخية بمحافظة الخرج ـ قصر مشرف ـ بلدة اليمامة",
@@ -951,7 +1075,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e7cea1ee-3691-4bf6-b823-15a64e0cf8ef"),
+=======
+                            ConcurrencyStamp = new Guid("85eccf43-f65b-40da-a08a-41ad40872790"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "ويحدها من الشمال منطقة القصيم و من الجنوب محافظة القويعية و من الغرب منطقة القصيم و محافظة عفيف ، ومن الشرق محافظة شقراء و محافظة مرات. و تبلغ مساحتها 30580كلم2 ـ و يبلغ عدد سكانها 217305 نسمة ، و من الآثار القديمة بمحافظة الدوادمى ـ قصر الملك عبد العزيز _ رحمه الله .",
@@ -965,7 +1093,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ad0a48b9-506f-49a6-a689-278f016bc917"),
+=======
+                            ConcurrencyStamp = new Guid("6ec08015-f9c2-4fe9-aee5-4ba3771d27fb"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال المنطقة الشرقية و منطقة القصيم و من الجنوب محافظة ثادق ومحافظة شقراء و من الشرق محافظة رماح و من الغرب محافظة الزلفى و محافظة الغاط ، و تبلغ مساحتها 30000 كلم2 ـ و يبلغ عدد سكانها 133285 نسمة و من الأماكن التاريخية بمحافظة المجمعة قلعة قديمة تسمى _ المرقب .",
@@ -979,7 +1111,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 6,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b6658bbd-c159-4342-bf8b-36f240a88a71"),
+=======
+                            ConcurrencyStamp = new Guid("480fb2fe-63b2-4975-a99f-c09ec2ab2419"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال محافظة الدوادمى و محافظة مرات و من الجنوب محافظة وادي الدواسر و من الشرق محافظة الحريق و محافظة المزاحمية و محافظة الأفلاج و من الغرب محافظة عفيف ، و تبلغ مساحتها 50580 كلم2 ـ و يبلغ عـدد سكانها 126161 نسمة .",
@@ -993,7 +1129,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 7,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2de7fa5d-f63d-434a-a567-f6eace501d7b"),
+=======
+                            ConcurrencyStamp = new Guid("1efcd58f-e5f3-4327-866a-c798da4d2d7a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال محافظة القويعية و من الجنوب منطقة نجران و من الشرق محافظة السليل و محافظة الأفلاج و من الغرب منطقة عسير ومنطقة مكة المكرمة ـ و تبلغ مساحتها 48900 كلم2 ـ و يبلغ عدد سكانها 106152 نسمة ، و من الآثار و الأماكن التاريخية في المحافظة ـ قصر الحكومة في الخماسين ـ و قصر باطوق و بهجة .",
@@ -1007,7 +1147,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 8,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("252eed3d-6872-474d-a3b9-e78cb0eb86af"),
+=======
+                            ConcurrencyStamp = new Guid("752edd72-3b3e-431f-8fcd-12e430c7f1f0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال محافظة الخرج و محافظة حوطة بنى تميم ومن الجنوب محافظة السليل و من الشرق المنطقة الشرقية و من الغرب محافظة وادي الدواسر و محافظة القويعية و تبلغ مساحتها 54120كم2 و يبلغ عدد سكانها حسب تعداد 1431هـ ـ 68201 نسمة ، و من الآثار و الأماكن التاريخية بالمحافظة ـ جبل التوباد ـ و قصر سلمى .",
@@ -1021,7 +1165,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 9,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3ddc7838-31cf-46e1-8cc5-8800abaab263"),
+=======
+                            ConcurrencyStamp = new Guid("e8d09546-2636-4dc8-bf22-b7564f4355c6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال و الغرب منطقة القصيم و من الجنوب محافظة الغاط ومن الشرق محافظة المجمعة و تبلغ مساحتها 5540 كلم 2 و يبلغ عدد سكانها 69294 نسمة .",
@@ -1035,7 +1183,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 10,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f79ef96f-fa05-4690-827d-8713bcca1c38"),
+=======
+                            ConcurrencyStamp = new Guid("cb9bb73e-2e88-4408-8ec2-72c940e5ec7f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال محافظة الغاط و من الجنوب محافظة مرات و من الشرق محافظة المجمعة و محافظة ثادق ومن الغرب محافظة الدوادمى ـ و تبلغ مساحتها 4110 كلم2 ـ و يبلغ عدد سكانها 40541 نسمة .",
@@ -1049,7 +1201,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 11,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7d221c4e-6d24-44f3-916f-b7b459d86594"),
+=======
+                            ConcurrencyStamp = new Guid("dd4de1f0-0a15-49c2-8114-b39e2c0b7887"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "ويحدها من الشمال محافظة الخرج و محافظة الحريق و من الجنوب محافظة الأفلاج و من الشرق محافظة الخرج و الأفلاج و من الغرب محافظة الحريق ، و تبلغ مساحتها 7350كلم2 ـ و يبلغ عدد سكانها 43300 نسمة ، و يوجد بمركز الحلوة التابع لمحافظة حوطة بنى تميم قلعة الإمام تركي .",
@@ -1063,7 +1219,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 12,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b8a90cd0-a00c-49d0-bdb9-fc8395ae0d5e"),
+=======
+                            ConcurrencyStamp = new Guid("2611d1cd-5f21-488d-80df-15463c8221b1"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "ويحدها من الشمال منطقة القصيم و من الجنوب منطقة مكة المكرمة و من الشرق محافظة القويعية و محافظة الدوادمى و من الغرب منطقة المدينة المنورة ـ و تبلغ مساحتها 26810 كلم2 ويبلغ عدد سكانها 77978 نسمة .",
@@ -1077,7 +1237,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 13,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("44d20ac1-4175-4d79-ae11-c3c1eb06b83e"),
+=======
+                            ConcurrencyStamp = new Guid("8a835b82-aed6-4db4-8901-705a01559a93"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال محافظة الأفلاج و من الجنوب منطقة نجران و من الشرق المنطقة الشرقية و من الغرب محافظة وادي الدواسر و تبلغ مساحتها 42420كلم2 ـ و يبلغ عدد سكانها 36383 نسمة .",
@@ -1091,7 +1255,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 14,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ca7a5862-8ceb-42ca-9568-5be09675760e"),
+=======
+                            ConcurrencyStamp = new Guid("84604783-76b4-4c82-91bc-f389a48c8790"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "يحدها من الشمال محافظة الدرعية و محافظة حريملاء ومن الجنوب محافظة المزاحمية و من الشرق مدينة الرياض و محافظة الدرعية ومن الغرب محافظة مرات ـ و تبلغ مساحتها 2060 كلم2 ـ و يبلغ عدد سكانها 24429 نسمة .",
@@ -1105,7 +1273,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 15,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("93249232-3c6d-43d5-a91f-20bb8295df1b"),
+=======
+                            ConcurrencyStamp = new Guid("99783f58-10c1-4b84-a77f-0d1049b7616e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال محافظة ضرما و من الجنوب محافظة الحريق و من الشرق مدينة الرياض و محافظة الخرج و من الغرب محافظة القويعية و وتبلغ مساحتها 3580 كلم2 ـ و يبلغ عدد سكانها 39865 نسمة .",
@@ -1119,7 +1291,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 16,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f1bd2702-280a-45d1-b178-47e0aa175fe1"),
+=======
+                            ConcurrencyStamp = new Guid("7e3a7b88-258b-45fa-90ee-6ae026e821d9"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "يحـدها من الشمال المنطقة الشرقية و من الجنوب مدينة الرياض و من الشرق المنطقة الشرقية و من الغرب محافظة المجمعة و محافظة ثادق ومحافظة حريملاء ـ و تبلغ مساحتها 15900 كلم2 ـ و يبلغ عدد سكانها 28055 نسمة .",
@@ -1133,7 +1309,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 17,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("dfec01d1-db65-4a99-b0ab-e55ee98a8d41"),
+=======
+                            ConcurrencyStamp = new Guid("b9836b9e-520f-4b04-acba-b40a138efc4e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = " و يحدها من الشمال محافظة المجمعة و من الجنوب محافظة حريملاء و من الشرق محافظة حريملاء و من الغرب محافظة شقراء و محافظة مرات ـ و تبلغ مساحتها 5600 كلم2 ـ و يبلغ عدد سكانها 17165 نسمة .",
@@ -1147,7 +1327,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 18,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("808a32d3-d998-4de1-b65f-c28e35029fb8"),
+=======
+                            ConcurrencyStamp = new Guid("df23c875-d424-4f55-9107-b500dd97cf84"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال محافظة رماح و محافظة ثادق و من الجنوب محافظة الدرعية و محافظة ضرما و من الشرق مدينة الرياض و محافظة رماح و من الغرب محافظة ثادق ـ وتبلغ مساحتها 1480 كلم2 ـ و يبلغ عدد سكانها 15324 نسمة ، و من الآثار التاريخية بمحافظة حريملاء ـ منزل الإمام محمد بن عبد الوهاب ـ و جامع القراشة و جبل القطار .",
@@ -1161,7 +1345,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 19,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("40f28982-009f-4339-a989-19b4e6096289"),
+=======
+                            ConcurrencyStamp = new Guid("f9393815-5196-4b81-a037-5096613f9ed7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "و يحدها من الشمال محافظة المزاحمية و محافظة الخرج و من الجنوب محافظة حوطة بنى تميم و محافظة االأفلاج و من الشرق محافظة الخرج و محافظة حوطة بنى تميم و من الغرب محافظة القويعية و تبلغ مساحتها 6790كلم2 ـ و يبلغ عدد سكانها 14750 نسمة .",
@@ -1175,7 +1363,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 20,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7ee0660f-ddc8-4358-afc6-8cb846431ffb"),
+=======
+                            ConcurrencyStamp = new Guid("181d3089-58a0-492b-93de-0f2d3b3c308d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = " و يحدها من الشمال محافظة الزلفى و من الجنوب محافظة شقراء و من الشرق محافظة المجمعة و من الغرب منطقة القصيم ـ و تبلغ مساحتها 2690 كلم2 .",
@@ -1189,7 +1381,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 21,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("255bf29f-57e9-468a-8d70-456249281e65"),
+=======
+                            ConcurrencyStamp = new Guid("568d7a02-a8a4-401d-bcee-d8061142a53b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "تقع في منطقة الرياض إلى الشمال الغربي من مدينة الرياض بين دائرة عرض 40 - 25 درجة شمالاً وبين خط طول 45 - 45 درجة شرقاً تبعد عن مدينة الرياض : 143 كم تقريباً ، مساحتها الجغرافية حسب النطاق الإداري ( 90×100 كم) .\r\n                                  يحد مرات من الجنوب محافظتا القويعية وضرما ، ومن الشمال محافظة شقراء ومن الشرق محافظتا ثادق وحريملاء ، ومن الغرب محافظة الدوادمي",
@@ -1202,7 +1398,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 22,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("852fb62b-c71b-4a4d-9a34-f219f3bb0fdd"),
+=======
+                            ConcurrencyStamp = new Guid("18855fcc-ca43-42fc-abea-241107e011ec"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = " يبلغ عدد سكان محافظة الدلم 80000 نسمة , ومن المعالم والاثار بمحافظة الدلم غار الامام تركي - موقعة الدلم عام 1320 هـ - سوق الدلم (المسحب) -جبل ابو ولد- غابة الضاحي - برج وسور الدلم - آثار وعيون خفس دغرة - منتزة وثيلان - آثار الفريع بزميقة .",
@@ -1215,7 +1415,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 23,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a549ac10-f1b2-4fc8-baaf-5788dc7d0d59"),
+=======
+                            ConcurrencyStamp = new Guid("b14bb4b6-f974-487b-9336-13bd3a718d91"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = " تقع غرب مدينة الرياض ويحدها من الشمال محافظة المزاحمية ومن الجنوب محافظة وادي الدواسر ومن الشرق محافظة الحريق ومن الغرب محافظة القويعية ومن الجنوب الشرقي محافظة حوطة بني تميم ومحافظة الافلاج وتبلغ مساحتها 40 الف كلم2 تقريباً - ويبلغ عدد سكانها40 الف نسمة تقريباً ومن المعالم بمحافظة الرين (جبل دساس - جبال الحصاة - جبل بتران - جبال عريقية - وادي الرين - وادي الركا - وادي السرة - وادي العمق - هضبة الموزر)",
@@ -1322,7 +1526,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("8d6314a1-41cc-4be6-a1b5-bdb6bb3e2d7a"),
+=======
+                            ConcurrencyStamp = new Guid("63e52656-1f05-46d1-8229-28b95214eaa2"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -1332,7 +1540,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("82695aa7-84d0-4417-8ee4-8f760bc99867"),
+=======
+                            ConcurrencyStamp = new Guid("016ae668-f0c1-4c77-a73c-cd14af09465c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -1342,7 +1554,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a3fe908d-d3e4-49e8-ba37-04cb325449c7"),
+=======
+                            ConcurrencyStamp = new Guid("016cb37e-f2f4-4914-bc50-1cb32d0d6c44"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -1352,7 +1568,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a7de1050-724a-442c-9faf-3d732f4cc9b0"),
+=======
+                            ConcurrencyStamp = new Guid("c7a92c94-f5f1-4631-ab5c-9b7dbc1d349e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -1426,7 +1646,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 1,
                             Code = "101",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("37a42e7a-879d-44a8-93e8-11164870572e"),
+=======
+                            ConcurrencyStamp = new Guid("9dc9cc6e-4583-4ca0-9f53-ae5f12c0b593"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "971",
@@ -1439,7 +1663,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 2,
                             Code = "102",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b4bb095e-0b16-4c9e-a597-b787dc4d27ab"),
+=======
+                            ConcurrencyStamp = new Guid("fb182daa-8da0-4099-bbc0-4a002d37d876"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "962",
@@ -1452,7 +1680,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 3,
                             Code = "103",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("bdd2c548-4b29-4ffb-87cc-f9012b4be8ac"),
+=======
+                            ConcurrencyStamp = new Guid("f726f2a8-c953-4266-a7c1-cfbba9c615ed"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "973",
@@ -1465,7 +1697,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 4,
                             Code = "104",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a6bf4149-1886-4383-9945-53f6a59709ef"),
+=======
+                            ConcurrencyStamp = new Guid("23435238-cace-4b72-a87b-86cae6f54d7d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "963",
@@ -1478,7 +1714,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 5,
                             Code = "105",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("282473ce-b656-4daa-8613-820a94a88932"),
+=======
+                            ConcurrencyStamp = new Guid("58f0749e-f56c-4a40-97d8-c17f4c80fed1"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "964",
@@ -1491,7 +1731,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 6,
                             Code = "106",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("03cd92d3-844f-4f2d-aaca-2bcb0630f7f0"),
+=======
+                            ConcurrencyStamp = new Guid("d198fac8-f8e3-4e16-a8fd-5343afcda219"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "968",
@@ -1504,7 +1748,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 7,
                             Code = "107",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e871bf89-faa8-4c86-b5f0-b20875098f96"),
+=======
+                            ConcurrencyStamp = new Guid("6c4ff67e-a203-426a-bb81-ea4d224b081c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "970",
@@ -1517,7 +1765,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 8,
                             Code = "108",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2607e96b-7180-4d6a-abcb-0ada1213fea9"),
+=======
+                            ConcurrencyStamp = new Guid("bf2ad151-86be-4ba0-9080-d8ac6f1076be"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "974",
@@ -1530,7 +1782,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 9,
                             Code = "109",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e890e683-40d6-429b-87bd-2035ed12d941"),
+=======
+                            ConcurrencyStamp = new Guid("debdabac-57ec-4519-91f0-82d0add4fdba"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "965",
@@ -1543,7 +1799,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 10,
                             Code = "110",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("5946f0d7-616b-446c-b146-180485059bd7"),
+=======
+                            ConcurrencyStamp = new Guid("97b9c2ef-3bde-4565-9b03-0fe3fb62c8b2"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "961",
@@ -1556,7 +1816,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 11,
                             Code = "111",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("bae194e1-3949-4944-af1f-3a16342d9c09"),
+=======
+                            ConcurrencyStamp = new Guid("571d1db9-20ea-4453-b598-7a7c4bd1621e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "967",
@@ -1569,7 +1833,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 12,
                             Code = "113",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d48f42d2-7e5e-4b8d-bcd7-6e01442927c0"),
+=======
+                            ConcurrencyStamp = new Guid("71cd43ba-8cb1-47b7-9c8e-483a585cbf3b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "966",
@@ -1582,7 +1850,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 13,
                             Code = "201",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("9f45da0f-a89c-4690-b5e8-506db0f603bb"),
+=======
+                            ConcurrencyStamp = new Guid("79a7d5ec-bb1a-41ce-8f6d-f4529f306841"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "216",
@@ -1595,7 +1867,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 14,
                             Code = "202",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("cc0281f9-48f5-4e10-8849-e22c4b38baa4"),
+=======
+                            ConcurrencyStamp = new Guid("01c1d5e2-c170-4e62-8930-84c37e7522ba"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "213",
@@ -1608,7 +1884,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 15,
                             Code = "203",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d81b0fca-5b1e-4c08-b330-718cc1520d50"),
+=======
+                            ConcurrencyStamp = new Guid("55b13a43-4bf3-426c-907b-9a6d7b7e2df0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "253",
@@ -1621,7 +1901,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 16,
                             Code = "204",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("76da5ab5-9e26-4757-8f59-e29096e16998"),
+=======
+                            ConcurrencyStamp = new Guid("f041f25d-7c4a-47b8-a516-2bebd73d1c04"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "249",
@@ -1634,7 +1918,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 17,
                             Code = "205",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0715f9ef-0d84-4544-b414-bdc33f4b58ed"),
+=======
+                            ConcurrencyStamp = new Guid("2ef30990-d8ba-4475-a8a0-f7d28aa24efb"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "252",
@@ -1647,7 +1935,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 18,
                             Code = "206",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("71ca24ad-8849-4745-8d31-0ed2b90f5140"),
+=======
+                            ConcurrencyStamp = new Guid("8a599185-54e0-4b58-9074-84360ad236cf"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "218",
@@ -1660,7 +1952,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 19,
                             Code = "207",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("800a440d-2ee3-4d52-97d5-0cbcacff3002"),
+=======
+                            ConcurrencyStamp = new Guid("6789b907-b778-45a9-89c3-765dbef96324"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "20",
@@ -1673,7 +1969,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 20,
                             Code = "208",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c442f193-0bf7-4c9d-b8db-823d62e39b59"),
+=======
+                            ConcurrencyStamp = new Guid("6e466b77-8f8d-4207-b0f9-c8e3da8a4d68"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "212",
@@ -1686,7 +1986,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 21,
                             Code = "209",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("574178eb-3d70-49d7-ac53-8b8b69874683"),
+=======
+                            ConcurrencyStamp = new Guid("9f3e20f8-ed2f-49e6-8f5d-7de7560e8b2f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "222",
@@ -1699,7 +2003,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 22,
                             Code = "301",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3d7e9c01-6ae4-4c29-b547-05470c704c15"),
+=======
+                            ConcurrencyStamp = new Guid("8f03ad9b-f322-4f88-913a-2fd812b71acc"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "93",
@@ -1712,7 +2020,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 23,
                             Code = "302",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("1f2509ca-5d6a-4a48-80b4-0c987807373f"),
+=======
+                            ConcurrencyStamp = new Guid("89d21720-02aa-4065-a598-9e206fff4d5a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "62",
@@ -1725,7 +2037,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 24,
                             Code = "303",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3474886c-89de-4d9e-b50c-78c59ada21e6"),
+=======
+                            ConcurrencyStamp = new Guid("3f3037e7-b4f9-4590-be23-4f94d401af50"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "98",
@@ -1738,7 +2054,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 25,
                             Code = "304",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("28945ebe-1bde-45bb-b69d-aaaa6fba7edb"),
+=======
+                            ConcurrencyStamp = new Guid("50f8a42b-023b-45c7-b748-40e56cd26f81"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "92",
@@ -1751,7 +2071,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 26,
                             Code = "305",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0d51a2ac-b8c1-4142-9381-4898ac4404dd"),
+=======
+                            ConcurrencyStamp = new Guid("50d18edc-1f70-4e58-bf2b-69d01a8f270e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "880",
@@ -1764,7 +2088,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 27,
                             Code = "306",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0689fe06-d326-4110-9f04-ba1a4185578b"),
+=======
+                            ConcurrencyStamp = new Guid("8b09739d-1933-4b72-85ab-243c9a8e09ea"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "673",
@@ -1777,7 +2105,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 28,
                             Code = "307",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("92b495dc-056e-45a7-987c-bb5f311b1454"),
+=======
+                            ConcurrencyStamp = new Guid("4ad183ca-ba0f-46b0-8a67-bd987e430ced"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "95",
@@ -1790,7 +2122,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 29,
                             Code = "308",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e7e2ba47-a160-4ef3-8aeb-be9c9d51c4f8"),
+=======
+                            ConcurrencyStamp = new Guid("890a3216-d66e-4580-ab5c-96eeb2be1187"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "66",
@@ -1803,7 +2139,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 30,
                             Code = "309",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ee498edb-3581-4c95-9b82-654d30ac104c"),
+=======
+                            ConcurrencyStamp = new Guid("f24c1bfb-8909-4bc9-91b5-44cc1717af3e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "90",
@@ -1816,7 +2156,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 31,
                             Code = "310",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("20816920-96d5-4ea9-8816-50064f62a31c"),
+=======
+                            ConcurrencyStamp = new Guid("a8fb6f9b-d7cc-4f7d-9739-1abd51d09f9a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "960",
@@ -1829,7 +2173,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 32,
                             Code = "311",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ef221ec5-040c-4eea-80c1-8919a7339d39"),
+=======
+                            ConcurrencyStamp = new Guid("14289d26-0847-42e3-a6b8-e95fe5e5be6c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "7",
@@ -1842,7 +2190,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 33,
                             Code = "312",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("727e083c-3cd3-4157-9435-bd3c4c13644e"),
+=======
+                            ConcurrencyStamp = new Guid("6ec7f520-61a5-4477-97d7-2ce130eba919"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "65",
@@ -1855,7 +2207,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 34,
                             Code = "313",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6b52a498-8f85-4238-b52a-9424379403b6"),
+=======
+                            ConcurrencyStamp = new Guid("2185204d-dbae-406f-b1c6-a4ad7e7e0a28"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "94",
@@ -1868,7 +2224,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 35,
                             Code = "315",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b7dad92d-641c-43f9-a6ae-adcd7e620aae"),
+=======
+                            ConcurrencyStamp = new Guid("e303cd74-caf5-4b0e-b7c8-0f5c67b8c50c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "63",
@@ -1881,7 +2241,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 36,
                             Code = "316",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("aaa0581b-e567-43fe-972b-c27db3dea58f"),
+=======
+                            ConcurrencyStamp = new Guid("e71da3a2-a883-424b-8f77-a0bf3d5aae57"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "84",
@@ -1894,7 +2258,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 37,
                             Code = "317",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("142028e4-1b23-4e37-bede-3def1f31f78f"),
+=======
+                            ConcurrencyStamp = new Guid("4c9633e1-f6c1-4c9b-a293-6ef473901b80"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "855",
@@ -1907,7 +2275,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 38,
                             Code = "318",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("de23a7b6-da7f-4317-a7a1-c2c673a52a14"),
+=======
+                            ConcurrencyStamp = new Guid("bc70b49e-06ce-425f-aaa7-f147d8036fcd"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "82",
@@ -1920,7 +2292,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 39,
                             Code = "319",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b33039f5-27aa-4481-bf79-a93aea55b56e"),
+=======
+                            ConcurrencyStamp = new Guid("374c10b4-04c9-4f9e-b5cb-34618313c838"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "60",
@@ -1933,7 +2309,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 40,
                             Code = "320",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("893a51c1-1bd8-41a0-a6e5-98e1cb34a77e"),
+=======
+                            ConcurrencyStamp = new Guid("11006945-5790-4bfd-a2dd-75f478ca3dd4"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "977",
@@ -1946,7 +2326,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 41,
                             Code = "321",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f7775fc2-7079-4061-a5f5-61b7c7c58864"),
+=======
+                            ConcurrencyStamp = new Guid("28b1fbf9-f858-417b-b4cb-3e1cc5287b92"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "91",
@@ -1959,7 +2343,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 42,
                             Code = "322",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("bc97214c-bfa5-4c17-b486-a49504c998af"),
+=======
+                            ConcurrencyStamp = new Guid("1ec58b51-1ae7-48b3-af05-d23336d60da5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "852",
@@ -1972,7 +2360,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 43,
                             Code = "323",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("feeaec43-230d-417c-8ea8-76ba779056be"),
+=======
+                            ConcurrencyStamp = new Guid("07960ce9-0f48-4f30-99cc-4c0278c3b87c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "81",
@@ -1985,7 +2377,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 44,
                             Code = "324",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("aa986761-8abf-4c7f-b1ec-661c7041b0fa"),
+=======
+                            ConcurrencyStamp = new Guid("acd0a0a5-9719-48c2-acb2-175c42deed59"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "975",
@@ -1998,7 +2394,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 45,
                             Code = "325",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("59082275-75d4-424e-8ee4-68092390894a"),
+=======
+                            ConcurrencyStamp = new Guid("45ce00d9-f4ef-4d62-af6b-a61a5d967eb1"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "86",
@@ -2011,7 +2411,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 46,
                             Code = "326",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("cad03dd3-02a1-4380-a3bd-de458b77cff9"),
+=======
+                            ConcurrencyStamp = new Guid("b294ab13-fc20-48f4-b0dc-bc7a50a1bdde"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "357",
@@ -2024,7 +2428,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 47,
                             Code = "328",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("8eefe1e0-a09a-4f24-89ac-ed1c9ed4cb6e"),
+=======
+                            ConcurrencyStamp = new Guid("69080774-126b-421c-86ab-69c0d2b02df0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "850",
@@ -2037,7 +2445,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 48,
                             Code = "329",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("434a98f6-4322-4dfc-a5dc-12887b4d1804"),
+=======
+                            ConcurrencyStamp = new Guid("5c0d4c7e-5483-47b0-926c-1706081d1555"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "856",
@@ -2050,7 +2462,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 49,
                             Code = "330",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("917d92a3-0196-4158-8d25-0a5ffd0abd61"),
+=======
+                            ConcurrencyStamp = new Guid("6a51b413-d3e4-4070-80f5-49b457fdbbfb"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "976",
@@ -2063,7 +2479,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 50,
                             Code = "331",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("542f6540-1349-420e-b641-aa3d99f50149"),
+=======
+                            ConcurrencyStamp = new Guid("c8c5ad1c-8a76-4d1c-8568-ee1a894c1f6d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "853",
@@ -2076,7 +2496,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 51,
                             Code = "332",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("04fb4d9e-a137-4c3f-a6ba-55de63513f02"),
+=======
+                            ConcurrencyStamp = new Guid("4b08fac0-6b67-4584-861c-c7da959aabeb"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -2087,7 +2511,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 52,
                             Code = "335",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f6ddfea5-0120-4925-abd1-5a070ba1f208"),
+=======
+                            ConcurrencyStamp = new Guid("706bd789-2ca3-4f4a-acd8-5cff05ee66d9"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -2098,7 +2526,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 53,
                             Code = "336",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c6c5fb9e-85de-4724-b83e-6ac2ac417438"),
+=======
+                            ConcurrencyStamp = new Guid("060a0d89-d94d-4a41-8693-569a2976801e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "7",
@@ -2111,7 +2543,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 54,
                             Code = "337",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("47c10f17-b8e1-41ee-9d9e-659209230eaa"),
+=======
+                            ConcurrencyStamp = new Guid("54e7edba-4aba-406f-a472-ea09f62eab58"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "998",
@@ -2124,7 +2560,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 55,
                             Code = "338",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d9b5ede7-36f1-44d1-9b87-d55db7f70c10"),
+=======
+                            ConcurrencyStamp = new Guid("9c50bf97-fd0f-48f4-88ff-7c287a2af52e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "993",
@@ -2137,7 +2577,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 56,
                             Code = "339",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("543005f0-7ec4-4ad3-a6fa-6d372352a3a7"),
+=======
+                            ConcurrencyStamp = new Guid("7fbb11cd-6108-419e-8d38-5b9a39d06528"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "992",
@@ -2150,7 +2594,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 57,
                             Code = "340",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2e888f5e-1c76-4678-8702-7863a56f5bbb"),
+=======
+                            ConcurrencyStamp = new Guid("f44e8cf0-03c7-4055-8dcb-2d954f72b132"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "996",
@@ -2163,7 +2611,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 58,
                             Code = "343",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c622e8df-e566-42d4-999f-692672e0fb0c"),
+=======
+                            ConcurrencyStamp = new Guid("e23b3996-4471-42f2-9093-c97a89ec81aa"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "994",
@@ -2176,7 +2628,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 59,
                             Code = "344",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("65afad43-3c10-43ff-abb5-29f5d283fd8a"),
+=======
+                            ConcurrencyStamp = new Guid("ecee19ed-e906-4418-97b4-5df1c6ff2246"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -2187,7 +2643,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 60,
                             Code = "345",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("644d73c6-411d-4a7d-affa-6309ccf631af"),
+=======
+                            ConcurrencyStamp = new Guid("71ad2d01-b893-4f3a-9128-bd6aa087d9a7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "872",
@@ -2200,7 +2660,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 61,
                             Code = "346",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4b2f8693-fe8a-4bcc-a934-3f75e297104f"),
+=======
+                            ConcurrencyStamp = new Guid("2860fb39-b34a-476a-beda-91d8b83ea7d9"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -2211,7 +2675,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 62,
                             Code = "347",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("764ae1aa-2d5e-47ae-b5b8-c509cc1b469b"),
+=======
+                            ConcurrencyStamp = new Guid("55554680-d77d-43af-b7fa-67e2eb86e9a0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "7",
@@ -2224,7 +2692,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 63,
                             Code = "349",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("15efea06-8151-4d94-91c1-0088e83f9927"),
+=======
+                            ConcurrencyStamp = new Guid("1dc442b8-8840-4403-94a3-444bf4d852a2"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "670",
@@ -2237,7 +2709,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 64,
                             Code = "401",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("75a33cab-700d-4aa1-95d5-6eba8bd5dde6"),
+=======
+                            ConcurrencyStamp = new Guid("dc2e1a36-9e6e-491a-a1a1-77d254fe7330"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "251",
@@ -2250,7 +2726,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 65,
                             Code = "402",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0c835b8c-0f38-40d9-aaed-238d6572820f"),
+=======
+                            ConcurrencyStamp = new Guid("e7efe0f8-c6b4-4b20-b57f-b71d723429ed"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "256",
@@ -2263,7 +2743,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 66,
                             Code = "403",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("730bf8a7-f106-4ec9-a1c6-47b2ae59ff8a"),
+=======
+                            ConcurrencyStamp = new Guid("5918a1bd-3dd0-47aa-8331-47eb6ffb7682"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "267",
@@ -2276,7 +2760,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 67,
                             Code = "404",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("668d3e5c-5c06-41d4-bbd5-359749ae06e5"),
+=======
+                            ConcurrencyStamp = new Guid("b96a4152-34e9-4ffd-b02a-d9e32c05c8ee"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "257",
@@ -2289,7 +2777,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 68,
                             Code = "405",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("19545fc6-73e1-436c-8d77-133c30573f7f"),
+=======
+                            ConcurrencyStamp = new Guid("aebfd588-1fe9-4924-9081-0438a938f5f8"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "235",
@@ -2302,7 +2794,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 69,
                             Code = "406",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d82222ee-b3e0-42bb-8476-41430f21a20f"),
+=======
+                            ConcurrencyStamp = new Guid("a4416895-38e4-47af-85fd-80ca16a568f0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "255",
@@ -2315,7 +2811,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 70,
                             Code = "407",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f91680b7-7091-4a63-a170-ae3c633367e4"),
+=======
+                            ConcurrencyStamp = new Guid("19aea3d7-32cd-4d01-a60b-a1948ecb9dbf"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "228",
@@ -2328,7 +2828,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 71,
                             Code = "408",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("dd7745fe-3777-4796-a0cc-345aa753bf1a"),
+=======
+                            ConcurrencyStamp = new Guid("234919bc-4b27-4bae-8d55-c43b4df39ffe"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "241",
@@ -2341,7 +2845,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 72,
                             Code = "409",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a14008b3-4c79-4d37-ad5e-dfe99a93964c"),
+=======
+                            ConcurrencyStamp = new Guid("414aab5f-afd5-4a0f-9b15-ef9cfcd55d42"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "220",
@@ -2354,7 +2862,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 73,
                             Code = "410",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3db97be6-eae2-4d07-bc1d-1f912bc7e6cb"),
+=======
+                            ConcurrencyStamp = new Guid("e1ae8c57-45e8-4e90-8b21-090ac0deb91f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "269",
@@ -2367,7 +2879,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 74,
                             Code = "411",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0a242990-3dea-49b4-bcc4-e58c0424cd7d"),
+=======
+                            ConcurrencyStamp = new Guid("6a2b079a-dcf7-4dbe-b972-0fdc23b528f3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "27",
@@ -2380,7 +2896,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 75,
                             Code = "412",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("190647b2-86dd-4365-a6ef-9b75733d0fde"),
+=======
+                            ConcurrencyStamp = new Guid("6f5c8814-3a53-4e66-8c8b-4059bda707ec"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "264",
@@ -2393,7 +2913,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 76,
                             Code = "413",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b0093b58-f6c1-4f6f-acd5-e7f0e2c23952"),
+=======
+                            ConcurrencyStamp = new Guid("8965c818-58b5-474b-8c72-ecca8f8d54bf"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "229",
@@ -2406,7 +2930,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 77,
                             Code = "414",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ab0137f2-de7d-4335-aead-1d7e8b5faa13"),
+=======
+                            ConcurrencyStamp = new Guid("1f07cedd-6ed4-4abb-b973-694ba47e1be8"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "250",
@@ -2419,7 +2947,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 78,
                             Code = "415",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e1b0896b-3a08-4ea7-83a6-b57c4d336070"),
+=======
+                            ConcurrencyStamp = new Guid("89065e1d-7dd2-4b97-bd9f-1f1cd39d8f27"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "263",
@@ -2432,7 +2964,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 79,
                             Code = "416",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("17ec5c18-ec1e-43a7-84ce-18f370cf3a24"),
+=======
+                            ConcurrencyStamp = new Guid("2dbdab37-1f52-4b77-ad76-52a8d2b9e206"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "243",
@@ -2445,7 +2981,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 80,
                             Code = "417",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("87b8e4cc-5514-4a95-a5ae-8102d458f288"),
+=======
+                            ConcurrencyStamp = new Guid("a60f44d2-e1cd-483b-b3de-06104312642e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "260",
@@ -2458,7 +2998,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 81,
                             Code = "418",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("089b7f13-866c-43fb-be5e-290de8acb5ec"),
+=======
+                            ConcurrencyStamp = new Guid("c9dd8740-dc87-4217-ac1d-39d61d6e6d31"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "225",
@@ -2471,7 +3015,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 82,
                             Code = "419",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("1bf00c78-b169-45f5-8fd9-afc9d1138390"),
+=======
+                            ConcurrencyStamp = new Guid("6648e49e-adbc-4209-a1b0-8d43070af7b1"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -2483,7 +3031,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 83,
                             Code = "420",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a0c128c3-7111-43fa-a13e-a24f74152fa1"),
+=======
+                            ConcurrencyStamp = new Guid("f424ebfa-3de6-4090-bb66-00e0a6ad3a24"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "232",
@@ -2496,7 +3048,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 84,
                             Code = "421",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("674dd8ce-e804-4183-b734-c2fea3287179"),
+=======
+                            ConcurrencyStamp = new Guid("11dd720f-c290-43c4-9606-acedf8369fad"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "233",
@@ -2509,7 +3065,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 85,
                             Code = "422",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("9bda632c-3080-49a7-82e2-83eeb789d551"),
+=======
+                            ConcurrencyStamp = new Guid("ef1f5a28-fb5a-4fc0-8853-ca99ace38c43"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "224",
@@ -2522,7 +3082,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 86,
                             Code = "423",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0cc69699-a7f3-4f71-8a35-0a8769f04bc2"),
+=======
+                            ConcurrencyStamp = new Guid("9c124b19-9ffe-4f03-8515-e4d628b35436"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "245",
@@ -2535,7 +3099,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 87,
                             Code = "424",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d05d46c3-edae-4348-8cc8-fdecc9dab1b9"),
+=======
+                            ConcurrencyStamp = new Guid("223129ab-cdb9-424f-8ba6-1235a14f6bc6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "226",
@@ -2548,7 +3116,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 88,
                             Code = "425",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e419d308-1b52-4092-a113-3514863b5f01"),
+=======
+                            ConcurrencyStamp = new Guid("bc237f9d-abc4-4c6e-9622-b158883ea8f6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "237",
@@ -2561,7 +3133,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 89,
                             Code = "426",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("690a556c-6d77-420c-a9ca-5d661653805c"),
+=======
+                            ConcurrencyStamp = new Guid("13674bc5-55d1-4f48-8a86-8fe7d41bda8a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "243",
@@ -2574,7 +3150,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 90,
                             Code = "427",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f285720e-e61a-4d6c-9b2c-dce1b9da53fc"),
+=======
+                            ConcurrencyStamp = new Guid("eeb856eb-7fc7-4c61-b1f9-cf7b1ddef819"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "254",
@@ -2587,7 +3167,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 91,
                             Code = "428",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("bf42fa03-64e3-4c5c-9a05-a86cfee4ebdf"),
+=======
+                            ConcurrencyStamp = new Guid("7676525c-42a6-4f60-9d23-b02a00a7a4cc"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "266",
@@ -2600,7 +3184,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 92,
                             Code = "429",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d0662d0e-b0b0-47b6-b7bc-68d7014f2222"),
+=======
+                            ConcurrencyStamp = new Guid("e48ce60a-54a6-48d6-8a1e-3821bb9af823"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "231",
@@ -2613,7 +3201,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 93,
                             Code = "430",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("af76fbe3-6cbf-45ff-993f-31b0dc2c53cc"),
+=======
+                            ConcurrencyStamp = new Guid("3fc6e0d7-5a93-400c-a930-a4be669433a2"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "223",
@@ -2626,7 +3218,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 94,
                             Code = "432",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0a126e5a-c8fd-48e8-9b2f-7c68fb9e320f"),
+=======
+                            ConcurrencyStamp = new Guid("7e7e17fd-d694-4b2c-87ff-fb9ed91bae18"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "265",
@@ -2639,7 +3235,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 95,
                             Code = "433",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("df3f78e2-9e4d-4005-9736-26401ba38bc5"),
+=======
+                            ConcurrencyStamp = new Guid("9132c2b3-92bd-4941-b6fb-10f6d43ad5d6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "230",
@@ -2652,7 +3252,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 96,
                             Code = "434",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("5af16e23-8014-4986-ac83-b21112df782f"),
+=======
+                            ConcurrencyStamp = new Guid("63b2e29b-5320-4e32-b96c-808417c8abc6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "258",
@@ -2665,7 +3269,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 97,
                             Code = "435",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c8359b90-e881-487e-b06a-37f7d4dd3440"),
+=======
+                            ConcurrencyStamp = new Guid("e01ced47-ca1a-403f-b13c-6643cdcf0851"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "234",
@@ -2678,7 +3286,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 98,
                             Code = "436",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("561d1f68-555a-42b1-960f-63d88d6e8a53"),
+=======
+                            ConcurrencyStamp = new Guid("3c95b346-e953-48f0-a03e-1f947c51e05e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "227",
@@ -2691,7 +3303,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 99,
                             Code = "437",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("39b979b8-c736-45b6-8df2-18c1d8483137"),
+=======
+                            ConcurrencyStamp = new Guid("fb18a490-1b02-41b7-8bc7-0cc2b9e09cea"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "236",
@@ -2704,7 +3320,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 100,
                             Code = "438",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0dc27ea2-0ba2-4eb4-81cb-817bfc2dc35c"),
+=======
+                            ConcurrencyStamp = new Guid("7b2a39ee-7b2f-4a7b-adf3-0f705e17805f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "244",
@@ -2717,7 +3337,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 101,
                             Code = "439",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("bc6d3567-4824-4421-9a3b-e8922efad5b3"),
+=======
+                            ConcurrencyStamp = new Guid("03ff32eb-f815-497d-b8a3-906b00640b29"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "599",
@@ -2730,7 +3354,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 102,
                             Code = "440",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("cf1c282d-0a4f-4c65-b737-6129f62f3380"),
+=======
+                            ConcurrencyStamp = new Guid("76ee090b-be75-4d8a-ac5f-1e2314efb060"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "240",
@@ -2743,7 +3371,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 103,
                             Code = "441",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e970f96d-b936-4566-9afd-c2d22f3b0453"),
+=======
+                            ConcurrencyStamp = new Guid("59483557-73a0-4a76-b674-2c25b35e5c1e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -2754,7 +3386,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 104,
                             Code = "442",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("33905e70-30d5-4d8b-938e-6c81b179f694"),
+=======
+                            ConcurrencyStamp = new Guid("0c536415-760b-46e6-9dd5-bdaa0f9e810a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "239",
@@ -2767,7 +3403,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 105,
                             Code = "443",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("15d09994-e057-44cc-9eb6-782323d16bb5"),
+=======
+                            ConcurrencyStamp = new Guid("63376b8e-4e70-4d51-acb7-7aa52ef944c5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "248",
@@ -2780,7 +3420,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 106,
                             Code = "444",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("640311c5-3bb3-4cf8-802b-3796eb860651"),
+=======
+                            ConcurrencyStamp = new Guid("a974ef26-7e18-457f-add9-f3522da1d613"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "268",
@@ -2793,7 +3437,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 107,
                             Code = "449",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ca50578f-fa95-4f94-984e-c94d99851f4b"),
+=======
+                            ConcurrencyStamp = new Guid("f0e0ab52-84c5-44ee-b037-c30ac29faa27"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "291",
@@ -2806,7 +3454,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 108,
                             Code = "453",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4e456802-c702-4a6e-8131-fca99eefe711"),
+=======
+                            ConcurrencyStamp = new Guid("a6433073-570b-4dd4-b312-9c88ef420c24"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "211",
@@ -2819,7 +3471,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 109,
                             Code = "454",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a9156f9d-b84b-4202-90c1-fcdb1ac5b7c2"),
+=======
+                            ConcurrencyStamp = new Guid("f3c92d9e-75fb-46d9-ac79-fd1d257a140f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "238",
@@ -2832,7 +3488,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 110,
                             Code = "501",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0c6a2b45-30e0-4ea1-8076-00d50995dcb7"),
+=======
+                            ConcurrencyStamp = new Guid("0b89f97f-87ea-454d-a798-30d4a63232cb"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "34",
@@ -2845,7 +3505,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 111,
                             Code = "502",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c6ae5ebb-245d-4736-b4ca-5a517ecff8f8"),
+=======
+                            ConcurrencyStamp = new Guid("2feec67f-1917-4d24-8f54-1d7b26bba932"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "355",
@@ -2858,7 +3522,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 112,
                             Code = "503",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2f718cbc-8398-408b-9da4-d98f08c571be"),
+=======
+                            ConcurrencyStamp = new Guid("0bb5084f-c063-4cf0-b3f7-04b4c6ce9f00"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "49",
@@ -2871,7 +3539,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 113,
                             Code = "504",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4ea9831c-db44-4089-b908-6e4b6f18e9ca"),
+=======
+                            ConcurrencyStamp = new Guid("e16e2a97-b02e-4237-ac8a-8759a86e7160"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "353",
@@ -2884,7 +3556,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 114,
                             Code = "505",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3acc095e-a86b-433f-a4a5-2cfd87410cd2"),
+=======
+                            ConcurrencyStamp = new Guid("00527cfc-756d-465d-9c42-0b7757e8914c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "39",
@@ -2897,7 +3573,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 115,
                             Code = "506",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0d69f40d-0767-4cd0-a2c0-e9b02ca7c4e6"),
+=======
+                            ConcurrencyStamp = new Guid("98ef523a-d0d8-4541-9dc1-174260ec17ec"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "44",
@@ -2910,7 +3590,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 116,
                             Code = "507",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("36889186-f38e-4b6b-af79-c187187a954c"),
+=======
+                            ConcurrencyStamp = new Guid("7800efcd-5145-42a8-b84d-4c637c04651d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "351",
@@ -2923,7 +3607,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 117,
                             Code = "508",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d4f415f1-eae0-4473-b562-2745c5008b39"),
+=======
+                            ConcurrencyStamp = new Guid("99668842-0344-4028-93b9-5f10f4882f14"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "359",
@@ -2936,7 +3624,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 118,
                             Code = "509",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("38170eaa-484d-4a9b-aa84-60227bd9d658"),
+=======
+                            ConcurrencyStamp = new Guid("afda7bbb-1081-403d-88e2-44deb1d5d572"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "32",
@@ -2949,7 +3641,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 119,
                             Code = "510",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("39fddc61-e46a-4204-bb13-4397083fc56a"),
+=======
+                            ConcurrencyStamp = new Guid("8aaceaa9-e458-401d-9a51-f3f951b9c186"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "48",
@@ -2962,7 +3658,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 120,
                             Code = "512",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a570c391-0a92-4f2f-8b56-843e4d92d969"),
+=======
+                            ConcurrencyStamp = new Guid("3150686e-b59a-4b18-b7f2-36e7f31a55ef"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "45",
@@ -2975,7 +3675,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 121,
                             Code = "513",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4e7ee3fe-b835-4587-bcb5-106523fcf6cf"),
+=======
+                            ConcurrencyStamp = new Guid("922b385e-8cfb-49aa-a7d5-1495b3a7a670"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "40",
@@ -2988,7 +3692,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 122,
                             Code = "514",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("cfd2d561-0812-45b5-b30f-7993415f478f"),
+=======
+                            ConcurrencyStamp = new Guid("e66a7137-8db8-42d2-9187-1c7669d311d1"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "46",
@@ -3001,7 +3709,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 123,
                             Code = "515",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d9350cf5-5624-4948-af10-7eabb765797b"),
+=======
+                            ConcurrencyStamp = new Guid("781831fd-c9ea-4df8-9e5a-dafd795463a3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "41",
@@ -3014,7 +3726,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 124,
                             Code = "516",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("53abffe6-a9ea-48e2-8833-7ea2a455eaa7"),
+=======
+                            ConcurrencyStamp = new Guid("ddd03703-5610-4163-a100-eb343b21e258"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "33",
@@ -3027,7 +3743,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 125,
                             Code = "517",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("094ae690-d115-41a2-83a1-9eb02f34e4fa"),
+=======
+                            ConcurrencyStamp = new Guid("4a159938-92d1-4704-bb9b-7649bf801972"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "358",
@@ -3040,7 +3760,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 126,
                             Code = "518",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6b430e70-4ead-4b52-bac7-7ffa3469708c"),
+=======
+                            ConcurrencyStamp = new Guid("ec361822-cf4a-4b86-8f5e-f219a068763c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "381",
@@ -3053,7 +3777,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 127,
                             Code = "519",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("29fdb55c-655e-4bd5-a59f-d638c64dda7f"),
+=======
+                            ConcurrencyStamp = new Guid("35dfc1c8-cf85-44f7-ac28-220b344ccb17"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "31",
@@ -3066,7 +3794,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 128,
                             Code = "521",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3428a1e0-4944-4322-92f3-1065ad866395"),
+=======
+                            ConcurrencyStamp = new Guid("4b934c57-ccec-4806-9ad8-fa552ab22fd3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "30",
@@ -3079,7 +3811,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 129,
                             Code = "522",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("78a4fb47-09d0-49a5-8185-e27354748855"),
+=======
+                            ConcurrencyStamp = new Guid("3fdd339b-823e-449e-81cc-dbe3c07ec13d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "376",
@@ -3092,7 +3828,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 130,
                             Code = "523",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a73f3d57-02fd-4616-9649-ad12b64a3094"),
+=======
+                            ConcurrencyStamp = new Guid("8a109134-e06c-4612-948c-959614d7b196"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "43",
@@ -3105,7 +3845,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 131,
                             Code = "524",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f35fc3f6-1338-43f9-bec5-7193c8d24322"),
+=======
+                            ConcurrencyStamp = new Guid("f67bd146-ae95-4d63-8dc9-dbab7f141d9d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "382",
@@ -3118,7 +3862,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 132,
                             Code = "525",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b8ac5b7c-882e-4b08-8a36-e7d162c43030"),
+=======
+                            ConcurrencyStamp = new Guid("5a360d10-c047-43ab-af25-d5cbdda06583"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "36",
@@ -3131,7 +3879,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 133,
                             Code = "526",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("06541321-c440-49c6-9099-be0c93efab11"),
+=======
+                            ConcurrencyStamp = new Guid("6cd778e3-bd82-4aea-acd4-f164e62bebf6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "354",
@@ -3144,7 +3896,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 134,
                             Code = "527",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7e5885bc-575c-4e44-9b4a-ec509fa2deb0"),
+=======
+                            ConcurrencyStamp = new Guid("d34ba768-465c-4691-b321-acb93f42e42e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "423",
@@ -3157,7 +3913,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 135,
                             Code = "528",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0943fabc-8ad4-4cf4-8d7e-fda628e06692"),
+=======
+                            ConcurrencyStamp = new Guid("a31ff95a-de09-48f2-8a9b-ffbfa6a884fa"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "352",
@@ -3170,7 +3930,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 136,
                             Code = "529",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("1c124547-9155-4885-8099-0c0e782f2104"),
+=======
+                            ConcurrencyStamp = new Guid("8b01ff50-de92-47ca-b5ae-9553919f01d5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "356",
@@ -3183,7 +3947,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 137,
                             Code = "530",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e45a929b-9e02-464d-a56a-284a946e9dab"),
+=======
+                            ConcurrencyStamp = new Guid("98a88ac3-6238-4e0f-a3c5-4e8ff477127c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "377",
@@ -3196,7 +3964,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 138,
                             Code = "531",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a8262cbe-eae5-4f01-bf6b-2e0b0ce02d5d"),
+=======
+                            ConcurrencyStamp = new Guid("36eaac6e-0b11-4076-a05e-96efc572a28d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "47",
@@ -3209,7 +3981,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 139,
                             Code = "532",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ac5361d2-4a3f-4ed8-b578-b3f32d081e09"),
+=======
+                            ConcurrencyStamp = new Guid("461a45fe-a498-477e-a8f9-49283f445506"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "378",
@@ -3222,7 +3998,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 140,
                             Code = "533",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6d3aa8b9-9ed2-40ac-9f74-57fc1c4b0e2d"),
+=======
+                            ConcurrencyStamp = new Guid("41e2c94d-47d4-4a3e-adf0-fd27cce929d0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "39",
@@ -3235,7 +4015,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 141,
                             Code = "534",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c2ef3332-a3a7-461f-8463-7dbed5ec5922"),
+=======
+                            ConcurrencyStamp = new Guid("7a215742-6809-4635-a278-4001c9fb33c8"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "350",
@@ -3248,7 +4032,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 142,
                             Code = "536",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e7dff019-8bc5-4c13-bbd7-a319b77db711"),
+=======
+                            ConcurrencyStamp = new Guid("ae2ba680-fdce-4a5c-bc48-ca4b985cac6a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "380",
@@ -3261,7 +4049,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 143,
                             Code = "537",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6e04b72b-4f8f-4844-b111-d48fd908be1a"),
+=======
+                            ConcurrencyStamp = new Guid("afd23ad5-8cb7-4de2-a3a1-ded2c7349120"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -3272,7 +4064,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 144,
                             Code = "539",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("54f4bde3-b9e2-4c60-a7d5-e3d08c7c4698"),
+=======
+                            ConcurrencyStamp = new Guid("bbaff84a-f4a6-4b78-9e2b-4049546020e2"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "374",
@@ -3285,7 +4081,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 145,
                             Code = "540",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b4d8d7fb-f834-421c-9000-5c92828bbc6d"),
+=======
+                            ConcurrencyStamp = new Guid("cc5938e7-812b-4863-ac34-d0b14fc2d162"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "373",
@@ -3298,7 +4098,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 146,
                             Code = "541",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3fe385a2-fa00-4fbb-87ec-f3ac5486138b"),
+=======
+                            ConcurrencyStamp = new Guid("439a39d8-3e77-4d81-b308-1f843dc209ac"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "995",
@@ -3311,7 +4115,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 147,
                             Code = "542",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("9170a30b-8b40-4668-b184-9c526dc7cda2"),
+=======
+                            ConcurrencyStamp = new Guid("3b94e4b9-1411-46e4-9174-fd371d259256"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "370",
@@ -3324,7 +4132,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 148,
                             Code = "543",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("330a0c7c-f074-4f20-aba7-0a5744ee787c"),
+=======
+                            ConcurrencyStamp = new Guid("4cd0a5b7-9b8c-46ec-b2b6-352a63d5368d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "372",
@@ -3337,7 +4149,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 149,
                             Code = "544",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d52f5388-9ff1-40a8-a65f-562573944098"),
+=======
+                            ConcurrencyStamp = new Guid("f43a76b2-4316-4612-b85a-7974bdbfbe8b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "371",
@@ -3350,7 +4166,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 150,
                             Code = "545",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0ff829d7-55f1-4d55-813d-a515feeaa795"),
+=======
+                            ConcurrencyStamp = new Guid("d6816925-8b4a-48f7-94b9-92e7e721dc73"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "387",
@@ -3363,7 +4183,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 151,
                             Code = "546",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f3db3163-d63d-4557-9482-904e8b11bd65"),
+=======
+                            ConcurrencyStamp = new Guid("1ba4def3-94f6-43fb-99e0-6e996cb5e2b4"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "385",
@@ -3376,7 +4200,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 152,
                             Code = "547",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f7a88012-bb48-4acd-bf16-41fd12bf3720"),
+=======
+                            ConcurrencyStamp = new Guid("f277d3b0-7f95-4c8a-875e-85e8045817ad"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "386",
@@ -3389,7 +4217,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 153,
                             Code = "549",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6a7d24dd-d8bb-4082-b245-7f530b790942"),
+=======
+                            ConcurrencyStamp = new Guid("366ba343-c637-427e-8343-6efc60032a98"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "389",
@@ -3402,7 +4234,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 154,
                             Code = "552",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("976510f0-1288-43aa-89f3-13b530d8b052"),
+=======
+                            ConcurrencyStamp = new Guid("3941c269-621c-44c3-9347-4715d4690205"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "420",
@@ -3415,7 +4251,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 155,
                             Code = "553",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("40207203-71d8-4810-b8fb-57e41c6c19e7"),
+=======
+                            ConcurrencyStamp = new Guid("97041174-0ea8-4d36-bffa-17f080743a8d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "421",
@@ -3428,7 +4268,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 156,
                             Code = "554",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f9bcb6f7-ceb3-4018-bbe7-abad7fecd0fd"),
+=======
+                            ConcurrencyStamp = new Guid("c1d8f9a9-9f26-40c4-ab8f-84a69deabb62"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "298",
@@ -3441,7 +4285,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 157,
                             Code = "555",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("fcf2607d-d003-472f-9b97-c180c9d2c8b7"),
+=======
+                            ConcurrencyStamp = new Guid("40c3ea1a-663b-4d74-a188-9f24cc3c6916"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "33",
@@ -3454,7 +4302,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 158,
                             Code = "601",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6c41b233-ecb2-44fc-8fd8-008438f6815e"),
+=======
+                            ConcurrencyStamp = new Guid("27ed3db8-0705-498d-9df2-37231ee4ee8e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3467,7 +4319,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 159,
                             Code = "602",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3f3def72-a865-40d2-a681-1ba43a99b480"),
+=======
+                            ConcurrencyStamp = new Guid("f41c73ef-4dd7-4dcf-b81f-5310cfaae29f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "54",
@@ -3480,7 +4336,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 160,
                             Code = "603",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f70cfe25-ce39-4315-8d28-35cb005b55d7"),
+=======
+                            ConcurrencyStamp = new Guid("8944fd9e-bc43-44f8-be7f-0246864cc5e7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3493,7 +4353,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 161,
                             Code = "604",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a3e60cac-c91e-4322-9ca6-4b3971e1b8b7"),
+=======
+                            ConcurrencyStamp = new Guid("e69ca643-f72f-44f0-b3c3-988512881c81"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "55",
@@ -3506,7 +4370,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 162,
                             Code = "605",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("64437721-0ffc-4688-a929-cfa98d118493"),
+=======
+                            ConcurrencyStamp = new Guid("7aada47e-8436-4c66-8df0-45ff63b17e51"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "507",
@@ -3519,7 +4387,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 163,
                             Code = "606",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e02065f5-de25-4168-978f-b39457cf7885"),
+=======
+                            ConcurrencyStamp = new Guid("a41754fb-998d-42f6-87de-5b5f5b488324"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3532,7 +4404,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 164,
                             Code = "607",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ed98f2a2-fdf0-4315-94d2-e5e77a6a0f55"),
+=======
+                            ConcurrencyStamp = new Guid("9a8908ea-6765-4b94-bb08-301da57ff511"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3545,7 +4421,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 165,
                             Code = "608",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f300e410-1137-4935-817f-38b9523d9e78"),
+=======
+                            ConcurrencyStamp = new Guid("a4cf1f87-d768-4e70-8f0c-649c8ddf0f1d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -3556,7 +4436,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 166,
                             Code = "609",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("aac043d6-10df-4f4d-a32c-4a4bb5e9f874"),
+=======
+                            ConcurrencyStamp = new Guid("0b6497cc-c315-41a1-8833-e8cbe6e15ac7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "58",
@@ -3569,7 +4453,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 167,
                             Code = "610",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("991ac3a7-08e3-40fc-9879-167ffc9d6591"),
+=======
+                            ConcurrencyStamp = new Guid("78450b99-55bc-4a96-b118-2e1db9ef6241"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3582,7 +4470,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 168,
                             Code = "611",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e8a38d6c-93eb-44e2-9d79-6dbfcbbc83df"),
+=======
+                            ConcurrencyStamp = new Guid("9689fee3-77ca-4250-87b3-417fb8691d3b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "57",
@@ -3595,7 +4487,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 169,
                             Code = "612",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2a7f0884-bb7a-4939-a07c-3c905525dda1"),
+=======
+                            ConcurrencyStamp = new Guid("f31b3918-d512-4e0f-8990-3f5e8f258c2a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3608,7 +4504,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 170,
                             Code = "613",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("595492b7-4209-4a41-9cd0-b6f701de8cb8"),
+=======
+                            ConcurrencyStamp = new Guid("2376887b-53d8-4f9b-a089-a4d2b922ed45"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "506",
@@ -3621,7 +4521,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 171,
                             Code = "614",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3ac83b13-0e3d-4e60-a021-7d87e4091180"),
+=======
+                            ConcurrencyStamp = new Guid("18072597-d1b7-426f-a835-98c0dbed373d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "53",
@@ -3634,7 +4538,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 172,
                             Code = "615",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d595f3e6-30cb-4c70-aaa0-cfc18467e50c"),
+=======
+                            ConcurrencyStamp = new Guid("cc275239-80c2-405b-ad79-1f1461540228"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3647,7 +4555,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 173,
                             Code = "616",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7f1c9b4d-6e51-419f-9074-34b01ec5cbdb"),
+=======
+                            ConcurrencyStamp = new Guid("5369c297-f07c-44f5-9cbc-2d3219c9f751"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3660,7 +4572,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 174,
                             Code = "617",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("5d1fc57f-1141-4a36-b487-dabef1503c2a"),
+=======
+                            ConcurrencyStamp = new Guid("78277083-1810-4a1b-bd21-8c43a02d931a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "503",
@@ -3673,7 +4589,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 175,
                             Code = "618",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e6ccfdbf-d665-47c1-b40f-95f203e6db8b"),
+=======
+                            ConcurrencyStamp = new Guid("bfca4423-af71-466d-8755-f7750d7c6953"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3686,7 +4606,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 176,
                             Code = "619",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e5007af4-5dd0-4345-a122-06acfd36609a"),
+=======
+                            ConcurrencyStamp = new Guid("5c3129e6-142b-4e86-a365-c6a44663d280"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "502",
@@ -3699,7 +4623,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 177,
                             Code = "620",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("58456292-b269-4c46-a4d6-fb050346173b"),
+=======
+                            ConcurrencyStamp = new Guid("f6f668bb-3ed1-4626-9843-211c1706587e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "509",
@@ -3712,7 +4640,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 178,
                             Code = "621",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b5ea71ee-808f-42df-9ca0-3ca77f619335"),
+=======
+                            ConcurrencyStamp = new Guid("b73ad47d-359f-4c7d-8573-41e4103c601b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "504",
@@ -3725,7 +4657,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 179,
                             Code = "622",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("829ed4af-45e5-4a7b-b65c-99cfd1f4d79a"),
+=======
+                            ConcurrencyStamp = new Guid("ea913af6-04d2-4e64-a0d8-f2cf1333067a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "52",
@@ -3738,7 +4674,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 180,
                             Code = "623",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c01ff743-1b88-4efa-9212-92a00db8f0e6"),
+=======
+                            ConcurrencyStamp = new Guid("d17b8514-69d9-48bc-9a61-747a5116796c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "505",
@@ -3751,7 +4691,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 181,
                             Code = "624",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("8583e6b4-7280-404e-83d1-b2856e112ebc"),
+=======
+                            ConcurrencyStamp = new Guid("6c348a45-8dbe-43a2-9514-85b6ea75889d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3764,7 +4708,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 182,
                             Code = "625",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("dd526250-1f9a-42de-93dc-b740bc7767a2"),
+=======
+                            ConcurrencyStamp = new Guid("93039587-4189-43f6-a838-21cd42bb0e35"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -3777,7 +4725,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 183,
                             Code = "626",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("723a3b2c-68a8-49ad-9a01-f7273efd1db4"),
+=======
+                            ConcurrencyStamp = new Guid("7e544664-d4b5-4b5a-a90e-be7832223585"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "591",
@@ -3790,7 +4742,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 184,
                             Code = "627",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("335b8ca0-376e-4e6e-b6b9-5957f6740b26"),
+=======
+                            ConcurrencyStamp = new Guid("a67741bb-cb80-49b9-9db3-d1dfd42c1d8a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "56",
@@ -3803,7 +4759,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 185,
                             Code = "628",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b0b2b296-c3b7-4fa4-a8f7-183e370a01fc"),
+=======
+                            ConcurrencyStamp = new Guid("ee01b73a-bd87-4cf5-83a2-35c4b7f304ec"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "593",
@@ -3816,7 +4776,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 186,
                             Code = "629",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("1a19be99-b82b-4288-92ce-508691a49975"),
+=======
+                            ConcurrencyStamp = new Guid("7718d666-d60b-4a9b-8b17-bab1c8b0422c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "595",
@@ -3829,7 +4793,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 187,
                             Code = "630",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("99f5d887-7882-4e24-bb69-d5d3a24d2b6b"),
+=======
+                            ConcurrencyStamp = new Guid("5e8bcfd5-f589-446c-b598-d76493d62694"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "51",
@@ -3842,7 +4810,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 188,
                             Code = "701",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6eef5d1a-cd21-4d97-bcfe-df8939ca4e81"),
+=======
+                            ConcurrencyStamp = new Guid("82ab485b-46c4-4471-af2b-f75018ec53cb"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "61",
@@ -3855,7 +4827,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 189,
                             Code = "702",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("11a2e1fb-b1f1-4bc0-9b2a-d58f4ef6c0eb"),
+=======
+                            ConcurrencyStamp = new Guid("64d54e04-e2a1-4c40-b52e-5c631e01a0db"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "64",
@@ -3868,7 +4844,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 190,
                             Code = "703",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2ef4d1fa-19d0-4f3e-ae69-f5501fb2b2fb"),
+=======
+                            ConcurrencyStamp = new Guid("f974bc74-16de-40dd-bb1b-88abe85e3f1a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "598",
@@ -4002,7 +4982,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2378c79f-5579-4cee-8a36-2a73d9bf2910"),
+=======
+                            ConcurrencyStamp = new Guid("bee12eec-f1b1-48bd-9262-b0d17411fb17"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4012,7 +4996,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("cb512700-36d1-4525-b5d4-edd0d0fdf370"),
+=======
+                            ConcurrencyStamp = new Guid("9d4fbf27-abad-432e-a537-ef17e9d90a3d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4022,7 +5010,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("68e5c293-4be1-46ca-aefd-1e1c4e1ade73"),
+=======
+                            ConcurrencyStamp = new Guid("93220f15-306f-45ed-ba08-463e2548d2c3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4032,7 +5024,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c0e445e2-4a97-4b52-a247-f26edda5dcfc"),
+=======
+                            ConcurrencyStamp = new Guid("12a4e570-6c1e-458e-b6d9-a25399eebee4"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4142,7 +5138,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("63031c9d-fcf0-491b-acfe-02642efe1a1e"),
+=======
+                            ConcurrencyStamp = new Guid("417053f4-8ffc-473f-a24d-790e9ddc8562"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4153,7 +5153,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e4562c27-f1eb-48d5-aa1c-a6d89dce6324"),
+=======
+                            ConcurrencyStamp = new Guid("73b4467f-a2a1-4d0a-864f-5ee83dc0c8d5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4164,7 +5168,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("99b13df4-58eb-4408-9b7b-4503a63ad737"),
+=======
+                            ConcurrencyStamp = new Guid("2c6a0882-0585-4729-bd75-53fc21691751"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4175,7 +5183,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f9f69744-5018-456d-a787-e239f6c43575"),
+=======
+                            ConcurrencyStamp = new Guid("714e9b89-93c4-4fd3-a330-9ac0d31cee49"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4339,7 +5351,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2342f0ed-42ce-43ea-9726-cbedabd3a2a3"),
+=======
+                            ConcurrencyStamp = new Guid("aff504f2-36be-4d16-a958-2b06748afe3b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4349,7 +5365,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c76ae6ef-52bf-4749-8589-bed0ccce2384"),
+=======
+                            ConcurrencyStamp = new Guid("dc95131e-da3a-45d1-ad0e-d1bc08bb53ba"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4359,7 +5379,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("70d61297-ac27-4fd7-8a89-d8e4660ac3ec"),
+=======
+                            ConcurrencyStamp = new Guid("dda5df3f-4944-46fe-b753-232479b712ae"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4369,7 +5393,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a3d7a530-5bf2-4440-958c-c605f205cfe3"),
+=======
+                            ConcurrencyStamp = new Guid("55a373ad-155c-493e-9c4e-1c5df1cabf60"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -4424,7 +5452,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("159fe07c-504c-4cad-9fb1-ea930c165458"),
+=======
+                            ConcurrencyStamp = new Guid("6d7a0603-80ce-4055-89f2-3edd6f138bf6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "عن الاماره",
@@ -4434,7 +5466,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4d5eb74d-716a-4fc7-a2b0-ee186c660a56"),
+=======
+                            ConcurrencyStamp = new Guid("7fa8b0a7-82df-41d7-971e-99b5c1a1ea9e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "القسم النسوي",
@@ -4500,7 +5536,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3b3e5180-a39c-4861-bea8-c5cb76c00be3"),
+=======
+                            ConcurrencyStamp = new Guid("442ce3fd-d88f-475c-a274-2c2d11195a25"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageName = "slider.png",
@@ -4758,7 +5798,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a02da24f-2bfc-4a47-a0e7-c17a84b307fb"),
+=======
+                            ConcurrencyStamp = new Guid("1df90b09-3d2c-4657-9407-7b1e30c4066f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5272,7 +6316,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("15ea1def-5835-4d68-a358-081279bc4f78"),
+=======
+                            ConcurrencyStamp = new Guid("a6f8229e-6da6-4308-95dd-7a01bcd68137"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5283,7 +6331,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ecb42470-3b11-4292-b756-dd1fe5a3225b"),
+=======
+                            ConcurrencyStamp = new Guid("0dd92440-49da-49fd-86bd-8d70b7982739"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5294,7 +6346,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("abf5081d-b7dc-433c-9177-599df895a5ed"),
+=======
+                            ConcurrencyStamp = new Guid("a1d2c825-ff9a-4239-8ddc-2ec883aad79a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5305,7 +6361,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("20437ac1-8ece-4701-80c2-f3b70f7fc073"),
+=======
+                            ConcurrencyStamp = new Guid("1f1abb6f-0fc3-4eb2-8f52-7a42d4da6713"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5316,7 +6376,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("1f94d31f-c77e-4050-8865-376c221d8faf"),
+=======
+                            ConcurrencyStamp = new Guid("282e73e5-3a03-4499-8c1c-ec08e17abfb4"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5327,7 +6391,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 6,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("12666f26-ee97-4b34-b0ce-3cea169d8c49"),
+=======
+                            ConcurrencyStamp = new Guid("6de09b36-c7c2-45c7-bd49-3bc20a2afd20"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5338,7 +6406,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 7,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("1f1f55e3-329b-4383-b766-44e0db12a687"),
+=======
+                            ConcurrencyStamp = new Guid("3de3f150-ffe2-47a4-afab-ad8317785dc0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5349,7 +6421,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 8,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f8fcabbb-07d3-488c-9cd5-6fdff38120f9"),
+=======
+                            ConcurrencyStamp = new Guid("8fd796f8-6db6-4b8e-91f5-6c0c74507b65"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5360,7 +6436,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 9,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4037e46a-dfd2-4b44-906b-b99edb84e50a"),
+=======
+                            ConcurrencyStamp = new Guid("8462c359-61cd-422a-b0f0-56967ab086c8"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5371,7 +6451,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 10,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0d407338-8bb4-43d2-b968-018b6426f9cb"),
+=======
+                            ConcurrencyStamp = new Guid("f9e7c607-892e-4b83-ac04-1ec6bcce0fb7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5382,7 +6466,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 11,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("877d4cef-f0ea-4efa-8b2b-4dd267282622"),
+=======
+                            ConcurrencyStamp = new Guid("08ffaf46-7aa5-460a-9cad-d5de9e90389f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5393,7 +6481,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 12,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("215dea07-137d-488c-908d-481be4da60a9"),
+=======
+                            ConcurrencyStamp = new Guid("cba5162a-99bc-459a-8971-66074c912169"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5404,7 +6496,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 13,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c199cf97-dbbd-449f-9f9c-c87356da9f19"),
+=======
+                            ConcurrencyStamp = new Guid("ec294de1-9d6e-4688-a853-d5979373ba3a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5415,7 +6511,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 14,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("1ae59a77-10d0-451d-a883-6cbc7695bb58"),
+=======
+                            ConcurrencyStamp = new Guid("8c7f0bb1-b81b-44b3-99c5-b79d38191953"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5426,7 +6526,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 15,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("01582424-7c16-4d67-928e-33a950137449"),
+=======
+                            ConcurrencyStamp = new Guid("ff9e6d36-d94d-44ac-8d52-e44cd27d55f0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5437,7 +6541,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 16,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("9e2208b1-8c57-4480-ae23-39a0cb9f3713"),
+=======
+                            ConcurrencyStamp = new Guid("ef721cb7-dcc3-406e-a8aa-79a240689925"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5448,7 +6556,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 17,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c783c511-7384-44ec-b5cb-1351c7f63cee"),
+=======
+                            ConcurrencyStamp = new Guid("6df92e92-f7fe-400a-853a-0133c0d4018b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5459,7 +6571,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 18,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b9216a83-6b73-45da-8cb7-298605695f12"),
+=======
+                            ConcurrencyStamp = new Guid("b88e4077-4778-41ad-8d91-09c5e4a30a5e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5470,7 +6586,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 19,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b36d33b9-f05c-46c0-95fb-60696aa1003a"),
+=======
+                            ConcurrencyStamp = new Guid("0c902fd6-006b-4c6a-85c5-015757dfcac5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5481,7 +6601,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 20,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d17c6598-9d21-4fde-b95c-11204e2423d0"),
+=======
+                            ConcurrencyStamp = new Guid("a99ae64b-c706-4a27-9c33-09217b76ca0f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5492,7 +6616,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 21,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2afd35a1-0e1b-4df6-9ddb-ce8328068ab1"),
+=======
+                            ConcurrencyStamp = new Guid("0e40468f-d2ec-4719-88a2-853c83ad6586"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5503,7 +6631,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 22,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("8237e180-7f4a-4cdf-847a-eb47585f9e21"),
+=======
+                            ConcurrencyStamp = new Guid("eccdc90e-0720-46ba-8ad6-2646bf87837b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5514,7 +6646,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 23,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0ecb89ab-eafa-41db-8a95-5a96f0763e7f"),
+=======
+                            ConcurrencyStamp = new Guid("c334b350-6450-41ae-83a7-4d30b189c98a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5525,7 +6661,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 24,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("93b5b7b6-bca7-4001-871a-641175085beb"),
+=======
+                            ConcurrencyStamp = new Guid("1f6d9bf1-1488-4661-a0c4-e05bafc35992"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5536,7 +6676,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 25,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("57b77dfd-cffc-404a-91f5-1638bbc7e326"),
+=======
+                            ConcurrencyStamp = new Guid("47131c81-1b87-45bd-ba57-f5c8a2750fd3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5547,7 +6691,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 26,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4b87b53c-5408-4811-bbca-8ea41ef1049d"),
+=======
+                            ConcurrencyStamp = new Guid("ecfa1e8f-abdf-4d65-b4f4-19699c4d0f32"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5558,7 +6706,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 27,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("11a7b885-18af-43bc-8a60-5db711132f89"),
+=======
+                            ConcurrencyStamp = new Guid("de44f4cf-5b19-402c-b488-ea9a157433f6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5569,7 +6721,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 28,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3f50434e-8140-49d6-814f-636d15b9ffc4"),
+=======
+                            ConcurrencyStamp = new Guid("fcdc75b0-10cc-4035-a7a6-a97591919ab5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5580,7 +6736,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 29,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("8469ceee-4478-4498-9759-9a5e7e7eaac3"),
+=======
+                            ConcurrencyStamp = new Guid("c09fb2e0-b8f7-4d50-9eb0-373bc497ee50"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5591,7 +6751,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 30,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("36334d43-1fcc-40ba-9c6e-ff13fa6a504b"),
+=======
+                            ConcurrencyStamp = new Guid("52d41ca0-5056-4aa1-b5de-d6df9a2575ce"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5602,7 +6766,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 31,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7d515668-6a86-4ddb-a6ae-5789ffc5aae8"),
+=======
+                            ConcurrencyStamp = new Guid("9ca7e58c-6324-4d7f-ad03-77a9177ac5ac"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5613,7 +6781,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 32,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e5507e66-b603-4deb-849a-920214fbe360"),
+=======
+                            ConcurrencyStamp = new Guid("f2744398-9b7f-49b7-bb86-653b1ff40543"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5624,7 +6796,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 33,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("8c1b1085-e4d6-4a0e-8e4a-8338a4b7d920"),
+=======
+                            ConcurrencyStamp = new Guid("b26824be-9c58-409d-a264-9c54627bba6e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5635,7 +6811,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 34,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f9d3c003-d9f8-4784-8797-8063b4be55e9"),
+=======
+                            ConcurrencyStamp = new Guid("0b005b14-e793-4c7d-bf4c-c80e121cef9b"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5646,7 +6826,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 35,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("bb29336b-0757-4954-8d53-a01ada1d767c"),
+=======
+                            ConcurrencyStamp = new Guid("859453bb-62a2-4563-85d5-a8501e1ce90f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5705,7 +6889,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("151d3d1c-4ad7-4b5b-94cb-90d27019d5cf"),
+=======
+                            ConcurrencyStamp = new Guid("ecab15fd-0340-4c00-b227-a43b0a1641e1"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -5715,7 +6903,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3214db4a-074f-41bc-b50b-152783b8dd22"),
+=======
+                            ConcurrencyStamp = new Guid("abc1e5a0-ed2c-492b-88e2-314206518da8"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5725,7 +6917,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("32efe955-5520-4e3c-973f-ae1159e3d6bb"),
+=======
+                            ConcurrencyStamp = new Guid("431ca077-6761-4e2b-bd1f-c8cef52461c7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5735,7 +6931,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("51fb13d1-c9a3-4181-b7b6-30d83f2c213c"),
+=======
+                            ConcurrencyStamp = new Guid("83bbbac9-d75b-4544-9b8b-1c13e357394d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5745,7 +6945,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ade3a28e-bc2e-49c2-9c78-05603b16c611"),
+=======
+                            ConcurrencyStamp = new Guid("016d4bb3-dccb-494b-a52c-0e6c06ff18d7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5755,7 +6959,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 6,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4323b0c0-c156-4c07-8f14-aa5b847c4592"),
+=======
+                            ConcurrencyStamp = new Guid("6b7b6ed5-7fad-451e-a9fb-2dc7cd170248"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5765,7 +6973,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 7,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("49890bca-a2a1-41a8-8e62-e848137decfe"),
+=======
+                            ConcurrencyStamp = new Guid("280988b3-65bb-4603-86f4-c170ffae15e7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -5863,7 +7075,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("41220ff3-b5ec-41b1-b188-638d70e369ed"),
+=======
+                            ConcurrencyStamp = new Guid("67c42fc4-c6c7-4ebe-b4f7-a138a8609dac"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "المجلس الالكتروني",
@@ -5881,7 +7097,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7fee695a-ed13-447b-b681-2c8d5c7efd18"),
+=======
+                            ConcurrencyStamp = new Guid("454571c6-0e20-478b-97b3-9f8de50588c7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "الخروج المؤقت لسجين",
@@ -5899,7 +7119,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a9eebdaa-8762-4618-b1ea-fc7ddbd6f9f2"),
+=======
+                            ConcurrencyStamp = new Guid("95b89770-a526-4eb6-aeba-623e3003f1fd"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "خدمات السجناء",
@@ -5917,7 +7141,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("befed847-89c5-4f01-adb1-a62451093696"),
+=======
+                            ConcurrencyStamp = new Guid("69df2d1f-b800-4ed6-9120-d0cd79df54a1"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "الاستدعاء الإلكتروني",
@@ -5935,7 +7163,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 5,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("57142436-96bb-4894-ac5f-b2d59689a5a5"),
+=======
+                            ConcurrencyStamp = new Guid("769ba684-ee11-4843-833a-3d70f5627b6c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "التعديات على الأراضي الحكومية",
@@ -5953,7 +7185,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 6,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7cb0ebba-67c4-4732-8561-f2bbc589ebe4"),
+=======
+                            ConcurrencyStamp = new Guid("99888590-950a-4869-a44c-b75a988bf1a0"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "انفاذ الحكم الشرعي",
@@ -5971,7 +7207,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 7,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("696d4269-3985-4357-9111-a1baeec1524e"),
+=======
+                            ConcurrencyStamp = new Guid("4c05b75f-d1e2-480d-b11f-9b1a1a6df442"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "توثيق زواج",
@@ -5989,7 +7229,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 8,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6a9c4471-1dd0-448c-b0e2-90ceb433e68e"),
+=======
+                            ConcurrencyStamp = new Guid("30a10aea-867b-4905-b8a9-11998126e8db"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "تملك عقار للأجانب",
@@ -6007,7 +7251,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 9,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("78e57f7a-cfa4-4926-99b7-57cb52c44af9"),
+=======
+                            ConcurrencyStamp = new Guid("fdbe2155-21b5-4b9a-8e9d-4b4061f8bbd5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionAr = "طلب علاج",
@@ -6207,7 +7455,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 1,
                             AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ecc19026-2a81-4691-bc22-71d81f642d18"),
+=======
+                            ConcurrencyStamp = new Guid("49f8f6d8-e167-4fe2-83b7-d7a8d6f3d326"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoner-temp-release",
@@ -6218,7 +7470,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 2,
                             AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4b7b37b6-0f3d-4b29-a39d-10e150c193ae"),
+=======
+                            ConcurrencyStamp = new Guid("188c447b-6f3c-4c0c-b545-07086bd67a6a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoner-temp-release-view",
@@ -6229,7 +7485,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 3,
                             AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c27d8648-cd5c-4421-9f91-983902ce867a"),
+=======
+                            ConcurrencyStamp = new Guid("41ad6248-0c15-4d65-bd5d-cb7bd724a27e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoner-temp-release",
@@ -6240,7 +7500,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 4,
                             AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("cd75e324-ff1c-4d5a-a99e-4f3c3253a2b5"),
+=======
+                            ConcurrencyStamp = new Guid("84a23786-79c2-432b-a315-cf92e7b5f384"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoner-temp-release-view",
@@ -6251,7 +7515,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 5,
                             AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ed161af8-1a96-4bff-852a-446b5adaa53a"),
+=======
+                            ConcurrencyStamp = new Guid("662ed734-7ee7-42d5-a4b1-b1f30b07e4b8"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoner-temp-release-view",
@@ -6262,7 +7530,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 6,
                             AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("55607bbb-9d81-47a0-9a28-b7fe422a028d"),
+=======
+                            ConcurrencyStamp = new Guid("020ecf4c-198e-4f13-92cd-853defc974ec"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoner-temp-release-view",
@@ -6273,7 +7545,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 7,
                             AdminUrl = "/admin/eservice-admin/prisoner-temp-release-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("18cce14a-9672-46e6-9658-1441eb69f385"),
+=======
+                            ConcurrencyStamp = new Guid("fa77104b-451e-4b9d-866b-2fcdf856917f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoner-temp-release-view",
@@ -6284,7 +7560,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 8,
                             AdminUrl = "/admin/eservice-admin/prisoners-services-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3374bd92-0711-4503-b105-3a22c780ffc5"),
+=======
+                            ConcurrencyStamp = new Guid("c17b80c9-9cc1-4a03-bd8a-0c0c29cd6710"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoners-services",
@@ -6295,7 +7575,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 9,
                             AdminUrl = "/admin/eservice-admin/prisoners-services-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4f40124b-479c-4b45-8de7-92abf504d6d4"),
+=======
+                            ConcurrencyStamp = new Guid("047386ff-537b-4b4a-804a-f593cb222a28"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoners-services-view",
@@ -6306,7 +7590,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 10,
                             AdminUrl = "/admin/eservice-admin/prisoners-services-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2b2b45f0-27b7-4ed2-becc-bb0251a1fbcc"),
+=======
+                            ConcurrencyStamp = new Guid("7b4e4bd4-643d-431b-9998-c4cda4109911"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoners-services",
@@ -6317,7 +7605,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 11,
                             AdminUrl = "/admin/eservice-admin/prisoners-services-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("f769c8ca-0829-4403-9675-edbb93ea709d"),
+=======
+                            ConcurrencyStamp = new Guid("f68f1b45-c51c-4081-bdb2-cc4808c3dd35"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoners-services-view",
@@ -6328,7 +7620,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 12,
                             AdminUrl = "/admin/eservice-admin/prisoners-services-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c4ef0eb9-ecfd-4af0-bc82-beb122a93b4c"),
+=======
+                            ConcurrencyStamp = new Guid("5b2c3107-d290-4e22-b8f2-5ee859fb21e3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoners-services-view",
@@ -6339,7 +7635,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 13,
                             AdminUrl = "/admin/eservice-admin/prisoners-services-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("fc42215d-68a3-4cd2-aab6-9b5765ec2fb0"),
+=======
+                            ConcurrencyStamp = new Guid("fe178b88-00f1-4a48-b1ab-a9d16a1a2d48"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoners-services-view",
@@ -6350,7 +7650,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 14,
                             AdminUrl = "/admin/eservice-admin/prisoners-services-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("92933e06-88b7-4516-819c-21ab6c3a7e1d"),
+=======
+                            ConcurrencyStamp = new Guid("08d7c13a-10f5-4057-ac52-03b5265299d6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/prisoners-services-view",
@@ -6361,7 +7665,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 15,
                             AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d7c28b9c-f144-41ef-baef-a68c43fafd62"),
+=======
+                            ConcurrencyStamp = new Guid("3175d464-3024-447f-a439-3dda50542da6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summoning",
@@ -6372,7 +7680,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 16,
                             AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ffabc4c3-2130-4163-9092-07045eb3eb99"),
+=======
+                            ConcurrencyStamp = new Guid("6a473ec7-6aa8-4880-8283-5ee74fe75673"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summoning-view",
@@ -6383,7 +7695,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 17,
                             AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("6751c1a2-4425-43b0-8584-993c34349509"),
+=======
+                            ConcurrencyStamp = new Guid("be96f005-b20c-411d-ac34-461cfa8064f7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summoning",
@@ -6394,7 +7710,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 18,
                             AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0b92547d-8359-4aad-99e6-9000c2812b25"),
+=======
+                            ConcurrencyStamp = new Guid("49a56365-6bb3-4e37-8e8c-388be072814e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summoning-view",
@@ -6405,7 +7725,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 19,
                             AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("1db4e380-60bb-447c-9f86-7d5100c898c1"),
+=======
+                            ConcurrencyStamp = new Guid("dd651554-b3b2-4583-95f7-0fceb6a83e1a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summoning-view",
@@ -6416,7 +7740,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 20,
                             AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ca862763-08c3-4a41-8821-db5b89da673c"),
+=======
+                            ConcurrencyStamp = new Guid("3792ca7b-c063-450c-bdf4-c951d21e49c4"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summoning-view",
@@ -6427,7 +7755,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 21,
                             AdminUrl = "/admin/eservice-admin/electronic-summoning-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ea20d6ff-07fb-4a70-bc57-e5157b77f812"),
+=======
+                            ConcurrencyStamp = new Guid("cacf8918-9848-49c0-9e5e-e2264eb673d1"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summoning-view",
@@ -6438,7 +7770,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 22,
                             AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("fcd62b38-7e8f-4b51-b936-be39b56e8896"),
+=======
+                            ConcurrencyStamp = new Guid("1f81df1f-02f8-4ad2-a5fb-4678dae90c07"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summon",
@@ -6449,7 +7785,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 23,
                             AdminUrl = "/admin/eservice-admin/electronic-summon-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b206c46f-31df-4eb1-b94f-8fb6e157ee60"),
+=======
+                            ConcurrencyStamp = new Guid("216b1a53-25ef-419d-a888-a277ab5615ca"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summon-view",
@@ -6460,7 +7800,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 24,
                             AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("77c5169e-cf69-4487-89b3-cf65c0ae2e99"),
+=======
+                            ConcurrencyStamp = new Guid("48401217-02e1-4490-aa12-6460a2c36aea"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summon",
@@ -6471,7 +7815,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 25,
                             AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("112a56a8-b867-4a53-bec7-fcf09211c055"),
+=======
+                            ConcurrencyStamp = new Guid("7e86cb71-a622-42f6-9e03-9bf582908718"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summon-view",
@@ -6482,7 +7830,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 26,
                             AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("bea522ab-5d45-4c59-9ef2-e70fca4c44e4"),
+=======
+                            ConcurrencyStamp = new Guid("5d4e3f22-b66e-40fb-90b6-76b190150d22"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summon-view",
@@ -6493,7 +7845,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 27,
                             AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("9d083485-3ae7-463c-b39a-70343779bd10"),
+=======
+                            ConcurrencyStamp = new Guid("b218da21-7b97-4a8a-8efa-e1fe2a9d2c6a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summon-view",
@@ -6504,7 +7860,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 28,
                             AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("130862af-11af-432b-b5df-205fa5203779"),
+=======
+                            ConcurrencyStamp = new Guid("0ca35fe8-fa55-4e76-8bfb-008e7da0a1b5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/electronic-summon-view",
@@ -6515,7 +7875,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 29,
                             AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("5705af94-8cb5-4c59-9324-9c9507a081db"),
+=======
+                            ConcurrencyStamp = new Guid("e813460d-0731-4d91-abe5-f9e32ec6c224"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/lands-infringement",
@@ -6526,7 +7890,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 30,
                             AdminUrl = "/admin/eservice-admin/lands-infringement-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("d6c69ed1-99e3-422a-946f-65c67ff9dbc0"),
+=======
+                            ConcurrencyStamp = new Guid("4c32496c-4e57-40c2-ad9c-4d8df643d245"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/lands-infringement-view",
@@ -6537,7 +7905,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 31,
                             AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("615cfbac-26c6-42b6-8390-3f0ec235b742"),
+=======
+                            ConcurrencyStamp = new Guid("0a1ab174-9070-4bb1-aca0-cb76227f435a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/lands-infringement",
@@ -6548,7 +7920,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 32,
                             AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("32e4a73b-616b-4078-b4b8-6e727dcd3c03"),
+=======
+                            ConcurrencyStamp = new Guid("13568876-1415-4ed2-a176-246a1dc59e66"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/lands-infringement-view",
@@ -6559,7 +7935,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 33,
                             AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("cb6226c6-21bb-4c66-b1ba-76ba52fddf34"),
+=======
+                            ConcurrencyStamp = new Guid("191b9127-bb28-40ec-bbf4-53ecc1bf31c5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/lands-infringement-view",
@@ -6570,7 +7950,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 34,
                             AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2cc7ceed-17a4-4495-b388-d78f84f18ccd"),
+=======
+                            ConcurrencyStamp = new Guid("395592f2-b6c7-4ee7-9547-3d84da7791ed"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/lands-infringement-view",
@@ -6581,7 +7965,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 35,
                             AdminUrl = "/admin/eservice-admin/lands-infringement-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("058f1371-ef60-4c84-9539-748c799a978a"),
+=======
+                            ConcurrencyStamp = new Guid("34999d7b-1cbd-451f-a47e-0bfc32b706d4"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/lands-infringement-view",
@@ -6592,7 +7980,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 36,
                             AdminUrl = "/admin/eservice-admin/judgment-execution-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("4cd74ecf-3bf9-434a-999c-ca56395fd4f7"),
+=======
+                            ConcurrencyStamp = new Guid("434ee496-fa2d-42b2-a4cd-4f7d3910bfec"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/judgment-execution",
@@ -6603,7 +7995,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 37,
                             AdminUrl = "/admin/eservice-admin/judgment-execution-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("671939a3-de84-42ed-8157-30825caab11d"),
+=======
+                            ConcurrencyStamp = new Guid("2c0a5c88-a780-47f4-acbd-ba10dc36e438"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/judgment-execution-view",
@@ -6614,7 +8010,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 38,
                             AdminUrl = "/admin/eservice-admin/judgment-execution-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7fcfe2e0-0e78-4590-9aa4-ab966bf3d4a6"),
+=======
+                            ConcurrencyStamp = new Guid("7159e7b5-3e0e-491f-9fd2-283664a4d04e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/judgment-execution",
@@ -6625,7 +8025,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 39,
                             AdminUrl = "/admin/eservice-admin/judgment-execution-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("68169a9b-f0bf-49f5-a9a1-53d5d10c907e"),
+=======
+                            ConcurrencyStamp = new Guid("0ed6b540-31a0-41b7-a039-27c85c09ba5d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/judgment-execution-view",
@@ -6636,7 +8040,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 40,
                             AdminUrl = "/admin/eservice-admin/judgment-execution-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("500e1335-e8a6-4379-898a-9c1e07189093"),
+=======
+                            ConcurrencyStamp = new Guid("59da70bc-03f7-4b0b-b656-c237039523ea"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/judgment-execution-view",
@@ -6647,7 +8055,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 41,
                             AdminUrl = "/admin/eservice-admin/judgment-execution-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("e0a9bff4-72f0-4a01-865b-2030e70f4912"),
+=======
+                            ConcurrencyStamp = new Guid("8ec4e31a-e569-42df-ad2b-183e167d1afa"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/judgment-execution-view",
@@ -6658,7 +8070,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 42,
                             AdminUrl = "/admin/eservice-admin/judgment-execution-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0e536c25-9793-4d0c-9824-b19ebabe79b2"),
+=======
+                            ConcurrencyStamp = new Guid("e23a8ad2-eb82-44ed-bbd9-7c7cb81101b7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/judgment-execution-view",
@@ -6669,7 +8085,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 43,
                             AdminUrl = "/admin/eservice-admin/marriage-certificate-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("5a033bc4-e264-4a7a-890d-e5da8c86a587"),
+=======
+                            ConcurrencyStamp = new Guid("4ed95d1d-2ae4-43df-b542-f9f087fee3d6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/marriage-certificate",
@@ -6680,7 +8100,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 44,
                             AdminUrl = "/admin/eservice-admin/marriage-certificate-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("501d1688-b2d6-499a-9a8f-5273bc20d702"),
+=======
+                            ConcurrencyStamp = new Guid("3bdf6bc7-30a7-46e6-ba8f-69cf132c8847"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/marriage-certificate-view",
@@ -6691,7 +8115,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 45,
                             AdminUrl = "/admin/eservice-admin/marriage-certificate-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("271cde6e-d55d-476e-a53b-ffb7ff5fd410"),
+=======
+                            ConcurrencyStamp = new Guid("8381e77c-2cb7-40f6-9bb5-2502f0b728f5"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/marriage-certificate",
@@ -6702,7 +8130,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 46,
                             AdminUrl = "/admin/eservice-admin/marriage-certificate-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c268cb3b-4759-484a-a912-9be6e4f35287"),
+=======
+                            ConcurrencyStamp = new Guid("e36d72ec-6923-42aa-866e-6c1886e2036c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/marriage-certificate-view",
@@ -6713,7 +8145,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 47,
                             AdminUrl = "/admin/eservice-admin/marriage-certificate-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a56b69e3-0f4a-444b-9af8-f1ee00b37da2"),
+=======
+                            ConcurrencyStamp = new Guid("8c933f8c-61ca-45de-a725-aaefe7c6ee22"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/marriage-certificate-view",
@@ -6724,7 +8160,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 48,
                             AdminUrl = "/admin/eservice-admin/marriage-certificate-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("22448e89-e2fa-4361-b464-f7cf7fa0a822"),
+=======
+                            ConcurrencyStamp = new Guid("6e98dcc3-9118-4c15-9a9e-0dec68ad0f83"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/marriage-certificate-view",
@@ -6735,7 +8175,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 49,
                             AdminUrl = "/admin/eservice-admin/marriage-certificate-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("a4a9690d-a8bb-40fa-932a-8659f599bc96"),
+=======
+                            ConcurrencyStamp = new Guid("44f25bcf-c91b-4b7d-8a4e-d03cdd12a51a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/marriage-certificate-view",
@@ -6746,7 +8190,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 50,
                             AdminUrl = "/admin/eservice-admin/foreigners-realty-owner-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0fd5faf7-7274-436b-92ec-22a88b23bed6"),
+=======
+                            ConcurrencyStamp = new Guid("5560abbc-fae1-4d9a-be5a-322acf43ca39"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/foreigners-realty-owner",
@@ -6757,7 +8205,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 51,
                             AdminUrl = "/admin/eservice-admin/foreigners-realty-owner-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("35daaaf3-25c6-48a6-9451-5637046df90f"),
+=======
+                            ConcurrencyStamp = new Guid("1c09fdfe-ab3b-4317-9454-4756a9892aa7"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/foreigners-realty-owner-view",
@@ -6768,7 +8220,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 52,
                             AdminUrl = "/admin/eservice-admin/foreigners-realty-owner-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("85306a12-f57f-4d8f-a913-2348615ca50a"),
+=======
+                            ConcurrencyStamp = new Guid("a2bd1c56-52f5-48d0-a6b4-41a8e9150a13"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/foreigners-realty-owner",
@@ -6779,7 +8235,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 53,
                             AdminUrl = "/admin/eservice-admin/foreigners-realty-owner-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("2e2f6b29-5fbb-4127-ac07-9fc3734c06b2"),
+=======
+                            ConcurrencyStamp = new Guid("2548394b-40e1-4e9a-899f-98bb4afcdfcb"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/foreigners-realty-owner-view",
@@ -6790,7 +8250,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 54,
                             AdminUrl = "/admin/eservice-admin/foreigners-realty-owner-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3d7a6bb0-213d-49cd-ad9b-0c65c282dc79"),
+=======
+                            ConcurrencyStamp = new Guid("e6df042a-cf86-40ed-8fb9-3fb11825aa57"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/foreigners-realty-owner-view",
@@ -6801,7 +8265,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 55,
                             AdminUrl = "/admin/eservice-admin/foreigners-realty-owner-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("38e39999-b074-4048-bf57-91c1f442f783"),
+=======
+                            ConcurrencyStamp = new Guid("fbfc2593-4d21-4c44-b99f-bc0f73384312"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/foreigners-realty-owner-view",
@@ -6812,7 +8280,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 56,
                             AdminUrl = "/admin/eservice-admin/foreigners-realty-owner-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("63f02f81-6937-490c-ae16-183014956d58"),
+=======
+                            ConcurrencyStamp = new Guid("cba36633-876e-498d-b6ef-d6b23ed0733a"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/foreigners-realty-owner-view",
@@ -6823,7 +8295,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 57,
                             AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3005b514-85df-4655-ad83-a0a8d8aca974"),
+=======
+                            ConcurrencyStamp = new Guid("086c1b51-2873-4acb-b940-56d80afe4d2f"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/treatment-recommendation",
@@ -6834,7 +8310,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 58,
                             AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("69fb87fb-03ee-4935-ad21-ea240d10f17f"),
+=======
+                            ConcurrencyStamp = new Guid("96f80ad6-ddb8-4523-9f67-c3fd471745e6"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/treatment-recommendation-view",
@@ -6845,7 +8325,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 59,
                             AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0e5f3dc2-1284-41db-bfb2-fc334957eceb"),
+=======
+                            ConcurrencyStamp = new Guid("7f23966b-f4a7-448e-8840-7d29777c0408"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/treatment-recommendation",
@@ -6856,7 +8340,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 60,
                             AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("ef7f86e8-b882-4a15-b126-2950a09c8f7a"),
+=======
+                            ConcurrencyStamp = new Guid("fe3d88c1-cfb0-4f63-9e65-b3eb19c9b5f9"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/treatment-recommendation-view",
@@ -6867,7 +8355,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 61,
                             AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("5a39abe3-fc03-49fe-912b-e88ccaaf03b8"),
+=======
+                            ConcurrencyStamp = new Guid("e7c3a5ac-7115-48e8-8e02-229323f0d9bf"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/treatment-recommendation-view",
@@ -6878,7 +8370,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 62,
                             AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("85a3a16c-622e-442d-b4ab-17b1a2b8fc10"),
+=======
+                            ConcurrencyStamp = new Guid("7ec96b9d-92f9-4743-b1ee-c869d3639387"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/treatment-recommendation-view",
@@ -6889,7 +8385,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 63,
                             AdminUrl = "/admin/eservice-admin/treatment-recommendation-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("38b8247a-7437-48e0-82fa-e07336127c1a"),
+=======
+                            ConcurrencyStamp = new Guid("414726e5-c5b4-4cb6-a661-83854ff5905e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RequesterUrl = "/eservice/treatment-recommendation-view",
@@ -6899,11 +8399,16 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 64,
+<<<<<<< HEAD
                             AdminUrl = "",
                             ConcurrencyStamp = new Guid("7b5a6754-2e4c-4fe3-9f4f-0b227668b69b"),
+=======
+                            AdminUrl = "/admin/eservice-admin/electronic-council-admin-view",
+                            ConcurrencyStamp = new Guid("905a39fa-affc-4ff6-946f-7780597dcd4d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RequesterUrl = "/e-council/update",
+                            RequesterUrl = "/eservice/electronic-council",
                             ServiceId = 1,
                             StageId = 1
                         },
@@ -6911,21 +8416,30 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 65,
                             AdminUrl = "/admin/eservice-admin/electronic-council-admin-preview-step",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b19ceffd-4135-4dda-9187-2c84c105f0bd"),
+=======
+                            ConcurrencyStamp = new Guid("5011eedf-6b87-4f3a-b28d-80d656c73618"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RequesterUrl = "/e-council/electronic-board-view",
+                            RequesterUrl = "/eservice/electronic-council-view",
                             ServiceId = 1,
                             StageId = 2
                         },
                         new
                         {
                             Id = 66,
+<<<<<<< HEAD
                             AdminUrl = "/admin/eservice-admin/electronic-summon-admin-view",
                             ConcurrencyStamp = new Guid("55165ee9-0499-45a6-9f63-d1d82ae921b4"),
+=======
+                            AdminUrl = "/admin/eservice-admin/electronic-council-admin-view",
+                            ConcurrencyStamp = new Guid("042c38e7-cdec-4310-9e82-ffc33aab4445"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RequesterUrl = "/e-council/update",
+                            RequesterUrl = "/eservice/electronic-council",
                             ServiceId = 1,
                             StageId = 3
                         },
@@ -6933,10 +8447,14 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 67,
                             AdminUrl = "/admin/eservice-admin/electronic-council-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("12a4031a-1090-4279-a8ed-f30c82a7bce3"),
+=======
+                            ConcurrencyStamp = new Guid("a85b8ac7-bd19-4f0b-9695-fb9ad4f9012c"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RequesterUrl = "/e-council/electronic-board-view",
+                            RequesterUrl = "/eservice/electronic-council-view",
                             ServiceId = 1,
                             StageId = 4
                         },
@@ -6944,10 +8462,14 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 68,
                             AdminUrl = "/admin/eservice-admin/electronic-council-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("3da3afa9-5fc1-4e9f-95e7-dd51e4b84d11"),
+=======
+                            ConcurrencyStamp = new Guid("645295bb-1cd7-4cd4-be94-7e6eae4d1357"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RequesterUrl = "/e-council/electronic-board-view",
+                            RequesterUrl = "/eservice/electronic-council-view",
                             ServiceId = 1,
                             StageId = 5
                         },
@@ -6955,10 +8477,14 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 69,
                             AdminUrl = "/admin/eservice-admin/electronic-council-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("57adc34d-e82c-46d0-a09a-a8eeed25118d"),
+=======
+                            ConcurrencyStamp = new Guid("f01da614-7c31-4c02-9f5d-78e7d9354ec9"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RequesterUrl = "/e-council/electronic-board-view",
+                            RequesterUrl = "/eservice/electronic-council-view",
                             ServiceId = 1,
                             StageId = 6
                         },
@@ -6966,10 +8492,14 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 70,
                             AdminUrl = "/admin/eservice-admin/electronic-council-admin-view",
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("bdc98166-7d4f-459c-ad10-2f9c8f58f559"),
+=======
+                            ConcurrencyStamp = new Guid("11e90099-c9da-4298-9de6-abdb7d7dd330"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RequesterUrl = "/e-council/electronic-board-view",
+                            RequesterUrl = "/eservice/electronic-council-view",
                             ServiceId = 1,
                             StageId = 7
                         });
@@ -7028,7 +8558,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 1,
                             CanEdit = true,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("070f310a-6889-46fc-a759-b37021e777ac"),
+=======
+                            ConcurrencyStamp = new Guid("0ea97bc8-4484-4db0-acb5-a231fb5a8dd3"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -7039,7 +8573,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 2,
                             CanEdit = false,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("7ad98db4-2323-4d3f-817a-1dd6e75a6596"),
+=======
+                            ConcurrencyStamp = new Guid("dff052da-218a-4120-8a3a-fd0f3ea3825d"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -7050,7 +8588,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 3,
                             CanEdit = true,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("00e808d9-0815-4cda-9301-90e3a66cd5c3"),
+=======
+                            ConcurrencyStamp = new Guid("c59cd3b7-7372-4d95-bbe4-28e7e817a059"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -7061,7 +8603,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 4,
                             CanEdit = false,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("714f67db-0401-4a30-b643-b61dd6726bc9"),
+=======
+                            ConcurrencyStamp = new Guid("ec1e983c-abbe-4912-a2a3-4515eaaddc79"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -7072,7 +8618,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 5,
                             CanEdit = false,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("34f23671-592b-4d63-9b10-53a24b130c7c"),
+=======
+                            ConcurrencyStamp = new Guid("d63d6005-9862-45a2-b338-18cbe9a7acfb"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -7083,7 +8633,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 6,
                             CanEdit = false,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("c79e3d3c-873a-4b96-9266-a82575279779"),
+=======
+                            ConcurrencyStamp = new Guid("7509cdea-41fe-4707-9c2b-e179b9bed544"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -7094,7 +8648,11 @@ namespace Emirates.InfraStructure.Migrations
                         {
                             Id = 7,
                             CanEdit = false,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("b5a8bead-965c-4acd-b74f-f637b76464dd"),
+=======
+                            ConcurrencyStamp = new Guid("4987ef15-c6a1-4efa-8c93-a019c9c3de10"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -7281,8 +8839,13 @@ namespace Emirates.InfraStructure.Migrations
                             IsMale = true,
                             LastNameAr = "النظام",
                             LastNameEn = "Admin",
+<<<<<<< HEAD
                             PasswordHash = new byte[] { 167, 233, 14, 179, 165, 164, 44, 245, 215, 71, 157, 158, 61, 133, 218, 254, 232, 250, 6, 226, 153, 140, 188, 114, 52, 98, 27, 38, 31, 251, 53, 36, 203, 9, 88, 27, 106, 164, 186, 99, 241, 108, 235, 21, 30, 49, 75, 184, 243, 22, 61, 117, 131, 168, 3, 182, 205, 108, 223, 174, 161, 24, 246, 98 },
                             PasswordSalt = new byte[] { 81, 108, 9, 246, 6, 85, 31, 130, 32, 147, 203, 143, 255, 232, 166, 230, 116, 192, 241, 203, 225, 13, 10, 108, 166, 75, 53, 194, 21, 14, 188, 0, 166, 148, 71, 233, 233, 46, 114, 236, 5, 101, 58, 115, 138, 255, 112, 92, 216, 241, 160, 11, 238, 98, 241, 137, 206, 229, 98, 208, 66, 219, 49, 120, 183, 171, 159, 69, 231, 193, 113, 255, 80, 64, 255, 211, 2, 223, 68, 174, 117, 226, 52, 56, 13, 237, 175, 188, 76, 153, 146, 45, 126, 193, 65, 111, 255, 139, 56, 229, 84, 187, 106, 243, 39, 121, 64, 79, 123, 7, 200, 102, 12, 201, 87, 7, 203, 179, 240, 57, 216, 3, 64, 89, 109, 127, 144, 136 },
+=======
+                            PasswordHash = new byte[] { 10, 183, 21, 172, 106, 207, 190, 27, 168, 194, 104, 245, 108, 87, 144, 58, 127, 9, 58, 10, 170, 207, 207, 207, 184, 242, 44, 17, 115, 160, 227, 110, 184, 94, 7, 185, 132, 82, 72, 223, 185, 169, 63, 27, 32, 100, 18, 16, 44, 217, 234, 254, 204, 129, 178, 220, 242, 31, 44, 65, 5, 245, 77, 32 },
+                            PasswordSalt = new byte[] { 191, 7, 208, 212, 157, 30, 253, 186, 47, 220, 51, 126, 99, 22, 1, 141, 99, 117, 109, 131, 187, 155, 56, 224, 122, 136, 145, 216, 180, 107, 69, 197, 23, 189, 243, 67, 59, 33, 57, 246, 134, 19, 170, 155, 4, 173, 62, 247, 20, 202, 135, 202, 151, 48, 130, 131, 242, 99, 14, 165, 103, 29, 83, 120, 158, 106, 76, 107, 37, 173, 85, 107, 255, 199, 127, 40, 188, 52, 26, 159, 85, 199, 17, 167, 219, 186, 104, 77, 17, 229, 8, 16, 169, 239, 115, 47, 41, 146, 90, 137, 219, 217, 154, 231, 125, 48, 97, 25, 215, 230, 245, 4, 80, 168, 48, 250, 135, 57, 120, 125, 249, 79, 192, 250, 213, 220, 95, 235 },
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             PhoneNumber = "0500000000",
                             SecondNameAr = "عام",
                             SecondNameEn = "System",
@@ -7304,8 +8867,13 @@ namespace Emirates.InfraStructure.Migrations
                             IsMale = true,
                             LastNameAr = "النظام",
                             LastNameEn = "Admin",
+<<<<<<< HEAD
                             PasswordHash = new byte[] { 167, 233, 14, 179, 165, 164, 44, 245, 215, 71, 157, 158, 61, 133, 218, 254, 232, 250, 6, 226, 153, 140, 188, 114, 52, 98, 27, 38, 31, 251, 53, 36, 203, 9, 88, 27, 106, 164, 186, 99, 241, 108, 235, 21, 30, 49, 75, 184, 243, 22, 61, 117, 131, 168, 3, 182, 205, 108, 223, 174, 161, 24, 246, 98 },
                             PasswordSalt = new byte[] { 81, 108, 9, 246, 6, 85, 31, 130, 32, 147, 203, 143, 255, 232, 166, 230, 116, 192, 241, 203, 225, 13, 10, 108, 166, 75, 53, 194, 21, 14, 188, 0, 166, 148, 71, 233, 233, 46, 114, 236, 5, 101, 58, 115, 138, 255, 112, 92, 216, 241, 160, 11, 238, 98, 241, 137, 206, 229, 98, 208, 66, 219, 49, 120, 183, 171, 159, 69, 231, 193, 113, 255, 80, 64, 255, 211, 2, 223, 68, 174, 117, 226, 52, 56, 13, 237, 175, 188, 76, 153, 146, 45, 126, 193, 65, 111, 255, 139, 56, 229, 84, 187, 106, 243, 39, 121, 64, 79, 123, 7, 200, 102, 12, 201, 87, 7, 203, 179, 240, 57, 216, 3, 64, 89, 109, 127, 144, 136 },
+=======
+                            PasswordHash = new byte[] { 10, 183, 21, 172, 106, 207, 190, 27, 168, 194, 104, 245, 108, 87, 144, 58, 127, 9, 58, 10, 170, 207, 207, 207, 184, 242, 44, 17, 115, 160, 227, 110, 184, 94, 7, 185, 132, 82, 72, 223, 185, 169, 63, 27, 32, 100, 18, 16, 44, 217, 234, 254, 204, 129, 178, 220, 242, 31, 44, 65, 5, 245, 77, 32 },
+                            PasswordSalt = new byte[] { 191, 7, 208, 212, 157, 30, 253, 186, 47, 220, 51, 126, 99, 22, 1, 141, 99, 117, 109, 131, 187, 155, 56, 224, 122, 136, 145, 216, 180, 107, 69, 197, 23, 189, 243, 67, 59, 33, 57, 246, 134, 19, 170, 155, 4, 173, 62, 247, 20, 202, 135, 202, 151, 48, 130, 131, 242, 99, 14, 165, 103, 29, 83, 120, 158, 106, 76, 107, 37, 173, 85, 107, 255, 199, 127, 40, 188, 52, 26, 159, 85, 199, 17, 167, 219, 186, 104, 77, 17, 229, 8, 16, 169, 239, 115, 47, 41, 146, 90, 137, 219, 217, 154, 231, 125, 48, 97, 25, 215, 230, 245, 4, 80, 168, 48, 250, 135, 57, 120, 125, 249, 79, 192, 250, 213, 220, 95, 235 },
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             PhoneNumber = "0500000001",
                             SecondNameAr = "النظام",
                             SecondNameEn = "Admin",
@@ -7362,7 +8930,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("0d31cf71-ce7a-456b-9f61-058b73338964"),
+=======
+                            ConcurrencyStamp = new Guid("714b947c-bda5-4daf-ab9a-67458f4be57e"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RoleId = 1,
@@ -7371,7 +8943,11 @@ namespace Emirates.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
+<<<<<<< HEAD
                             ConcurrencyStamp = new Guid("085ece22-2906-4361-93f2-042cb226a9a2"),
+=======
+                            ConcurrencyStamp = new Guid("9cec4cbe-be1f-41f5-84a4-f6666c4d1dda"),
+>>>>>>> b7504f565cf9571c38bfb8837d8089749fcdb25a
                             CreatedBy = 1,
                             CreatedDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RoleId = 2,
