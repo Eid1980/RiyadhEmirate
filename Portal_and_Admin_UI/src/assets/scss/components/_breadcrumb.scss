@@ -18,9 +18,9 @@
         margin-left: 4px;
         color: rgb(0 0 0 / 40%);
 
-        &::before{
-            content: "\f015" !important;
-            font-family: 'Font Awesome 6 Free';
+        &::before {
+          content: "\f015" !important;
+          font-family: 'Font Awesome 6 Free';
         }
       }
 
@@ -41,6 +41,27 @@
 
       &.active {
         color: $secondary-1;
+      }
+    }
+  }
+
+  html[dir="ltr"] &,
+  html[lang="en"] & {
+    .breadcrumb {
+      .breadcrumb-item {
+        padding-right: 8px;
+        padding-left: 0px;
+
+        i {
+          margin-right: 4px;
+          margin-left: 0px;
+        }
+
+        &::before {
+          float: left;
+          padding-right: 8px;
+          padding-left: 0;
+        }
       }
     }
   }

@@ -12,7 +12,7 @@ p-steps {
         position: absolute;
         top: 30%;
         height: 2px;
-        right: 0px;
+        inset-inline-start: 0px;
         width: 100%;
         background-color: rgb(0 0 0 / 8%);
       }

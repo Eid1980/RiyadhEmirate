@@ -6,6 +6,13 @@ body {
   font-family: "Almarai";
   direction: rtl;
   text-align: right;
+
+  html[dir="ltr"] &,
+  html[lang="en"] & {
+    font-family: "Almarai";
+    direction: ltr;
+    text-align: left;
+  }
 }
 
 .alert.alert-primary {
@@ -25,61 +32,62 @@ body {
 }
 
 // p-toast plugin
-.p-toast{
-    top: 26px !important;
-    left: auto !important;
-    right: 26px !important;
-    transform: initial !important;
-    width: auto !important;
-    font-family: 'Almarai' !important;
-    font-size: 14px !important;
-    opacity: 1 !important;
-    border-radius: 8px !important;
+.p-toast {
+  top: 26px !important;
+  left: auto !important;
+  right: 26px !important;
+  transform: initial !important;
+  width: auto !important;
+  font-family: 'Almarai' !important;
+  font-size: 14px !important;
+  opacity: 1 !important;
+  border-radius: 8px !important;
 
-  .p-element{
-    .p-toast-message{
+  .p-element {
+    .p-toast-message {
       border-width: 0px !important;
       border: 1px solid rgba($color: $dark, $alpha: 0.1) !important;
       background-color: $white !important;
       border-radius: 8px;
 
-      .p-toast-message-content{
+      .p-toast-message-content {
         border-width: 0px !important;
 
-       .p-toast-message-icon{
-        margin-top: 6px !important;
-       }  
-
-       .p-toast-message-text{
-        margin: 0px 16px !important;
-
-        .p-toast-summary{
-          font-size: 16px !important;
-          color: rgba($color: $dark, $alpha: 0.7) !important;
-          font-weight: 600 !important;
-          margin: 0px !important;
+        .p-toast-message-icon {
+          margin-top: 6px !important;
         }
-        .p-toast-detail{
-          font-size: 14px !important;
-          color: rgba($color: $dark, $alpha: 0.6) !important;
-          font-weight: 400 !important;
-          margin: 0px !important;
-        }
-       } 
 
-       .p-toast-icon-close{
-        width: auto !important;
-        margin-right: 26px !important;
-        color: $danger !important;
-        height: auto !important;
-       }
+        .p-toast-message-text {
+          margin: 0px 16px !important;
+
+          .p-toast-summary {
+            font-size: 16px !important;
+            color: rgba($color: $dark, $alpha: 0.7) !important;
+            font-weight: 600 !important;
+            margin: 0px !important;
+          }
+
+          .p-toast-detail {
+            font-size: 14px !important;
+            color: rgba($color: $dark, $alpha: 0.6) !important;
+            font-weight: 400 !important;
+            margin: 0px !important;
+          }
+        }
+
+        .p-toast-icon-close {
+          width: auto !important;
+          margin-right: 26px !important;
+          color: $danger !important;
+          height: auto !important;
+        }
       }
 
-      &.p-toast-message-error{
-        .p-toast-message-content{
-         .p-toast-message-icon{
-          color: $danger !important;
-         }
+      &.p-toast-message-error {
+        .p-toast-message-content {
+          .p-toast-message-icon {
+            color: $danger !important;
+          }
         }
       }
     }
@@ -252,4 +260,52 @@ p-rating {
   background: rgba($color: $dark, $alpha: 0.12);
   border-radius: 2px;
   cursor: pointer;
+}
+
+html[dir="ltr"],
+html[lang="en"] {
+  .alert.alert-primary {
+    span {
+      margin-left: 6px;
+      margin-right: 0px;
+    }
+  }
+
+  // p-toast plugin
+  .p-toast {
+    right: auto !important;
+    left: 26px !important;
+
+    .p-element {
+      .p-toast-message {
+        .p-toast-message-content {
+          .p-toast-icon-close {
+            margin-left: 26px !important;
+            margin-right: 0px !important;
+          }
+        }
+      }
+    }
+  }
+
+  .section-title {
+    border-left: 4px solid $Primary-1;
+    border-right: 0px;
+    padding-left: 16px;
+    padding-right: 0px;
+  }
+
+  p-rating {
+    .p-rating {
+      .p-rating-icon {
+        margin-right: 6px !important;
+        margin-left: 0px !important;
+
+        &:last-child {
+          margin-right: 0px !important;
+          margin-left: 0px !important;
+        }
+      }
+    }
+  }
 }

@@ -1,44 +1,49 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
     <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
-    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/governorate-news-ar-list']">أخبار المحافظات عربي</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/governorate-news-ar-list']">أخبار المحافظات
+      عربي</a>
     <span class="breadcrumb-item fs-16 active">تفاصيل الخبر</span>
   </nav>
 </div>
 
-<div class="form-card">
-  <div class="form-header">
-    <h5>تفاصيل الخبر</h5>
+<div class="main-card">
+  <div class="border-bottom mb-4 pb-4 mt-3">
+    <h5 class="mb-0">تفاصيل الخبر</h5>
   </div>
   <div class="form-content">
-    <div class="row mx-0">
-      <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">عنوان الخبر</span>
-        <span class="form-val">{{ newsDetailsDto?.title }}</span>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <h6 class="fa-14 fw-bold mb-2">عنوان الخبر</h6>
+        <p class="fa-14 mb-0 text-muted fw-normal">{{ newsDetailsDto?.title }}</p>
       </div>
-      <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">مصدر الخبر</span>
-        <span class="form-val">{{ newsDetailsDto?.newsOrigin }}</span>
+      <div class="col-md-6 mb-4">
+        <h6 class="fa-14 fw-bold mb-2">مصدر الخبر</h6>
+        <p class="fa-14 mb-0 text-muted fw-normal">{{ newsDetailsDto?.newsOrigin }}</p>
       </div>
-      <div class="info-col col-md-12 col-12">
-        <span class="form-lbl lbl-33">محتوى الخبر</span>
-        <span class="form-val" *ngIf="newsDetailsDto?.content" [outerHTML]="newsDetailsDto?.content | listString"></span>
+      <div class="col-md-6 mb-4 separator-af-be">
+        <h6 class="fa-14 fw-bold mb-2">التاريخ</h6>
+        <p class="fa-14 mb-0 text-muted fw-normal">{{ newsDetailsDto?.date | date: "dd-MM-yyyy" }}</p>
       </div>
-      <div class="info-col col-md-6 col-12 separator-af-be">
-        <span class="form-lbl lbl-33">التاريخ</span>
-        <span class="form-val">{{ newsDetailsDto?.date | date: "dd-MM-yyyy" }}</span>
+      <div class="col-md-6 mb-4">
+        <h6 class="fa-14 fw-bold mb-2">الحالة</h6>
+        <p class="fa-14 mb-0 text-muted fw-normal">{{ newsDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</p>
       </div>
-      <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">الحالة</span>
-        <span class="form-val">{{ newsDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+      <div class="col-md-10 mb-4">
+        <h6 class="fa-14 fw-bold mb-2">محتوى الخبر</h6>
+        <p class="fa-14 mb-0 text-muted fw-normal" *ngIf="newsDetailsDto?.content"
+          [outerHTML]="newsDetailsDto?.content | listString"></p>
       </div>
-      <div class="form-group col-6" *ngIf="newsDetailsDto?.imageName">
-        <img [src]="['/assets/images/uploads/news/'+newsDetailsDto?.imageName]" [alt]="newsDetailsDto?.title" style="width: 100%; height: 200px;" />
+
+      <div class="col-md-6 mb-4" *ngIf="newsDetailsDto?.imageName">
+        <h6 class="fa-14 fw-bold mb-2">البانر</h6>
+        <img [src]="['/assets/images/uploads/news/'+newsDetailsDto?.imageName]" [alt]="newsDetailsDto?.title"
+          class="imag-fluid rounded-4" style="height: 200px;" />
       </div>
     </div>
   </div>
 </div>
 
 <div class="form-actions">
-  <a [routerLink]="['/admin/data-management/governorate-news-ar-list']" class="btn btn-cancel">رجوع</a>
+  <a [routerLink]="['/admin/data-management/governorate-news-ar-list']" class="btn btn-secondary">رجوع</a>
 </div>

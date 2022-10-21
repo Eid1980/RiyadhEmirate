@@ -19,8 +19,8 @@
               invalid: (isFormSubmitted || createUserForm.get('nationalId').touched) && createUserForm.get('nationalId').errors?.required}" />
           <small *ngIf="(isFormSubmitted || createUserForm.get('nationalId').touched) && createUserForm.get('nationalId').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
-        <div class="form-group col-md-6">
-          <button type="button" class="btn btn-primary" (click)="checkUser()">تحقق</button>
+        <div class="form-group col-md-6 align-items-end d-flex">
+          <button type="button" class="btn btn-primary" (click)="checkUser()" style="height: 50px;">تحقق</button>
         </div>
       </div>
     </div>

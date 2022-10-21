@@ -45,9 +45,8 @@ export class TranslationServiceService {
         : LanguageDirection.RightToLeft;
 
     this.translateService.use(this.currentLang.Name);
-    document
-      .getElementsByTagName('html')[0]
-      .setAttribute('dir', this.currentLang.Direction);
+    document.getElementsByTagName('html')[0].setAttribute('dir', this.currentLang.Direction);
+    document.getElementsByTagName('html')[0].setAttribute('lang', localStorage.getItem('lang'));
   }
 
   switchLanguage() {

@@ -27,10 +27,12 @@
             <option [ngValue]="null">-- اختر الصلاحية --</option>
             <option *ngFor="let role of roles" [ngValue]="role.id">{{ role.name }}</option>
           </select>
-          <small *ngIf="(isFormSubmitted || createUserRoleForm.get('roleId').touched) && createUserRoleForm.get('roleId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small
+            *ngIf="(isFormSubmitted || createUserRoleForm.get('roleId').touched) && createUserRoleForm.get('roleId').errors?.required"
+            class="danger">هذاالحقل مطلوب</small>
         </div>
-        <div class="form-group col-md-6">
-          <button type="submit" class="btn btn-primary">حفظ</button>
+        <div class="form-group col-md-6 d-flex align-items-center">
+          <button type="submit" class="btn btn-primary ms-3 px-5">حفظ</button>
           <a [routerLink]="['/admin/home/user-list']" class="btn btn-secondary">رجوع</a>
         </div>
       </div>
@@ -39,8 +41,8 @@
 </form>
 
 <div class="row mt-3 mx-0">
-  <p-table #userRoles [value]="userRolesDto" dataKey="id"
-           [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+  <p-table #userRoles [value]="userRolesDto" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"
+    class="w-100">
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th>م</th>
