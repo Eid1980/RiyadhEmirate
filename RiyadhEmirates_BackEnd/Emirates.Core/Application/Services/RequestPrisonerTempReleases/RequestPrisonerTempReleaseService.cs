@@ -37,6 +37,7 @@ namespace Emirates.Core.Application.Services.RequestPrisonerTempReleases
             var request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(id), 
                 x => x.RequestPrisonerTempRelease, 
                 x => x.RequestPrisonerTempRelease.RequestType,
+                x => x.RequestPrisonerTempRelease.Prison,
                 x => x.RequestPrisonerTempRelease.CaseType,
                 x => x.Stage, x => x.Service);
             if (request == null)

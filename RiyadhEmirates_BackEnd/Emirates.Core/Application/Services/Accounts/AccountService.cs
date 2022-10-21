@@ -32,14 +32,14 @@ namespace Emirates.Core.Application.Services.Accounts
 
         public IApiResponse GetUserData(int id)
         {
-            var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate));
+            var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
         }
         public IApiResponse GetById(int id)
         {
-            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate));
+            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
@@ -58,7 +58,7 @@ namespace Emirates.Core.Application.Services.Accounts
         }
         public IApiResponse GetByUserName(string userName)
         {
-            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName == userName, x => x.Governorate, x => x.Nationality));
+            var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName == userName, x => x.Nationality));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
@@ -171,7 +171,6 @@ namespace Emirates.Core.Application.Services.Accounts
                 user.Email = updateUserProfileDto.Email;
                 user.IsMale = updateUserProfileDto.IsMale;
                 user.NationalityId = updateUserProfileDto.NationalityId;
-                user.GovernorateId = updateUserProfileDto.GovernorateId;
                 user.IdentityExpireDate = updateUserProfileDto.IdentityExpireDate;
 
                 user.Address = updateUserProfileDto.Address;
@@ -188,7 +187,7 @@ namespace Emirates.Core.Application.Services.Accounts
 
         public IApiResponse GetUserProfileData(int id) 
         {
-            var userProfile = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality, x => x.Governorate);
+            var userProfile = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality);
             if (userProfile == null)
                 return GetResponse(isSuccess: false);
             else
@@ -212,8 +211,6 @@ namespace Emirates.Core.Application.Services.Accounts
                     PassportId = userProfile.PassportId,
                     NationalityId = userProfile.NationalityId,
                     NationalityName = userProfile.Nationality == null ? "" : userProfile.Nationality.NameAr,
-                    GovernorateId = userProfile.GovernorateId,
-                    GovernorateName = userProfile.Governorate == null ? "" : userProfile.Governorate.NameAr,
                     Address = userProfile.Address,
 
                     Image = _fileManagerService.GetBase64File(id, "Profile")

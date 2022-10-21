@@ -37,3 +37,7 @@
   <app-rate-service [showServiceRate]="showServiceRate" [serviceId]="serviceId" [redirectUrl]="redirectUrl"
                     (canRateEvent)="navigate($event)"></app-rate-service>
 </div>
+
+<p-dialog [modal]="true" header="شروط الخدمة" [(visible)]="showDialog">
+  <app-service-conditions [serviceId]="serviceId"></app-service-conditions>
+</p-dialog>

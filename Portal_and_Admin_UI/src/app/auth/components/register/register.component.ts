@@ -7,7 +7,6 @@ import { AccountService } from '@shared/proxy/accounts/account.service';
 import { LookupDto } from '@shared/proxy/shared/lookup-dto.model';
 import { LookupService } from '@shared/proxy/shared/lookup.service';
 import { UserLoginDto } from '@shared/proxy/accounts/models';
-import { Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { MessageType } from '@shared/enums/message-type.enum';
@@ -23,7 +22,6 @@ export class RegisterComponent implements OnInit {
   showCheckUserRegisterForm: boolean = true;
 
   createUserDto = {} as CreateUserDto;
-  governorates = [] as LookupDto<number>[];
   nationalities = [] as LookupDto<number>[];
 
   //#region for datePicker
@@ -43,7 +41,6 @@ export class RegisterComponent implements OnInit {
     private globalService: GlobalService,
     private accountService: AccountService,
     private lookupService: LookupService,
-    private router: Router,
     private dateFormatterService: DateFormatterService
   ) {
     //this.minHigriDate = { day: 1, month: 1, year: 1360 };
@@ -91,7 +88,6 @@ export class RegisterComponent implements OnInit {
       isMale: [this.createUserDto.isMale || null, Validators.required],
 
       nationalityId: [this.createUserDto.nationalityId || null],
-      governorateId: [this.createUserDto.governorateId || null],
       address: [this.createUserDto.address || ''],
     });
   }
@@ -117,9 +113,6 @@ export class RegisterComponent implements OnInit {
     }
   }
   fillLookup() {
-    this.lookupService.getGovernorateLookupList().subscribe((response) => {
-      this.governorates = response.data;
-    });
     this.lookupService.getNationalityLookupList().subscribe((response) => {
       this.nationalities = response.data;
     });
@@ -129,7 +122,7 @@ export class RegisterComponent implements OnInit {
     this.accountService.login(userLoginDto).subscribe((response) => {
         if (response.isSuccess) {
           localStorage.setItem('EmiratesToken', response.data);
-          this.router.navigate(['/home/']);
+          this.globalService.navigate('/home/');
         }
       },
       (error) => {

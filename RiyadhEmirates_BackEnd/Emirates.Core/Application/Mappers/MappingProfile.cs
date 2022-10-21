@@ -162,6 +162,14 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<Poster, GetPosterListDto>();
             #endregion
 
+            #region Prison
+            CreateMap<CreatePrisonDto, Prison>();
+            CreateMap<UpdatePrisonDto, Prison>();
+
+            CreateMap<Prison, GetPrisonDetailsDto>();
+            CreateMap<Prison, GetPrisonListDto>();
+            #endregion
+
             #region Account
             CreateMap<CreateUserDto, User>();
             CreateMap<User, GetUserDto>()
@@ -170,16 +178,14 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.NameEn, src => src.MapFrom(m => $"{m.FirstNameEn} {m.SecondNameEn} {m.ThirdNameEn} {m.LastNameEn}"))
                 .ForMember(dest => dest.ShortNameEn, src => src.MapFrom(m => $"{m.FirstNameEn} {m.LastNameEn}"))
                 .ForMember(dest => dest.GenderName, src => src.MapFrom(m => m.IsMale ? "ذكر" : "أنثى"))
-                .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr))
-                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
+                .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr));
             CreateMap<User, GetUserSessionDto>()
                 .ForMember(dest => dest.ShortName, src => src.MapFrom(m => $"{m.FirstNameAr} {m.LastNameAr}"));
             CreateMap<User, GetUserDataDto>()
                 .ForMember(dest => dest.Name, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
                 .ForMember(dest => dest.BirthDate, src => src.MapFrom(m => m.BirthDate.ToString("yyyy-MM-dd")))
                 .ForMember(dest => dest.GenderName, src => src.MapFrom(m => m.IsMale ? "ذكر" : "أنثى"))
-                .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr))
-                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
+                .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr));
             #endregion
 
             #region Request
@@ -335,7 +341,7 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
                 .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestPrisonersService.RequestType.NameAr))
                 .ForMember(dest => dest.CaseTypeName, src => src.MapFrom(m => m.RequestPrisonersService.CaseType.NameAr))
-                .ForMember(dest => dest.PresonName, src => src.MapFrom(m => m.RequestPrisonersService.PresonName));
+                .ForMember(dest => dest.PrisonName, src => src.MapFrom(m => m.RequestPrisonersService.Prison.NameAr));
             CreateMap<RequestPrisonersService, RequestPrisonersServiceDto>();
             #endregion
 
@@ -350,7 +356,7 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
                 .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestPrisonerTempRelease.RequestType.NameAr))
                 .ForMember(dest => dest.CaseTypeName, src => src.MapFrom(m => m.RequestPrisonerTempRelease.CaseType.NameAr))
-                .ForMember(dest => dest.PresonName, src => src.MapFrom(m => m.RequestPrisonerTempRelease.PresonName));
+                .ForMember(dest => dest.PrisonName, src => src.MapFrom(m => m.RequestPrisonerTempRelease.Prison.NameAr));
             CreateMap<RequestPrisonerTempRelease, RequestPrisonerTempReleaseDto>();
             #endregion
 
@@ -453,8 +459,7 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.UserNationalId, src => src.MapFrom(m => m.User.UserName))
                 .ForMember(dest => dest.UserPhoneNumber, src => src.MapFrom(m => m.User.PhoneNumber));
             CreateMap<User, GetUserListDto>()
-                .ForMember(dest => dest.FullName, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
-                .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.Governorate.NameAr));
+                .ForMember(dest => dest.FullName, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"));
 
             CreateMap<UserRole, GetUserRoleListDto>()
                 .ForMember(dest => dest.RoleNameAr, src => src.MapFrom(m => m.Role.NameAr))

@@ -8,6 +8,7 @@ import { Stages } from '@shared/enums/stage.enum';
 import { Service } from '@shared/enums/service.enum';
 import { RateServiceComponent } from '@shared/components/rate-service/rate-service.component';
 import { MessageType } from '@shared/enums/message-type.enum';
+import { ServiceConditionsComponent } from '../../service-conditions/service-conditions.component';
 
 @Component({
   selector: 'app-foreigners-realty-owner-preview-step',
@@ -15,6 +16,7 @@ import { MessageType } from '@shared/enums/message-type.enum';
 })
 export class ForeignersRealtyOwnerPreviewStepComponent implements OnInit {
   @ViewChild(RateServiceComponent, { static: true }) rateServiceComponent: RateServiceComponent;
+  @ViewChild(ServiceConditionsComponent, { static: true }) serviceConditions: ServiceConditionsComponent;
 
   wizardItems: MenuItem[];
   activeIndex: number = 2;
@@ -23,6 +25,7 @@ export class ForeignersRealtyOwnerPreviewStepComponent implements OnInit {
   showServiceRate: boolean = false;
   redirectUrl: string = "/eservice/my-requests";
   accept: boolean = false;
+  showDialog: boolean = false;
 
   constructor(private requestService: RequestService, private globalService: GlobalService, private activatedRoute: ActivatedRoute) {
   }
@@ -40,6 +43,10 @@ export class ForeignersRealtyOwnerPreviewStepComponent implements OnInit {
     else {
       this.globalService.messageAlert(MessageType.Warning, 'برجاء الموافقة على الشروط والأحكام')
     }
+  }
+  showConditions() {
+    this.serviceConditions.getServiceCondition();
+    this.showDialog = true;
   }
 
   isconfirm() {

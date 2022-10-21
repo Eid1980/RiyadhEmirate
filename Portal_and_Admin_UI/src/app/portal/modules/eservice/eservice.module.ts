@@ -51,6 +51,7 @@ import { TreatmentRecommendationDetailsComponent } from './components/treatment-
 import { TreatmentRecommendationAttachmentsComponent } from './components/treatment-recommendation/treatment-recommendation-attachments/treatment-recommendation-attachments.component';
 import { TreatmentRecommendationPreviewStepComponent } from './components/treatment-recommendation/treatment-recommendation-preview-step/treatment-recommendation-preview-step.component';
 import { TreatmentRecommendationViewComponent } from './components/treatment-recommendation/treatment-recommendation-view/treatment-recommendation-view.component';
+import { ServiceConditionsComponent } from './components/service-conditions/service-conditions.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { TreatmentRecommendationViewComponent } from './components/treatment-rec
     TreatmentRecommendationAttachmentsComponent,
     TreatmentRecommendationPreviewStepComponent,
     TreatmentRecommendationViewComponent,
-    ElectronicCouncilDetailsComponent
+    ElectronicCouncilDetailsComponent,
+    ServiceConditionsComponent
   ],
   imports: [
     StepsModule,

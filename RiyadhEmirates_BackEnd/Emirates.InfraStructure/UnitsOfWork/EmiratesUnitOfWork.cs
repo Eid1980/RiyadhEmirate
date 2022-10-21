@@ -89,6 +89,10 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public IPosterRepository Posters => posters ??= new PosterRepository(Context);
 
 
+        private PrisonRepository prisons;
+        public IPrisonRepository Prisons => prisons ??= new PrisonRepository(Context);
+
+
         private RequestRepositroy requests;
         public IRequestRepository Requests => requests ??= new RequestRepositroy(Context);
 

@@ -22,6 +22,5 @@ export interface CreateUserDto {
   passportId: string;
 
   nationalityId?: number;
-  governorateId?: number;
   address: string;
 }

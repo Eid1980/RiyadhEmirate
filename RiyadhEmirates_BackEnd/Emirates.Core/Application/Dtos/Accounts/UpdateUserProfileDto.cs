@@ -29,7 +29,6 @@ namespace Emirates.Core.Application.Dtos.Accounts
 
 
         public int? NationalityId { get; set; }
-        public int? GovernorateId { get; set; }
         public DateTime? IdentityExpireDate { get; set; }
         public string Address { get; set; }
     }

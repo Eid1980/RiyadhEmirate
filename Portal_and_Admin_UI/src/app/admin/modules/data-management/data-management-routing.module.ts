@@ -80,6 +80,10 @@ import { OpenDataReportViewComponent } from "./components/open-data-report/open-
 import { OpenDataReportEditComponent } from "./components/open-data-report/open-data-report-edit/open-data-report-edit.component";
 import { OpenDataReportAddComponent } from "./components/open-data-report/open-data-report-add/open-data-report-add.component";
 import { OpenDataReportListComponent } from "./components/open-data-report/open-data-report-list/open-data-report-list.component";
+import { PrisonAddComponent } from "./components/prison/prison-add/prison-add.component";
+import { PrisonEditComponent } from "./components/prison/prison-edit/prison-edit.component";
+import { PrisonListComponent } from "./components/prison/prison-list/prison-list.component";
+import { PrisonViewComponent } from "./components/prison/prison-view/prison-view.component";
 
 const routes: Routes = [
 
@@ -510,6 +514,41 @@ const routes: Routes = [
   {
     path: "case-type-view/:id",
     component: CaseTypeViewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  //#endregion
+
+  //#region Prison
+  {
+    path: "prison-add",
+    component: PrisonAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "prison-edit/:id",
+    component: PrisonEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "prison-list",
+    component: PrisonListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "prison-view/:id",
+    component: PrisonViewComponent,
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]

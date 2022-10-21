@@ -8,6 +8,7 @@ import { Stages } from '@shared/enums/stage.enum';
 import { RequestService } from '@shared/proxy/requests/request.service';
 import { GlobalService } from '@shared/services/global.service';
 import { RequestChangeStageDto } from '@shared/proxy/requests/models';
+import { ServiceConditionsComponent } from '../../service-conditions/service-conditions.component';
 
 @Component({
   selector: 'app-lands-infringement-preview-step',
@@ -15,14 +16,16 @@ import { RequestChangeStageDto } from '@shared/proxy/requests/models';
 })
 export class LandsInfringementPreviewStepComponent implements OnInit {
   @ViewChild(RateServiceComponent, { static: true }) rateServiceComponent: RateServiceComponent;
+  @ViewChild(ServiceConditionsComponent, { static: true }) serviceConditions: ServiceConditionsComponent;
 
   wizardItems: MenuItem[];
   activeIndex: number = 2;
   requestId: string;
-  serviceId: number = Service.PrisonerTempRelease;
+  serviceId: number = Service.LandsInfringement;
   showServiceRate: boolean = false;
   redirectUrl: string = "/eservice/my-requests";
   accept: boolean = false;
+  showDialog: boolean = false;
 
   constructor(private requestService: RequestService,
     private globalService: GlobalService, private activatedRoute: ActivatedRoute) {
@@ -41,6 +44,10 @@ export class LandsInfringementPreviewStepComponent implements OnInit {
     else {
       this.globalService.messageAlert(MessageType.Warning, 'برجاء الموافقة على الشروط والأحكام')
     }
+  }
+  showConditions() {
+    this.serviceConditions.getServiceCondition();
+    this.showDialog = true;
   }
 
   isconfirm() {

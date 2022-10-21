@@ -20,7 +20,7 @@ export class ForeignersRealtyOwnerComponent implements OnInit {
   activeIndex: number = 0;
   foreignersRealtyOwnerForm: FormGroup;
   createRequestForeignersRealtyOwnerDto = {} as CreateRequestForeignersRealtyOwnerDto;
-  serviceId: number = Service.PrisonersServices;
+  serviceId: number = Service.ForeignersRealtyOwner;
   requestId: string;
   buildingTypes = [] as LookupDto<number>[];
   governorates = [] as LookupDto<number>[];

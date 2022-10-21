@@ -21,16 +21,16 @@ export class ListPosterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalService.setAdminTitle('الملصقات');
+    this.globalService.setAdminTitle('الإعلانات');
     this.pageSetting();
   }
 
   pageSetting() {
     this.pageListSettings = {
-      PageTitle: "قائمة الملصقات",
+      PageTitle: "قائمة الإعلانات",
       listPermissionCode: "*",
       createButtonLink: "/admin/data-management/poster-add",
-      createButtonText: "انشاء ملصق جديد",
+      createButtonText: "انشاء إعلان جديد",
       Url: this.posterService.serviceUrl,
 
       cols: [

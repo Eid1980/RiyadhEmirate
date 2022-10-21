@@ -18,8 +18,9 @@ namespace Emirates.Core.Application.Dtos
         public Guid ConcurrencyStamp { get; set; }
 
         public string RequestTypeName { get; set; }
+        public int PrisonId { get; set; }
+        public string PrisonName { get; set; }
         public string CaseTypeName { get; set; }
-        public string PresonName { get; set; }
         public int CreatedBy { get; set; }
     }
 }

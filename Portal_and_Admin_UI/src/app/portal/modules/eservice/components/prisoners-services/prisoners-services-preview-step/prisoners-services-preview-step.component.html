@@ -19,7 +19,7 @@
     <div class="form-group col-6">
       <div class="form-check px-3 mt-5">
         <input [(ngModel)]="accept" class="form-check-input" type="checkbox" id="accept" />
-        <label class="form-check-label" for="accept">
+        <label class="form-check-label" (click)="showConditions()">
           أوافق علي الشروط والأحكام
         </label>
       </div>
@@ -37,3 +37,7 @@
   <app-rate-service [showServiceRate]="showServiceRate" [serviceId]="serviceId" [redirectUrl]="redirectUrl"
                     (canRateEvent)="navigate($event)"></app-rate-service>
 </div>
+
+<p-dialog [modal]="true" header="شروط الخدمة" [(visible)]="showDialog">
+  <app-service-conditions [serviceId]="serviceId"></app-service-conditions>
+</p-dialog>

@@ -41,6 +41,7 @@ using Emirates.Core.Application.Services.OpenDataRequests;
 using Emirates.Core.Application.Services.Auctions;
 using Emirates.Core.Application.Services.OpenDataCategueries;
 using Emirates.Core.Application.Services.OpenDataReports;
+using Emirates.Core.Application.Services.Prisons;
 
 namespace Emirates.API.Configurations
 {
@@ -73,6 +74,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IOpenDataReportService, OpenDataReportService>();
             builder.Services.AddScoped<IOpenDataRequestService, OpenDataRequestService>();
             builder.Services.AddScoped<IPosterService, PosterService>();
+            builder.Services.AddScoped<IPrisonService, PrisonService>();
             builder.Services.AddScoped<IWomanSectionService, WomanSectionService>();
             builder.Services.AddScoped<IUserRoleService, UserRoleService>();
             builder.Services.AddScoped<IServicesService, ServicesService>();

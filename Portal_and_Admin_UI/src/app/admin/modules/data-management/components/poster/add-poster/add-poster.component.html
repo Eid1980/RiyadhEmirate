@@ -2,15 +2,15 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
     <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
-    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/poster-list']">الملصقات</a>
-    <span class="breadcrumb-item fs-16 active">إضافة ملصق جديد</span>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/poster-list']">الإعلانات</a>
+    <span class="breadcrumb-item fs-16 active">إضافة إعلان جديد</span>
   </nav>
 </div>
 
 <form [formGroup]="createPosterform" (ngSubmit)="onSubmit()">
   <div class="form-card">
     <div class="form-header">
-      <h5>إضافة ملصق جديد</h5>
+      <h5>إضافة إعلان جديد</h5>
     </div>
     <div class="form-content">
       <div class="row mx-0">

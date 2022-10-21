@@ -26,7 +26,6 @@ namespace Emirates.Core.Domain.Entities
         public string PassportId { get; set; }
 
         public int? NationalityId { get; set; }
-        public int? GovernorateId { get; set; }
         public DateTime? IdentityExpireDate { get; set; }
         public string Address { get; set; }
 
@@ -39,13 +38,15 @@ namespace Emirates.Core.Domain.Entities
         public DateTime? LastModifiedDate { get; set; }
 
         public virtual Nationality Nationality { get; set; }
-        public virtual Governorate Governorate { get; set; }
 
         public virtual ICollection<BuildingType> CreatedBuildingTypes { get; set; }
         public virtual ICollection<BuildingType> ModifiedBuildingTypes { get; set; }
 
         public virtual ICollection<Audience> CreatedAudiences { get; set; }
         public virtual ICollection<Audience> ModifiedAudiences { get; set; }
+
+        public virtual ICollection<Prison> CreatedPrisons { get; set; }
+        public virtual ICollection<Prison> ModifiedPrisons { get; set; }
 
         public virtual ICollection<CaseType> CreatedCaseTypes { get; set; }
         public virtual ICollection<CaseType> ModifiedCaseTypes { get; set; }

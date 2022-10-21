@@ -28,12 +28,16 @@
 
   <div class="form-actions px-0">
     <a [routerLink]="['/eservice/judgment-execution-attachments/', requestId]"
-      class="btn btn-outline-primary px-4 ms-auto">السابق</a>
+       class="btn btn-outline-primary px-4 ms-auto">السابق</a>
 
     <button type="button" class="btn btn-primary ms-3" (click)="sendRequest()">ارسال الطلب</button>
     <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
   </div>
 
   <app-rate-service [showServiceRate]="showServiceRate" [serviceId]="serviceId" [redirectUrl]="redirectUrl"
-    (canRateEvent)="navigate($event)"></app-rate-service>
+                    (canRateEvent)="navigate($event)"></app-rate-service>
 </div>
+
+<p-dialog [modal]="true" header="شروط الخدمة" [(visible)]="showDialog">
+  <app-service-conditions [serviceId]="serviceId"></app-service-conditions>
+</p-dialog>

@@ -31,6 +31,7 @@ import { PrisonersServicesViewComponent } from './components/prisoners-services/
 import { TreatmentRecommendationActionComponent } from './components/treatment-recommendation/treatment-recommendation-action/treatment-recommendation-action.component';
 import { TreatmentRecommendationPreviewStepComponent } from './components/treatment-recommendation/treatment-recommendation-preview-step/treatment-recommendation-preview-step.component';
 import { TreatmentRecommendationViewComponent } from './components/treatment-recommendation/treatment-recommendation-view/treatment-recommendation-view.component';
+import { RequestSearchComponent } from './components/request-search/request-search.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.ShamelRequestReview]
+    }
+  },
+  {
+    path: 'request-search',
+    component: RequestSearchComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.RequestReview, Role.ShamelRequestReview]
     }
   },
 

@@ -82,6 +82,10 @@ import { OpenDataCategueryAddComponent } from './components/open-data-categuery/
 import { OpenDataCategueryEditComponent } from './components/open-data-categuery/open-data-categuery-edit/open-data-categuery-edit.component';
 import { OpenDataCategueryListComponent } from './components/open-data-categuery/open-data-categuery-list/open-data-categuery-list.component';
 import { OpenDataCategueryViewComponent } from './components/open-data-categuery/open-data-categuery-view/open-data-categuery-view.component';
+import { PrisonAddComponent } from './components/prison/prison-add/prison-add.component';
+import { PrisonEditComponent } from './components/prison/prison-edit/prison-edit.component';
+import { PrisonListComponent } from './components/prison/prison-list/prison-list.component';
+import { PrisonViewComponent } from './components/prison/prison-view/prison-view.component';
 
 @NgModule({
   declarations: [
@@ -164,6 +168,10 @@ import { OpenDataCategueryViewComponent } from './components/open-data-categuery
     OpenDataCategueryEditComponent,
     OpenDataCategueryListComponent,
     OpenDataCategueryViewComponent,
+    PrisonAddComponent,
+    PrisonEditComponent,
+    PrisonListComponent,
+    PrisonViewComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

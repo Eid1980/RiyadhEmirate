@@ -93,7 +93,7 @@
               </li>
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/poster-list" routerLinkActive="active">
-                  <span>الملصقات</span>
+                  <span>الإعلانات</span>
                 </a>
               </li>
               <li class="accordion-list-item">
@@ -193,6 +193,11 @@
                 </a>
               </li>
               <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/prison-list" routerLinkActive="active">
+                  <span>السجون</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/news-categuery-list" routerLinkActive="active">
                   <span>تصنيف الأخبار</span>
                 </a>
@@ -243,8 +248,8 @@
         </a>
       </li>
 
-      <li class="sidebar-list-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin || requestReview)">
-        <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox-shamel" routerLinkActive="active">
+      <li class="sidebar-list-item" *ngIf="roleIds.includes(superSystemAdmin || systemAdmin || requestReview || shamelRequestReview)">
+        <a class="sidebar-list-link" routerLink="/admin/eservice-admin/request-search" routerLinkActive="active">
           <i class="fa-solid fa-search"></i>
           <span>البحث في الطلبات</span>
         </a>

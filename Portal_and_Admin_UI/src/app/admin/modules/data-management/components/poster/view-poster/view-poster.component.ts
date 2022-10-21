@@ -17,7 +17,7 @@ export class ViewPosterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalService.setAdminTitle('تفاصيل الملصق');
+    this.globalService.setAdminTitle('تفاصيل الإعلان');
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.getDetails();

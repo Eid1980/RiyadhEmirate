@@ -33,29 +33,26 @@
           <div class="form-group col-md-6">
             <label for="caseTypeId" class="form-lbl">نوع القضية<span class="danger">*</span></label>
             <select class="form-control form-select" formControlName="caseTypeId" [ngClass]="{
-              invalid:
-                (isFormSubmitted || prisonersServicesForm.get('caseTypeId').touched) &&
-                prisonersServicesForm.get('caseTypeId').errors?.required
-            }">
+              invalid: (isFormSubmitted || prisonersServicesForm.get('caseTypeId').touched) &&
+                prisonersServicesForm.get('caseTypeId').errors?.required}">
               <option [ngValue]="null">-- اختر نوع القضية --</option>
               <option *ngFor="let caseType of caseTypes" [ngValue]="caseType.id">{{ caseType.name }}</option>
             </select>
-            <small *ngIf="(isFormSubmitted || prisonersServicesForm.get('caseTypeId').touched) && prisonersServicesForm.get('caseTypeId').errors?.required"
-                   class="danger">هذاالحقل مطلوب</small>
+            <small *ngIf="(isFormSubmitted || prisonersServicesForm.get('caseTypeId').touched) && prisonersServicesForm.get('caseTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>
           </div>
           <div class="form-group col-md-6">
-            <label for="presonName" class="form-lbl">اسم السجن<span class="danger">*</span></label>
-            <input type="text" class="form-control" autocomplete="off" formControlName="presonName" id="presonName"
-                   [ngClass]="{
-              invalid:
-                (isFormSubmitted || prisonersServicesForm.get('presonName').touched) &&
-                prisonersServicesForm.get('presonName').errors?.required
-            }" />
-            <small *ngIf="(isFormSubmitted || prisonersServicesForm.get('presonName').touched) && prisonersServicesForm.get('presonName').errors?.required"
+            <label for="prisonId" class="form-lbl">السجن<span class="danger">*</span></label>
+            <select class="form-control form-select" formControlName="prisonId" [ngClass]="{
+              invalid: (isFormSubmitted || prisonersServicesForm.get('prisonId').touched) &&
+                prisonersServicesForm.get('prisonId').errors?.required}">
+              <option [ngValue]="null">-- اختر السجن --</option>
+              <option *ngFor="let prison of prisons" [ngValue]="prison.id">{{ prison.name }}</option>
+            </select>
+            <small *ngIf="(isFormSubmitted || prisonersServicesForm.get('prisonId').touched) && prisonersServicesForm.get('prisonId').errors?.required"
                    class="danger">هذاالحقل مطلوب</small>
           </div>
           <div class="form-group col-md-12">
-            <label for="notes" class="form-lbl">ملاحظات<span class="danger">*</span></label>
+            <label for="notes" class="form-lbl">تفاصيل الطلب<span class="danger">*</span></label>
             <textarea type="text" class="form-control" autocomplete="off" rows="6" formControlName="notes" id="notes"
                       [ngClass]="{
               invalid:

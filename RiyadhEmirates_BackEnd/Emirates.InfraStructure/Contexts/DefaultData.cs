@@ -23,6 +23,26 @@ namespace Emirates.InfraStructure.Contexts
             arrData[3] = new BuildingType { Id = 4, NameAr = "مبنى تجاري", NameEn = "Commercial Building", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             return arrData;
         }
+        public static Prison[] Prisons()
+        {
+            Prison[] arrData = new Prison[15];
+            arrData[0] = new Prison { Id = 1, NameAr = "سجن الحاير", NameEn = "Al-Ha'ir Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[1] = new Prison { Id = 2, NameAr = "سجن الملز", NameEn = "Al-Malaz Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[2] = new Prison { Id = 3, NameAr = "سجن النساء", NameEn = "Women Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[3] = new Prison { Id = 4, NameAr = "سجن محافظة المجمعة", NameEn = "Majma'ah Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[4] = new Prison { Id = 5, NameAr = "سجن محافظة الزلفي", NameEn = "Az Zulfi Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[5] = new Prison { Id = 6, NameAr = "سجن محافظة الدوادمي", NameEn = "Dawadmi Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[6] = new Prison { Id = 7, NameAr = "سجن محافظة عفيف", NameEn = "Afif Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[7] = new Prison { Id = 8, NameAr = "سجن محافظة القويعية", NameEn = "Al Quwaiiyah Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[8] = new Prison { Id = 9, NameAr = "سجن محافظة الخرج", NameEn = "Al-Kharj Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[9] = new Prison { Id = 10, NameAr = "سجن محافظة حوطة بني تميم", NameEn = "Howtat Bani Tamim Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[10] = new Prison { Id = 11, NameAr = "سجن محافظة الأفلاج", NameEn = "Al-Aflaj Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[11] = new Prison { Id = 12, NameAr = "سجن محافظة وادي الدواسر", NameEn = "Wadi ad-Dawasir Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[12] = new Prison { Id = 13, NameAr = "سجن محافظة شقراء", NameEn = "Shaqra Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[13] = new Prison { Id = 14, NameAr = "سجن محافظة الوافدين", NameEn = "Al Wafedien Governorate Prison", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[14] = new Prison { Id = 15, NameAr = "اصلاحية الرياض", NameEn = "Riyadh Reformatory", IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            return arrData;
+        }
         public static CaseType[] CaseTypes()
         {
             CaseType[] arrData = new CaseType[1];

@@ -1,7 +1,7 @@
 
 export interface CreateRequestPrisonerTempReleaseDto {
   requestTypeId: number;
-  presonName: string;
+  prisonId: number;
   caseTypeId: number;
   notes: string;
 }
@@ -10,7 +10,7 @@ export interface UpdateRequestPrisonerTempReleaseDto {
   id: string;
   requestTypeId: number;
   notes: string;
-  presonName: string;
+  prisonId: number;
   caseTypeId: number;
   concurrencyStamp: string;
 }
@@ -18,7 +18,8 @@ export interface UpdateRequestPrisonerTempReleaseDto {
 export interface RequestPrisonerTempReleaseDto {
   requestTypeId: number;
   canEdit: boolean;
-  presonName: string;
+  prisonId: number;
+  prisonName: string;
   caseTypeId: number;
   notes: string;
   concurrencyStamp: string;
@@ -36,7 +37,7 @@ export interface GetRequestPrisonerTempReleaseDetailsDto {
   concurrencyStamp: string;
   requestTypeName: string;
   caseTypeName: string;
-  presonName: string;
+  prisonName: string;
   createdBy: number;
 }
 

@@ -456,6 +456,22 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region Prison
+            modelBuilder.Entity<Prison>(b =>
+            {
+                b.ToTable("Prisons", EmiratesDbSchemas.LookupSehema);
+                b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedPrisons).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedPrisons).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.Prisons());
+            });
+            #endregion
+
             #region Religion
             modelBuilder.Entity<Religion>(b =>
             {
@@ -617,10 +633,11 @@ namespace Emirates.InfraStructure.Contexts
             {
                 b.ToTable("RequestPrisonersServices", EmiratesDbSchemas.RequestSehema);
                 b.Property(x => x.RequestTypeId).IsRequired();
-                b.Property(x => x.PresonName).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.PrisonId).IsRequired();
                 b.Property(x => x.CaseTypeId).IsRequired();
 
                 b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestPrisonersServices).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Prison>(x => x.Prison).WithMany(x => x.RequestPrisonersServices).HasForeignKey(x => x.PrisonId).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<CaseType>(x => x.CaseType).WithMany(x => x.RequestPrisonersServices).HasForeignKey(x => x.CaseTypeId).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
@@ -630,10 +647,11 @@ namespace Emirates.InfraStructure.Contexts
             {
                 b.ToTable("RequestPrisonerTempReleases", EmiratesDbSchemas.RequestSehema);
                 b.Property(x => x.RequestTypeId).IsRequired();
-                b.Property(x => x.PresonName).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
+                b.Property(x => x.PrisonId).IsRequired();
                 b.Property(x => x.CaseTypeId).IsRequired();
 
                 b.HasOne<RequestType>(x => x.RequestType).WithMany(x => x.RequestPrisonerTempReleases).HasForeignKey(x => x.RequestTypeId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Prison>(x => x.Prison).WithMany(x => x.RequestPrisonerTempReleases).HasForeignKey(x => x.PrisonId).OnDelete(DeleteBehavior.NoAction);
                 b.HasOne<CaseType>(x => x.CaseType).WithMany(x => x.RequestPrisonerTempReleases).HasForeignKey(x => x.CaseTypeId).OnDelete(DeleteBehavior.NoAction);
             });
             #endregion
@@ -854,7 +872,6 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.IsActive).IsRequired();
 
                 b.HasOne<Nationality>(x => x.Nationality).WithMany(x => x.Users).HasForeignKey(x => x.NationalityId).OnDelete(DeleteBehavior.NoAction);
-                b.HasOne<Governorate>(x => x.Governorate).WithMany(x => x.Users).HasForeignKey(x => x.GovernorateId).OnDelete(DeleteBehavior.NoAction);
 
                 b.HasData(DefaultData.Users());
             });
@@ -902,6 +919,7 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<OpenDataSubCateguery> OpenDataSubCategueries { get; set; }
         public DbSet<PageContent> PageContent { get; set; }
         public DbSet<Poster> Posters { get; set; }
+        public DbSet<Prison> Prisons { get; set; }
         public DbSet<Religion> Religions { get; set; }
 
         public DbSet<Request> Requests { get; set; }

@@ -37,7 +37,7 @@ export class EditPosterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalService.setAdminTitle('تعديل الملصق');
+    this.globalService.setAdminTitle('تعديل الإعلان');
     this.buildForm();
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {

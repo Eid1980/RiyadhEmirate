@@ -21,7 +21,7 @@ export class MarriageCertificateComponent implements OnInit {
   activeIndex: number = 0;
   marriageCertificateForm: FormGroup;
   createRequestMarriageCertificateDto = {} as CreateRequestMarriageCertificateDto;
-  serviceId: number = Service.PrisonersServices;
+  serviceId: number = Service.MarriageCertificate;
   requestId: string;
   requestTypes = [] as LookupDto<number>[];
   maritalStatus = [] as LookupDto<number>[];

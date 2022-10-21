@@ -22,8 +22,6 @@ namespace Emirates.Core.Application.Dtos.Accounts
 
         public int? NationalityId { get; set; }
         public string NationalityName { get; set; }
-        public int? GovernorateId { get; set; }
-        public string GovernorateName { get; set; }
         public string Address { get; set; }
         public string PassportId { get; set; }
 

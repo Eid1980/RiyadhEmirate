@@ -36,6 +36,7 @@ import { ForeignersRealtyOwnerActionComponent } from './components/foreigners-re
 import { TreatmentRecommendationViewComponent } from './components/treatment-recommendation/treatment-recommendation-view/treatment-recommendation-view.component';
 import { TreatmentRecommendationPreviewStepComponent } from './components/treatment-recommendation/treatment-recommendation-preview-step/treatment-recommendation-preview-step.component';
 import { TreatmentRecommendationActionComponent } from './components/treatment-recommendation/treatment-recommendation-action/treatment-recommendation-action.component';
+import { RequestSearchComponent } from './components/request-search/request-search.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { TreatmentRecommendationActionComponent } from './components/treatment-r
     TreatmentRecommendationViewComponent,
     TreatmentRecommendationPreviewStepComponent,
     TreatmentRecommendationActionComponent,
+    RequestSearchComponent,
   ],
   imports: [
     StepsModule,

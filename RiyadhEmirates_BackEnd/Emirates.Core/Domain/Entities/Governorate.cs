@@ -15,7 +15,6 @@ namespace Emirates.Core.Domain.Entities
 
         public virtual User CreatedUser { get; set; }
         public virtual User ModifiedUser { get; set; }
-        public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<RequestLandsInfringement> RequestLandsInfringements { get; set; }
         public virtual ICollection<RequestForeignersRealtyOwner> RequestForeignersRealtyOwners { get; set; }
     }

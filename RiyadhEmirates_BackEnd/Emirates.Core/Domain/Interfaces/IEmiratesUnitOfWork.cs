@@ -22,6 +22,7 @@ namespace Emirates.Core.Domain.Interfaces
         IPageMainPointsRepository PageMainPoints { get; }
         IPageContentRepository PageContent { get; }
         IPosterRepository Posters { get; }
+        IPrisonRepository Prisons { get; }
         IRequestRepository Requests { get; }
         IRequestAttachmentTypeRepository RequestAttachmentTypes { get; }
         IRequestElectronicBoardRepository RequestElectronicBoards { get; }

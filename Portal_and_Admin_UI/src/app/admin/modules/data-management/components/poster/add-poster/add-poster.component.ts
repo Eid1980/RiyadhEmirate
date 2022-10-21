@@ -32,7 +32,7 @@ export class AddPosterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalService.setAdminTitle('إضافة ملصق جديد');
+    this.globalService.setAdminTitle('إضافة إعلان جديد');
     this.buildForm();
   }
 
