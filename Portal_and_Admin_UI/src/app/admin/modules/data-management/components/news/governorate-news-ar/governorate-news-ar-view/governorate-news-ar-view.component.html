@@ -36,7 +36,6 @@
       </div>
 
       <div class="col-md-6 mb-4" *ngIf="newsDetailsDto?.imageName">
-        <h6 class="fa-14 fw-bold mb-2">البانر</h6>
         <img [src]="['/assets/images/uploads/news/'+newsDetailsDto?.imageName]" [alt]="newsDetailsDto?.title"
           class="imag-fluid rounded-4" style="height: 200px;" />
       </div>

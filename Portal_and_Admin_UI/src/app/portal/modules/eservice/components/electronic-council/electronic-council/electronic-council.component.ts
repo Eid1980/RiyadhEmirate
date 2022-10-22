@@ -30,7 +30,7 @@ export class ElectronicCouncilComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.globalService.setTitle("خدمة المجلس الالكتروني");
+    this.globalService.setTitle("المجلس الالكتروني");
     this.buildForm();
     this.fillRequestType();
     this.requestId = this.activatedRoute.snapshot.params['id'];

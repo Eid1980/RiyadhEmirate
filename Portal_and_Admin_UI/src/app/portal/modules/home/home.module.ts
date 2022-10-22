@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { CoreModule } from '../core/core.module';
+import { RatingModule } from 'primeng/rating';
 import { HomeComponent } from './components/home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { ServicesGuideComponent } from './components/services-guide/services-guide.component';
@@ -30,11 +31,16 @@ import { GovernorateNewsComponent } from './components/governorate-news/governor
 import { ReportsComponent } from './components/reports/reports.component';
 import { TransactionInquiryComponent } from './components/transaction-inquiry/transaction-inquiry.component';
 import { AuctionDetailsComponent } from './components/auction-details/auction-details.component';
-import { InquiriesComponent } from './components/inquiries/inquiries.component';
+import { ServicesListComponent } from './components/services-list/services-list.component';
+import { ServiceDetailsComponent } from './components/service-details/service-details.component';
+import { GrmComponent } from './components/grm/grm.component';
+import { AuctionsComponent } from './components/auctions/auctions.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
+    ServicesListComponent,
+    ServiceDetailsComponent,
     LatestNewsComponent,
     NewsDetailsComponent,
     ServicesGuideComponent,
@@ -58,7 +64,8 @@ import { InquiriesComponent } from './components/inquiries/inquiries.component';
     ReportsComponent,
     TransactionInquiryComponent,
     AuctionDetailsComponent,
-    InquiriesComponent
+    GrmComponent,
+    AuctionsComponent
   ],
   imports: [
     SharedModule,
@@ -67,6 +74,7 @@ import { InquiriesComponent } from './components/inquiries/inquiries.component';
     ButtonModule,
     ToastModule,
     CoreModule,
+    RatingModule,
   ],
   exports: [],
   providers: [],

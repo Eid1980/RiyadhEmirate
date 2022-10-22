@@ -78,50 +78,45 @@ export class FileManagerService {
       `${environment.ApiUrl}/api/FileManager/GetByEntityId/${entityId}`
     );
   }
-
   getByEntityName(entityName: string) {
     return this.http.get(
       `${environment.ApiUrl}/api/FileManager/GetByEntityName/${entityName}`
     );
   }
 
-
   convertBase64ToBlobData(base64Data: string, contentType: string = 'image/png', sliceSize = 512) {
     let byteCharacters;
     if (contentType == 'image/png') {
-      byteCharacters = atob(base64Data.split(',')[1]) // for image
-    } else {
-      byteCharacters = atob(base64Data)
+      byteCharacters = atob(base64Data.split(',')[1]); // for image
     }
-
+    else {
+      byteCharacters = atob(base64Data);
+    }
     const byteArrays = [];
-
     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
       const slice = byteCharacters.slice(offset, offset + sliceSize);
-
       const byteNumbers = new Array(slice.length);
       for (let i = 0; i < slice.length; i++) {
         byteNumbers[i] = slice.charCodeAt(i);
       }
-
       const byteArray = new Uint8Array(byteNumbers);
-
       byteArrays.push(byteArray);
     }
-
     const blob = new Blob(byteArrays, { type: contentType });
     return blob;
   }
   downloadAttachment(base64content, fileName) {
     let fileType = ''
     if (fileName.split('.')[1] == 'pdf') {
-      fileType = 'application/pdf'
-    } else {
-      fileType = 'image/png'
+      fileType = 'application/pdf';
     }
-
+    else if (fileName.split('.')[1].includes('x')) {
+      fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    }
+    else {
+      fileType = 'image/png';
+    }
     const blobData = this.convertBase64ToBlobData(base64content, fileType);
-
     // chrome
     const blob = new Blob([blobData], { type: fileType });
     const url = window.URL.createObjectURL(blob);
@@ -131,7 +126,6 @@ export class FileManagerService {
     link.download = 'attachment';
     link.click();
   }
-
 
   // added by salah
   uploadFile = (categueryName: string, name: string, files: File[]) => {
@@ -145,5 +139,8 @@ export class FileManagerService {
   }
   deleteFile = (deleteFileDto: DeleteFileDto) => {
     return this.http.post(`${environment.ApiUrl}/api/FileManager/DeleteFile`, deleteFileDto);
+  }
+  getByEntityIdEntityName = (entityId: string, entityName: string): Observable<any> => {
+    return this.http.get<any>(`${environment.ApiUrl}/api/FileManager/GetByEntityIdEntityName?entityId=${entityId}&entityName=${entityName}`);
   }
 }

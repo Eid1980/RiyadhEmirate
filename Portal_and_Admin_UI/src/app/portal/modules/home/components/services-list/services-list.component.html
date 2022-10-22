@@ -1,0 +1,76 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">قائمة الخدمات</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<section class="services-section">
+  <div class="ser-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-8 mx-auto">
+          <h1 class="title mx-2">الخدمات الإلكترونية</h1>
+    
+          <div class="form-group">
+            <form [formGroup]="serviceSearchForm" (ngSubmit)="servicSearch()">
+              <input type="text" formControlName="filter" name="filter" id="filter" class="form-control" placeholder="بحث في الخدمات الإلكترونية" autocomplete="off">
+              <button class="btn p-0 s-icon" type="submit">
+                <img src="assets/images/icons/query-search.svg" alt="icon" class="img-fluid">
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="services">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex flex-wrap justify-content-between align-items-center mb-5 count-sort">
+            <div class="d-flex align-items-center my-1">
+              <span class="title">{{contentTitle}}</span>
+              <span class="count mx-2">{{services?.length}}</span>
+            </div>
+            <div class="dropdown sort my-1 me-auto">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/icons/sort-ser.svg" alt="setting" width="18px" class="img-fluid ms-2">
+                ترتيب الخدمات حسب: {{sortTitle}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <button class="btn" (click)="sortServices(1)">أبجدي - من أ إلى ي</button>
+                <button class="btn" (click)="sortServices(2)">أبجدي - من ي إلى أ</button>
+                <button class="btn" (click)="sortServices(3)">من الأقدم إلى الأحدث</button>
+                <button class="btn" (click)="sortServices(4)"> من الأحدث إلى الأقدم </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let service of services">
+          <div class="card-item">
+            <img *ngIf="service.imageName" [src]="['/assets/images/uploads/services/'+service.imageName]" [alt]="service.nameEn" class="img-fluid ser-icon" />
+            <img *ngIf="!service.imageName" src="assets/images/favicon/fav-logo.png" [alt]="service.nameEn" class="img-fluid ser-icon" />
+            <h5 class="title mb-4">{{service.nameAr}}</h5>
+            <p class="description h-3"> {{service.descriptionAr}}</p>
+
+            <div class="service-link d-flex align-items-center">
+              <a [routerLink]="['/home/services', service.id]" class="px-3 ">شرح الخدمة</a>
+              <span class="arrow">
+                <img src="assets/images/icons/services/green-arrow-left.svg" alt="icon" class="img-fluid" style="width:14px;">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -3,7 +3,6 @@ export interface CreateOpenDataReportDto {
   nameAr: string;
   nameEn: string;
   openDataCategueryId: number;
-  fileUrl: string;
   isActive: boolean;
 }
 
@@ -12,7 +11,6 @@ export interface UpdateOpenDataReportDto {
   nameAr: string;
   nameEn: string;
   openDataCategueryId: number;
-  fileUrl: string;
   isActive: boolean;
 }
 
@@ -22,8 +20,8 @@ export interface GetOpenDataReportDetailsDto {
   nameEn: string;
   openDataCategueryId: number;
   openDataCategueryName: string;
-  fileUrl: string;
   isActive: boolean;
+  fileId: string;
 }
 
 export interface GetOpenDataReportListDto {
@@ -32,6 +30,5 @@ export interface GetOpenDataReportListDto {
   nameEn: string;
   openDataCategueryId: number;
   openDataCategueryName: string;
-  fileUrl: string;
   isActive: boolean;
 }

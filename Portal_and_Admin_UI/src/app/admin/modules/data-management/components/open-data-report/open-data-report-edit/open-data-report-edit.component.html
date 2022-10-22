@@ -28,14 +28,6 @@
           <small *ngIf="(isFormSubmitted || updateOpenDataReportForm.get('nameEn').touched) && updateOpenDataReportForm.get('nameEn').errors?.required"
                  class="danger">هذاالحقل مطلوب</small>
         </div>
-        <div class="form-group col-md-12">
-          <label for="fileUrl" class="form-lbl">رابط الملف<span class="danger">*</span></label>
-          <input type="text" class="form-control" autocomplete="off" formControlName="fileUrl" id="fileUrl" [ngClass]="{
-              invalid: (isFormSubmitted || updateOpenDataReportForm.get('fileUrl').touched) &&
-                updateOpenDataReportForm.get('fileUrl').errors?.required}" />
-          <small *ngIf="(isFormSubmitted || updateOpenDataReportForm.get('fileUrl').touched) && updateOpenDataReportForm.get('fileUrl').errors?.required"
-                 class="danger">هذاالحقل مطلوب</small>
-        </div>
         <div class="form-group col-md-6">
           <label for="openDataCategueryId" class="form-lbl">المجموعة<span class="danger">*</span></label>
           <select class="form-control form-select" formControlName="openDataCategueryId" [ngClass]="{
@@ -46,12 +38,22 @@
           </select>
           <small *ngIf="(isFormSubmitted || updateOpenDataReportForm.get('openDataCategueryId').touched) && updateOpenDataReportForm.get('openDataCategueryId').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
+        <div class="form-group col-md-6">
+          <label for="" class="form-lbl">تحميل المرفق</label>
+          <p-fileUpload #uploader chooseLabel="تحميل المرفق" [auto]="true" [customUpload]="isCustomUpload"
+                        (uploadHandler)="onUpload($event)" [multiple]="isMultiple" mode="advanced" [accept]="acceptType" [maxFileSize]="fileSize">
+          </p-fileUpload>
+          <small *ngIf="(isFormSubmitted || updateOpenDataReportForm.get('fileAttach').touched) && updateOpenDataReportForm.get('fileAttach').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
         <div class="form-group col-6">
           <label class="container-check">
             فعال
             <input formControlName="isActive" type="checkbox" id="isActive" />
             <span class="checkmark"></span>
           </label>
+        </div>
+        <div class="form-group col-6">
+          <button type="button" class="btn btn-primary" (click)="downloadAttachment()">تنزيل المرفق</button>
         </div>
 
       </div>

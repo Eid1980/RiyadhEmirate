@@ -114,5 +114,11 @@ namespace Emirates.API.Controllers.InternalPortal
             _fileManager.Delete(deleteFileDto);
             return NoContent();
         }
+
+        [HttpGet("GetByEntityIdEntityName")]
+        public IActionResult GetByEntityIdEntityName(string entityId, string entityName)
+        {
+            return Ok(_fileManager.GetByEntityIdEntityName(entityId, entityName));
+        }
     }
 }

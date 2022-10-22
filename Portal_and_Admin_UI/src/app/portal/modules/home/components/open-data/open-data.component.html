@@ -232,7 +232,7 @@
             <ul class="mb-4">
               <li class="d-flex align-items-center mb-3" *ngFor="let report of cat.dataReports">
                 <i class="fa-solid fa-link fa-18 text-primary-alt-3 ms-2"></i>
-                <a class="fw-normal text-muted fa-16 cursor-pointer" target="_blank" [href]="report.fileUrl">{{report.nameAr}}</a>
+                <a class="fw-normal text-muted fa-16 cursor-pointer" (click)="downloadAttachment(report.id)">{{report.nameAr}}</a>
               </li>
               <!--<li class="d-flex align-items-center mb-3">
                 <i class="fa-solid fa-link fa-18 text-primary-alt-3 ms-2"></i>

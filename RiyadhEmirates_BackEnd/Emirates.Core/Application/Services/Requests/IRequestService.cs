@@ -18,5 +18,6 @@ namespace Emirates.Core.Application.Services.Requests
 
         IApiResponse GetElectronicCouncilRequests(SearchModel searchModel);
         IApiResponse InboxShamel(SearchModel searchModel);
+        IApiResponse RequestSearch(SearchModel searchModel);
     }
 }

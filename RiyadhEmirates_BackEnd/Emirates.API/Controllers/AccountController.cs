@@ -38,6 +38,12 @@ namespace Emirates.API.Controllers
                 id = UserId;
             return _accountService.GetUserData(id);
         }
+        [HttpGet("GetCurrentUserRoles")]
+        [Authorize]
+        public IApiResponse GetCurrentUserRoles()
+        {
+            return _accountService.GetCurrentUserRoles(UserId);
+        }
 
         [HttpGet("GetAuthUser")]
         [Authorize]

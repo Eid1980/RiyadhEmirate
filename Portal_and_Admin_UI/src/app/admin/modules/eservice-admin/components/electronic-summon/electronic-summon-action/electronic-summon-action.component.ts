@@ -32,15 +32,20 @@ export class ElectronicSummonActionComponent implements OnInit {
 
   buildForm() {
     this.adminActionForm = this.formBuilder.group({
-      notes: [this.requestChangeStageDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      notes: [this.requestChangeStageDto.notes || '']
     });
   }
 
   executeAction(action: number) {
-    if (action != Stages.UnderProcessing) {
-      this.isFormSubmitted = true;
+    if (action == Stages.UnderProcessing) {
+      this.adminActionForm.controls["notes"].clearValidators();
     }
-    if (this.adminActionForm.valid || action == Stages.UnderProcessing) {
+    else {
+      this.adminActionForm.controls["notes"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
+    }
+    this.isFormSubmitted = true;
+    this.adminActionForm.controls["notes"].updateValueAndValidity();
+    if (this.adminActionForm.valid) {
       let confrimMessage = '';
       switch (action) {
         case Stages.UnderProcessing:

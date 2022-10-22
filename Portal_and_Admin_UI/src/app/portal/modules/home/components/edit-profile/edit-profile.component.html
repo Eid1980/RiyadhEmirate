@@ -137,26 +137,18 @@
                 <small *ngIf="(isFormSubmitted || editProfileForm.get('lastNameEn').touched) && editProfileForm.get('lastNameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
 
-                <div class="form-group col-md-6">
-                <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
-                <img width="200px" height="100px" *ngIf="oldImage" [src]="oldImage?.base64File" />
-                <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
-                              (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)"  mode="advanced"
-                              [accept]="acceptType" [maxFileSize]="fileSize">
-                </p-fileUpload>
-                </div>
               </div>
             </div>
 
             <div class="mb-5">
               <h3 class="fw-bold fa-22 text-primary mb-4">بيانات التسجيل</h3>
               <div class="row">
-                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
                   <label class="fa-14 mb-1 fw-normal">كلمة المرور</label>
                   <input class="form-control input-lg" type="password" placeholder="اكتب..." formControlName="newPassword" />
                 </div>
 
-                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
                   <label class="fa-14 mb-1 fw-normal">تاكيد كلمة المرور</label>
                   <input class="form-control input-lg" type="password" placeholder="اكتب..." formControlName="confirmNewpassword" />
                 </div>
@@ -166,62 +158,53 @@
             <div>
               <h3 class="fw-bold fa-22 text-primary mb-4">بيانات الإتصال</h3>
               <div class="row">
-                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
                   <label class="fa-14 mb-1 fw-normal">رقم الهاتف<span class="danger">*</span></label>
                   <input type="text" class="form-control input-lg" placeholder="اكتب..." formControlName="phoneNumber" [ngClass]="{
                     invalid:
                       (isFormSubmitted || editProfileForm.get('phoneNumber').touched) && editProfileForm.get('phoneNumber').errors?.required
-                  }"/>
+                  }" />
 
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('phoneNumber').touched) && editProfileForm.get('phoneNumber').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('phoneNumber').touched) && editProfileForm.get('phoneNumber').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
                   <label class="fa-14 mb-1 fw-normal">البريد الالكتروني<span class="danger">*</span></label>
                   <input type="text" class="form-control input-lg" placeholder="اكتب..." formControlName="email" [ngClass]="{
                     invalid:
                       (isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.required
-                  }"/>
+                  }" />
 
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+                <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
                   <label class="fa-14 mb-1 fw-normal">الجنسيه<span class="danger">*</span></label>
-                  <select
-                  class="form-control form-select"
-                  formControlName="nationalityId"
-                  id="nationalityId">
-                  <option [ngValue]="null">-- {{ 'register.labels.selectNationality' | translate }}  --</option>
-                  <option
-                    *ngFor="let nationality of nationalities"
-                    [ngValue]="nationality.id">
-                    {{ nationality.name }}
-                  </option>
-                </select>
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('nationalityId').touched) && editProfileForm.get('nationalityId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <select class="form-control form-select"
+                          formControlName="nationalityId"
+                          id="nationalityId">
+                    <option [ngValue]="null">-- {{ 'register.labels.selectNationality' | translate }}  --</option>
+                    <option *ngFor="let nationality of nationalities"
+                            [ngValue]="nationality.id">
+                      {{ nationality.name }}
+                    </option>
+                  </select>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('nationalityId').touched) && editProfileForm.get('nationalityId').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-                  <label class="fa-14 mb-1 fw-normal">المحافظة<span class="danger">*</span></label>
-                  <select
-                  class="form-control form-select"
-                  formControlName="governorateId"
-                  id="governorateId">
-                  <option [ngValue]="null">-- {{ 'register.labels.selectGovernment' | translate}} --</option>
-                  <option
-                    *ngFor="let governorate of governorates"
-                    [ngValue]="governorate.id">
-                    {{ governorate.name }}
-                  </option>
-                </select>
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('governorateId').touched) && editProfileForm.get('governorateId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
+                  <label for="" class="fa-14 mb-1 fw-normal">تحميل الصورة<span class="danger">*</span></label>
+                  <img width="200px" height="100px" *ngIf="oldImage" [src]="oldImage?.base64File" />
+                  <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
+                                (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" mode="advanced"
+                                [accept]="acceptType" [maxFileSize]="fileSize">
+                  </p-fileUpload>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
                   <label class="fa-14 mb-1 fw-normal">العنوان<span class="danger">*</span></label>
-                  <textarea  class="form-control input-lg" placeholder="اكتب..." rows="4" formControlName="address" [ngClass]="{
+                  <textarea class="form-control input-lg" placeholder="اكتب..." rows="4" formControlName="address" [ngClass]="{
                     invalid:
                       (isFormSubmitted || editProfileForm.get('address').touched) && editProfileForm.get('address').errors?.required
                   }"></textarea>
 
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('address').touched) && editProfileForm.get('address').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('address').touched) && editProfileForm.get('address').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
               </div>
             </div>

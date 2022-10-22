@@ -43,7 +43,6 @@ export interface GetUserProfileData {
   passportId: string;
   nationalityId: number;
   nationalityName: string;
-  governorateId: number;
   governorateName: string;
   address: string;
 
@@ -56,7 +55,6 @@ export interface GetUserSessionDto {
   isEmployee: boolean;
 
   image: any;
-  roleIds: string;
 }
 
 export interface GetUserDataDto {

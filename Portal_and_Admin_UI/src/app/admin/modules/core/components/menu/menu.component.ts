@@ -8,25 +8,22 @@ import { Role } from '../../../../../shared/enums/role.enum';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  roleIds = [] as number[];
-  superSystemAdmin: number = Role.SuperSystemAdmin;
-  systemAdmin: number = Role.SystemAdmin;
-  newsPermission: number = Role.NewsPermission;
-  settingPermission: number = Role.SettingPermission;
-  usersPermission: number = Role.UsersPermission;
-  requestReview: number = Role.RequestReview;
-  shamelRequestReview: number = Role.ShamelRequestReview;
+  roles: string;
+  superSystemAdmin: string = Role.SuperSystemAdmin.toString();
+  systemAdmin: string = Role.SystemAdmin.toString();
+  newsPermission: string = Role.NewsPermission.toString();
+  settingPermission: string = Role.SettingPermission.toString();
+  usersPermission: string = Role.UsersPermission.toString();
+  requestReview: string = Role.RequestReview.toString();
+  shamelRequestReview: string = Role.ShamelRequestReview.toString();
 
   constructor(private accountService: AccountService) {
   }
 
   ngOnInit() {
-    let roles = this.accountService.getCurrentUserInfo().roleIds;
-    if (roles) {
-      this.roleIds = roles.split(',').map(function (item) {
-        return parseInt(item, 10);
-      });;
-    }
+    this.accountService.getCurrentUserRoles().subscribe((response) => {
+      this.roles = response.data;
+    });
   }
 
   logOut() {

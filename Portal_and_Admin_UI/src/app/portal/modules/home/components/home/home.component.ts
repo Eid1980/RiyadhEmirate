@@ -9,8 +9,6 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
 import { HomeService } from '@shared/proxy/home/home.service';
 import { GetAllServiceListDto, GetNewsSearchListDto } from '@shared/proxy/home/models';
-import { AuctionService } from '@shared/proxy/auctions/auction.service';
-import { GetAuctionListDto } from '@shared/proxy/auctions/models';
 declare let $: any;
 
 @Component({
@@ -22,7 +20,6 @@ export class HomeComponent implements OnInit {
   electronicUrl: string;
   searchModel: SearchModel = {};
   posters = [] as GetPosterDetailsDto[];
-  auctions = [] as GetAuctionListDto[];
 
   latestNews = [] as GetNewsSearchListDto[];
   governorateNews: GetNewsSearchListDto[] = [];
@@ -214,8 +211,7 @@ export class HomeComponent implements OnInit {
   //#endregion
 
   constructor(private homeService: HomeService, private posterService: PosterService,
-    private auctionService: AuctionService, private _globalService: GlobalService,
-    private translateService: TranslationServiceService) {
+    private _globalService: GlobalService, private translateService: TranslationServiceService) {
   }
 
   ngOnInit() {
@@ -224,7 +220,6 @@ export class HomeComponent implements OnInit {
     this.getPosters();
     this.getServices();
     this.getAllNews();
-    this.getAuction();
 
     let processNumber1 = document.getElementById("processNumber1");
     let processNumber2 = document.getElementById("processNumber2");
@@ -260,11 +255,6 @@ export class HomeComponent implements OnInit {
       this.latestNews = news.filter((n) => n.newsTypeId == NewsTypes.LatestNews);
       this.governorateNews = news.filter((n) => n.newsTypeId == NewsTypes.GovernorateNews);
       this.reports = news.filter((n) => n.newsTypeId == NewsTypes.Reports);
-    });
-  }
-  getAuction() {
-    this.auctionService.getAll().subscribe((res) => {
-      this.auctions = res.data;
     });
   }
 

@@ -299,5 +299,12 @@ namespace Emirates.Core.Application.Services.FileManagers
             if (File.Exists(path))
                 File.Delete(path);
         }
+        public GetUploadedFileDto GetByEntityIdEntityName(string entityId, string entityName)
+        {
+            var uploadedFile = _emiratesUnitOfWork.UploadedFiles.FirstOrDefault(f => f.EntityId.Equals(entityId) && f.EntityName.Equals(entityName) && f.IsActive);
+            if (uploadedFile == null)
+                return null;
+            return _mapper.Map<GetUploadedFileDto>(uploadedFile);
+        }
     }
 }

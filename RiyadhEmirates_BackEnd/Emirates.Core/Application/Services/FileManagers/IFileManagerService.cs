@@ -22,5 +22,6 @@ namespace Emirates.Core.Application.Services.FileManagers
         // added by salah
         bool Upload(UploadedFileDto uploadedFileDto);
         void Delete(DeleteFileDto deleteFileDto);
+        GetUploadedFileDto GetByEntityIdEntityName(string entityId, string entityName);
     }
 }

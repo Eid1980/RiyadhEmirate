@@ -384,7 +384,6 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.NameAr).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.NameEn).HasMaxLength(EmiratesConstants.MaxLongNameLength).IsRequired();
                 b.Property(x => x.OpenDataCategueryId).IsRequired();
-                b.Property(x => x.FileUrl).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
                 b.Property(x => x.IsActive).IsRequired();
                 b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
 

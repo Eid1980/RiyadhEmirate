@@ -20,7 +20,7 @@ export class AuctionListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalService.setAdminTitle('الاعلانات والمزادات والمناقصات');
+    this.globalService.setAdminTitle('الإعلانات والمزادات والمناقصات');
     this.pageSetting();
   }
 

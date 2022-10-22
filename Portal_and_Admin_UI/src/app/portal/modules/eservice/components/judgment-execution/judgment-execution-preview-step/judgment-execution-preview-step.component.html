@@ -1,7 +1,7 @@
 <nav class="breadcrumb m-0 bg-transparent">
   <div class="container d-flex align-items-center">
     <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
-    <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/services-list']">قائمة الخدمات</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/home/services-list']">قائمة الخدمات</a>
     <span class="breadcrumb-item fs-16 active">انشاء طلب انفاذ حكم شرعي</span>
   </div>
 </nav>
@@ -19,7 +19,7 @@
     <div class="form-group col-6">
       <div class="form-check px-3 mt-5">
         <input [(ngModel)]="accept" class="form-check-input" type="checkbox" id="accept" />
-        <label class="form-check-label" for="accept">
+        <label class="form-check-label" (click)="showConditions()">
           أوافق علي الشروط والأحكام
         </label>
       </div>

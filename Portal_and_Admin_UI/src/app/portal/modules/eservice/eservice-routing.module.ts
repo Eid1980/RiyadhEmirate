@@ -11,8 +11,6 @@ import { PrisonersServicesComponent } from './components/prisoners-services/pris
 import { PrisonersServicesAttachmentsComponent } from './components/prisoners-services/prisoners-services-attachments/prisoners-services-attachments.component';
 import { PrisonersServicesPreviewStepComponent } from './components/prisoners-services/prisoners-services-preview-step/prisoners-services-preview-step.component';
 import { PrisonersServicesViewComponent } from './components/prisoners-services/prisoners-services-view/prisoners-services-view.component';
-import { ServiceDetailsComponent } from './components/service-details/service-details.component';
-import { ServicesListComponent } from './components/services-list/services-list.component';
 import { LandsInfringementComponent } from './components/lands-infringement/lands-infringement/lands-infringement.component';
 import { LandsInfringementAttachmentsComponent } from './components/lands-infringement/lands-infringement-attachments/lands-infringement-attachments.component';
 import { LandsInfringementPreviewStepComponent } from './components/lands-infringement/lands-infringement-preview-step/lands-infringement-preview-step.component';
@@ -43,8 +41,6 @@ import { ElectronicCouncilAttachmentsComponent } from './components/electronic-c
 import { ElectronicCouncilComponent } from './components/electronic-council/electronic-council/electronic-council.component';
 
 const routes: Routes = [
-  { path: 'services-list', component: ServicesListComponent },
-  { path: 'services/:id', component: ServiceDetailsComponent },
   {
     path: 'my-requests',
     component: MyRequestsComponent,

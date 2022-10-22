@@ -37,6 +37,11 @@ namespace Emirates.Core.Application.Services.Accounts
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
         }
+        public IApiResponse GetCurrentUserRoles(int id)
+        {
+            var userRoles = _emiratesUnitOfWork.UserRoles.Where(u => u.UserId == id).Select(x => x.RoleId).ToArray();
+            return GetResponse(data: string.Join(",", userRoles));
+        }
         public IApiResponse GetById(int id)
         {
             var user = _mapper.Map<GetUserDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality));
@@ -50,7 +55,6 @@ namespace Emirates.Core.Application.Services.Accounts
             var user = _mapper.Map<GetUserSessionDto>(userResponse);
             if (user == null)
                 throw new BusinessException("غير مصرح بالدخول لك بالدخول على النظام");
-            user.RoleIds = string.Join(",", userResponse.UserRoles.Select(x => x.RoleId).ToArray());
 
             user.Image = _fileManagerService.GetBase64File(id, "Profile");
 

@@ -7,6 +7,5 @@ namespace Emirates.Core.Application.Dtos
         public string ShortName { get; set; }
         public bool IsEmployee { get; set; }
         public UploadedFileBase64Dto Image { get; set; }
-        public string RoleIds { get; set; }
     }
 }

@@ -3,7 +3,7 @@ namespace Emirates.Core.Application.Dtos
 {
     public class GetUploadedFileDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string EntityId { get; set; }
         public string EntityName { get; set; }
         public string Name { get; set; }

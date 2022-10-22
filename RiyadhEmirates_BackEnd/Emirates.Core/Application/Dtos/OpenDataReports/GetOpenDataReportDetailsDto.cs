@@ -8,7 +8,7 @@ namespace Emirates.Core.Application.Dtos
         public string NameEn { get; set; }
         public int OpenDataCategueryId { get; set; }
         public string OpenDataCategueryName { get; set; }
-        public string FileUrl { get; set; }
         public bool IsActive { get; set; }
+        public string FileId { get; set; }
     }
 }

@@ -4,8 +4,7 @@ import { GetUserProfileData } from '@shared/proxy/accounts/models';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  templateUrl: './profile.component.html'
 })
 export class ProfileComponent implements OnInit {
 

@@ -78,6 +78,9 @@ export class AccountService {
   getUserData = (id?: number): Observable<ApiResponse<GetUserDataDto>> => {
     return this.httpClient.get<ApiResponse<GetUserDataDto>>(`${this.serviceUrl}/GetUserData/${id}`).pipe();
   }
+  getCurrentUserRoles = (): Observable<ApiResponse<string>> => {
+    return this.httpClient.get<ApiResponse<string>>(`${this.serviceUrl}/GetCurrentUserRoles`).pipe();
+  }
 
   getAuthUser = (): Observable<ApiResponse<GetUserSessionDto>> => {
     return this.httpClient.get<ApiResponse<GetUserSessionDto>>(`${this.serviceUrl}/GetAuthUser`).pipe();

@@ -23,8 +23,10 @@ export const environment = {
   princesfileSize: 2000000,
   servicesallowedExtensions: 'image/*',
   servicesfileSize: 2000000,
-  ServiceExplainallowedExtensions: 'image/*',
-  ServiceExplainfileSize: 6000000,
+  serviceExplainAllowedExtensions: 'image/*',
+  serviceExplainFileSize: 6000000,
+  openDataAllowedExtensions: '.xlsx,.xlsm,.xlsb,.xls,.xlt',
+  openDataFileSize: 6000000,
 };
 
 /*

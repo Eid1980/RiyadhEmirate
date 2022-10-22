@@ -6,6 +6,7 @@ using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.DynamicSearch;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Services.FileManagers;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using X.PagedList;
@@ -16,11 +17,14 @@ namespace Emirates.Core.Application.Services.OpenDataReports
     {
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
+        private readonly IFileManagerService _fileManagerService;
         private readonly IConfigurationProvider _mapConfig;
-        public OpenDataReportService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper)
+        public OpenDataReportService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper,
+            IFileManagerService fileManagerService)
         {
             _emiratesUnitOfWork = emiratesUnitOfWork;
             _mapper = mapper;
+            _fileManagerService = fileManagerService;
             _mapConfig = mapper.ConfigurationProvider;
         }
 
@@ -29,7 +33,9 @@ namespace Emirates.Core.Application.Services.OpenDataReports
             var openDataReport = _emiratesUnitOfWork.OpenDataReports.FirstOrDefault(l => l.Id.Equals(id), x => x.OpenDataCateguery);
             if (openDataReport == null)
                 throw new NotFoundException(typeof(OpenDataReport).Name);
-            return GetResponse(data: _mapper.Map<GetOpenDataReportDetailsDto>(openDataReport));
+            var mappedModel = _mapper.Map<GetOpenDataReportDetailsDto>(openDataReport);
+            mappedModel.FileId = _fileManagerService.GetByEntityIdEntityName(id.ToString(), "OpenData")?.Id.ToString();
+            return GetResponse(data: mappedModel);
         }
         public IApiResponse GetAll(SearchModel searchModel)
         {

@@ -7,6 +7,8 @@ import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.valida
 import { OpenDataCategueryService } from '@shared/proxy/open-data-categueries/open-data-categuery.service';
 import { OpenDataReportService } from '@shared/proxy/open-data-reports/open-data-report.service';
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
+import { MessageType } from '@shared/enums/message-type.enum';
+import { FileManagerService } from '@shared/services/file-manager.service';
 
 @Component({
   selector: 'app-open-data',
@@ -19,11 +21,9 @@ export class OpenDataComponent implements OnInit {
 
   openDataCategoryReport : any = {};
 
-  constructor(private openDataRequestService: OpenDataRequestService,
-    private openDataCategoryService: OpenDataCategueryService,
-    private openDataReportService: OpenDataReportService,
-    private formBuilder: FormBuilder,
-    private globalService: GlobalService){
+  constructor(private openDataRequestService: OpenDataRequestService, private openDataCategoryService: OpenDataCategueryService,
+    private openDataReportService: OpenDataReportService, private fileManagerService: FileManagerService,
+    private formBuilder: FormBuilder, private globalService: GlobalService){
 
   }
 
@@ -86,8 +86,6 @@ export class OpenDataComponent implements OnInit {
     this.openDataReportService.getListPage(searchModel).subscribe(
       (response:any) => {
         if(response.isSuccess){
-          // Update outer Model
-
           this.openDataCategoryReport.forEach(element => {
             if(element.key.id == openDataCategoryId){
               element.pagingMetaData = response.data.pagingMetaData
@@ -98,5 +96,22 @@ export class OpenDataComponent implements OnInit {
       },
       (error) => {}
     )
+  }
+
+  downloadAttachment(id: string) {
+    if (id) {
+      this.fileManagerService.getByEntityIdEntityName(id, 'OpenData').subscribe((response) => {
+        if (response.id) {
+          this.fileManagerService.getById(response.id).subscribe((response) => {
+            if (response) {
+              this.fileManagerService.downloadAttachment(response.base64File, response.fileName);
+            }
+            else {
+              this.globalService.messageAlert(MessageType.Error, 'فشل في تنزيل المرفق');
+            }
+          });
+        }
+      });
+    }
   }
 }

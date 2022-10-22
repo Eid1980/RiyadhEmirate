@@ -21,8 +21,8 @@ export class ServiceAudienceComponent implements OnInit {
 
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
-  fileSize: number = environment.ServiceExplainfileSize ? environment.ServiceExplainfileSize : environment.fileSize;
-  acceptType: string = environment.ServiceExplainallowedExtensions ? environment.ServiceExplainallowedExtensions : environment.allowedExtensions;
+  fileSize: number = environment.serviceExplainFileSize ? environment.serviceExplainFileSize : environment.fileSize;
+  acceptType: string = environment.serviceExplainAllowedExtensions ? environment.serviceExplainAllowedExtensions : environment.allowedExtensions;
   isMultiple: boolean = false;
   isCustomUpload: boolean = true;
   isDisabled: boolean = false;

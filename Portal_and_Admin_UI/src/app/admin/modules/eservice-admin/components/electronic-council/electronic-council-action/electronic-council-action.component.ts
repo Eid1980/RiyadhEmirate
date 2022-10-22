@@ -5,11 +5,11 @@ import { Stages } from '@shared/enums/stage.enum';
 import { RequestChangeStageDto } from '@shared/proxy/requests/models';
 import { RequestService } from '@shared/proxy/requests/request.service';
 import { GlobalService } from '@shared/services/global.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-electronic-council-action',
-  templateUrl: './electronic-council-action.component.html',
-  styleUrls: ['./electronic-council-action.component.scss']
+  templateUrl: './electronic-council-action.component.html'
 })
 export class ElectronicCouncilActionComponent implements OnInit {
   requestId: string;
@@ -32,15 +32,20 @@ export class ElectronicCouncilActionComponent implements OnInit {
 
   buildForm() {
     this.adminActionForm = this.formBuilder.group({
-      notes: [this.requestChangeStageDto.notes || '', Validators.required],
+      notes: [this.requestChangeStageDto.notes || '']
     });
   }
 
   executeAction(action: number) {
-    if (action != Stages.UnderProcessing) {
-      this.isFormSubmitted = true;
+    if (action == Stages.UnderProcessing) {
+      this.adminActionForm.controls["notes"].clearValidators();
     }
-    if (this.adminActionForm.valid || action == Stages.UnderProcessing) {
+    else {
+      this.adminActionForm.controls["notes"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
+    }
+    this.isFormSubmitted = true;
+    this.adminActionForm.controls["notes"].updateValueAndValidity();
+    if (this.adminActionForm.valid) {
       let confrimMessage = '';
       switch (action) {
         case Stages.UnderProcessing:

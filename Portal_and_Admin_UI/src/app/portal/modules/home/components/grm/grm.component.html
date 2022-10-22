@@ -1,0 +1,244 @@
+<nav class="breadcrumb m-0 bg-transparent">
+  <div class="container d-flex align-items-center">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <span class="breadcrumb-item fs-16 active">المجلس الإلكتروني</span>
+  </div>
+</nav>
+
+<section class="service-details">
+  <div class="container px-md-0">
+    <div class="page-head">
+      <h2 class="title px-3">{{serviceDetailsDto?.nameAr}}</h2>
+
+      <button type="button" class="btn me-2">
+        <a routerLink="/eservice/electronic-council" class="btn btn-primary px-3">
+          تقديم طلب
+          <img src="assets/images/icons/services/arrowTwo.svg" alt="icon" width="15" class="mx-1">
+        </a>
+      </button>
+    </div>
+
+    <div class="row my-4">
+      <div class="col-lg-9 col-md-8 my-1 position-relative d-flex flex-column h-auto">
+        <div class="serv-tabs">
+          <!-- tabs -->
+          <ul class="main-tabs nav nav-tabs mb-2" id="myTab" role="tablist">
+            <li class="nav-item w-25" role="presentation">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                      role="tab" aria-controls="home" aria-selected="true">
+                معلومات عن الخدمة
+              </button>
+            </li>
+            <li class="nav-item w-25" role="presentation">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                      role="tab" aria-controls="profile" aria-selected="false">
+                مخطط سير الخدمة
+              </button>
+            </li>
+            <li class="nav-item w-25" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                      role="tab" aria-controls="contact" aria-selected="false">
+                شرح الخدمة
+              </button>
+            </li>
+            <li class="nav-item w-25" role="presentation">
+              <button class="nav-link" id="conditions-tab" data-bs-toggle="tab" data-bs-target="#conditions"
+                      type="button" role="tab" aria-controls="contact" aria-selected="false">
+                شروط ووثائق الخدمة
+              </button>
+            </li>
+          </ul>
+
+          <!-- Listen or Print -->
+          <div class="d-flex justify-content-end">
+            <button type="button" class="border-primary-2 btn btn-white ms-3 my-1 px-3 py-2 h-fit-content">
+              <img src="assets/images/icons/listen.svg" alt="icon" class="img-fluid ms-2" style="width: 14px;">
+              <span class="fa-12">إستماع</span>
+            </button>
+            <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2 h-fit-content" (click)="print()">
+              <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
+              <span class="fa-12">طباعة</span>
+            </button>
+          </div>
+
+          <div #serviceDetails class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="mb-4">
+                <h4 class="title">القطاع</h4>
+                <p class="desc">{{serviceDetailsDto?.sectorAr}}</p>
+              </div>
+
+              <div class="mb-4">
+                <h4 class="title">وصف الخدمة</h4>
+                <p class="desc">{{serviceDetailsDto?.descriptionAr}}</p>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="flow">
+                <div class="flow-card">
+                  <span class="step-icon">
+                    <img src="./assets/images/icons/flow/step1.svg" alt="" style="width: 24px;">
+                  </span>
+                  <span class="step-desc"> سجل دخول على بوابة إمارة منطقة الرياض</span>
+                  <span class="step-bullet"></span>
+                  <span class="step-num">1</span>
+                </div>
+                <div class="flow-card">
+                  <span class="step-icon">
+                    <img src="./assets/images/icons/flow/step2.svg" alt="" style="width: 24px;">
+                  </span>
+                  <span class="step-desc">اذهب إلى جميع الخدمات من قائمة الخدمات الإلكترونية</span>
+                  <span class="step-bullet"></span>
+                  <span class="step-num">2</span>
+                </div>
+                <div class="flow-card">
+                  <span class="step-icon">
+                    <img src="./assets/images/icons/flow/step3.svg" alt="" style="width: 24px;">
+                  </span>
+                  <span class="step-desc">اختر خدمة {{serviceDetailsDto?.nameAr}}</span>
+                  <span class="step-bullet"></span>
+                  <span class="step-num">3</span>
+                </div>
+                <div class="flow-card">
+                  <span class="step-icon">
+                    <img src="./assets/images/icons/flow/step4.svg" alt="" style="width: 24px;">
+                  </span>
+                  <span class="step-desc">أدخل جميع البيانات المطلوبة وقدّم الطلب</span>
+                  <span class="step-bullet"></span>
+                  <span class="step-num">4</span>
+                </div>
+                <div class="flow-card">
+                  <span class="step-icon">
+                    <img src="./assets/images/icons/flow/step5.svg" alt="" style="width: 24px;">
+                  </span>
+                  <span class="step-desc">بعد التقديم على الخدمة سيتم إشعاركم برقم المعاملة بعد تسليم الطلب</span>
+                  <span class="step-bullet"></span>
+                  <span class="step-num">5</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+              <div class="py-4">
+                <span class="desc" style="font-weight: 600;">
+                  شرح خدمة {{serviceDetailsDto?.nameAr}}
+                </span>
+                <div class="mt-4" style="zoom: .7;">
+                  <img *ngIf="imageExplain"
+                       [src]="sanitizer.bypassSecurityTrustResourceUrl(imageExplain?.base64File) " />
+                </div>
+              </div>
+
+            </div>
+
+            <div class="tab-pane fade" id="conditions" role="tabpanel" aria-labelledby="conditions-tab">
+              <div class="py-4">
+                <div class="term-row" *ngFor="let serviceCondition of getServiceConditionListDto;let i=index;">
+                  <span class="term-num">{{i+1}}</span>
+                  <span class="term-desc">{{serviceCondition.condition}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Survey -->
+        <div class="survey mt-auto">
+          <div>
+            <hr>
+          </div>
+
+          <div class="d-lg-flex justify-content-between align-items-center">
+            <div class="mb-1">
+              <span class="question">هل استفدت من المعلومات المقدمة في هذه الصفحة؟</span>
+              <button class="btn-vote" (click)="createBenefit(true)">نعم</button>
+              <span class="d-inline-block mx-2">|</span>
+              <button class="btn-vote" (click)="createBenefit(false)">لا</button>
+            </div>
+
+            <div class="liked mb-1">
+              <span class="text-primary"> {{getAllCountDto?.benefitCount}} </span>
+              <span>
+                من الزوار أعجبهم محتوى الصفحة من أصل <span class="text-primary">
+                  {{getAllCountDto?.allCount}}
+                </span> مشاركة
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- sidebar -->
+      <div class="col-lg-3 col-md-4 my-1">
+        <div class="sidebar">
+          <div class="toast-detail" *ngIf="getServiceAudienceListDto.length > 0">
+            <h4 class="title">الجمهور المستهدف</h4>
+            <div class="group" *ngFor="let audience of getServiceAudienceListDto">
+              <img src="assets/images/icons/details/15-Checked.svg" alt="15-Checked" width="20">
+              <span class="service">{{audience.audienceName}}</span>
+            </div>
+          </div>
+
+          <div class="toast-detail">
+            <h4 class="title">المدة الزمنية لإنجاز الخدمة</h4>
+            <div class="group">
+              <img src="assets/images/icons/details/feather-clock.svg" alt="feather-clock" width="16">
+              <span class="service ">{{serviceDetailsDto?.workDays}}</span>
+              <span class="service mx-1">يوم</span>
+            </div>
+          </div>
+
+          <div class="toast-detail">
+            <h4 class="title">تكلفة الخدمة</h4>
+            <div class="group">
+              <img src="assets/images/icons/details/feather-check-circle.svg" alt="feather-check-circle.svg" width="16">
+              <span class="service"
+                    *ngIf="serviceDetailsDto?.serviceCost && serviceDetailsDto?.serviceCost != 0">
+                {{serviceDetailsDto?.serviceCost}}
+                ريـال
+              </span>
+              <span class="service"
+                    *ngIf="!serviceDetailsDto?.serviceCost || serviceDetailsDto?.serviceCost == 0">مجانا</span>
+            </div>
+          </div>
+
+          <div class="toast-detail mb-0 pb-0">
+            <h4 class="title">تقييم الخدمة</h4>
+            <table class="table table-bordered mb-0">
+              <tbody>
+                <tr class="border-top">
+                  <td class="fa-12 fw-normal py-3 px-2">التقييم</td>
+                  <td class="info py-3 px-2 text-center">
+                    <p-rating [cancel]="false" [(ngModel)]="rate" [readonly]="!canRate" (onRate)="rateService()">
+                    </p-rating>
+                    <span class="service mx-2">{{getServiceRateDto?.serviceRatePercentage}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fa-12 fw-normal py-3 px-2">آخر تقييم</td>
+                  <td class="info py-3 px-2 text-center">
+                    <span class="service mx-2">{{getServiceRateDto?.lastRateDate}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fa-12 fw-normal py-3 px-2">مجموع التقييم</td>
+                  <td class="info py-3 px-2 text-center">
+                    <span class="service mx-2">{{getServiceRateDto?.ratePercentage}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fa-12 fw-normal py-3 px-2">عدد المقيمين</td>
+                  <td class="info py-3 px-2 text-center">
+                    <span class="service mx-2">{{getServiceRateDto?.rateCout}}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -24,11 +24,17 @@ import { GovernorateNewsComponent } from "./components/governorate-news/governor
 import { ReportsComponent } from "./components/reports/reports.component";
 import { TransactionInquiryComponent } from "./components/transaction-inquiry/transaction-inquiry.component";
 import { AuctionDetailsComponent } from "./components/auction-details/auction-details.component";
-import { InquiriesComponent } from "./components/inquiries/inquiries.component";
+import { ServicesListComponent } from "./components/services-list/services-list.component";
+import { ServiceDetailsComponent } from "./components/service-details/service-details.component";
+import { GrmComponent } from "./components/grm/grm.component";
+import { AuctionsComponent } from "./components/auctions/auctions.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent },
+  { path: 'home/services-list', component: ServicesListComponent },
+  { path: 'home/services/:id', component: ServiceDetailsComponent },
+  { path: 'home/grm', component: GrmComponent },
   { path: "home/transaction-inquiry", component: TransactionInquiryComponent },
   { path: "home/news-search", component: NewsSearchComponent },
   { path: "home/services-guide", component: ServicesGuideComponent },
@@ -36,6 +42,7 @@ const routes: Routes = [
   { path: "home/latest-news", component: LatestNewsComponent },
   { path: "home/governorate-news", component: GovernorateNewsComponent },
   { path: "home/reports-news", component: ReportsComponent },
+  { path: "home/auctions", component: AuctionsComponent },
   { path: "home/news-details/:id", component: NewsDetailsComponent },
   { path: "home/auction-details/:id", component: AuctionDetailsComponent },
   { path: "profile", component: ProfileComponent },
@@ -52,7 +59,6 @@ const routes: Routes = [
   { path: "home/governorate-show", component: GovernorateShowComponent },
   { path: "home/organization", component: OrganizationChartComponent },
   { path: "home/women-section", component: WomenSectionComponent },
-  { path: "home/inquiries", component: InquiriesComponent }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

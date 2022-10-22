@@ -18,40 +18,34 @@ export class EditProfileComponent implements OnInit {
 
   editProfileForm: FormGroup;
   isFormSubmitted: boolean;
-    //#region for uploader
-    @ViewChild('uploader', { static: true }) uploader;
-    isMultiple: boolean = false;
-    fileSize: number = 10000000;
-    acceptType: 'image/*';
-    isCustomUpload: boolean = true;
-    isDisabled: boolean = false;
-    //#endregion
-    //#region for datePicker
-    @ViewChild('birthDate') birthDate: any;
-    isValidDate = false;
-    date: NgbDateStruct;
-    selectedDateType = DateType.Hijri;
-    //#endregion
+  //#region for uploader
+  @ViewChild('uploader', { static: true }) uploader;
+  isMultiple: boolean = false;
+  fileSize: number = 10000000;
+  acceptType: 'image/*';
+  isCustomUpload: boolean = true;
+  isDisabled: boolean = false;
+  //#endregion
+  //#region for datePicker
+  @ViewChild('birthDate') birthDate: any;
+  isValidDate = false;
+  date: NgbDateStruct;
+  selectedDateType = DateType.Hijri;
+  //#endregion
 
-    maxHigriDate: NgbDateStruct;
-    maxGreg: NgbDateStruct;
-
-    oldImage : any;
-
+  maxHigriDate: NgbDateStruct;
+  maxGreg: NgbDateStruct;
+  oldImage: any;
   userProfileData = {} as GetUserProfileData;
-
   updateUserProfileDto = {} as UpdateUserProfileDto;
-
-  governorates = [] as LookupDto<number>[];
   nationalities = [] as LookupDto<number>[];
 
-  constructor(private _accountService : AccountService, private formBuilder: FormBuilder,
+  constructor(private _accountService: AccountService, private formBuilder: FormBuilder,
     private fileManagerService: FileManagerService, private _dateFormatterService: DateFormatterService,
-    private globalService: GlobalService, private lookupService: LookupService)
-  {
-      let nowDate = new Date();
-      let nowDateHijri = _dateFormatterService.GetTodayHijri();
-      this.maxHigriDate = {
+    private globalService: GlobalService, private lookupService: LookupService) {
+    let nowDate = new Date();
+    let nowDateHijri = _dateFormatterService.GetTodayHijri();
+    this.maxHigriDate = {
       day: nowDateHijri.day,
       month: nowDateHijri.month,
       year: nowDateHijri.year - 18,
@@ -62,29 +56,29 @@ export class EditProfileComponent implements OnInit {
       month: nowDate.getUTCMonth() + 1,
       year: nowDate.getUTCFullYear() - 18,
     };
-    }
+  }
 
   ngOnInit(): void {
     this.globalService.setTitle("تعديل الملف الشخصى");
     this.buildForm();
-    let userId =  JSON.parse(localStorage.getItem("AuthUser")).id;
+    let userId = JSON.parse(localStorage.getItem("AuthUser")).id;
     this._accountService.getUserProfileData(userId).subscribe((response) => {
-        if(response.isSuccess)
+      if (response.isSuccess)
         this.userProfileData = response.data
-        let date = new Date(this.userProfileData.birthDate);
-        let ngbDateStructGregorian = {
-          day: date.getUTCDate() + 1,
-          month: date.getUTCMonth() + 1,
-          year: date.getUTCFullYear(),
-        };
-        this.date = this._dateFormatterService.ToHijri(ngbDateStructGregorian);
-        this.buildForm();
+      let date = new Date(this.userProfileData.birthDate);
+      let ngbDateStructGregorian = {
+        day: date.getUTCDate() + 1,
+        month: date.getUTCMonth() + 1,
+        year: date.getUTCFullYear(),
+      };
+      this.date = this._dateFormatterService.ToHijri(ngbDateStructGregorian);
+      this.buildForm();
 
-        this.oldImage = response.data.image;
+      this.oldImage = response.data.image;
 
-      } , () => {});
+    }, () => { });
 
-      this.fillLookup();
+    this.fillLookup();
   }
 
   email: string;
@@ -92,24 +86,23 @@ export class EditProfileComponent implements OnInit {
   passportId: string;
   nationalityId: number;
   nationalityName: string;
-  governorateId: number;
   governorateName: string;
   address: string;
 
 
   buildForm() {
     this.editProfileForm = this.formBuilder.group({
-      id : [this.userProfileData.id , [Validators.required]],
+      id: [this.userProfileData.id, [Validators.required]],
       //nationalId: [{value: this.userProfileData.nationalId, disabled: false }, [Validators.required]],
-      userName: [{value: this.userProfileData.userName, disabled: true }, [Validators.required]],
+      userName: [{ value: this.userProfileData.userName, disabled: true }, [Validators.required]],
       birthdate: [{ value: this.userProfileData.birthDate, disabled: false }, [Validators.required]],
-      isMale: [this.userProfileData.isMale? 1 : 2, [Validators.required]],
-      passportId: [{value: this.userProfileData.passportId, disabled: false }],
+      isMale: [this.userProfileData.isMale ? 1 : 2, [Validators.required]],
+      passportId: [{ value: this.userProfileData.passportId, disabled: false }],
       firstNameAr: [{ value: this.userProfileData.firstNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       secondNameAr: [{ value: this.userProfileData.secondNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       thirdNameAr: [{ value: this.userProfileData.thirdNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       lastNameAr: [{ value: this.userProfileData.lastNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      firstNameEn: [{value: this.userProfileData.firstNameEn, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      firstNameEn: [{ value: this.userProfileData.firstNameEn, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       secondNameEn: [{ value: this.userProfileData.secondNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       thirdNameEn: [{ value: this.userProfileData.thirdNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       lastNameEn: [{ value: this.userProfileData.lastNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
@@ -120,7 +113,6 @@ export class EditProfileComponent implements OnInit {
       phoneNumber: [{ value: this.userProfileData.phoneNumber, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       email: [{ value: this.userProfileData.email, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       nationalityId: [this.userProfileData.nationalityId, [Validators.required]],
-      governorateId: [this.userProfileData.governorateId, [Validators.required]],
       address: [{ value: this.userProfileData.address, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });
 
@@ -132,9 +124,6 @@ export class EditProfileComponent implements OnInit {
     this.editProfileForm.get('image').setValue(null);
   }
   fillLookup() {
-    this.lookupService.getGovernorateLookupList().subscribe((response) => {
-      this.governorates = response.data;
-    });
     this.lookupService.getNationalityLookupList().subscribe((response) => {
       this.nationalities = response.data;
     });
@@ -148,7 +137,7 @@ export class EditProfileComponent implements OnInit {
   onSubmit() {
     this.isFormSubmitted = true;
 
-    if(this.editProfileForm.value.newPassword != this.editProfileForm.value.newConfirmNewpassword){
+    if (this.editProfileForm.value.newPassword != this.editProfileForm.value.newConfirmNewpassword) {
       this.globalService.showMessage("خطأ, ,كلمة المرور غير متطابقة");
       return
 
@@ -171,19 +160,19 @@ export class EditProfileComponent implements OnInit {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
           let id = response.data.toString();
-          this.fileManagerService.deleteByEntityName(id, 'LatestNews').subscribe((res) => {
+          this.fileManagerService.deleteByEntityName(id, 'Profile').subscribe((res) => {
             this.fileManagerService.upload(id, 'Profile', '', [this.editProfileForm.get('image').value]).subscribe(res => {
-            //this.globalService.navigate("/admin/data-management/latest-news-ar-list");
+              //this.globalService.navigate("/admin/data-management/latest-news-ar-list");
+            })
           })
-        })
         }
-        else{
+        else {
           this.globalService.showMessage(response.message);
         }
       },
-      (error)=>{
-        this.globalService.showMessage(error);
-      });
+        (error) => {
+          this.globalService.showMessage(error);
+        });
     }
   }
 }

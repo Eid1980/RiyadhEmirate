@@ -18,8 +18,6 @@ import { PrisonersServicesAttachmentsComponent } from './components/prisoners-se
 import { PrisonersServicesDetailsComponent } from './components/prisoners-services/prisoners-services-details/prisoners-services-details.component';
 import { PrisonersServicesPreviewStepComponent } from './components/prisoners-services/prisoners-services-preview-step/prisoners-services-preview-step.component';
 import { PrisonersServicesViewComponent } from './components/prisoners-services/prisoners-services-view/prisoners-services-view.component';
-import { ServiceDetailsComponent } from './components/service-details/service-details.component';
-import { ServicesListComponent } from './components/services-list/services-list.component';
 import { LandsInfringementComponent } from './components/lands-infringement/lands-infringement/lands-infringement.component';
 import { LandsInfringementAttachmentsComponent } from './components/lands-infringement/lands-infringement-attachments/lands-infringement-attachments.component';
 import { LandsInfringementDetailsComponent } from './components/lands-infringement/lands-infringement-details/lands-infringement-details.component';
@@ -59,8 +57,6 @@ import { ElectronicCouncilComponent } from './components/electronic-council/elec
 
 @NgModule({
   declarations: [
-    ServicesListComponent,
-    ServiceDetailsComponent,
     RequesterDashboardComponent,
     PrisonerTempReleaseViewComponent,
     PrisonerTempReleaseComponent,

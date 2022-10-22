@@ -151,7 +151,7 @@ namespace Emirates.Core.Application.Services.Requests
         }
         public IApiResponse GetRequestStageLogs(Guid id)
         {
-            var requestLogs = _emiratesUnitOfWork.RequestStageLogs.Where(x => x.RequestId.Equals(id)).OrderBy(c => c.CreatedDate).Include(x => x.Stage).Include(x => x.CreatedUser).ToList();
+            var requestLogs = _emiratesUnitOfWork.RequestStageLogs.Where(x => x.RequestId.Equals(id) && x.StageId != (int)SystemEnums.Stages.Draft).OrderBy(c => c.CreatedDate).Include(x => x.Stage).Include(x => x.CreatedUser).ToList();
             return GetResponse(data: _mapper.Map<List<GetRequestStageLogsDto>>(requestLogs));
         }
 
@@ -195,6 +195,18 @@ namespace Emirates.Core.Application.Services.Requests
         public IApiResponse InboxShamel(SearchModel searchModel)
         {
             searchModel.SearchFields.Add(new SearchField { FieldName = "StageId", Operator = "Equal", Value = ((int)SystemEnums.Stages.UnderProcessing).ToString() });
+            var serchResult = DynamicSearch(_emiratesUnitOfWork.Requests.GetQueryable().ProjectTo<GetInboxListDto>(_mapConfig), searchModel)
+                .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetInboxListDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
+        }
+
+        public IApiResponse RequestSearch(SearchModel searchModel)
+        {
             var serchResult = DynamicSearch(_emiratesUnitOfWork.Requests.GetQueryable().ProjectTo<GetInboxListDto>(_mapConfig), searchModel)
                 .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
 
