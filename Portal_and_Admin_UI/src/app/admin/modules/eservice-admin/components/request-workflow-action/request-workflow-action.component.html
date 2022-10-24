@@ -4,7 +4,8 @@
 <ng-content select="[requestAction]"></ng-content>
 
 <div class="form-actions">
+  <a [routerLink]="[previousUrl, requestId]" class="btn btn-outline-secondary my-1 ms-auto me-0">السابق</a>
+
   <ng-content select="[requestActionButtons]"></ng-content>
-  <a [routerLink]="[previousUrl, requestId]" class="btn btn-cancel">السابق</a>
-  <a [routerLink]="['/admin/eservice-admin/inbox']" class="btn btn-cancel">إلغاء</a>
+  <a [routerLink]="['/admin/eservice-admin/inbox']" class="btn btn-secondary my-1">إلغاء</a>
 </div>
