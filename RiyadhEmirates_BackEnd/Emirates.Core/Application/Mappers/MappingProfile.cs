@@ -184,8 +184,7 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<User, GetUserDataDto>()
                 .ForMember(dest => dest.Name, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
                 .ForMember(dest => dest.BirthDate, src => src.MapFrom(m => m.BirthDate.ToString("yyyy-MM-dd")))
-                .ForMember(dest => dest.GenderName, src => src.MapFrom(m => m.IsMale ? "ذكر" : "أنثى"))
-                .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr));
+                .ForMember(dest => dest.GenderName, src => src.MapFrom(m => m.IsMale ? "ذكر" : "أنثى"));
             #endregion
 
             #region Request

@@ -70,7 +70,7 @@ export class PrisonersServicesComponent implements OnInit {
     this.prisonersServicesForm = this.formBuilder.group({
       requestTypeId: [this.createRequestPrisonersServiceDto.requestTypeId || null, Validators.required],
       notes: [this.createRequestPrisonersServiceDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      prisonId: [this.createRequestPrisonersServiceDto.prisonId || null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      prisonId: [this.createRequestPrisonersServiceDto.prisonId || null, [Validators.required]],
       caseTypeId: [this.createRequestPrisonersServiceDto.caseTypeId || null, Validators.required]
     });
   }
