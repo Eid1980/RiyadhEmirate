@@ -31,6 +31,7 @@
                           invalid:(isFormSubmitted || userRegisterForm.get('userName').touched) &&
                           userRegisterForm.get('userName').errors?.required}" />
                         <small *ngIf="(isFormSubmitted || userRegisterForm.get('userName').touched) && userRegisterForm.get('userName').errors?.required" class="danger">هذا الحقل مطلوب</small>
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('userName').touched) && !userRegisterForm.get('userName').errors?.isValid" class="danger">رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام</small>
                       </div>
                     </div>
                     <div class="col-sm-12">
@@ -183,7 +184,10 @@
                             invalid: (isFormSubmitted || userRegisterForm.get('phoneNumber').touched) &&
                             userRegisterForm.get('phoneNumber').errors?.required}" />
                         <small *ngIf="(isFormSubmitted || userRegisterForm.get('phoneNumber').touched) && userRegisterForm.get('phoneNumber').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
+                            class="danger">هذا الحقل مطلوب</small>
+
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('phoneNumber').touched) && !userRegisterForm.get('phoneNumber').errors?.isValid"
+                            class="danger">رقم الجوال يبدأ ب 966 و يتكون من 12 رقم</small>
                       </div>
                     </div>
                     <div class="col-sm-6">

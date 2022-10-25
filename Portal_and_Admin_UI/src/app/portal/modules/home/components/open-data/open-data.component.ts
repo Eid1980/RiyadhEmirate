@@ -44,9 +44,10 @@ export class OpenDataComponent implements OnInit {
   buildForm() {
     this.createOpenDataRequestform = this.formBuilder.group({
       fullName: [this.createOpenDataRequestDto.fullName || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      email: [this.createOpenDataRequestDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      email: [this.createOpenDataRequestDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace,Validators.email]],
       title: [this.createOpenDataRequestDto.title || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      content: [this.createOpenDataRequestDto.content || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
+      content: [this.createOpenDataRequestDto.content || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      recaptcha: ['' , Validators.required]
     });
   }
 
