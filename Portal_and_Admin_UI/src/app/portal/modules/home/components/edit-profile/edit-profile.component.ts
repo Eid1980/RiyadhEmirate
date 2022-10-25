@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { MobileNumberValidator } from '@shared/custom-validators/mobileNumber.validator';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { AccountService } from '@shared/proxy/accounts/account.service';
 import { GetUserProfileData, UpdateUserProfileDto } from '@shared/proxy/accounts/models';
@@ -110,8 +111,8 @@ export class EditProfileComponent implements OnInit {
       confirmNewpassword: [null],
       image: [null],
       //password: [{ value: '1234', disabled: false }, [Validators.required]],
-      phoneNumber: [{ value: this.userProfileData.phoneNumber, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      email: [{ value: this.userProfileData.email, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      phoneNumber: [{ value: this.userProfileData.phoneNumber, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace,MobileNumberValidator.validateMobileNumber]],
+      email: [{ value: this.userProfileData.email, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace, Validators.email]],
       nationalityId: [this.userProfileData.nationalityId, [Validators.required]],
       address: [{ value: this.userProfileData.address, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });

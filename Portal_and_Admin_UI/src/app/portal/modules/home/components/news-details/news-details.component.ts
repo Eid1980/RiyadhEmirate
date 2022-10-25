@@ -60,7 +60,7 @@ export class NewsDetailsComponent implements OnInit {
   buildForm() {
     this.createCommentForm = this.formBuilder.group({
       createdByName: [this.createNewsCommentDto.createdByName || ''],
-      email: [this.createNewsCommentDto.email || ''],
+      email: [this.createNewsCommentDto.email || '' , Validators.email],
       comment: [this.createNewsCommentDto.comment || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });
   }

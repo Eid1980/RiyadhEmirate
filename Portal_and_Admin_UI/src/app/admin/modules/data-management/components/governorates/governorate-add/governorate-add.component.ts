@@ -7,6 +7,7 @@ import { GovernorateService } from '@shared/proxy/governorates/governorate.servi
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { FileCateguery } from '@shared/enums/file-categuery.enum';
 import { environment } from 'src/environments/environment';
+import { MobileNumberValidator } from '@shared/custom-validators/mobileNumber.validator';
 
 @Component({
   selector: 'app-governorate-add',
@@ -40,7 +41,7 @@ export class GovernorateAddComponent implements OnInit {
       nameEn: [this.createGovernorateDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionAr: [this.createGovernorateDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionEn: [this.createGovernorateDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      phoneNumber: [this.createGovernorateDto.phoneNumber || ''],
+      phoneNumber: [this.createGovernorateDto.phoneNumber || '', MobileNumberValidator.validateMobileNumber],
       locationLink: [this.createGovernorateDto.locationLink || ''],
       portalLink: [this.createGovernorateDto.portalLink || ''],
       image: [this.createGovernorateDto.image || null],
