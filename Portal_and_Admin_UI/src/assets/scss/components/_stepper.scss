@@ -6,6 +6,7 @@ p-steps {
       justify-content: space-between;
       position: relative;
       font-family: 'Almarai';
+      overflow-x: auto;
 
       &::before {
         content: "";
