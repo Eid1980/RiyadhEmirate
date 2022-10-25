@@ -230,11 +230,34 @@ p-rating {
 
     .p-rating-icon {
       font-size: 14px;
-      color: rgba($color: $dark, $alpha: 0.4);
-      margin-left: 6px !important;
+      color: rgba($color: $dark, $alpha: 0.3);
+      margin-left: 8px !important;
+
+      &.pi-star-fill {
+        color: $secondary-1;
+      }
 
       &:last-child {
         margin-left: 0px !important;
+      }
+
+      &:hover,
+      &:focus {
+        outline: 0 !important;
+      }
+    }
+
+    &:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {
+      color: $secondary-1;
+    }
+  }
+
+  &.rating-lg {
+    .p-rating {
+      margin-top: 26px;
+
+      .p-rating-icon {
+        font-size: 32px;
       }
     }
   }

@@ -32,7 +32,7 @@ namespace Emirates.Core.Application.Services.Accounts
 
         public IApiResponse GetUserData(int id)
         {
-            var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality));
+            var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);

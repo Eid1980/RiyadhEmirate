@@ -1,11 +1,13 @@
 
-<div class="py-4">
-  <div class="term-row" *ngFor="let serviceCondition of getServiceConditionListDto;let i=index;">
-    <span class="term-num">{{i+1}}</span>
-    <span class="term-desc">{{serviceCondition.condition}}</span>
+<div class="py-3">
+  <div class="artical-content-wrapper mb-0 pt-3">
+    <ol class="artical-list">
+      <li class="artical-list-item" *ngFor="let serviceCondition of getServiceConditionListDto">{{serviceCondition.condition}}</li>
+    </ol>
   </div>
-  <div class="term-row" *ngIf="getServiceConditionListDto.length <= 0">
-    <span class="empty-grid-table">لا يوجد شروط على الخدمة</span>
+
+  <div class="d-flex flex-column align-items-center" *ngIf="getServiceConditionListDto.length <= 0">
+    <i class="fa-sharp fa-solid fa-circle-exclamation fa-3x text-secondary mb-2"></i>
+    <h6 class="mb-0 fa-16 text-muted">لا يوجد شروط على الخدمة</h6>
   </div>
 </div>
-
