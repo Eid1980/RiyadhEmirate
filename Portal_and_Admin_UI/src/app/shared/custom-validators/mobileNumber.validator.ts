@@ -6,7 +6,7 @@ export class MobileNumberValidator {
     let controlValue = (control.value as string)?.valueOf().trim();
 
     if (controlValue == '') {
-      return { isValid: false }
+      return { isValid: true }
     }
 
     let regexp = new RegExp('^966{1}[0-9]{9}$');

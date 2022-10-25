@@ -198,6 +198,9 @@
                             userRegisterForm.get('email').errors?.required}" />
                         <small *ngIf="(isFormSubmitted || userRegisterForm.get('email').touched) && userRegisterForm.get('email').errors?.required"
                                class="danger">هذا الحقل مطلوب</small>
+
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('email').touched) && userRegisterForm.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
+
                       </div>
                     </div>
 

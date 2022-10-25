@@ -72,6 +72,7 @@
                         (isFormSubmitted || createContactUsform.get('email').touched) && createContactUsform.get('email').errors?.required
                     }" />
                   <small *ngIf="(isFormSubmitted || createContactUsform.get('email').touched) && createContactUsform.get('email').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || createContactUsform.get('email').touched) && createContactUsform.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
                 </div>
 
                 <div class="form-group col-md-6">

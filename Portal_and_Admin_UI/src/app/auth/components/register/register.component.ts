@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
       lastNameEn: [this.createUserDto.lastNameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
 
       phoneNumber: [this.createUserDto.phoneNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace,MobileNumberValidator.validateMobileNumber]],
-      email: [this.createUserDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      email: [this.createUserDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, Validators.email]],
 
       passportId: [this.createUserDto.passportId || ''],
       isMale: [this.createUserDto.isMale || null, Validators.required],

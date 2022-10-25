@@ -36,7 +36,7 @@ export class ContactUsComponent implements OnInit {
   buildForm() {
     this.createContactUsform = this.formBuilder.group({
       fullName: [this.createContactUsMessage.fullName || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      email : [this.createContactUsMessage.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      email : [this.createContactUsMessage.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace,Validators.email]],
       title: [this.createContactUsMessage.title || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       contactUsMessageTypeId: [this.createContactUsMessage.contactUsMessageTypeId || '', [Validators.required]],
       content: [this.createContactUsMessage.content || null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],

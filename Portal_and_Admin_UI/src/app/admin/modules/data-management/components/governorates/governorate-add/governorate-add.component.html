@@ -39,6 +39,8 @@
         <div class="form-group col-md-6">
           <label for="phoneNumber" class="form-lbl">رقم الهاتف</label>
           <input type="text" class="form-control" autocomplete="off" formControlName="phoneNumber" id="phoneNumber" />
+          <small *ngIf="(isFormSubmitted || createGovernorateForm.get('phoneNumber').touched) && !createGovernorateForm.get('phoneNumber').errors?.isValid"
+            class="danger">رقم الجوال يبدأ ب 966 و يتكون من 12 رقم</small>
         </div>
         <div class="form-group col-md-6">
           <label for="locationLink" class="form-lbl">خريطة المحافظة</label>
