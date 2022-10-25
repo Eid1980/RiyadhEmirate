@@ -10,6 +10,8 @@ import { UserLoginDto } from '@shared/proxy/accounts/models';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 import { MessageType } from '@shared/enums/message-type.enum';
+import { NationalityIDValidator } from '@shared/custom-validators/nationalityId.validator';
+import { MobileNumberValidator } from '@shared/custom-validators/mobileNumber.validator';
 
 
 @Component({
@@ -66,7 +68,7 @@ export class RegisterComponent implements OnInit {
   }
   buildRegisterForm() {
     this.userRegisterForm = this.formBuilder.group({
-      userName: [this.createUserDto.userName || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      userName: [this.createUserDto.userName || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, NationalityIDValidator.validateNationalityID]],
       birthDate: [this.createUserDto.birthDate || null],
       passWord: [this.createUserDto.passWord || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       confirmPassWord: [this.createUserDto.confirmPassWord || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
@@ -81,7 +83,7 @@ export class RegisterComponent implements OnInit {
       thirdNameEn: [this.createUserDto.thirdNameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       lastNameEn: [this.createUserDto.lastNameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
 
-      phoneNumber: [this.createUserDto.phoneNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      phoneNumber: [this.createUserDto.phoneNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace,MobileNumberValidator.validateMobileNumber]],
       email: [this.createUserDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
 
       passportId: [this.createUserDto.passportId || ''],

@@ -52,7 +52,7 @@ namespace Emirates.Core.Application.Services.OpenDataCategueries
             searchModel.PageNumber = 1;
             searchModel.PageSize = 5;
 
-            var result = _emiratesUnitOfWork.OpenDataCategueries.IncludeMultiple(d=> d.OpenDataSubCateguery , d => d.OpenDataReports).ToList()
+            var result = _emiratesUnitOfWork.OpenDataCategueries.IncludeMultiple(d=> d.OpenDataSubCateguery , d => d.OpenDataReports).Where(c =>c.IsActive == true).ToList()
                 .GroupBy(h => new { h.Id, h.NameAr, OpenDataSubCategueryNameAr = h.OpenDataSubCateguery.NameAr}, (key, g) => new
                 {
                     key = key,
