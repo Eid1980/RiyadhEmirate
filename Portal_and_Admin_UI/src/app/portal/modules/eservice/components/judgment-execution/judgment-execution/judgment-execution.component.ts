@@ -13,6 +13,7 @@ import { RequestJudgmentExecutionService } from '@shared/proxy/request-judgment-
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { NationalityIDValidator } from '@shared/custom-validators/nationalityId.validator';
 
 
 @Component({
@@ -33,9 +34,8 @@ export class JudgmentExecutionComponent implements OnInit {
   //#region for datePicker
   @ViewChild('lawsuitDate') lawsuitDate: any;
   isValidDate = false;
+  date: NgbDateStruct;
   selectedDateType = DateType.Hijri;
-  maxHigriDate: NgbDateStruct;
-  maxGreg: NgbDateStruct;
   //#endregion
 
   constructor(private formBuilder: FormBuilder, private requestJudgmentExecutionService: RequestJudgmentExecutionService,
@@ -43,18 +43,6 @@ export class JudgmentExecutionComponent implements OnInit {
     private activatedRoute: ActivatedRoute, private globalService: GlobalService,
     private dateFormatterService: DateFormatterService)
   {
-    let nowDate = new Date();
-    let nowDateHijri = dateFormatterService.GetTodayHijri();
-    this.maxHigriDate = {
-      day: nowDateHijri.day,
-      month: nowDateHijri.month,
-      year: nowDateHijri.year - 18,
-    };
-    this.maxGreg = {
-      day: nowDate.getUTCDate() + 1,
-      month: nowDate.getUTCMonth() + 1,
-      year: nowDate.getUTCFullYear() - 18,
-    };
   }
 
   ngOnInit(): void {
@@ -76,13 +64,6 @@ export class JudgmentExecutionComponent implements OnInit {
     if (this.lawsuitDate.getSelectedDate() == 'Invalid date') {
       this.isValidDate = true;
       return;
-    }
-
-    if (!this.isSameRequester) {
-      this.judgmentExecutionForm.controls["requesterName"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
-      this.judgmentExecutionForm.controls['requesterName'].updateValueAndValidity();
-      this.judgmentExecutionForm.controls["requesterNationalId"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
-      this.judgmentExecutionForm.controls['requesterNationalId'].updateValueAndValidity();
     }
     if (this.judgmentExecutionForm.valid) {
       if (this.requestId) {
@@ -126,27 +107,41 @@ export class JudgmentExecutionComponent implements OnInit {
     });
   }
   onRequesterTypeChange() {
-    let val = this.judgmentExecutionForm.get('requesterType').value;
-    if (val == 1) {
+    this.updateValidations(this.judgmentExecutionForm.get('requesterType').value);
+  }
+  updateValidations(requesterType: number) {
+    if (requesterType == 1) {
       this.isSameRequester = true;
       this.judgmentExecutionForm.get('requesterName').setValue('');
       this.judgmentExecutionForm.get('requesterNationalId').setValue('');
+      this.judgmentExecutionForm.controls["requesterName"].removeValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
+      this.judgmentExecutionForm.controls['requesterName'].updateValueAndValidity();
+      this.judgmentExecutionForm.controls["requesterNationalId"].removeValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace, NationalityIDValidator.validateNationalityID]);
+      this.judgmentExecutionForm.controls['requesterNationalId'].updateValueAndValidity();
     }
     else {
       this.isSameRequester = false;
+      this.judgmentExecutionForm.controls["requesterName"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
+      this.judgmentExecutionForm.controls['requesterName'].updateValueAndValidity();
+      this.judgmentExecutionForm.controls["requesterNationalId"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace, NationalityIDValidator.validateNationalityID]);
+      this.judgmentExecutionForm.controls['requesterNationalId'].updateValueAndValidity();
     }
   }
   getDetails() {
     this.requestJudgmentExecutionService.getById(this.requestId).subscribe((response) => {
       if (response.data.canEdit) {
         this.createRequestJudgmentExecutionDto = response.data;
-        if (this.createRequestJudgmentExecutionDto.requesterType == 1) {
-          this.isSameRequester = true;
-        }
-        else {
-          this.isSameRequester = false;
-        }
+        //#region Set Date
+        let date = new Date(this.createRequestJudgmentExecutionDto.lawsuitDate);
+        let ngbDateStructGregorian = {
+          day: date.getUTCDate(),
+          month: date.getUTCMonth() + 1,
+          year: date.getUTCFullYear(),
+        };
+        this.date = this.dateFormatterService.ToHijri(ngbDateStructGregorian);
+      //#endregion
         this.buildForm();
+        this.updateValidations(this.createRequestJudgmentExecutionDto.requesterType);
       }
       else {
         this.globalService.messageAlert(MessageType.Warning, "لا يمكن التعديل على الطلب في الوقت الحالي")

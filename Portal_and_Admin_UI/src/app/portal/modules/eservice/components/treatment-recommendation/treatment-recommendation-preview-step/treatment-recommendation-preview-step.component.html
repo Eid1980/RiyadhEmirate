@@ -31,6 +31,10 @@
        class="btn btn-outline-primary px-4 ms-auto">السابق</a>
 
     <button type="button" class="btn btn-primary ms-3" (click)="sendRequest()">ارسال الطلب</button>
+    <button type="button" class="btn border-primary btn-white ms-3" printTitle="طلب علاج" [useExistingCss]="true" printSectionId="request-print-section" ngxPrint>
+      <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
+      <span class="fa-12">طباعة</span>
+    </button>
     <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
   </div>
 

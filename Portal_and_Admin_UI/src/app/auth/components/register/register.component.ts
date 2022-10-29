@@ -13,7 +13,6 @@ import { MessageType } from '@shared/enums/message-type.enum';
 import { NationalityIDValidator } from '@shared/custom-validators/nationalityId.validator';
 import { MobileNumberValidator } from '@shared/custom-validators/mobileNumber.validator';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -35,7 +34,6 @@ export class RegisterComponent implements OnInit {
   maxHigriDate: NgbDateStruct;
   maxGreg: NgbDateStruct;
   dateOfBirth: NgbDateStruct;
-
   //#endregion
 
   constructor(

@@ -5,7 +5,6 @@ namespace Emirates.Core.Domain.Entities
     {
         public Guid Id { get; set; }
         public int RequestTypeId { get; set; }
-        public string InstrumentNumber { get; set; }
         public string EstimatedSpace { get; set; }
         public int GovernorateId { get; set; }
         public string Address { get; set; }

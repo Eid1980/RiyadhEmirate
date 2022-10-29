@@ -6,7 +6,7 @@ export const environment = {
   production: false,
 
   ApiUrl: "http://localhost:5000",
-  lastSieUpdate: "2022/10/23",
+  lastSieUpdate: "2022/10/30",
 
   allowedExtensions: 'image/*',
   fileSize: 4000000,

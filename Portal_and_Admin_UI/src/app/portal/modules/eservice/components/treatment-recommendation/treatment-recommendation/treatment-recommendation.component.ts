@@ -10,6 +10,7 @@ import { MenuItem } from 'primeng/api';
 import { CreateRequestTreatmentRecommendationDto, UpdateRequestTreatmentRecommendationDto } from '@shared/proxy/request-treatment-recommendation/models';
 import { RequestTreatmentRecommendationService } from '@shared/proxy/request-treatment-recommendation/request-treatment-recommendation.service';
 import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { NationalityIDValidator } from '@shared/custom-validators/nationalityId.validator';
 
 @Component({
   selector: 'app-treatment-recommendation',
@@ -46,12 +47,6 @@ export class TreatmentRecommendationComponent implements OnInit {
 
   onSubmit() {
     this.isFormSubmitted = true;
-    if (!this.isSameRequester) {
-      this.treatmentRecommendationForm.controls["patientName"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
-      this.treatmentRecommendationForm.controls['patientName'].updateValueAndValidity();
-      this.treatmentRecommendationForm.controls["patientNationalId"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
-      this.treatmentRecommendationForm.controls['patientNationalId'].updateValueAndValidity();
-    }
     if (this.treatmentRecommendationForm.valid) {
       if (this.requestId) {
         const updateRequestTreatmentRecommendationDto = { ...this.treatmentRecommendationForm.value } as UpdateRequestTreatmentRecommendationDto;
@@ -84,27 +79,32 @@ export class TreatmentRecommendationComponent implements OnInit {
     });
   }
   onRequesterTypeChange() {
-    let val = this.treatmentRecommendationForm.get('patientType').value;
-    if (val == 1) {
+    this.updateValidations(this.treatmentRecommendationForm.get('patientType').value);
+  }
+  updateValidations(patientType: number) {
+    if (patientType == 1) {
       this.isSameRequester = true;
       this.treatmentRecommendationForm.get('patientName').setValue('');
       this.treatmentRecommendationForm.get('patientNationalId').setValue('');
+      this.treatmentRecommendationForm.controls["patientName"].removeValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
+      this.treatmentRecommendationForm.controls['patientName'].updateValueAndValidity();
+      this.treatmentRecommendationForm.controls["patientNationalId"].removeValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace, NationalityIDValidator.validateNationalityID]);
+      this.treatmentRecommendationForm.controls['patientNationalId'].updateValueAndValidity();
     }
     else {
       this.isSameRequester = false;
+      this.treatmentRecommendationForm.controls["patientName"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
+      this.treatmentRecommendationForm.controls['patientName'].updateValueAndValidity();
+      this.treatmentRecommendationForm.controls["patientNationalId"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace, NationalityIDValidator.validateNationalityID]);
+      this.treatmentRecommendationForm.controls['patientNationalId'].updateValueAndValidity();
     }
   }
   getDetails() {
     this.requestTreatmentRecommendationService.getById(this.requestId).subscribe((response) => {
       if (response.data.canEdit) {
         this.createRequestTreatmentRecommendationDto = response.data;
-        if (this.createRequestTreatmentRecommendationDto.patientType == 1) {
-          this.isSameRequester = true;
-        }
-        else {
-          this.isSameRequester = false;
-        }
         this.buildForm();
+        this.updateValidations(this.createRequestTreatmentRecommendationDto.patientType);
       }
       else {
         this.globalService.messageAlert(MessageType.Warning, "لا يمكن التعديل على الطلب في الوقت الحالي")

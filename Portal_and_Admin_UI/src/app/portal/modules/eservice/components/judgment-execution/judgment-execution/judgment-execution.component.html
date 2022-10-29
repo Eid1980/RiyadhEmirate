@@ -71,13 +71,15 @@
           </div>
           <div class="form-group col-md-6" *ngIf="!isSameRequester">
             <label for="requesterNationalId" class="form-lbl">رقم هوية المدعي<span class="danger">*</span></label>
-            <input type="text" class="form-control" autocomplete="off" formControlName="requesterNationalId"
+            <input type="text" class="form-control" autocomplete="off" formControlName="requesterNationalId" maxlength="10"
                    id="requesterNationalId" [ngClass]="{
               invalid:
                 (isFormSubmitted || judgmentExecutionForm.get('requesterNationalId').touched) &&
                 judgmentExecutionForm.get('requesterNationalId').errors?.required}" />
             <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('requesterNationalId').touched) && judgmentExecutionForm.get('requesterNationalId').errors?.required"
                    class="danger">هذاالحقل مطلوب</small>
+            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('requesterNationalId').touched) && this.judgmentExecutionForm.get('requesterNationalId').errors != null && !judgmentExecutionForm.get('requesterNationalId').errors?.isValid"
+                   class="danger">ادخل رقم هوية صحيح</small>
           </div>
           <div class="form-group col-md-6">
             <label for="lawsuitNumber" class="form-lbl">رقم الدعوة<span class="danger">*</span></label>
@@ -90,12 +92,11 @@
                    class="danger">هذاالحقل مطلوب</small>
           </div>
           <div class="form-group col-md-6">
-            <hijri-gregorian-datepicker id="date" [maxGreg]="maxGreg" [maxHijri]="maxHigriDate"
-                                        [placeHolder]="'سنة/شهر/يوم'" [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" label="تاريخ الدعوة"
+            <hijri-gregorian-datepicker id="date" [(selectedDate)]="date"
+                                        [placeHolder]="'سنة/شهر/يوم'" [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" label="تاريخ الدعوة *"
                                         [isRequired]="true" [selectedDateType]="selectedDateType" #lawsuitDate>
             </hijri-gregorian-datepicker>
-            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('lawsuitDate').touched) && judgmentExecutionForm.get('lawsuitDate').errors?.required"
-                   class="danger">هذاالحقل مطلوب</small>
+            <small *ngIf="(isFormSubmitted && isValidDate)" class="danger">هذاالحقل مطلوب</small>
           </div>
           <div class="form-group col-md-12">
             <label for="notes" class="form-lbl">تفاصيل الدعوة<span class="danger">*</span></label>

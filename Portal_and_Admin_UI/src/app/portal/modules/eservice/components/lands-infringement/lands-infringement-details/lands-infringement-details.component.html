@@ -1,4 +1,4 @@
-<div class="container px-0">
+<div class="container px-0" id="request-print-section">
   <div class="form-card">
     <div class="form-header">
       <h5>بيانات مقدم الطلب</h5>
@@ -35,24 +35,16 @@
           <span class="form-val">{{ requestLandsInfringementDetailsDto?.requestTypeName }}</span>
         </div>
         <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">المساحة التقديرية</span>
+          <span class="form-val">{{ requestLandsInfringementDetailsDto?.estimatedSpace }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
           <span class="form-lbl lbl-33">المحافظة</span>
           <span class="form-val">{{ requestLandsInfringementDetailsDto?.governorateName }}</span>
         </div>
         <div class="info-col col-md-6 col-12">
-          <span class="form-lbl lbl-33">رقم الصك</span>
-          <span class="form-val">{{ requestLandsInfringementDetailsDto?.instrumentNumber }}</span>
-        </div>
-        <div class="info-col col-md-6 col-12">
-          <span class="form-lbl lbl-33">المساحة التقديرية</span>
-          <span class="form-val">{{ requestLandsInfringementDetailsDto?.estimatedSpace }}</span>
-        </div>
-        <div class="info-col col-md-12 col-12">
-          <span class="form-lbl lbl-33">وصف التعدي</span>
-          <span class="form-val">{{ requestLandsInfringementDetailsDto?.infringerDescription }}</span>
-        </div>
-        <div class="info-col col-md-12 col-12">
           <span class="form-lbl lbl-33">العنوان</span>
-          <span class="form-val">{{ requestLandsInfringementDetailsDto?.address }}</span>
+          <span class="form-val" *ngIf="requestLandsInfringementDetailsDto?.address" [outerHTML]="requestLandsInfringementDetailsDto?.address | listString"></span>
         </div>
         <div class="info-col col-md-6 col-12">
           <span class="form-lbl lbl-33">خط الطول</span>
@@ -67,13 +59,20 @@
           <span class="form-val">{{ requestLandsInfringementDetailsDto?.infringerName }}</span>
         </div>
         <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">وصف التعدي</span>
+          <span class="form-val" *ngIf="requestLandsInfringementDetailsDto?.infringerDescription" [outerHTML]="requestLandsInfringementDetailsDto?.infringerDescription | listString"></span>
+        </div>
+        <div class="info-col col-md-6 col-12">
           <span class="form-lbl lbl-33">تفاصيل اضافية</span>
-          <span class="form-val">{{ requestLandsInfringementDetailsDto?.notes }}</span>
+          <span class="form-val" *ngIf="requestLandsInfringementDetailsDto?.notes" [outerHTML]="requestLandsInfringementDetailsDto?.notes | listString"></span>
         </div>
       </div>
     </div>
   </div>
 
+</div>
+
+<div class="container px-0">
   <div class="form-card">
     <div class="form-header">
       <h5>المرفقات</h5>
@@ -91,5 +90,4 @@
       <app-request-stage-log [requestId]="requestId"></app-request-stage-log>
     </div>
   </div>
-
 </div>

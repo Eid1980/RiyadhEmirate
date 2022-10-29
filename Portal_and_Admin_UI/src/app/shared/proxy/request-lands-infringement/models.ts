@@ -1,7 +1,6 @@
 
 export interface CreateRequestLandsInfringementDto {
   requestTypeId: number;
-  instrumentNumber: string;
   estimatedSpace: string;
   governorateId: number;
   address: string;
@@ -15,7 +14,6 @@ export interface CreateRequestLandsInfringementDto {
 export interface UpdateRequestLandsInfringementDto {
   id: string;
   requestTypeId: number;
-  instrumentNumber: string;
   estimatedSpace: string;
   governorateId: number;
   address: string;
@@ -30,7 +28,6 @@ export interface UpdateRequestLandsInfringementDto {
 export interface RequestLandsInfringementDto {
   requestTypeId: number;
   canEdit: boolean;
-  instrumentNumber: string;
   estimatedSpace: string;
   governorateId: number;
   address: string;
@@ -53,7 +50,6 @@ export interface GetRequestLandsInfringementDetailsDto {
   notes: string;
   concurrencyStamp: string;
   requestTypeName: string;
-  instrumentNumber: string;
   estimatedSpace: string;
   governorateName: string;
   address: string;

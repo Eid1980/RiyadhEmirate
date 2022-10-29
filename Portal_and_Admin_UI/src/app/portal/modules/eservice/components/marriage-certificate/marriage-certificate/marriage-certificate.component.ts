@@ -70,7 +70,7 @@ export class MarriageCertificateComponent implements OnInit {
       employeeSide: [this.createRequestMarriageCertificateDto.employeeSide || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       jobOccupation: [this.createRequestMarriageCertificateDto.jobOccupation || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       maritalStatusId: [this.createRequestMarriageCertificateDto.maritalStatusId || null, Validators.required],
-      childrenCount: [this.createRequestMarriageCertificateDto.childrenCount || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
+      childrenCount: [this.createRequestMarriageCertificateDto.childrenCount || 0, [Validators.required, Validators.pattern('^[0-9]{1}|[0-9]{2}$')]]
     });
   }
   fillRequestType() {

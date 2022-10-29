@@ -42,6 +42,7 @@ using Emirates.Core.Application.Services.Auctions;
 using Emirates.Core.Application.Services.OpenDataCategueries;
 using Emirates.Core.Application.Services.OpenDataReports;
 using Emirates.Core.Application.Services.Prisons;
+using Emirates.Core.Application.Services.Nationalities;
 
 namespace Emirates.API.Configurations
 {
@@ -67,6 +68,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<ILocalizationService, LocalizationService>();
             builder.Services.AddScoped<IFileManagerService, FileManagerService>();
             builder.Services.AddScoped<IFileUploaderService, FileUploaderService>();
+            builder.Services.AddScoped<INationalityService, NationalityService>();
             builder.Services.AddScoped<INewsService, NewsService>();
             builder.Services.AddScoped<INewsCommentService, NewsCommentService>();
             builder.Services.AddScoped<INewsCategueryService, NewsCategueryService>();

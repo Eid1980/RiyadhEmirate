@@ -2,5 +2,9 @@
 </app-judgment-execution-details>
 
 <div class="form-actions">
+  <button type="button" class="btn border-primary btn-white" printTitle="طلب انفاذ حكم شرعي" [useExistingCss]="true" printSectionId="request-print-section" ngxPrint>
+    <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2">
+    <span class="fa-12">طباعة</span>
+  </button>
   <a [routerLink]="['/admin/eservice-admin/request-search']" class="btn btn-cancel">إلغاء</a>
 </div>

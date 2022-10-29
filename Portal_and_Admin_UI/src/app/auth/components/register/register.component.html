@@ -31,7 +31,7 @@
                           invalid:(isFormSubmitted || userRegisterForm.get('userName').touched) &&
                           userRegisterForm.get('userName').errors?.required}" />
                         <small *ngIf="(isFormSubmitted || userRegisterForm.get('userName').touched) && userRegisterForm.get('userName').errors?.required" class="danger">هذا الحقل مطلوب</small>
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('userName').touched) && !userRegisterForm.get('userName').errors?.isValid" class="danger">رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام</small>
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('userName').touched) && this.userRegisterForm.get('userName').errors != null && !userRegisterForm.get('userName').errors?.isValid" class="danger">ادخل رقم هوية صحيح</small>
                       </div>
                     </div>
                     <div class="col-sm-12">
@@ -180,14 +180,13 @@
                     <div class="col-sm-6">
                       <div class="form-group mb-4">
                         <label for="phoneNumber">رقم الجوال<span class="danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="phoneNumber" id="phoneNumber" [ngClass]="{
+                        <input type="text" class="form-control" formControlName="phoneNumber" id="phoneNumber" maxlength="14" [ngClass]="{
                             invalid: (isFormSubmitted || userRegisterForm.get('phoneNumber').touched) &&
                             userRegisterForm.get('phoneNumber').errors?.required}" />
                         <small *ngIf="(isFormSubmitted || userRegisterForm.get('phoneNumber').touched) && userRegisterForm.get('phoneNumber').errors?.required"
                             class="danger">هذا الحقل مطلوب</small>
-
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('phoneNumber').touched) && !userRegisterForm.get('phoneNumber').errors?.isValid"
-                            class="danger">رقم الجوال يبدأ ب 966 و يتكون من 12 رقم</small>
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('phoneNumber').touched) && this.userRegisterForm.get('phoneNumber').errors != null && !userRegisterForm.get('phoneNumber').errors?.isValid"
+                            class="danger">أدخل رقم جوال صحيح</small>
                       </div>
                     </div>
                     <div class="col-sm-6">

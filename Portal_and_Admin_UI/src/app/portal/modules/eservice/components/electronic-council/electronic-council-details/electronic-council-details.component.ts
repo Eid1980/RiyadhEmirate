@@ -5,12 +5,10 @@ import { MessageType } from '@shared/enums/message-type.enum';
 import { GetRequestElectronicBoardDetailsDto } from '@shared/proxy/request-electronic-board/models';
 import { RequestElectronicBoardService } from '@shared/proxy/request-electronic-board/request-electronic-board.service';
 import { GlobalService } from '@shared/services/global.service';
-import { NgxPrintModule } from 'ngx-print';
 
 @Component({
   selector: 'app-electronic-council-details',
-  templateUrl: './electronic-council-details.component.html',
-  styleUrls: ['./electronic-council-details.component.scss']
+  templateUrl: './electronic-council-details.component.html'
 })
 export class ElectronicCouncilDetailsComponent implements OnInit {
   requestId: string;

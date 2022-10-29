@@ -84,6 +84,10 @@ import { PrisonAddComponent } from "./components/prison/prison-add/prison-add.co
 import { PrisonEditComponent } from "./components/prison/prison-edit/prison-edit.component";
 import { PrisonListComponent } from "./components/prison/prison-list/prison-list.component";
 import { PrisonViewComponent } from "./components/prison/prison-view/prison-view.component";
+import { NationalityAddComponent } from "./components/nationality/nationality-add/nationality-add.component";
+import { NationalityEditComponent } from "./components/nationality/nationality-edit/nationality-edit.component";
+import { NationalityListComponent } from "./components/nationality/nationality-list/nationality-list.component";
+import { NationalityViewComponent } from "./components/nationality/nationality-view/nationality-view.component";
 
 const routes: Routes = [
 
@@ -479,6 +483,41 @@ const routes: Routes = [
   {
     path: "auction-view/:id",
     component: AuctionViewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  //#endregion
+
+  //#region Nationality
+  {
+    path: "nationality-add",
+    component: NationalityAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "nationality-edit/:id",
+    component: NationalityEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "nationality-list",
+    component: NationalityListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
+    }
+  },
+  {
+    path: "nationality-view/:id",
+    component: NationalityViewComponent,
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]

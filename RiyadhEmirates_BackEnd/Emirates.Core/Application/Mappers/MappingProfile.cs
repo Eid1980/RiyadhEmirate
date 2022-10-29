@@ -79,6 +79,14 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<CreateDesignEvaluationDto, DesignEvaluation>();
             #endregion
 
+            #region Nationality
+            CreateMap<CreateNationalityDto, Nationality>();
+            CreateMap<UpdateNationalityDto, Nationality>();
+
+            CreateMap<Nationality, GetNationalityDetailsDto>();
+            CreateMap<Nationality, GetNationalityListDto>();
+            #endregion
+
             #region News
             CreateMap<CreateNewsDto, News>()
                 .ForMember(dest => dest.ImageName, src => src.MapFrom(m => !string.IsNullOrEmpty(m.ImageName) ? $"{Guid.NewGuid()}_{m.ImageName}" : m.ImageName));
@@ -104,6 +112,7 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<CreateNewsCommentDto, NewsComment>();
 
             CreateMap<NewsComment, GetNewsCommentDetailsDto>()
+                .ForMember(dest => dest.NewsTitle, src => src.MapFrom(m => m.News.Title))
                 .ForMember(dest => dest.CommentStageName, src => src.MapFrom(m => m.CommentStage.NameAr))
                 .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
             CreateMap<NewsComment, GetNewsCommentListDto>()
@@ -301,7 +310,6 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
                 .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestLandsInfringement.RequestType.NameAr))
-                .ForMember(dest => dest.InstrumentNumber, src => src.MapFrom(m => m.RequestLandsInfringement.InstrumentNumber))
                 .ForMember(dest => dest.EstimatedSpace, src => src.MapFrom(m => m.RequestLandsInfringement.EstimatedSpace))
                 .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.RequestLandsInfringement.Governorate.NameAr))
                 .ForMember(dest => dest.Address, src => src.MapFrom(m => m.RequestLandsInfringement.Address))

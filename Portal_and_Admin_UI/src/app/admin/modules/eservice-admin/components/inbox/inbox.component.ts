@@ -39,7 +39,7 @@ export class InboxComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.globalService.setAdminTitle('البريد الوارد');
+    this.globalService.setAdminTitle('متابعة الطلبات');
     this.buildForm();
     this.serviceService.getLookupList().subscribe((response) => {
       this.services = response.data;

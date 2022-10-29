@@ -1,4 +1,4 @@
-<div class="container px-0">
+<div class="container px-0" id="request-print-section">
   <div class="form-card">
     <div class="form-header">
       <h5>بيانات مقدم الطلب</h5>
@@ -40,12 +40,14 @@
         </div>
         <div class="info-col col-md-12 col-12">
           <span class="form-lbl lbl-33">محتوى الطلب</span>
-          <span class="form-val">{{ requestElectronicSummonDetailsDto?.requestContent }}</span>
+          <span class="form-val" *ngIf="requestElectronicSummonDetailsDto?.requestContent" [outerHTML]="requestElectronicSummonDetailsDto?.requestContent | listString"></span>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<div class="container px-0">
   <div class="form-card">
     <div class="form-header">
       <h5>المرفقات</h5>
@@ -63,5 +65,4 @@
       <app-request-stage-log [requestId]="requestId"></app-request-stage-log>
     </div>
   </div>
-
 </div>

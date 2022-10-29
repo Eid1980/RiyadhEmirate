@@ -30,7 +30,7 @@ export class InboxShamelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.globalService.setAdminTitle('البريد الوارد لنظام شامل');
+    this.globalService.setAdminTitle('متابعة طلبات نظام شامل');
     this.buildForm();
     this.serviceService.getLookupList().subscribe((response) => {
       this.services = response.data;

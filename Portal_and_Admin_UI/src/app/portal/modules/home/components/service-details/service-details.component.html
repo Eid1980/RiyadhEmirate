@@ -58,17 +58,17 @@
 
           <!-- Listen or Print -->
           <div class="d-flex justify-content-end">
-            <button type="button" class="border-primary-2 btn btn-white ms-3 my-1 px-3 py-2 h-fit-content">
+            <!--<button type="button" class="border-primary-2 btn btn-white ms-3 my-1 px-3 py-2 h-fit-content">
               <img src="assets/images/icons/listen.svg" alt="icon" class="img-fluid ms-2" style="width: 14px;">
               <span class="fa-12">إستماع</span>
-            </button>
-            <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2 h-fit-content" (click)="print()">
+            </button>-->
+            <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2 h-fit-content" [printTitle]="serviceDetailsDto?.nameAr" [useExistingCss]="true" printSectionId="home" ngxPrint>
               <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
               <span class="fa-12">طباعة</span>
             </button>
           </div>
 
-          <div #serviceDetails class="tab-content" id="myTabContent">
+          <div #serviceDetails class="tab-content">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
               <div class="mb-4">
                 <h4 class="title">القطاع</h4>
@@ -280,32 +280,6 @@
                   </td>
                 </tr>
               </tbody>
-
-              <!-- <tr class="row mx-0">
-                <td class="col-4 ">التقييم</td>
-                <td class="col-8 ">
-                  <p-rating [cancel]="false" [(ngModel)]="rate" [readonly]="!canRate" (onRate)="rateService()"></p-rating>
-                  <span class="service mx-2">{{getServiceRateDto?.serviceRatePercentage}}</span>
-                </td>
-              </tr>
-              <tr class="row mx-0">
-                <td class="col-4 ">آخر تقييم</td>
-                <td class="col-8 ">
-                  <span class="service mx-2">{{getServiceRateDto?.lastRateDate}}</span>
-                </td>
-              </tr>
-              <tr class="row mx-0">
-                <td class="col-4 ">مجموع التقييم</td>
-                <td class="col-8 ">
-                  <span class="service mx-2">{{getServiceRateDto?.ratePercentage}}</span>
-                </td>
-              </tr>
-              <tr class="row mx-0">
-                <td class="col-4 ">عدد المقيمين</td>
-                <td class="col-8 ">
-                  <span class="service mx-2">{{getServiceRateDto?.rateCout}}</span>
-                </td>
-              </tr> -->
             </table>
           </div>
         </div>

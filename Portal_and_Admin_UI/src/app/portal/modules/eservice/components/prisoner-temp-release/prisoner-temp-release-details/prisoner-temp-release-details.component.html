@@ -1,10 +1,5 @@
 
-<button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2 h-fit-content" (click)="print()">
-  <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
-  <span class="fa-12">طباعة</span>
-</button>
-
-<div class="container">
+<div class="container px-0" id="request-print-section">
   <div class="form-card">
     <div class="form-header">
       <h5>بيانات مقدم الطلب</h5>
@@ -50,12 +45,14 @@
         </div>
         <div class="info-col col-md-12 col-12">
           <span class="form-lbl lbl-33">تفاصيل الطلب</span>
-          <span class="form-val">{{ requestPrisonerTempReleaseDetailsDto?.notes }}</span>
+          <span class="form-val" *ngIf="requestPrisonerTempReleaseDetailsDto?.notes" [outerHTML]="requestPrisonerTempReleaseDetailsDto?.notes | listString"></span>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<div class="container px-0">
   <div class="form-card">
     <div class="form-header">
       <h5>المرفقات</h5>

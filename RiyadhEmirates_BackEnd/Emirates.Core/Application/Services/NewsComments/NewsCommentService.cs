@@ -27,7 +27,7 @@ namespace Emirates.Core.Application.Services.NewsComments
 
         public IApiResponse GetById(int id)
         {
-            var latestNewsComment = _emiratesUnitOfWork.NewsComments.FirstOrDefault(n => n.Id == id, x => x.CommentStage);
+            var latestNewsComment = _emiratesUnitOfWork.NewsComments.FirstOrDefault(n => n.Id == id, x => x.CommentStage, x => x.News);
             if (latestNewsComment == null)
                 throw new NotFoundException(typeof(NewsComment).Name);
             return GetResponse(data: _mapper.Map<GetNewsCommentDetailsDto>(latestNewsComment));
