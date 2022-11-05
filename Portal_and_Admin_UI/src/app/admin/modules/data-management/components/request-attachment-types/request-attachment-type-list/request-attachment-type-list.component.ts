@@ -46,6 +46,7 @@ export class RequestAttachmentTypeListComponent implements OnInit {
           Field: 'isActive',
           Header: 'الحالة',
           Searchable: false,
+          Sortable: false,
           Type: ColumnType.Status,
           FuncName: (id, event) => this.changeStatus(id, event),
         },
