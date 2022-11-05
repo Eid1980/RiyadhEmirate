@@ -52,7 +52,7 @@ namespace Emirates.API.Controllers
         {
             return _lookupService.GetCommentStageLookupList();
         }
-        [HttpGet("GetContactUsMessageTypeLookupList")]
+        [AllowAnonymous, HttpGet("GetContactUsMessageTypeLookupList")]
         public IApiResponse GetContactUsMessageTypeLookupList()
         {
             return _lookupService.GetContactUsMessageTypeLookupList();

@@ -39,7 +39,7 @@
           <small *ngIf="(isFormSubmitted || createOpenDataReportForm.get('openDataCategueryId').touched) && createOpenDataReportForm.get('openDataCategueryId').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="" class="form-lbl">تحميل المرفق</label>
+          <label for="" class="form-lbl">تحميل المرفق<span class="danger">*</span></label>
           <p-fileUpload #uploader chooseLabel="تحميل المرفق" [auto]="true" [customUpload]="isCustomUpload"
                         (uploadHandler)="onUpload($event)" [multiple]="isMultiple" mode="advanced" [accept]="acceptType" [maxFileSize]="fileSize">
           </p-fileUpload>

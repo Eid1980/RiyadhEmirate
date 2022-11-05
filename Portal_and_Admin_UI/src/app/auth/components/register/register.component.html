@@ -37,7 +37,7 @@
                     <div class="col-sm-12">
                       <div class="form-group mb-4">
                         <hijri-gregorian-datepicker id="dateOfBirth" [placeHolder]="'سنة/شهر/يوم'" [isRequired]="false"
-                                                    [GregLabel]="'ميلادي'" [maxGreg]="maxGreg" [maxHijri]="maxHigriDate" [hijriLabel]="'هجري'"
+                                                    [GregLabel]="'ميلادي'" [minGreg]="minGreg" [minHijri]="minHigriDate" [maxGreg]="maxGreg" [maxHijri]="maxHigriDate" [hijriLabel]="'هجري'"
                                                     [selectedDateType]="selectedDateType" label="تاريخ الميلاد *" #birthDate>
                         </hijri-gregorian-datepicker>
                         <small *ngIf="(isFormSubmitted && isValidDate)" class="danger">هذا الحقل مطلوب</small>
@@ -129,8 +129,8 @@
                         <input type="password" class="form-control" formControlName="passWord" id="passWord" [ngClass]="{
                           invalid: (isFormSubmitted || userRegisterForm.get('passWord').touched) &&
                           userRegisterForm.get('passWord').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('passWord').touched) && userRegisterForm.get('passWord').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('passWord').touched) && userRegisterForm.get('passWord').errors?.required" class="danger">هذا الحقل مطلوب</small>
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('passWord').touched) && userRegisterForm.get('passWord').errors?.pattern" class="danger">كلمة المرور حروف وارقام ورموز</small>
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -139,8 +139,9 @@
                         <input type="password" class="form-control" formControlName="confirmPassWord" id="confirmPassWord" [ngClass]="{
                           invalid: (isFormSubmitted || userRegisterForm.get('confirmPassWord').touched) &&
                           userRegisterForm.get('confirmPassWord').errors?.required}" />
-                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('confirmPassWord').touched) && userRegisterForm.get('confirmPassWord').errors?.required"
-                               class="danger">هذا الحقل مطلوب</small>
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('confirmPassWord').touched) && userRegisterForm.get('confirmPassWord').errors?.required" class="danger">هذا الحقل مطلوب</small>
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('confirmPassWord').touched) && userRegisterForm.get('confirmPassWord').errors?.pattern" class="danger">تأكيد كلمة المرور حروف وارقام ورموز</small>
+                        <small *ngIf="(isFormSubmitted || userRegisterForm.get('confirmPassWord').touched) && this.userRegisterForm.get('confirmPassWord').errors != null && userRegisterForm.get('confirmPassWord').errors?.notMatch" class="danger">كلمة المرور غير متطابقة</small>
                       </div>
                     </div>
 

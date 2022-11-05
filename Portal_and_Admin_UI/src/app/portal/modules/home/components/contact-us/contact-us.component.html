@@ -91,7 +91,7 @@
                         (isFormSubmitted || createContactUsform.get('contactUsMessageTypeId').touched) &&
                         createContactUsform.get('contactUsMessageTypeId').errors?.required
                     }">
-                    <option [ngValue]="null">-- اختر التصنيف --</option>
+                    <option [ngValue]="null">-- اختر الغرض من الرساله --</option>
                     <option *ngFor="let messageType of messageContactUsTypes" [ngValue]="messageType.id">{{ messageType.name }}</option>
                   </select>
                   <small *ngIf="(isFormSubmitted || createContactUsform.get('contactUsMessageTypeId').touched) && createContactUsform.get('contactUsMessageTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>

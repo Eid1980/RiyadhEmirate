@@ -3,14 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\admin",
-    "\\src\\app\\admin\\modules",
-    "\\src\\app\\admin\\modules\\data-management",
-    "\\src\\app\\admin\\modules\\data-management\\components",
-    "\\src\\app\\admin\\modules\\data-management\\components\\auction",
-    "\\src\\app\\admin\\modules\\data-management\\components\\auction\\auction-add",
-    "\\src\\app\\admin\\modules\\data-management\\components\\case-type"
+    "\\src\\app\\auth",
+    "\\src\\app\\auth\\components",
+    "\\src\\app\\auth\\components\\login",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\admin\\modules\\data-management\\components\\auction\\auction-add\\auction-add.component.ts",
+  "SelectedNode": "\\src\\app\\auth\\components\\login\\login.component.ts",
   "PreviewInSolutionExplorer": false
 }

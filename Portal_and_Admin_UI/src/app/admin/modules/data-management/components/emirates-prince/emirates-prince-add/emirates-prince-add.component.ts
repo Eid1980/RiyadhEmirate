@@ -8,6 +8,8 @@ import { DateType } from 'ngx-hijri-gregorian-datepicker';
 import { FileManagerService } from '@shared/services/file-manager.service';
 import { FileCateguery } from '@shared/enums/file-categuery.enum';
 import { environment } from 'src/environments/environment';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-emirates-prince-add',
@@ -31,11 +33,21 @@ export class EmiratesPrinceAddComponent implements OnInit {
   @ViewChild('fromDatePicker') fromDate: any;
   @ViewChild('toDatePicker') toDate: any;
   isValidDate = false;
+  isGreaterValidDate = false;
   selectedDateType = DateType.Hijri;
+  minGreg: NgbDateStruct;
+  minHigriDate: NgbDateStruct;
   //#endregion
 
   constructor(private formBuilder: FormBuilder, private emiratesPrinceService: EmiratesPrinceService,
-    private fileManagerService: FileManagerService, private globalService: GlobalService) {
+    private fileManagerService: FileManagerService, private globalService: GlobalService)
+  {
+    this.minHigriDate = {
+      day: 1,
+      month: 1,
+      year: 1360,
+    };
+    this.minGreg = { day: 1, month: 1, year: 1940 };
   }
 
   ngOnInit(): void {
@@ -68,15 +80,25 @@ export class EmiratesPrinceAddComponent implements OnInit {
     this.isFormSubmitted = true;
     let date = this.fromDate.getSelectedDate();
     this.isValidDate = false;
-    if (date == null) {
+    if (date == null || date == 'Invalid date') {
       this.isValidDate = true;
       return;
+    }
+    let toDate = this.toDate.getSelectedDate();
+    if (toDate != null && toDate != 'Invalid date') {
+      if (date > toDate) {
+        this.isGreaterValidDate = true;
+        return;
+      }
+      else {
+        this.isGreaterValidDate = false;
+      }
     }
     if (this.createEmiratesPrinceForm.valid) {
       this.createEmiratesPrinceDto = { ...this.createEmiratesPrinceForm.value } as CreateEmiratesPrinceDto;
       this.createEmiratesPrinceDto.fromDate = date;
       if (this.toDate.getSelectedDate() != 'Invalid date') {
-        this.createEmiratesPrinceDto.toDate = this.toDate.getSelectedDate();
+        this.createEmiratesPrinceDto.toDate = toDate;
       }
       let imageContent = this.createEmiratesPrinceForm.get('image').value;
       if (imageContent) {

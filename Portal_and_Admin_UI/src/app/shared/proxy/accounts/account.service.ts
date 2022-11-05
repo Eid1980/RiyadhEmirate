@@ -59,10 +59,15 @@ export class AccountService {
     }
   }
 
-  logOut = (): void => {
+  logOut = (url?: string): void => {
     localStorage.removeItem('EmiratesToken');
     localStorage.removeItem('AuthUser');
-    this.router.navigate(['/auth/login']);
+    if (url) {
+      this.router.navigate(['/auth/login'], { queryParams: { returnUrl: url } });
+    }
+    else {
+      this.router.navigate(['/auth/login']);
+    }
   }
 
   getCurrentUserInfo = (): GetUserSessionDto => {
