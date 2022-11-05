@@ -50,6 +50,7 @@ namespace Emirates.Core.Application.Services.EmiratesPrinces
                     ImageName = p.ImageName,
                     Cv = p.Cv,
                     FromDate = p.FromDate,
+                    IsActive = p.IsActive,
                     ToDate = (p.ToDate == null) ? DateTime.Now.Date: p.ToDate
                 })
                .DynamicSearch(searchModel)
