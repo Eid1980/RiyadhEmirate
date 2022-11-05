@@ -29,9 +29,15 @@ export class NewsDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalService.setTitle('تفاصيل الخبر');
-    this.id = this._activatedRoute.snapshot.params['id'];
-    if (this.id) {
-      this.getNewsById();
+    let query = this._activatedRoute.snapshot.params['id'];
+    if (query) {
+      this.id = this.globalService.decryptNumber(query.toString());
+      if (this.id) {
+        this.getNewsById();
+      }
+      else {
+        this.globalService.navigate("/");
+      }
     }
     else {
       this.globalService.navigate("/");

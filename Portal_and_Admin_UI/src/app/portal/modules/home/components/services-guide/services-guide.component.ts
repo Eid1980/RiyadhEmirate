@@ -10,7 +10,7 @@ import { GlobalService } from '@shared/services/global.service';
 export class ServicesGuideComponent implements OnInit {
   services: GetServiceListDto[] = [];
 
-  constructor(private serviceService: ServiceService, private globalService: GlobalService) {
+  constructor(private serviceService: ServiceService, public globalService: GlobalService) {
   }
   ngOnInit(): void {
     this.getServices();

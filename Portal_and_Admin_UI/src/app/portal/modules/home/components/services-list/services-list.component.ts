@@ -15,7 +15,7 @@ export class ServicesListComponent implements OnInit {
   sortTitle = 'أبجدي - من أ إلى ي';
 
   constructor(private formBuilder: FormBuilder, private serviceService: ServiceService,
-    private globalService: GlobalService)
+    public globalService: GlobalService)
   {
   }
 

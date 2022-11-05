@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
 
+  cryptionKey: "Emirates@2023",
   ApiUrl: "http://localhost:5000",
   lastSieUpdate: "2022/10/30",
 

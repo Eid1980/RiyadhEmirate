@@ -12,6 +12,7 @@ import { GetServiceAudienceListDto } from '@shared/proxy/service-audience/models
 import { ServiceConditionService } from '@shared/proxy/service-condition/service-condition.service';
 import { GetServiceConditionListDto } from '@shared/proxy/service-condition/models';
 import { DomSanitizer } from '@angular/platform-browser';
+
 declare let $: any;
 
 @Component({
@@ -41,9 +42,15 @@ export class ServiceDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalService.setTitle('تفاصيل الخدمة');
-    this.id = this.activatedRoute.snapshot.params['id'];
-    if (this.id) {
-      this.getDetails();
+    let query = this.activatedRoute.snapshot.params['id'];
+    if (query) {
+      this.id = this.globalService.decryptNumber(query.toString());
+      if (this.id) {
+        this.getDetails();
+      }
+      else {
+        this.globalService.navigate("/");
+      }
     }
     else {
       this.globalService.navigate("/");

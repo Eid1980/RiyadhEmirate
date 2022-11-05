@@ -10,7 +10,7 @@ import { GlobalService } from '@shared/services/global.service';
 export class AuctionsComponent implements OnInit {
   auctions = [] as GetAuctionListDto[];
 
-  constructor(private auctionService: AuctionService, private globalService: GlobalService) { }
+  constructor(private auctionService: AuctionService, public globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.globalService.setTitle('الإعلانات والمزادات والمناقصات');

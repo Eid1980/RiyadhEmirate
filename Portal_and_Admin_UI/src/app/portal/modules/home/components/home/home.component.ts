@@ -211,7 +211,7 @@ export class HomeComponent implements OnInit {
   //#endregion
 
   constructor(private homeService: HomeService, private posterService: PosterService,
-    private _globalService: GlobalService, private translateService: TranslationServiceService) {
+    public _globalService: GlobalService, private translateService: TranslationServiceService) {
   }
 
   ngOnInit() {
