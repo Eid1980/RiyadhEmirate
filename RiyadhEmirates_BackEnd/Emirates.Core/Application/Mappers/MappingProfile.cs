@@ -52,7 +52,7 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.ToDate, src => src.MapFrom(m => m.ToDate == null? "حتى الان" : m.ToDate.Value.ToString("yyyy-MM-dd")));
             CreateMap<EmiratesPrince, GetEmiratesPrinceListDto>()
                 .ForMember(dest => dest.FromDate, src => src.MapFrom(m => m.FromDate.ToString("yyyy-MM-dd")))
-                .ForMember(dest => dest.ToDate, src => src.MapFrom(m => m.ToDate == null ? "حتى الان" : m.ToDate.Value.ToString("yyyy-MM-dd")));
+                .ForMember(dest => dest.ToDate, src => src.MapFrom(m => m.ToDate == null || m.ToDate == DateTime.Now.Date ? "حتى الان" : m.ToDate.Value.ToString("yyyy-MM-dd")));
             #endregion
 
             #region ContactUsMessage

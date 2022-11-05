@@ -40,8 +40,20 @@ namespace Emirates.Core.Application.Services.EmiratesPrinces
         public IApiResponse GetAll(SearchModel searchModel)
         {
             var serchResult = _emiratesUnitOfWork.EmiratesPrinces.GetQueryable()
-               .ProjectTo<GetEmiratesPrinceListDto>(_mapConfig)
+                .Select(p => new EmiratesPrince
+                {
+                    Id = p.Id,
+                    NameEn = p.NameEn,
+                    NameAr = p.NameAr,
+                    BehalfToEn = p.BehalfToEn,
+                    BehalfToAr = p.BehalfToAr,
+                    ImageName = p.ImageName,
+                    Cv = p.Cv,
+                    FromDate = p.FromDate,
+                    ToDate = (p.ToDate == null) ? DateTime.Now.Date: p.ToDate
+                })
                .DynamicSearch(searchModel)
+               .ProjectTo<GetEmiratesPrinceListDto>(_mapConfig)
                .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
 
             return GetResponse(data: new ListPageModel<GetEmiratesPrinceListDto>
