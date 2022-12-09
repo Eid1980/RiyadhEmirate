@@ -37,6 +37,16 @@ namespace Emirates.Core.Application.Helpers
             RequestRejected = 6,
             RequestApproved = 7
         }
+        public enum Roles
+        {
+            SuperSystemAdmin = 1,
+            SystemAdmin = 2,
+            NewsPermission = 3,
+            SettingPermission = 4,
+            UsersPermission = 5,
+            RequestReview = 6,
+            ShamelRequestReview = 7
+        }
 
         public static class FileCateguery
         {

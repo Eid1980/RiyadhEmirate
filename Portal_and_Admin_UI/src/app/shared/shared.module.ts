@@ -95,6 +95,13 @@ import { NgxCaptchaModule } from 'ngx-captcha'
     MultiSelectModule,
     RatingModule,
     NgxHijriGregorianDatepickerModule,
+    //TranslateModule.forRoot({
+    //  loader: {
+    //    provide: TranslateLoader,
+    //    useFactory: HttpLoaderFactory,
+    //    deps: [HttpClient],
+    //  },
+    //}),
     AgmCoreModule.forRoot({
       apiKey: ''
     }),

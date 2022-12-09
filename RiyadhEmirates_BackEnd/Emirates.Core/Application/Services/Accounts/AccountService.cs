@@ -320,6 +320,10 @@ namespace Emirates.Core.Application.Services.Accounts
             _emiratesUnitOfWork.Complete();
             return GetResponse(message: CustumMessages.DeleteSuccess());
         }
+        public bool IsUserInRoles(int userId, int[] roles)
+        {
+            return _emiratesUnitOfWork.UserRoles.Where(x => x.UserId.Equals(userId) && roles.Contains(x.RoleId)).Any();
+        }
 
         #region Helper Functions
         private string GenerateToken()
@@ -347,8 +351,6 @@ namespace Emirates.Core.Application.Services.Accounts
             }
             return true;
         }
-
-
         #endregion
 
     }

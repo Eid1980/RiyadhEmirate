@@ -1,6 +1,8 @@
-﻿using Emirates.Core.Application.Dtos.AboutUs;
+﻿using Emirates.API.Filters;
+using Emirates.Core.Application.Dtos.AboutUs;
 using Emirates.Core.Application.Dtos.MainPoints;
 using Emirates.Core.Application.Dtos.WomanSection;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.WomanSection;
 using Microsoft.AspNetCore.Authorization;
@@ -18,38 +20,42 @@ namespace Emirates.API.Controllers
             _womanSectionService = womanSectionService;
         }
 
-        [AllowAnonymous]
-        [HttpGet]
+        [AllowAnonymous, HttpGet]
         public IApiResponse GetAll()
         {
             return _womanSectionService.GetAll();
         }
 
         [HttpPost("Create")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Create(CreateWomanSectionDto createDto)
         {
             return _womanSectionService.Create(createDto);
         }
 
         [HttpPost("CreateMainPoint")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse CreateMainPoint(CreateMainPoints mainPoint)
         {
             return _womanSectionService.CreateMainPoint(mainPoint);
         }
 
         [HttpPut("Update")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Update(UpdateWomanSectionDto updateDto)
         {
             return _womanSectionService.Update(updateDto);
         }
 
         [HttpPut("Update/MainPoint")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse UpdateMainPoint(UpdateMainPoint updateMainPoint)
         {
             return _womanSectionService.UpdateMainPoint(updateMainPoint);
         }
 
         [HttpPut("Delete/MainPoint/{mainPointid}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse DeleteMainPoint(int mainPointid)
         {
             return _womanSectionService.DeleteMainPoint(mainPointid);

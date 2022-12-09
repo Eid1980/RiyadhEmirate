@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
+using Emirates.API.Filters;
+using Emirates.Core.Application.Helpers;
 
 namespace Emirates.API.Controllers
 {
@@ -32,6 +34,7 @@ namespace Emirates.API.Controllers
         }
 
         [HttpPost("GetListPage")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse GetAll(SearchModel searchModel)
         {
             return _serviceService.GetAll(searchModel);
@@ -50,24 +53,28 @@ namespace Emirates.API.Controllers
         }
 
         [HttpPost("Create")]
+        [AuthorizeAdmin()]
         public IApiResponse Create(CreateServiceDto createDto)
         {
             return _serviceService.Create(createDto);
         }
 
         [HttpPut("Update")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse Update(UpdateServiceDto updateDto)
         {
             return _serviceService.Update(updateDto);
         }
 
         [HttpGet("ChangeStatus/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse ChangeStatus(int id)
         {
             return _serviceService.ChangeStatus(id);
         }
 
         [HttpDelete("Delete/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse Delete(int id)
         {
             return _serviceService.Delete(id);

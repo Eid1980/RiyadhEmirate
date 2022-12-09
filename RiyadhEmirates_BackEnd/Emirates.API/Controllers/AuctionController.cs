@@ -1,5 +1,7 @@
-﻿using Emirates.Core.Application.Dtos;
+﻿using Emirates.API.Filters;
+using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Auctions;
 using Emirates.Core.Application.Services.Shared;
@@ -19,12 +21,13 @@ namespace Emirates.API.Controllers
             _auctionService = auctionService;
         }
 
-        [HttpGet("GetById/{id}")]
+        [AllowAnonymous, HttpGet("GetById/{id}")]
         public IApiResponse GetById(int id)
         {
             return _auctionService.GetById(id);
         }
         [HttpPost("GetListPage")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse GetAll(SearchModel searchModelDto)
         {
             return _auctionService.GetAll(searchModelDto);
@@ -36,22 +39,26 @@ namespace Emirates.API.Controllers
         }
 
         [HttpPost("Create")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Create(CreateAuctionDto createDto)
         {
             return _auctionService.Create(createDto);
         }
         [HttpPut("Update")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Update(UpdateAuctionDto updateDto)
         {
             return _auctionService.Update(updateDto);
         }
         [HttpGet("ChangeStatus/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse ChangeStatus(int id)
         {
             return _auctionService.ChangeStatus(id);
         }
 
         [HttpDelete("Delete/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Delete(int id)
         {
             return _auctionService.Delete(id);

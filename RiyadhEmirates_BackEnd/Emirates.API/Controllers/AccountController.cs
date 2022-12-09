@@ -12,6 +12,8 @@ using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Dtos.Accounts;
+using Emirates.API.Filters;
+using Emirates.Core.Application.Helpers;
 
 namespace Emirates.API.Controllers
 {
@@ -30,46 +32,47 @@ namespace Emirates.API.Controllers
             _config = config;
         }
 
-        [HttpGet("GetUserData/{id?}")]
-        [Authorize]
+        [Authorize, HttpGet("GetUserData/{id?}")]
         public IApiResponse GetUserData(int id=0)
         {
             if (id == 0)
                 id = UserId;
             return _accountService.GetUserData(id);
         }
-        [HttpGet("GetCurrentUserRoles")]
-        [Authorize]
+        [Authorize, HttpGet("GetCurrentUserRoles")]
         public IApiResponse GetCurrentUserRoles()
         {
             return _accountService.GetCurrentUserRoles(UserId);
         }
 
-        [HttpGet("GetAuthUser")]
-        [Authorize]
+        [Authorize, HttpGet("GetAuthUser")]
         public IApiResponse GetAuthUser()
         {
             return _accountService.GetAuthUser(UserId);
         }
 
-        [HttpGet("GetById/{id}")]
+        [Authorize, HttpGet("GetById/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse GetById(int id)
         {
             return _accountService.GetById(id);
         }
 
-        [HttpGet("GetByUserName/{userName}")]
+        [Authorize, HttpGet("GetByUserName/{userName}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse GetByUserName(string userName)
         {
             return _accountService.GetByUserName(userName);
         }
-        [HttpGet("GetByPhone/{phoneNumber}")]
+        [Authorize, HttpGet("GetByPhone/{phoneNumber}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse GetByPhone(string phoneNumber)
         {
             return _accountService.GetByPhone(phoneNumber);
         }
 
-        [HttpGet("UserExist/{userName}")]
+        [Authorize, HttpGet("UserExist/{userName}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse UserExist(string userName)
         {
             return _accountService.UserExist(userName);
@@ -149,26 +152,27 @@ namespace Emirates.API.Controllers
             return _accountService.Register(createUserDto);
         }
 
-        //[Authorize]
-        [HttpPost("UpdateUserProfile")]
+        [Authorize, HttpPost("UpdateUserProfile")]
         public IApiResponse UpdateUserProfile(UpdateUserProfileDto updateUserProfileDto)
         {
             return _accountService.UpdateUserProfile(updateUserProfileDto);
         }
 
-        [HttpGet("GetUserProfileData/{id}")]
+        [Authorize, HttpGet("GetUserProfileData/{id}")]
         public IApiResponse GetUserProfileData(int id)
         {
             return _accountService.GetUserProfileData(id);
         }
         
         [HttpGet("CreateEmployee/{userId}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse CreateEmployee(int userId)
         {
             return _accountService.CreateEmployee(userId);
         }
         
         [HttpGet("DeleteEmployee/{userId}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse DeleteEmployee(int userId)
         {
             return _accountService.DeleteEmployee(userId);

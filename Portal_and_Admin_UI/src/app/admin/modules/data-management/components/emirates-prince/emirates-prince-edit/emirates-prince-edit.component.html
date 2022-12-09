@@ -55,6 +55,8 @@
                         (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
                         [accept]="acceptType" [maxFileSize]="fileSize">
           </p-fileUpload>
+          <span class="danger">{{ 'global:fileSize' | translate }} ({{ fileSize/1024/1024 | number }}) {{ 'global:mega' | translate }}</span><br />
+          <span class="danger">{{ 'global:fileExtentions' | translate }} ({{ acceptType }})</span>
         </div>
         <div class="form-group col-6">
           <label class="container-check">

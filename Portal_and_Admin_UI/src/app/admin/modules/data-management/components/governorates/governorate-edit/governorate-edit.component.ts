@@ -9,7 +9,7 @@ import { GovernorateService } from '@shared/proxy/governorates/governorate.servi
 import { UpdateGovernorateDto } from '@shared/proxy/governorates/models';
 import { FileCateguery } from '@shared/enums/file-categuery.enum';
 import { environment } from 'src/environments/environment';
-import { MobileNumberValidator } from '@shared/custom-validators/mobileNumber.validator';
+import { PhoneNumberValidator } from '@shared/custom-validators/phoneNumber.validator';
 
 @Component({
   selector: 'app-governorate-edit',
@@ -52,7 +52,7 @@ export class GovernorateEditComponent implements OnInit {
       nameEn: [this.updateGovernorateDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionAr: [this.updateGovernorateDto.descriptionAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       descriptionEn: [this.updateGovernorateDto.descriptionEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      phoneNumber: [this.updateGovernorateDto.phoneNumber || '', MobileNumberValidator.validateMobileNumber],
+      phoneNumber: [this.updateGovernorateDto.phoneNumber || '', PhoneNumberValidator.validatePhoneNumber],
       locationLink: [this.updateGovernorateDto.locationLink || ''],
       portalLink: [this.updateGovernorateDto.portalLink || ''],
       image: [null],

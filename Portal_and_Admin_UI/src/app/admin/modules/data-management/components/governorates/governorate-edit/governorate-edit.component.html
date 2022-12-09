@@ -40,8 +40,8 @@
         <div class="form-group col-md-6">
           <label for="phoneNumber" class="form-lbl">رقم الهاتف</label>
           <input type="text" class="form-control" autocomplete="off" formControlName="phoneNumber" id="phoneNumber" />
-          <small *ngIf="(isFormSubmitted || updateGovernorateform.get('phoneNumber').touched) && !updateGovernorateform.get('phoneNumber').errors?.isValid"
-            class="danger">رقم الجوال يبدأ ب 966 و يتكون من 12 رقم</small>
+          <small *ngIf="(isFormSubmitted || updateGovernorateform.get('phoneNumber').touched) && updateGovernorateform.get('phoneNumber').errors != null && !updateGovernorateform.get('phoneNumber').errors?.isValid"
+            class="danger">رقم الهاتف غير صحيح</small>
         </div>
         <div class="form-group col-md-6">
           <label for="locationLink" class="form-lbl">خريطة المحافظة</label>
@@ -57,6 +57,8 @@
                         (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
                         [accept]="acceptType" [maxFileSize]="fileSize">
           </p-fileUpload>
+          <span class="danger">{{ 'global:fileSize' | translate }} ({{ fileSize/1024/1024 | number }}) {{ 'global:mega' | translate }}</span><br />
+          <span class="danger">{{ 'global:fileExtentions' | translate }} ({{ acceptType }})</span>
           <small *ngIf="(isFormSubmitted || updateGovernorateform.get('image').touched) && updateGovernorateform.get('image').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-6">

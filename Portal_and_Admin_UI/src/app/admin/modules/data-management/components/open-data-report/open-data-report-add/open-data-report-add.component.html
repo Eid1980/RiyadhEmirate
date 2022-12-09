@@ -43,6 +43,8 @@
           <p-fileUpload #uploader chooseLabel="تحميل المرفق" [auto]="true" [customUpload]="isCustomUpload"
                         (uploadHandler)="onUpload($event)" [multiple]="isMultiple" mode="advanced" [accept]="acceptType" [maxFileSize]="fileSize">
           </p-fileUpload>
+          <span class="danger">{{ 'global:fileSize' | translate }} ({{ fileSize/1024/1024 | number }}) {{ 'global:mega' | translate }}</span><br />
+          <span class="danger">{{ 'global:fileExtentions' | translate }} ({{ acceptType }})</span>
           <small *ngIf="(isFormSubmitted || createOpenDataReportForm.get('fileAttach').touched) && createOpenDataReportForm.get('fileAttach').errors?.required" class="danger">هذاالحقل مطلوب</small>
         </div>
         <div class="form-group col-6">

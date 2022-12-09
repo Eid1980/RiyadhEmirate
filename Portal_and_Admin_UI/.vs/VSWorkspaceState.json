@@ -3,11 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\auth",
-    "\\src\\app\\auth\\components",
-    "\\src\\app\\auth\\components\\login",
-    "\\src\\environments"
+    "\\src\\app\\portal\\modules",
+    "\\src\\app\\portal\\modules\\home",
+    "\\src\\app\\portal\\modules\\home\\components",
+    "\\src\\app\\portal\\modules\\home\\components\\auction-details",
+    "\\src\\app\\portal\\modules\\home\\components\\home",
+    "\\src\\app\\portal\\modules\\home\\components\\news-details"
   ],
-  "SelectedNode": "\\src\\app\\auth\\components\\login\\login.component.ts",
+  "SelectedNode": "\\src\\app\\portal",
   "PreviewInSolutionExplorer": false
 }

@@ -8,6 +8,7 @@ namespace Emirates.Core.Application.Services.Requests
     {
         IApiResponse GetById(Guid id);
         IApiResponse ChangeStage(RequestChangeStageDto changeStageDto);
+        IApiResponse ChangeStageAdmin(RequestChangeStageDto changeStageDto);
 
         IApiResponse GetAttachments(Guid id);
         IApiResponse GetRequestAttachments(Guid id);

@@ -5,6 +5,9 @@ using Emirates.Core.Application.Services.OpenDataRequests;
 using Microsoft.AspNetCore.Authorization;
 using Emirates.Core.Application.Services.Shared;
 using Microsoft.AspNetCore.Mvc;
+using Emirates.API.Filters;
+using Emirates.Core.Application.Helpers;
+
 namespace Emirates.API.Controllers
 {
     [Route("api/[controller]")]
@@ -19,11 +22,13 @@ namespace Emirates.API.Controllers
         }
 
         [HttpGet("GetById/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse GetById(int id)
         {
             return _openDataRequestService.GetById(id);
         }
         [HttpPost("GetListPage")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse GetAll(SearchModel searchModelDto)
         {
             return _openDataRequestService.GetAll(searchModelDto);
@@ -35,12 +40,14 @@ namespace Emirates.API.Controllers
             return _openDataRequestService.Create(createDto);
         }
         [HttpGet("ChangeStatus/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse ChangeStatus(int id)
         {
             return _openDataRequestService.ChangeStatus(id);
         }
 
         [HttpDelete("Delete/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Delete(int id)
         {
             return _openDataRequestService.Delete(id);

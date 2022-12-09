@@ -22,12 +22,10 @@ namespace Emirates.Core.Application.Services.Requests
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
         private readonly IConfigurationProvider _mapConfig;
-        private readonly IFileManagerService _fileManagerService;
 
         public RequestService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper, IFileManagerService fileManagerService)
         {
             _emiratesUnitOfWork = emiratesUnitOfWork;
-            _fileManagerService = fileManagerService;
             _mapper = mapper;
             _mapConfig = mapper.ConfigurationProvider;
         }
@@ -40,6 +38,34 @@ namespace Emirates.Core.Application.Services.Requests
             return GetResponse(data: _mapper.Map<GetRequestDetailsDto>(request));
         }
         public IApiResponse ChangeStage(RequestChangeStageDto changeStageDto)
+        {
+            Request request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(changeStageDto.Id));
+            if (request == null)
+                throw new NotFoundException(typeof(Request).Name);
+            if(request.CreatedBy != changeStageDto.UserId)
+                throw new BusinessException("الطلب غير مضاف على نفس المستخدم الحالي برجاء استخدام الطلبات الخاصة بكم فقط");
+            if (request.StageId == changeStageDto.StageId)
+                throw new BusinessException("تم اتخاذ نفس الاجراء مسبقا");
+
+            request.StageId = changeStageDto.StageId;
+            var requestStageLogOld = _emiratesUnitOfWork.RequestStageLogs.FirstOrDefault(x => x.RequestId.Equals(changeStageDto.Id) && x.EndDate == null);
+            if (requestStageLogOld != null)
+                requestStageLogOld.EndDate = DateTime.Now;
+
+            RequestStageLog requestStageLog = new RequestStageLog
+            {
+                RequestId = request.Id,
+                StageId = changeStageDto.StageId,
+                Notes = changeStageDto.Notes
+            };
+            _emiratesUnitOfWork.RequestStageLogs.Add(requestStageLog);
+            _emiratesUnitOfWork.Complete();
+
+            // Send SMS, Email
+
+            return GetResponse(message: CustumMessages.SendRequestSuccess(), data: changeStageDto.Id);
+        }
+        public IApiResponse ChangeStageAdmin(RequestChangeStageDto changeStageDto)
         {
             Request request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(changeStageDto.Id));
             if (request == null)
@@ -145,7 +171,6 @@ namespace Emirates.Core.Application.Services.Requests
                             Id = file.Id,
                             AttachmentName = type.NameAr,
                             FileName = file.OriginalName,
-                            //Image = _fileManagerService.GetBase64File(id, file.EntityName)
                         };
             return GetResponse(data: query.ToList());
         }
