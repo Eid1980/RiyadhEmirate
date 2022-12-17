@@ -55,13 +55,15 @@
           </div>
           <div class="form-group col-md-6" *ngIf="!isSameRequester">
             <label for="patientNationalId" class="form-lbl">رقم هوية المريض<span class="danger">*</span></label>
-            <input type="text" class="form-control" autocomplete="off" formControlName="patientNationalId"
+            <input type="text" class="form-control" autocomplete="off" formControlName="patientNationalId" maxlength="10"
                    id="patientNationalId" [ngClass]="{
               invalid:
                 (isFormSubmitted || treatmentRecommendationForm.get('patientNationalId').touched) &&
                 treatmentRecommendationForm.get('patientNationalId').errors?.required}" />
             <small *ngIf="(isFormSubmitted || treatmentRecommendationForm.get('patientNationalId').touched) && treatmentRecommendationForm.get('patientNationalId').errors?.required"
                    class="danger">هذاالحقل مطلوب</small>
+            <small *ngIf="(isFormSubmitted || treatmentRecommendationForm.get('patientNationalId').touched) && this.treatmentRecommendationForm.get('patientNationalId').errors != null && !treatmentRecommendationForm.get('patientNationalId').errors?.isValid"
+                   class="danger">ادخل رقم هوية صحيح</small>
           </div>
           <div class="form-group col-md-12">
             <label for="notes" class="form-lbl">التفاصيل<span class="danger">*</span></label>

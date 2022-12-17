@@ -48,19 +48,12 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     if (error.statusText == 'Unknown Error') {
       this.globalService.messageAlert(MessageType.Error, 'الاتصال بالخادم غير متاح حاليا');
     }
+    else if (error.statusText == 'Unauthorized') {
+      this.globalService.messageAlert(MessageType.Error, 'ليس لديك صلاحية برجاء التواصل مع مدير النظام');
+    }
     else {
       this.globalService.messageAlert(MessageType.Error, error.error);
     }
-    // if (error.url.includes("IsAuthorizedComponent")) {
-    //   this.globalService.messageAlert(
-    //     MessageType.Error,
-    //     "ليس لديك صلاحية لدخول هذة الصفحة"
-    //   );
-    //   setTimeout(() => {
-    //     document.location.href = "/auth/login";
-    //   }, 3000);
-    // } else {
-    // }
     return throwError(error);
   }
 }

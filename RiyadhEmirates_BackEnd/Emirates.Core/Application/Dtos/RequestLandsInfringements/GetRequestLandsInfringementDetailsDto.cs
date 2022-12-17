@@ -13,7 +13,6 @@ namespace Emirates.Core.Application.Dtos
         public Guid ConcurrencyStamp { get; set; }
 
         public string RequestTypeName { get; set; }
-        public string InstrumentNumber { get; set; }
         public string EstimatedSpace { get; set; }
         public string GovernorateName { get; set; }
         public string Address { get; set; }

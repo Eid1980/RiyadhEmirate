@@ -5,6 +5,7 @@ import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { CoreModule } from '../core/core.module';
 import { RatingModule } from 'primeng/rating';
+import { NgxPrintModule } from 'ngx-print';
 import { HomeComponent } from './components/home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { ServicesGuideComponent } from './components/services-guide/services-guide.component';
@@ -75,6 +76,7 @@ import { AuctionsComponent } from './components/auctions/auctions.component';
     ToastModule,
     CoreModule,
     RatingModule,
+    NgxPrintModule,
   ],
   exports: [],
   providers: [],

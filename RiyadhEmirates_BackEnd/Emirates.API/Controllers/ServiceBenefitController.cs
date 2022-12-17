@@ -1,4 +1,6 @@
-﻿using Emirates.Core.Application.Dtos;
+﻿using Emirates.API.Filters;
+using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.ServiceBenefits;
 using Emirates.Core.Application.Services.Shared;
@@ -23,7 +25,8 @@ namespace Emirates.API.Controllers
             return _serviceBenefitService.GetAllCountByServiceId(serviceId);
         }
 
-        [AllowAnonymous, HttpPost("Create")]
+        [HttpPost("Create")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse Create(CreateServiceBenefitDto createDto)
         {
             return _serviceBenefitService.Create(createDto);

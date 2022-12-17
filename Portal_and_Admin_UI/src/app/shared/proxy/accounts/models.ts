@@ -61,13 +61,10 @@ export interface GetUserDataDto {
   id: number;
   userName: string;
   name: string;
+  birthDate: string;
 
   genderName: string;
-  birthDate: string;
   phoneNumber: string;
-
-  nationalityName: string;
-  governorateName: string;
   email: string;
 }
 

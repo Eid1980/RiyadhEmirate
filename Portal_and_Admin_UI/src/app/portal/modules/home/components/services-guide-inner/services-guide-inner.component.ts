@@ -22,10 +22,20 @@ export class ServicesGuideInnerComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalService.setTitle('تفاصيل دليل اجراءات الخدمة');
-    this.serviceId = this._activatedRoute.snapshot.params['id'];
-    this.getServiceById();
-    this.getServiceConditions();
-
+    let query = this._activatedRoute.snapshot.params['id'];
+    if (query) {
+      this.serviceId = this.globalService.decryptNumber(query.toString());
+      if (this.serviceId) {
+        this.getServiceById();
+        this.getServiceConditions();
+      }
+      else {
+        this.globalService.navigate("/");
+      }
+    }
+    else {
+      this.globalService.navigate("/");
+    }
   }
 
   getServiceById(){

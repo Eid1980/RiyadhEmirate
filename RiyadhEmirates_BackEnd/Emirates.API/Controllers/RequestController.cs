@@ -1,6 +1,8 @@
 ﻿using Emirates.API.Controllers;
+using Emirates.API.Filters;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Requests;
 using Emirates.Core.Application.Services.Shared;
@@ -30,7 +32,16 @@ namespace Edraak.API.Controllers
         [HttpPost("ChangeStage")]
         public IApiResponse ChangeStage(RequestChangeStageDto changeStageDto)
         {
+            changeStageDto.UserId = UserId;
+            changeStageDto.StageId = (int)SystemEnums.Stages.NewRequest;
             return _requestService.ChangeStage(changeStageDto);
+        }
+
+        [HttpPost("ChangeStageAdmin")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.RequestReview, (int)SystemEnums.Roles.ShamelRequestReview)]
+        public IApiResponse ChangeStageAdmin(RequestChangeStageDto changeStageDto)
+        {
+            return _requestService.ChangeStageAdmin(changeStageDto);
         }
 
 
@@ -60,6 +71,7 @@ namespace Edraak.API.Controllers
             return _requestService.MyRequests(searchModel);
         }
         [HttpPost("Inbox")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.RequestReview)]
         public IApiResponse Inbox(SearchModel searchModel)
         {
             return _requestService.Inbox(searchModel);
@@ -72,12 +84,14 @@ namespace Edraak.API.Controllers
         }
 
         [HttpPost("InboxShamel")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.ShamelRequestReview)]
         public IApiResponse InboxShamel(SearchModel searchModel)
         {
             return _requestService.InboxShamel(searchModel);
         }
 
         [HttpPost("RequestSearch")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.RequestReview, (int)SystemEnums.Roles.ShamelRequestReview)]
         public IApiResponse RequestSearch(SearchModel searchModel)
         {
             return _requestService.RequestSearch(searchModel);

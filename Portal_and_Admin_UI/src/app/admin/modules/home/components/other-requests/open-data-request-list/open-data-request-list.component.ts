@@ -43,6 +43,7 @@ export class OpenDataRequestListComponent implements OnInit {
           Field: 'Action',
           Header: 'الإجراءات',
           Searchable: false,
+          Sortable: false,
           Type: ColumnType.Action,
         },
       ],

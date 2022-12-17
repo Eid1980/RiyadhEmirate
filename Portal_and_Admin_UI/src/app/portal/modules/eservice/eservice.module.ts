@@ -4,6 +4,7 @@ import { SharedModule } from '@shared/shared.module';
 import { StepsModule } from 'primeng/steps';
 import { ToastModule } from 'primeng/toast';
 import { RatingModule } from 'primeng/rating';
+import { NgxPrintModule } from 'ngx-print';
 
 import { EServiceRoutingModule } from './eservice-routing.module';
 import { RequesterDashboardComponent } from './components/requester-dashboard/requester-dashboard.component';
@@ -113,6 +114,7 @@ import { ElectronicCouncilComponent } from './components/electronic-council/elec
     EServiceRoutingModule,
     SharedModule,
     RatingModule,
+    NgxPrintModule,
   ],
   exports: [
     PrisonerTempReleaseDetailsComponent,

@@ -1,5 +1,7 @@
-﻿using Emirates.Core.Application.Dtos;
+﻿using Emirates.API.Filters;
+using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Governorates;
 using Emirates.Core.Application.Services.Shared;
@@ -20,11 +22,13 @@ namespace Emirates.API.Controllers
         }
 
         [HttpGet("GetById/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse GetById(int id)
         {
             return _governorateService.GetById(id);
         }
         [HttpPost("GetListPage")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse GetAll(SearchModel searchModelDto)
         {
             return _governorateService.GetAll(searchModelDto);
@@ -36,22 +40,26 @@ namespace Emirates.API.Controllers
         }
 
         [HttpPost("Create")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Create(CreateGovernorateDto createDto)
         {
             return _governorateService.Create(createDto);
         }
         [HttpPut("Update")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Update(UpdateGovernorateDto updateDto)
         {
             return _governorateService.Update(updateDto);
         }
         [HttpGet("ChangeStatus/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse ChangeStatus(int id)
         {
             return _governorateService.ChangeStatus(id);
         }
 
         [HttpDelete("Delete/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Delete(int id)
         {
             return _governorateService.Delete(id);

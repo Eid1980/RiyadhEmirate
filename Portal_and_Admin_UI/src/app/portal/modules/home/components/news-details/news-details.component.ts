@@ -29,9 +29,15 @@ export class NewsDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalService.setTitle('تفاصيل الخبر');
-    this.id = this._activatedRoute.snapshot.params['id'];
-    if (this.id) {
-      this.getNewsById();
+    let query = this._activatedRoute.snapshot.params['id'];
+    if (query) {
+      this.id = this.globalService.decryptNumber(query.toString());
+      if (this.id) {
+        this.getNewsById();
+      }
+      else {
+        this.globalService.navigate("/");
+      }
     }
     else {
       this.globalService.navigate("/");
@@ -60,7 +66,7 @@ export class NewsDetailsComponent implements OnInit {
   buildForm() {
     this.createCommentForm = this.formBuilder.group({
       createdByName: [this.createNewsCommentDto.createdByName || ''],
-      email: [this.createNewsCommentDto.email || ''],
+      email: [this.createNewsCommentDto.email || '' , Validators.email],
       comment: [this.createNewsCommentDto.comment || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });
   }

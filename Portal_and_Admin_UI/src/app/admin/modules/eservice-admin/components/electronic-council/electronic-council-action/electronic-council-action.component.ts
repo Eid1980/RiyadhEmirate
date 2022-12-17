@@ -68,7 +68,7 @@ export class ElectronicCouncilActionComponent implements OnInit {
     this.requestChangeStageDto = { ...this.adminActionForm.value } as RequestChangeStageDto;
     this.requestChangeStageDto.id = this.requestId;
     this.requestChangeStageDto.stageId = action;
-    this.requestService.changeStage(this.requestChangeStageDto).subscribe((response) => {
+    this.requestService.changeStageAdmin(this.requestChangeStageDto).subscribe((response) => {
       this.globalService.showMessage(response.message);
       this.globalService.navigateToInbox();
     });

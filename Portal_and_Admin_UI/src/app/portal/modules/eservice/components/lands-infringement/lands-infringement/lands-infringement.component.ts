@@ -65,7 +65,6 @@ export class LandsInfringementComponent implements OnInit {
     this.landsInfringementForm = this.formBuilder.group({
       requestTypeId: [this.createRequestLandsInfringementDto.requestTypeId || null, Validators.required],
       governorateId: [this.createRequestLandsInfringementDto.governorateId || null, Validators.required],
-      instrumentNumber: [this.createRequestLandsInfringementDto.instrumentNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       estimatedSpace: [this.createRequestLandsInfringementDto.estimatedSpace || ''],
       infringerDescription: [this.createRequestLandsInfringementDto.infringerDescription || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       address: [this.createRequestLandsInfringementDto.address || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],

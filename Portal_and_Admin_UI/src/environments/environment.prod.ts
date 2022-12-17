@@ -1,8 +1,9 @@
 export const environment = {
   production: true,
 
-  ApiUrl: "http://localhost:4201",
-  lastSieUpdate: "2022/10/16",
+  cryptionKey: "Emirates@2023",
+  ApiUrl: "https://new.riyadh.gov.sa:9090",
+  lastSieUpdate: "2022/12/15",
 
   allowedExtensions: 'image/*',
   fileSize: 4000000,

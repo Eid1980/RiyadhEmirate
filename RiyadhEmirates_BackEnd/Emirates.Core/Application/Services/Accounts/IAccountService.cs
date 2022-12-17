@@ -24,9 +24,8 @@ namespace Emirates.Core.Application.Services.Accounts
         IApiResponse UpdateUserProfile(UpdateUserProfileDto updateUserProfileDto);
 
         IApiResponse GetUserProfileData(int id);
-
-
         IApiResponse CreateEmployee(int userId);
         IApiResponse DeleteEmployee(int userId);
+        bool IsUserInRoles(int userId, int[] roles);
     }
 }

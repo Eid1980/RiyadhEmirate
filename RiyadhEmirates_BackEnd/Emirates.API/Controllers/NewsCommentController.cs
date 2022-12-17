@@ -1,5 +1,7 @@
-﻿using Emirates.Core.Application.Dtos;
+﻿using Emirates.API.Filters;
+using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.NewsComments;
 using Emirates.Core.Application.Services.Shared;
@@ -41,11 +43,13 @@ namespace Emirates.API.Controllers
             return _latestNewsCommentService.Create(createDto);
         }
         [HttpPut("Update")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.NewsPermission)]
         public IApiResponse Update(UpdateNewsCommentDto updateDto)
         {
             return _latestNewsCommentService.Update(updateDto);
         }
         [HttpDelete("Delete/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.NewsPermission)]
         public IApiResponse Delete(int id)
         {
             return _latestNewsCommentService.Delete(id);

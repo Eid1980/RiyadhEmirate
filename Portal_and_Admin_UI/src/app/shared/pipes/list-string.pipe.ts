@@ -20,9 +20,7 @@ export class ListStringPipe implements PipeTransform {
                   <span>${myContent[i]}</span>
                 </li>`
       }
-      return `<ul class="card-basic-list pb-3 mt-auto border-top pt-4">
-                ${li}
-              </ul>`;
+      return `<ul>${li}</ul>`;
     }
   }
 

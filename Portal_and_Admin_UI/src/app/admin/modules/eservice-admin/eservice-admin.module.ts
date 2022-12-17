@@ -4,6 +4,8 @@ import { SharedModule } from '@shared/shared.module';
 import { EServiceAdminRoutingModule } from './eservice-admin-routing.module';
 import { RequestWorkflowDetailsComponent } from './components/request-workflow-details/request-workflow-details.component';
 import { StepsModule } from 'primeng/steps';
+import { NgxPrintModule } from 'ngx-print';
+
 import { PrisonerTempReleaseViewComponent } from './components/prisoner-temp-release/prisoner-temp-release-view/prisoner-temp-release-view.component';
 import { PrisonerTempReleaseActionComponent } from './components/prisoner-temp-release/prisoner-temp-release-action/prisoner-temp-release-action.component';
 import { RequestWorkflowActionComponent } from './components/request-workflow-action/request-workflow-action.component';
@@ -81,6 +83,7 @@ import { RequestSearchComponent } from './components/request-search/request-sear
     CommonModule,
     EServiceAdminRoutingModule,
     SharedModule,
+    NgxPrintModule,
   ],
 })
 export class EServiceAdminModule {}

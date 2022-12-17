@@ -613,7 +613,6 @@ namespace Emirates.InfraStructure.Contexts
             {
                 b.ToTable("RequestLandsInfringements", EmiratesDbSchemas.RequestSehema);
                 b.Property(x => x.RequestTypeId).IsRequired();
-                b.Property(x => x.InstrumentNumber).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
                 b.Property(x => x.EstimatedSpace).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.GovernorateId).IsRequired();
                 b.Property(x => x.Address).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();

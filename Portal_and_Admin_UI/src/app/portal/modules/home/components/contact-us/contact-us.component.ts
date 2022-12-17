@@ -36,9 +36,9 @@ export class ContactUsComponent implements OnInit {
   buildForm() {
     this.createContactUsform = this.formBuilder.group({
       fullName: [this.createContactUsMessage.fullName || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      email : [this.createContactUsMessage.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      email : [this.createContactUsMessage.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace,Validators.email]],
       title: [this.createContactUsMessage.title || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      contactUsMessageTypeId: [this.createContactUsMessage.contactUsMessageTypeId || '', [Validators.required]],
+      contactUsMessageTypeId: [this.createContactUsMessage.contactUsMessageTypeId || null, [Validators.required]],
       content: [this.createContactUsMessage.content || null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       recaptcha: ['' , Validators.required]
     });
@@ -58,14 +58,13 @@ export class ContactUsComponent implements OnInit {
 
   onSubmit(){
     this.isFormSubmitted = true;
-
     if (this.createContactUsform.valid) {
       this.createContactUsMessage = { ...this.createContactUsform.value } as CreateContactUsMessageDto;
-
       this.conatctUsService.create(this.createContactUsMessage).subscribe((response) => {
         this.globalService.showMessage(response.message);
         if (response.isSuccess) {
           this.createContactUsform.reset();
+          this.isFormSubmitted = false;
         }
       });
     }

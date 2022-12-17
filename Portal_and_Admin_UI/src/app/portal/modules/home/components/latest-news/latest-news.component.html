@@ -20,7 +20,7 @@
     <div class="row my-5">
       <!-- <div class="row my-5" *ngIf="latestNews.length > 0"> -->
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of latestNews">
-      <a class="card-basic" [routerLink]="['/home/news-details', item.id]" routerLinkActive="router-link-active">
+      <a class="card-basic" [routerLink]="['/home/news-details', globalService.encryptNumber(item.id)]" routerLinkActive="router-link-active">
         <div class="card-basic-banner">
           <img *ngIf="item?.imageName" [src]="['/assets/images/uploads/news/'+item.imageName]" [alt]="item?.title" class="img-fluid" />
           <img *ngIf="!item?.imageName" src="assets/images/120.png" [alt]="item?.title" class="img-fluid" />

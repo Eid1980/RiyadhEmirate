@@ -31,6 +31,7 @@ export class EditAboutUsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._globalService.setAdminTitle('عن الامارة');
     this.buildForm();
     this.getPageContent();
   }

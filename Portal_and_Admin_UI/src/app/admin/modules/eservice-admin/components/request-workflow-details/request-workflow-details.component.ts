@@ -11,6 +11,7 @@ export class RequestWorkflowDetailsComponent implements OnInit {
   activeIndex: number = 0;
   requestId: string;
   @Input() nextUrl: string;
+  @Input() printTitle: string;
 
   constructor(private activatedRoute: ActivatedRoute)
   {

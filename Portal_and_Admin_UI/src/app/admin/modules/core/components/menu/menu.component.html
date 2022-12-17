@@ -100,11 +100,6 @@
                 </a>
               </li>
               <li class="accordion-list-item">
-                <a class="accordion-list-link" routerLink="/admin/data-management/edit-about-us" routerLinkActive="active">
-                  <span>عن الامارة</span>
-                </a>
-              </li>
-              <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/emirates-prince-list" routerLinkActive="active">
                   <span>أمراء المنطقة</span>
                 </a>
@@ -112,6 +107,11 @@
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/governorate-list" routerLinkActive="active">
                   <span>المحافظات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/edit-about-us" routerLinkActive="active">
+                  <span>عن الامارة</span>
                 </a>
               </li>
               <li class="accordion-list-item">
@@ -185,6 +185,11 @@
                 </a>
               </li>
               <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/nationality-list" routerLinkActive="active">
+                  <span>الجنسيات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/case-type-list" routerLinkActive="active">
                   <span>أنواع القضايا</span>
                 </a>
@@ -234,14 +239,14 @@
       <li class="sidebar-list-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(requestReview)">
         <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox" routerLinkActive="active">
           <i class="fa-solid fa-envelope"></i>
-          <span>البريد الوارد</span>
+          <span>متابعة الطلبات</span>
         </a>
       </li>
 
       <li class="sidebar-list-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(shamelRequestReview)">
         <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox-shamel" routerLinkActive="active">
           <i class="fa-solid fa-envelope-open-text"></i>
-          <span>البريد الوارد لنطام شامل</span>
+          <span>متابعة طلبات نطام شامل</span>
         </a>
       </li>
 

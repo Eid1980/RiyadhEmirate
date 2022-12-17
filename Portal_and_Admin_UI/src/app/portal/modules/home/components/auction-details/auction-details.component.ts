@@ -19,9 +19,15 @@ export class AuctionDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalService.setTitle('تفاصيل المناقصة');
-    this.id = this.activatedRoute.snapshot.params['id'];
-    if (this.id) {
-      this.getAuctionById();
+    let query = this.activatedRoute.snapshot.params['id'];
+    if (query) {
+      this.id = this.globalService.decryptNumber(query.toString());
+      if (this.id) {
+        this.getAuctionById();
+      }
+      else {
+        this.globalService.navigate("/");
+      }
     }
     else {
       this.globalService.navigate("/");

@@ -4,7 +4,6 @@ namespace Emirates.Core.Application.Dtos
     public class CreateRequestLandsInfringementDto
     {
         public int RequestTypeId { get; set; }
-        public string InstrumentNumber { get; set; }
         public string EstimatedSpace { get; set; }
         public int GovernorateId { get; set; }
         public string Address { get; set; }

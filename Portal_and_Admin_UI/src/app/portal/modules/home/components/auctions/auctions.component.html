@@ -18,7 +18,7 @@
   </div>
   <div class="row my-5 py-md-5" *ngIf="auctions.length > 0">
     <div class="col-md-12 mb-4" *ngFor="let auction of auctions">
-      <div class="card-basic cursor-pointer" [routerLink]="['/home/auction-details' , auction.id]">
+      <div class="card-basic cursor-pointer" [routerLink]="['/home/auction-details' , globalService.encryptNumber(auction.id)]">
         <div class="card-basic-cover">
           <img *ngIf="auction?.imageName" [src]="['/assets/images/uploads/auctions/'+auction.imageName]" [alt]="auction?.title" class="img-fluid" />
           <img *ngIf="!auction?.imageName" src="assets/images/550x260.png" class="img-fluid" [alt]="auction?.title" />

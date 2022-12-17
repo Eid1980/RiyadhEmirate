@@ -1,5 +1,7 @@
-﻿using Emirates.Core.Application.Dtos;
+﻿using Emirates.API.Filters;
+using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.OpenDataCategueries;
 using Emirates.Core.Application.Services.Shared;
@@ -20,18 +22,21 @@ namespace Emirates.API.Controllers
         }
 
         [HttpGet("GetById/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse GetById(int id)
         {
             return _openDataCategueryService.GetById(id);
         }
 
         [HttpPost("GetListPage")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse GetAll(SearchModel searchModelDto)
         {
             return _openDataCategueryService.GetAll(searchModelDto);
         }
 
         [HttpGet("GetAll")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse GetAll()
         {
             return _openDataCategueryService.GetAll();
@@ -45,23 +50,27 @@ namespace Emirates.API.Controllers
         }
 
         [HttpPost("Create")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Create(CreateOpenDataCategueryDto createDto)
         {
             return _openDataCategueryService.Create(createDto);
         }
         [HttpPut("Update")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Update(UpdateOpenDataCategueryDto updateDto)
         {
             return _openDataCategueryService.Update(updateDto);
         }
 
         [HttpGet("ChangeStatus/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse ChangeStatus(int id)
         {
             return _openDataCategueryService.ChangeStatus(id);
         }
 
         [HttpDelete("Delete/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Delete(int id)
         {
             return _openDataCategueryService.Delete(id);

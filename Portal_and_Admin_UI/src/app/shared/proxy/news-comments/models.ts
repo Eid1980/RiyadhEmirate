@@ -13,6 +13,7 @@ export interface UpdateNewsCommentDto {
 
 export interface GetNewsCommentDetailsDto {
   id: number;
+  newsTitle: string;
   comment: string;
   commentStageName: string;
   email: string;

@@ -166,6 +166,8 @@
                   }" />
 
                   <small *ngIf="(isFormSubmitted || editProfileForm.get('phoneNumber').touched) && editProfileForm.get('phoneNumber').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('phoneNumber').touched) && !editProfileForm.get('phoneNumber').errors?.isValid"
+                    class="danger">رقم الجوال يبدأ ب 966 و يتكون من 12 رقم</small>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
                   <label class="fa-14 mb-1 fw-normal">البريد الالكتروني<span class="danger">*</span></label>
@@ -175,6 +177,8 @@
                   }" />
 
                   <small *ngIf="(isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
+
                 </div>
                 <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
                   <label class="fa-14 mb-1 fw-normal">الجنسيه<span class="danger">*</span></label>

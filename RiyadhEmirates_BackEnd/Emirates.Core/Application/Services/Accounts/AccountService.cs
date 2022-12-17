@@ -32,7 +32,7 @@ namespace Emirates.Core.Application.Services.Accounts
 
         public IApiResponse GetUserData(int id)
         {
-            var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id, x => x.Nationality));
+            var user = _mapper.Map<GetUserDataDto>(_emiratesUnitOfWork.Users.FirstOrDefault(u => u.Id == id));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
@@ -320,6 +320,10 @@ namespace Emirates.Core.Application.Services.Accounts
             _emiratesUnitOfWork.Complete();
             return GetResponse(message: CustumMessages.DeleteSuccess());
         }
+        public bool IsUserInRoles(int userId, int[] roles)
+        {
+            return _emiratesUnitOfWork.UserRoles.Where(x => x.UserId.Equals(userId) && roles.Contains(x.RoleId)).Any();
+        }
 
         #region Helper Functions
         private string GenerateToken()
@@ -347,8 +351,6 @@ namespace Emirates.Core.Application.Services.Accounts
             }
             return true;
         }
-
-
         #endregion
 
     }

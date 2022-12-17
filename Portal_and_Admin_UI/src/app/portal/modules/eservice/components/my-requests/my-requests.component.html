@@ -55,7 +55,7 @@
       </form>
 
       <div class="row mt-3 mx-0">
-        <p-table #myRequests [value]="myRequestListDto" [paginator]="true"
+        <p-table #myRequests [value]="myRequestListDto" [rowHover]="true" [paginator]="true"
           [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10"
           [totalRecords]="pagingMetaData?.totalItemCount" [scrollable]="true" [lazy]="true"
           (onLazyLoad)="onTableLazyLoad($event)" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"

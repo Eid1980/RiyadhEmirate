@@ -32,6 +32,7 @@ export class EditWomanSectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._globalService.setAdminTitle('القسم النسوي');
     this.buildForm();
     this.getPageContent();
   }

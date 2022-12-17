@@ -3,8 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-electronic-council-view',
-  templateUrl: './electronic-council-view.component.html',
-  styleUrls: ['./electronic-council-view.component.scss']
+  templateUrl: './electronic-council-view.component.html'
 })
 export class ElectronicCouncilViewComponent implements OnInit {
 

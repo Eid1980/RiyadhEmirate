@@ -11,8 +11,5 @@ namespace Emirates.Core.Application.Dtos
         public string BirthDate { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-
-        public string NationalityName { get; set; }
-        public string GovernorateName { get; set; }
     }
 }

@@ -23,7 +23,7 @@ export class GovernorateNewsComponent implements OnInit {
   searchModel = {} as SearchModel
 
   constructor(private homeService: HomeService, private translateService: TranslationServiceService,
-    private globalService: GlobalService) {
+    public globalService: GlobalService) {
     this.firstPage = 1;
   }
 

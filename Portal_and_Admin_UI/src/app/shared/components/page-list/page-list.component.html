@@ -16,7 +16,7 @@
             <!-- Table -->
             <div class="m_datatable w-100 px-0">
               <p-table [value]="dataItems" [paginator]="true" [totalRecords]="pagingMetaData?.totalItemCount"
-               [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10 "
+               [rowHover]="true" [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10 "
                [autoLayout]="true" [responsive]="true" [first]="pagingMetaData?.firstItemOnPage" [columns]="PageListSetting.cols" [lazy]="true" (onLazyLoad)="onTableLazyLoad($event)" [scrollable]="true" class="w-100">
                 <!-- Header -->
                 <ng-template pTemplate="header" let-columns>
@@ -40,10 +40,7 @@
                       <ng-container *ngIf="col.Type !== 'checkBox'">
                         {{ col.Header }}
                         <!-- Sort Icon -->
-                        <p-sortIcon [field]="col.Field" *ngIf="
-                            (col.Sortable || col.Sortable === undefined) &&
-                            col.Type !== 'action'
-                          "></p-sortIcon>
+                        <p-sortIcon [field]="col.Field" *ngIf="(col.Sortable || col.Sortable === undefined) && col.Type !== 'action' && col.Type !== 'status'"></p-sortIcon>
                       </ng-container>
                     </th>
                   </tr>

@@ -1,5 +1,7 @@
-﻿using Emirates.Core.Application.Dtos.AboutUs;
+﻿using Emirates.API.Filters;
+using Emirates.Core.Application.Dtos.AboutUs;
 using Emirates.Core.Application.Dtos.MainPoints;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.AboutUs;
 using Microsoft.AspNetCore.Authorization;
@@ -17,38 +19,42 @@ namespace Emirates.API.Controllers
             _aboutUsService = aboutUsService;
         }
 
-        [AllowAnonymous]
-        [HttpGet]
+        [AllowAnonymous, HttpGet]
         public IApiResponse GetAll()
         {
             return _aboutUsService.GetAll();
         }
 
         [HttpPost("Create")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Create(CreateAboutUsDto createDto)
         {
             return _aboutUsService.Create(createDto);
         }
 
         [HttpPost("CreateMainPoint")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse CreateMainPoint(CreateMainPoints mainPoint)
         {
             return _aboutUsService.CreateMainPoint(mainPoint);
         }
 
         [HttpPut("Update")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse Update(UpdateAboutUsDto updateDto)
         {
             return _aboutUsService.Update(updateDto);
         }
 
         [HttpPut("Update/MainPoint")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse UpdateMainPoint(UpdateMainPoint updateMainPoint)
         {
             return _aboutUsService.UpdateMainPoint(updateMainPoint);
         }
 
         [HttpPut("Delete/MainPoint/{mainPointid}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.SettingPermission)]
         public IApiResponse DeleteMainPoint(int mainPointid)
         {
             return _aboutUsService.DeleteMainPoint(mainPointid);

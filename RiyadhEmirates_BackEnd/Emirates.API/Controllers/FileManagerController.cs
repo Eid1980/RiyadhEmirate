@@ -13,17 +13,13 @@ namespace Emirates.API.Controllers.InternalPortal
     public class FileManagerController : BaseController
     {
         private readonly IFileManagerService _fileManager;
-        private readonly IMapper _mapper;
         public FileManagerController(IFileManagerService fileManager,
-            ILocalizationService localizationService,
-            IMapper mapper)
-             : base(localizationService)
+            ILocalizationService localizationService) : base(localizationService)
         {
             _fileManager = fileManager;
-            _mapper = mapper;
         }
 
-        [HttpPost, DisableRequestSizeLimit]
+        [Authorize, HttpPost, DisableRequestSizeLimit]
         public async Task<IActionResult> Upload()
         {
             var formCollection = await Request.ReadFormAsync();
@@ -41,21 +37,21 @@ namespace Emirates.API.Controllers.InternalPortal
             return StatusCode(201);
         }
 
-        [HttpGet("ChangeStatus/{fileId}")]
+        [Authorize, HttpGet("ChangeStatus/{fileId}")]
         public IActionResult ChangeStatus(Guid fileId)
         {
             _fileManager.ChangeStatus(fileId);
             return Ok();
         }
 
-        [HttpDelete("{fileId}")]
+        [Authorize, HttpDelete("{fileId}")]
         public IActionResult Delete(Guid fileId)
         {
             _fileManager.Delete(fileId);
             return NoContent();
         }
 
-        [HttpPost("DeleteByEntityName")]
+        [Authorize, HttpPost("DeleteByEntityName")]
         public IActionResult DeleteByEntityName(DeleteFilesByEntityNameAndIdDto model)
         {
             _fileManager.DeleteByEntityName(model.EntityId, model.EntityName);
@@ -95,7 +91,7 @@ namespace Emirates.API.Controllers.InternalPortal
 
 
         // added by salah
-        [HttpPost("UploadFile"), DisableRequestSizeLimit]
+        [Authorize, HttpPost("UploadFile"), DisableRequestSizeLimit]
         public async Task<IActionResult> UploadFile()
         {
             var formCollection = await Request.ReadFormAsync();
@@ -108,14 +104,14 @@ namespace Emirates.API.Controllers.InternalPortal
             _fileManager.Upload(uploadedFileDto);
             return StatusCode(201);
         }
-        [HttpPost("DeleteFile")]
+        [Authorize, HttpPost("DeleteFile")]
         public IActionResult DeleteFile(DeleteFileDto deleteFileDto)
         {
             _fileManager.Delete(deleteFileDto);
             return NoContent();
         }
 
-        [HttpGet("GetByEntityIdEntityName")]
+        [Authorize, HttpGet("GetByEntityIdEntityName")]
         public IActionResult GetByEntityIdEntityName(string entityId, string entityName)
         {
             return Ok(_fileManager.GetByEntityIdEntityName(entityId, entityName));

@@ -75,11 +75,12 @@
               <div class="form-group">
                 <label for="email">البريد الإلكترونى</label>
                 <input type="email" class="form-control" id="email" formControlName="email" />
+                <small *ngIf="(isFormSubmitted || createCommentForm.get('email').touched) && createCommentForm.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
               </div>
             </div>
             <div class="col-12 mb-3">
               <div class="form-group">
-                <label for="comment">التعليق</label>
+                <label for="comment">التعليق<span class="danger">*</span></label>
                 <textarea class="form-control" id="comment" rows="5" formControlName="comment"></textarea>
                 <small
                   *ngIf="(isFormSubmitted || createCommentForm.get('comment').touched) && createCommentForm.get('comment').errors?.required"
@@ -87,7 +88,7 @@
               </div>
             </div>
             <div class="col-12 d-flex justify-content-end mt-4">
-              <button type="submit" class="btn btn-primary px-5 pt-2 d-flex">
+              <button type="submit" class="btn btn-primary px-5 pt-2 d-flex" [disabled]="!createCommentForm.valid">
                 إرسال
               </button>
             </div>

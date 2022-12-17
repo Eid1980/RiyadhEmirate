@@ -28,7 +28,7 @@
             <ng-template carouselSlide *ngFor="let news of latestNews">
               <div class="owl-item">
                 <div class="item">
-                  <div class="news-card cursor-pointer" [routerLink]="['home/news-details' , news.id]">
+                  <div class="news-card cursor-pointer" [routerLink]="['home/news-details' , _globalService.encryptNumber(news.id)]">
                     <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]"
                          [alt]="news?.title" class="iimg-fluid news-img" />
                     <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title"
@@ -170,7 +170,7 @@
                       <h5 class="title mb-5">{{ service.nameAr }}</h5>
                       <p class="description h-3">{{ service.descriptionAr }}</p>
                       <div class="service-link d-flex align-items-center">
-                        <a [routerLink]="['/home/services/', service.id]" class="px-3">
+                        <a [routerLink]="['/home/services/', _globalService.encryptNumber(service.id)]" class="px-3">
                           {{ 'home.explainService' | translate}}
                         </a>
                         <span class="arrow">
@@ -193,7 +193,7 @@
           </div>
         </div>
         <div class="d-flex justify-content-end mt-3 px-2">
-          <a [routerLink]="['/eservice/services-list']" class="btn btn-border-rd browse">
+          <a [routerLink]="['/home/services-list']" class="btn btn-border-rd browse">
             {{ 'home.browseAllServices' | translate}}
             <img src="assets/images/icons/feather-arrow-left.svg" alt="icon" class="img-fluid me-3" width="20px" />
           </a>
@@ -236,7 +236,7 @@
             <owl-carousel-o [options]="govNewsOptions" class="owl-rtl">
               <ng-template carouselSlide *ngFor="let news of governorateNews">
                 <div class="item">
-                  <div class="card cursor-pointer" [routerLink]="['home/news-details' , news.id]">
+                  <div class="card cursor-pointer" [routerLink]="['home/news-details' , _globalService.encryptNumber(news.id)]">
                     <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]"
                          [alt]="news?.title" class="card-img-top" />
                     <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title"
@@ -274,7 +274,7 @@
               <ng-template carouselSlide *ngFor="let report of reports">
                 <div class="owl-item">
                   <div class="item">
-                    <div class="news-card cursor-pointer" [routerLink]="['home/news-details' , report.id]">
+                    <div class="news-card cursor-pointer" [routerLink]="['home/news-details' , _globalService.encryptNumber(report.id)]">
                       <img *ngIf="report?.imageName" [src]="['/assets/images/uploads/news/'+report.imageName]"
                            [alt]="report?.title" class="iimg-fluid news-img" style="height: 335px;" />
                       <img *ngIf="!report?.imageName" src="assets/images/120.png" [alt]="report?.title"

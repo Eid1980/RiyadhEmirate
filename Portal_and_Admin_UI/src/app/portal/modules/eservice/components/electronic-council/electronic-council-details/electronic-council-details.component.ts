@@ -8,8 +8,7 @@ import { GlobalService } from '@shared/services/global.service';
 
 @Component({
   selector: 'app-electronic-council-details',
-  templateUrl: './electronic-council-details.component.html',
-  styleUrls: ['./electronic-council-details.component.scss']
+  templateUrl: './electronic-council-details.component.html'
 })
 export class ElectronicCouncilDetailsComponent implements OnInit {
   requestId: string;

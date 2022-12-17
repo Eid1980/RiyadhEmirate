@@ -71,7 +71,7 @@ export class PrisonerTempReleaseComponent implements OnInit {
     this.prisonerTempReleaseForm = this.formBuilder.group({
       requestTypeId: [this.createRequestPrisonerTempReleaseDto.requestTypeId || null, Validators.required],
       notes: [this.createRequestPrisonerTempReleaseDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      prisonId: [this.createRequestPrisonerTempReleaseDto.prisonId || null, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      prisonId: [this.createRequestPrisonerTempReleaseDto.prisonId || null, [Validators.required]],
       caseTypeId: [this.createRequestPrisonerTempReleaseDto.caseTypeId || null, Validators.required]
     });
   }

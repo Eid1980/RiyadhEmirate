@@ -1,5 +1,7 @@
 ﻿
+using Emirates.API.Filters;
 using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.ServiceAudiences;
 using Emirates.Core.Application.Services.Shared;
@@ -30,11 +32,13 @@ namespace Emirates.API.Controllers
             return _serviceAudienceService.GetCheckedAudience(serviceId);
         }
         [HttpPost("Create")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse Create(CreateServiceAudienceDto createDto)
         {
             return _serviceAudienceService.Create(createDto);
         }
         [HttpDelete("Delete/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse Delete(int id)
         {
             return _serviceAudienceService.Delete(id);

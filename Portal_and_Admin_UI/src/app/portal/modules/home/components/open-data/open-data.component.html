@@ -425,6 +425,7 @@
               <input type="email" class="form-control" formControlName="email" name="email" id="email" [ngClass]="{
               invalid: (isFormSubmitted || createOpenDataRequestform.get('email').touched) && createOpenDataRequestform.get('email').errors?.required}" />
               <small *ngIf="(isFormSubmitted || createOpenDataRequestform.get('email').touched) && createOpenDataRequestform.get('email').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              <small *ngIf="(isFormSubmitted || createOpenDataRequestform.get('email').touched) && createOpenDataRequestform.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 mb-4">
@@ -444,8 +445,12 @@
             </div>
           </div>
 
+          <ngx-recaptcha2  formControlName="recaptcha"
+            siteKey="6Lci6nciAAAAADi8IjVz8SlZxv1PAwVYZbGX4ZRf">
+          </ngx-recaptcha2>
+
           <div class="col-md-12 d-flex justify-content-end mt-4">
-            <button type="submit" class="btn btn-primary px-5 py-2">إرسال</button>
+            <button type="submit" class="btn btn-primary px-5 py-2" [disabled]="!createOpenDataRequestform.valid">إرسال</button>
           </div>
         </div>
       </form>

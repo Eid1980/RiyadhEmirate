@@ -86,6 +86,10 @@ import { PrisonAddComponent } from './components/prison/prison-add/prison-add.co
 import { PrisonEditComponent } from './components/prison/prison-edit/prison-edit.component';
 import { PrisonListComponent } from './components/prison/prison-list/prison-list.component';
 import { PrisonViewComponent } from './components/prison/prison-view/prison-view.component';
+import { NationalityListComponent } from './components/nationality/nationality-list/nationality-list.component';
+import { NationalityAddComponent } from './components/nationality/nationality-add/nationality-add.component';
+import { NationalityEditComponent } from './components/nationality/nationality-edit/nationality-edit.component';
+import { NationalityViewComponent } from './components/nationality/nationality-view/nationality-view.component';
 
 @NgModule({
   declarations: [
@@ -172,6 +176,10 @@ import { PrisonViewComponent } from './components/prison/prison-view/prison-view
     PrisonEditComponent,
     PrisonListComponent,
     PrisonViewComponent,
+    NationalityListComponent,
+    NationalityAddComponent,
+    NationalityEditComponent,
+    NationalityViewComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

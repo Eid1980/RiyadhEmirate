@@ -1,5 +1,7 @@
-﻿using Emirates.Core.Application.Dtos;
+﻿using Emirates.API.Filters;
+using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
+using Emirates.Core.Application.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Shared;
 using Emirates.Core.Application.Services.UserRoles;
@@ -19,30 +21,35 @@ namespace Emirates.API.Controllers
         }
 
         [HttpGet("GetUsersByRoleId/{roleId}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse GetUsersByRoleId(int roleId)
         {
             return _userRoleService.GetUsersByRoleId(roleId);
         }
 
         [HttpGet("GetRolesByUserId/{userId}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse GetRolesByUserId(int userId)
         {
             return _userRoleService.GetRolesByUserId(userId);
         }
 
         [HttpPost("Create")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse Create(CreateUserRoleDto createDto)
         {
             return _userRoleService.Create(createDto);
         }
 
         [HttpDelete("Delete/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse Delete(int id)
         {
             return _userRoleService.Delete(id);
         }
 
         [HttpPost("GetListPage")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse GetAdminUsers(SearchModel searchModelDto)
         {
             return _userRoleService.GetAdminUsers(searchModelDto);

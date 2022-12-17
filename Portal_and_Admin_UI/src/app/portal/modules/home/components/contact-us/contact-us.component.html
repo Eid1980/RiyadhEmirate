@@ -38,7 +38,7 @@
               <i class="fa-solid fa-envelope ms-2 fa-20"></i>
               <span class="fa-18">البريد الإلكترونى</span>
             </h5>
-            <h5 class="fw-normal fa-16 text-muted mb-0">test@gmial.com</h5>
+            <h5 class="fw-normal fa-16 text-muted mb-0"><a href="mailto:webmaster@riyadh.gov.sa">webmaster@riyadh.gov.sa</a></h5>
           </div>
 
           <div class="d-flex align-items-center mb-3">
@@ -46,7 +46,7 @@
               <i class="fa-solid fa-phone ms-2 fa-20"></i>
               <span class="fa-18">الهاتف</span>
             </h5>
-            <h5 class="fw-normal fa-16 text-muted mb-0">012568752</h5>
+            <h5 class="fw-normal fa-16 text-muted mb-0">4114444 11 966</h5>
           </div>
         </div>
 
@@ -72,6 +72,7 @@
                         (isFormSubmitted || createContactUsform.get('email').touched) && createContactUsform.get('email').errors?.required
                     }" />
                   <small *ngIf="(isFormSubmitted || createContactUsform.get('email').touched) && createContactUsform.get('email').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || createContactUsform.get('email').touched) && createContactUsform.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
                 </div>
 
                 <div class="form-group col-md-6">
@@ -90,7 +91,7 @@
                         (isFormSubmitted || createContactUsform.get('contactUsMessageTypeId').touched) &&
                         createContactUsform.get('contactUsMessageTypeId').errors?.required
                     }">
-                    <option [ngValue]="null">-- اختر التصنيف --</option>
+                    <option [ngValue]="null">-- اختر الغرض من الرساله --</option>
                     <option *ngFor="let messageType of messageContactUsTypes" [ngValue]="messageType.id">{{ messageType.name }}</option>
                   </select>
                   <small *ngIf="(isFormSubmitted || createContactUsform.get('contactUsMessageTypeId').touched) && createContactUsform.get('contactUsMessageTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>

@@ -52,7 +52,7 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.ToDate, src => src.MapFrom(m => m.ToDate == null? "حتى الان" : m.ToDate.Value.ToString("yyyy-MM-dd")));
             CreateMap<EmiratesPrince, GetEmiratesPrinceListDto>()
                 .ForMember(dest => dest.FromDate, src => src.MapFrom(m => m.FromDate.ToString("yyyy-MM-dd")))
-                .ForMember(dest => dest.ToDate, src => src.MapFrom(m => m.ToDate == null ? "حتى الان" : m.ToDate.Value.ToString("yyyy-MM-dd")));
+                .ForMember(dest => dest.ToDate, src => src.MapFrom(m => m.ToDate == null || m.ToDate == DateTime.Now.Date ? "حتى الان" : m.ToDate.Value.ToString("yyyy-MM-dd")));
             #endregion
 
             #region ContactUsMessage
@@ -77,6 +77,14 @@ namespace Emirates.Core.Application.Mappers
 
             #region Home
             CreateMap<CreateDesignEvaluationDto, DesignEvaluation>();
+            #endregion
+
+            #region Nationality
+            CreateMap<CreateNationalityDto, Nationality>();
+            CreateMap<UpdateNationalityDto, Nationality>();
+
+            CreateMap<Nationality, GetNationalityDetailsDto>();
+            CreateMap<Nationality, GetNationalityListDto>();
             #endregion
 
             #region News
@@ -104,6 +112,7 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<CreateNewsCommentDto, NewsComment>();
 
             CreateMap<NewsComment, GetNewsCommentDetailsDto>()
+                .ForMember(dest => dest.NewsTitle, src => src.MapFrom(m => m.News.Title))
                 .ForMember(dest => dest.CommentStageName, src => src.MapFrom(m => m.CommentStage.NameAr))
                 .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")));
             CreateMap<NewsComment, GetNewsCommentListDto>()
@@ -184,8 +193,7 @@ namespace Emirates.Core.Application.Mappers
             CreateMap<User, GetUserDataDto>()
                 .ForMember(dest => dest.Name, src => src.MapFrom(m => $"{m.FirstNameAr} {m.SecondNameAr} {m.ThirdNameAr} {m.LastNameAr}"))
                 .ForMember(dest => dest.BirthDate, src => src.MapFrom(m => m.BirthDate.ToString("yyyy-MM-dd")))
-                .ForMember(dest => dest.GenderName, src => src.MapFrom(m => m.IsMale ? "ذكر" : "أنثى"))
-                .ForMember(dest => dest.NationalityName, src => src.MapFrom(m => m.Nationality.NameAr));
+                .ForMember(dest => dest.GenderName, src => src.MapFrom(m => m.IsMale ? "ذكر" : "أنثى"));
             #endregion
 
             #region Request
@@ -302,7 +310,6 @@ namespace Emirates.Core.Application.Mappers
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit))
                 .ForMember(dest => dest.RequestTypeName, src => src.MapFrom(m => m.RequestLandsInfringement.RequestType.NameAr))
-                .ForMember(dest => dest.InstrumentNumber, src => src.MapFrom(m => m.RequestLandsInfringement.InstrumentNumber))
                 .ForMember(dest => dest.EstimatedSpace, src => src.MapFrom(m => m.RequestLandsInfringement.EstimatedSpace))
                 .ForMember(dest => dest.GovernorateName, src => src.MapFrom(m => m.RequestLandsInfringement.Governorate.NameAr))
                 .ForMember(dest => dest.Address, src => src.MapFrom(m => m.RequestLandsInfringement.Address))

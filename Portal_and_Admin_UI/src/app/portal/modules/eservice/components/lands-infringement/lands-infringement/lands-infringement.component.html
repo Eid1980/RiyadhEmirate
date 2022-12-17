@@ -23,12 +23,17 @@
                   (isFormSubmitted || landsInfringementForm.get('requestTypeId').touched) &&
                   landsInfringementForm.get('requestTypeId').errors?.required}">
                 <option [ngValue]="null">-- اختر نوع التعدي --</option>
-                <option *ngFor="let requestType of requestTypes" [ngValue]="requestType.id">{{ requestType.name }}
+                <option *ngFor="let requestType of requestTypes" [ngValue]="requestType.id">
+                  {{ requestType.name }}
                 </option>
               </select>
-              <small
-                *ngIf="(isFormSubmitted || landsInfringementForm.get('requestTypeId').touched) && landsInfringementForm.get('requestTypeId').errors?.required"
-                class="danger">هذاالحقل مطلوب</small>
+              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('requestTypeId').touched) && landsInfringementForm.get('requestTypeId').errors?.required"
+                     class="danger">هذاالحقل مطلوب</small>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="estimatedSpace" class="form-lbl">المساحة التقديرية</label>
+              <input type="text" class="form-control" autocomplete="off" formControlName="estimatedSpace"
+                     id="estimatedSpace" />
             </div>
             <div class="form-group col-md-6">
               <label for="governorateId" class="form-lbl">المحافظة<span class="danger">*</span></label>
@@ -37,91 +42,70 @@
                   (isFormSubmitted || landsInfringementForm.get('governorateId').touched) &&
                   landsInfringementForm.get('governorateId').errors?.required}">
                 <option [ngValue]="null">-- اختر المحافظة --</option>
-                <option *ngFor="let governorate of governorates" [ngValue]="governorate.id">{{ governorate.name }}
+                <option *ngFor="let governorate of governorates" [ngValue]="governorate.id">
+                  {{ governorate.name }}
                 </option>
               </select>
-              <small
-                *ngIf="(isFormSubmitted || landsInfringementForm.get('governorateId').touched) && landsInfringementForm.get('governorateId').errors?.required"
-                class="danger">هذاالحقل مطلوب</small>
+              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('governorateId').touched) && landsInfringementForm.get('governorateId').errors?.required"
+                     class="danger">هذاالحقل مطلوب</small>
             </div>
             <div class="form-group col-md-6">
-              <label for="instrumentNumber" class="form-lbl">رقم الصك<span class="danger">*</span></label>
-              <input type="text" class="form-control" autocomplete="off" formControlName="instrumentNumber"
-                id="instrumentNumber" [ngClass]="{
-                  invalid:
-                  (isFormSubmitted || landsInfringementForm.get('instrumentNumber').touched) &&
-                  landsInfringementForm.get('instrumentNumber').errors?.required}" />
-              <small
-                *ngIf="(isFormSubmitted || landsInfringementForm.get('instrumentNumber').touched) && landsInfringementForm.get('instrumentNumber').errors?.required"
-                class="danger">هذاالحقل مطلوب</small>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="estimatedSpace" class="form-lbl">المساحة التقديرية</label>
-              <input type="text" class="form-control" autocomplete="off" formControlName="estimatedSpace"
-                id="estimatedSpace" />
-            </div>
-            <div class="form-group col-md-12">
-              <label for="infringerDescription" class="form-lbl">وصف التعدي<span class="danger">*</span></label>
-              <textarea type="text" class="form-control" autocomplete="off" formControlName="infringerDescription"
-                id="infringerDescription" [ngClass]="{
-                  invalid:
-                  (isFormSubmitted || landsInfringementForm.get('infringerDescription').touched) &&
-                  landsInfringementForm.get('infringerDescription').errors?.required}">
-                </textarea>
-              <small
-                *ngIf="(isFormSubmitted || landsInfringementForm.get('infringerDescription').touched) && landsInfringementForm.get('infringerDescription').errors?.required"
-                class="danger">هذاالحقل مطلوب</small>
-            </div>
-            <div class="form-group col-md-12">
               <label for="address" class="form-lbl">العنوان<span class="danger">*</span></label>
               <textarea type="text" class="form-control" autocomplete="off" formControlName="address" id="address"
-                [ngClass]="{
+                        [ngClass]="{
                   invalid:
                   (isFormSubmitted || landsInfringementForm.get('address').touched) &&
                   landsInfringementForm.get('address').errors?.required}">
                 </textarea>
-              <small
-                *ngIf="(isFormSubmitted || landsInfringementForm.get('address').touched) && landsInfringementForm.get('address').errors?.required"
-                class="danger">هذاالحقل مطلوب</small>
+              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('address').touched) && landsInfringementForm.get('address').errors?.required"
+                     class="danger">هذاالحقل مطلوب</small>
             </div>
             <div class="form-group col-md-6">
               <label for="longitude" class="form-lbl">خط الطول<span class="danger">*</span></label>
               <input type="text" class="form-control" autocomplete="off" formControlName="longitude" id="longitude"
-                [ngClass]="{
+                     [ngClass]="{
                   invalid:
                   (isFormSubmitted || landsInfringementForm.get('longitude').touched) &&
                   landsInfringementForm.get('longitude').errors?.required}" />
-              <small
-                *ngIf="(isFormSubmitted || landsInfringementForm.get('longitude').touched) && landsInfringementForm.get('longitude').errors?.required"
-                class="danger">هذاالحقل مطلوب</small>
+              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('longitude').touched) && landsInfringementForm.get('longitude').errors?.required"
+                     class="danger">هذاالحقل مطلوب</small>
             </div>
             <div class="form-group col-md-6">
               <label for="latitude" class="form-lbl">خط العرض<span class="danger">*</span></label>
               <input type="text" class="form-control" autocomplete="off" formControlName="latitude" id="latitude"
-                [ngClass]="{
+                     [ngClass]="{
                   invalid:
                   (isFormSubmitted || landsInfringementForm.get('latitude').touched) &&
                   landsInfringementForm.get('latitude').errors?.required}" />
-              <small
-                *ngIf="(isFormSubmitted || landsInfringementForm.get('latitude').touched) && landsInfringementForm.get('latitude').errors?.required"
-                class="danger">هذاالحقل مطلوب</small>
+              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('latitude').touched) && landsInfringementForm.get('latitude').errors?.required"
+                     class="danger">هذاالحقل مطلوب</small>
             </div>
             <div class="form-group col-md-6">
               <label for="infringerName" class="form-lbl">اسم المتعدي</label>
               <input type="text" class="form-control" autocomplete="off" formControlName="infringerName"
-                id="infringerName" />
+                     id="infringerName" />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="infringerDescription" class="form-lbl">وصف التعدي<span class="danger">*</span></label>
+              <textarea type="text" class="form-control" autocomplete="off" formControlName="infringerDescription"
+                        id="infringerDescription" [ngClass]="{
+                  invalid:
+                  (isFormSubmitted || landsInfringementForm.get('infringerDescription').touched) &&
+                  landsInfringementForm.get('infringerDescription').errors?.required}">
+                </textarea>
+              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('infringerDescription').touched) && landsInfringementForm.get('infringerDescription').errors?.required"
+                     class="danger">هذاالحقل مطلوب</small>
             </div>
             <div class="form-group col-md-12">
               <label for="notes" class="form-lbl">تفاصيل اضافية<span class="danger">*</span></label>
               <textarea type="text" class="form-control" autocomplete="off" formControlName="notes" id="notes"
-                [ngClass]="{
+                        [ngClass]="{
                   invalid:
                   (isFormSubmitted || landsInfringementForm.get('notes').touched) &&
                   landsInfringementForm.get('notes').errors?.required}">
                 </textarea>
-              <small
-                *ngIf="(isFormSubmitted || landsInfringementForm.get('notes').touched) && landsInfringementForm.get('notes').errors?.required"
-                class="danger">هذاالحقل مطلوب</small>
+              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('notes').touched) && landsInfringementForm.get('notes').errors?.required"
+                     class="danger">هذاالحقل مطلوب</small>
             </div>
           </div>
         </div>

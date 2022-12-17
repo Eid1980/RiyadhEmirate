@@ -41,6 +41,7 @@ export class ServiceStageListComponent implements OnInit {
           Field: 'Action',
           Header: 'الإجراءات',
           Searchable: false,
+          Sortable: false,
           Type: ColumnType.Action,
         },
       ],

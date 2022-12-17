@@ -51,11 +51,11 @@
 
           <!-- Listen or Print -->
           <div class="d-flex justify-content-end">
-            <button type="button" class="border-primary-2 btn btn-white ms-3 my-1 px-3 py-2 h-fit-content">
-              <img src="assets/images/icons/listen.svg" alt="icon" class="img-fluid ms-2" style="width: 14px;">
-              <span class="fa-12">إستماع</span>
-            </button>
-            <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2 h-fit-content" (click)="print()">
+            <!--<button type="button" class="border-primary-2 btn btn-white ms-3 my-1 px-3 py-2 h-fit-content">
+    <img src="assets/images/icons/listen.svg" alt="icon" class="img-fluid ms-2" style="width: 14px;">
+    <span class="fa-12">إستماع</span>
+  </button>-->
+            <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2 h-fit-content" [printTitle]="serviceDetailsDto?.nameAr" [useExistingCss]="true" printSectionId="home" ngxPrint>
               <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
               <span class="fa-12">طباعة</span>
             </button>
@@ -135,9 +135,12 @@
 
             <div class="tab-pane fade" id="conditions" role="tabpanel" aria-labelledby="conditions-tab">
               <div class="py-4">
-                <div class="term-row" *ngFor="let serviceCondition of getServiceConditionListDto;let i=index;">
-                  <span class="term-num">{{i+1}}</span>
-                  <span class="term-desc">{{serviceCondition.condition}}</span>
+                <div class="artical-content-wrapper">
+                  <ol class="artical-list">
+                    <li class="artical-list-item" *ngFor="let serviceCondition of getServiceConditionListDto">
+                      {{serviceCondition.condition}}
+                    </li>
+                  </ol>
                 </div>
               </div>
             </div>

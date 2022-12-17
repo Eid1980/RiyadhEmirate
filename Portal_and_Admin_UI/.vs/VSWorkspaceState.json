@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\admin",
-    "\\src\\app\\admin\\modules",
-    "\\src\\app\\admin\\modules\\data-management",
-    "\\src\\app\\admin\\modules\\data-management\\components",
-    "\\src\\app\\admin\\modules\\data-management\\components\\auction",
-    "\\src\\app\\admin\\modules\\data-management\\components\\auction\\auction-add",
-    "\\src\\app\\admin\\modules\\data-management\\components\\case-type"
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\components",
+    "\\src\\app\\shared\\components\\page-list",
+    "\\src\\app\\shared\\components\\request-attacment",
+    "\\src\\app\\shared\\components\\request-attacment-preview",
+    "\\src\\app\\shared\\components\\request-stage-log",
+    "\\src\\app\\shared\\interfaces"
   ],
-  "SelectedNode": "\\src\\app\\admin\\modules\\data-management\\components\\auction\\auction-add\\auction-add.component.ts",
+  "SelectedNode": "\\src\\app\\shared\\shared.module.ts",
   "PreviewInSolutionExplorer": false
 }
