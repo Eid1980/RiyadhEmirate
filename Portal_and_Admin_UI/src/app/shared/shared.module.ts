@@ -19,7 +19,6 @@ import { RatingModule } from 'primeng/rating';
 import { AuthGuard } from './guards/auth.guard';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { PageListComponent } from './components/page-list/page-list.component';
-import { DataListComponent } from './components/data-list/data-list.component';
 import { AuthorizeDirective } from './directives/authorize.directive';
 import { HiddenAuthorizeColumnFilterPipe } from './pipes/hidden-authorize-coulmn-filter.pipe';
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
@@ -57,7 +56,6 @@ import { NgxCaptchaModule } from 'ngx-captcha'
     HiddenAuthorizeColumnFilterPipe,
     ProgressSpinnerComponent,
     PageListComponent,
-    DataListComponent,
     AuthorizeDirective,
     ViewProfileComponent,
     RequestAttacmentComponent,
@@ -112,7 +110,6 @@ import { NgxCaptchaModule } from 'ngx-captcha'
     NotAuthorizedComponent,
     PageNotFoundComponent,
     PageListComponent,
-    DataListComponent,
     TableModule,
     AutoCompleteModule,
     ReactiveFormsModule,

@@ -49,7 +49,7 @@
     </form>
     <div class="row mx-0">
       <p-table #inbox [value]="inboxListDto" [paginator]="true" dataKey="id" [autoLayout]="true" [responsive]="true"
-               [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10 "
+               [rowHover]="true" [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10 "
                [first]="pagingMetaData?.firstItemOnPage" [lazy]="true" (onLazyLoad)="onTableLazyLoad($event)"
                [totalRecords]="pagingMetaData?.totalItemCount" [scrollable]="true" class="w-100 ps-0">
         <ng-template pTemplate="header" let-columns>

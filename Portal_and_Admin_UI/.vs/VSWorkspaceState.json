@@ -3,13 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\portal\\modules",
-    "\\src\\app\\portal\\modules\\home",
-    "\\src\\app\\portal\\modules\\home\\components",
-    "\\src\\app\\portal\\modules\\home\\components\\auction-details",
-    "\\src\\app\\portal\\modules\\home\\components\\home",
-    "\\src\\app\\portal\\modules\\home\\components\\news-details"
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\components",
+    "\\src\\app\\shared\\components\\page-list",
+    "\\src\\app\\shared\\components\\request-attacment",
+    "\\src\\app\\shared\\components\\request-attacment-preview",
+    "\\src\\app\\shared\\components\\request-stage-log",
+    "\\src\\app\\shared\\interfaces"
   ],
-  "SelectedNode": "\\src\\app\\portal",
+  "SelectedNode": "\\src\\app\\shared\\shared.module.ts",
   "PreviewInSolutionExplorer": false
 }
