@@ -23,6 +23,7 @@
         <div class="form-group col-md-4">
           <hijri-gregorian-datepicker id="dateFrom" [placeHolder]="'سنة/شهر/يوم'"
                                       [isRequired]="false"
+                                      [minGreg]="minGreg" [minHijri]="minHigriDate"
                                       [GregLabel]="'ميلادي'"
                                       [hijriLabel]="'هجري'"
                                       [selectedDateType]="selectedDateType"
@@ -33,6 +34,7 @@
         <div class="form-group col-md-4">
           <hijri-gregorian-datepicker id="dateTo" [placeHolder]="'سنة/شهر/يوم'"
                                       [isRequired]="false"
+                                      [minGreg]="minGreg" [minHijri]="minHigriDate"
                                       [GregLabel]="'ميلادي'"
                                       [hijriLabel]="'هجري'"
                                       [selectedDateType]="selectedDateType"

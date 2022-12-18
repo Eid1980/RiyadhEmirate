@@ -29,7 +29,6 @@ export class RegisterComponent implements OnInit {
   @ViewChild('birthDate') birthDate: any;
   isValidDate = false;
   selectedDateType = DateType.Hijri;
-  //minHigriDate: NgbDateStruct;
   minGreg: NgbDateStruct;
   minHigriDate: NgbDateStruct;
   maxHigriDate: NgbDateStruct;
@@ -47,11 +46,7 @@ export class RegisterComponent implements OnInit {
     //this.minHigriDate = { day: 1, month: 1, year: 1360 };
     let nowDate = new Date();
     let nowDateHijri = dateFormatterService.GetTodayHijri();
-    this.minHigriDate = {
-      day: 1,
-      month: 1,
-      year: 1360,
-    };
+    this.minHigriDate = { day: 1, month: 1, year: 1360 };
     this.maxHigriDate = {
       day: nowDateHijri.day,
       month: nowDateHijri.month,

@@ -10,6 +10,7 @@ import { DateType } from 'ngx-hijri-gregorian-datepicker';
 import { DynamicSearchService } from '@shared/proxy/shared/dynamic-search.service';
 import { PagingMetaData } from '@shared/models/paging-meta-data.model';
 import { PageListSetting } from '@shared/interfaces/page-list-setting';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-inbox',
@@ -26,16 +27,18 @@ export class InboxComponent implements OnInit {
   @ViewChild('datePickerTo') dateTo: any;
   isValidDate = false;
   selectedDateType = DateType.Hijri;
+  minGreg: NgbDateStruct;
+  minHigriDate: NgbDateStruct;
   //#endregion
 
   pagingMetaData: PagingMetaData;
   PageListSetting: PageListSetting;
 
-  constructor(private requestService: RequestService,
-    private serviceService: ServiceService,
-    public dynamicSearchService: DynamicSearchService,
-    private formBuilder: FormBuilder,
+  constructor(private requestService: RequestService, private serviceService: ServiceService,
+    public dynamicSearchService: DynamicSearchService, private formBuilder: FormBuilder,
     private globalService: GlobalService) {
+    this.minGreg = { day: 1, month: 1, year: 1940 };
+    this.minHigriDate = { day: 1, month: 1, year: 1360 };
   }
 
   ngOnInit(): void {

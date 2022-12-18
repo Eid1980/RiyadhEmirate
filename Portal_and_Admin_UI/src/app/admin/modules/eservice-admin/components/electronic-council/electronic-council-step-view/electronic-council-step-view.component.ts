@@ -3,8 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-electronic-council-step-view',
-  templateUrl: './electronic-council-step-view.component.html',
-  styleUrls: ['./electronic-council-step-view.component.scss']
+  templateUrl: './electronic-council-step-view.component.html'
 })
 export class ElectronicCouncilStepViewComponent implements OnInit {
 
