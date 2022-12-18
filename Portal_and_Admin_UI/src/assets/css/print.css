@@ -1,0 +1,68 @@
+.form-card{
+    direction: rtl;
+    border: 1px solid black;
+    padding: 16px;
+}
+.logo{
+    display: block !important;
+    margin: 26px 0px 40px;
+    direction: rtl;
+    text-align: start;
+}
+
+.logo img{
+    width: 300px;
+}
+
+.form-wrapper{
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 26px 26px 6px;
+    margin-bottom: 26px;
+}
+.form-header{
+    direction: rtl;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 22px;
+    margin-bottom: 32px;
+}
+.form-header h5{
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0px;
+}
+.form-content{
+    direction: rtl;
+    padding-bottom: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.form-content .row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.form-content .info-col{
+    width: 50% !important;
+    min-width: 50% !important;
+    margin-bottom: 16px;
+}
+.form-content .info-col .form-lbl{
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 12px;
+    color: black;
+    opacity: 0.7;
+}
+.form-content .info-col .form-lbl::after{
+    content: ":";
+    display: inline-block;
+    color: black;
+    opacity: 0.7;
+    margin-right: 2px;
+    font-size: 18px;
+}
+.form-content .info-col .form-val{
+    font-size: 18px;
+    font-weight: 700;
+    color:#565656;
+}
