@@ -255,10 +255,14 @@
               <tbody>
                 <tr class="border-top">
                   <td class="fa-12 fw-normal py-3 px-2">التقييم</td>
-                  <td class="info py-3 px-2 text-center">
-                    <p-rating [cancel]="false" [(ngModel)]="rate" [readonly]="!canRate" (onRate)="rateService()">
-                    </p-rating>
-                    <span class="service mx-2">{{getServiceRateDto?.serviceRatePercentage}}</span>
+                  <td class="info py-3 px-2 text-center d-flex flex-column align-items-center">
+                    <div class="d-flex align-items-center">
+                      <p-rating [cancel]="false" [(ngModel)]="rate" [readonly]="!canRate"></p-rating>
+                      <span class="lh-1 me-2 fw-bold text-primary-2 fa-14">{{rate}}</span>
+                    </div>
+                    <div class="mt-1">
+                      <button class="fa-12 bg-black bg-opacity-10 border-0 rounded-4 py-1 px-3" (click)="rateService()">تقييم</button>
+                    </div>
                   </td>
                 </tr>
                 <tr>
