@@ -6,7 +6,6 @@ using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Common;
 using Emirates.Core.Application.Services.FileManagers;
-using Emirates.Core.Application.Services.Shared;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using System.Text;
@@ -352,6 +351,5 @@ namespace Emirates.Core.Application.Services.Accounts
             return true;
         }
         #endregion
-
     }
 }

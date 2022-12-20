@@ -135,6 +135,5 @@ namespace Emirates.Core.Domain.Entities
 
         public virtual ICollection<OpenDataReport> CreatedOpenDataReports { get; set; }
         public virtual ICollection<OpenDataReport> ModifiedOpenDataReports { get; set; }
-
     }
 }
