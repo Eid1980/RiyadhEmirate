@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   isAuthenticated: boolean;
   newsSearch: string;
 
+
   constructor(private accountService: AccountService, private translateService: TranslationServiceService,
     private globalService: GlobalService)
   {

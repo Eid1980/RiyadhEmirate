@@ -33,13 +33,13 @@
           <div class="form-group col-md-4">
             <hijri-gregorian-datepicker id="dateFrom" [placeHolder]="'سنة/شهر/يوم'" [isRequired]="false"
               [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" [selectedDateType]="selectedDateType" label="التاريخ من"
-              #datePickerFrom>
+               [minGreg]="minGreg" [minHijri]="minHigriDate" #datePickerFrom>
             </hijri-gregorian-datepicker>
           </div>
           <div class="form-group col-md-4">
             <hijri-gregorian-datepicker id="dateTo" [placeHolder]="'سنة/شهر/يوم'" [isRequired]="false"
               [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" [selectedDateType]="selectedDateType" label="التاريخ الى"
-              #datePickerTo>
+               [minGreg]="minGreg" [minHijri]="minHigriDate" #datePickerTo>
             </hijri-gregorian-datepicker>
           </div>
         </div>
@@ -55,7 +55,7 @@
       </form>
 
       <div class="row mt-3 mx-0">
-        <p-table #myRequests [value]="myRequestListDto" [paginator]="true"
+        <p-table #myRequests [value]="myRequestListDto" [rowHover]="true" [paginator]="true"
           [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10"
           [totalRecords]="pagingMetaData?.totalItemCount" [scrollable]="true" [lazy]="true"
           (onLazyLoad)="onTableLazyLoad($event)" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"

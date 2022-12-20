@@ -20,7 +20,7 @@ using System.Text.Json;
 using Emirates.Core.Application.Dtos;
 
 Serilog.Debugging.SelfLog.Enable(msg => Debug.WriteLine(msg));
-//Read Configuration from appSettings
+
 var config = SerilogHelper.BuildConfiguration();
 
 //Initialize static logger using the settings from appsettings
@@ -34,22 +34,19 @@ try
     builder.Host.UseSerilog();
 
     ConfigurationManager configuration = builder.Configuration;
-    IWebHostEnvironment environment = builder.Environment;
 
-    // Add services to the container.
     #region Configure Services
     builder.Services.AddControllers()
         .AddJsonOptions(opts => 
                         opts.JsonSerializerOptions.PropertyNamingPolicy =  JsonNamingPolicy.CamelCase
                         //opts.JsonSerializerOptions.PropertyNamingPolicy = null
                        );
-
-    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
 
     #region Swagger
-    // Register the Swagger generator, defining 1 or more Swagger documents
-    builder.Services.AddSwaggerGen(c =>
+    if (builder.Environment.IsDevelopment())
+    {
+        builder.Services.AddSwaggerGen(c =>
     {
         //c.MapType<DateTime>(() => new OpenApiSchema { Format = "dd/MM/yyyy" });
         //c.MapType<DateTime?>(() => new OpenApiSchema { Format = "dd/MM/yyyy" });
@@ -84,6 +81,7 @@ try
 
         c.OperationFilter<AcceptLanguageHeaderOperationFilter>();
     });
+    }
     #endregion
 
     #region Mappers
@@ -171,10 +169,6 @@ try
 
     var app = builder.Build();
 
-    //ConfigurationManager configuration = builder.Configuration;
-    //IWebHostEnvironment environment = builder.Environment;
-
-    // Configure the HTTP request pipeline.
     #region Configure
     app.UseRequestLocalization();
 
@@ -183,6 +177,10 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
         app.UseDeveloperExceptionPage();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        });
     }
 
     app.UseExceptionHandler(builder =>
@@ -206,25 +204,9 @@ try
         });
     });
 
-
     app.UseHttpsRedirection();
-
     app.UseStaticFiles();
-
     app.UseSerilogRequestLogging();
-
-    #region Swagger
-    // Enable middleware to serve generated Swagger as a JSON endpoint.
-    app.UseSwagger();
-
-    // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-    // specifying the Swagger JSON endpoint.
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-    });
-    #endregion
-
     app.UseRouting();
 
     #region CORS

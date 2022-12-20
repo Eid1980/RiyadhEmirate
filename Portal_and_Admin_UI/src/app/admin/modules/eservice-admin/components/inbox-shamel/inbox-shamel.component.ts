@@ -7,6 +7,7 @@ import { SearchField, SearchModel } from '@proxy/shared/search-model.model';
 import { LookupDto } from '@proxy/shared/lookup-dto.model';
 import { GetInboxListDto, InboxSearchDto } from '@proxy/requests/models';
 import { DateType } from 'ngx-hijri-gregorian-datepicker';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-inbox-shamel',
@@ -23,10 +24,14 @@ export class InboxShamelComponent implements OnInit {
   @ViewChild('datePickerTo') dateTo: any;
   isValidDate = false;
   selectedDateType = DateType.Hijri;
+  minGreg: NgbDateStruct;
+  minHigriDate: NgbDateStruct;
   //#endregion
 
   constructor(private requestService: RequestService, private serviceService: ServiceService,
     private formBuilder: FormBuilder, private globalService: GlobalService) {
+    this.minGreg = { day: 1, month: 1, year: 1940 };
+    this.minHigriDate = { day: 1, month: 1, year: 1360 };
   }
 
   ngOnInit(): void {

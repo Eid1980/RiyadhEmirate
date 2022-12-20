@@ -162,7 +162,8 @@ export class GlobalService {
     this.router.navigate([url]);
   }
   navigateParams(url: string, params: any) {
-    this.router.navigate([url, params]);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([url, params]));
   }
   navigateToInbox() {
     this.router.navigate(["/admin/eservice-admin/inbox"]);

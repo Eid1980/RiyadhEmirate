@@ -510,6 +510,8 @@
           width: 100%;
           border-radius: 6px;
           margin-top: 14px;
+          left: 0;
+          right: auto;
 
           &::after {
             position: absolute;

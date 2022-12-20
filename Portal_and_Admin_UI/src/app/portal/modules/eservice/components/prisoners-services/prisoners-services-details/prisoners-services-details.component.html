@@ -1,50 +1,56 @@
 <div class="container px-0" id="request-print-section">
+  <div class="logo d-none">
+    <img src="assets/images/logo.svg" class="img-fluid" alt="logo" />
+  </div>
   <div class="form-card">
-    <div class="form-header">
-      <h5>بيانات مقدم الطلب</h5>
-    </div>
-    <div class="form-content">
-      <app-user-data-view></app-user-data-view>
+    <div class="form-wrapper">
+      <div class="form-header">
+        <h5>بيانات مقدم الطلب</h5>
+      </div>
+      <div class="form-content">
+        <app-user-data-view></app-user-data-view>
+      </div>
     </div>
   </div>
-
   <div class="form-card">
-    <div class="form-header">
-      <h5>بيانات الطلب</h5>
-    </div>
-    <div class="form-content">
-      <div class="row mx-0">
-        <div class="info-col col-md-6 col-12">
-          <span class="form-lbl lbl-33">رقم الطلب</span>
-          <span class="form-val">{{ requestPrisonersServiceDetailsDto?.requestNumber }}</span>
-        </div>
-        <div class="info-col col-md-6 col-12">
-          <span class="form-lbl lbl-33">اسم الخدمة</span>
-          <span class="form-val">{{ requestPrisonersServiceDetailsDto?.serviceName }}</span>
-        </div>
-        <div class="info-col col-md-6 col-12">
-          <span class="form-lbl lbl-33">تاريخ الطلب</span>
-          <span class="form-val">{{ requestPrisonersServiceDetailsDto?.requestDate }}</span>
-        </div>
-        <div class="info-col col-md-6 col-12">
-          <span class="form-lbl lbl-33">حالة الطلب</span>
-          <span class="form-val">{{ requestPrisonersServiceDetailsDto?.stageName }}</span>
-        </div>
-        <div class="info-col col-md-6 col-12">
-          <span class="form-lbl lbl-33">نوع الطلب</span>
-          <span class="form-val">{{ requestPrisonersServiceDetailsDto?.requestTypeName }}</span>
-        </div>
-        <div class="info-col col-md-6 col-12">
-          <span class="form-lbl lbl-33">نوع القضية</span>
-          <span class="form-val">{{ requestPrisonersServiceDetailsDto?.caseTypeName }}</span>
-        </div>
-        <div class="info-col col-md-6 col-12">
-          <span class="form-lbl lbl-33">اسم السجن</span>
-          <span class="form-val">{{ requestPrisonersServiceDetailsDto?.prisonName }}</span>
-        </div>
-        <div class="info-col col-md-12 col-12">
-          <span class="form-lbl lbl-33">تفاصيل الطلب</span>
-          <span class="form-val" *ngIf="requestPrisonersServiceDetailsDto?.notes" [outerHTML]="requestPrisonersServiceDetailsDto?.notes | listString"></span>
+    <div class="form-wrapper">
+      <div class="form-header">
+        <h5>بيانات الطلب</h5>
+      </div>
+      <div class="form-content">
+        <div class="row mx-0">
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">رقم الطلب</span>
+            <span class="form-val">{{ requestPrisonersServiceDetailsDto?.requestNumber }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">اسم الخدمة</span>
+            <span class="form-val">{{ requestPrisonersServiceDetailsDto?.serviceName }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">تاريخ الطلب</span>
+            <span class="form-val">{{ requestPrisonersServiceDetailsDto?.requestDate }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">حالة الطلب</span>
+            <span class="form-val">{{ requestPrisonersServiceDetailsDto?.stageName }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">نوع الطلب</span>
+            <span class="form-val">{{ requestPrisonersServiceDetailsDto?.requestTypeName }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">نوع القضية</span>
+            <span class="form-val">{{ requestPrisonersServiceDetailsDto?.caseTypeName }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">اسم السجن</span>
+            <span class="form-val">{{ requestPrisonersServiceDetailsDto?.prisonName }}</span>
+          </div>
+          <div class="info-col col-md-12 col-12">
+            <span class="form-lbl lbl-33">تفاصيل الطلب</span>
+            <span class="form-val" *ngIf="requestPrisonersServiceDetailsDto?.notes" [outerHTML]="requestPrisonersServiceDetailsDto?.notes | listString"></span>
+          </div>
         </div>
       </div>
     </div>

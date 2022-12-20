@@ -20,6 +20,7 @@ export class NewsSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger;
     this.globalService.setTitle("البحث في الأخبار");
     this.currentLang = this.translateService.getCurrentLanguage().Name.toLowerCase();
     this.filter = this.activatedRoute.snapshot.paramMap.get("filter");
