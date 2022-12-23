@@ -2,15 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\components",
-    "\\src\\app\\shared\\components\\page-list",
-    "\\src\\app\\shared\\components\\request-attacment",
-    "\\src\\app\\shared\\components\\request-attacment-preview",
-    "\\src\\app\\shared\\components\\request-stage-log",
-    "\\src\\app\\shared\\interfaces"
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\shared\\shared.module.ts",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
