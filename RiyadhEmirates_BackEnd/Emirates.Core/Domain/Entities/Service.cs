@@ -25,5 +25,6 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<ServiceAudience> ServiceAudiences { get; set; }
         public virtual ICollection<ServiceCondition> ServiceConditions { get; set; }
         public virtual ICollection<ServiceBenefit> ServiceBenefits { get; set; }
+        public virtual ICollection<ServieNotification> ServieNotifications { get; set; }
     }
 }

@@ -88,6 +88,14 @@ import { NationalityAddComponent } from "./components/nationality/nationality-ad
 import { NationalityEditComponent } from "./components/nationality/nationality-edit/nationality-edit.component";
 import { NationalityListComponent } from "./components/nationality/nationality-list/nationality-list.component";
 import { NationalityViewComponent } from "./components/nationality/nationality-view/nationality-view.component";
+import { ServieNotificationEmailListComponent } from "./components/servie-notification/email/servie-notification-email-list/servie-notification-email-list.component";
+import { ServieNotificationEmailAddComponent } from "./components/servie-notification/email/servie-notification-email-add/servie-notification-email-add.component";
+import { ServieNotificationEmailEditComponent } from "./components/servie-notification/email/servie-notification-email-edit/servie-notification-email-edit.component";
+import { ServieNotificationEmailViewComponent } from "./components/servie-notification/email/servie-notification-email-view/servie-notification-email-view.component";
+import { ServieNotificationSmsListComponent } from "./components/servie-notification/sms/servie-notification-sms-list/servie-notification-sms-list.component";
+import { ServieNotificationSmsAddComponent } from "./components/servie-notification/sms/servie-notification-sms-add/servie-notification-sms-add.component";
+import { ServieNotificationSmsEditComponent } from "./components/servie-notification/sms/servie-notification-sms-edit/servie-notification-sms-edit.component";
+import { ServieNotificationSmsViewComponent } from "./components/servie-notification/sms/servie-notification-sms-view/servie-notification-sms-view.component";
 
 const routes: Routes = [
 
@@ -780,6 +788,76 @@ const routes: Routes = [
   {
     path: "service-view/:id",
     component: ServiceViewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
+  },
+  //#endregion
+
+  //#region ServieNotificationEmail
+  {
+    path: "servie-notification-email-list",
+    component: ServieNotificationEmailListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
+  },
+  {
+    path: "servie-notification-email-add",
+    component: ServieNotificationEmailAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
+  },
+  {
+    path: "servie-notification-email-edit/:id",
+    component: ServieNotificationEmailEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
+  },
+  {
+    path: "servie-notification-email-view/:id",
+    component: ServieNotificationEmailViewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
+  },
+  //#endregion
+
+  //#region ServieNotificationSms
+  {
+    path: "servie-notification-sms-list",
+    component: ServieNotificationSmsListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
+  },
+  {
+    path: "servie-notification-sms-add",
+    component: ServieNotificationSmsAddComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
+  },
+  {
+    path: "servie-notification-sms-edit/:id",
+    component: ServieNotificationSmsEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]
+    }
+  },
+  {
+    path: "servie-notification-sms-view/:id",
+    component: ServieNotificationSmsViewComponent,
     canActivate: [AuthGuard],
     data: {
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin]

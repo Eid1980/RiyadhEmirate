@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 using System.Security.Claims;
-using Emirates.Core.Application.Helpers;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.API.Filters
 {

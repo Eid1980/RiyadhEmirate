@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using Emirates.Core.Domain.Interfaces;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Dtos;
-using Emirates.Core.Application.Interfaces.Helpers;
 using Emirates.Core.Application.Dtos.ServiceRates;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.Core.Application.Services.ServiceRates
 {

@@ -13,6 +13,7 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<Request> Requests { get; set; }
         public virtual ICollection<RequestStageLog> RequestStageLogs { get; set; }
         public virtual ICollection<ServiceStage> ServiceStages { get; set; }
+        public virtual ICollection<ServieNotification> ServieNotifications { get; set; }
 
     }
 }

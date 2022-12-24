@@ -4,7 +4,6 @@ using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Services.FileUploader;
-using Microsoft.AspNetCore.Http;
 
 namespace Emirates.Core.Application.Services.FileManagers
 {

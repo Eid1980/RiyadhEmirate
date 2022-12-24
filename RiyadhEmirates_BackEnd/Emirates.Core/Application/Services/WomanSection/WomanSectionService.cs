@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
-using Emirates.Core.Application.CustomExceptions;
-using Emirates.Core.Application.Dtos.AboutUs;
+using Emirates.Core.Application.Shared;
 using Emirates.Core.Application.Dtos.MainPoints;
 using Emirates.Core.Application.Dtos.WomanSection;
-using Emirates.Core.Application.Enums;
-using Emirates.Core.Application.Interfaces.Helpers;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 
@@ -34,7 +30,7 @@ namespace Emirates.Core.Application.Services.WomanSection
 
         public IApiResponse CreateMainPoint(CreateMainPoints createMainPoints)
         {
-            var womanSectionContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).Where(p => p.PageContentType == PageContentTypeEnum.WomanSection.ToString()).FirstOrDefault();
+            var womanSectionContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).Where(p => p.PageContentType == SystemEnums.PageContentTypeEnum.WomanSection.ToString()).FirstOrDefault();
 
             bool isExist = _emiratesUnitOfWork.PageMainPoints.Any(p => p.PageContentId == womanSectionContent.Id && p.Order == createMainPoints.Order);
 
@@ -69,7 +65,7 @@ namespace Emirates.Core.Application.Services.WomanSection
         {
             try
             {
-                var aboutUsContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).FirstOrDefault(p => p.PageContentType == PageContentTypeEnum.WomanSection.ToString());
+                var aboutUsContent = _emiratesUnitOfWork.PageContent.Include(p => p.MainPagePoints).FirstOrDefault(p => p.PageContentType == SystemEnums.PageContentTypeEnum.WomanSection.ToString());
 
                 aboutUsContent.MainPagePoints = aboutUsContent.MainPagePoints.OrderBy(p => p.Order).ToList();
 
@@ -88,7 +84,7 @@ namespace Emirates.Core.Application.Services.WomanSection
             if (pageContent == null)
                 throw new NotFoundException(typeof(PageContent).Name);
 
-            updateModel.PageContentType = PageContentTypeEnum.WomanSection.ToString();
+            updateModel.PageContentType = SystemEnums.PageContentTypeEnum.WomanSection.ToString();
 
             _emiratesUnitOfWork.PageContent.Update(pageContent, _mapper.Map<PageContent>(updateModel));
             _emiratesUnitOfWork.Complete();

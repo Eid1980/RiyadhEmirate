@@ -2,9 +2,8 @@
 using Emirates.Core.Application.Dtos.AboutUs;
 using Emirates.Core.Application.Dtos.MainPoints;
 using Emirates.Core.Application.Dtos.WomanSection;
-using Emirates.Core.Application.Helpers;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.WomanSection;
+using Emirates.Core.Application.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

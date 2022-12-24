@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Requests;
 using Emirates.Core.Application.Dtos.Search;
-using Emirates.Core.Application.DynamicSearch;
-using Emirates.Core.Application.Helpers;
-using Emirates.Core.Application.Interfaces.Helpers;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.FileManagers;
+using Emirates.Core.Application.Shared;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -59,11 +55,11 @@ namespace Emirates.Core.Application.Services.Requests
                 Notes = changeStageDto.Notes
             };
             _emiratesUnitOfWork.RequestStageLogs.Add(requestStageLog);
-            _emiratesUnitOfWork.Complete();
+            if (_emiratesUnitOfWork.Complete() > 0)
+                return GetResponse(isSuccess: true, message: CustumMessages.SendRequestSuccess(), data: changeStageDto.Id);
+                
+            return GetResponse(isSuccess: false, message: CustumMessages.SendRequestFailed());
 
-            // Send SMS, Email
-
-            return GetResponse(message: CustumMessages.SendRequestSuccess(), data: changeStageDto.Id);
         }
         public IApiResponse ChangeStageAdmin(RequestChangeStageDto changeStageDto)
         {
@@ -111,11 +107,10 @@ namespace Emirates.Core.Application.Services.Requests
                 Notes = changeStageDto.Notes
             };
             _emiratesUnitOfWork.RequestStageLogs.Add(requestStageLog);
-            _emiratesUnitOfWork.Complete();
-
-            // Send SMS, Email
-
-            return GetResponse(message: message, data: changeStageDto.Id);
+            if (_emiratesUnitOfWork.Complete() > 0)
+                return GetResponse(isSuccess: true, message: CustumMessages.SendRequestSuccess(), data: changeStageDto.Id);
+            
+            return GetResponse(isSuccess: false, message: CustumMessages.SendRequestFailed());
         }
 
         public IApiResponse GetAttachments(Guid id)
@@ -240,6 +235,30 @@ namespace Emirates.Core.Application.Services.Requests
                 GridItemsVM = serchResult,
                 PagingMetaData = serchResult.GetMetaData()
             });
+        }
+
+        public IApiResponse GetRequestSmsData(Guid id)
+        {
+            var request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(id), include => include.CreatedUser, include => include.Service);
+            if (request == null)
+                return GetResponse();
+
+            var response = _mapper.Map<HandleSMSDto>(request);
+            var smsMessage = _emiratesUnitOfWork.ServieNotifications.FirstOrDefault(x => x.ServiceId == request.ServiceId && x.StageId == request.StageId && x.IsActive && x.IsSMS, x => x.ServieNotificationLogs.Where(e => e.EndDate == null));
+            if (smsMessage == null)
+            {
+                smsMessage = _emiratesUnitOfWork.ServieNotifications.FirstOrDefault(x => x.IsDefault && x.StageId == request.StageId && x.IsActive && x.IsSMS, x => x.ServieNotificationLogs.Where(e => e.EndDate == null));
+                if (smsMessage != null)
+                    response.SmsMessage = smsMessage.ServieNotificationLogs.FirstOrDefault()?.Message;
+            }
+            var emailMessage = _emiratesUnitOfWork.ServieNotifications.FirstOrDefault(x => x.ServiceId == request.ServiceId && x.StageId == request.StageId && x.IsActive && x.IsEmail, x => x.ServieNotificationLogs.Where(e => e.EndDate == null));
+            if (emailMessage == null)
+            {
+                emailMessage = _emiratesUnitOfWork.ServieNotifications.FirstOrDefault(x => x.IsDefault && x.StageId == request.StageId && x.IsActive && x.IsEmail, x => x.ServieNotificationLogs.Where(e => e.EndDate == null));
+                if (emailMessage != null)
+                    response.EmailMessage = emailMessage.ServieNotificationLogs.FirstOrDefault()?.Message;
+            }
+            return GetResponse(data: response);
         }
     }
 }

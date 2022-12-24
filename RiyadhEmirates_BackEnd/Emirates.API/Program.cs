@@ -6,7 +6,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Emirates.API.Configurations.AutoMapper;
 using Emirates.API.Filters.Swagger;
-using Emirates.Core.Application.CustomExceptions;
 using Emirates.InfraStructure.Contexts;
 using Emirates.InfraStructure.Loggers.Serilog;
 using Serilog;
@@ -18,6 +17,7 @@ using System.Text;
 using Emirates.API.Configurations;
 using System.Text.Json;
 using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Shared;
 
 Serilog.Debugging.SelfLog.Enable(msg => Debug.WriteLine(msg));
 

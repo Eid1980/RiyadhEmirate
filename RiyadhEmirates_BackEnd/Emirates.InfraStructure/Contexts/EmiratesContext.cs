@@ -2,7 +2,7 @@
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain;
 using Microsoft.AspNetCore.Http;
-using Emirates.Core.Application.CustomExceptions;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.InfraStructure.Contexts
 {
@@ -810,6 +810,42 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region ServieNotification
+            modelBuilder.Entity<ServieNotification>(b =>
+            {
+                b.ToTable("ServieNotifications", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.StageId).IsRequired();
+                b.Property(x => x.IsSMS).IsRequired();
+                b.Property(x => x.IsEmail).IsRequired();
+                b.Property(x => x.IsDefault).IsRequired();
+                b.Property(x => x.IsActive).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<Service>(x => x.Service).WithMany(x => x.ServieNotifications).HasForeignKey(x => x.ServiceId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Stage>(x => x.Stage).WithMany(x => x.ServieNotifications).HasForeignKey(x => x.StageId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedServieNotifications).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedServieNotifications).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.ServieNotifications());
+            });
+            #endregion
+
+            #region ServieNotificationLog
+            modelBuilder.Entity<ServieNotificationLog>(b =>
+            {
+                b.ToTable("ServieNotificationLogs", EmiratesDbSchemas.DataManagement);
+                b.Property(x => x.ServieNotificationId).IsRequired();
+                b.Property(x => x.Message).IsRequired();
+                b.Property(x => x.ConcurrencyStamp).IsRequired().IsConcurrencyToken();
+
+                b.HasOne<ServieNotification>(x => x.ServieNotification).WithMany(x => x.ServieNotificationLogs).HasForeignKey(x => x.ServieNotificationId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedServieNotificationLogs).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<User>(x => x.ModifiedUser).WithMany(x => x.ModifiedServieNotificationLogs).HasForeignKey(x => x.LastModifiedBy).OnDelete(DeleteBehavior.NoAction);
+
+                b.HasData(DefaultData.ServieNotificationLogs());
+            });
+            #endregion
+
             #region Stage
             modelBuilder.Entity<Stage>(b =>
             {
@@ -940,6 +976,8 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<ServiceCondition> ServiceConditions { get; set; }
         public DbSet<ServiceRate> ServiceRates { get; set; }
         public DbSet<ServiceStage> ServiceStages { get; set; }
+        public DbSet<ServieNotification> ServieNotifications { get; set; }
+        public DbSet<ServieNotificationLog> ServieNotificationLogs { get; set; }
         public DbSet<Stage> Stages { get; set; }
         public DbSet<UploadedFile> UploadedFiles { get; set; }
         public DbSet<User> User { get; set; }

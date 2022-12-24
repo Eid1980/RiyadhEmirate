@@ -1,5 +1,5 @@
 ﻿using Emirates.Core.Application.Dtos;
-using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;

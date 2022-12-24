@@ -1,7 +1,7 @@
 ﻿
 using Emirates.Core.Application.Dtos.AboutUs;
 using Emirates.Core.Application.Dtos.MainPoints;
-using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.Core.Application.Services.AboutUs
 {

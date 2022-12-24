@@ -1,6 +1,6 @@
 ﻿using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
-using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.Core.Application.Services.Requests
 {
@@ -20,5 +20,6 @@ namespace Emirates.Core.Application.Services.Requests
         IApiResponse GetElectronicCouncilRequests(SearchModel searchModel);
         IApiResponse InboxShamel(SearchModel searchModel);
         IApiResponse RequestSearch(SearchModel searchModel);
+        IApiResponse GetRequestSmsData(Guid id);
     }
 }

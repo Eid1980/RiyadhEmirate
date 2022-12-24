@@ -1,10 +1,9 @@
 ﻿
 using Emirates.API.Filters;
 using Emirates.Core.Application.Dtos;
-using Emirates.Core.Application.Helpers;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.ServiceAudiences;
 using Emirates.Core.Application.Services.Shared;
+using Emirates.Core.Application.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

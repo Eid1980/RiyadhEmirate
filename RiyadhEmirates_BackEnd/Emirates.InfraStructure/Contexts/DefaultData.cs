@@ -1,4 +1,4 @@
-﻿using Emirates.Core.Application.Enums;
+﻿using Emirates.Core.Application.Shared;
 using Emirates.Core.Domain.Entities;
 using System.Text;
 
@@ -616,6 +616,40 @@ namespace Emirates.InfraStructure.Contexts
 
             return arrData;
         }
+        public static ServieNotification[] ServieNotifications()
+        {
+            ServieNotification[] arrData = new ServieNotification[12];
+            arrData[0] = new ServieNotification { Id = 1, StageId = 2, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[1] = new ServieNotification { Id = 2, StageId = 3, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[2] = new ServieNotification { Id = 3, StageId = 4, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[3] = new ServieNotification { Id = 4, StageId = 5, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[4] = new ServieNotification { Id = 5, StageId = 6, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[5] = new ServieNotification { Id = 6, StageId = 7, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[6] = new ServieNotification { Id = 7, StageId = 2, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[7] = new ServieNotification { Id = 8, StageId = 3, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[8] = new ServieNotification { Id = 9, StageId = 4, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[9] = new ServieNotification { Id = 10, StageId = 5, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[10] = new ServieNotification { Id = 11, StageId = 6, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[11] = new ServieNotification { Id = 12, StageId = 7, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            return arrData;
+        }
+        public static ServieNotificationLog[] ServieNotificationLogs()
+        {
+            ServieNotificationLog[] arrData = new ServieNotificationLog[12];
+            arrData[0] = new ServieNotificationLog { Id = 1, ServieNotificationId = 1, Message = "عزيزي المستفيد نفيدكم بتقديم طلبكم رقم(رقم الطلب) بنجاح وسيتم اشعاركم في حالة الرد على الطلب.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[1] = new ServieNotificationLog { Id = 2, ServieNotificationId = 2, Message = "عزيزي المستفيد نفيدكم بارجاع طلبكم رقم (رقم الطلب) فضلا مراجعة الملاحظات واعادة ارسال الطلب.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[2] = new ServieNotificationLog { Id = 3, ServieNotificationId = 3, Message = "عزيزي المستفيد نفيدكم بأن طلبكم رقم (رقم الطلب) قيد المراجعة.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[3] = new ServieNotificationLog { Id = 4, ServieNotificationId = 4, Message = "عزيزي المستفيد نفيدكم بأنه تم رفض طلبكم رقم (رقم الطلب) ويمكنكم الاطلاع على سبب الرفض من شاشة طلباتي.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[4] = new ServieNotificationLog { Id = 5, ServieNotificationId = 5, Message = "عزيزي المستفيد نفيدكم بأنه تم رفض طلبكم رقم (رقم الطلب) ويمكنكم الاطلاع على سبب الرفض من شاشة طلباتي.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[5] = new ServieNotificationLog { Id = 6, ServieNotificationId = 6, Message = "عزيزي المستفيد نفيدكم بأنه تمت  الموافقة على طلبكم رقم (رقم الطلب).", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[6] = new ServieNotificationLog { Id = 7, ServieNotificationId = 7, Message = "عزيزي المستفيد نفيدكم بتقديم طلبكم رقم(رقم الطلب) بنجاح وسيتم اشعاركم في حالة الرد على الطلب.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[7] = new ServieNotificationLog { Id = 8, ServieNotificationId = 8, Message = "عزيزي المستفيد نفيدكم بارجاع طلبكم رقم (رقم الطلب) فضلا مراجعة الملاحظات واعادة ارسال الطلب.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[8] = new ServieNotificationLog { Id = 9, ServieNotificationId = 9, Message = "عزيزي المستفيد نفيدكم بأن طلبكم رقم (رقم الطلب) قيد المراجعة.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[9] = new ServieNotificationLog { Id = 10, ServieNotificationId = 10, Message = "عزيزي المستفيد نفيدكم بأنه تم رفض طلبكم رقم (رقم الطلب) ويمكنكم الاطلاع على سبب الرفض من شاشة طلباتي.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[10] = new ServieNotificationLog { Id = 11, ServieNotificationId = 11, Message = "عزيزي المستفيد نفيدكم بأنه تم رفض طلبكم رقم (رقم الطلب) ويمكنكم الاطلاع على سبب الرفض من شاشة طلباتي.", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[11] = new ServieNotificationLog { Id = 12, ServieNotificationId = 12, Message = "عزيزي المستفيد نفيدكم بأنه تمت  الموافقة على طلبكم رقم (رقم الطلب).", CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            return arrData;
+        }
         public static User[] Users()
         {
             User[] arrData = new User[2];
@@ -685,7 +719,7 @@ namespace Emirates.InfraStructure.Contexts
                 Id = 1,
                 DescriptionAr = "عن الاماره",
                 DescriptionEn = "About us",
-                PageContentType = PageContentTypeEnum.AboutUs.ToString(),
+                PageContentType = SystemEnums.PageContentTypeEnum.AboutUs.ToString(),
                 CreatedBy = 1,
                 CreatedDate = new DateTime(2022, 10, 1)
             };
@@ -694,7 +728,7 @@ namespace Emirates.InfraStructure.Contexts
                 Id = 2,
                 DescriptionAr = "القسم النسوي",
                 DescriptionEn = "Woman sections",
-                PageContentType = PageContentTypeEnum.WomanSection.ToString(),
+                PageContentType = SystemEnums.PageContentTypeEnum.WomanSection.ToString(),
                 CreatedBy = 1,
                 CreatedDate = new DateTime(2022, 10, 1)
             };

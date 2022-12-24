@@ -1,10 +1,10 @@
 ﻿using Emirates.Core.Application.Services.ServiceStages;
 using Emirates.Core.Application.Dtos;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.API.Filters;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.API.Controllers
 {

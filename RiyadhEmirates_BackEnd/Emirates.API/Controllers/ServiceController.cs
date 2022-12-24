@@ -2,11 +2,10 @@
 using Emirates.Core.Application.Services.Shared;
 using Emirates.Core.Application.Services;
 using Microsoft.AspNetCore.Authorization;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.API.Filters;
-using Emirates.Core.Application.Helpers;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.API.Controllers
 {

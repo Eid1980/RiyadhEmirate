@@ -173,6 +173,14 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public IServiceStageRepository ServiceStages => serviceStages ??=  new ServiceStageRepository(Context);
 
 
+        private ServieNotificationRepository servieNotifications;
+        public IServieNotificationRepository ServieNotifications => servieNotifications ??=  new ServieNotificationRepository(Context);
+
+
+        private ServieNotificationLogRepository servieNotificationLogs;
+        public IServieNotificationLogRepository ServieNotificationLogs => servieNotificationLogs ??=  new ServieNotificationLogRepository(Context);
+
+
         private StageRepository stages;
         public IStageRepository Stages => stages ??=  new StageRepository(Context);
 

@@ -1,12 +1,13 @@
-﻿using Emirates.API.Controllers;
+﻿using EmaiReference;
+using Emirates.API.Controllers;
 using Emirates.API.Filters;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
-using Emirates.Core.Application.Helpers;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Requests;
 using Emirates.Core.Application.Services.Shared;
+using Emirates.Core.Application.Shared;
 using Microsoft.AspNetCore.Mvc;
+using SMSReference;
 
 namespace Edraak.API.Controllers
 {
@@ -15,11 +16,13 @@ namespace Edraak.API.Controllers
     public class RequestController : BaseController, IRequestService
     {
         private readonly IRequestService _requestService;
+        private readonly IConfiguration _config;
 
-        public RequestController(IRequestService requestService,
+        public RequestController(IRequestService requestService, IConfiguration config,
             ILocalizationService localizationService) : base(localizationService)
         {
             _requestService = requestService;
+            _config = config;
         }
 
 
@@ -34,14 +37,20 @@ namespace Edraak.API.Controllers
         {
             changeStageDto.UserId = UserId;
             changeStageDto.StageId = (int)SystemEnums.Stages.NewRequest;
-            return _requestService.ChangeStage(changeStageDto);
+            var response = _requestService.ChangeStage(changeStageDto);
+            if (response.IsSuccess)
+                HandleNotifications(changeStageDto.Id);
+            return response;
         }
 
         [HttpPost("ChangeStageAdmin")]
         [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.RequestReview, (int)SystemEnums.Roles.ShamelRequestReview)]
         public IApiResponse ChangeStageAdmin(RequestChangeStageDto changeStageDto)
         {
-            return _requestService.ChangeStageAdmin(changeStageDto);
+            var response = _requestService.ChangeStageAdmin(changeStageDto);
+            if (response.IsSuccess)
+                HandleNotifications(changeStageDto.Id);
+            return response;
         }
 
 
@@ -95,6 +104,57 @@ namespace Edraak.API.Controllers
         public IApiResponse RequestSearch(SearchModel searchModel)
         {
             return _requestService.RequestSearch(searchModel);
+        }
+
+        [HttpGet("GetRequestSmsData/{id}")]
+        public IApiResponse GetRequestSmsData(Guid id)
+        {
+            return _requestService.GetRequestSmsData(id);
+        }
+
+        private void HandleNotifications(Guid requestId)
+        {
+            var request = (HandleSMSDto)_requestService.GetRequestSmsData(requestId).Data;
+            if (request != null)
+            {
+                bool sendSMS = Convert.ToBoolean(_config.GetSection("AppSettings:SendSMS").Value);
+                bool sendEmail = Convert.ToBoolean(_config.GetSection("AppSettings:SendEmail").Value);
+                //switch (request.StageId)
+                //{
+                //    case (int)SystemEnums.Stages.NewRequest:
+                //        messageBody = $"عزيزي المستفيد نفيدكم بتقديم طلبكم رقم ({request.RequestNumber}) بنجاح وسيتم اشعاركم في حالة الرد على الطلب.";
+                //        break;
+                //    case (int)SystemEnums.Stages.CompleteDataFromRequester:
+                //        messageBody = $"عزيزي المستفيد نفيدكم بارجاع طلبكم رقم ({request.RequestNumber}) فضلا مراجعة الملاحظات واعادة ارسال الطلب.";
+                //        break;
+                //    case (int)SystemEnums.Stages.UnderProcessing:
+                //        messageBody = $"عزيزي المستفيد نفيدكم بأن طلبكم رقم ({request.RequestNumber}) قيد المراجعة.";
+                //        break;
+                //    case (int)SystemEnums.Stages.RequestRejectedFromAdmin:
+                //    case (int)SystemEnums.Stages.RequestRejected:
+                //        messageBody = $"عزيزي المستفيد نفيدكم بأنه تم رفض طلبكم رقم ({request.RequestNumber}) ويمكنكم الاطلاع على سبب الرفض من شاشة طلباتي.";
+                //        break;
+                //    case (int)SystemEnums.Stages.RequestApproved:
+                //        messageBody = $"عزيزي المستفيد نفيدكم بأنه تمت  الموافقة على طلبكم  ({request.RequestNumber}).";
+                //        break;
+                //    default:
+                //        messageBody = "";
+                //        break;
+                //}
+
+                if (sendSMS && !string.IsNullOrEmpty(request.MobileNumber) && !string.IsNullOrEmpty(request.SmsMessage))
+                {
+                    request.SmsMessage = request.SmsMessage.Replace("رقم الطلب", request.RequestNumber);
+                    RPSMSSoapClient smsClient = new RPSMSSoapClient(new RPSMSSoapClient.EndpointConfiguration());
+                    smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
+                }
+                if (sendEmail && !string.IsNullOrEmpty(request.Email) && !string.IsNullOrEmpty(request.EmailMessage))
+                {
+                    request.EmailMessage = request.EmailMessage.Replace("رقم الطلب", request.RequestNumber);
+                    emailSoapClient emailClient = new emailSoapClient(new emailSoapClient.EndpointConfiguration());
+                    emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
+                }
+            }
         }
 
     }

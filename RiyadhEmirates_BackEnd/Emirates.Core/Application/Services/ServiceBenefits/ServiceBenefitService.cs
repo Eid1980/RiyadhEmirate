@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Emirates.Core.Application.Dtos;
-using Emirates.Core.Application.Interfaces.Helpers;
-using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Shared;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 

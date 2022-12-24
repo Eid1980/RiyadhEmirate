@@ -6,14 +6,11 @@ using Emirates.Core.Application.Services.Shared;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Dtos;
-using Emirates.Core.Application.CustomExceptions;
-using Emirates.Core.Application.Interfaces.Helpers;
+using Emirates.Core.Application.Shared;
 using Emirates.Core.Application.Dtos.Accounts;
 using Emirates.API.Filters;
-using Emirates.Core.Application.Helpers;
 
 namespace Emirates.API.Controllers
 {
@@ -146,7 +143,7 @@ namespace Emirates.API.Controllers
             if (!ModelState.IsValid)
                 return new ApiResponse
                 {
-                    IsSuccess=false,
+                    IsSuccess = false,
                     Message = CustumMessages.MsgWarning("رجاء التأكد من صحة البيانات المدخلة")
                 };
             return _accountService.Register(createUserDto);

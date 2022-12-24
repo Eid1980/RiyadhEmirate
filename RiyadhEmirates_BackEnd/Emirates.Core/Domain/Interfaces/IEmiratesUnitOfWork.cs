@@ -43,6 +43,8 @@ namespace Emirates.Core.Domain.Interfaces
         IServiceRateRepository ServiceRates { get; }
         IServiceRepository Services { get; }
         IServiceStageRepository ServiceStages { get; }
+        IServieNotificationRepository ServieNotifications { get; }
+        IServieNotificationLogRepository ServieNotificationLogs { get; }
         IStageRepository Stages { get; }
         IUploadedFileRepository UploadedFiles { get; }
         IUserRepository Users { get; }
