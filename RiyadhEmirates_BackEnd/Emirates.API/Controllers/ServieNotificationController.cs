@@ -25,6 +25,12 @@ namespace Emirates.API.Controllers
     {
         return _servieNotificationService.GetById(id);
     }
+    [HttpGet("GetServieNotificationLog/{id}")]
+    [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
+    public IApiResponse GetServieNotificationLog(int id)
+    {
+        return _servieNotificationService.GetServieNotificationLog(id);
+    }
     [HttpPost("GetListPage")]
     [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
     public IApiResponse GetAll(SearchModel searchModelDto)

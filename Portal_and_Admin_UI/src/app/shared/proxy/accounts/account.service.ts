@@ -117,4 +117,8 @@ export class AccountService {
     return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/UpdateUserProfile` , userProfileDto).pipe();
   }
 
+  isSuperAdmin = (): Observable<boolean> => {
+    return this.httpClient.get<boolean>(`${this.serviceUrl}/IsSuperAdmin`).pipe();
+  }
+
 }

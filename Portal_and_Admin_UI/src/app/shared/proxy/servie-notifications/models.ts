@@ -41,3 +41,10 @@ export interface GetCaseTypeListDto {
   message: string;
 }
 
+export interface GetServieNotificationLogListDto {
+  id: number;
+  message: string;
+  startDate: string;
+  endDate: string;
+}
+

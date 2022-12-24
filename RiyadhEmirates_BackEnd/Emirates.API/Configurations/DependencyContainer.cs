@@ -43,6 +43,7 @@ using Emirates.Core.Application.Services.OpenDataCategueries;
 using Emirates.Core.Application.Services.OpenDataReports;
 using Emirates.Core.Application.Services.Prisons;
 using Emirates.Core.Application.Services.Nationalities;
+using Emirates.Core.Application.Services.ServieNotifications;
 
 namespace Emirates.API.Configurations
 {
@@ -85,6 +86,7 @@ namespace Emirates.API.Configurations
             builder.Services.AddScoped<IServiceBenefitService, ServiceBenefitService>();
             builder.Services.AddScoped<IServiceRateService, ServiceRateService>();
             builder.Services.AddScoped<IServiceStageService, ServiceStageService>();
+            builder.Services.AddScoped<IServieNotificationService, ServieNotificationService>();
 
             builder.Services.AddScoped<IRequestService, RequestService>();
             builder.Services.AddScoped<IRequestAttachmentTypeService, RequestAttachmentTypeService>();

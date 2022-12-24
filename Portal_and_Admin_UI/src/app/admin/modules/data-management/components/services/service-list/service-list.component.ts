@@ -7,6 +7,7 @@ import { PageListSetting } from '@shared/interfaces/page-list-setting';
 import { ServiceService } from '@proxy/services/service.service';
 import { GlobalService } from '@shared/services/global.service';
 import { FileManagerService } from '@shared/services/file-manager.service';
+import { AccountService } from '@shared/proxy/accounts/account.service';
 
 @Component({
   selector: 'app-service-list',
@@ -16,71 +17,132 @@ export class ServiceListComponent implements OnInit {
   @ViewChild(PageListComponent, { static: true }) list: PageListComponent;
   pageListSettings: PageListSetting;
   checked: true;
+  isSuperadmin: boolean = false;
 
   constructor(private serviceService: ServiceService, private fileManagerService: FileManagerService,
-    private globalService: GlobalService)
+    private accountService: AccountService, private globalService: GlobalService)
   {
   }
 
   ngOnInit() {
     this.globalService.setAdminTitle('الخدمات');
+    this.accountService.isSuperAdmin().subscribe((result) => {
+      this.isSuperadmin = result;
+      this.pageSetting();
+    });
     this.pageSetting();
   }
 
   pageSetting() {
-    this.pageListSettings = {
-      PageTitle: 'قائمة الخدمات',
-      listPermissionCode: '*',
-      createButtonLink: '/admin/data-management/service-add',
-      createButtonText: 'انشاء خدمة جديدة',
-      Url: this.serviceService.serviceUrl,
+    if (this.isSuperadmin) {
+      this.pageListSettings = {
+        PageTitle: 'قائمة الخدمات',
+        listPermissionCode: '*',
+        createButtonLink: '/admin/data-management/service-add',
+        createButtonText: 'انشاء خدمة جديدة',
+        Url: this.serviceService.serviceUrl,
 
-      cols: [
-        { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
-        { Field: 'nameAr', Header: 'الاسم عربي' },
-        { Field: 'nameEn', Header: 'الاسم انجليزي' },
-        { Field: 'sectorAr', Header: 'القطاع عربي' },
-        { Field: 'sectorEn', Header: 'القطاع انجليزي' },
-        { Field: 'workDays', Header: 'مدة الخدمة' },
-        {
-          Field: 'isActive',
-          Header: 'الحالة',
-          Searchable: false,
-          Sortable: false,
-          Type: ColumnType.Status,
-          FuncName: (id, event) => this.changeStatus(id, event),
-        },
-        {
-          Field: 'Action',
-          Header: 'الإجراءات',
-          Searchable: false,
-          Type: ColumnType.Action,
-        },
-      ],
+        cols: [
+          { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
+          { Field: 'nameAr', Header: 'الاسم عربي' },
+          { Field: 'nameEn', Header: 'الاسم انجليزي' },
+          { Field: 'sectorAr', Header: 'القطاع عربي' },
+          { Field: 'sectorEn', Header: 'القطاع انجليزي' },
+          { Field: 'workDays', Header: 'مدة الخدمة' },
+          {
+            Field: 'isActive',
+            Header: 'الحالة',
+            Searchable: false,
+            Sortable: false,
+            Type: ColumnType.Status,
+            FuncName: (id, event) => this.changeStatus(id, event),
+          },
+          {
+            Field: 'Action',
+            Header: 'الإجراءات',
+            Searchable: false,
+            Type: ColumnType.Action,
+          },
+        ],
 
-      actions: [
-        {
-          title: 'تعديل',
-          routerLink: '/admin/data-management/service-edit',
-          IsQueryParams: true,
-          buttonclass: ActionButtonClass.Edit,
-          buttonIcon: ActionButtonIcon.Edit,
-        },
-        {
-          title: 'التفاصيل',
-          routerLink: '/admin/data-management/service-view',
-          IsQueryParams: true,
-          buttonclass: ActionButtonClass.View,
-          buttonIcon: ActionButtonIcon.View,
-        },
-        {
-          title: 'حذف',
-          FuncName: (id) => this.delete(id),
-          buttonclass: ActionButtonClass.Delete,
-          buttonIcon: ActionButtonIcon.Delete,
-        },
-      ],
-    };
+        actions: [
+          {
+            title: 'تعديل',
+            routerLink: '/admin/data-management/service-edit',
+            IsQueryParams: true,
+            buttonclass: ActionButtonClass.Edit,
+            buttonIcon: ActionButtonIcon.Edit,
+          },
+          {
+            title: 'التفاصيل',
+            routerLink: '/admin/data-management/service-view',
+            IsQueryParams: true,
+            buttonclass: ActionButtonClass.View,
+            buttonIcon: ActionButtonIcon.View,
+          },
+          {
+            title: 'حذف',
+            FuncName: (id) => this.delete(id),
+            buttonclass: ActionButtonClass.Delete,
+            buttonIcon: ActionButtonIcon.Delete,
+          },
+        ],
+      };
+    }
+    else {
+      this.pageListSettings = {
+        PageTitle: 'قائمة الخدمات',
+        listPermissionCode: '*',
+        Url: this.serviceService.serviceUrl,
+
+        cols: [
+          { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
+          { Field: 'nameAr', Header: 'الاسم عربي' },
+          { Field: 'nameEn', Header: 'الاسم انجليزي' },
+          { Field: 'sectorAr', Header: 'القطاع عربي' },
+          { Field: 'sectorEn', Header: 'القطاع انجليزي' },
+          { Field: 'workDays', Header: 'مدة الخدمة' },
+          {
+            Field: 'isActive',
+            Header: 'الحالة',
+            Searchable: false,
+            Sortable: false,
+            Type: ColumnType.Status,
+            FuncName: (id, event) => this.changeStatus(id, event),
+          },
+          {
+            Field: 'Action',
+            Header: 'الإجراءات',
+            Searchable: false,
+            Type: ColumnType.Action,
+          },
+        ],
+
+        actions: [
+          {
+            title: 'تعديل',
+            routerLink: '/admin/data-management/service-edit',
+            IsQueryParams: true,
+            buttonclass: ActionButtonClass.Edit,
+            buttonIcon: ActionButtonIcon.Edit,
+          },
+          {
+            title: 'التفاصيل',
+            routerLink: '/admin/data-management/service-view',
+            IsQueryParams: true,
+            buttonclass: ActionButtonClass.View,
+            buttonIcon: ActionButtonIcon.View,
+          },
+          {
+            title: 'حذف',
+            FuncName: (id) => this.delete(id),
+            buttonclass: ActionButtonClass.Delete,
+            buttonIcon: ActionButtonIcon.Delete,
+          },
+        ],
+      };
+
+    }
   }
 
   changeStatus(id: number, e: any) {

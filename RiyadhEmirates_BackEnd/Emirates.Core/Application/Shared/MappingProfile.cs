@@ -474,6 +474,10 @@ namespace Emirates.Core.Application.Shared
                 .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
                 .ForMember(dest => dest.Message, src => src.MapFrom(m => m.ServieNotificationLogs.FirstOrDefault(x => x.EndDate.HasValue == false).Message));
+            
+            CreateMap<ServieNotificationLog, GetServieNotificationLogListDto>()
+                .ForMember(dest => dest.StartDate, src => src.MapFrom(m => m.CreatedDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.EndDate, src => src.MapFrom(m => m.EndDate == null ? "حتى الان" : m.EndDate.Value.ToString("yyyy-MM-dd")));
             #endregion
 
             #region UserRole

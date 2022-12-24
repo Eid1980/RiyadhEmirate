@@ -175,5 +175,11 @@ namespace Emirates.API.Controllers
             return _accountService.DeleteEmployee(userId);
         }
 
+        [HttpGet("IsSuperAdmin")]
+        public bool IsSuperAdmin()
+        {
+            return _accountService.IsUserInRoles(UserId, new int[] { (int)SystemEnums.Roles.SuperSystemAdmin });
+        }
+
     }
 }

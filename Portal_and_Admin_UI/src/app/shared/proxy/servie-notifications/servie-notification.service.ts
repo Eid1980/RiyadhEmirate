@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { CreateServieNotificationDto, GetServieNotificationDetailsDto, UpdateServieNotificationDto } from './models';
+import { CreateServieNotificationDto, GetServieNotificationDetailsDto, GetServieNotificationLogListDto, UpdateServieNotificationDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 
 @Injectable({
@@ -15,6 +15,10 @@ export class ServieNotificationService {
 
   getById = (id: number): Observable<ApiResponse<GetServieNotificationDetailsDto>> => {
     return this.httpClient.get<ApiResponse<GetServieNotificationDetailsDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
+    );
+  }
+  getServieNotificationLog = (id: number): Observable<ApiResponse<GetServieNotificationLogListDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetServieNotificationLogListDto[]>>(`${this.serviceUrl}/GetServieNotificationLog/${id}`).pipe(
     );
   }
 
