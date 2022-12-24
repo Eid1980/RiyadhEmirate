@@ -349,6 +349,5 @@ namespace Emirates.Core.Application.Services.Accounts
             return true;
         }
         #endregion
-
     }
 }
