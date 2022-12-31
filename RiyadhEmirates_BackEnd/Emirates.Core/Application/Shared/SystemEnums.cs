@@ -7,6 +7,12 @@
             ar,
             en
         }
+        public enum IamLoginResponse
+        {
+            Success = 1,
+            UserDataNotComplete = 2,
+            Error = 3
+        }
         public enum NewsTypes
         {
             LatestNews = 1,

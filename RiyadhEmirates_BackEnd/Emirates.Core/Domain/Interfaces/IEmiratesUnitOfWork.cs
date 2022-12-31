@@ -12,6 +12,8 @@ namespace Emirates.Core.Domain.Interfaces
         IDesignEvaluationRepository DesignEvaluations { get; }
         IEmiratesPrinceRepository EmiratesPrinces { get; }
         IGovernorateRepository Governorates { get; }
+        IIamLoginHistoryRepository IamLoginHistories { get; }
+        IIamResponseRepository IamResponses { get; }
         INationalityRepository Nationalities { get; }
         INewsRepository News { get; }
         INewsCategueryRepository NewsCategueries { get; }

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Emirates.API.Configurations.AutoMapper;
 using Emirates.API.Filters.Swagger;
 using Emirates.InfraStructure.Contexts;
 using Emirates.InfraStructure.Loggers.Serilog;
@@ -16,8 +15,8 @@ using System.Reflection;
 using System.Text;
 using Emirates.API.Configurations;
 using System.Text.Json;
-using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Shared;
+using AutoMapper;
 
 Serilog.Debugging.SelfLog.Enable(msg => Debug.WriteLine(msg));
 
@@ -85,7 +84,12 @@ try
     #endregion
 
     #region Mappers
-    builder.Services.AddSingleton(AutoMapperConfigurations.GetMapper());
+    var mapperConfig = new MapperConfiguration(mc =>
+    {
+        mc.AddProfile(new MappingProfile());
+    });
+    IMapper mapper = mapperConfig.CreateMapper();
+    builder.Services.AddSingleton(mapper);
     #endregion
 
     #region Localization
@@ -159,8 +163,7 @@ try
     #endregion
 
     #region services
-    DependencyContainer.RegisterServices(builder);    
-    builder.Services.Configure<MailSettingsDto>(configuration.GetSection("MailSettings"));
+    DependencyContainer.RegisterServices(builder);
     #endregion
 
     builder.Services.AddHttpContextAccessor();

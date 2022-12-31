@@ -2,7 +2,6 @@
 using Emirates.Core.Application.Services.AboutUs;
 using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Services.CaseTypes;
-using Emirates.Core.Application.Services.Common;
 using Emirates.Core.Application.Services.ContactUsMessages;
 using Emirates.Core.Application.Services.EmiratesPrinces;
 using Emirates.Core.Application.Services.FileManagers;
@@ -57,7 +56,6 @@ namespace Emirates.API.Configurations
 
             builder.Services.AddScoped<ILookupService, LookupService>();
             builder.Services.AddScoped<IHomeService, HomeService>();
-            builder.Services.AddScoped<ICommonService, CommonService>();
 
             builder.Services.AddScoped<IAuctionService, AuctionService>();
             builder.Services.AddScoped<IAboutUsService, AboutUsService>();

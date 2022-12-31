@@ -21,7 +21,6 @@ export interface GetUserDto {
   passwordSalt: [];
   isEmployee: boolean;
   isActive: boolean;
-  oTP: string;
   birthDate: string;
 }
 
@@ -40,7 +39,6 @@ export interface GetUserProfileData {
   birthDate: string;
   email: string;
   phoneNumber: string;
-  passportId: string;
   nationalityId: number;
   nationalityName: string;
   governorateName: string;
@@ -116,9 +114,19 @@ export interface UpdatePasswordDto {
   newPassword: string;
 }
 
-export interface ValidateOTPDto {
-  userName: string;
-  oTP: string;
+export interface CheckIamUserDto {
+  tokenHandler: string;
+  userId: number;
+  iamLoginResponse: number;
+}
+
+export interface CompleteDataDto {
+  userId: number;
+  phoneNumber: string;
+  email: string;
+  nationalityId: number;
+  governorateId: number;
+  address: string;
 }
 
 

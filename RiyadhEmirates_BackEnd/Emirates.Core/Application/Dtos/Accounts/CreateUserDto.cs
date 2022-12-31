@@ -27,8 +27,6 @@ namespace Emirates.Core.Application.Dtos
         [EmailAddress(ErrorMessage ="صيغة البريد الالكتروني غير صحيحة")]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-
-        public string PassportId { get; set; }
         public DateTime BirthDate { get; set; }
 
         public int? NationalityId { get; set; }

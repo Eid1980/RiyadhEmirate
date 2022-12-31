@@ -49,6 +49,14 @@ namespace Emirates.InfraStructure.UnitsOfWork
         public IGovernorateRepository Governorates => governorates ??= new GovernorateRepository(Context);
 
 
+        private IamLoginHistoryRepository iamLoginHistories;
+        public IIamLoginHistoryRepository IamLoginHistories => iamLoginHistories ??= new IamLoginHistoryRepository(Context);
+
+
+        private IamResponseRepository iamResponses;
+        public IIamResponseRepository IamResponses => iamResponses ??= new IamResponseRepository(Context);
+
+
         private NationalityRepository nationalities;
         public INationalityRepository Nationalities => nationalities ??= new NationalityRepository(Context);
 

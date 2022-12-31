@@ -256,6 +256,43 @@ namespace Emirates.InfraStructure.Contexts
             });
             #endregion
 
+            #region IamLoginHistory
+            modelBuilder.Entity<IamLoginHistory>(b =>
+            {
+                b.ToTable("IamLoginHistories", EmiratesDbSchemas.AuthSehema);
+                b.Property(x => x.NationalId).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.CreatedDate).IsRequired();
+            });
+            #endregion
+
+            #region IamResponse
+            modelBuilder.Entity<IamResponse>(b =>
+            {
+                b.ToTable("IamResponses", EmiratesDbSchemas.AuthSehema);
+                b.Property(x => x.NationalId).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.FirstNameAr).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.ThirdNameAr).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.LastNameAr).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.FirstNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.SecondNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.ThirdNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.LastNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.IdIssuePlaceCode).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.IdIssuePlaceDescAr).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.IdIssuePlaceDescEn).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.IsGovernmentEmployee).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.JobCategoryCode).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.JobCategoryDescAr).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.JobCategoryDescEn).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.LifeStatusCode).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.LifeStatusDescAr).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.LifeStatusDescEn).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.MaritalStatusCode).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.MaritalStatusDescAr).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.MaritalStatusDescEn).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+            });
+            #endregion
+
             #region MainPagePoints
             modelBuilder.Entity<MainPagePoints>(b =>
             {
@@ -899,13 +936,14 @@ namespace Emirates.InfraStructure.Contexts
 
                 b.Property(x => x.Email).HasMaxLength(EmiratesConstants.MaxNameLength);
                 b.Property(x => x.PhoneNumber).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.PassportId).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.Address).HasMaxLength(EmiratesConstants.MaxMultiTextLength);
-                b.Property(x => x.Last2Factor).HasMaxLength(EmiratesConstants.MaxShortLength);
 
+                b.Property(x => x.IsEmployee).IsRequired();
+                b.Property(x => x.IsDataComplete).IsRequired();
                 b.Property(x => x.IsActive).IsRequired();
 
                 b.HasOne<Nationality>(x => x.Nationality).WithMany(x => x.Users).HasForeignKey(x => x.NationalityId).OnDelete(DeleteBehavior.NoAction);
+                b.HasOne<Governorate>(x => x.Governorate).WithMany(x => x.Users).HasForeignKey(x => x.GovernorateId).OnDelete(DeleteBehavior.NoAction);
 
                 b.HasData(DefaultData.Users());
             });
@@ -941,6 +979,8 @@ namespace Emirates.InfraStructure.Contexts
         public DbSet<DesignEvaluation> DesignEvaluations { get; set; }
         public DbSet<EmiratesPrince> EmiratesPrinces { get; set; }
         public DbSet<Governorate> Governorates { get; set; }
+        public DbSet<IamLoginHistory> IamLoginHistories { get; set; }
+        public DbSet<IamResponse> IamResponses { get; set; }
         public DbSet<MainPagePoints> MainPagePoints { get; set; }
         public DbSet<MaritalStatus> MaritalStatuses { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }

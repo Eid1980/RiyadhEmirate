@@ -17,7 +17,6 @@ namespace Emirates.Core.Application.Services.Accounts
 
         IApiResponse ForgetPassword(ForgetPasswordDto forgetPasswordDto);
         IApiResponse UpdatePassword(UpdatePasswordDto updatePasswordDto);
-        IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto);
         IApiResponse ResetPassword(ResetPasswordDto resetPasswordDto);
         IApiResponse CheckUserRegister(CheckUserRegisterDto checkUserRegisterDto);
         IApiResponse Register(CreateUserDto createUserDto);
@@ -27,5 +26,7 @@ namespace Emirates.Core.Application.Services.Accounts
         IApiResponse CreateEmployee(int userId);
         IApiResponse DeleteEmployee(int userId);
         bool IsUserInRoles(int userId, int[] roles);
+        IApiResponse CheckIamUser(string nationalId);
+        IApiResponse CompleteUserData(CompleteDataDto completeDataDto);
     }
 }

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserProfileData, GetUserSessionDto, ResetPasswordDto, UpdateUserProfileDto, UserLoginDto, ValidateOTPDto } from './models';
+import { CheckIamUserDto, CompleteDataDto, ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserProfileData, GetUserSessionDto, ResetPasswordDto, UpdateUserProfileDto, UserLoginDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { CreateUserDto } from './register.model';
 
@@ -105,10 +105,6 @@ export class AccountService {
     return this.httpClient.post(`${this.serviceUrl}/forgetPassword` , foregetPassword );
   }
 
-  validateOTP(validateOTP : ValidateOTPDto){
-    return this.httpClient.post(`${this.serviceUrl}/validateOTP` , validateOTP );
-  }
-
   resetPassword(resetPassword : ResetPasswordDto){
     return this.httpClient.post(`${this.serviceUrl}/resetPassword` , resetPassword );
   }
@@ -119,6 +115,12 @@ export class AccountService {
 
   isSuperAdmin = (): Observable<boolean> => {
     return this.httpClient.get<boolean>(`${this.serviceUrl}/IsSuperAdmin`).pipe();
+  }
+  checkIamUser = (nationalId: string): Observable<ApiResponse<CheckIamUserDto>> => {
+    return this.httpClient.get<ApiResponse<CheckIamUserDto>>(`${this.serviceUrl}/CheckIamUser/${nationalId}`).pipe();
+  }
+  completeUserData = (completeDataDto: CompleteDataDto): Observable<ApiResponse<CheckIamUserDto>> => {
+    return this.httpClient.post<ApiResponse<CheckIamUserDto>>(`${this.serviceUrl}/CompleteUserData`, completeDataDto).pipe();
   }
 
 }

@@ -1,0 +1,90 @@
+<div class="auth-card">
+  <div class="auth-head">
+    <a routerLink="/" class="card-logo">
+      <img src="assets/images/logo.svg" alt="logo" class="img-fluid" />
+    </a>
+  </div>
+  <div class="w-100">
+    <h4 class="title">استكمال بيانات المستخدم</h4>
+    <div class="row mx-0">
+      <div class="col-md-10 mx-auto">
+        <form [formGroup]="completeDataForm" (ngSubmit)="onSubmit()" class="fs-13px">
+          <div class="accordion" id="accordionRegister">
+            <div class="accordion-item mb-4">
+              <div class="accordion-header collapsed" id="headingThirdForm" data-bs-toggle="collapse"
+                   data-bs-target="#thirdForm" aria-expanded="true" aria-controls="thirdForm">
+                <h6>بيانات الإتصال</h6>
+                <div class="arrow bg-transparent">
+                  <i class="fa-solid fa-chevron-down text-secondary"></i>
+                </div>
+              </div>
+              <div id="thirdForm" class="accordion-collapse" aria-labelledby="headingThirdForm"
+                   data-bs-parent="#accordionRegister">
+                <div class="accordion-body bg-white">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="phoneNumber">رقم الجوال<span class="danger">*</span></label>
+                        <input type="text" class="form-control" formControlName="phoneNumber" id="phoneNumber" maxlength="14" [ngClass]="{
+                            invalid: (isFormSubmitted || completeDataForm.get('phoneNumber').touched) &&
+                            completeDataForm.get('phoneNumber').errors?.required}" />
+                        <small *ngIf="(isFormSubmitted || completeDataForm.get('phoneNumber').touched) && completeDataForm.get('phoneNumber').errors?.required"
+                               class="danger">هذا الحقل مطلوب</small>
+                        <small *ngIf="(isFormSubmitted || completeDataForm.get('phoneNumber').touched) && this.completeDataForm.get('phoneNumber').errors != null && !completeDataForm.get('phoneNumber').errors?.isValid"
+                               class="danger">أدخل رقم جوال صحيح</small>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="email">البريد الالكتروني<span class="danger">*</span></label>
+                        <input type="text" class="form-control" formControlName="email" id="email" [ngClass]="{
+                            invalid: (isFormSubmitted || completeDataForm.get('email').touched) &&
+                            completeDataForm.get('email').errors?.required}" />
+                        <small *ngIf="(isFormSubmitted || completeDataForm.get('email').touched) && completeDataForm.get('email').errors?.required"
+                               class="danger">هذا الحقل مطلوب</small>
+
+                        <small *ngIf="(isFormSubmitted || completeDataForm.get('email').touched) && completeDataForm.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
+
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="nationalityId" class="form-lbl">الجنسية</label>
+                        <select class="form-control form-select" formControlName="nationalityId" id="nationalityId">
+                          <option [ngValue]="null">-- اختر الجنسية --</option>
+                          <option *ngFor="let nationality of nationalities" [ngValue]="nationality.id">
+                            {{ nationality.name }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label for="governorateId" class="form-lbl">الجنسية</label>
+                        <select class="form-control form-select" formControlName="governorateId" id="governorateId">
+                          <option [ngValue]="null">-- اختر المحافظة --</option>
+                          <option *ngFor="let governorate of governorates" [ngValue]="governorate.id">
+                            {{ governorate.name }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 d-flex align-items-end">
+                      <div class="form-group w-100 mb-4">
+                        <label for="address">العنـــــوان</label>
+                        <input type="text" class="form-control" formControlName="address" id="address" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5">
+            <button type="submit" class="btn btn-primary submit">حفظ</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

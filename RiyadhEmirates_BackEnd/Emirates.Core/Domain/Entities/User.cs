@@ -22,22 +22,22 @@ namespace Emirates.Core.Domain.Entities
         public bool IsMale { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public bool TwoFactorEnabled { get; set; } = true;
-        public string PassportId { get; set; }
 
         public int? NationalityId { get; set; }
+        public int? GovernorateId { get; set; }
         public DateTime? IdentityExpireDate { get; set; }
         public string Address { get; set; }
 
         public bool IsEmployee { get; set; }
+        public bool IsDataComplete { get; set; }
         public bool IsActive { get; set; }
-
-        public string Last2Factor { get; set; }
         public DateTime? LastLoginDate { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
 
+
         public virtual Nationality Nationality { get; set; }
+        public virtual Governorate Governorate { get; set; }
 
         public virtual ICollection<BuildingType> CreatedBuildingTypes { get; set; }
         public virtual ICollection<BuildingType> ModifiedBuildingTypes { get; set; }

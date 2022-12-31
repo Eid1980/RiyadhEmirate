@@ -89,12 +89,9 @@ namespace Emirates.API.Controllers
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                    new Claim("UserId",user.Id.ToString()),
-                    //new Claim("Name", user.NameAr.ToString()),
-                    //new Claim("Phone",user.PhoneNumber.ToString())
+                    new Claim("UserId",user.Id.ToString())
                    }),
-
-                    Expires = DateTime.UtcNow.AddDays(360),
+                    Expires = DateTime.UtcNow.AddHours(24),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -123,12 +120,6 @@ namespace Emirates.API.Controllers
         {
             updatePasswordDto.UserId = UserId;
             return _accountService.UpdatePassword(updatePasswordDto);
-        }
-
-        [HttpPost("ValidateOTP")]
-        public IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto)
-        {
-            return _accountService.ValidateOTP(validateOTPDto);
         }
 
 
@@ -179,6 +170,55 @@ namespace Emirates.API.Controllers
         public bool IsSuperAdmin()
         {
             return _accountService.IsUserInRoles(UserId, new int[] { (int)SystemEnums.Roles.SuperSystemAdmin });
+        }
+        [HttpGet("CheckIamUser/{nationalId}")]
+        public IApiResponse CheckIamUser(string nationalId)
+        {
+            var response = _accountService.CheckIamUser(nationalId);
+            var responseData = (CheckIamUserDto)response.Data;
+            if (responseData.IamLoginResponse == (int)SystemEnums.IamLoginResponse.Success)
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:TokenSigningKey").Value);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                        new Claim("UserId",responseData.UserId.ToString())
+                    }),
+                    Expires = DateTime.UtcNow.AddHours(24),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                responseData.TokenHandler = tokenHandler.WriteToken(token);
+                response.Data = responseData;
+            }
+            return response;
+        }
+
+        [HttpPost("CompleteUserData")]
+        public IApiResponse CompleteUserData(CompleteDataDto completeDataDto)
+        {
+            var response = _accountService.CompleteUserData(completeDataDto);
+            var responseData = (CheckIamUserDto)response.Data;
+            if (responseData.IamLoginResponse == (int)SystemEnums.IamLoginResponse.Success)
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:TokenSigningKey").Value);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                        new Claim("UserId",responseData.UserId.ToString())
+                    }),
+                    Expires = DateTime.UtcNow.AddHours(24),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                responseData.TokenHandler = tokenHandler.WriteToken(token);
+                response.Data = responseData;
+            }
+            return response;
         }
 
     }

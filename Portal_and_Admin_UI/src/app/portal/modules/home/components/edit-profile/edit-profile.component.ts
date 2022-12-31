@@ -84,7 +84,6 @@ export class EditProfileComponent implements OnInit {
 
   email: string;
   phoneNumber: string;
-  passportId: string;
   nationalityId: number;
   nationalityName: string;
   governorateName: string;
@@ -98,7 +97,6 @@ export class EditProfileComponent implements OnInit {
       userName: [{ value: this.userProfileData.userName, disabled: true }, [Validators.required]],
       birthdate: [{ value: this.userProfileData.birthDate, disabled: false }, [Validators.required]],
       isMale: [this.userProfileData.isMale ? 1 : 2, [Validators.required]],
-      passportId: [{ value: this.userProfileData.passportId, disabled: false }],
       firstNameAr: [{ value: this.userProfileData.firstNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       secondNameAr: [{ value: this.userProfileData.secondNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       thirdNameAr: [{ value: this.userProfileData.thirdNameAr, disabled: false }, [Validators.required, WhiteSpaceValidator.noWhiteSpace]],

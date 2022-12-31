@@ -656,7 +656,7 @@ namespace Emirates.InfraStructure.Contexts
 
             using var hmac = new System.Security.Cryptography.HMACSHA512();
             var passwordSalt = hmac.Key;
-            var passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("123"));
+            var passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("P@ssw0rd"));
             arrData[0] = new User
             {
                 Id = 1,
@@ -675,8 +675,8 @@ namespace Emirates.InfraStructure.Contexts
                 IsMale = true,
                 Email = "superadmin@gmail.com",
                 PhoneNumber = "0500000000",
-                TwoFactorEnabled = true,
                 IsEmployee = true,
+                IsDataComplete = true,
                 IsActive = true
             };
             arrData[1] = new User
@@ -697,8 +697,8 @@ namespace Emirates.InfraStructure.Contexts
                 IsMale = true,
                 Email = "admin@yahoo.com",
                 PhoneNumber = "0500000001",
-                TwoFactorEnabled = true,
                 IsEmployee = false,
+                IsDataComplete = true,
                 IsActive = true
             };
             return arrData;

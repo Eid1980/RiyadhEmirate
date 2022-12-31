@@ -46,8 +46,8 @@ namespace Emirates.Core.Application.Services.Posters
         }
         public IApiResponse GetAll()
         {
-            var emiratesPrinces = _emiratesUnitOfWork.Posters.Where(l => l.IsActive).OrderBy(d => d.Order);
-            return GetResponse(data: _mapper.Map<List<GetPosterListDto>>(emiratesPrinces));
+            var posters = _emiratesUnitOfWork.Posters.Where(l => l.IsActive).OrderBy(d => d.Order);
+            return GetResponse(data: _mapper.Map<List<GetPosterListDto>>(posters));
         }
 
         public IApiResponse Create(CreatePosterDto createModel)

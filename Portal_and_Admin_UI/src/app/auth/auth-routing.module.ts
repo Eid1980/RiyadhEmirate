@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthLayoutComponent } from '@shared/components/auth-layout/auth-layout.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { IamLoginComponent } from './components/iam-login/iam-login.component';
+import { CompleteDataComponent } from './components/complete-data/complete-data.component';
 
 const routes: Routes = [
   {
@@ -17,12 +18,16 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent
+        path: 'iam-login/:id',
+        component: IamLoginComponent
       },
       {
-        path: 'reset-password',
-        component: ResetPasswordComponent,
+        path: 'complete-data',
+        component: CompleteDataComponent
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent
       },
       {
         path: 'register',

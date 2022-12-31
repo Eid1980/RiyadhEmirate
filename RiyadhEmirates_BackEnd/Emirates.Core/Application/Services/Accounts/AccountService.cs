@@ -2,11 +2,11 @@
 using Emirates.Core.Application.Shared;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Accounts;
-using Emirates.Core.Application.Services.Common;
 using Emirates.Core.Application.Services.FileManagers;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace Emirates.Core.Application.Services.Accounts
 {
@@ -14,17 +14,16 @@ namespace Emirates.Core.Application.Services.Accounts
     {
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
-        private readonly ICommonService _commonService;
         private readonly IFileManagerService _fileManagerService;
+        private readonly IConfiguration _config;
 
         public AccountService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper,
-            ICommonService commonService,
-            IFileManagerService fileManagerService)
+            IFileManagerService fileManagerService, IConfiguration config)
         {
             _mapper = mapper;
             _emiratesUnitOfWork = emiratesUnitOfWork;
-            _commonService = commonService;
             _fileManagerService = fileManagerService;
+            _config = config;
         }
 
         public IApiResponse GetUserData(int id)
@@ -103,18 +102,18 @@ namespace Emirates.Core.Application.Services.Accounts
                     // generate token and send it 
                     var token = GenerateToken();
                     // Send Email Address
-                    var mailRequest = new MailRequestDto()
-                    {
-                        ToEmail = user.Email,
-                        Subject = "[Edraak]  Please reset your password",
-                        Body = @$"Reset your Edraak password
-                        <h6> Hello {user.FirstNameAr} {user.LastNameAr} </h6>
-                        this is the verification code of edraak {token}",
-                        Attachments = null
-                    };
-                    _commonService.SendEmailAsync(mailRequest).Wait();
+                    //var mailRequest = new MailRequestDto()
+                    //{
+                    //    ToEmail = user.Email,
+                    //    Subject = "[Edraak]  Please reset your password",
+                    //    Body = @();$"Reset your Edraak password
+                    //    <h6> Hello {user.FirstNameAr} {user.LastNameAr} </h6>
+                    //    this is the verification code of edraak {token}",
+                    //    Attachments = null
+                    //};
+                    //_commonService.SendEmailAsync(mailRequest).Wait
                     var updatedUser = user;
-                    updatedUser.Last2Factor = token;
+                    //updatedUser.Last2Factor = token;
                     _emiratesUnitOfWork.Users.Update(user, updatedUser);
                     _emiratesUnitOfWork.Complete();
                     issuccess = true;
@@ -209,7 +208,6 @@ namespace Emirates.Core.Application.Services.Accounts
                     BirthDate = userProfile.BirthDate.ToString("yyyy-MM-dd"),
                     Email = userProfile.Email,
                     PhoneNumber = userProfile.PhoneNumber,
-                    PassportId = userProfile.PassportId,
                     NationalityId = userProfile.NationalityId,
                     NationalityName = userProfile.Nationality == null ? "" : userProfile.Nationality.NameAr,
                     Address = userProfile.Address,
@@ -221,14 +219,6 @@ namespace Emirates.Core.Application.Services.Accounts
             }
         }
 
-        public IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto)
-        {
-            bool isValid = false;
-            var user = _emiratesUnitOfWork.Users.FirstOrDefault(u => u.UserName == validateOTPDto.UserName);
-            if (user != null)
-                isValid = validateOTPDto.OTP == user.Last2Factor;
-            return GetResponse(data: isValid);
-        }
         public IApiResponse ResetPassword(ResetPasswordDto resetPasswordDto)
         {
             bool isReseted = false;
@@ -320,6 +310,111 @@ namespace Emirates.Core.Application.Services.Accounts
         public bool IsUserInRoles(int userId, int[] roles)
         {
             return _emiratesUnitOfWork.UserRoles.Where(x => x.UserId.Equals(userId) && roles.Contains(x.RoleId)).Any();
+        }
+
+        public IApiResponse CheckIamUser(string nationalId)
+        {
+            // decript national id with check
+            string Id = "";
+            var checkIamUser = new CheckIamUserDto();
+            try { Id = CryptorEngine.Decrypt(nationalId, true); } 
+            catch {
+                try { Id = CryptorEngine.Decrypt(nationalId.Replace("%3D", "=").Replace("%2B", "+"), true); }
+                catch { }
+            }
+            if (!string.IsNullOrEmpty(Id))
+            {
+                var lastIamLogin = _emiratesUnitOfWork.IamLoginHistories.Where(n => n.NationalId == Id).OrderByDescending(c => c.CreatedDate).FirstOrDefault();
+                if(lastIamLogin != null)
+                {
+                    int iamLoginSessionMinutes = 20;
+                    try
+                    {
+                        iamLoginSessionMinutes = Convert.ToInt32(_config.GetSection("AppSettings:IamLoginSessionMinutes").Value);
+                    } catch { }
+                    if ((DateTime.Now - lastIamLogin.CreatedDate).TotalMinutes < iamLoginSessionMinutes)
+                    {
+                        var user = _emiratesUnitOfWork.Users.Where(u => u.UserName == Id).FirstOrDefault();
+                        if (user != null)
+                        {
+                            if (user.IsDataComplete)
+                            {
+                                checkIamUser.IamLoginResponse = (int)SystemEnums.IamLoginResponse.Success;
+                                checkIamUser.UserId = user.Id;
+                            }
+                            else
+                            {
+                                checkIamUser.IamLoginResponse = (int)SystemEnums.IamLoginResponse.UserDataNotComplete;
+                                checkIamUser.UserId = user.Id;
+                            }
+                        }
+                        else
+                        {
+                            var iamResponse = _emiratesUnitOfWork.IamResponses.Where(n => n.NationalId == Id).FirstOrDefault();
+                            if (iamResponse != null)
+                            {
+                                var addedModel = new User
+                                {
+                                    UserName = iamResponse.NationalId,
+                                    BirthDate = iamResponse.DateOfBirth.Value,
+                                    FirstNameAr = iamResponse.FirstNameAr,
+                                    SecondNameAr = iamResponse.SecondNameAr,
+                                    ThirdNameAr = iamResponse.ThirdNameAr,
+                                    LastNameAr = iamResponse.LastNameAr,
+                                    FirstNameEn = iamResponse.FirstNameEn,
+                                    SecondNameEn = iamResponse.SecondNameEn,
+                                    ThirdNameEn = iamResponse.ThirdNameEn,
+                                    LastNameEn = iamResponse.LastNameEn,
+                                    IsMale = iamResponse.SexCode.Value == 2 ? false : true,
+                                    IdentityExpireDate = iamResponse.IdExpiryDate,
+                                    IsEmployee = false,
+                                    IsDataComplete = false,
+                                    IsActive = true,
+                                    LastLoginDate = DateTime.Now
+                                };
+                                _emiratesUnitOfWork.Users.Add(addedModel);
+                                if (_emiratesUnitOfWork.Complete() > 0)
+                                {
+                                    checkIamUser.IamLoginResponse = (int)SystemEnums.IamLoginResponse.UserDataNotComplete;
+                                    checkIamUser.UserId = addedModel.Id;
+                                }
+                                else
+                                    checkIamUser.IamLoginResponse = (int)SystemEnums.IamLoginResponse.Error;
+                            }
+                            else
+                                checkIamUser.IamLoginResponse = (int)SystemEnums.IamLoginResponse.Error;
+                        }
+                    }
+                }
+                else
+                    checkIamUser.IamLoginResponse = (int)SystemEnums.IamLoginResponse.Error;
+            }
+            else
+                checkIamUser.IamLoginResponse = (int)SystemEnums.IamLoginResponse.Error;
+
+            return GetResponse(data: checkIamUser);
+        }
+        public IApiResponse CompleteUserData(CompleteDataDto completeDataDto)
+        {
+            var checkIamUser = new CheckIamUserDto
+            {
+                IamLoginResponse = (int)SystemEnums.IamLoginResponse.Error
+            };
+            var user = _emiratesUnitOfWork.Users.Where(u => u.Id == completeDataDto.UserId).FirstOrDefault();
+            if(user != null && !user.IsDataComplete)
+            {
+                user.PhoneNumber = completeDataDto.PhoneNumber;
+                user.Email = completeDataDto.Email;
+                user.NationalityId = completeDataDto.NationalityId;
+                user.GovernorateId = completeDataDto.GovernorateId;
+                user.Address = completeDataDto.Address;
+                if(_emiratesUnitOfWork.Complete() > 0)
+                {
+                    checkIamUser.UserId = completeDataDto.UserId;
+                    checkIamUser.IamLoginResponse = (int)SystemEnums.IamLoginResponse.Success;
+                }
+            }
+            return GetResponse(data: checkIamUser);
         }
 
         #region Helper Functions

@@ -24,7 +24,6 @@ namespace Emirates.Core.Application.Dtos
         public bool IsEmployee { get; set; }
         public bool IsDataComplete { get; set; }
         public bool IsActive { get; set; }
-        public string OTP { get; set; }
         public DateTime BirthDate { get; set; }
     }
 }

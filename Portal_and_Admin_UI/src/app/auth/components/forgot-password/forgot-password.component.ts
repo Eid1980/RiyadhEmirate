@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ForgetPasswordStages } from '@shared/enums/forget-password-stages.enum';
 import { MessageType } from '@shared/enums/message-type.enum';
 import { AccountService } from '@shared/proxy/accounts/account.service';
-import { ForgetPasswordDto, ResetPasswordDto, ValidateOTPDto } from '@shared/proxy/accounts/models';
+import { ForgetPasswordDto, ResetPasswordDto } from '@shared/proxy/accounts/models';
 import { ApiResponse } from '@shared/proxy/shared/api-response.model';
 import { GlobalService } from '@shared/services/global.service';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
@@ -72,26 +72,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   validateOTP() {
-    let validateOTP: ValidateOTPDto = { userName: this.userName, oTP: this.otp };
 
-    this._accountService.validateOTP(validateOTP).subscribe(
-      (result: ApiResponse<boolean>) => {
-        if (result.isSuccess && result.data) {
-          this._globalService.messageAlert(
-            MessageType.Success,
-            this._translateService.instant('forgetPassword.messages.otpIsCorrect')
-          );
-
-          this.stage = ForgetPasswordStages.SetNewPassword;
-        } else {
-          this._globalService.messageAlert(
-            MessageType.Error,
-            this._translateService.instant('forgetPassword.messages.invalidOTP')
-          );
-        }
-      },
-      (err) => { }
-    );
   }
 
   resetPassword() {
