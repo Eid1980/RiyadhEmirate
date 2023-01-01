@@ -10,6 +10,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { IamLoginComponent } from './components/iam-login/iam-login.component';
 import { CompleteDataComponent } from './components/complete-data/complete-data.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CompleteDataComponent } from './components/complete-data/complete-data.
     UserProfileComponent,
     IamLoginComponent,
     CompleteDataComponent,
+    AdminLoginComponent,
   ],
   imports: [
     CommonModule,

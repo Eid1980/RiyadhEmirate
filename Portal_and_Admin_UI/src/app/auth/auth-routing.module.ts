@@ -8,6 +8,7 @@ import { AuthLayoutComponent } from '@shared/components/auth-layout/auth-layout.
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { IamLoginComponent } from './components/iam-login/iam-login.component';
 import { CompleteDataComponent } from './components/complete-data/complete-data.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
+        path: 'admin-login',
+        component: AdminLoginComponent
+      },
+      {
         path: 'iam-login/:id',
         component: IamLoginComponent
       },
@@ -25,14 +30,14 @@ const routes: Routes = [
         path: 'complete-data',
         component: CompleteDataComponent
       },
-      {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent
-      },
-      {
-        path: 'register',
-        component: RegisterComponent
-      },
+      //{
+      //  path: 'forgot-password',
+      //  component: ForgotPasswordComponent
+      //},
+      //{
+      //  path: 'register',
+      //  component: RegisterComponent
+      //},
 
       {
         path: '', redirectTo: 'login', pathMatch: 'full'

@@ -15,6 +15,8 @@ import { RoleViewComponent } from './components/permission/role-view/role-view.c
 import { NotAuthorizeComponent } from './components/not-authorize/not-authorize.component';
 import { OpenDataRequestListComponent } from './components/other-requests/open-data-request-list/open-data-request-list.component';
 import { ContactUsMessageListComponent } from './components/other-requests/contact-us-message-list/contact-us-message-list.component';
+import { ChartModule } from 'primeng/chart';
+
 @NgModule({
   declarations: [HomeComponent, UserListComponent, UserAddComponent, RoleListComponent, RoleAddComponent, UserRoleAddComponent, RoleEditComponent, RoleViewComponent, NotAuthorizeComponent, OpenDataRequestListComponent, ContactUsMessageListComponent],
   imports: [
@@ -23,6 +25,7 @@ import { ContactUsMessageListComponent } from './components/other-requests/conta
     MessageModule,
     ButtonModule,
     ToastModule,
+    ChartModule,
   ],
   exports: [],
   providers: [],
