@@ -40,3 +40,30 @@
     border-bottom-left-radius: 17px !important;
   }
 }
+
+p-button{
+  border: 0px !important;
+
+  .p-button{
+    &:focus , &:active{
+      box-shadow: none !important;
+      outline: 0 !important;
+    }
+  }
+
+  &.btn-secondary{
+    .p-button{
+      background-color: $secondary-1 !important;
+      border-color: $secondary-1 !important;
+      color: $white !important;
+    }
+  }
+
+  &.btn-primary-alt-3{
+    .p-button{
+      background-color: $primary-alt-3 !important;
+      border-color: $primary-alt-3 !important;
+      color: $white !important;
+    }
+  }
+}
