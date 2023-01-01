@@ -13,7 +13,7 @@
         </div>
 
         <div class="form-content">
-          <p-chart type="bar" [data]="data"></p-chart>
+          <p-chart type="bar" [data]="serviceRequestsData"></p-chart>
         </div>
       </div>
     </div>
@@ -27,21 +27,23 @@
         <div class="form-content">
           <div class="align-items-center border-bottom d-flex justify-content-between mb-3 pb-3 px-2">
             <h4 class="mb-1 text-muted fa-14">عدد المستفيدين</h4>
-            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-primary-alt-3">25</h6>
+            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-primary-alt-3">{{userCount}}</h6>
           </div>
-
           <div class="align-items-center border-bottom d-flex justify-content-between mb-3 pb-3 px-2">
             <h4 class="mb-1 text-muted fa-14">عدد الطلبات</h4>
+            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-secondary">{{requestCount}}</h6>
           </div>
-
           <div class="align-items-center border-bottom d-flex justify-content-between mb-3 pb-3 px-2">
-            <h4 class="mb-1 text-muted fa-14">عدد المسودات</h4>
-            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-secondary">6</h6>
+            <h4 class="mb-1 text-muted fa-14">عدد الطلبات المنتهية</h4>
+            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-secondary">{{requestFinishedCount}}</h6>
           </div>
-
           <div class="align-items-center border-bottom d-flex justify-content-between mb-3 pb-3 px-2">
-            <h4 class="mb-1 text-muted fa-14">عدد الإجمالى</h4>
-            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-primary">200</h6>
+            <h4 class="mb-1 text-muted fa-14">نسبة الانجاز</h4>
+            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-primary">{{achievePercent}}%</h6>
+          </div>
+          <div class="align-items-center border-bottom d-flex justify-content-between mb-3 pb-3 px-2">
+            <h4 class="mb-1 text-muted fa-14">طلبات المجلس الالكتروني</h4>
+            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-primary-alt-3">{{requestElectronicBoardsCount}}</h6>
           </div>
         </div>
       </div>
@@ -52,11 +54,11 @@
     <div class="col-lg-6 mb-4">
       <div class="form-card d-flex flex-column h-100 rounded-5">
         <div class="form-header">
-          <h5>طلبات الشكاوى الرئيسية</h5>
+          <h5>طلبات الخدمات</h5>
         </div>
 
         <div class="form-content">
-          <p-chart type="bar" [data]="data"></p-chart>
+          <p-chart type="polarArea" [data]="stageRequestsData"></p-chart>
         </div>
       </div>
     </div>
@@ -64,11 +66,20 @@
     <div class="col-lg-6 mb-4">
       <div class="form-card d-flex flex-column h-100 rounded-5">
         <div class="form-header">
-          <h5>طلبات المناطق</h5>
+          <h5>طلبات المحافظات</h5>
         </div>
-
         <div class="form-content">
-          <p-chart type="bar" [data]="data"></p-chart>
+          <!--<p-chart type="bar" [data]="governorateRequestsData"></p-chart>-->
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12 mb-4">
+      <div class="form-card d-flex flex-column h-100 rounded-5">
+        <div class="form-header">
+          <h5>طلبات المحافظات</h5>
+        </div>
+        <div class="form-content">
+          <p-chart type="line" [data]="governorateRequestsData"></p-chart>
         </div>
       </div>
     </div>

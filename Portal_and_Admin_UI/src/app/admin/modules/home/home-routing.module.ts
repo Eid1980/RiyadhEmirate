@@ -90,8 +90,19 @@ const routes: Routes = [
       expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.SettingPermission]
     }
   },
+  {
+    path: "home",
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRoles: [Role.SuperSystemAdmin, Role.SystemAdmin, Role.NewsPermission, Role.SettingPermission, Role.UsersPermission, Role.RequestReview, Role.ShamelRequestReview]
+    }
+  },
   { path: 'not-authorize', component: NotAuthorizeComponent },
-  { path: "", component: HomeComponent },
+  {
+    path: "",
+    component: HomeComponent
+  },
 ];
 
 @NgModule({

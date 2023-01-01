@@ -42,4 +42,6 @@ export interface GetStatisticsDto {
   requestFinishedCount: number;
   requestElectronicBoardsCount: number;
   serviceRequests: GetRequestStatisticsDto[];
+  stageRequests: GetRequestStatisticsDto[];
+  governorateRequests: GetRequestStatisticsDto[];
 }

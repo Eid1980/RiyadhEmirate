@@ -118,8 +118,16 @@ namespace Emirates.Core.Application.Services.Home
             {
                 Name = model.NameAr,
                 Count = model.Requests.Count,
-                backgroundColor = 
+                //backgroundColor = 
             }).ToList();
+            var governorateRequests = (from governorate in _emiratesUnitOfWork.Governorates.GetQueryable()
+                                       join user in _emiratesUnitOfWork.Users.GetQueryable() on governorate.Id equals user.GovernorateId into all
+                                       from leftUser in all.DefaultIfEmpty()
+                                       select new GetRequestStatisticsDto
+                                        {
+                                            Name = governorate.NameAr,
+                                            Count = leftUser.CreatedRequests.Count
+                                        }).ToList();
 
 
 
@@ -133,7 +141,8 @@ namespace Emirates.Core.Application.Services.Home
                                                  x.StageId == (int)SystemEnums.Stages.RequestRejected ||
                                                  x.StageId == (int)SystemEnums.Stages.RequestApproved).Count(),
                 ServiceRequests = serviceRequests,
-                StageRequests = stageRequests
+                StageRequests = stageRequests,
+                GovernorateRequests = governorateRequests
             };
             return GetResponse(data: statistics);
         }

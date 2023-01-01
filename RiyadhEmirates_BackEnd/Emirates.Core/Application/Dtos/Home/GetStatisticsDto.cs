@@ -9,6 +9,7 @@ namespace Emirates.Core.Application.Dtos
         public int RequestElectronicBoardsCount { get; set; }
         public List<GetRequestStatisticsDto> ServiceRequests { get; set; }
         public List<GetRequestStatisticsDto> StageRequests { get; set; }
+        public List<GetRequestStatisticsDto> GovernorateRequests { get; set; }
 
     }
 }
