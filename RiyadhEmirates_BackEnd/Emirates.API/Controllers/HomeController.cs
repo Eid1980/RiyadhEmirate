@@ -1,4 +1,5 @@
-﻿using Emirates.Core.Application.Dtos;
+﻿using Emirates.API.Filters;
+using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
 using Emirates.Core.Application.Services.Home;
 using Emirates.Core.Application.Services.Shared;
@@ -58,5 +59,17 @@ namespace Emirates.API.Controllers
             return _homeService.GetTop5NewsByLang(isArabic);
         }
         #endregion
+
+        [HttpGet("GetStatistics")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, 
+                        (int)SystemEnums.Roles.NewsPermission, 
+                        (int)SystemEnums.Roles.SettingPermission, 
+                        (int)SystemEnums.Roles.UsersPermission, 
+                        (int)SystemEnums.Roles.RequestReview, 
+                        (int)SystemEnums.Roles.ShamelRequestReview)]
+        public IApiResponse GetStatistics()
+        {
+            return _homeService.GetStatistics();
+        }
     }
 }

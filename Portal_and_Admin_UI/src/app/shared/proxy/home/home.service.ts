@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
-import { CreateDesignEvaluationDto, GetAllServiceListDto, GetNewsSearchListDto, HomeCountsDto } from './models';
+import { CreateDesignEvaluationDto, GetAllServiceListDto, GetNewsSearchListDto, GetStatisticsDto, HomeCountsDto } from './models';
 import { GetNewsListDto } from '../news/models';
 import { SearchModel } from '../shared/search-model.model';
 
@@ -40,6 +40,11 @@ export class HomeService {
   }
   getTop5NewsByLang = (isArabic: boolean): Observable<ApiResponse<GetNewsSearchListDto[]>> => {
     return this.httpClient.get<ApiResponse<GetNewsSearchListDto[]>>(`${this.serviceUrl}/GetTop5NewsByLang/${isArabic}`).pipe(
+    );
+  }
+
+  getStatistics = (): Observable<ApiResponse<GetStatisticsDto>> => {
+    return this.httpClient.get<ApiResponse<GetStatisticsDto>>(`${this.serviceUrl}/GetStatistics`).pipe(
     );
   }
 

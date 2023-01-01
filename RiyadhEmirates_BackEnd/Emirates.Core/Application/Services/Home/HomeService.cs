@@ -16,15 +16,12 @@ namespace Emirates.Core.Application.Services.Home
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
         private readonly IConfigurationProvider _mapConfig;
-        private readonly IFileManagerService _fileManagerService;
 
-        public HomeService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper, 
-            IFileManagerService fileManagerService)
+        public HomeService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper)
         {
             _emiratesUnitOfWork = emiratesUnitOfWork;
             _mapper = mapper;
             _mapConfig = mapper.ConfigurationProvider;
-            _fileManagerService = fileManagerService;
         }
 
         public IApiResponse GetCounts()
@@ -100,5 +97,56 @@ namespace Emirates.Core.Application.Services.Home
             return GetResponse(data: latest.Concat(governorate).Concat(reports).ToList());
         }
         #endregion
+
+        public IApiResponse GetStatistics()
+        {
+            var requests = _emiratesUnitOfWork.Requests.Include(x => x.CreatedUser).Select(model =>
+            new
+            {
+                ServiceId = model.ServiceId,
+                StageId = model.StageId
+            }).ToList();
+
+            var serviceRequests = _emiratesUnitOfWork.Services.Include(x => x.Requests).Select(model =>
+            new GetRequestStatisticsDto
+            {
+                Name = model.NameAr,
+                Count = model.Requests.Count
+            }).ToList();
+            var stageRequests = _emiratesUnitOfWork.Stages.Include(x => x.Requests).Select(model =>
+            new GetRequestStatisticsDto
+            {
+                Name = model.NameAr,
+                Count = model.Requests.Count,
+                backgroundColor = 
+            }).ToList();
+
+
+
+            var statistics = new GetStatisticsDto
+            {
+                UserCount = _emiratesUnitOfWork.Users.Count(),
+                RequestCount = requests.Where(x => x.StageId != (int)SystemEnums.Stages.Draft).Count(),
+                RequestElectronicBoardsCount  = requests.Where(x => x.ServiceId == (int)SystemEnums.Services.ElectronicBoard).Count(),
+                RequestFinishedCount  = requests.Where(x => x.StageId == (int)SystemEnums.Stages.UnderProcessing ||
+                                                 x.StageId == (int)SystemEnums.Stages.RequestRejectedFromAdmin ||
+                                                 x.StageId == (int)SystemEnums.Stages.RequestRejected ||
+                                                 x.StageId == (int)SystemEnums.Stages.RequestApproved).Count(),
+                ServiceRequests = serviceRequests,
+                StageRequests = stageRequests
+            };
+            return GetResponse(data: statistics);
+        }
+
+        //rgb(46, 71, 52)  Dark green
+        //rgb(124, 201, 109)  green
+        //rgb(212, 165, 23)  orange
+        //rgb(212, 23, 212)  purpule
+        //rgb(23, 105, 212)  blue
+        //rgb(16, 141, 163)  sky
+        //rgb(30, 39, 138)  dark blue
+        //rgb(142, 235, 138)  white green
+        //rgb(146, 158, 8)  limon
+        //rgb(97, 5, 72)  bazegan
     }
 }

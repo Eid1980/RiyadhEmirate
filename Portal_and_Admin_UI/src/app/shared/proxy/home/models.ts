@@ -30,3 +30,16 @@ export interface GetNewsSearchListDto {
   newsTypeId: number;
   imageName: any;
 }
+
+export interface GetRequestStatisticsDto {
+  name: string;
+  count: number;
+}
+
+export interface GetStatisticsDto {
+  userCount: number;
+  requestCount: number;
+  requestFinishedCount: number;
+  requestElectronicBoardsCount: number;
+  serviceRequests: GetRequestStatisticsDto[];
+}

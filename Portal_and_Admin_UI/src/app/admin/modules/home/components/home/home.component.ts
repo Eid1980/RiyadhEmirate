@@ -1,26 +1,32 @@
 import { Component, OnInit } from "@angular/core";
 import { GlobalService } from "@shared/services/global.service";
+import { HomeService } from "@shared/proxy/home/home.service";
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
 })
 export class HomeComponent implements OnInit {
+  serviceRequestsdata: any;
   data: any;
 
-  constructor(private globalService: GlobalService)
+  constructor(private homeService: HomeService, private globalService: GlobalService)
   {
-    this.data = {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    }
+    
   }
 
   ngOnInit() {
     this.globalService.setAdminTitle('الصفحة الرئيسية');
+    this.homeService.getStatistics().subscribe(res => {
+      const result = res.data;
+      this.data = {
+        labels: result.serviceRequests.map((obj) => obj.name),
+        datasets: [{
+          label: '# of Votes',
+          data: result.serviceRequests.map((obj) => obj.count),
+          borderWidth: 1
+        }]
+      };
+    });
   }
 }

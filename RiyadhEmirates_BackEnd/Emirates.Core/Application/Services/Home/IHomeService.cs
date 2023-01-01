@@ -13,5 +13,7 @@ namespace Emirates.Core.Application.Services.Home
         IApiResponse GetNewsSearch(string filter);
         IApiResponse GetAllNews(SearchModel searchModel);
         IApiResponse GetTop5NewsByLang(bool isArabic = true);
+
+        IApiResponse GetStatistics();
     }
 }
