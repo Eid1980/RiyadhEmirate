@@ -4,14 +4,72 @@
   </nav>
 </div>
 
-<div class="form-card">
-  <div class="form-header">
-    <h5>طلبات المراحل</h5>
+<div>
+  <div class="row">
+    <div class="col-lg-8 col-md-7 mb-4">
+      <div class="form-card d-flex flex-column h-100 rounded-5">
+        <div class="form-header">
+          <h5>طلبات المراحل</h5>
+        </div>
+
+        <div class="form-content">
+          <p-chart type="bar" [data]="data"></p-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-5 mb-4">
+      <div class="form-card d-flex flex-column h-100 rounded-5">
+        <div class="form-header">
+          <h5>إحصائيات عدديه</h5>
+        </div>
+
+        <div class="form-content">
+          <div class="align-items-center border-bottom d-flex justify-content-between mb-3 pb-3 px-2">
+            <h4 class="mb-1 text-muted fa-14">عدد المستفيدين</h4>
+            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-primary-alt-3">25</h6>
+          </div>
+
+          <div class="align-items-center border-bottom d-flex justify-content-between mb-3 pb-3 px-2">
+            <h4 class="mb-1 text-muted fa-14">عدد الطلبات</h4>
+          </div>
+
+          <div class="align-items-center border-bottom d-flex justify-content-between mb-3 pb-3 px-2">
+            <h4 class="mb-1 text-muted fa-14">عدد المسودات</h4>
+            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-secondary">6</h6>
+          </div>
+
+          <div class="align-items-center border-bottom d-flex justify-content-between mb-3 pb-3 px-2">
+            <h4 class="mb-1 text-muted fa-14">عدد الإجمالى</h4>
+            <h6 class="d-inline-flex fa-14 lh-1 mb-1 px-3 py-1 rounded-pill text-white bg-primary">200</h6>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-content">
-    <div class="row mx-0">
-      <div class="form-group col-md-6">
-        <p-chart type="bar" [data]="data"></p-chart>
+
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <div class="form-card d-flex flex-column h-100 rounded-5">
+        <div class="form-header">
+          <h5>طلبات الشكاوى الرئيسية</h5>
+        </div>
+
+        <div class="form-content">
+          <p-chart type="bar" [data]="data"></p-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+      <div class="form-card d-flex flex-column h-100 rounded-5">
+        <div class="form-header">
+          <h5>طلبات المناطق</h5>
+        </div>
+
+        <div class="form-content">
+          <p-chart type="bar" [data]="data"></p-chart>
+        </div>
       </div>
     </div>
   </div>
