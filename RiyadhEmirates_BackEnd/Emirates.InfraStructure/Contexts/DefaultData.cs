@@ -463,7 +463,7 @@ namespace Emirates.InfraStructure.Contexts
         }
         public static RequestType[] RequestTypes()
         {
-            RequestType[] arrData = new RequestType[35];
+            RequestType[] arrData = new RequestType[34];
             arrData[0] = new RequestType { Id = 1, NameAr = "حضور زواج", NameEn = "حضور زواج", ServiceId = 2, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[1] = new RequestType { Id = 2, NameAr = "زيارة الوالدين والأهل", NameEn = "زيارة الوالدين والأهل", ServiceId = 2, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[2] = new RequestType { Id = 3, NameAr = "زيارة مريض", NameEn = "زيارة مريض", ServiceId = 2, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
@@ -489,22 +489,21 @@ namespace Emirates.InfraStructure.Contexts
             arrData[19] = new RequestType { Id = 20, NameAr = "زراعي", NameEn = "زراعي", ServiceId = 5, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[20] = new RequestType { Id = 21, NameAr = "سكني", NameEn = "سكني", ServiceId = 5, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[21] = new RequestType { Id = 22, NameAr = "تجاري", NameEn = "تجاري", ServiceId = 5, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[22] = new RequestType { Id = 23, NameAr = "أملاك عامة", NameEn = "أملاك عامة", ServiceId = 5, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
 
-            arrData[23] = new RequestType { Id = 24, NameAr = "اقتراح", NameEn = "اقتراح", ServiceId = 1, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[24] = new RequestType { Id = 25, NameAr = "شكوى", NameEn = "شكوى", ServiceId = 1, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[25] = new RequestType { Id = 26, NameAr = "طلب", NameEn = "طلب", ServiceId = 1, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[22] = new RequestType { Id = 23, NameAr = "اقتراح", NameEn = "اقتراح", ServiceId = 1, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[23] = new RequestType { Id = 24, NameAr = "شكوى", NameEn = "شكوى", ServiceId = 1, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[24] = new RequestType { Id = 25, NameAr = "طلب", NameEn = "طلب", ServiceId = 1, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             
-            arrData[26] = new RequestType { Id = 27, NameAr = "زواج السعودية من أجنبي", NameEn = "زواج السعودية من أجنبي", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[27] = new RequestType { Id = 28, NameAr = "زواج السعودي من دولة المغرب", NameEn = "زواج السعودي من دولة المغرب", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[28] = new RequestType { Id = 29, NameAr = "زواج السعودي من غير سعودية مقيمة بالمملكة", NameEn = "زواج السعودي من غير سعودية مقيمة بالمملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[29] = new RequestType { Id = 30, NameAr = "زواج السعودي من غير سعودية مولودة بالمملكة", NameEn = "زواج السعودي من غير سعودية مولودة بالمملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[30] = new RequestType { Id = 31, NameAr = "زواج السعودية من غير سعودي مقيم بالمملكة", NameEn = "زواج السعودية من غير سعودي مقيم بالمملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[31] = new RequestType { Id = 32, NameAr = "زواج السعودية من غير سعودي مولود بالمملكة", NameEn = "زواج السعودية من غير سعودي مولود بالمملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[32] = new RequestType { Id = 33, NameAr = "زواج السعودي من غير سعودية من خارج المملكة", NameEn = "زواج السعودي من غير سعودية من خارج المملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[25] = new RequestType { Id = 26, NameAr = "زواج السعودية من أجنبي", NameEn = "زواج السعودية من أجنبي", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[26] = new RequestType { Id = 27, NameAr = "زواج السعودي من دولة المغرب", NameEn = "زواج السعودي من دولة المغرب", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[27] = new RequestType { Id = 28, NameAr = "زواج السعودي من غير سعودية مقيمة بالمملكة", NameEn = "زواج السعودي من غير سعودية مقيمة بالمملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[28] = new RequestType { Id = 29, NameAr = "زواج السعودي من غير سعودية مولودة بالمملكة", NameEn = "زواج السعودي من غير سعودية مولودة بالمملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[29] = new RequestType { Id = 30, NameAr = "زواج السعودية من غير سعودي مقيم بالمملكة", NameEn = "زواج السعودية من غير سعودي مقيم بالمملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[30] = new RequestType { Id = 31, NameAr = "زواج السعودية من غير سعودي مولود بالمملكة", NameEn = "زواج السعودية من غير سعودي مولود بالمملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[31] = new RequestType { Id = 32, NameAr = "زواج السعودي من غير سعودية من خارج المملكة", NameEn = "زواج السعودي من غير سعودية من خارج المملكة", ServiceId = 7, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
 
-            arrData[33] = new RequestType { Id = 34, NameAr = "العلاج النفسي", NameEn = "العلاج النفسي", ServiceId = 9, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[34] = new RequestType { Id = 35, NameAr = "علاج الإدمان", NameEn = "علاج الإدمان", ServiceId = 9, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[32] = new RequestType { Id = 33, NameAr = "العلاج النفسي", NameEn = "العلاج النفسي", ServiceId = 9, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[33] = new RequestType { Id = 34, NameAr = "علاج الإدمان", NameEn = "علاج الإدمان", ServiceId = 9, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
 
             return arrData;
         }

@@ -10,9 +10,9 @@ namespace Emirates.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IntegrationController : BaseController
+    public class IntegrationController : ControllerBase//BaseController
     {
-        public IntegrationController(ILocalizationService localizationService) : base(localizationService)
+        public IntegrationController(ILocalizationService localizationService) //: base(localizationService)
         {
         }
 
@@ -20,6 +20,7 @@ namespace Emirates.API.Controllers
         public IApiResponse SendSMS(SendSMSRequest request)
         {
             RPSMSSoapClient smsClient = new RPSMSSoapClient(new RPSMSSoapClient.EndpointConfiguration());
+            //RPSMSSoapClientProd smsClient = new RPSMSSoapClientProd(new RPSMSSoapClientProd.EndpointConfiguration());
             smsClient.SendSmsAsync(request.MobileNumber, request.SmsBody);
             return new ApiResponse { IsSuccess = true , Data = true};
         }

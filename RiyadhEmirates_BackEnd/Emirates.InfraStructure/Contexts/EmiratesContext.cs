@@ -652,9 +652,6 @@ namespace Emirates.InfraStructure.Contexts
                 b.Property(x => x.RequestTypeId).IsRequired();
                 b.Property(x => x.EstimatedSpace).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.GovernorateId).IsRequired();
-                b.Property(x => x.Address).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
-                b.Property(x => x.Longitude).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
-                b.Property(x => x.Latitude).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
                 b.Property(x => x.InfringerName).HasMaxLength(EmiratesConstants.MaxNameLength);
                 b.Property(x => x.InfringerDescription).HasMaxLength(EmiratesConstants.MaxMultiTextLength).IsRequired();
 
