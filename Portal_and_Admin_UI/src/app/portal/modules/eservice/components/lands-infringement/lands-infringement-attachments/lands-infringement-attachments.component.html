@@ -1,0 +1,26 @@
+<nav class="breadcrumb m-0 bg-transparent">
+  <div class="container d-flex align-items-center">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/home/services-list']">قائمة الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">انشاء طلب تعدي على الأراضي الحكومية</span>
+  </div>
+</nav>
+
+<div class="container px-0 my-5">
+  <div class="form-card mb-0">
+    <div class="form-header mt-3" style="border-bottom: 0px !important;">
+      <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+    </div>
+
+    <div class="form-content">
+      <app-request-attacment allowedExtensions="image/*"></app-request-attacment>
+    </div>
+  </div>
+
+  <div class="form-actions px-0">
+    <a [routerLink]="['/eservice/lands-infringement/', requestId]" class="btn btn-outline-primary ms-auto">السابق</a>
+
+    <button type="button" class="btn btn-primary ms-3" (click)="onSubmit()">التالي</button>
+    <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
+  </div>
+</div>

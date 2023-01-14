@@ -11,9 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\AuthController.cs" />
     <Compile Remove="Controllers\EmiratesNewsController.cs" />
-    <Compile Remove="Controllers\LatestNewsController.cs" />
     <Compile Remove="Controllers\NationalitiesController.cs" />
     <Compile Remove="Controllers\ReportsController.cs" />
   </ItemGroup>
@@ -36,15 +42,16 @@
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.8.*" />
+    <PackageReference Include="System.ServiceModel.Federation" Version="4.8.*" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.8.*" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.8.*" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.8.*" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Emirates.Core\Emirates.Core.csproj" />
     <ProjectReference Include="..\Emirates.InfraStructure\Emirates.InfraStructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>

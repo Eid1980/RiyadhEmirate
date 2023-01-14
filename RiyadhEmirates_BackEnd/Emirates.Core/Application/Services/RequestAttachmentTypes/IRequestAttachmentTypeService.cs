@@ -1,6 +1,6 @@
 ﻿using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
-using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.Core.Application.Services.RequestAttachmentTypes
 {
@@ -13,6 +13,7 @@ namespace Emirates.Core.Application.Services.RequestAttachmentTypes
         IApiResponse Create(CreateRequestAttachmentTypeDto createModel);
         IApiResponse Update(UpdateRequestAttachmentTypeDto updateModel);
         IApiResponse ChangeStatus(int id);
+        IApiResponse Delete(int id);
         IApiResponse ChangeRequire(int id);
     }
 }

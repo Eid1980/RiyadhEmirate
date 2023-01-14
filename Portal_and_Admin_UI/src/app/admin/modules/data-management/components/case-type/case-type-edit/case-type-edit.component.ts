@@ -4,6 +4,7 @@ import { UpdateCaseTypeDto } from '@proxy/case-types/models';
 import { CaseTypeService } from '@proxy/case-types/case-type.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalService } from '@shared/services/global.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-case-type-edit',
@@ -33,8 +34,8 @@ export class CaseTypeEditComponent implements OnInit {
 
   buildForm() {
     this.updateCaseTypeForm = this.formBuilder.group({
-      nameAr: [this.updateCaseTypeDto.nameAr || '', Validators.required],
-      nameEn: [this.updateCaseTypeDto.nameEn || '', Validators.required],
+      nameAr: [this.updateCaseTypeDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.updateCaseTypeDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       isActive: [this.updateCaseTypeDto.isActive, Validators.required]
     });
   }

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
 import { CreateServiceDto, GetServiceDetailsDto, GetServiceListDto, UpdateServiceDto } from './models';
 import { LookupDto } from '../shared/lookup-dto.model';
+import { FileToUploadDto } from '../shared/file-to-upload-dto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,16 +23,29 @@ export class ServiceService {
     return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/GetByServiceId/${serviceId}`).pipe(
     );
   }
-
-  create = (createdDto: CreateServiceDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  getAll = (): Observable<ApiResponse<GetServiceListDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/GetAll`).pipe(
+    );
   }
-  update = (updatedDto: UpdateServiceDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  searchByFilter = (filter: string): Observable<ApiResponse<GetServiceListDto[]>> => {
+    return this.httpClient.get<ApiResponse<GetServiceListDto[]>>(`${this.serviceUrl}/SearchByFilter/${filter}`).pipe(
+    );
+  }
+
+  create = (createdDto: CreateServiceDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.post<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  }
+
+  update = (updatedDto: UpdateServiceDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.put<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }
 
   changeStatus = (id: number): Observable<ApiResponse<boolean>> => {
     return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeStatus/${id}`).pipe();
+  }
+
+  delete = (id: number): Observable<ApiResponse<boolean>> => {
+    return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
   }
 
   getLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
@@ -40,6 +54,14 @@ export class ServiceService {
   }
   getStagesLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
     return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetStagesLookupList`).pipe(
+    );
+  }
+  getNotifiedStagesLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
+    return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetNotifiedStagesLookupList`).pipe(
+    );
+  }
+  getServiceExplainAttachment = (id: number): Observable<ApiResponse<any>> => {
+    return this.httpClient.get<ApiResponse<any>>(`${this.serviceUrl}/GetServiceExplainAttachment/${id}`).pipe(
     );
   }
 

@@ -1,0 +1,37 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/servie-notification-sms-list']">اعدادات الرسائل النصية</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل الرسالة النصية</span>
+  </nav>
+</div>
+
+<div class="main-card">
+  <div class="border-bottom mb-4 pb-4 mt-3">
+    <h5 class="mb-0">تفاصيل الرسالة النصية</h5>
+  </div>
+  <div class="form-content">
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <h6 class="fa-14 fw-bold mb-2">الخدمة</h6>
+        <p class="fa-14 mb-0 text-muted fw-normal">{{ servieNotificationDetailsDto?.serviceName }}</p>
+      </div>
+      <div class="col-md-6 mb-4">
+        <h6 class="fa-14 fw-bold mb-2">المرحلة</h6>
+        <p class="fa-14 mb-0 text-muted fw-normal">{{ servieNotificationDetailsDto?.stageName }}</p>
+      </div>
+      <div class="col-md-6 mb-4">
+        <h6 class="fa-14 fw-bold mb-2">نص الرسالة</h6>
+        <p class="fa-14 mb-0 text-muted fw-normal">{{ servieNotificationDetailsDto?.message }}</p>
+      </div>
+      <div class="col-md-6 mb-4">
+        <h6 class="fa-14 fw-bold mb-2">الحالة</h6>
+        <p class="fa-14 mb-0 text-muted fw-normal">{{ servieNotificationDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions">
+  <a [routerLink]="['/admin/data-management/servie-notification-sms-list']" class="btn btn-secondary">رجوع</a>
+</div>

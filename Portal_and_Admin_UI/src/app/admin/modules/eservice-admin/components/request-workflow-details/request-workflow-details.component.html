@@ -5,5 +5,10 @@
 
 <div class="form-actions">
   <a [routerLink]="[nextUrl, requestId]" class="btn btn-cancel">التالي</a>
+  <button type="button" class="btn border-primary btn-white" [printTitle]="printTitle"
+          styleSheetFile="assets/css/print.css" printSectionId="request-print-section" ngxPrint>
+    <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2">
+    <span class="fa-12">طباعة</span>
+  </button>
   <a [routerLink]="['/admin/eservice-admin/inbox']" class="btn btn-cancel">إلغاء</a>
 </div>

@@ -10,6 +10,8 @@ import { MessageType } from '@shared/enums/message-type.enum';
 import { MenuItem } from 'primeng/api';
 import { RequestPrisonersServicesService } from '@proxy/request-prisoners-services/request-prisoners-services.service';
 import { CreateRequestPrisonersServiceDto, UpdateRequestPrisonersServiceDto } from '@proxy/request-prisoners-services/models';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
+import { PrisonService } from '@shared/proxy/prisons/prison.service';
 
 @Component({
   selector: 'app-prisoners-services',
@@ -23,11 +25,12 @@ export class PrisonersServicesComponent implements OnInit {
   serviceId: number = Service.PrisonersServices;
   requestId: string;
   requestTypes = [] as LookupDto<number>[];
+  prisons = [] as LookupDto<number>[];
   caseTypes = [] as LookupDto<number>[];
   isFormSubmitted: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private requestPrisonersServicesService: RequestPrisonersServicesService,
-    private requestTypeService: RequestTypeService, private caseTypeService: CaseTypeService,
+    private requestTypeService: RequestTypeService, private caseTypeService: CaseTypeService, private prisonService: PrisonService,
     private activatedRoute: ActivatedRoute, private globalService: GlobalService) {
   }
 
@@ -35,6 +38,7 @@ export class PrisonersServicesComponent implements OnInit {
     this.globalService.setTitle("خدمات السجناء");
     this.buildForm();
     this.fillRequestType();
+    this.fillPresons();
     this.fillCaseType();
     this.requestId = this.activatedRoute.snapshot.params['id'];
     if (this.requestId) {
@@ -65,14 +69,19 @@ export class PrisonersServicesComponent implements OnInit {
   buildForm() {
     this.prisonersServicesForm = this.formBuilder.group({
       requestTypeId: [this.createRequestPrisonersServiceDto.requestTypeId || null, Validators.required],
-      notes: [this.createRequestPrisonersServiceDto.notes || '', Validators.required],
-      presonName: [this.createRequestPrisonersServiceDto.presonName || '', Validators.required],
+      notes: [this.createRequestPrisonersServiceDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      prisonId: [this.createRequestPrisonersServiceDto.prisonId || null, [Validators.required]],
       caseTypeId: [this.createRequestPrisonersServiceDto.caseTypeId || null, Validators.required]
     });
   }
   fillRequestType() {
     this.requestTypeService.getLookupListByServiceId(this.serviceId).subscribe((response) => {
       this.requestTypes = response.data;
+    });
+  }
+  fillPresons() {
+    this.prisonService.getLookupList().subscribe((response) => {
+      this.prisons = response.data;
     });
   }
   fillCaseType() {

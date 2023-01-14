@@ -1,6 +1,6 @@
 
 
-<p-table #requestStageLogs [value]="requestStageLogsDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+<p-table #requestStageLogs [rowHover]="true" [value]="requestStageLogsDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th>م</th>
@@ -15,7 +15,8 @@
     <tr>
       <td> {{i+1}} </td>
       <td> {{requestStageLog.stageName}} </td>
-      <td title="{{requestStageLog.notes}}"> {{requestStageLog.notes.length > 20 ? requestStageLog.notes.substring(0, 20) + ' ...' : requestStageLog.notes}} </td>
+      <td title="{{requestStageLog.notes}}" *ngIf="requestStageLog.notes"> {{requestStageLog.notes.length > 20 ? requestStageLog.notes.substring(0, 20) + ' ...' : requestStageLog.notes}} </td>
+      <td title="{{requestStageLog.notes}}" *ngIf="!requestStageLog.notes"></td>
       <td> {{requestStageLog.createdDate}} </td>
       <td> {{requestStageLog.createdByName}} </td>
     </tr>

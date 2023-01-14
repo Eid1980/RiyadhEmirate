@@ -1,161 +1,244 @@
+
+
 <div class="top-bar">
-  <!-- <div>
-    <a [routerLink]="['/']">
-      <img src="./assets/images/logo.svg" alt="" width="180">
-    </a>
-  </div> -->
-
-  <div>
-    <img src="./assets/images/icons/calender.svg" alt="calender" width="22.27" height="22.27">
-    <span class="date"><span>الخميس</span> ، 23 ربيع أول 1443 هـ، 22 مايو 2022</span>
-    <!-- <div class="dropdown topnav-user" *ngIf="isAuthenticate">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/user-img.svg" alt="">
-        {{ 'header.hello' | translate }} <span>{{userModel?.Name}}</span>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <a routerLink="/e-council/profile" class="dropdown-item">
-          <i class="fa fa-user"></i>
-          {{ 'header.profilePersonly' | translate }}
-        </a>
-        <a class="dropdown-item" (click)="logout()">
-          <i class="fa fa-arrow-right-from-bracket"></i>
-          {{ 'header.signOut' | translate }}
-        </a>
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- calender -->
+      <div class="col-md-5 d-md-flex d-none">
+        <div class="date">
+          <img src="assets/images/icons/header/calender.svg" class="img-fluid filter-img-white" alt="calender" width="22.27" height="22.27">
+          <span class="date">{{currentDate}}</span>
+        </div>
       </div>
-    </div> -->
-    <!-- <div class="dropdown topnav-user" *ngIf="!isAuthenticate">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/user-img.svg" alt="">
-        {{ 'header.signIn' | translate }}
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <a routerLink="/e-council/profile" class="dropdown-item" [routerLink]="['/auth/login']">
-          <i class="fa fa-user"></i>
-          {{ 'header.signIn' | translate }}
-        </a>
-        <a class="dropdown-item" [routerLink]="['/auth/register']">
-          <i class="fa fa-arrow-right-from-bracket"></i>
-          {{ 'header.newRegistration' | translate }}
-        </a>
-      </div>
-    </div> -->
-    <!-- <span (click)="onChangeLang()">
-      <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
-      <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
-    </span> -->
-  </div>
 
-  <div class="options">
-    <div class="dropdown">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/icons/search.svg" alt="search" width="18">
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <div>
-          <div class="form-group">
-            <label for="">Search</label>
-            <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+      <!-- options -->
+      <div class="col-md-7">
+        <div class="options justify-content-md-end justify-content-center">
+          <div class="dropdown search">
+            <button class="btn dropdown-toggle px-0" type="button" id="dropdownSearch" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="assets/images/icons/header/search.svg" class="img-fluid filter-img-white" alt="search" width="20">
+            </button>
+            <div class="dropdown-menu search-dropdown" aria-labelledby="dropdownSearch">
+              <div class="search-card">
+                <div class="form-group">
+                  <input type="text" [(ngModel)]="newsSearch" class="form-control" placeholder="اكتب كلمات البحث هنا">
+                  <img src="assets/images/icons/header/prof-search.svg" alt="icon" class="s-icon">
+                  <button type="button" class="btn btn-primary-alt-2" (click)="newsSearchSubmit()">بحث</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="dropdown settings disabled">
+            <button class="btn dropdown-toggle px-0" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="assets/images/icons/header/setting.svg" class="img-fluid filter-img-white" alt="setting" width="20">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <div class="setting-card">
+                <span class="title">اعدادات الرؤية</span>
+                <div class="pt-4">
+                  <div class="set">
+                    <i class="fa fa-moon"></i>
+                    <span class="txt">الوضع الليلي</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                    </div>
+                  </div>
+                  <div class="set">
+                    <i class="fa fa-eye"></i>
+                    <span class="txt">وضع التباين</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                    </div>
+                  </div>
+                  <div class="set">
+                    <i class="fa fa-sun"></i>
+                    <span class="txt">وضع السطوع</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                    </div>
+                  </div>
+                  <div class="set">
+                    <i class="fa fa-font"></i>
+                    <span class="txt">خط كبير</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <img routerLink="home/mobile-applications" src="assets/images/icons/header/mobile.svg" class="img-fluid filter-img-white cursor-pointer" alt="mobile" width="14">
+          <img routerLink="home/contact-us" src="assets/images/icons/header/maps.svg" class="img-fluid filter-img-white cursor-pointer" alt="maps" width="16">
+
+          <!--<img src="assets/images/icons/header/language.svg" alt="language" width="18">-->
+
+          <div class="dropdown languages">
+            <button class="btn dropdown-toggle px-0" type="button" id="dropdownMenuLanguages" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="assets/images/icons/header/language.svg" class="img-fluid filter-img-white" alt="languages" width="20">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLanguages">
+              <a class="dropdown-item" (click)="onChangeLang()">
+                <img src="assets/images/icons/pic/ksa-flag.png" class="img-fluid" alt="flag" width="26px" />
+                <span>عربى</span>
+              </a>
+              <a class="dropdown-item" (click)="onChangeLang()">
+                <img src="assets/images/icons/pic/usa-flag.png" class="img-fluid" alt="flag" width="26px" />
+                <span>EN</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="logo me-3">
+            <a href="https://www.vision2030.gov.sa/ar/" target="_blank">
+              <img src="assets/images/icons/logo-2.svg" class="img-fluid filter-img-white mx-0" alt="logo" width="55">
+            </a>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="dropdown">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/icons/setting.svg" alt="setting" width="18">
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <div>
-          <div class="form-group">
-            <h1>Settings</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-    <img src="./assets/images/icons/mobile.svg" alt="mobile" width="18">
-    <img src="./assets/images/icons/maps.svg" alt="maps" width="18">
-    <img src="./assets/images/icons/star.svg" alt="star" width="18">
-    <img src="./assets/images/icons/language.svg" alt="language" width="18">
-
-    <div class="logo">
-      <img src="./assets/images/icons/logo-2.svg" alt="logo" width="55">
-    </div>
-
   </div>
-
 </div>
 
+<!-- main header -->
 <header class="header" id="navabr">
-  <nav class="navbar navbar-expand-sm navbar-light">
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="logo">
-      <a [routerLink]="['/']">
-        <img src="./assets/images/logo.svg" alt="" width="160">
-      </a>
-    </div>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container justify-content-start">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-        <li class="nav-item active">
-          <a class="nav-link" href="javascript:;">
-            <!-- {{ 'header.aboutTheEmirate' | translate }} -->
-            الإمارة
+      <div class="logo">
+        <a [routerLink]="['/']">
+          <img src="assets/images/logo.svg" alt="logo" class="img-fluid" />
+        </a>
+      </div>
+
+      <div class="navbar-collapse collapse" id="mainMenuCollapse">
+        <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+          <li class="nav-item dropdown dropdown-sub">
+            <a class="nav-link sub-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- {{ 'header.aboutTheEmirate' | translate }} -->
+              الإمارة
+            </a>
+            <ul class="nav-dropdown dropdown-menu">
+              <li>
+                <a class="nav-link dropdown-item" routerLink="/home/aboutus" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">عن الإمارة</a>
+              </li>
+              <li>
+                <a class="nav-link dropdown-item" routerLink="/home/region-princes" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">أمراء المنطقة</a>
+              </li>
+              <li>
+                <a class="nav-link dropdown-item" routerLink="/home/governorate-show" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">محافظات المنطقة</a>
+              </li>
+              <li>
+                <a class="nav-link dropdown-item" routerLink="/home/organization" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">الهيكل التنظيمي</a>
+              </li>
+              <li>
+                <a class="nav-link dropdown-item" routerLink="/home/women-section" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">القسم النسوي</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home/services-list']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">
+              <!-- {{ 'header.lordsOfTheRegion' | translate }} -->
+              الخدمات الإلكترونية
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home/services-guide" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">
+              <!-- {{ 'header.provinces' | translate }} -->
+              دليل اجراءات الخدمات
+            </a>
+          </li>
+
+          <li class="nav-item dropdown dropdown-sub">
+            <a class="nav-link dropdown-toggle sub-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- {{ 'header.electronicServices' | translate }} -->
+              المركز الإعلامي
+            </a>
+            <ul class="nav-dropdown dropdown-menu">
+              <li>
+                <a class="nav-link dropdown-item" routerLink="/home/latest-news" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">أخر الأخبار</a>
+              </li>
+              <li>
+                <a class="nav-link dropdown-item" routerLink="home/governorate-news" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">أخبار المحافظات</a>
+              </li>
+              <li>                                                                                 
+                <a class="nav-link dropdown-item" routerLink="home/reports-news" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">التقارير الاعلامية</a>
+              </li>
+              <li>                                                                                 
+                <a class="nav-link dropdown-item" routerLink="home/auctions" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">الإعلانات والمزادات والمناقصات</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/open-data" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">
+              <span>البيانات المفتوحة</span>
+
+              <!-- <img src="./assets/images/icons/header/open.svg" alt="" class="ic-open-data"> -->
+              <!-- {{ 'header.openData' | translate }} -->
+            </a>
+          </li>
+        </ul>
+
+        <a routerLink="/auth/login" class="btn px-0 text-primary-2 me-auto pe-3 justify-content-start" *ngIf="!isAuthenticated">
+          <i class="fa fa-user fa-20 ms-2"></i>
+          <span class="fa-14">تسجيل الدخول</span>
+        </a>
+      </div>
+
+      <div class="dropdown topnav-user" *ngIf="isAuthenticated">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuUserOptions" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img src="/assets/images/businessman.png" alt="avatar" width="40" *ngIf="userInfo.image == null">
+        <img [src]="userInfo.image?.base64File" alt="avatar" width="40" *ngIf="userInfo.image != null">
+          <span class="text">أهلاً</span> <span> {{userInfo.shortName}}</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuUserOptions">
+          <a class="dropdown-item" routerLink="/admin/home" *ngIf="userInfo.isEmployee">
+            <i class="fa fa-gear"></i>
+            <span>لوحة التحكم</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/eservice']">
-            <!-- {{ 'header.lordsOfTheRegion' | translate }} -->
-            الخدمات الإلكترونية
+          <a class="dropdown-item" routerLink="/eservice/my-requests">
+            <i class="fa fa-list-ul"></i>
+            <span>طلباتي</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:;">
-            <!-- {{ 'header.provinces' | translate }} -->
-            دليل الإجراءات
+          <a class="dropdown-item" routerLink="/profile">
+            <i class="fa fa-user"></i>
+            <span>الملف الشخصي</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:;">
-            <!-- {{ 'header.electronicServices' | translate }} -->
-            المركز الإعلامي
+          <a class="dropdown-item text-danger" (click)="logOut()">
+            <i class="fa fa-arrow-right-from-bracket"></i>
+            <span>تسجل خروج</span>
           </a>
-        </li>
+        </div>
+      </div>
 
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:;">
-            <img src="./assets/images/icons/open.svg" alt="" class="ic-open-data">
-            <!-- {{ 'header.openData' | translate }} -->
-            البيانات المفتوحة
-          </a>
-        </li>
-
-      </ul>
-
-    </div>
-
-    <button type="button" class="btn btn-primary sign-in">تسجيل الدخول</button>
-
-    <div class="dropdown topnav-user">
+      <!--<div class="dropdown topnav-user" *ngIf="!isAuthenticated">
       <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/user-img.svg" alt="" width="40">
-        أهلاً <span> محمد سالم </span>
+        <img src="./assets/images/header/user-img.svg" alt="" width="40">
+        <span> </span>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <a routerLink="/e-council/profile" class="dropdown-item">
+        <a routerLink="/auth/login" class="dropdown-item">
           <i class="fa fa-user"></i>
-          My Profile
+          تسجيل الدخول
         </a>
         <a class="dropdown-item">
           <i class="fa fa-arrow-right-from-bracket"></i>
-          Sign Out
+          إنشاء حساب جديد
         </a>
       </div>
+    </div>-->
     </div>
-
-
   </nav>
 
   <div class="overlay"></div>

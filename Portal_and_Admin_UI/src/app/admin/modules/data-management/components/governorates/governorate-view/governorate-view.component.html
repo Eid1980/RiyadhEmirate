@@ -1,0 +1,56 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/governorate-list']">المحافظات</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل المحافظة</span>
+  </nav>
+</div>
+
+<div class="form-card">
+  <div class="form-header">
+    <h5>تفاصيل المحافظة</h5>
+  </div>
+  <div class="form-content">
+    <div class="row mx-0">
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاسم عربي</span>
+        <span class="form-val">{{ governorateDetailsDto?.nameAr }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12 separator-af-be">
+        <span class="form-lbl lbl-33">الاسم إنجليزي</span>
+        <span class="form-val">{{ governorateDetailsDto?.nameEn }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الوصف عربي</span>
+        <span class="form-val" *ngIf="governorateDetailsDto?.descriptionEn" [outerHTML]="governorateDetailsDto?.descriptionAr | listString"></span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الوصف إنجليزي</span>
+        <span *ngIf="governorateDetailsDto?.descriptionEn" [outerHTML]="governorateDetailsDto?.descriptionEn | listString"></span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">رقم الهاتف</span>
+        <span class="form-val">{{ governorateDetailsDto?.phoneNumber }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الحالة</span>
+        <span class="form-val">{{ governorateDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">خريطة المحافظة</span>
+        <a [href]="governorateDetailsDto?.locationLink" *ngIf="governorateDetailsDto?.locationLink" class="btn btn-save" target="_blank">عرض خريطة المحافظة</a>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">البوابة الالكترونية للموقع</span>
+        <a [href]="governorateDetailsDto?.portalLink" *ngIf="governorateDetailsDto?.portalLink" class="btn btn-save" target="_blank">عرض البوابة الالكترونية</a>
+      </div>
+      <div class="form-group col-6" *ngIf="governorateDetailsDto?.imageName">
+        <img [src]="['/assets/images/uploads/governorates/'+governorateDetailsDto?.imageName]" [alt]="governorateDetailsDto?.nameEn" style="width: 100%; height: 200px;" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions">
+  <a [routerLink]="['/admin/data-management/governorate-list']" class="btn btn-cancel">رجوع</a>
+</div>

@@ -1,0 +1,120 @@
+<nav class="breadcrumb m-0 bg-transparent">
+  <div class="container d-flex align-items-center">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/home/services-list']">قائمة الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">انشاء طلب انفاذ حكم شرعي</span>
+  </div>
+</nav>
+
+<div class="container px-0 my-5">
+  <form [formGroup]="judgmentExecutionForm" (ngSubmit)="onSubmit()">
+    <div class="form-card mb-0">
+      <div class="form-header" style="border-bottom: 0px !important;">
+        <h5 class="mb-5">خدمة انفاذ حكم شرعي</h5>
+        <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+      </div>
+
+      <div class="form-content">
+        <div class="row mx-0">
+          <div class="form-group col-md-6" *ngIf="requestTypes?.length > 0">
+            <label for="requestTypeId" class="form-lbl">نوع الطلب<span class="danger">*</span></label>
+            <select class="form-control form-select" formControlName="requestTypeId" [ngClass]="{
+              invalid:
+                (isFormSubmitted || judgmentExecutionForm.get('requestTypeId').touched) &&
+                judgmentExecutionForm.get('requestTypeId').errors?.required}">
+              <option [ngValue]="null">-- اختر نوع الطلب --</option>
+              <option *ngFor="let requestType of requestTypes" [ngValue]="requestType.id">
+                {{ requestType.name }}
+              </option>
+            </select>
+            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('requestTypeId').touched) && judgmentExecutionForm.get('requestTypeId').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
+          </div>
+          <div class="form-group col-md-6" *ngIf="requestTypes?.length > 0">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="requesterType" class="form-lbl">نوع مقدم الطلب<span class="danger">*</span></label>
+            <select class="form-control form-select" formControlName="requesterType" (change)="onRequesterTypeChange()"
+                    [ngClass]="{
+              invalid:
+                (isFormSubmitted || judgmentExecutionForm.get('requesterType').touched) &&
+                judgmentExecutionForm.get('requesterType').errors?.required}">
+              <option [ngValue]="1">نفسه</option>
+              <option [ngValue]="2">الموكل</option>
+            </select>
+            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('requesterType').touched) && judgmentExecutionForm.get('requesterType').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="defendantTypeId" class="form-lbl">نوع المنفذ ضده<span class="danger">*</span></label>
+            <select class="form-control form-select" formControlName="defendantTypeId" [ngClass]="{
+              invalid:
+                (isFormSubmitted || judgmentExecutionForm.get('defendantTypeId').touched) &&
+                judgmentExecutionForm.get('defendantTypeId').errors?.required}">
+              <option [ngValue]="null">-- اختر نوع المنفذ ضد --</option>
+              <option *ngFor="let defendantType of defendantTypes" [ngValue]="defendantType.id">
+                {{ defendantType.name }}
+              </option>
+            </select>
+            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('defendantTypeId').touched) && judgmentExecutionForm.get('defendantTypeId').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
+          </div>
+          <div class="form-group col-md-6" *ngIf="!isSameRequester">
+            <label for="requesterName" class="form-lbl">اسم المدعي<span class="danger">*</span></label>
+            <input type="text" class="form-control" autocomplete="off" formControlName="requesterName"
+                   id="requesterName" [ngClass]="{
+              invalid:
+                (isFormSubmitted || judgmentExecutionForm.get('requesterName').touched) &&
+                judgmentExecutionForm.get('requesterName').errors?.required}" />
+            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('requesterName').touched) && judgmentExecutionForm.get('requesterName').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
+          </div>
+          <div class="form-group col-md-6" *ngIf="!isSameRequester">
+            <label for="requesterNationalId" class="form-lbl">رقم هوية المدعي<span class="danger">*</span></label>
+            <input type="text" class="form-control" autocomplete="off" formControlName="requesterNationalId" maxlength="10"
+                   id="requesterNationalId" [ngClass]="{
+              invalid:
+                (isFormSubmitted || judgmentExecutionForm.get('requesterNationalId').touched) &&
+                judgmentExecutionForm.get('requesterNationalId').errors?.required}" />
+            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('requesterNationalId').touched) && judgmentExecutionForm.get('requesterNationalId').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
+            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('requesterNationalId').touched) && this.judgmentExecutionForm.get('requesterNationalId').errors != null && !judgmentExecutionForm.get('requesterNationalId').errors?.isValid"
+                   class="danger">ادخل رقم هوية صحيح</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="lawsuitNumber" class="form-lbl">رقم الدعوة<span class="danger">*</span></label>
+            <input type="text" class="form-control" autocomplete="off" formControlName="lawsuitNumber"
+                   id="lawsuitNumber" [ngClass]="{
+              invalid:
+                (isFormSubmitted || judgmentExecutionForm.get('lawsuitNumber').touched) &&
+                judgmentExecutionForm.get('lawsuitNumber').errors?.required}" />
+            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('lawsuitNumber').touched) && judgmentExecutionForm.get('lawsuitNumber').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
+          </div>
+          <div class="form-group col-md-6">
+            <hijri-gregorian-datepicker id="date" [(selectedDate)]="date"
+                                        [placeHolder]="'سنة/شهر/يوم'" [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" label="تاريخ الدعوة *"
+                                        [isRequired]="true" [selectedDateType]="selectedDateType" #lawsuitDate>
+            </hijri-gregorian-datepicker>
+            <small *ngIf="(isFormSubmitted && isValidDate)" class="danger">هذاالحقل مطلوب</small>
+          </div>
+          <div class="form-group col-md-12">
+            <label for="notes" class="form-lbl">تفاصيل الدعوة<span class="danger">*</span></label>
+            <textarea type="text" class="form-control" autocomplete="off" formControlName="notes" id="notes" [ngClass]="{
+              invalid:
+                (isFormSubmitted || judgmentExecutionForm.get('notes').touched) &&
+                judgmentExecutionForm.get('notes').errors?.required}">
+          </textarea>
+            <small *ngIf="(isFormSubmitted || judgmentExecutionForm.get('notes').touched) && judgmentExecutionForm.get('notes').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions px-0">
+      <button type="submit" class="btn btn-primary ms-3">التالي</button>
+      <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
+    </div>
+  </form>
+</div>

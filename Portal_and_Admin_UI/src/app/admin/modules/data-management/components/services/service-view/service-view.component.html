@@ -21,12 +21,12 @@
         <span class="form-val">{{ serviceDetailsDto?.nameEn }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">العنوان باللغة العربية</span>
-        <span class="form-val">{{ serviceDetailsDto?.titleAr }}</span>
+        <span class="form-lbl lbl-33">القطاع عربي</span>
+        <span class="form-val">{{ serviceDetailsDto?.sectorAr }}</span>
       </div>
       <div class="info-col col-md-6 col-12 separator-af-be">
-        <span class="form-lbl lbl-33">العنوان باللغة الإنجليزية</span>
-        <span class="form-val">{{ serviceDetailsDto?.titleEn }}</span>
+        <span class="form-lbl lbl-33">القطاع انجليزي</span>
+        <span class="form-val">{{ serviceDetailsDto?.sectorEn }}</span>
       </div>
       <div class="info-col col-md-6 col-12 separator-af-be">
         <span class="form-lbl lbl-33">الرابط</span>
@@ -44,11 +44,8 @@
         <span class="form-lbl lbl-33">الوصف باللغة الإنجليزية</span>
         <span class="form-val">{{ serviceDetailsDto?.descriptionEn }}</span>
       </div>
-      <div class="info-col col-md-6 col-12" *ngIf="serviceDetailsDto?.image">
-        <span class="form-lbl lbl-33">الصورة</span>
-        <span class="form-val">
-          <img [src]="serviceDetailsDto?.image?.base64File" alt="" style="width: 180px" />
-        </span>
+      <div class="form-group col-6" *ngIf="serviceDetailsDto?.imageName">
+        <img [src]="['/assets/images/uploads/services/'+serviceDetailsDto?.imageName]" [alt]="serviceDetailsDto?.nameEn" style="width: 100%; height: 200px;" />
       </div>
     </div>
   </div>

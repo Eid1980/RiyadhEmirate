@@ -1,0 +1,359 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">الاستعلام عن المعاملات</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="serv-tabs">
+    <!-- tabs -->
+    <ul class="main-tabs nav nav-tabs mb-2" id="inquiriesTabs" role="tablist">
+      <li class="nav-item w-100" role="presentation">
+        <button class="nav-link active" id="inquiryTransactionNumber-tab" data-bs-toggle="tab"
+                data-bs-target="#inquiryTransactionNumber" type="button" role="tab" aria-controls="inquiryTransactionNumber"
+                aria-selected="true">
+          الإستعلام برقم المعاملة
+        </button>
+      </li>
+
+      <li class="nav-item w-100" role="presentation">
+        <button class="nav-link" id="inquiryLetterNumber-tab" data-bs-toggle="tab" data-bs-target="#inquiryLetterNumber"
+                type="button" role="tab" aria-controls="inquiryLetterNumber" aria-selected="true">
+          الإستعلام برقم
+          الخطاب
+        </button>
+      </li>
+
+      <li class="nav-item w-100" role="presentation">
+        <button class="nav-link" id="serviceDescription-tab" data-bs-toggle="tab" data-bs-target="#serviceDescription"
+                type="button" role="tab" aria-controls="serviceDescription" aria-selected="true">
+          وصف الخدمة
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="inquiriesTabsContent">
+      <div class="tab-pane fade show active" id="inquiryTransactionNumber" role="tabpanel"
+           aria-labelledby="inquiryTransactionNumber-tab">
+        <div class="bg-white border rounded-4 mt-5 p-3">
+          <!-- search -->
+          <div class="py-5">
+            <div class="d-flex align-items-end justify-content-center flex-wrap">
+              <div class="my-1">
+                <label class="fa-16 text-muted mb-2 fw-normal" for="transactionNumber">رقم المعاملة</label>
+                <input type="text" class="form-control mw-300 input-lg py-3" placeholder="ادخل رقم المعاملة"
+                       name="transactionNumber" />
+              </div>
+
+              <div class="d-flex align-items-center me-sm-5 my-1">
+                <button class="btn btn-primary-2 text-white px-5" type="button"
+                        style="font-size: 16px !important; height: 55px;" (click)="transactionsSearch()">
+                  بحث
+                </button>
+                <button class="btn btn-primary-alt-3 me-3" type="button"
+                        style="font-size: 16px !important; height: 55px;" (click)="showTransactionsAdvancedSearch()">
+                  <i class="fa-solid fa-filter ms-3"></i>
+                  <span>بحث متقدم</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- advanced search -->
+          <div class="border-top mx-3 pt-4" *ngIf="transactionsAdvancedSearch">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <form>
+                  <div class="row">
+                    <div class="col-lg-4 col-sm-6 offset-lg-2 mb-4">
+                      <div>
+                        <label class="fa-14 fw-bold mb-2" for="">السنه</label>
+                        <select class="form-select" name="">
+                          <option value="" selected>اختر...</option>
+                          <option value="one">2000</option>
+                          <option value="two">2002</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 mb-4">
+                      <div>
+                        <label class="fa-14 d-block fw-bold mb-2">نوع البحث</label>
+                        <div class="mt-3">
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchType" id="optionOne"
+                                   value="optionOne">
+                            <label class="form-check-label fw-normal text-black fa-14" for="optionOne">وارد</label>
+                          </div>
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchType" id="Option2" value="option2">
+                            <label class="form-check-label fw-normal text-black fa-14" for="Option2">صادر</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-4">
+                      <div>
+                        <label class="fa-14 d-block fw-bold mb-2">مجال البحث</label>
+                        <div class="mt-3">
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="option4"
+                                   value="option4">
+                            <label class="form-check-label fw-normal text-black fa-14" for="option4">عام</label>
+                          </div>
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="Option5"
+                                   value="option5">
+                            <label class="form-check-label fw-normal text-black fa-14" for="Option5">عرائض</label>
+                          </div>
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="Option6"
+                                   value="option6">
+                            <label class="form-check-label fw-normal text-black fa-14" for="Option6">برقى</label>
+                          </div>
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="Option7"
+                                   value="option7">
+                            <label class="form-check-label fw-normal text-black fa-14" for="Option7">
+                              المكتب
+                              الخاص
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="Option8"
+                                   value="option8">
+                            <label class="form-check-label fw-normal text-black fa-14" for="Option8">
+                              استقبال
+                              جمهور
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col-12 d-flex justify-content-center">
+                      <button type="submit" class="btn btn-primary px-5">بحث</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- result -->
+          <div class="border-top mx-3 pt-4" *ngIf="transactionsSearchResult">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                  <h5 class="fw-bold mb-0">الإستعلام عن المعاملات</h5>
+                  <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2">
+                    <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
+                    <span class="fa-12">طباعة</span>
+                  </button>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold border">رقم الوارد</td>
+                        <td class="content border">103</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الوارد</td>
+                        <td class="content">22/2/2022</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">رقم الصادر</td>
+                        <td class="content">103</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الصادر</td>
+                        <td class="content">25/5/1995</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">حالة المعاملة</td>
+                        <td class="content">صدرت</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">الجهة الصادر إليها</td>
+                        <td class="content">إدارة تنفيذ الاحكام</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="inquiryLetterNumber" role="tabpanel" aria-labelledby="inquiryLetterNumber-tab">
+        <div class="bg-white border rounded-4 mt-5 p-3">
+          <!-- search -->
+          <div class="py-5">
+            <div class="d-flex align-items-end justify-content-center flex-wrap">
+              <div class="my-1">
+                <label class="fa-16 text-muted mb-2 fw-normal" for="letterNumber">رقم الخطاب</label>
+                <input type="text" class="form-control mw-300 input-lg py-3" placeholder="ادخل رقم الخطاب"
+                       name="letterNumber" />
+              </div>
+
+              <div class="d-flex align-items-center me-sm-5 my-1">
+                <button class="btn btn-primary-2 text-white px-5" type="button"
+                        style="font-size: 16px !important; height: 55px;" (click)="lettersSearch()">
+                  بحث
+                </button>
+                <button class="btn btn-primary-alt-3 me-3" type="button"
+                        style="font-size: 16px !important; height: 55px;" (click)="showLettersAdvancedSearch()">
+                  <i class="fa-solid fa-filter ms-3"></i>
+                  <span>بحث متقدم</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- advanced search -->
+          <div class="border-top mx-3 pt-4" *ngIf="lettersAdvancedSearch">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <form>
+                  <div class="row">
+                    <div class="col-lg-4 col-sm-6 offset-lg-2 mb-4">
+                      <div>
+                        <label class="fa-14 fw-bold mb-2" for="">السنه</label>
+                        <select class="form-select" name="">
+                          <option value="" selected>اختر...</option>
+                          <option value="one">2000</option>
+                          <option value="two">2002</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 mb-4">
+                      <div>
+                        <label class="fa-14 fw-bold mb-2" for="">الجهه الرئيسية</label>
+                        <select class="form-select" name="">
+                          <option value="" selected>جميع الجهات...</option>
+                          <option value="one">2000</option>
+                          <option value="two">2002</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-4">
+                      <div>
+                        <label class="fa-14 d-block fw-bold mb-2">مجال البحث</label>
+                        <div class="mt-3">
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="option4"
+                                   value="option4">
+                            <label class="form-check-label fw-normal text-black fa-14" for="option4">عام</label>
+                          </div>
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="Option5"
+                                   value="option5">
+                            <label class="form-check-label fw-normal text-black fa-14" for="Option5">عرائض</label>
+                          </div>
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="Option6"
+                                   value="option6">
+                            <label class="form-check-label fw-normal text-black fa-14" for="Option6">برقى</label>
+                          </div>
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="Option7"
+                                   value="option7">
+                            <label class="form-check-label fw-normal text-black fa-14" for="Option7">
+                              المكتب
+                              الخاص
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline ms-3">
+                            <input class="form-check-input" type="radio" name="searchService" id="Option8"
+                                   value="option8">
+                            <label class="form-check-label fw-normal text-black fa-14" for="Option8">
+                              استقبال
+                              جمهور
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col-12 d-flex justify-content-center">
+                      <button type="submit" class="btn btn-primary px-5">بحث</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- result -->
+          <div class="border-top mx-3 pt-4" *ngIf="lettersSearchResult">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                  <h5 class="fw-bold mb-0">الإستعلام عن الخطابات</h5>
+                  <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2">
+                    <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
+                    <span class="fa-12">طباعة</span>
+                  </button>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold border">رقم الوارد</td>
+                        <td class="content border">103</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الوارد</td>
+                        <td class="content">22/2/2022</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">رقم الصادر</td>
+                        <td class="content">103</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الصادر</td>
+                        <td class="content">25/5/1995</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">حالة المعاملة</td>
+                        <td class="content">صدرت</td>
+                      </tr>
+                      <tr>
+                        <td class="title bg-opacity-10 bg-primary fw-bold">الجهة الصادر إليها</td>
+                        <td class="content">إدارة تنفيذ الاحكام</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="serviceDescription" role="tabpanel" aria-labelledby="serviceDescription-tab">
+        <div class="bg-white border rounded-4 mt-5 p-3">
+          <div class="py-5">
+            <p class="mb-0 fa-20 fw-normal">
+              توفر هذه الخدمة امكانية الاستعلام المباشر عن المعاملات ، بدلاله رقم قيد المعاملة أو دلالة رقم صدور المعاملة، كما يمكن الاستعلام عن المعاملات الواردة بدلاله رقم الخطاب من الجهه الواردة منها، في حالة عدم صدور المعاملة لكونها تحت الإجراء يمكن تسجيل البريد الإلكتروني أو رقم الجوال ليتم اشعار المراجع حين صدور المعاملة برسالة إلكترونية أو رسالة جوال قصيرة تتضمن رقم الصادر وتاريخه والجهة الصادرة إليها.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

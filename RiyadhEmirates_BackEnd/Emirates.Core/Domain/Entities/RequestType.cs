@@ -15,6 +15,10 @@ namespace Emirates.Core.Domain.Entities
         public virtual ICollection<RequestElectronicBoard> RequestElectronicBoards { get; set; }
         public virtual ICollection<RequestPrisonerTempRelease> RequestPrisonerTempReleases { get; set; }
         public virtual ICollection<RequestPrisonersService> RequestPrisonersServices { get; set; }
-        
+        public virtual ICollection<RequestLandsInfringement> RequestLandsInfringements { get; set; }
+        public virtual ICollection<RequestElectronicSummon> RequestElectronicSummons { get; set; }
+        public virtual ICollection<RequestMarriageCertificate> RequestMarriageCertificates { get; set; }
+        public virtual ICollection<RequestTreatmentRecommendation> RequestTreatmentRecommendations { get; set; }
+
     }
 }

@@ -1,109 +1,274 @@
-<!-- BEGIN: SIDE-MENU -->
-<div class="sidebar h-100" id="sidebar">
-  <div class="pb-4">
-    <ul class="list-unstyled px-0 pt-3 m-0">
-      <li class="position-relative">
-        <a routerLink="/admin/" class="menu-item menu-link cursor-pointer">
-          <i class="menu-icon las la-chalkboard"></i>
-          <span class="nav-label fs-14">الرئيسية</span>
+<div class="sidebar" id="sidebar">
+  <div class="accordion" id="accordionSidemenu">
+    <ul class="sidebar-list">
+      <li class="sidebar-list-item">
+        <a class="sidebar-list-link" routerLink="/admin/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <i class="fa-solid fa-house"></i>
+          <span>الرئيسية</span>
         </a>
       </li>
-      <!-- <div class="accordion" id="accordionExample"> -->
-      <li class="accordion-item">
+
+      <li class="accordion-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(newsPermission)">
         <h2 class="accordion-header" id="headingNews">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">
-            <i class="menu-icon las la-ad"></i>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseNews" aria-expanded="true" aria-controls="collapseNews">
+            <i class="fa-solid fa-newspaper"></i>
             <span class="nav-label">الأخبار</span>
           </button>
         </h2>
-        <div id="collapseNews" class="accordion-collapse collapse" aria-labelledby="headingNews" data-bs-parent="#accordionExample">
+        <div id="collapseNews" class="accordion-collapse collapse" aria-labelledby="headingNews"
+             data-bs-parent="#accordionSidemenu">
           <div class="accordion-body">
-            <ul class="list-styled">
-              <li class="position-relative">
-                <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/latest-news-list">
-                  <span class="nav-label fs-14 px-1">اخر الأخبار</span>
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/latest-news-ar-list" routerLinkActive="active">
+                  <span class="nav-label fs-14 px-1">اخر الأخبار عربي</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/emirates-news-list">
-                  <span class="nav-label fs-14 px-1">اخبار المحافظات</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/latest-news-ar-comments" routerLinkActive="active">
+                  <span class="nav-label fs-14 px-1">تعليقات اخر الأخبار عربي</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/reports-list">
-                  <span class="nav-label fs-14 px-1">التقارير الإخبارية</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/latest-news-en-list" routerLinkActive="active">
+                  <span class="nav-label fs-14 px-1">اخر الأخبار انجليزي</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/latest-news-en-comments" routerLinkActive="active">
+                  <span class="nav-label fs-14 px-1">تعليقات اخر الأخبار انجليزي</span>
+                </a>
+              </li>
+
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/governorate-news-ar-list" routerLinkActive="active">
+                  <span>اخبار المحافظات عربي</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/governorate-news-en-list" routerLinkActive="active">
+                  <span>اخبار المحافظات انجليزي</span>
+                </a>
+              </li>
+
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/reports-ar-list" routerLinkActive="active">
+                  <span>التقارير الإعلامية عربي</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/reports-en-list" routerLinkActive="active">
+                  <span>التقارير الإعلامية انجليزي</span>
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </li>
-      <li class="accordion-item">
-        <h2 class="accordion-header" id="headingSevices">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSevices" aria-expanded="true" aria-controls="collapseSevices">
-            <i class="menu-icon las la-ad"></i>
-            <span class="nav-label">الخدمات</span>
+
+      <li class="accordion-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(settingPermission)">
+        <h2 class="accordion-header" id="headingEmirate">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseEmirate" aria-expanded="true" aria-controls="collapseEmirate">
+            <i class="fa-solid fa-font-awesome"></i>
+            <span>الامارة</span>
           </button>
         </h2>
-        <div id="collapseSevices" class="accordion-collapse collapse" aria-labelledby="headingSevices" data-bs-parent="#accordionExample">
+        <div id="collapseEmirate" class="accordion-collapse collapse" aria-labelledby="headingEmirate"
+             data-bs-parent="#accordionSidemenu">
           <div class="accordion-body">
-            <ul>
-              <li class="position-relative">
-                <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/service-list">
-                  <span class="nav-label fs-14 px-1">الخدمات</span>
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/open-data-categuery-list" routerLinkActive="active">
+                  <span>مجموعات البيانات المفتوحة</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/request-type-list">
-                  <span class="nav-label fs-14 px-1">أنواع الخدمات</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/open-data-report-list" routerLinkActive="active">
+                  <span>تقارير البيانات المفتوحة</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/request-attachment-type-list">
-                  <span class="nav-label fs-14 px-1">مرفقات الخدمات</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/poster-list" routerLinkActive="active">
+                  <span>الإعلانات</span>
                 </a>
               </li>
-              <li class="position-relative">
-                <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/service-stage-list">
-                  <span class="nav-label fs-14 px-1">مراحل الخدمات</span>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/auction-list" routerLinkActive="active">
+                  <span>الاعلانات والمزادات والمناقصات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/emirates-prince-list" routerLinkActive="active">
+                  <span>أمراء المنطقة</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/governorate-list" routerLinkActive="active">
+                  <span>المحافظات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/edit-about-us" routerLinkActive="active">
+                  <span>عن الامارة</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/edit-woman-section" routerLinkActive="active">
+                  <span>القسم النسوي</span>
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </li>
-      <li class="accordion-item">
+
+      <li class="accordion-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin)">
+        <h2 class="accordion-header" id="headingSevices">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseSevices" aria-expanded="true" aria-controls="collapseSevices">
+            <i class="fa-solid fa-hand-holding-medical"></i>
+            <span>الخدمات</span>
+          </button>
+        </h2>
+        <div id="collapseSevices" class="accordion-collapse collapse" aria-labelledby="headingSevices"
+             data-bs-parent="#accordionSidemenu">
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/service-list" routerLinkActive="active">
+                  <span>الخدمات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/request-type-list" routerLinkActive="active">
+                  <span>أنواع الخدمات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link"
+                   routerLink="/admin/data-management/request-attachment-type-list" routerLinkActive="active">
+                  <span>مرفقات الخدمات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item" *ngIf="roles?.includes(superSystemAdmin)">
+                <a class="accordion-list-link" routerLink="/admin/data-management/service-stage-list" routerLinkActive="active">
+                  <span>مراحل الخدمات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link"
+                   routerLink="/admin/data-management/servie-notification-sms-list" routerLinkActive="active">
+                  <span>اعدادات الرسائل النصية</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link"
+                   routerLink="/admin/data-management/servie-notification-email-list" routerLinkActive="active">
+                  <span>اعدادات رسائل البريدالالكتروني</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="accordion-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(settingPermission)">
         <h2 class="accordion-header" id="headingSettings">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
-            <i class="menu-icon las la-ad"></i>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
+            <i class="fa-solid fa-gear"></i>
             <span class="nav-label">الاعدادات</span>
           </button>
         </h2>
-        <div id="collapseSettings" class="accordion-collapse collapse" aria-labelledby="headingSettings" data-bs-parent="#accordionExample">
+        <div id="collapseSettings" class="accordion-collapse collapse" aria-labelledby="headingSettings"
+             data-bs-parent="#accordionSidemenu">
           <div class="accordion-body">
-            <ul>
-              <li class="position-relative">
-                <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/case-type-list">
-                  <span class="nav-label fs-14 px-1">أنواع القضايا</span>
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/home/contact-us-message-list" routerLinkActive="active">
+                  <span>طلبات تواصل معنا</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/home/open-data-request-list" routerLinkActive="active">
+                  <span>طلبات البيانات المفتوحة</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/nationality-list" routerLinkActive="active">
+                  <span>الجنسيات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/case-type-list" routerLinkActive="active">
+                  <span>أنواع القضايا</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/prison-list" routerLinkActive="active">
+                  <span>السجون</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/news-categuery-list" routerLinkActive="active">
+                  <span>تصنيف الأخبار</span>
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </li>
-      <li class="position-relative">
-        <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/data-management/poster-list">
-          <i class="menu-icon las la-ad"></i>
-          <span class="nav-label fs-14 px-1">الإعلانات</span>
+
+      <li class="accordion-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(usersPermission)">
+        <h2 class="accordion-header" id="headingPermissions">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapsePermissions" aria-expanded="true" aria-controls="collapsePermissions">
+            <i class="fa-solid fa-users"></i>
+            <span class="nav-label">الصلاحيات</span>
+          </button>
+        </h2>
+        <div id="collapsePermissions" class="accordion-collapse collapse" aria-labelledby="headingPermissions"
+             data-bs-parent="#accordionSidemenu">
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/home/user-list" routerLinkActive="active">
+                  <span>المستخدمون</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/home/role-list" routerLinkActive="active">
+                  <span>الصلاحيات</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="sidebar-list-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(requestReview)">
+        <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox" routerLinkActive="active">
+          <i class="fa-solid fa-envelope"></i>
+          <span>متابعة الطلبات</span>
         </a>
       </li>
-      <!-- </div> -->
-      <li class="position-relative">
-        <a href="#" class="menu-item menu-link cursor-pointer" routerLink="/admin/eservice-admin/inbox">
-          <i class="menu-icon las la-ad"></i>
-          <span class="nav-label fs-14 px-1">البريد الوارد</span>
+
+      <li class="sidebar-list-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(shamelRequestReview)">
+        <a class="sidebar-list-link" routerLink="/admin/eservice-admin/inbox-shamel" routerLinkActive="active">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <span>متابعة طلبات نطام شامل</span>
         </a>
       </li>
+
+      <li class="sidebar-list-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(requestReview) || roles?.includes(shamelRequestReview)">
+        <a class="sidebar-list-link" routerLink="/admin/eservice-admin/request-search" routerLinkActive="active">
+          <i class="fa-solid fa-search"></i>
+          <span>البحث في الطلبات</span>
+        </a>
+      </li>
+
     </ul>
   </div>
 </div>

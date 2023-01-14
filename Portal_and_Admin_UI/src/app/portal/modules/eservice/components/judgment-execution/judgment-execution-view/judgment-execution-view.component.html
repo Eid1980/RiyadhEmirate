@@ -1,0 +1,15 @@
+<nav class="breadcrumb m-0 bg-transparent">
+  <div class="container d-flex align-items-center">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/eservice/my-requests']">طلباتي</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل الطلب</span>
+  </div>
+</nav>
+
+<div class="container px-0 mt-5">
+  <app-judgment-execution-details [showStatusLog]="true"></app-judgment-execution-details>
+
+  <div class="form-actions px-0">
+    <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">رجوع</a>
+  </div>
+</div>

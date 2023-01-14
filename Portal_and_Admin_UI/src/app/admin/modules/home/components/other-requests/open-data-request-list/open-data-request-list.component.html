@@ -1,0 +1,37 @@
+<app-page-list [PageListSetting]="pageListSettings"></app-page-list>
+
+<p-dialog [modal]="true" header="الرد على طلب البيانات المفتوحة" [(visible)]="showDialog">
+  <div class="form-card">
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">الاسم</span>
+          <span class="form-val">{{ getOpenDataRequestDetailsDto?.fullName }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">البريد الالكتروني</span>
+          <span class="form-val">{{ getOpenDataRequestDetailsDto?.email }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">عنوان الرسالة</span>
+          <span class="form-val">{{ getOpenDataRequestDetailsDto?.title }}</span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">تاريخ الطلب</span>
+          <span class="form-val">{{ getOpenDataRequestDetailsDto?.createdDate }}</span>
+        </div>
+        <div class="info-col col-md-12 col-12">
+          <span class="form-lbl lbl-33">الرسالة</span>
+          <span class="form-val" *ngIf="getOpenDataRequestDetailsDto?.content" [outerHTML]="getOpenDataRequestDetailsDto?.content | listString"></span>
+        </div>
+        <div class="info-col col-md-6 col-12">
+          <span class="form-lbl lbl-33">تم الرد على الطلب</span>
+          <span class="form-val">{{ getOpenDataRequestDetailsDto?.isReplied ? "نعم" : "لا" }}</span>
+        </div>
+      </div>
+      </div>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="btn" [ngClass]="getOpenDataRequestDetailsDto?.isReplied ? 'btn-cancel' : 'btn-primary'"  (click)="changeStatus(getOpenDataRequestDetailsDto?.id)">{{ getOpenDataRequestDetailsDto?.isReplied ? "الغاء الرد على الطلب" : "تم الرد على الطلب" }}</button>
+  </div>
+</p-dialog>

@@ -1,7 +1,7 @@
-﻿using Emirates.Core.Application.Response;
-using System.Linq.Dynamic.Core;
+﻿using System.Linq.Dynamic.Core;
 using System.Reflection;
 using Emirates.Core.Application.Dtos.Search;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.Core.Application.Services
 {

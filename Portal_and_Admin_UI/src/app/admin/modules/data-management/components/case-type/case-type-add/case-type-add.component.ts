@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GlobalService } from '@shared/services/global.service';
 import { CreateCaseTypeDto } from '@proxy/case-types/models';
 import { CaseTypeService } from '@proxy/case-types/case-type.service';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-case-type-add',
@@ -24,8 +25,8 @@ export class CaseTypeAddComponent implements OnInit {
 
   buildForm() {
     this.createCaseTypeForm = this.formBuilder.group({
-      nameAr: [this.createCaseTypeDto.nameAr || '', Validators.required],
-      nameEn: [this.createCaseTypeDto.nameEn || '', Validators.required],
+      nameAr: [this.createCaseTypeDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.createCaseTypeDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       isActive: [this.createCaseTypeDto.isActive || true, Validators.required]
     });
   }
@@ -42,8 +43,6 @@ export class CaseTypeAddComponent implements OnInit {
           }
         });
     }
-  }
-  showConfirm() {
   }
 
 }

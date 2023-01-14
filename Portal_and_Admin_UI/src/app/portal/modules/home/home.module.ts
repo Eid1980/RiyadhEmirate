@@ -4,10 +4,70 @@ import { ButtonModule } from 'primeng/button';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { CoreModule } from '../core/core.module';
+import { RatingModule } from 'primeng/rating';
+import { NgxPrintModule } from 'ngx-print';
 import { HomeComponent } from './components/home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { ServicesGuideComponent } from './components/services-guide/services-guide.component';
+import { ServicesGuideInnerComponent } from './components/services-guide-inner/services-guide-inner.component';
+// emirate pages
+import { AboutusComponent } from './components/emirate/aboutus/aboutus.component';
+import { WomenSectionComponent } from './components/emirate/women-section/women-section.component';
+import { RegionPrincesComponent } from './components/emirate/region-princes/region-princes.component';
+import { OrganizationChartComponent } from './components/emirate/organization-chart/organization-chart.component';
+import { LatestNewsComponent } from './components/latest-news/latest-news.component';
+import { NewsDetailsComponent } from './components/news-details/news-details.component';
+import { OpenDataComponent } from './components/open-data/open-data.component';
+import { GovernorateShowComponent } from './components/emirate/governorate-show/governorate-show.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { ConditionsComponent } from './components/conditions/conditions.component';
+import { SLAComponent } from './components/sla/sla.component';
+import { RSSComponent } from './components/rss/rss.component';
+import { MobileApplicationsComponent } from './components/mobile-applications/mobile-applications.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { NewsSearchComponent } from './components/news-search/news-search.component';
+import { GovernorateNewsComponent } from './components/governorate-news/governorate-news.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { TransactionInquiryComponent } from './components/transaction-inquiry/transaction-inquiry.component';
+import { AuctionDetailsComponent } from './components/auction-details/auction-details.component';
+import { ServicesListComponent } from './components/services-list/services-list.component';
+import { ServiceDetailsComponent } from './components/service-details/service-details.component';
+import { GrmComponent } from './components/grm/grm.component';
+import { AuctionsComponent } from './components/auctions/auctions.component';
+
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [
+    HomeComponent,
+    ServicesListComponent,
+    ServiceDetailsComponent,
+    LatestNewsComponent,
+    NewsDetailsComponent,
+    ServicesGuideComponent,
+    ServicesGuideInnerComponent,
+    AboutusComponent,
+    WomenSectionComponent,
+    RegionPrincesComponent,
+    OrganizationChartComponent,
+    OpenDataComponent,
+    GovernorateShowComponent,
+    ProfileComponent,
+    EditProfileComponent,
+    PrivacyComponent,
+    ConditionsComponent,
+    SLAComponent,
+    RSSComponent,
+    MobileApplicationsComponent,
+    ContactUsComponent,
+    NewsSearchComponent,
+    GovernorateNewsComponent,
+    ReportsComponent,
+    TransactionInquiryComponent,
+    AuctionDetailsComponent,
+    GrmComponent,
+    AuctionsComponent
+  ],
   imports: [
     SharedModule,
     HomeRoutingModule,
@@ -15,8 +75,10 @@ import { HomeRoutingModule } from './home-routing.module';
     ButtonModule,
     ToastModule,
     CoreModule,
+    RatingModule,
+    NgxPrintModule,
   ],
   exports: [],
   providers: [],
 })
-export class HomeModule {}
+export class HomeModule { }

@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
-using Emirates.Core.Application.DynamicSearch;
-using Emirates.Core.Application.Interfaces.Helpers;
-using Emirates.Core.Application.Response;
-using Emirates.Core.Application.Services.InternalPortal.FileManager;
+using Emirates.Core.Application.Services.FileManagers;
+using Emirates.Core.Application.Shared;
 using Emirates.Core.Domain.Interfaces;
 using X.PagedList;
-
 namespace Emirates.Core.Application.Services.News
 {
     public class NewsService : BaseService, INewsService
@@ -28,12 +24,10 @@ namespace Emirates.Core.Application.Services.News
 
         public IApiResponse GetById(int id)
         {
-            var news = _emiratesUnitOfWork.News.FirstOrDefault(l => l.Id.Equals(id));
+            var news = _emiratesUnitOfWork.News.FirstOrDefault(l => l.Id.Equals(id),includes: x => x.NewsCateguery);
             if (news == null)
                 throw new NotFoundException(typeof(Domain.Entities.News).Name);
-            var mappedModel = _mapper.Map<GetNewsDetailsDto>(news);
-            mappedModel.Image = _fileManagerService.GetBase64File(id, "News");
-            return GetResponse(data: mappedModel);
+            return GetResponse(data: _mapper.Map<GetNewsDetailsDto>(news));
         }
         public IApiResponse GetAll(SearchModel searchModel)
         {
@@ -48,45 +42,33 @@ namespace Emirates.Core.Application.Services.News
                 PagingMetaData = serchResult.GetMetaData()
             });
         }
-        public IApiResponse GetAll(int typeId)
-        {
-            var newsQuerable = _emiratesUnitOfWork.News.GetQueryable();
-            var filesQuerable = _emiratesUnitOfWork.UploadedFiles.GetQueryable();
-            var query = (from news in newsQuerable
-                        join files in filesQuerable on news.Id.ToString() equals files.EntityId
-                        where files.EntityName == "News" && news.IsActive == true && news.NewsTypeId == typeId
-                        select new GetNewsListDto
-                        {
-                            Id = news.Id,
-                            TitleAr = news.TitleAr,
-                            TitleEn = news.TitleEn,
-                            DescriptionAr = news.DescriptionAr,
-                            DescriptionEn = news.DescriptionEn,
-                            NewsTypeId = news.NewsTypeId,
-                            Date = news.Date,
-                            IsActive = news.IsActive,
-                            
-                            Image = _fileManagerService.GetBase64File(news.Id, "News")
-                        }).OrderByDescending(s => s.Date);
-
-            return GetResponse(data: query);
-        }
-
         public IApiResponse Create(CreateNewsDto createModel)
         {
             var addedModel = _emiratesUnitOfWork.News.Add(_mapper.Map<Domain.Entities.News>(createModel));
             _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
+            return GetResponse(message: CustumMessages.SaveSuccess(), data: new FileToUploadDto { Id = addedModel.Id, FileName = addedModel.ImageName });
         }
         public IApiResponse Update(UpdateNewsDto updateModel)
         {
-            var caseType = _emiratesUnitOfWork.News.FirstOrDefault(n => n.Id.Equals(updateModel.Id));
-            if (caseType == null)
+            var news = _emiratesUnitOfWork.News.FirstOrDefault(n => n.Id.Equals(updateModel.Id));
+            if (news == null)
                 throw new NotFoundException(typeof(Domain.Entities.News).Name);
 
-            _emiratesUnitOfWork.News.Update(caseType, _mapper.Map<Domain.Entities.News>(updateModel));
-            _emiratesUnitOfWork.Complete();
-            return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
+            var newNews = _mapper.Map<Domain.Entities.News>(updateModel);
+            newNews.ImageName = string.IsNullOrEmpty(newNews.ImageName) ? news.ImageName : newNews.ImageName;
+            string oldImageName = news.ImageName;
+
+            _emiratesUnitOfWork.News.Update(news, newNews);
+            if (_emiratesUnitOfWork.Complete() > 0)
+            {
+                if (!string.IsNullOrEmpty(updateModel.ImageName) && !string.IsNullOrEmpty(oldImageName))
+                    _fileManagerService.Delete(new DeleteFileDto
+                    {
+                        CategueryName = SystemEnums.FileCateguery.News,
+                        Name = oldImageName
+                    });
+            }
+            return GetResponse(message: CustumMessages.UpdateSuccess(), data: new FileToUploadDto { Id = updateModel.Id, FileName = newNews.ImageName });
         }
         public IApiResponse ChangeStatus(int id)
         {
@@ -98,5 +80,31 @@ namespace Emirates.Core.Application.Services.News
             _emiratesUnitOfWork.Complete();
             return GetResponse();
         }
+        public IApiResponse ChangecommentStatus(int id)
+        {
+            var news = _emiratesUnitOfWork.News.FirstOrDefault(n => n.Id == id);
+            if (news == null)
+                throw new NotFoundException(typeof(Domain.Entities.News).Name);
+
+            news.OpenComments = !news.OpenComments;
+            _emiratesUnitOfWork.Complete();
+            return GetResponse();
+        }
+        public IApiResponse Delete(int id)
+        {
+            var news = _emiratesUnitOfWork.News.FirstOrDefault(n => n.Id == id);
+            if (news == null)
+                throw new NotFoundException(typeof(Domain.Entities.News).Name);
+
+            _emiratesUnitOfWork.News.Remove(news);
+            if (_emiratesUnitOfWork.Complete() > 0)
+                _fileManagerService.Delete(new DeleteFileDto
+                {
+                    CategueryName = SystemEnums.FileCateguery.News,
+                    Name = news.ImageName
+                });
+            return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
+
     }
 }

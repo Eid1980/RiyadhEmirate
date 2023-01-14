@@ -1,11 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { GlobalService } from '@shared/services/global.service';
@@ -51,17 +45,15 @@ export class HttpTokenInterceptor implements HttpInterceptor {
   }
 
   errorHandler(error: HttpErrorResponse) {
-    // if (error.url.includes("IsAuthorizedComponent")) {
-    //   this.globalService.messageAlert(
-    //     MessageType.Error,
-    //     "ليس لديك صلاحية لدخول هذة الصفحة"
-    //   );
-    //   setTimeout(() => {
-    //     document.location.href = "/auth/login";
-    //   }, 3000);
-    // } else {
-    this.globalService.messageAlert(MessageType.Error, error.error);
-    // }
+    if (error.statusText == 'Unknown Error') {
+      this.globalService.messageAlert(MessageType.Error, 'الاتصال بالخادم غير متاح حاليا');
+    }
+    else if (error.statusText == 'Unauthorized') {
+      this.globalService.messageAlert(MessageType.Error, 'ليس لديك صلاحية برجاء التواصل مع مدير النظام');
+    }
+    else {
+      this.globalService.messageAlert(MessageType.Error, error.error);
+    }
     return throwError(error);
   }
 }

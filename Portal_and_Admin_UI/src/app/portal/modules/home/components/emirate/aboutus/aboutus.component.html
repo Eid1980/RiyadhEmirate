@@ -1,0 +1,31 @@
+<!-- breadcrumb -->
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">عن الإمارة</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="col-12">
+      <div class="artical-content-wrapper mb-5">
+        <h4 class="artical-head">نبذة</h4>
+        <p class="artical-text">{{ aboutUs.descriptionAr}} </p>
+      </div>
+
+      <div class="artical-content-wrapper" *ngIf="aboutUs?.mainPoints.length > 0">
+        <h4 class="artical-head mb-3">أهداف ومهام الإمارة</h4>
+        <h6 class="artical-title me-3">تتمثل أهداف ومهام إمارة منطقة الرياض بالنقاط التالية:</h6>
+
+        <ol class="artical-list me-3 mt-4">
+          <li class="artical-list-item" *ngFor="let point of aboutUs.mainPoints">{{ point.nameAr }}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="container px-0" id="request-print-section">
+  <div class="logo d-none">
+    <img src="assets/images/logo.svg" class="img-fluid" alt="logo" />
+  </div>
+  <div class="form-card">
+    <div class="form-wrapper">
+      <div class="form-header">
+        <h5>بيانات مقدم الطلب</h5>
+      </div>
+      <div class="form-content">
+        <app-user-data-view></app-user-data-view>
+      </div>
+    </div>
+  </div>
+  <div class="form-card">
+    <div class="form-wrapper">
+      <div class="form-header">
+        <h5>بيانات الطلب</h5>
+      </div>
+      <div class="form-content">
+        <div class="row mx-0">
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">رقم الطلب</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.requestNumber }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">اسم الخدمة</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.serviceName }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">تاريخ الطلب</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.requestDate }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">حالة الطلب</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.stageName }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">نوع مقدم الطلب</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.requesterName }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">نوع المنفذ ضده</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.defendantTypeName }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12" *ngIf="requestJudgmentExecutionDetailsDto.requesterName">
+            <span class="form-lbl lbl-33">اسم المدعي</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.requesterName }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12" *ngIf="requestJudgmentExecutionDetailsDto.requesterNationalId">
+            <span class="form-lbl lbl-33">رقم هوية المدعي</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.requesterNationalId }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">رقم الدعوة</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.lawsuitNumber }}</span>
+          </div>
+          <div class="info-col col-md-6 col-12">
+            <span class="form-lbl lbl-33">تاريخ الدعوة</span>
+            <span class="form-val">{{ requestJudgmentExecutionDetailsDto?.lawsuitDate }}</span>
+          </div>
+          <div class="info-col col-md-12 col-12">
+            <span class="form-lbl lbl-33">تفاصيل الدعوة</span>
+            <span class="form-val" *ngIf="requestJudgmentExecutionDetailsDto?.notes" [outerHTML]="requestJudgmentExecutionDetailsDto?.notes | listString"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container px-0 ">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>المرفقات</h5>
+    </div>
+    <div class="form-content">
+      <app-request-attacment-preview [requestId]="requestId"></app-request-attacment-preview>
+    </div>
+  </div>
+
+  <div class="form-card mb-0" *ngIf="showStatusLog">
+    <div class="form-header">
+      <h5>مراحل الطلب</h5>
+    </div>
+    <div class="form-content">
+      <app-request-stage-log [requestId]="requestId"></app-request-stage-log>
+    </div>
+  </div>
+</div>

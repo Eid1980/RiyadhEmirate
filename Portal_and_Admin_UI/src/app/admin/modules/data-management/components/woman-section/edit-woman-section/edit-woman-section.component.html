@@ -1,0 +1,111 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/service-list']">الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">تعديل بيانات عن الاماره</span>
+  </nav>
+</div>
+
+<div class="form-card">
+  <div class="form-header">
+    <h5>تعديل بيانات القسم النسوي</h5>
+  </div>
+  <form [formGroup]="aboutUsDetaislForm" (ngSubmit)="onSubmit()">
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="form-group col-md-6">
+          <label for="descriptionAr" class="form-lbl">القسم النسوي عربي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="descriptionAr" id="descriptionAr" [ngClass]="{
+              invalid:
+                (isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionAr').touched) &&
+                aboutUsDetaislForm?.get('descriptionAr').errors?.required}" />
+          <small *ngIf="(isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionAr').touched) && aboutUsDetaislForm?.get('descriptionAr').errors?.required"
+                 class="danger">هذاالحقل مطلوب</small>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="descriptionEn" class="form-lbl">القسم النسوي انجليزي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="descriptionEn" id="descriptionEn" [ngClass]="{
+              invalid:
+                (isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionEn').touched) &&
+                aboutUsDetaislForm?.get('descriptionEn').errors?.required}" />
+          <small *ngIf="(isAboutUsFormSubmitted || aboutUsDetaislForm?.get('descriptionEn').touched) && aboutUsDetaislForm?.get('descriptionEn').errors?.required"
+                 class="danger">هذاالحقل مطلوب</small>
+        </div>
+
+        <div>
+          <div formGroupName="mainPoints">
+            <div class="form-group col-md-12 px-0">
+              <label for="condition" class="form-lbl">اليند<span class="danger">*</span></label>
+              <input type="text" class="form-control" formControlName="nameAr" maxlength="4000" id="nameAr" [ngClass]="{
+                    invalid: (isFormSubmitted || aboutUsDetaislForm.get('mainPoints.nameAr').touched) &&
+                    aboutUsDetaislForm.get('mainPoints.nameAr').errors?.required}" />
+              <small *ngIf="(isFormSubmitted || aboutUsDetaislForm.get('mainPoints.nameAr').touched) && aboutUsDetaislForm.get('mainPoints.nameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+            </div>
+            <div class="row">
+            <div class="form-group col-md-6">
+              <label for="order" class="form-lbl">الترتيب<span class="danger">*</span></label>
+              <input type="text" class="form-control" autocomplete="off" formControlName="order" id="order" [ngClass]="{
+                    invalid: (isFormSubmitted || aboutUsDetaislForm.get('mainPoints.order').touched) &&
+                    aboutUsDetaislForm.get('mainPoints.order').errors?.required}" />
+              <small *ngIf="(isFormSubmitted || aboutUsDetaislForm.get('mainPoints.order').touched) && aboutUsDetaislForm.get('mainPoints.order').errors?.required" class="danger">هذاالحقل مطلوب</small>
+            </div>
+
+            <div class="form-group col-md-6">
+              <div class="form-actions" *ngIf="!isUpdate">
+                <button type="submit" class="btn btn-primary">اضافة</button>
+              </div>
+              <div class="form-actions" *ngIf="isUpdate">
+                <button type="submit" class="btn btn-save">تعديل</button>
+                <button type="button" class="btn btn-cancel" (click)="clear()">الغاء</button>
+              </div>
+            </div>
+          </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="row mt-3 mx-0">
+    <p-table #mainPoints [value]="aboutUsDetails.mainPoints" dataKey="id"
+             [rowHover]="true" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th>م</th>
+          <th>تفاصيل الشرط</th>
+          <th>الترتيب</th>
+          <th>الإجراءات</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-i="rowIndex" let-mainPoint>
+        <tr>
+          <td> {{i+1}} </td>
+          <td> {{mainPoint.nameAr}} </td>
+          <td> {{mainPoint.order}} </td>
+          <td>
+            <a class="btn btn-primary mx-1 px-1 py-0" title="تعديل" (click)="fillData(mainPoint.id)">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a class="btn btn-danger mx-1 px-1 py-0" title="حذف" (click)="delete(mainPoint.id)" >
+              <i class="la-trash las"></i>
+            </a>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+          <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+</div>
+<div class="form-actions">
+  <button (click)="editAboutUsDescription()" class="btn btn-save" [disabled]="aboutUsDetails.descriptionAr == aboutUsDetaislForm?.get('descriptionAr').value && aboutUsDetaislForm?.get('descriptionEn').value == aboutUsDetails.descriptionEn ">حفظ</button>
+  <a [routerLink]="['/admin/data-management/service-list']" class="btn btn-cancel">رجوع</a>
+</div>

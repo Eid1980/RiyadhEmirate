@@ -1,13 +1,12 @@
 
 export interface GetUserDto {
   id: number;
-  nameAr: string;
-  nameEn: string;
+  userName: string;
 
-  employeeSide: string;
-  childrenCount: number;
-  maritalStatusName: string;
-  jobOccupation: string;
+  nameAr: string;
+  shortNameAr: string;
+  nameEn: string;
+  shortNameEn: string;
 
   nationalId: string;
   genderName: string;
@@ -20,21 +19,79 @@ export interface GetUserDto {
 
   passwordHash: [];
   passwordSalt: [];
-  isAdmin: boolean;
+  isEmployee: boolean;
   isActive: boolean;
-  userName: string;
-  oTP: string;
   birthDate: string;
 }
 
-export interface CreateUserDto {
-  name: string;
-  nationalId: string;
-  phoneNumber: string;
+export interface GetUserProfileData {
+  id: number;
   userName: string;
-  email: string;
-  address: string;
+  firstNameAr: string;
+  secondNameAr: string;
+  thirdNameAr: string;
+  lastNameAr: string;
+  firstNameEn: string;
+  secondNameEn: string;
+  thirdNameEn: string;
+  lastNameEn: string;
+  isMale: boolean;
   birthDate: string;
+  email: string;
+  phoneNumber: string;
+  nationalityId: number;
+  nationalityName: string;
+  governorateName: string;
+  address: string;
+
+  image: any;
+}
+
+export interface GetUserSessionDto {
+  id: number;
+  shortName: string;
+  isEmployee: boolean;
+
+  image: any;
+}
+
+export interface GetUserDataDto {
+  id: number;
+  userName: string;
+  name: string;
+  birthDate: string;
+
+  genderName: string;
+  phoneNumber: string;
+  email: string;
+}
+
+export interface UpdateUserProfileDto {
+  id: number;
+
+  newPassWord: string;
+
+  ConfirmNewPassWord: string;
+
+  firstNameAr: string;
+  secondNameAr: string;
+  thirdNameAr: string;
+  lastNameAr: string
+
+  firstNameEn: string
+  secondNameEn: string
+  thirdNameEn: string
+  lastNameEn: string
+
+  isMale: boolean;
+  email: string;
+  phoneNumber: string;
+
+
+  nationalityId: number;
+  governorateId: number;
+  identityExpireDate: string
+  address: string
 }
 
 export interface UserLoginDto {
@@ -44,7 +101,6 @@ export interface UserLoginDto {
 
 export interface ForgetPasswordDto {
   userName: string;
-  token: string;
 }
 
 export interface ResetPasswordDto {
@@ -58,9 +114,19 @@ export interface UpdatePasswordDto {
   newPassword: string;
 }
 
-export interface ValidateOTPDto {
-  userName: string;
-  oTP: string;
+export interface CheckIamUserDto {
+  tokenHandler: string;
+  userId: number;
+  iamLoginResponse: number;
+}
+
+export interface CompleteDataDto {
+  userId: number;
+  phoneNumber: string;
+  email: string;
+  nationalityId: number;
+  governorateId: number;
+  address: string;
 }
 
 

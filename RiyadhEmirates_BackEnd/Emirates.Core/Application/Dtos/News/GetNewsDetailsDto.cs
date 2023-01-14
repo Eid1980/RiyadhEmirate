@@ -1,17 +1,10 @@
-﻿using Emirates.Core.Application.Models.InternalPortal.Request.FileManager;
-
+﻿
 namespace Emirates.Core.Application.Dtos
 {
-    public class GetNewsDetailsDto
+    public class GetNewsDetailsDto : CreateNewsDto
     {
         public int Id { get; set; }
-        public string TitleAr { get; set; }
-        public string TitleEn { get; set; }
-        public string DescriptionAr { get; set; }
-        public string DescriptionEn { get; set; }
-        public int NewsType { get; set; }
-        public DateTime Date { get; set; }
-        public bool IsActive { get; set; }
-        public UploadedFileBase64Model Image { get; set; }
+        public string NewsCategueryName { get; set; }
+        public string NewsDate { get; set; }
     }
 }

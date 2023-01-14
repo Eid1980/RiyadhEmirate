@@ -45,7 +45,6 @@ export class DynamicSearchService {
     searchModel.OrderType = event.sortOrder === 1 ? 'asc' : 'desc';
     searchModel.PageNumber = event.first / event.rows + 1;
     searchModel.PageSize = event.rows;
-    console.log('lazy');
     func();
   }
 

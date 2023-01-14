@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
+using Emirates.Core.Application.Dtos.Requests;
 using Emirates.Core.Application.Dtos.Search;
-using Emirates.Core.Application.DynamicSearch;
-using Emirates.Core.Application.Helpers;
-using Emirates.Core.Application.Interfaces.Helpers;
-using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Services.FileManagers;
+using Emirates.Core.Application.Shared;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +18,8 @@ namespace Emirates.Core.Application.Services.Requests
         private readonly IEmiratesUnitOfWork _emiratesUnitOfWork;
         private readonly IMapper _mapper;
         private readonly IConfigurationProvider _mapConfig;
-        public RequestService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper)
+
+        public RequestService(IEmiratesUnitOfWork emiratesUnitOfWork, IMapper mapper, IFileManagerService fileManagerService)
         {
             _emiratesUnitOfWork = emiratesUnitOfWork;
             _mapper = mapper;
@@ -35,6 +34,34 @@ namespace Emirates.Core.Application.Services.Requests
             return GetResponse(data: _mapper.Map<GetRequestDetailsDto>(request));
         }
         public IApiResponse ChangeStage(RequestChangeStageDto changeStageDto)
+        {
+            Request request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(changeStageDto.Id));
+            if (request == null)
+                throw new NotFoundException(typeof(Request).Name);
+            if(request.CreatedBy != changeStageDto.UserId)
+                throw new BusinessException("الطلب غير مضاف على نفس المستخدم الحالي برجاء استخدام الطلبات الخاصة بكم فقط");
+            if (request.StageId == changeStageDto.StageId)
+                throw new BusinessException("تم اتخاذ نفس الاجراء مسبقا");
+
+            request.StageId = changeStageDto.StageId;
+            var requestStageLogOld = _emiratesUnitOfWork.RequestStageLogs.FirstOrDefault(x => x.RequestId.Equals(changeStageDto.Id) && x.EndDate == null);
+            if (requestStageLogOld != null)
+                requestStageLogOld.EndDate = DateTime.Now;
+
+            RequestStageLog requestStageLog = new RequestStageLog
+            {
+                RequestId = request.Id,
+                StageId = changeStageDto.StageId,
+                Notes = changeStageDto.Notes
+            };
+            _emiratesUnitOfWork.RequestStageLogs.Add(requestStageLog);
+            if (_emiratesUnitOfWork.Complete() > 0)
+                return GetResponse(isSuccess: true, message: CustumMessages.SendRequestSuccess(), data: changeStageDto.Id);
+                
+            return GetResponse(isSuccess: false, message: CustumMessages.SendRequestFailed());
+
+        }
+        public IApiResponse ChangeStageAdmin(RequestChangeStageDto changeStageDto)
         {
             Request request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(changeStageDto.Id));
             if (request == null)
@@ -80,11 +107,10 @@ namespace Emirates.Core.Application.Services.Requests
                 Notes = changeStageDto.Notes
             };
             _emiratesUnitOfWork.RequestStageLogs.Add(requestStageLog);
-            _emiratesUnitOfWork.Complete();
-
-            // Send SMS, Email
-
-            return GetResponse(message: message, data: changeStageDto.Id);
+            if (_emiratesUnitOfWork.Complete() > 0)
+                return GetResponse(isSuccess: true, message: CustumMessages.SendRequestSuccess(), data: changeStageDto.Id);
+            
+            return GetResponse(isSuccess: false, message: CustumMessages.SendRequestFailed());
         }
 
         public IApiResponse GetAttachments(Guid id)
@@ -139,13 +165,13 @@ namespace Emirates.Core.Application.Services.Requests
                         {
                             Id = file.Id,
                             AttachmentName = type.NameAr,
-                            FileName = file.OriginalName
+                            FileName = file.OriginalName,
                         };
             return GetResponse(data: query.ToList());
         }
         public IApiResponse GetRequestStageLogs(Guid id)
         {
-            var requestLogs = _emiratesUnitOfWork.RequestStageLogs.Where(x => x.RequestId.Equals(id)).OrderBy(c => c.CreatedDate).Include(x => x.Stage).Include(x => x.CreatedUser).ToList();
+            var requestLogs = _emiratesUnitOfWork.RequestStageLogs.Where(x => x.RequestId.Equals(id) && x.StageId != (int)SystemEnums.Stages.Draft).OrderBy(c => c.CreatedDate).Include(x => x.Stage).Include(x => x.CreatedUser).ToList();
             return GetResponse(data: _mapper.Map<List<GetRequestStageLogsDto>>(requestLogs));
         }
 
@@ -170,6 +196,69 @@ namespace Emirates.Core.Application.Services.Requests
                 GridItemsVM = serchResult,
                 PagingMetaData = serchResult.GetMetaData()
             });
+        }
+
+        public IApiResponse GetElectronicCouncilRequests(SearchModel searchModel)
+        {
+            var serchResult = DynamicSearch(_emiratesUnitOfWork.Requests
+                .Include(r => r.Stage).Include(r => r.RequestElectronicBoard).Include(r=>r.RequestElectronicBoard.RequestType)
+                .ProjectTo<GetElectronicConcilInboxDto>(_mapConfig), searchModel)
+                .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetElectronicConcilInboxDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
+        }
+
+        public IApiResponse InboxShamel(SearchModel searchModel)
+        {
+            searchModel.SearchFields.Add(new SearchField { FieldName = "StageId", Operator = "Equal", Value = ((int)SystemEnums.Stages.UnderProcessing).ToString() });
+            var serchResult = DynamicSearch(_emiratesUnitOfWork.Requests.GetQueryable().ProjectTo<GetInboxListDto>(_mapConfig), searchModel)
+                .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetInboxListDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
+        }
+
+        public IApiResponse RequestSearch(SearchModel searchModel)
+        {
+            var serchResult = DynamicSearch(_emiratesUnitOfWork.Requests.GetQueryable().ProjectTo<GetInboxListDto>(_mapConfig), searchModel)
+                .ToPagedList(searchModel.PageNumber, searchModel.PageSize);
+
+            return GetResponse(data: new ListPageModel<GetInboxListDto>
+            {
+                GridItemsVM = serchResult,
+                PagingMetaData = serchResult.GetMetaData()
+            });
+        }
+
+        public IApiResponse GetRequestSmsData(Guid id)
+        {
+            var request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(id), include => include.CreatedUser, include => include.Service, include => include.Stage);
+            if (request == null)
+                return GetResponse();
+
+            var response = _mapper.Map<HandleSMSDto>(request);
+            var smsMessage = _emiratesUnitOfWork.ServieNotifications.FirstOrDefault(x => x.ServiceId == request.ServiceId && x.StageId == request.StageId && x.IsActive && x.IsSMS, x => x.ServieNotificationLogs.Where(e => e.EndDate == null));
+            if (smsMessage == null)
+            {
+                smsMessage = _emiratesUnitOfWork.ServieNotifications.FirstOrDefault(x => x.IsDefault && x.StageId == request.StageId && x.IsActive && x.IsSMS, x => x.ServieNotificationLogs.Where(e => e.EndDate == null));
+                if (smsMessage != null)
+                    response.SmsMessage = smsMessage.ServieNotificationLogs.FirstOrDefault()?.Message;
+            }
+            var emailMessage = _emiratesUnitOfWork.ServieNotifications.FirstOrDefault(x => x.ServiceId == request.ServiceId && x.StageId == request.StageId && x.IsActive && x.IsEmail, x => x.ServieNotificationLogs.Where(e => e.EndDate == null));
+            if (emailMessage == null)
+            {
+                emailMessage = _emiratesUnitOfWork.ServieNotifications.FirstOrDefault(x => x.IsDefault && x.StageId == request.StageId && x.IsActive && x.IsEmail, x => x.ServieNotificationLogs.Where(e => e.EndDate == null));
+                if (emailMessage != null)
+                    response.EmailMessage = emailMessage.ServieNotificationLogs.FirstOrDefault()?.Message;
+            }
+            return GetResponse(data: response);
         }
     }
 }

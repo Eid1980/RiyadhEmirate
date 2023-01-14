@@ -1,0 +1,65 @@
+<div class="d-lg-flex justify-message-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/servie-notification-email-list']">اعدادات رسائل البريد الالكتروني</a>
+    <span class="breadcrumb-item fs-16 active">تعديل رسالة بريد الكتروني</span>
+  </nav>
+</div>
+
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>تعديل رسالة بريد الكتروني</h5>
+    </div>
+    <div class="form-message">
+      <div class="row mx-0">
+        <div class="form-group col-md-6">
+          <label for="serviceId" class="form-lbl">الخدمة<span class="danger">*</span></label>
+          <select class="form-control form-select" formControlName="serviceId" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateForm.get('serviceId').touched) &&
+                updateForm.get('serviceId').errors?.required
+            }">
+            <option [ngValue]="null">-- اختر الخدمة --</option>
+            <option *ngFor="let service of services" [ngValue]="service.id">{{ service.name }}</option>
+          </select>
+          <small *ngIf="(isFormSubmitted || updateForm.get('serviceId').touched) && updateForm.get('serviceId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="stageId" class="form-lbl">المرحلة<span class="danger">*</span></label>
+          <select class="form-control form-select" formControlName="stageId" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateForm.get('stageId').touched) &&
+                updateForm.get('stageId').errors?.required
+            }">
+            <option [ngValue]="null">-- اختر المرحلة --</option>
+            <option *ngFor="let stage of stages" [ngValue]="stage.id">{{ stage.name }}</option>
+          </select>
+          <small *ngIf="(isFormSubmitted || updateForm.get('stageId').touched) && updateForm.get('stageId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="message" class="form-lbl">نص الرسالة<span class="danger">*</span></label>
+          <textarea rows="8" class="form-control" formControlName="message" id="message" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateForm.get('message').touched) &&
+                updateForm.get('message').errors?.required
+            }"></textarea>
+          <small *ngIf="(isFormSubmitted || updateForm.get('message').touched) && updateForm.get('message').errors?.required"
+                 class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-6">
+          <label class="container-check">
+            فعال
+            <input formControlName="isActive" type="checkbox" id="isActive" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-save">حفظ</button>
+    <a [routerLink]="['/admin/data-management/servie-notification-email-list']" class="btn btn-cancel">رجوع</a>
+  </div>
+</form>

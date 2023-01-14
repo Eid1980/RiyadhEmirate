@@ -1,0 +1,40 @@
+<app-page-list [PageListSetting]="pageListSettings"></app-page-list>
+
+<p-dialog [modal]="true" header="أرشيف النصوص" [(visible)]="showLogDialog">
+  <div class="form-card">
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="info-col col-md-12 col-12">
+          <p-table #servieNotificationLogs [value]="servieNotificationLogListDto" dataKey="id" [autoLayout]="true"
+                   [rowHover]="true" [responsive]="true" [scrollable]="true" class="w-100 ps-0">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th>م</th>
+                <th>النص</th>
+                <th>الفترة من</th>
+                <th>الفترة الى</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-i="rowIndex" let-servieNotificationLog>
+              <tr>
+                <td> {{i+1}} </td>
+                <td> {{servieNotificationLog.message}} </td>
+                <td> {{servieNotificationLog.startDate}} </td>
+                <td> {{servieNotificationLog.endDate}} </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+              <tr>
+                <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="btn btn-cancel" (click)="closeRolesDialog()">اغلاق</button>
+  </div>
+</p-dialog>

@@ -7,6 +7,8 @@ import { GlobalService } from '@shared/services/global.service';
 import { Stages } from '@shared/enums/stage.enum';
 import { Service } from '@shared/enums/service.enum';
 import { RateServiceComponent } from '@shared/components/rate-service/rate-service.component';
+import { MessageType } from '@shared/enums/message-type.enum';
+import { ServiceConditionsComponent } from '../../service-conditions/service-conditions.component';
 
 @Component({
   selector: 'app-prisoners-services-preview-step',
@@ -14,13 +16,16 @@ import { RateServiceComponent } from '@shared/components/rate-service/rate-servi
 })
 export class PrisonersServicesPreviewStepComponent implements OnInit {
   @ViewChild(RateServiceComponent, { static: true }) rateServiceComponent: RateServiceComponent;
+  @ViewChild(ServiceConditionsComponent, { static: true }) serviceConditions: ServiceConditionsComponent;
 
   wizardItems: MenuItem[];
   activeIndex: number = 2;
   requestId: string;
-  serviceId: number = Service.PrisonerTempRelease;
+  serviceId: number = Service.PrisonersServices;
   showServiceRate: boolean = false;
   redirectUrl: string = "/eservice/my-requests";
+  accept: boolean = false;
+  showDialog: boolean = false;
 
   constructor(private requestService: RequestService, private globalService: GlobalService, private activatedRoute: ActivatedRoute) {
   }
@@ -31,10 +36,18 @@ export class PrisonersServicesPreviewStepComponent implements OnInit {
     this.getWizardItems();
   }
   sendRequest() {
-    this.globalService.showConfirm('هل تريد متأكد من ارسال طلب خدمات السجناء؟');
-    this.globalService.confirmSubmit = () => this.isconfirm();
+    if (this.accept) {
+      this.globalService.showConfirm('هل تريد متأكد من ارسال طلب خدمات السجناء؟');
+      this.globalService.confirmSubmit = () => this.isconfirm();
+    }
+    else {
+      this.globalService.messageAlert(MessageType.Warning, 'برجاء الموافقة على الشروط والأحكام')
+    }
   }
-
+  showConditions() {
+    this.serviceConditions.getServiceCondition();
+    this.showDialog = true;
+  }
   isconfirm() {
     const requestChangeStageDto = {
       id: this.requestId,
@@ -46,6 +59,7 @@ export class PrisonersServicesPreviewStepComponent implements OnInit {
       this.showServiceRate = true;
       this.rateServiceComponent.buildForm();
     });
+    this.globalService.clearMessages();
   }
   navigate(event: boolean) {
     if (!event) {

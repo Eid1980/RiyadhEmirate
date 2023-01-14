@@ -23,8 +23,6 @@ export class TableService {
       map((responseVM: any) => {
         if (responseVM.isSuccess) {
           serviceResponseVM.data = responseVM.data;
-          console.log('serviceResponseVM.data ')
-          console.log(serviceResponseVM.data )
         } else {
         }
         serviceResponseVM.isSuccess = responseVM.isSuccess;

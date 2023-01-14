@@ -7,6 +7,8 @@ import { GlobalService } from '@shared/services/global.service';
 import { Stages } from '@shared/enums/stage.enum';
 import { Service } from '@shared/enums/service.enum';
 import { RateServiceComponent } from '@shared/components/rate-service/rate-service.component';
+import { MessageType } from '@shared/enums/message-type.enum';
+import { ServiceConditionsComponent } from '../../service-conditions/service-conditions.component';
 
 @Component({
   selector: 'app-prisoner-temp-release-preview-step',
@@ -14,6 +16,7 @@ import { RateServiceComponent } from '@shared/components/rate-service/rate-servi
 })
 export class PrisonerTempReleasePreviewStepComponent implements OnInit {
   @ViewChild(RateServiceComponent, { static: true }) rateServiceComponent: RateServiceComponent;
+  @ViewChild(ServiceConditionsComponent, { static: true }) serviceConditions: ServiceConditionsComponent;
 
   wizardItems: MenuItem[];
   activeIndex: number = 2;
@@ -21,6 +24,8 @@ export class PrisonerTempReleasePreviewStepComponent implements OnInit {
   serviceId: number = Service.PrisonerTempRelease;
   showServiceRate: boolean = false;
   redirectUrl: string = "/eservice/my-requests";
+  accept: boolean = false;
+  showDialog: boolean = false;
 
   constructor(private requestService: RequestService,
     private globalService: GlobalService, private activatedRoute: ActivatedRoute) {
@@ -32,10 +37,18 @@ export class PrisonerTempReleasePreviewStepComponent implements OnInit {
     this.getWizardItems();
   }
   sendRequest() {
-    this.globalService.showConfirm('هل تريد متأكد من ارسال طلب خروج مؤقت لسجين؟');
-    this.globalService.confirmSubmit = () => this.isconfirm();
+    if (this.accept) {
+      this.globalService.showConfirm('هل تريد متأكد من ارسال طلب خروج مؤقت لسجين؟');
+      this.globalService.confirmSubmit = () => this.isconfirm();
+    }
+    else {
+      this.globalService.messageAlert(MessageType.Warning, 'برجاء الموافقة على الشروط والأحكام')
+    }
   }
-
+  showConditions() {
+    this.serviceConditions.getServiceCondition();
+    this.showDialog = true;
+  }
   isconfirm() {
     const requestChangeStageDto = {
       id: this.requestId,

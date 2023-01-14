@@ -26,7 +26,7 @@ export class ServiceStageService {
   }
 
   delete = (id: number): Observable<ApiResponse<boolean>> => {
-    return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
+    return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
   }
 
 

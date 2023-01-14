@@ -1,0 +1,33 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">الإعلانات والمزادات والمناقصات</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div *ngIf="auctions.length == 0">
+    <div class="empty-container">
+      <img src="assets/images/icons/pic/no-result.png" class="img-fluid" alt="vector" />
+      <h4>لا يوجد بيانات</h4>
+    </div>
+  </div>
+  <div class="row my-5 py-md-5" *ngIf="auctions.length > 0">
+    <div class="col-md-12 mb-4" *ngFor="let auction of auctions">
+      <div class="card-basic cursor-pointer" [routerLink]="['/home/auction-details' , globalService.encryptNumber(auction.id)]">
+        <div class="card-basic-cover">
+          <img *ngIf="auction?.imageName" [src]="['/assets/images/uploads/auctions/'+auction.imageName]" [alt]="auction?.title" class="img-fluid" />
+          <img *ngIf="!auction?.imageName" src="assets/images/550x260.png" class="img-fluid" [alt]="auction?.title" />
+        </div>
+        <div class="card-basic-body">
+          <h3>{{auction?.title}}</h3>
+          <h6 [outerHTML]="auction?.content | listString"></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">تواصل معنا</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="col-12">
+      <div class="artical-content-wrapper">
+
+        <agm-map [latitude]="lat" [longitude]="lng"  style="height: 500px;">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+
+        <a class="btn btn-info" target="_blank"
+        href="https://www.google.com/maps/place/Emirate+of+Riyadh+Province/@24.6286417,46.7086879,17z/data=!3m1!4b1!4m5!3m4!1s0x3e2f05a73c949cf5:0xe1df994cb02c82c2!8m2!3d24.6286368!4d46.7108766">الاتجهات الي الاماره</a>
+
+      <hr/>
+
+      <div class="mb-5">
+        <h6 class="artical-title fa-26 mb-2">أخى الزائر</h6>
+        <p class="artical-text fa-18 mb-4">
+          ونقدم هنا قائمة بخدمات البوابة الخارجية والخدمات الإلكترونية التي حققت الالتزام بهذه المعايير إلى جانب الزمن
+          الأقصى لتقديم الخدمة ، علماً بأن هذا الزمن لا يشمل استكمال النواقص في حال لم يقدم العميل كافة المعلومات
+        </p>
+      </div>
+
+        <div>
+          <h6 class="artical-title fa-22 mb-3">كما يمكنك اضا الاتصال عبر</h6>
+          <div class="d-flex align-items-center mb-3">
+            <h5 class="mb-0 ms-3 text-primary-alt-3">
+              <i class="fa-solid fa-envelope ms-2 fa-20"></i>
+              <span class="fa-18">البريد الإلكترونى</span>
+            </h5>
+            <h5 class="fw-normal fa-16 text-muted mb-0"><a href="mailto:webmaster@riyadh.gov.sa">webmaster@riyadh.gov.sa</a></h5>
+          </div>
+
+          <div class="d-flex align-items-center mb-3">
+            <h5 class="mb-0 ms-3 text-primary-alt-3">
+              <i class="fa-solid fa-phone ms-2 fa-20"></i>
+              <span class="fa-18">الهاتف</span>
+            </h5>
+            <h5 class="fw-normal fa-16 text-muted mb-0">4114444 11 966</h5>
+          </div>
+        </div>
+
+        <hr/>
+
+        <form [formGroup]="createContactUsform" (ngSubmit)="onSubmit()">
+          <div class="form-card">
+            <div class="form-content">
+              <div class="row mx-0">
+                <div class="form-group col-md-6">
+                  <label for="title" class="form-lbl">الاسم<span class="danger">*</span></label>
+                  <input type="text" class="form-control" formControlName="fullName" id="fullName" [ngClass]="{
+                      invalid:
+                        (isFormSubmitted || createContactUsform.get('fullName').touched) && createContactUsform.get('fullName').errors?.required
+                    }" />
+                  <small *ngIf="(isFormSubmitted || createContactUsform.get('fullName').touched) && createContactUsform.get('fullName').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="newsOrigin" class="form-lbl">البريد الالكتروني<span class="danger">*</span></label>
+                  <input type="text" class="form-control" formControlName="email" id="email" [ngClass]="{
+                      invalid:
+                        (isFormSubmitted || createContactUsform.get('email').touched) && createContactUsform.get('email').errors?.required
+                    }" />
+                  <small *ngIf="(isFormSubmitted || createContactUsform.get('email').touched) && createContactUsform.get('email').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || createContactUsform.get('email').touched) && createContactUsform.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="title" class="form-lbl">عنوان الرساله<span class="danger">*</span></label>
+                  <input type="text" class="form-control" formControlName="title" id="title" [ngClass]="{
+                      invalid:
+                        (isFormSubmitted || createContactUsform.get('title').touched) && createContactUsform.get('title').errors?.required
+                    }" />
+                  <small *ngIf="(isFormSubmitted || createContactUsform.get('title').touched) && createContactUsform.get('title').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="contactUsMessageTypeId" class="form-lbl">الغرض من الرساله<span class="danger">*</span></label>
+                  <select class="form-control form-select" formControlName="contactUsMessageTypeId" [ngClass]="{
+                      invalid:
+                        (isFormSubmitted || createContactUsform.get('contactUsMessageTypeId').touched) &&
+                        createContactUsform.get('contactUsMessageTypeId').errors?.required
+                    }">
+                    <option [ngValue]="null">-- اختر الغرض من الرساله --</option>
+                    <option *ngFor="let messageType of messageContactUsTypes" [ngValue]="messageType.id">{{ messageType.name }}</option>
+                  </select>
+                  <small *ngIf="(isFormSubmitted || createContactUsform.get('contactUsMessageTypeId').touched) && createContactUsform.get('contactUsMessageTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label for="content" class="form-lbl">محتوى الرساله<span class="danger">*</span></label>
+                  <textarea rows="8" class="form-control" formControlName="content" id="content" [ngClass]="{
+                      invalid:
+                        (isFormSubmitted || createContactUsform.get('content').touched) &&
+                        createContactUsform.get('content').errors?.required
+                    }"></textarea>
+                  <small *ngIf="(isFormSubmitted || createContactUsform.get('content').touched) && createContactUsform.get('content').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                </div>
+              </div>
+
+              <ngx-recaptcha2  formControlName="recaptcha"
+                siteKey="6Lci6nciAAAAADi8IjVz8SlZxv1PAwVYZbGX4ZRf">
+              </ngx-recaptcha2>
+            </div>
+            </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-save" [disabled]="!createContactUsform.valid">إرسال</button>
+            <a [routerLink]="['/']" class="btn btn-cancel">رجوع</a>
+          </div>،
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

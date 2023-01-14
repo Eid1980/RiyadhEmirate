@@ -13,11 +13,12 @@ import { RouterModule } from '@angular/router';
 import { SharedRoutingModule } from './shared-routing.module';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { DialogModule } from 'primeng/dialog';
+import { TooltipModule } from 'primeng/tooltip';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { RatingModule } from 'primeng/rating';
 import { AuthGuard } from './guards/auth.guard';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { PageListComponent } from './components/page-list/page-list.component';
-import { DataListComponent } from './components/data-list/data-list.component';
 import { AuthorizeDirective } from './directives/authorize.directive';
 import { HiddenAuthorizeColumnFilterPipe } from './pipes/hidden-authorize-coulmn-filter.pipe';
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
@@ -36,6 +37,16 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { RateServiceComponent } from './components/rate-service/rate-service.component';
 import { RequestStageLogComponent } from './components/request-stage-log/request-stage-log.component';
 import { ToastModule } from 'primeng/toast';
+import { CustomSlicePipe } from './pipes/custom-slice.pipe';
+import { HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ServiceFilterPipe } from './pipes/service-filter.pipe';
+import {ButtonModule} from 'primeng/button';
+import { FullDatePipe } from './pipes/full-date.pipe';
+import { ListStringPipe } from './pipes/list-string.pipe';
+import { AgmCoreModule } from '@agm/core';
+import { NgxCaptchaModule } from 'ngx-captcha'
 
 @NgModule({
   declarations: [
@@ -45,7 +56,6 @@ import { ToastModule } from 'primeng/toast';
     HiddenAuthorizeColumnFilterPipe,
     ProgressSpinnerComponent,
     PageListComponent,
-    DataListComponent,
     AuthorizeDirective,
     ViewProfileComponent,
     RequestAttacmentComponent,
@@ -54,6 +64,10 @@ import { ToastModule } from 'primeng/toast';
     UserDataViewComponent,
     UserDataCurrentViewComponent,
     RateServiceComponent,
+    CustomSlicePipe,
+    ServiceFilterPipe,
+    FullDatePipe,
+    ListStringPipe
   ],
   imports: [
     CommonModule,
@@ -73,16 +87,29 @@ import { ToastModule } from 'primeng/toast';
     ConfirmDialogModule,
     BreadcrumbModule,
     ToastModule,
+    ButtonModule,
     DialogModule,
+    TooltipModule,
+    MultiSelectModule,
     RatingModule,
     NgxHijriGregorianDatepickerModule,
+    //TranslateModule.forRoot({
+    //  loader: {
+    //    provide: TranslateLoader,
+    //    useFactory: HttpLoaderFactory,
+    //    deps: [HttpClient],
+    //  },
+    //}),
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    }),
+    NgxCaptchaModule
   ],
   exports: [
     AuthLayoutComponent,
     NotAuthorizedComponent,
     PageNotFoundComponent,
     PageListComponent,
-    DataListComponent,
     TableModule,
     AutoCompleteModule,
     ReactiveFormsModule,
@@ -97,8 +124,13 @@ import { ToastModule } from 'primeng/toast';
     InputMaskModule,
     PaginatorModule,
     HiddenAuthorizeColumnFilterPipe,
+    FullDatePipe,
+    ListStringPipe,
     InputSwitchModule,
     ToastModule,
+    DialogModule,
+    TooltipModule,
+    MultiSelectModule,
     DatePipe,
     FileUploadModule,
     ConfirmDialogModule,
@@ -109,6 +141,12 @@ import { ToastModule } from 'primeng/toast';
     UserDataViewComponent,
     UserDataCurrentViewComponent,
     RateServiceComponent,
+    CustomSlicePipe,
+    ServiceFilterPipe,
+    TranslateModule,
+    ButtonModule,
+    AgmCoreModule,
+    NgxCaptchaModule
   ],
   providers: [
     HiddenAuthorizeColumnFilterPipe,
@@ -118,3 +156,8 @@ import { ToastModule } from 'primeng/toast';
   ],
 })
 export class SharedModule {}
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

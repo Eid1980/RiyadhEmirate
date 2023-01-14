@@ -1,0 +1,8 @@
+﻿using Emirates.Core.Domain.Entities;
+
+namespace Emirates.Core.Domain.Interfaces.Repositories
+{
+    public interface IDesignEvaluationRepository : IRepository<DesignEvaluation>
+    {
+    }
+}

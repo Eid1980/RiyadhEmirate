@@ -1,6 +1,6 @@
 ﻿using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
-using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Shared;
 
 namespace Emirates.Core.Application.Services.CaseTypes
 {
@@ -12,6 +12,7 @@ namespace Emirates.Core.Application.Services.CaseTypes
         IApiResponse Create(CreateCaseTypeDto createModel);
         IApiResponse Update(UpdateCaseTypeDto updateModel);
         IApiResponse ChangeStatus(int id);
+        IApiResponse Delete(int id);
         IApiResponse GetLookupList();
     }
 }

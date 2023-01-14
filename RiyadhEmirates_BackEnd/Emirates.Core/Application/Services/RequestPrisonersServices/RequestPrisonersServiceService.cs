@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
-using Emirates.Core.Application.CustomExceptions;
+using Emirates.Core.Application.Shared;
 using Emirates.Core.Application.Dtos;
-using Emirates.Core.Application.Helpers;
-using Emirates.Core.Application.Interfaces.Helpers;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 
@@ -37,6 +34,7 @@ namespace Emirates.Core.Application.Services.RequestPrisonersServices
             var request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(id),
                 x => x.RequestPrisonersService,
                 x => x.RequestPrisonersService.RequestType,
+                x => x.RequestPrisonersService.Prison,
                 x => x.RequestPrisonersService.CaseType,
                 x => x.Stage, x => x.Service);
             if (request == null)
@@ -94,12 +92,8 @@ namespace Emirates.Core.Application.Services.RequestPrisonersServices
 
         private bool CanCreate(int userId)
         {
-            return !_emiratesUnitOfWork.Requests.Where(x => x.ServiceId.Equals((int)SystemEnums.Services.PrisonersServices) && x.CreatedBy.Equals(userId) &&
-                    (x.StageId.Equals((int)SystemEnums.Stages.Draft) ||
-                     x.StageId.Equals((int)SystemEnums.Stages.CompleteDataFromRequester) ||
-                     x.StageId.Equals((int)SystemEnums.Stages.NewRequest) ||
-                     x.StageId.Equals((int)SystemEnums.Stages.UnderProcessing))
-                    ).Any();
+            return !_emiratesUnitOfWork.Requests.Where(x => x.ServiceId.Equals((int)SystemEnums.Services.PrisonersServices) &&
+                    x.CreatedBy.Equals(userId) && !x.Stage.CanAddNew).Any();
         }
     }
 }

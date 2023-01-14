@@ -7,11 +7,15 @@ import { GlobalOptions } from './global-options';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { MenuItem, MessageService } from 'primeng/api';
 import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
+import * as CryptoTS from 'crypto-ts';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GlobalService {
+  cryptionKey: string = environment.cryptionKey ? environment.cryptionKey : 'Emirates@2023';
+
   constructor(private titleService: Title, private messageService: MessageService, private router: Router) {}
 
   public setTitle(newTitle: string) {
@@ -23,6 +27,7 @@ export class GlobalService {
 
   //#region Messaging
   public messageAlert(messageType: MessageType, message: string) {
+    this.clearMessages();
     switch (messageType) {
       case MessageType.Success:
         this.messageService.add({ severity: 'success', summary: 'عملية ناجحة', detail: message });
@@ -38,6 +43,7 @@ export class GlobalService {
         break;
     }
   }
+
   public showMessage(msg: string): void {
     if (msg) {
       var msgArray = msg.split(',');
@@ -52,6 +58,7 @@ export class GlobalService {
   confirm() {
     this.confirmSubmit();
   }
+
   confirmSubmit: Function;
   public clearMessages() {
     this.messageService.clear('confirm');
@@ -70,6 +77,36 @@ export class GlobalService {
     return date.toLocaleString(lang + '-u-ca-islamic', options);
   }
 
+  getFullDate(date, lang) {
+    if (!date) {
+      date = new Date();
+    }
+    if (!lang) {
+      lang = 'ar';
+    }
+
+    let hijrioptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+    };
+    let hijriDate = date.toLocaleString(lang + '-u-ca-islamic', hijrioptions);
+    let gregorianoptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    if (lang != 'ar') {
+      let gregorianDate = date.toLocaleString(lang + '-sa-u-nu-latn', gregorianoptions);
+      return `${hijriDate} - ${gregorianDate}`;
+    }
+    else {
+      let months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+      return `${hijriDate} - ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()} م`;
+    }
+  }
+
   errorHandler(error: HttpErrorResponse) {
     if (error.status === 401) {
       this.messageService.add({ severity: 'error', summary: '', detail: 'ليس لديك صلاحية لدخول هذة الصفحة' });
@@ -82,8 +119,51 @@ export class GlobalService {
     return throwError(error);
   }
 
+  //#region Cryption
+  encrypt(encryptedMessage: string) {
+    if (encryptedMessage) {
+      return CryptoTS.AES.encrypt(encryptedMessage, this.cryptionKey).toString();
+    }
+    else {
+      return null;
+    }
+  }
+  decrypt(decryptedMessage: string) {
+    if (decryptedMessage) {
+      const bytes = CryptoTS.AES.decrypt(decryptedMessage, this.cryptionKey);
+      return bytes.toString(CryptoTS.enc.Utf8);
+    }
+    else {
+      return null;
+    }
+  }
+
+  encryptNumber(encryptedMessage: number) {
+    if (encryptedMessage) {
+      return CryptoTS.AES.encrypt(encryptedMessage.toString(), this.cryptionKey).toString();
+    }
+    else {
+      return null;
+    }
+  }
+  decryptNumber(decryptedMessage: string) {
+    if (decryptedMessage) {
+      const bytes = CryptoTS.AES.decrypt(decryptedMessage, this.cryptionKey);
+      return +bytes.toString(CryptoTS.enc.Utf8);
+    }
+    else {
+      return null;
+    }
+  }
+  //#endregion
+
+  //#region navigation
   navigate(url: string) {
     this.router.navigate([url]);
+  }
+  navigateParams(url: string, params: any) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([url, params]));
   }
   navigateToInbox() {
     this.router.navigate(["/admin/eservice-admin/inbox"]);
@@ -91,12 +171,14 @@ export class GlobalService {
   navigateToRequesterDashboard() {
     this.router.navigate(["/eservice/my-requests"]);
   }
+  //#endregion
 
   //#region markAllControls
   markAllControls(formGroup: FormGroup, options?: Partial<GlobalOptions.ControlOptions>) {
     const defaultOptions = { markAsDirty: true, updateValueAndValidity: true } as GlobalOptions.ControlOptions;
     this.markFormGroup(formGroup, { ...defaultOptions, ...options });
   }
+
   markFormGroup(formGroup: FormGroup, options: GlobalOptions.ControlOptions) {
     Object.keys(formGroup.controls).forEach(key => {
       if (formGroup.get(key) instanceof FormGroup) {
@@ -110,6 +192,7 @@ export class GlobalService {
       }
     });
   }
+
   markFormArray(formArray: FormArray, options: GlobalOptions.ControlOptions) {
     formArray.controls.forEach(control => {
       if (control instanceof FormGroup) {
@@ -123,6 +206,7 @@ export class GlobalService {
       }
     });
   }
+
   markFormControl(formControl: FormControl, options: GlobalOptions.ControlOptions) {
     if (options.markAsDirty) formControl.markAsDirty();
     if (options.updateValueAndValidity) formControl.updateValueAndValidity();
@@ -136,5 +220,7 @@ export class GlobalService {
     this._breadcrumbItems = breadcrumbItems;
     this.subject.next(this._breadcrumbItems);
   }
-  //#end region
+  //#endregion
+
+
 }

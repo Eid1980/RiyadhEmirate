@@ -1,9 +1,9 @@
-﻿using AutoMapper;
+﻿using Emirates.API.Filters;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.RequestTypes;
 using Emirates.Core.Application.Services.Shared;
+using Emirates.Core.Application.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,16 +21,19 @@ namespace Emirates.API.Controllers
         }
 
         [HttpGet("GetById/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse GetById(int id)
         {
             return _requestTypeService.GetById(id);
         }
         [HttpGet("GetByServiceId/{serviceId}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse GetByServiceId(int serviceId)
         {
             return _requestTypeService.GetByServiceId(serviceId);
         }
         [HttpPost("GetListPage")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse GetAll(SearchModel searchModelDto)
         {
             return _requestTypeService.GetAll(searchModelDto);
@@ -42,27 +45,38 @@ namespace Emirates.API.Controllers
         }
 
         [HttpPost("Create")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse Create(CreateRequestTypeDto createDto)
         {
             return _requestTypeService.Create(createDto);
         }
         [HttpPut("Update")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse Update(UpdateRequestTypeDto updateDto)
         {
             return _requestTypeService.Update(updateDto);
         }
         [HttpGet("ChangeStatus/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse ChangeStatus(int id)
         {
             return _requestTypeService.ChangeStatus(id);
         }
 
+        [HttpDelete("Delete/{id}")]
+        public IApiResponse Delete(int id)
+        {
+            return _requestTypeService.Delete(id);
+        }
+
         [HttpGet("GetLookupList")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin)]
         public IApiResponse GetLookupList()
         {
             return _requestTypeService.GetLookupList();
         }
-        [HttpGet("GetLookupListByServiceId/{serviceId}")]
+
+        [AllowAnonymous, HttpGet("GetLookupListByServiceId/{serviceId}")]
         public IApiResponse GetLookupListByServiceId(int serviceId)
         {
             return _requestTypeService.GetLookupListByServiceId(serviceId);

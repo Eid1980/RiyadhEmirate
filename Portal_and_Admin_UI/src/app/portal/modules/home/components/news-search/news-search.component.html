@@ -1,0 +1,41 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">البحث في الأخبار</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div *ngIf="newsSearchListDto.length == 0">
+    <div class="empty-container">
+      <img src="assets/images/icons/pic/no-result.png" class="img-fluid" alt="vector" />
+      <h4>لا يوجد بيانات</h4>
+    </div>
+  </div>
+
+  <div class="row my-5" *ngIf="newsSearchListDto.length > 0">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let news of newsSearchListDto">
+      <a class="card-basic" [routerLink]="['/home/news-details', news.id]" routerLinkActive="router-link-active">
+        <div class="card-basic-banner">
+          <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]" [alt]="news?.title"
+            class="img-fluid" />
+          <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title" class="img-fluid" />
+        </div>
+        <div class="card-basic-body d-flex flex-column h-100">
+          <h4>{{ news.title }}</h4>
+          <p>{{ news.content | customSlice: 40 }} ...</p>
+          <span class="date d-flex align-items-center mt-auto">
+            <img src="assets/images/icons/order-date.svg" alt="icon" class="img-fluid" />
+            <span class="text-muted fw-normal mx-2">
+              {{news?.date | fullDate: currentLang}}
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

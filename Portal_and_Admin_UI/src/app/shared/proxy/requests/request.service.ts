@@ -23,6 +23,9 @@ export class RequestService {
   changeStage = (changeStageDto: RequestChangeStageDto): Observable<ApiResponse<number>> => {
     return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/ChangeStage`, changeStageDto).pipe();
   }
+  changeStageAdmin = (changeStageDto: RequestChangeStageDto): Observable<ApiResponse<number>> => {
+    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/ChangeStageAdmin`, changeStageDto).pipe();
+  }
 
   getAttachments = (id: string): Observable<ApiResponse<GetAttachmentsDto[]>> => {
     return this.httpClient.get<ApiResponse<GetAttachmentsDto[]>>(`${this.serviceUrl}/GetAttachments/${id}`).pipe(
@@ -43,5 +46,11 @@ export class RequestService {
   }
   inbox = (searchModel: SearchModel): Observable<ApiResponse<any>> => {
     return this.httpClient.post<ApiResponse<any>>(`${this.serviceUrl}/Inbox`, searchModel).pipe();
+  }
+  inboxShamel = (searchModel: SearchModel): Observable<ApiResponse<any>> => {
+    return this.httpClient.post<ApiResponse<any>>(`${this.serviceUrl}/InboxShamel`, searchModel).pipe();
+  }
+  requestSearch = (searchModel: SearchModel): Observable<ApiResponse<any>> => {
+    return this.httpClient.post<ApiResponse<any>>(`${this.serviceUrl}/RequestSearch`, searchModel).pipe();
   }
 }

@@ -1,0 +1,27 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">دليل إجراءات الخدمات</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="col-md-6 mb-4" *ngFor="let service of services">
+      <a class="card-basic-h" [routerLink]="['/home/services-guide' , globalService.encryptNumber(service.id)]">
+        <div class="card-basic-banner">
+          <img *ngIf="service.imageName" [src]="['/assets/images/uploads/services/'+service.imageName]" [alt]="service.nameEn" class="ser-icon" />
+          <img *ngIf="!service.imageName" src="assets/images/favicon/fav-logo.png" [alt]="service.nameEn" class="ser-icon" />
+        </div>
+        <div class="card-basic-body">
+          <h4> {{ service.nameAr }} </h4>
+          <p>{{ service.descriptionAr }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

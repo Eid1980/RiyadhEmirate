@@ -5,6 +5,7 @@ import { RequestChangeStageDto } from '@proxy/requests/models';
 import { RequestService } from '@proxy/requests/request.service';
 import { GlobalService } from '@shared/services/global.service';
 import { Stages } from '@shared/enums/stage.enum';
+import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.validator';
 
 @Component({
   selector: 'app-prisoners-services-action',
@@ -31,12 +32,19 @@ export class PrisonersServicesActionComponent implements OnInit {
 
   buildForm() {
     this.adminActionForm = this.formBuilder.group({
-      notes: [this.requestChangeStageDto.notes || '', Validators.required],
+      notes: [this.requestChangeStageDto.notes || '']
     });
   }
 
   executeAction(action: number) {
+    if (action == Stages.UnderProcessing) {
+      this.adminActionForm.controls["notes"].clearValidators();
+    }
+    else {
+      this.adminActionForm.controls["notes"].setValidators([Validators.required, WhiteSpaceValidator.noWhiteSpace]);
+    }
     this.isFormSubmitted = true;
+    this.adminActionForm.controls["notes"].updateValueAndValidity();
     if (this.adminActionForm.valid) {
       let confrimMessage = '';
       switch (action) {
@@ -60,7 +68,7 @@ export class PrisonersServicesActionComponent implements OnInit {
     this.requestChangeStageDto = { ...this.adminActionForm.value } as RequestChangeStageDto;
     this.requestChangeStageDto.id = this.requestId;
     this.requestChangeStageDto.stageId = action;
-    this.requestService.changeStage(this.requestChangeStageDto).subscribe((response) => {
+    this.requestService.changeStageAdmin(this.requestChangeStageDto).subscribe((response) => {
       this.globalService.showMessage(response.message);
       this.globalService.navigateToInbox();
     });

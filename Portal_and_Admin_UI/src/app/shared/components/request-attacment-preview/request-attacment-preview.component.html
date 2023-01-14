@@ -1,6 +1,6 @@
 
 
-<p-table #requestAttachments [value]="requestAttachmentsDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+<p-table #requestAttachments [value]="requestAttachmentsDto" [rowHover]="true" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th>م</th>
@@ -14,12 +14,14 @@
       <td> {{i+1}} </td>
       <td> {{requestAttachment.attachmentName}} </td>
       <td>
+          <div class="d-flex">
         <a class="btn btn-primary mx-1 px-1 py-0" title="عرض المرفق" (click)="showAttachment(requestAttachment.id)">
           <i class="fa fa-eye"></i>
         </a>
         <a class="btn btn-primary mx-1 px-1 py-0" title="تنزيل المرفق" (click)="downloadAttachment(requestAttachment.id)">
           <i class="fa fa-download"></i>
         </a>
+        </div>
       </td>
     </tr>
   </ng-template>

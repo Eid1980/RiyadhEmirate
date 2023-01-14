@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Emirates.Core.Application.CustomExceptions;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
-using Emirates.Core.Application.DynamicSearch;
-using Emirates.Core.Application.Interfaces.Helpers;
-using Emirates.Core.Application.Response;
+using Emirates.Core.Application.Shared;
 using Emirates.Core.Domain.Entities;
 using Emirates.Core.Domain.Interfaces;
 using X.PagedList;
@@ -86,6 +83,21 @@ namespace Emirates.Core.Application.Services.CaseTypes
             _emiratesUnitOfWork.Complete();
             return GetResponse();
         }
+        public IApiResponse Delete(int id)
+        {
+            var caseType = _emiratesUnitOfWork.CaseTypes.FirstOrDefault(n => n.Id == id, x => x.RequestPrisonerTempReleases, x => x.RequestPrisonersServices);
+            if (caseType == null)
+                throw new NotFoundException(typeof(CaseType).Name);
+            if(caseType.RequestPrisonerTempReleases.Count > 0)
+                throw new BusinessException("نوع القضايا مرتبط بطلبات في خدمة الخروج المؤقت لسجين");
+            if(caseType.RequestPrisonersServices.Count > 0)
+                throw new BusinessException("نوع القضايا مرتبط بطلبات في خدمات السجناء");
+
+            _emiratesUnitOfWork.CaseTypes.Remove(caseType);
+            _emiratesUnitOfWork.Complete();
+            return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
+
         public IApiResponse GetLookupList()
         {
             return GetResponse(data: _emiratesUnitOfWork.CaseTypes.Where(l => l.IsActive).Select(item =>

@@ -1,0 +1,48 @@
+<nav class="breadcrumb m-0 bg-transparent">
+  <div class="container d-flex align-items-center">
+    <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/home/services-list']">قائمة الخدمات</a>
+    <span class="breadcrumb-item fs-16 active">انشاء طلب تملك العقار للأجانب</span>
+  </div>
+</nav>
+
+<div class="container px-0 my-5">
+  <div class="form-card mb-0">
+    <div class="form-header mt-3" style="border-bottom: 0px !important;">
+      <p-steps [model]="wizardItems" [(activeIndex)]="activeIndex"></p-steps>
+    </div>
+
+    <div class="form-content py-0 px-4">
+      <app-foreigners-realty-owner-details [showStatusLog]="false"></app-foreigners-realty-owner-details>
+    </div>
+
+    <div class="form-group col-12">
+      <div class="form-check px-3 mt-5">
+        <input [(ngModel)]="accept" class="form-check-input" type="checkbox" id="accept" />
+        <label class="form-check-label" (click)="showConditions()">
+          أوافق علي الشروط والأحكام
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions px-0">
+    <a [routerLink]="['/eservice/foreigners-realty-owner-attachments/', requestId]"
+       class="btn btn-outline-primary px-4 ms-auto">السابق</a>
+
+    <button type="button" class="btn btn-primary ms-3" (click)="sendRequest()">ارسال الطلب</button>
+    <button type="button" class="btn border-primary btn-white ms-3" printTitle="طلب تملك عقار للأجانب"
+            styleSheetFile="assets/css/print.css" printSectionId="request-print-section" ngxPrint>
+      <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
+      <span class="fa-12">طباعة</span>
+    </button>
+    <a [routerLink]="['/eservice/my-requests']" class="btn btn-secondary">إلغاء</a>
+  </div>
+
+  <app-rate-service [showServiceRate]="showServiceRate" [serviceId]="serviceId" [redirectUrl]="redirectUrl"
+                    (canRateEvent)="navigate($event)"></app-rate-service>
+</div>
+
+<p-dialog [modal]="true" header="شروط الخدمة" [(visible)]="showDialog">
+  <app-service-conditions [serviceId]="serviceId"></app-service-conditions>
+</p-dialog>

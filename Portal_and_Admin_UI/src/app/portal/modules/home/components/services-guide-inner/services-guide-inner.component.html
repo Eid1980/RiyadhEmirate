@@ -1,0 +1,34 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <a class="breadcrumb-item fs-16" [routerLink]="['/services-guide']">دليل إجراءات الخدمات</a>
+        <span class="breadcrumb-item fs-16 active">التفاصيل</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="artical-content-wrapper">
+      <div class="d-flex justify-content-center mb-5">
+        <img *ngIf="service.imageName" [src]="['/assets/images/uploads/services/'+service.imageName]" [alt]="service.nameEn" class="ser-icon" />
+        <img *ngIf="!service.imageName" src="assets/images/favicon/fav-logo.png" [alt]="service.nameEn" class="ser-icon" />
+      </div>
+      <h4 class="artical-head">{{ service.nameAr }}</h4>
+      <p class="artical-text me-3">{{ service.descriptionAr }}</p>
+      <div class="mb-5" *ngIf="getServiceConditionListDto.length > 0">
+        <div class="artical-title mb-3">
+          شروط الخدمة :
+        </div>
+        <ol class="artical-list">
+          <li class="artical-list-item" *ngFor="let serviceCondition of getServiceConditionListDto;">
+            {{ serviceCondition.condition }}
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,24 +1,28 @@
 
 
 
-<p-table #attachments [value]="attachmentsDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+<p-table #attachments [value]="attachmentsDto" [rowHover]="true" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th>م</th>
       <th>اسم المرفق</th>
       <th>المرفق مطلوب</th>
+      <th>امتداد الملف</th>
+      <th>مساحة الملف / ميجا</th>
       <th></th>
     </tr>
   </ng-template>
 
   <ng-template pTemplate="body" let-i="rowIndex" let-attachment>
     <tr>
-      <td> {{i+1}} </td>
-      <td> {{attachment.attachmentName}} </td>
+      <td> {{ i+1 }} </td>
+      <td> {{ attachment.attachmentName }} </td>
       <td>
         <i class="pi pi-check" *ngIf="attachment.attachmentIsRequired"></i>
         <i class="pi pi-times" *ngIf="!attachment.attachmentIsRequired"></i>
       </td>
+      <td> {{ attachment.extentionAllowed ? attachment.extentionAllowed : allowedExtensions }} </td>
+      <td> {{ (attachment.maxFileSize ? attachment.maxFileSize :fileSize)/1024/1024 | number }} </td>
       <td>
         <ng-container *ngIf="!attachment.isAdded">
           <p-fileUpload #uploader mode="basic" [auto]="true" [customUpload]="true"
@@ -27,15 +31,17 @@
           </p-fileUpload>
         </ng-container>
         <ng-container *ngIf="attachment.isAdded">
-          <a class="btn btn-primary mx-1 px-1 py-0" title="عرض المرفق" (click)="showAttachment(attachment.id)">
-            <i class="fa fa-eye"></i>
-          </a>
-          <a class="btn btn-primary mx-1 px-1 py-0" title="تنزيل المرفق" (click)="downloadAttachment(attachment.id)">
-            <i class="fa fa-download"></i>
-          </a>
-          <a class="btn btn-primary mx-1 px-1 py-0" title="حذف المرفق" (click)="deleteAttachment(attachment.id)">
-            <i class="fa fa-trash"></i>
-          </a>
+          <div class="d-flex">
+            <a class="btn btn-primary mx-1 p-2" title="عرض المرفق" (click)="showAttachment(attachment.id)">
+              <i class="fa fa-eye"></i>
+            </a>
+            <a class="btn btn-secondary mx-1 p-2" title="تنزيل المرفق" (click)="downloadAttachment(attachment.id)">
+              <i class="fa fa-download"></i>
+            </a>
+            <a class="btn btn-danger mx-1 p-2" title="حذف المرفق" (click)="deleteAttachment(attachment.id)">
+              <i class="fa fa-trash"></i>
+            </a>
+          </div>
         </ng-container>
       </td>
     </tr>

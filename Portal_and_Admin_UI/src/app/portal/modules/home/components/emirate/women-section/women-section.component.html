@@ -1,0 +1,38 @@
+<!-- breadcrumb -->
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item fs-16" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">القسم النسوى</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="col-12">
+      <div class="artical-content-wrapper mb-5">
+        <h4 class="artical-head">
+          حرصاً من إمارة منطقة الرياض على تقديم أفضل الخدمات لمراجعيها ، فقد تم تأسيس قسم نسائي خاص لكي يخدم شريحة كبيرة
+          من المستفيدات
+        </h4>
+
+        <h6 class="artical-title me-3">
+        {{ this.womanSection.descriptionAr }}
+        </h6>
+      </div>
+
+      <div class="artical-content-wrapper" *ngIf=" womanSection?.mainPoints.length > 0">
+        <h4 class="artical-head mb-3">
+          ويقدم القسم العديد من الخدمات في مجالات عديدة منها:
+        </h4>
+
+        <ol class="artical-list me-3 mt-4">
+          <li class="artical-list-item" *ngFor="let point of womanSection.mainPoints">{{ point.nameAr }}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,127 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NewsTypes } from '@shared/enums/news-types.enum';
-import { NewsService } from '@shared/proxy/news/news.service';
+import { GetPosterDetailsDto } from '@shared/proxy/posters/models';
+import { PosterService } from '@shared/proxy/posters/poster.service';
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { GlobalService } from '@shared/services/global.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { TranslationServiceService } from '@shared/services/translation-service.service';
+import { HomeService } from '@shared/proxy/home/home.service';
+import { GetAllServiceListDto, GetNewsSearchListDto } from '@shared/proxy/home/models';
 declare let $: any;
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
+  currentLang: string;
+  electronicUrl: string;
+  searchModel: SearchModel = {};
+  posters = [] as GetPosterDetailsDto[];
 
-  searchModel : SearchModel = {} ;
+  latestNews = [] as GetNewsSearchListDto[];
+  governorateNews: GetNewsSearchListDto[] = [];
+  reports: GetNewsSearchListDto[] = [];
 
-  posters: any[] = [];
-  emiratesNews: any[] = [];
-  latestNews: any[] = [];
-  reports: any[] = [];
-  services: any[] = [];
+  internalServices = [] as GetAllServiceListDto[];
+  internalServicesTop = [] as GetAllServiceListDto[];
+  externalServices = [] as GetAllServiceListDto[];
+  serviceGuidFirst = [] as GetAllServiceListDto[];
+  serviceGuidLength = [];
 
-  constructor(
-    private _newService : NewsService,
-    private _globalService: GlobalService,
-    private _router: Router) {
-    }
-
-  ngOnInit() {
-
-    setTimeout(function () {
-      $('.news .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 1,
-          },
-        },
-      });
-    }, 8000);
-    setTimeout(function () {
-      $('.e-services .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 3,
-          },
-          1000: {
-            items: 4,
-          },
-        },
-      });
-    }, 8000);
-    setTimeout(function () {
-      $('.gov-news .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 2,
-          },
-        },
-      });
-    }, 8000);
-    setTimeout(function () {
-      $('.advertise-report .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        rtl: true,
-        autoplayTimeout: 3000,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 1,
-          },
-        },
-      });
-    }, 8000);
-
-    this.getPosters();
-    this.getEmiratesNews();
-    this.getLatestNews();
-    this.getReports();
-    this.getServices();
-  }
-
+  //#region Sliders Options
   sliderOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -135,6 +45,9 @@ export class HomeComponent implements OnInit {
       0: {
         items: 1,
       },
+      400: {
+        items: 1,
+      },
     },
     nav: true,
   };
@@ -142,6 +55,7 @@ export class HomeComponent implements OnInit {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
+    items: 5,
     pullDrag: false,
     dots: false,
     navSpeed: 700,
@@ -163,7 +77,7 @@ export class HomeComponent implements OnInit {
     },
     nav: true,
   };
-  servicesOptions: OwlOptions = {
+  Details: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
@@ -201,10 +115,57 @@ export class HomeComponent implements OnInit {
       0: {
         items: 1,
       },
+      400: {
+        items: 1,
+      },
     },
     nav: true,
   };
   advertiseReportOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    rtl: true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+    },
+    nav: true,
+  };
+  servicesOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    rtl: true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 4,
+      }
+    },
+    nav: true,
+  };
+  servicesDetailsOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
@@ -217,120 +178,97 @@ export class HomeComponent implements OnInit {
       0: {
         items: 1,
       },
+      400: {
+        items: 1,
+      },
     },
-    nav: true,
+    nav: false,
+    animateOut: 'slideOutUp',
+    animateIn: 'slideInUp'
   };
+  bannerOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    rtl: true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+    },
+    nav: false,
+  };
+  //#endregion
+
+  constructor(private homeService: HomeService, private posterService: PosterService,
+    public _globalService: GlobalService, private translateService: TranslationServiceService) {
+  }
+
+  ngOnInit() {
+    this._globalService.setTitle('الصفحة الرئيسية');
+    this.currentLang = this.translateService.getCurrentLanguage().Name.toLowerCase();
+    this.getPosters();
+    this.getServices();
+    this.getAllNews();
+
+    let processNumber1 = document.getElementById("processNumber1");
+    let processNumber2 = document.getElementById("processNumber2");
+    let processNumber3 = document.getElementById("processNumber3");
+    let processNumber4 = document.getElementById("processNumber4");
+    this.homeService.getCounts().subscribe(result => {
+      this.animateValue(processNumber1, 0, result.data.userCount, 5000);
+      this.animateValue(processNumber2, 0, result.data.serviceCount, 5000);
+      this.animateValue(processNumber3, 0, result.data.requestCount, 5000);
+      this.animateValue(processNumber4, 0, result.data.rateCount, 5000);
+    });
+  }
 
   getPosters() {
-    this.searchModel.SearchFields = [
-        {
-          FieldName: "NewsTypeId",
-          Operator: "Equal",
-          Value: NewsTypes.Posters.toString()
-        }
-    ]
-
-    this._newService.getAll(NewsTypes.Posters).subscribe((result: any) => {
-      debugger
-      this.posters = result.data;
-      console.log('posters')
-      console.log(this.posters)
-    });
-
-  }
-
-  getEmiratesNews() {
-    this.searchModel.SearchFields = [
-      {
-        FieldName: "NewsTypeId",
-        Operator: "Equal",
-        Value: NewsTypes.EmiratesNews.toString()
-      }
-  ]
-
-    this._newService.getAll(NewsTypes.EmiratesNews).subscribe((result: any) => {
-      debugger
-      this.emiratesNews = result.data;
+    this.posterService.getAll().subscribe((res) => {
+      this.posters = res.data;
     });
   }
-
-  getLatestNews() {
-    this.searchModel.SearchFields = [
-      {
-        FieldName: "NewsTypeId",
-        Operator: "Equal",
-        Value: NewsTypes.LatestNews.toString()
-      }
-  ]
-
-    this._newService.getAll(NewsTypes.LatestNews).subscribe((result: any) => {
-      this.latestNews = result.data;
-    });
-  }
-
-  getReports() {
-    this._newService.getAll(NewsTypes.LatestNews).subscribe((result: any) => {
-      this.reports = result.data;
-    });
-  }
-
   getServices() {
-    this.searchModel.SearchFields = [
-      {
-        FieldName: "NewsTypeId",
-        Operator: "Equal",
-        Value: NewsTypes.Posters.toString()
-      }
-  ]
+    this.homeService.getAllServices().subscribe(result => {
+      this.electronicUrl = result.data.filter(i => i.id === 1)[0].requestLink;
+      this.internalServices = result.data.filter(i => i.isExternal === false);
+      this.externalServices = result.data.filter(i => i.isExternal === true);
 
-    this._newService.getAll(NewsTypes.Posters).subscribe((result: any) => {
-      this.services = result.data;
+      this.internalServicesTop = this.internalServices.slice(0, 4);
+      this.serviceGuidLength = Array(Math.round(this.internalServices?.length / 2)).fill(1);
+      this.serviceGuidFirst = this.internalServices.slice(0, 2);
+    });
+  }
+  getAllNews() {
+    this.homeService.getTop5NewsByLang(this.currentLang == 'ar').subscribe((result) => {
+      let news = result.data as GetNewsSearchListDto[];
+      this.latestNews = news.filter((n) => n.newsTypeId == NewsTypes.LatestNews);
+      this.governorateNews = news.filter((n) => n.newsTypeId == NewsTypes.GovernorateNews);
+      this.reports = news.filter((n) => n.newsTypeId == NewsTypes.Reports);
     });
   }
 
-  navigateTo() {
-    /*if (this._userService.currentUser.IsAdmin) {
-      this._router.navigate(['/e-council/incoming-orders']);
-    } else {
-      this._router.navigate(['/e-council/create']);
-    }*/
+  animateValue(obj: any, start: any, end: any, duration: any) {
+    let startTimestamp = null;
+    let step = (timestamp: any) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      let progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerHTML = Math.floor(progress * (end - start) + start);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    console.log(step)
+    window.requestAnimationFrame(step);
   }
-
-  formatDate(date: any) {
-    let newDate = new Date(date);
-    var months = [
-      'يناير',
-      'فبراير',
-      'مارس',
-      'إبريل',
-      'مايو',
-      'يونيو',
-      'يوليو',
-      'أغسطس',
-      'سبتمبر',
-      'أكتوبر',
-      'نوفمبر',
-      'ديسمبر',
-    ];
-    let hijriDate = this._globalService.convertToHijri(newDate, 'ar');
-    return (
-      hijriDate.toString() +
-      '     -     ' +
-      newDate.getDay().toString() +
-      ' ' +
-      months[newDate.getMonth()] +
-      ' ' +
-      newDate.getFullYear().toString() +
-      ' م '
-    );
-  }
-
-  getHijriDate(date: any) {
-    let newDate = new Date(date);
-    let hijriDate = this._globalService.convertToHijri(newDate, 'ar');
-    return hijriDate.toString();
-  }
-
-
-
 }

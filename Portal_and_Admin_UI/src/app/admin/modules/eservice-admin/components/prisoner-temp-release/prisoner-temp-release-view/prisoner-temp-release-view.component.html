@@ -3,5 +3,10 @@
 </app-prisoner-temp-release-details>
 
 <div class="form-actions">
-  <a [routerLink]="['/eservice-admin/inbox']" class="btn btn-cancel">إلغاء</a>
+  <button type="button" class="btn border-primary btn-white" printTitle="طلب خروج مؤقت لسجين"
+          styleSheetFile="assets/css/print.css" printSectionId="request-print-section" ngxPrint>
+    <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2">
+    <span class="fa-12">طباعة</span>
+  </button>
+  <a [routerLink]="['/admin/eservice-admin/request-search']" class="btn btn-cancel">إلغاء</a>
 </div>

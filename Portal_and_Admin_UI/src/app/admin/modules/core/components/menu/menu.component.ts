@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '@proxy/accounts/account.service';
-import { Router } from '@angular/router';
-import { GlobalService } from '@shared/services/global.service';
+import { Role } from '../../../../../shared/enums/role.enum';
 
 @Component({
   selector: 'app-menu',
@@ -9,24 +8,26 @@ import { GlobalService } from '@shared/services/global.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  userInfo: any;
-  childs: any[] = [];
+  roles: string;
+  superSystemAdmin: string = Role.SuperSystemAdmin.toString();
+  systemAdmin: string = Role.SystemAdmin.toString();
+  newsPermission: string = Role.NewsPermission.toString();
+  settingPermission: string = Role.SettingPermission.toString();
+  usersPermission: string = Role.UsersPermission.toString();
+  requestReview: string = Role.RequestReview.toString();
+  shamelRequestReview: string = Role.ShamelRequestReview.toString();
 
-  constructor(private accountService: AccountService, private router: Router) {}
-
-  ngOnInit() {
-    this.userInfo = this.accountService.getCurrentUserInfo();
+  constructor(private accountService: AccountService) {
   }
 
-  getChildrens(parentId) {
-    return this.userInfo.MenueItems.filter(
-      (c) => c.ParentId === parentId && c.MenueType === 2
-    ) as any[];
+  ngOnInit() {
+    this.accountService.getCurrentUserRoles().subscribe((response) => {
+      this.roles = response.data;
+    });
   }
 
   logOut() {
-    localStorage.removeItem('EmiratesToken');
-    localStorage.removeItem('userInfo');
-    this.router.navigate(['/auth/login']);
+    this.accountService.logOut();
   }
+
 }

@@ -1,0 +1,30 @@
+
+<app-request-workflow-action previousUrl="/admin/eservice-admin/foreigners-realty-owner-admin-preview-step/">
+  <form [formGroup]="adminActionForm" requestAction>
+    <div class="form-card">
+      <div class="form-header">
+        <h5>اتخاذ القرار</h5>
+      </div>
+      <div class="form-content">
+        <div class="row mx-0">
+          <div class="form-group col-md-12">
+            <label for="notes" class="form-lbl">الملاحظات</label>
+            <textarea class="form-control" autocomplete="off" formControlName="notes" id="notes" [ngClass]="{
+              invalid:
+                (isFormSubmitted || adminActionForm.get('notes').touched) &&
+                adminActionForm.get('notes').errors?.required
+              }">
+            </textarea>
+            <small *ngIf="(isFormSubmitted || adminActionForm.get('notes').touched) && adminActionForm.get('notes').errors?.required"
+                   class="danger">هذاالحقل مطلوب</small>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <button requestActionButtons type="button" class="btn btn-primary" (click)="executeAction(approved)">الموافقة على الطلب</button>
+  <button requestActionButtons type="button" class="btn btn-danger" (click)="executeAction(rejected)">رفض الطلب</button>
+  <button requestActionButtons type="button" class="btn btn-primary-alt-2" (click)="executeAction(returned)">ارجاع الطلب الى المستفيد</button>
+</app-request-workflow-action>

@@ -4,26 +4,22 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Emirates.API.Configurations.AutoMapper;
-using Emirates.API.Extensions;
 using Emirates.API.Filters.Swagger;
-using Emirates.Core.Application.CustomExceptions;
-using Emirates.Core.Domain.Interfaces;
 using Emirates.InfraStructure.Contexts;
 using Emirates.InfraStructure.Loggers.Serilog;
-using Emirates.InfraStructure.UnitsOfWork;
 using Serilog;
 using System.Diagnostics;
 using System.Globalization;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using Emirates.Core.Application.Models.Request.Mail;
 using Emirates.API.Configurations;
 using System.Text.Json;
+using Emirates.Core.Application.Shared;
+using AutoMapper;
 
 Serilog.Debugging.SelfLog.Enable(msg => Debug.WriteLine(msg));
-//Read Configuration from appSettings
+
 var config = SerilogHelper.BuildConfiguration();
 
 //Initialize static logger using the settings from appsettings
@@ -37,22 +33,19 @@ try
     builder.Host.UseSerilog();
 
     ConfigurationManager configuration = builder.Configuration;
-    IWebHostEnvironment environment = builder.Environment;
 
-    // Add services to the container.
     #region Configure Services
     builder.Services.AddControllers()
         .AddJsonOptions(opts => 
                         opts.JsonSerializerOptions.PropertyNamingPolicy =  JsonNamingPolicy.CamelCase
                         //opts.JsonSerializerOptions.PropertyNamingPolicy = null
                        );
-
-    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
 
     #region Swagger
-    // Register the Swagger generator, defining 1 or more Swagger documents
-    builder.Services.AddSwaggerGen(c =>
+    if (builder.Environment.IsDevelopment())
+    {
+        builder.Services.AddSwaggerGen(c =>
     {
         //c.MapType<DateTime>(() => new OpenApiSchema { Format = "dd/MM/yyyy" });
         //c.MapType<DateTime?>(() => new OpenApiSchema { Format = "dd/MM/yyyy" });
@@ -87,10 +80,16 @@ try
 
         c.OperationFilter<AcceptLanguageHeaderOperationFilter>();
     });
+    }
     #endregion
 
     #region Mappers
-    builder.Services.AddSingleton(AutoMapperConfigurations.GetMapper());
+    var mapperConfig = new MapperConfiguration(mc =>
+    {
+        mc.AddProfile(new MappingProfile());
+    });
+    IMapper mapper = mapperConfig.CreateMapper();
+    builder.Services.AddSingleton(mapper);
     #endregion
 
     #region Localization
@@ -165,24 +164,6 @@ try
 
     #region services
     DependencyContainer.RegisterServices(builder);
-
-    //builder.Services.AddScoped<IUserService, UserService>();
-    //builder.Services.AddScoped<IRequestService, RequestService>();
-    //builder.Services.AddScoped<ILocalizationService, LocalizationService>();
-    //builder.Services.AddScoped<IFileManagerService, FileManagerService>();
-    //builder.Services.AddScoped<IFileUploaderService, FileUploaderService>();
-    //builder.Services.AddScoped<ILatestNewsService, LatestNewsService>();
-    //builder.Services.AddScoped<IReportsService, ReportsService>();
-    //builder.Services.AddScoped<IEmiratesNewsService, EmiratesNewsService>();
-    //builder.Services.AddScoped<IServiceService, ServiceService>();
-    //builder.Services.AddScoped<IServiceRateService, ServiceRateService>();
-    //builder.Services.AddScoped<INationalityService, NationalityService>();
-    //builder.Services.AddScoped<IMailService, MailService>();
-    
-    builder.Services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
-    
-
-
     #endregion
 
     builder.Services.AddHttpContextAccessor();
@@ -191,10 +172,6 @@ try
 
     var app = builder.Build();
 
-    //ConfigurationManager configuration = builder.Configuration;
-    //IWebHostEnvironment environment = builder.Environment;
-
-    // Configure the HTTP request pipeline.
     #region Configure
     app.UseRequestLocalization();
 
@@ -203,6 +180,10 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
         app.UseDeveloperExceptionPage();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        });
     }
 
     app.UseExceptionHandler(builder =>
@@ -214,17 +195,12 @@ try
             if (exceptionHandler != null)
             {
                 if (exceptionHandler.Error is NotFoundException)
-                {
                     context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                }
                 else if (exceptionHandler.Error is BusinessException)
-                {
                     context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                }
                 else
-                {
                     context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                }
+                context.Response.Headers.AcceptEncoding = "UTF-8";
                 context.Response.AddApplicationErrorHeader(exceptionHandler.Error.Message);
                 await context.Response.WriteAsync(exceptionHandler.Error.Message);
             }
@@ -232,23 +208,8 @@ try
     });
 
     app.UseHttpsRedirection();
-
     app.UseStaticFiles();
-
     app.UseSerilogRequestLogging();
-
-    #region Swagger
-    // Enable middleware to serve generated Swagger as a JSON endpoint.
-    app.UseSwagger();
-
-    // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-    // specifying the Swagger JSON endpoint.
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-    });
-    #endregion
-
     app.UseRouting();
 
     #region CORS

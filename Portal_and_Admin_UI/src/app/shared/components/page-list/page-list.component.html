@@ -15,9 +15,9 @@
           <div class="row mx-0 inner-table">
             <!-- Table -->
             <div class="m_datatable w-100 px-0">
-              <p-table [value]="dataItems" [paginator]="true" [totalRecords]="pagingMetaData?.TotalItemCount" [rows]="
-                  pagingMetaData?.PageSize ? pagingMetaData?.PageSize : 10
-                " [autoLayout]="true" [responsive]="true" [first]="pagingMetaData?.FirstItemOnPage" [columns]="PageListSetting.cols" [lazy]="true" (onLazyLoad)="onTableLazyLoad($event)" [scrollable]="true" class="w-100">
+              <p-table [value]="dataItems" [paginator]="true" [totalRecords]="pagingMetaData?.totalItemCount"
+               [rowHover]="true" [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10 "
+               [autoLayout]="true" [responsive]="true" [first]="pagingMetaData?.firstItemOnPage" [columns]="PageListSetting.cols" [lazy]="true" (onLazyLoad)="onTableLazyLoad($event)" [scrollable]="true" class="w-100">
                 <!-- Header -->
                 <ng-template pTemplate="header" let-columns>
                   <!-- Header Text  -->
@@ -40,10 +40,7 @@
                       <ng-container *ngIf="col.Type !== 'checkBox'">
                         {{ col.Header }}
                         <!-- Sort Icon -->
-                        <p-sortIcon [field]="col.Field" *ngIf="
-                            (col.Sortable || col.Sortable === undefined) &&
-                            col.Type !== 'action'
-                          "></p-sortIcon>
+                        <p-sortIcon [field]="col.Field" *ngIf="(col.Sortable || col.Sortable === undefined) && col.Type !== 'action' && col.Type !== 'status'"></p-sortIcon>
                       </ng-container>
                     </th>
                   </tr>
@@ -94,20 +91,19 @@
                 <!-- Body -->
                 <ng-template style="width: 30px" pTemplate="body" let-dataItem let-columns="columns">
                   <tr>
-                    <td *ngFor="
-                        let column of columns | HiddenAuthorizeColumnFilter
-                      ">
+                    <td *ngFor="let column of columns | HiddenAuthorizeColumnFilter">
                       <!-- Handle general data fields -->
                       <ng-container *ngIf="!column.Type || column.Type === 'data'">
-                        {{
-                        !column.Pipe
-                        ? dataItem[column.Field]
+                        <span pTooltip="{{ dataItem[column.Field]?.length > 35 ? dataItem[column.Field] : ''}}" tooltipPosition="top">
+                          {{
+                        !column.Pipe ? dataItem[column.Field]?.length > 35 ? dataItem[column.Field]?.substring(0, 35) + ' ...' : dataItem[column.Field]
                         : column.Pipe === "date"
                         ? (dataItem[column.Field] | date: "dd-MM-yyyy")
                         : dataItem[column.Field]
-                        }}
+                          }}
+                        </span>
                       </ng-container>
-
+                      
                       <!-- Handle binary status data fields -->
                       <ng-container *ngIf="column.Type === 'status'">
                         <span class="m-badge status" [ngClass]="{
@@ -130,26 +126,17 @@
                       </ng-container>
 
                       <!-- Handle action button fields -->
-
                       <ng-container *ngIf="column.Type === 'action'">
                         <span *ngFor="let action of PageListSetting.actions">
                           <ng-container *appAuthorize="action.permissionCode">
-                            <a *ngIf="action.IsQueryParams" class="{{ action.buttonclass }}" title="{{ action.title }}" [routerLink]="[action.routerLink, dataItem['id']]">
+                            <a *ngIf="action.IsQueryParams" class="{{ action.buttonclass }}" pTooltip="{{ action.title }}" tooltipPosition="top" [routerLink]="[action.routerLink, dataItem['id']]">
                               <i class="{{ action.buttonIcon }}"></i>
                             </a>
-
-                            <a *ngIf="action.FuncName" class="{{ action.buttonclass }}" title="{{ action.title }}" (click)="
-                                callPageFunc(action.FuncName, dataItem['id'])
-                              ">
+                            <a *ngIf="action.FuncName" class="{{ action.buttonclass }}" pTooltip="{{ action.title }}" tooltipPosition="top" (click)="callPageFunc(action.FuncName, dataItem['id'])">
                               <i class="{{ action.buttonIcon }}"></i>
                             </a>
                           </ng-container>
                         </span>
-
-                        <!-- <button class="btn border-0 btn-danger mx-1 px-1 py-0" (click)="deleteEmployee(dataItem['id'])"
-    title="حذف">
-    <i class="las la-trash"></i>
-  </button> -->
                       </ng-container>
                     </td>
                   </tr>

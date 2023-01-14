@@ -1,0 +1,12 @@
+
+<app-treatment-recommendation-details [showStatusLog]="true">
+</app-treatment-recommendation-details>
+
+<div class="form-actions">
+  <button type="button" class="btn border-primary btn-white ms-3 py-2 lh-lg" printTitle="طلب علاج"
+          styleSheetFile="assets/css/print.css" printSectionId="request-print-section" ngxPrint>
+    <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2">
+    <span class="fa-12">طباعة</span>
+  </button>
+  <a [routerLink]="['/admin/eservice-admin/request-search']" class="btn btn-cancel">إلغاء</a>
+</div>

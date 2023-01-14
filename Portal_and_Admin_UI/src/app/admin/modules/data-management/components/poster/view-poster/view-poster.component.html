@@ -1,0 +1,42 @@
+
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/poster-list']">الإعلانات</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل الإعلان</span>
+  </nav>
+</div>
+
+
+<div class="form-card">
+  <div class="form-header">
+    <h5>تفاصيل الإعلان</h5>
+  </div>
+  <div class="form-content">
+    <div class="row mx-0">
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">العتوان عربي</span>
+        <span class="form-val">{{ posterDetailsDto?.titleAr }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">العنوان انجليزي</span>
+        <span class="form-val">{{ posterDetailsDto?.titleEn }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الترتيب</span>
+        <span class="form-val">{{ posterDetailsDto?.order }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الحالة</span>
+        <span class="form-val">{{ posterDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+      </div>
+      <div class="form-group col-6" *ngIf="posterDetailsDto?.imageName">
+        <img [src]="['/assets/images/uploads/posters/'+posterDetailsDto?.imageName]" [alt]="posterDetailsDto?.titleEn" style="width: 100%; height: 200px;" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions">
+  <a [routerLink]="['/admin/data-management/poster-list']" class="btn btn-cancel">رجوع</a>
+</div>

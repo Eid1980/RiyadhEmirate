@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { GetUserDto, UserLoginDto } from './models';
+import { CheckIamUserDto, CompleteDataDto, ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserProfileData, GetUserSessionDto, ResetPasswordDto, UpdateUserProfileDto, UserLoginDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
+import { CreateUserDto } from './register.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,17 @@ export class AccountService {
   }
 
   login = (userLoginDto: UserLoginDto): Observable<ApiResponse<string>> => {
-    return this.httpClient.post<ApiResponse<string>>(`${this.serviceUrl}/Login`, userLoginDto).pipe(
-    );
+    return this.httpClient.post<ApiResponse<string>>(`${this.serviceUrl}/Login`, userLoginDto).pipe();
+  }
+
+  register = (createUserDto: CreateUserDto): Observable<ApiResponse<number>> => {
+    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Register`, createUserDto).pipe();
+  }
+  createEmployee = (userId: number): Observable<ApiResponse<any>> => {
+    return this.httpClient.get<ApiResponse<any>>(`${this.serviceUrl}/CreateEmployee/${userId}`).pipe();
+  }
+  deleteEmployee = (userId: number): Observable<ApiResponse<any>> => {
+    return this.httpClient.get<ApiResponse<any>>(`${this.serviceUrl}/DeleteEmployee/${userId}`).pipe();
   }
 
   //isAuthorizedComponent = (componentURL): Observable<ApiResponse<GetUserDto>> => {
@@ -49,28 +59,68 @@ export class AccountService {
     }
   }
 
-  logOut = (): void => {
-    localStorage.removeItem('Employee_Token');
-    this.router.navigate(['/auth']);
-  }
-
-  getCurrentUserInfo = (): string => {
-    if (localStorage.getItem('AuthUser') != null) {
-      return localStorage.getItem('AuthUser');
+  logOut = (url?: string): void => {
+    localStorage.removeItem('EmiratesToken');
+    localStorage.removeItem('AuthUser');
+    if (url) {
+      this.router.navigate(['/auth/login'], { queryParams: { returnUrl: url } });
     }
     else {
-      this.router.navigate(['/auth']);
-      return null;
+      this.router.navigate(['/auth/login']);
     }
   }
 
-  getAuthUser = (): Observable<ApiResponse<GetUserDto>> => {
-    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetAuthUser`).pipe(
-    );
+  getCurrentUserInfo = (): GetUserSessionDto => {
+    if (localStorage.getItem('AuthUser') === null || localStorage.getItem('AuthUser') === undefined) {
+      this.router.navigate(['/auth/login']);
+      return null;
+    }
+    else {
+      return JSON.parse(localStorage.getItem('AuthUser'));
+    }
+  }
+
+  getUserData = (id?: number): Observable<ApiResponse<GetUserDataDto>> => {
+    return this.httpClient.get<ApiResponse<GetUserDataDto>>(`${this.serviceUrl}/GetUserData/${id}`).pipe();
+  }
+  getCurrentUserRoles = (): Observable<ApiResponse<string>> => {
+    return this.httpClient.get<ApiResponse<string>>(`${this.serviceUrl}/GetCurrentUserRoles`).pipe();
+  }
+
+  getAuthUser = (): Observable<ApiResponse<GetUserSessionDto>> => {
+    return this.httpClient.get<ApiResponse<GetUserSessionDto>>(`${this.serviceUrl}/GetAuthUser`).pipe();
   }
   getById = (id: number): Observable<ApiResponse<GetUserDto>> => {
-    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
-    );
+    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetById/${id}`).pipe();
+  }
+  getByUserName = (userName: string): Observable<ApiResponse<GetUserDto>> => {
+    return this.httpClient.get<ApiResponse<GetUserDto>>(`${this.serviceUrl}/GetByUserName/${userName}`).pipe();
+  }
+
+  getUserProfileData = (id: number): Observable<ApiResponse<GetUserProfileData>> => {
+    return this.httpClient.get<ApiResponse<GetUserProfileData>>(`${this.serviceUrl}/GetUserProfileData/${id}`).pipe();
+  }
+
+  forgetPassword(foregetPassword : ForgetPasswordDto ){
+    return this.httpClient.post(`${this.serviceUrl}/forgetPassword` , foregetPassword );
+  }
+
+  resetPassword(resetPassword : ResetPasswordDto){
+    return this.httpClient.post(`${this.serviceUrl}/resetPassword` , resetPassword );
+  }
+
+  updateUserProfile = (userProfileDto : UpdateUserProfileDto): Observable<ApiResponse<number>> => {
+    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/UpdateUserProfile` , userProfileDto).pipe();
+  }
+
+  isSuperAdmin = (): Observable<boolean> => {
+    return this.httpClient.get<boolean>(`${this.serviceUrl}/IsSuperAdmin`).pipe();
+  }
+  checkIamUser = (nationalId: string): Observable<ApiResponse<CheckIamUserDto>> => {
+    return this.httpClient.get<ApiResponse<CheckIamUserDto>>(`${this.serviceUrl}/CheckIamUser/${nationalId}`).pipe();
+  }
+  completeUserData = (completeDataDto: CompleteDataDto): Observable<ApiResponse<CheckIamUserDto>> => {
+    return this.httpClient.post<ApiResponse<CheckIamUserDto>>(`${this.serviceUrl}/CompleteUserData`, completeDataDto).pipe();
   }
 
 }

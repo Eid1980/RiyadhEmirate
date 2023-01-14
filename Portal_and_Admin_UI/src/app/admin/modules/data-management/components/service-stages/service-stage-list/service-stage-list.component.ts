@@ -6,7 +6,6 @@ import { ActionButtonClass } from '@shared/enums/action-button-class';
 import { ActionButtonIcon } from '@shared/enums/action-button-icon';
 import { ColumnType } from '@shared/enums/column-type.enum';
 import { ServiceStageService } from '@proxy/service-stages/service-stage.service';
-import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-service-stage-list',
@@ -17,10 +16,9 @@ export class ServiceStageListComponent implements OnInit {
   pageListSettings: PageListSetting;
 
   constructor(
-    private serviceStageService: ServiceStageService,
-    private confirmationService: ConfirmationService,
-    private globalService: GlobalService
-  ) {}
+    private serviceStageService: ServiceStageService, private globalService: GlobalService)
+  {
+  }
 
   ngOnInit() {
     this.globalService.setAdminTitle('مراحل الخدمات');
@@ -43,6 +41,7 @@ export class ServiceStageListComponent implements OnInit {
           Field: 'Action',
           Header: 'الإجراءات',
           Searchable: false,
+          Sortable: false,
           Type: ColumnType.Action,
         },
       ],
@@ -73,18 +72,16 @@ export class ServiceStageListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.confirmationService.confirm({
-      message: 'هل تريد حذف هذا العنصر؟',
-      acceptLabel: 'نعم',
-      rejectLabel: 'لا',
-      accept: () => {
-        this.serviceStageService.delete(id).subscribe((result) => {
-          this.globalService.showMessage(result.message);
-          if (result.isSuccess) {
-            this.list.getData();
-          }
-        });
-      },
+    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.confirmSubmit = () => this.isconfirm(id);
+  }
+  isconfirm(id: number) {
+    this.serviceStageService.delete(id).subscribe((result) => {
+      if (result.isSuccess) {
+        this.globalService.clearMessages();
+        this.list.getData();
+      }
+      this.globalService.showMessage(result.message);
     });
   }
 }

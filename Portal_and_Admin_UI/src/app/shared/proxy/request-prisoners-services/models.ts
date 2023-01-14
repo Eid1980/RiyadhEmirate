@@ -1,7 +1,7 @@
 
 export interface CreateRequestPrisonersServiceDto {
   requestTypeId: number;
-  presonName: string;
+  prisonId: number;
   caseTypeId: number;
   notes: string;
 }
@@ -10,7 +10,7 @@ export interface UpdateRequestPrisonersServiceDto {
   id: string;
   requestTypeId: number;
   notes: string;
-  presonName: string;
+  prisonId: number;
   caseTypeId: number;
   concurrencyStamp: string;
 }
@@ -18,7 +18,8 @@ export interface UpdateRequestPrisonersServiceDto {
 export interface RequestPrisonersServiceDto {
   requestTypeId: number;
   canEdit: boolean;
-  presonName: string;
+  prisonId: number;
+  prisonName: string;
   caseTypeId: number;
   notes: string;
   concurrencyStamp: string;
@@ -30,13 +31,13 @@ export interface GetRequestPrisonersServiceDetailsDto {
   requestNumber: string;
   serviceName: string;
   requestDate: string;
-  requestStatusName: string;
+  stageName: string;
   canEdit: boolean;
   notes: string;
   concurrencyStamp: string;
   requestTypeName: string;
   caseTypeName: string;
-  presonName: string;
+  prisonName: string;
   createdBy: number;
 }
 

@@ -1,8 +1,8 @@
 ﻿using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.ServiceRates;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.ServiceRates;
 using Emirates.Core.Application.Services.Shared;
+using Emirates.Core.Application.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

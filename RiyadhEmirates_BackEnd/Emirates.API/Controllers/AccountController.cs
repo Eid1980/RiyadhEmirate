@@ -6,17 +6,18 @@ using Emirates.Core.Application.Services.Shared;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Emirates.Core.Application.Response;
 using Emirates.Core.Application.Services.Accounts;
 using Emirates.Core.Application.Dtos;
-using Emirates.Core.Application.CustomExceptions;
+using Emirates.Core.Application.Shared;
+using Emirates.Core.Application.Dtos.Accounts;
+using Emirates.API.Filters;
 
 namespace Emirates.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class AccountController : BaseController, IAccountService
+    public class AccountController : BaseController
     {
         private readonly IAccountService _accountService;
         private readonly IConfiguration _config;
@@ -28,45 +29,50 @@ namespace Emirates.API.Controllers
             _config = config;
         }
 
-
-        [HttpGet("GetAuthUser")]
-        [Authorize]
-        public IApiResponse GetAuthUser()
+        [Authorize, HttpGet("GetUserData/{id?}")]
+        public IApiResponse GetUserData(int id=0)
         {
-            var user = _accountService.GetById(UserId);
-            if (!user.IsSuccess)
-                throw new BusinessException("غير مصرح بالدخول لك بالدخول على النظام");
-            return user;
+            if (id == 0)
+                id = UserId;
+            return _accountService.GetUserData(id);
+        }
+        [Authorize, HttpGet("GetCurrentUserRoles")]
+        public IApiResponse GetCurrentUserRoles()
+        {
+            return _accountService.GetCurrentUserRoles(UserId);
         }
 
-        [HttpGet("GetById/{id}")]
+        [Authorize, HttpGet("GetAuthUser")]
+        public IApiResponse GetAuthUser()
+        {
+            return _accountService.GetAuthUser(UserId);
+        }
+
+        [Authorize, HttpGet("GetById/{id}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse GetById(int id)
         {
             return _accountService.GetById(id);
         }
 
-        [HttpGet("GetByUserName/{userName}")]
+        [Authorize, HttpGet("GetByUserName/{userName}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse GetByUserName(string userName)
         {
             return _accountService.GetByUserName(userName);
         }
-        [HttpGet("GetByPhone/{phoneNumber}")]
+        [Authorize, HttpGet("GetByPhone/{phoneNumber}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse GetByPhone(string phoneNumber)
         {
             return _accountService.GetByPhone(phoneNumber);
         }
 
-        [HttpGet("UserExist/{userName}")]
+        [Authorize, HttpGet("UserExist/{userName}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
         public IApiResponse UserExist(string userName)
         {
             return _accountService.UserExist(userName);
-        }
-
-        [HttpPost]
-        [Route(("Register"))]
-        public IApiResponse Register([FromForm] CreateUserDto createUserDto)
-        {
-            return _accountService.Register(createUserDto);
         }
 
         [HttpPost]
@@ -83,12 +89,9 @@ namespace Emirates.API.Controllers
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                    new Claim("UserId",user.Id.ToString()),
-                    new Claim("Name", user.NameAr.ToString()),
-                    new Claim("Phone",user.PhoneNumber.ToString())
+                    new Claim("UserId",user.Id.ToString())
                    }),
-
-                    Expires = DateTime.UtcNow.AddDays(360),
+                    Expires = DateTime.UtcNow.AddHours(24),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -119,11 +122,103 @@ namespace Emirates.API.Controllers
             return _accountService.UpdatePassword(updatePasswordDto);
         }
 
-        [HttpPost]
-        [Route("ValidateOTP")]
-        public IApiResponse ValidateOTP(ValidateOTPDto validateOTPDto)
+
+        [HttpPost("CheckUserRegister")]
+        public IApiResponse CheckUserRegister(CheckUserRegisterDto checkUserRegisterDto)
         {
-            return _accountService.ValidateOTP(validateOTPDto);
+            return _accountService.CheckUserRegister(checkUserRegisterDto);
+        }
+        [HttpPost("Register")]
+        public IApiResponse Register(CreateUserDto createUserDto)
+        {
+            if (!ModelState.IsValid)
+                return new ApiResponse
+                {
+                    IsSuccess = false,
+                    Message = CustumMessages.MsgWarning("رجاء التأكد من صحة البيانات المدخلة")
+                };
+            return _accountService.Register(createUserDto);
+        }
+
+        [Authorize, HttpPost("UpdateUserProfile")]
+        public IApiResponse UpdateUserProfile(UpdateUserProfileDto updateUserProfileDto)
+        {
+            return _accountService.UpdateUserProfile(updateUserProfileDto);
+        }
+
+        [Authorize, HttpGet("GetUserProfileData/{id}")]
+        public IApiResponse GetUserProfileData(int id)
+        {
+            return _accountService.GetUserProfileData(id);
+        }
+        
+        [HttpGet("CreateEmployee/{userId}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
+        public IApiResponse CreateEmployee(int userId)
+        {
+            return _accountService.CreateEmployee(userId);
+        }
+        
+        [HttpGet("DeleteEmployee/{userId}")]
+        [AuthorizeAdmin((int)SystemEnums.Roles.SystemAdmin, (int)SystemEnums.Roles.UsersPermission)]
+        public IApiResponse DeleteEmployee(int userId)
+        {
+            return _accountService.DeleteEmployee(userId);
+        }
+
+        [HttpGet("IsSuperAdmin")]
+        public bool IsSuperAdmin()
+        {
+            return _accountService.IsUserInRoles(UserId, new int[] { (int)SystemEnums.Roles.SuperSystemAdmin });
+        }
+        [HttpGet("CheckIamUser/{nationalId}")]
+        public IApiResponse CheckIamUser(string nationalId)
+        {
+            var response = _accountService.CheckIamUser(nationalId);
+            var responseData = (CheckIamUserDto)response.Data;
+            if (responseData.IamLoginResponse == (int)SystemEnums.IamLoginResponse.Success)
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:TokenSigningKey").Value);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                        new Claim("UserId",responseData.UserId.ToString())
+                    }),
+                    Expires = DateTime.UtcNow.AddHours(24),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                responseData.TokenHandler = tokenHandler.WriteToken(token);
+                response.Data = responseData;
+            }
+            return response;
+        }
+
+        [HttpPost("CompleteUserData")]
+        public IApiResponse CompleteUserData(CompleteDataDto completeDataDto)
+        {
+            var response = _accountService.CompleteUserData(completeDataDto);
+            var responseData = (CheckIamUserDto)response.Data;
+            if (responseData.IamLoginResponse == (int)SystemEnums.IamLoginResponse.Success)
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:TokenSigningKey").Value);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                        new Claim("UserId",responseData.UserId.ToString())
+                    }),
+                    Expires = DateTime.UtcNow.AddHours(24),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                responseData.TokenHandler = tokenHandler.WriteToken(token);
+                response.Data = responseData;
+            }
+            return response;
         }
 
     }
