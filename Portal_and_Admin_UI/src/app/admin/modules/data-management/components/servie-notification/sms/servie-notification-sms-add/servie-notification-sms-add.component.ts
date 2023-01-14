@@ -28,7 +28,7 @@ export class ServieNotificationSmsAddComponent implements OnInit {
     this.serviceService.getLookupList().subscribe((response) => {
       this.services = response.data;
     });
-    this.serviceService.getStagesLookupList().subscribe((response) => {
+    this.serviceService.getNotifiedStagesLookupList().subscribe((response) => {
       this.stages = response.data;
     });
   }

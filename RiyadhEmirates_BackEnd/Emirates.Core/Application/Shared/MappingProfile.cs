@@ -201,6 +201,7 @@ namespace Emirates.Core.Application.Shared
                 .ForMember(dest => dest.CanEdit, src => src.MapFrom(m => m.Stage.CanEdit));
             CreateMap<Request, HandleSMSDto>()
                 .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
+                .ForMember(dest => dest.SendNotification, src => src.MapFrom(m => m.Stage.SendNotification))
                 .ForMember(dest => dest.MobileNumber, src => src.MapFrom(m => m.CreatedUser.PhoneNumber))
                 .ForMember(dest => dest.Email, src => src.MapFrom(m => m.CreatedUser.Email));
 

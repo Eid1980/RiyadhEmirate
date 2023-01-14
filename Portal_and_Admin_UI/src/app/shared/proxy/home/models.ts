@@ -34,6 +34,8 @@ export interface GetNewsSearchListDto {
 export interface GetRequestStatisticsDto {
   name: string;
   count: number;
+  backGroungColor: string;
+  borderColor: string;
 }
 
 export interface GetStatisticsDto {
@@ -44,4 +46,21 @@ export interface GetStatisticsDto {
   serviceRequests: GetRequestStatisticsDto[];
   stageRequests: GetRequestStatisticsDto[];
   governorateRequests: GetRequestStatisticsDto[];
+  serviceStageRequestStatistics: ServiceStageRequestStatistics;
+}
+
+export interface ServiceStageRequestStatistics {
+  labels: string[];
+  datasets: ServiceStageRequestStatisticsDatasets[];
+}
+export interface ServiceStageRequestStatisticsDatasets {
+  label: string;
+  data: number[];
+  fill: boolean;
+  backgroundColor: string;
+  borderColor: string;
+  pointBackgroundColor: string;
+  pointBorderColor: string;
+  pointHoverBackgroundColor: string;
+  pointHoverBorderColor: string;
 }

@@ -1,5 +1,4 @@
-﻿using EmaiReference;
-using Emirates.API.Controllers;
+﻿using Emirates.API.Controllers;
 using Emirates.API.Filters;
 using Emirates.Core.Application.Dtos;
 using Emirates.Core.Application.Dtos.Search;
@@ -7,7 +6,6 @@ using Emirates.Core.Application.Services.Requests;
 using Emirates.Core.Application.Services.Shared;
 using Emirates.Core.Application.Shared;
 using Microsoft.AspNetCore.Mvc;
-using SMSReference;
 
 namespace Edraak.API.Controllers
 {
@@ -142,17 +140,36 @@ namespace Edraak.API.Controllers
                 //        break;
                 //}
 
-                if (sendSMS && !string.IsNullOrEmpty(request.MobileNumber) && !string.IsNullOrEmpty(request.SmsMessage))
+                var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+                if (sendSMS && request.SendNotification && !string.IsNullOrEmpty(request.MobileNumber) && !string.IsNullOrEmpty(request.SmsMessage))
                 {
-                    request.SmsMessage = request.SmsMessage.Replace("رقم الطلب", request.RequestNumber);
-                    RPSMSSoapClient smsClient = new RPSMSSoapClient(new RPSMSSoapClient.EndpointConfiguration());
-                    smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
+                    if (environment == Environments.Production)
+                    {
+                        request.SmsMessage = request.SmsMessage.Replace("رقم الطلب", request.RequestNumber);
+                        SMS.RPSMSSoapClient smsClient = new SMS.RPSMSSoapClient(new SMS.RPSMSSoapClient.EndpointConfiguration());
+                        smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
+                    }
+                    else
+                    {
+                        request.SmsMessage = request.SmsMessage.Replace("رقم الطلب", request.RequestNumber);
+                        SMSReference.RPSMSSoapClient smsClient = new SMSReference.RPSMSSoapClient(new SMSReference.RPSMSSoapClient.EndpointConfiguration());
+                        smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
+                    }
                 }
-                if (sendEmail && !string.IsNullOrEmpty(request.Email) && !string.IsNullOrEmpty(request.EmailMessage))
+                if (sendEmail && request.SendNotification && !string.IsNullOrEmpty(request.Email) && !string.IsNullOrEmpty(request.EmailMessage))
                 {
-                    request.EmailMessage = request.EmailMessage.Replace("رقم الطلب", request.RequestNumber);
-                    emailSoapClient emailClient = new emailSoapClient(new emailSoapClient.EndpointConfiguration());
-                    emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
+                    if (environment == Environments.Production)
+                    {
+                        request.EmailMessage = request.EmailMessage.Replace("رقم الطلب", request.RequestNumber);
+                        Email.emailSoapClient emailClient = new Email.emailSoapClient(new Email.emailSoapClient.EndpointConfiguration());
+                        emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
+                    }
+                    else
+                    {
+                        request.EmailMessage = request.EmailMessage.Replace("رقم الطلب", request.RequestNumber);
+                        EmaiReference.emailSoapClient emailClient = new EmaiReference.emailSoapClient(new EmaiReference.emailSoapClient.EndpointConfiguration());
+                        emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
+                    }
                 }
             }
         }

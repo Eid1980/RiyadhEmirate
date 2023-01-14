@@ -17,6 +17,7 @@ namespace Emirates.Core.Application.Services
         IApiResponse Delete(int id);
         IApiResponse GetLookupList();
         IApiResponse GetStagesLookupList();
+        IApiResponse GetNotifiedStagesLookupList();
         IApiResponse GetServiceExplainAttachment(int id);
     }
 }

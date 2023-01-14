@@ -1,6 +1,17 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\admin",
+    "\\src\\app\\admin\\modules",
+    "\\src\\app\\admin\\modules\\home",
+    "\\src\\app\\admin\\modules\\home\\components",
+    "\\src\\app\\admin\\modules\\home\\components\\home",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\proxy",
+    "\\src\\app\\shared\\proxy\\home"
   ],
+  "SelectedNode": "\\src\\app\\admin\\modules\\home\\components\\home\\home.component.html",
   "PreviewInSolutionExplorer": false
 }

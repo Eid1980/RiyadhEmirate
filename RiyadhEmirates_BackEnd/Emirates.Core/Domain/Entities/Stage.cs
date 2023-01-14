@@ -6,6 +6,8 @@ namespace Emirates.Core.Domain.Entities
         public string NameAr { get; set; }
         public string NameEn { get; set; }
         public bool CanEdit { get; set; }
+        public bool CanAddNew { get; set; }
+        public bool SendNotification { get; set; }
         public bool IsActive { get; set; }
 
         public virtual User CreatedUser { get; set; }

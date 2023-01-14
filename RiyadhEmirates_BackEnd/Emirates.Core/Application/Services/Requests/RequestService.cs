@@ -239,7 +239,7 @@ namespace Emirates.Core.Application.Services.Requests
 
         public IApiResponse GetRequestSmsData(Guid id)
         {
-            var request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(id), include => include.CreatedUser, include => include.Service);
+            var request = _emiratesUnitOfWork.Requests.FirstOrDefault(l => l.Id.Equals(id), include => include.CreatedUser, include => include.Service, include => include.Stage);
             if (request == null)
                 return GetResponse();
 

@@ -10,10 +10,11 @@ export class HomeComponent implements OnInit {
   serviceRequestsData: any;
   stageRequestsData: any;
   governorateRequestsData: any;
+  serviceStageRequestStatistics: any;
   userCount: number;
   requestCount: number;
   requestFinishedCount: number;
-  achievePercent: number;
+  achievePercent: string;
   requestElectronicBoardsCount: number;
 
   constructor(private homeService: HomeService, private globalService: GlobalService)
@@ -29,13 +30,15 @@ export class HomeComponent implements OnInit {
       this.requestCount = result.requestCount;
       this.requestFinishedCount = result.requestFinishedCount;
       this.requestElectronicBoardsCount = result.requestElectronicBoardsCount;
-      this.achievePercent = this.requestFinishedCount / this.requestCount * 100;
+      this.achievePercent = (this.requestFinishedCount / this.requestCount * 100).toFixed(2);
 
       this.serviceRequestsData = {
         labels: result.serviceRequests.map((obj) => obj.name),
         datasets: [{
-          label: 'طلبات المراحل',
+          label: 'طلبات الخدمات',
           data: result.serviceRequests.map((obj) => obj.count),
+          backgroundColor: result.serviceRequests.map((obj) => obj.backGroungColor),
+          borderColor: result.serviceRequests.map((obj) => obj.borderColor),
           borderWidth: 1
         }]
       };
@@ -43,8 +46,10 @@ export class HomeComponent implements OnInit {
       this.stageRequestsData = {
         labels: result.stageRequests.map((obj) => obj.name),
         datasets: [{
-          label: 'طلبات الخدمات',
+          label: 'طلبات المراحل',
           data: result.stageRequests.map((obj) => obj.count),
+          backgroundColor: result.stageRequests.map((obj) => obj.backGroungColor),
+          borderColor: result.stageRequests.map((obj) => obj.borderColor),
           borderWidth: 1
         }]
       };
@@ -59,8 +64,7 @@ export class HomeComponent implements OnInit {
           tension: 0.1
         }]
       };
-
-
+      this.serviceStageRequestStatistics = result.serviceStageRequestStatistics;
     });
   }
 }

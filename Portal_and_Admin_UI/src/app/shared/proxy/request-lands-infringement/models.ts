@@ -3,9 +3,6 @@ export interface CreateRequestLandsInfringementDto {
   requestTypeId: number;
   estimatedSpace: string;
   governorateId: number;
-  address: string;
-  longitude: string;
-  latitude: string;
   infringerName: string;
   infringerDescription: string;
   notes: string;
@@ -16,9 +13,6 @@ export interface UpdateRequestLandsInfringementDto {
   requestTypeId: number;
   estimatedSpace: string;
   governorateId: number;
-  address: string;
-  longitude: string;
-  latitude: string;
   infringerName: string;
   infringerDescription: string;
   notes: string;
@@ -30,9 +24,6 @@ export interface RequestLandsInfringementDto {
   canEdit: boolean;
   estimatedSpace: string;
   governorateId: number;
-  address: string;
-  longitude: string;
-  latitude: string;
   infringerName: string;
   infringerDescription: string;
   notes: string;
@@ -52,9 +43,6 @@ export interface GetRequestLandsInfringementDetailsDto {
   requestTypeName: string;
   estimatedSpace: string;
   governorateName: string;
-  address: string;
-  longitude: string;
-  latitude: string;
   locationLink: string;
   infringerName: string;
   infringerDescription: string;

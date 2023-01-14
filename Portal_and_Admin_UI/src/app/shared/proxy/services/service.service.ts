@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
 import { CreateServiceDto, GetServiceDetailsDto, GetServiceListDto, UpdateServiceDto } from './models';
 import { LookupDto } from '../shared/lookup-dto.model';
-import { SearchModel } from '../shared/search-model.model';
 import { FileToUploadDto } from '../shared/file-to-upload-dto.model';
 
 @Injectable({
@@ -55,6 +54,10 @@ export class ServiceService {
   }
   getStagesLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
     return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetStagesLookupList`).pipe(
+    );
+  }
+  getNotifiedStagesLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
+    return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetNotifiedStagesLookupList`).pipe(
     );
   }
   getServiceExplainAttachment = (id: number): Observable<ApiResponse<any>> => {

@@ -90,6 +90,11 @@ namespace Emirates.API.Controllers
         {
             return _serviceService.GetStagesLookupList();
         }
+        [HttpGet("GetNotifiedStagesLookupList")]
+        public IApiResponse GetNotifiedStagesLookupList()
+        {
+            return _serviceService.GetNotifiedStagesLookupList();
+        }
 
         [AllowAnonymous, HttpGet("GetServiceExplainAttachment/{id}")]
         public IApiResponse GetServiceExplainAttachment(int id)

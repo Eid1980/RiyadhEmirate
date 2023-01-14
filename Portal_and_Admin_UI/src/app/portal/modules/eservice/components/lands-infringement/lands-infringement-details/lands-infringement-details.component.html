@@ -44,20 +44,8 @@
             <span class="form-val">{{ requestLandsInfringementDetailsDto?.estimatedSpace }}</span>
           </div>
           <div class="info-col col-md-6 col-12">
-            <span class="form-lbl lbl-33">المحافظة</span>
-            <span class="form-val">{{ requestLandsInfringementDetailsDto?.governorateName }}</span>
-          </div>
-          <div class="info-col col-md-6 col-12">
             <span class="form-lbl lbl-33">العنوان</span>
-            <span class="form-val" *ngIf="requestLandsInfringementDetailsDto?.address" [outerHTML]="requestLandsInfringementDetailsDto?.address | listString"></span>
-          </div>
-          <div class="info-col col-md-6 col-12">
-            <span class="form-lbl lbl-33">خط الطول</span>
-            <span class="form-val">{{ requestLandsInfringementDetailsDto?.longitude }}</span>
-          </div>
-          <div class="info-col col-md-6 col-12">
-            <span class="form-lbl lbl-33">خط العرض</span>
-            <span class="form-val">{{ requestLandsInfringementDetailsDto?.latitude }}</span>
+            <span class="form-val">{{ requestLandsInfringementDetailsDto?.governorateName }}</span>
           </div>
           <div class="info-col col-md-6 col-12">
             <span class="form-lbl lbl-33">اسم المتعدي</span>

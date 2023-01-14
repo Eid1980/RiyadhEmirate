@@ -67,9 +67,6 @@ export class LandsInfringementComponent implements OnInit {
       governorateId: [this.createRequestLandsInfringementDto.governorateId || null, Validators.required],
       estimatedSpace: [this.createRequestLandsInfringementDto.estimatedSpace || ''],
       infringerDescription: [this.createRequestLandsInfringementDto.infringerDescription || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      address: [this.createRequestLandsInfringementDto.address || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      longitude: [this.createRequestLandsInfringementDto.longitude || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      latitude: [this.createRequestLandsInfringementDto.latitude || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
       infringerName: [this.createRequestLandsInfringementDto.infringerName || ''],
       notes: [this.createRequestLandsInfringementDto.notes || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]]
     });

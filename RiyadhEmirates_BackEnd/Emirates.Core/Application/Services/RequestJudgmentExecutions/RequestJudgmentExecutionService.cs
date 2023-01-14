@@ -89,12 +89,8 @@ namespace Emirates.Core.Application.Services.RequestJudgmentExecutions
         }
         private bool CanCreate(int userId)
         {
-            return !_emiratesUnitOfWork.Requests.Where(x => x.ServiceId.Equals((int)SystemEnums.Services.JudgmentExecution) && x.CreatedBy.Equals(userId) &&
-                    (x.StageId.Equals((int)SystemEnums.Stages.Draft) ||
-                     x.StageId.Equals((int)SystemEnums.Stages.CompleteDataFromRequester) ||
-                     x.StageId.Equals((int)SystemEnums.Stages.NewRequest) ||
-                     x.StageId.Equals((int)SystemEnums.Stages.UnderProcessing))
-                    ).Any();
+            return !_emiratesUnitOfWork.Requests.Where(x => x.ServiceId.Equals((int)SystemEnums.Services.JudgmentExecution) &&
+                   x.CreatedBy.Equals(userId) && !x.Stage.CanAddNew).Any();
         }
     }
 }

@@ -36,48 +36,17 @@
                      id="estimatedSpace" />
             </div>
             <div class="form-group col-md-6">
-              <label for="governorateId" class="form-lbl">المحافظة<span class="danger">*</span></label>
+              <label for="governorateId" class="form-lbl">العنوان<span class="danger">*</span></label>
               <select class="form-control form-select" formControlName="governorateId" [ngClass]="{
                   invalid:
                   (isFormSubmitted || landsInfringementForm.get('governorateId').touched) &&
                   landsInfringementForm.get('governorateId').errors?.required}">
-                <option [ngValue]="null">-- اختر المحافظة --</option>
+                <option [ngValue]="null">-- اختر العنوان --</option>
                 <option *ngFor="let governorate of governorates" [ngValue]="governorate.id">
                   {{ governorate.name }}
                 </option>
               </select>
               <small *ngIf="(isFormSubmitted || landsInfringementForm.get('governorateId').touched) && landsInfringementForm.get('governorateId').errors?.required"
-                     class="danger">هذاالحقل مطلوب</small>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="address" class="form-lbl">العنوان<span class="danger">*</span></label>
-              <textarea type="text" class="form-control" autocomplete="off" formControlName="address" id="address"
-                        [ngClass]="{
-                  invalid:
-                  (isFormSubmitted || landsInfringementForm.get('address').touched) &&
-                  landsInfringementForm.get('address').errors?.required}">
-                </textarea>
-              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('address').touched) && landsInfringementForm.get('address').errors?.required"
-                     class="danger">هذاالحقل مطلوب</small>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="longitude" class="form-lbl">خط الطول<span class="danger">*</span></label>
-              <input type="text" class="form-control" autocomplete="off" formControlName="longitude" id="longitude"
-                     [ngClass]="{
-                  invalid:
-                  (isFormSubmitted || landsInfringementForm.get('longitude').touched) &&
-                  landsInfringementForm.get('longitude').errors?.required}" />
-              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('longitude').touched) && landsInfringementForm.get('longitude').errors?.required"
-                     class="danger">هذاالحقل مطلوب</small>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="latitude" class="form-lbl">خط العرض<span class="danger">*</span></label>
-              <input type="text" class="form-control" autocomplete="off" formControlName="latitude" id="latitude"
-                     [ngClass]="{
-                  invalid:
-                  (isFormSubmitted || landsInfringementForm.get('latitude').touched) &&
-                  landsInfringementForm.get('latitude').errors?.required}" />
-              <small *ngIf="(isFormSubmitted || landsInfringementForm.get('latitude').touched) && landsInfringementForm.get('latitude').errors?.required"
                      class="danger">هذاالحقل مطلوب</small>
             </div>
             <div class="form-group col-md-6">
@@ -96,7 +65,7 @@
               <small *ngIf="(isFormSubmitted || landsInfringementForm.get('infringerDescription').touched) && landsInfringementForm.get('infringerDescription').errors?.required"
                      class="danger">هذاالحقل مطلوب</small>
             </div>
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
               <label for="notes" class="form-lbl">تفاصيل اضافية<span class="danger">*</span></label>
               <textarea type="text" class="form-control" autocomplete="off" formControlName="notes" id="notes"
                         [ngClass]="{

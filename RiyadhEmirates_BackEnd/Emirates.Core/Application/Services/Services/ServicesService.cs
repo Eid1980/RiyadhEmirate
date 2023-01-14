@@ -167,6 +167,15 @@ namespace Emirates.Core.Application.Services
                 Name = item.NameAr
             }).ToList());
         }
+        public IApiResponse GetNotifiedStagesLookupList()
+        {
+            return GetResponse(data: _emiratesUnitOfWork.Stages.Where(l => l.IsActive && l.SendNotification).Select(item =>
+            new LookupDto<int>
+            {
+                Id = item.Id,
+                Name = item.NameAr
+            }).ToList());
+        }
         public IApiResponse GetServiceExplainAttachment(int id)
         {
             return GetResponse(data: _fileManagerService.GetBase64File(id, "ServiceExplain"));
