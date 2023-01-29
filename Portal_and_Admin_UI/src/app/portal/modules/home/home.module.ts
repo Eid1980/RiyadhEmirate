@@ -36,6 +36,10 @@ import { ServicesListComponent } from './components/services-list/services-list.
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
 import { GrmComponent } from './components/grm/grm.component';
 import { AuctionsComponent } from './components/auctions/auctions.component';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environment';
+import { LetterSearchComponent } from './components/transaction-inquiry/letter-search/letter-search.component';
+import { TransactionSearchComponent } from './components/transaction-inquiry/transaction-search/transaction-search.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,9 @@ import { AuctionsComponent } from './components/auctions/auctions.component';
     TransactionInquiryComponent,
     AuctionDetailsComponent,
     GrmComponent,
-    AuctionsComponent
+    AuctionsComponent,
+    LetterSearchComponent,
+    TransactionSearchComponent
   ],
   imports: [
     SharedModule,
@@ -77,6 +83,9 @@ import { AuctionsComponent } from './components/auctions/auctions.component';
     CoreModule,
     RatingModule,
     NgxPrintModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.mapsApiKey//'AIzaSyCoBSUMAtGMk2QMuDlT_sANbK8DcGwceSQ'
+    }),
   ],
   exports: [],
   providers: [],

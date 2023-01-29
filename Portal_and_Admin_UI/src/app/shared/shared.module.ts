@@ -45,7 +45,6 @@ import { ServiceFilterPipe } from './pipes/service-filter.pipe';
 import {ButtonModule} from 'primeng/button';
 import { FullDatePipe } from './pipes/full-date.pipe';
 import { ListStringPipe } from './pipes/list-string.pipe';
-import { AgmCoreModule } from '@agm/core';
 import { NgxCaptchaModule } from 'ngx-captcha'
 
 @NgModule({
@@ -100,9 +99,6 @@ import { NgxCaptchaModule } from 'ngx-captcha'
     //    deps: [HttpClient],
     //  },
     //}),
-    AgmCoreModule.forRoot({
-      apiKey: ''
-    }),
     NgxCaptchaModule
   ],
   exports: [
@@ -145,7 +141,6 @@ import { NgxCaptchaModule } from 'ngx-captcha'
     ServiceFilterPipe,
     TranslateModule,
     ButtonModule,
-    AgmCoreModule,
     NgxCaptchaModule
   ],
   providers: [

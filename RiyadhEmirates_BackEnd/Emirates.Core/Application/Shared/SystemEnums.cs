@@ -72,5 +72,26 @@
             public static string Services = "services";
             public static string Auctions = "auctions";
         }
+
+        #region Inquery
+        public enum Provices
+        {
+            EmirateCourt = 101
+        }
+        public static class TransactionTypes
+        {
+            public static string Outgoing = "1";
+            public static string Incoming = "2";
+        }
+        public static class TransactionClasses
+        {
+            public static string General = "1";
+            public static string Petitions = "2";
+            public static string Telegraphic = "4";
+            public static string PrivateOffice = "5";
+            public static string AudienceReception = "8";
+        }
+
+        #endregion
     }
 }

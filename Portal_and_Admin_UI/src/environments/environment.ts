@@ -8,6 +8,7 @@ export const environment = {
   cryptionKey: "Emirates@2023",
   ApiUrl: "http://localhost:5000",
   lastSieUpdate: "2022/10/30",
+  mapsApiKey: "AIzaSyCoBSUMAtGMk2QMuDlT_sANbK8DcGwceSQ",
 
   allowedExtensions: 'image/*',
   fileSize: 4000000,

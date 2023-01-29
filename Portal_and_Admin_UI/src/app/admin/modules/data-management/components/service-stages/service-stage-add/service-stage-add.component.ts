@@ -39,11 +39,11 @@ export class ServiceStageAddComponent implements OnInit {
     this.createServiceStageForm = this.formBuilder.group({
       serviceId: [
         this.createServiceStageDto.serviceId || null,
-        Validators.required,
+        Validators.required
       ],
       stageId: [
         this.createServiceStageDto.stageId || null,
-        Validators.required,
+        Validators.required
       ],
       requesterUrl: [this.createServiceStageDto.requesterUrl],
       adminUrl: [this.createServiceStageDto.adminUrl],

@@ -4,6 +4,7 @@ export const environment = {
   cryptionKey: "Emirates@2023",
   ApiUrl: "https://new.riyadh.gov.sa:9090",
   lastSieUpdate: "2022/12/15",
+  mapsApiKey: "AIzaSyCoBSUMAtGMk2QMuDlT_sANbK8DcGwceSQ",
 
   allowedExtensions: 'image/*',
   fileSize: 4000000,

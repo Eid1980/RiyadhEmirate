@@ -20,17 +20,33 @@ namespace InqueryReference
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getMoamalahAsync(string Type, string Class, string intYear, string intNumber, int provinceID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getMoamalahById", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getMoamalahByRefID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getMoamalahByIdAsync(string RefID, int provinceid);
+        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getMoamalahByRefIDAsync(string RefID, int provinceid);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getMoamlahUsingID", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getMoamlahByID", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getMoamlahUsingIDAsync(string ID, int provinceid);
+        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getMoamlahByIDAsync(string ID, int provinceid);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getExternelOrgById", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getAllExternelEntities", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getExternelOrgByIdAsync(int ExternalEntity, int SubExternalEntity, int SubSubExternalEntity);
+        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getAllExternelEntitiesAsync(int ExternalEntity, int SubExternalEntity, int SubSubExternalEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getExternalEntity", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getExternalEntityAsync(int provinceID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getSubExternalEntity", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getSubExternalEntityAsync(string ExternalEntity, int provinceID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getSubSubExternalEntity", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getSubSubExternalEntityAsync(int provinceID, string ExternalEntity, string SubExternalEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getLetterBySearch", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getLetterBySearchAsync(int ExternalEntity, int SubExternalEntity, int SubSubExternalEntity, string SearchClass, string IntYear, string LetterNo, int provinceID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
@@ -81,19 +97,39 @@ namespace InqueryReference
             return base.Channel.getMoamalahAsync(Type, Class, intYear, intNumber, provinceID);
         }
         
-        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getMoamalahByIdAsync(string RefID, int provinceid)
+        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getMoamalahByRefIDAsync(string RefID, int provinceid)
         {
-            return base.Channel.getMoamalahByIdAsync(RefID, provinceid);
+            return base.Channel.getMoamalahByRefIDAsync(RefID, provinceid);
         }
         
-        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getMoamlahUsingIDAsync(string ID, int provinceid)
+        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getMoamlahByIDAsync(string ID, int provinceid)
         {
-            return base.Channel.getMoamlahUsingIDAsync(ID, provinceid);
+            return base.Channel.getMoamlahByIDAsync(ID, provinceid);
         }
         
-        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getExternelOrgByIdAsync(int ExternalEntity, int SubExternalEntity, int SubSubExternalEntity)
+        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getAllExternelEntitiesAsync(int ExternalEntity, int SubExternalEntity, int SubSubExternalEntity)
         {
-            return base.Channel.getExternelOrgByIdAsync(ExternalEntity, SubExternalEntity, SubSubExternalEntity);
+            return base.Channel.getAllExternelEntitiesAsync(ExternalEntity, SubExternalEntity, SubSubExternalEntity);
+        }
+        
+        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getExternalEntityAsync(int provinceID)
+        {
+            return base.Channel.getExternalEntityAsync(provinceID);
+        }
+        
+        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getSubExternalEntityAsync(string ExternalEntity, int provinceID)
+        {
+            return base.Channel.getSubExternalEntityAsync(ExternalEntity, provinceID);
+        }
+        
+        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getSubSubExternalEntityAsync(int provinceID, string ExternalEntity, string SubExternalEntity)
+        {
+            return base.Channel.getSubSubExternalEntityAsync(provinceID, ExternalEntity, SubExternalEntity);
+        }
+        
+        public System.Threading.Tasks.Task<InqueryReference.ArrayOfXElement> getLetterBySearchAsync(int ExternalEntity, int SubExternalEntity, int SubSubExternalEntity, string SearchClass, string IntYear, string LetterNo, int provinceID)
+        {
+            return base.Channel.getLetterBySearchAsync(ExternalEntity, SubExternalEntity, SubSubExternalEntity, SearchClass, IntYear, LetterNo, provinceID);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

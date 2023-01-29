@@ -26,7 +26,7 @@ namespace Emirates.Core.Application.Services.Accounts
         IApiResponse CreateEmployee(int userId);
         IApiResponse DeleteEmployee(int userId);
         bool IsUserInRoles(int userId, int[] roles);
-        IApiResponse CheckIamUser(string nationalId);
+        IApiResponse CheckIamUser(CheckIamUserRequestDto checkIamUserDto);
         IApiResponse CompleteUserData(CompleteDataDto completeDataDto);
     }
 }

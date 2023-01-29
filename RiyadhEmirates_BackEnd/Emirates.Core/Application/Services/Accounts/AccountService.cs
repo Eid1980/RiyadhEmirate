@@ -312,14 +312,14 @@ namespace Emirates.Core.Application.Services.Accounts
             return _emiratesUnitOfWork.UserRoles.Where(x => x.UserId.Equals(userId) && roles.Contains(x.RoleId)).Any();
         }
 
-        public IApiResponse CheckIamUser(string nationalId)
+        public IApiResponse CheckIamUser(CheckIamUserRequestDto checkIamUserDto)
         {
             // decript national id with check
             string Id = "";
             var checkIamUser = new CheckIamUserDto();
-            try { Id = CryptorEngine.Decrypt(nationalId, true); } 
+            try { Id = CryptorEngine.Decrypt(checkIamUserDto.NationalId, true); } 
             catch {
-                try { Id = CryptorEngine.Decrypt(nationalId.Replace("%3D", "=").Replace("%2B", "+"), true); }
+                try { Id = CryptorEngine.Decrypt(checkIamUserDto.NationalId.Replace("%3D", "=").Replace("%2B", "+").Replace("%2F", "/"), true); }
                 catch { }
             }
             if (!string.IsNullOrEmpty(Id))

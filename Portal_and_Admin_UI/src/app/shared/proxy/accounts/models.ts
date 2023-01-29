@@ -129,4 +129,8 @@ export interface CompleteDataDto {
   address: string;
 }
 
+export interface CheckIamUserRequestDto {
+  nationalId: string;
+}
+
 

@@ -117,6 +117,8 @@ namespace Edraak.API.Controllers
             {
                 bool sendSMS = Convert.ToBoolean(_config.GetSection("AppSettings:SendSMS").Value);
                 bool sendEmail = Convert.ToBoolean(_config.GetSection("AppSettings:SendEmail").Value);
+
+                #region Static messages
                 //switch (request.StageId)
                 //{
                 //    case (int)SystemEnums.Stages.NewRequest:
@@ -139,37 +141,29 @@ namespace Edraak.API.Controllers
                 //        messageBody = "";
                 //        break;
                 //}
+                #endregion
 
-                var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
                 if (sendSMS && request.SendNotification && !string.IsNullOrEmpty(request.MobileNumber) && !string.IsNullOrEmpty(request.SmsMessage))
                 {
-                    if (environment == Environments.Production)
-                    {
-                        request.SmsMessage = request.SmsMessage.Replace("رقم الطلب", request.RequestNumber);
-                        SMS.RPSMSSoapClient smsClient = new SMS.RPSMSSoapClient(new SMS.RPSMSSoapClient.EndpointConfiguration());
-                        smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
-                    }
-                    else
-                    {
-                        request.SmsMessage = request.SmsMessage.Replace("رقم الطلب", request.RequestNumber);
-                        SMSReference.RPSMSSoapClient smsClient = new SMSReference.RPSMSSoapClient(new SMSReference.RPSMSSoapClient.EndpointConfiguration());
-                        smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
-                    }
+                    request.SmsMessage = request.SmsMessage.Replace("رقم الطلب", request.RequestNumber);
+                    // Production
+                    SMS.RPSMSSoapClient smsClient = new SMS.RPSMSSoapClient(new SMS.RPSMSSoapClient.EndpointConfiguration());
+                    smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
+                    
+                    //// Development
+                    //SMSReference.RPSMSSoapClient smsClient = new SMSReference.RPSMSSoapClient(new SMSReference.RPSMSSoapClient.EndpointConfiguration());
+                    //smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
                 }
                 if (sendEmail && request.SendNotification && !string.IsNullOrEmpty(request.Email) && !string.IsNullOrEmpty(request.EmailMessage))
                 {
-                    if (environment == Environments.Production)
-                    {
-                        request.EmailMessage = request.EmailMessage.Replace("رقم الطلب", request.RequestNumber);
-                        Email.emailSoapClient emailClient = new Email.emailSoapClient(new Email.emailSoapClient.EndpointConfiguration());
-                        emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
-                    }
-                    else
-                    {
-                        request.EmailMessage = request.EmailMessage.Replace("رقم الطلب", request.RequestNumber);
-                        EmaiReference.emailSoapClient emailClient = new EmaiReference.emailSoapClient(new EmaiReference.emailSoapClient.EndpointConfiguration());
-                        emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
-                    }
+                    request.EmailMessage = request.EmailMessage.Replace("رقم الطلب", request.RequestNumber);
+                    // Production
+                    Email.emailSoapClient emailClient = new Email.emailSoapClient(new Email.emailSoapClient.EndpointConfiguration());
+                    emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
+
+                    //// Development
+                    //EmaiReference.emailSoapClient emailClient = new EmaiReference.emailSoapClient(new EmaiReference.emailSoapClient.EndpointConfiguration());
+                    //emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
                 }
             }
         }

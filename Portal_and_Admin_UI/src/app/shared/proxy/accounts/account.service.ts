@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { CheckIamUserDto, CompleteDataDto, ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserProfileData, GetUserSessionDto, ResetPasswordDto, UpdateUserProfileDto, UserLoginDto } from './models';
+import { CheckIamUserDto, CheckIamUserRequestDto, CompleteDataDto, ForgetPasswordDto, GetUserDataDto, GetUserDto, GetUserProfileData, GetUserSessionDto, ResetPasswordDto, UpdateUserProfileDto, UserLoginDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { CreateUserDto } from './register.model';
 
@@ -116,8 +116,8 @@ export class AccountService {
   isSuperAdmin = (): Observable<boolean> => {
     return this.httpClient.get<boolean>(`${this.serviceUrl}/IsSuperAdmin`).pipe();
   }
-  checkIamUser = (nationalId: string): Observable<ApiResponse<CheckIamUserDto>> => {
-    return this.httpClient.get<ApiResponse<CheckIamUserDto>>(`${this.serviceUrl}/CheckIamUser/${nationalId}`).pipe();
+  checkIamUser = (checkIamUserRequestDto: CheckIamUserRequestDto): Observable<ApiResponse<CheckIamUserDto>> => {
+    return this.httpClient.post<ApiResponse<CheckIamUserDto>>(`${this.serviceUrl}/CheckIamUser`, checkIamUserRequestDto).pipe();
   }
   completeUserData = (completeDataDto: CompleteDataDto): Observable<ApiResponse<CheckIamUserDto>> => {
     return this.httpClient.post<ApiResponse<CheckIamUserDto>>(`${this.serviceUrl}/CompleteUserData`, completeDataDto).pipe();

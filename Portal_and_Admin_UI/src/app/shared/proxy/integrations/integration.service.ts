@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
-import { SendEmailRequest, SendSMSRequest } from './models';
+import { EntityTableDto, GetSubSubExternalEntityRequestDto, LetterAdvancedSearchRequedtDto, LetterAdvancedSearchResponse, SendEmailRequest, SendSMSRequest } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +19,19 @@ export class IntegrationService {
   sendEmail = (request: SendEmailRequest): Observable<ApiResponse<boolean>> => {
     return this.httpClient.post<ApiResponse<boolean>>(`${this.serviceUrl}/SendEmail`, request).pipe();
   }
+
+  getExternalEntityAsync = (): Observable<ApiResponse<EntityTableDto[]>> => {
+    return this.httpClient.get<ApiResponse<EntityTableDto[]>>(`${this.serviceUrl}/GetExternalEntityAsync`).pipe();
+  }
+  getSubExternalEntityAsync = (externalEntity: string): Observable<ApiResponse<EntityTableDto[]>> => {
+    return this.httpClient.get<ApiResponse<EntityTableDto[]>>(`${this.serviceUrl}/GetSubExternalEntityAsync/${externalEntity}`).pipe();
+  }
+  getSubSubExternalEntityAsync = (request: GetSubSubExternalEntityRequestDto): Observable<ApiResponse<EntityTableDto[]>> => {
+    return this.httpClient.post<ApiResponse<EntityTableDto[]>>(`${this.serviceUrl}/GetSubSubExternalEntityAsync`, request).pipe();
+  }
+  getLetterBySearchAsync = (request: LetterAdvancedSearchRequedtDto): Observable<ApiResponse<LetterAdvancedSearchResponse[]>> => {
+    return this.httpClient.post<ApiResponse<LetterAdvancedSearchResponse[]>>(`${this.serviceUrl}/GetLetterBySearchAsync`, request).pipe();
+  }
+
 
 }

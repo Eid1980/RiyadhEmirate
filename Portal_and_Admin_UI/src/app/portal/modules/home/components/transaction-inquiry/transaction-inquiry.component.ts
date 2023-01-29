@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GlobalService } from '@shared/services/global.service';
+import { LookupDto } from '@shared/proxy/shared/lookup-dto.model';
+import { LetterSearchComponent } from './letter-search/letter-search.component';
+
 
 @Component({
   selector: 'app-transaction-inquiry',
   templateUrl: './transaction-inquiry.component.html'
 })
 export class TransactionInquiryComponent implements OnInit {
-  transactionsAdvancedSearch: any = false;
-  transactionsSearchResult: any = false;
+  @ViewChild(LetterSearchComponent, { static: true }) letterSearchComponent: LetterSearchComponent;
+  years = [] as LookupDto<string>[];
+  transactionsAdvancedSearch: boolean = false;
+  transactionsSearchResult: boolean = false;
+  currentYear: string = '';
 
-  lettersAdvancedSearch: any = false;
-  lettersSearchResult: any = false;
 
   constructor(private globalService: GlobalService)
   {
@@ -18,6 +22,14 @@ export class TransactionInquiryComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalService.setTitle('الاستعلام عن المعاملات');
+    if (this.years.length <= 0) {
+      this.currentYear = this.getCurrentHijriYear();
+      if (this.currentYear) {
+        for (let i = +this.currentYear; i >= 1429; i--) {
+          this.years.push({ id: i.toString(), name: i.toString() } as LookupDto<string>)
+        }
+      }
+    }
   }
   showTransactionsAdvancedSearch() {
     this.transactionsSearchResult = false;
@@ -29,14 +41,17 @@ export class TransactionInquiryComponent implements OnInit {
     this.transactionsSearchResult = !this.transactionsSearchResult;
   }
 
-  showLettersAdvancedSearch() {
-    this.lettersSearchResult = false;
-    this.lettersAdvancedSearch = !this.lettersAdvancedSearch;
+
+  getCurrentHijriYear() {
+    return new Date().toLocaleString('en-u-ca-islamic', {
+      year: 'numeric'
+    }).toLowerCase().replace(' ah', '');
+  }
+  showLettersSearch() {
+    this.letterSearchComponent.clear();
   }
 
-  lettersSearch() {
-    this.lettersAdvancedSearch = false;
-    this.lettersSearchResult = !this.lettersSearchResult;
-  }
 
+
+  
 }

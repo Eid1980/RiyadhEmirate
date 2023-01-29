@@ -270,26 +270,30 @@ namespace Emirates.InfraStructure.Contexts
             {
                 b.ToTable("IamResponses", EmiratesDbSchemas.AuthSehema);
                 b.Property(x => x.NationalId).HasMaxLength(EmiratesConstants.MaxShortLength).IsRequired();
+                b.Property(x => x.ArabicNationality).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.Nationality).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+
                 b.Property(x => x.FirstNameAr).HasMaxLength(EmiratesConstants.MaxShortLength);
+                b.Property(x => x.SecondNameAr).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.ThirdNameAr).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.LastNameAr).HasMaxLength(EmiratesConstants.MaxShortLength);
+
                 b.Property(x => x.FirstNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.SecondNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.ThirdNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
                 b.Property(x => x.LastNameEn).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.IdIssuePlaceCode).HasMaxLength(EmiratesConstants.MaxShortLength);
+
+                b.Property(x => x.AssuranceLevel).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.CardIssueDateGregorian).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.CardIssueDateHijri).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+
+                b.Property(x => x.IssueLocationAr).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.IssueLocationEn).HasMaxLength(EmiratesConstants.MaxLongNameLength);
                 b.Property(x => x.IdIssuePlaceDescAr).HasMaxLength(EmiratesConstants.MaxLongNameLength);
                 b.Property(x => x.IdIssuePlaceDescEn).HasMaxLength(EmiratesConstants.MaxLongNameLength);
-                b.Property(x => x.IsGovernmentEmployee).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.JobCategoryCode).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.JobCategoryDescAr).HasMaxLength(EmiratesConstants.MaxLongNameLength);
-                b.Property(x => x.JobCategoryDescEn).HasMaxLength(EmiratesConstants.MaxLongNameLength);
-                b.Property(x => x.LifeStatusCode).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.LifeStatusDescAr).HasMaxLength(EmiratesConstants.MaxLongNameLength);
-                b.Property(x => x.LifeStatusDescEn).HasMaxLength(EmiratesConstants.MaxLongNameLength);
-                b.Property(x => x.MaritalStatusCode).HasMaxLength(EmiratesConstants.MaxShortLength);
-                b.Property(x => x.MaritalStatusDescAr).HasMaxLength(EmiratesConstants.MaxLongNameLength);
-                b.Property(x => x.MaritalStatusDescEn).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+
+                b.Property(x => x.IqamaExpirationDateH).HasMaxLength(EmiratesConstants.MaxLongNameLength);
+                b.Property(x => x.IdExpirationDateH).HasMaxLength(EmiratesConstants.MaxLongNameLength);
             });
             #endregion
 

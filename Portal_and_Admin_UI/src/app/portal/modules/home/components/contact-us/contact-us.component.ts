@@ -12,8 +12,8 @@ import { GlobalService } from '@shared/services/global.service';
   templateUrl: './contact-us.component.html'
 })
 export class ContactUsComponent implements OnInit {
-  lat: number = 24.738823381268524;
-  lng: number = 46.64890079854117;
+  lat: number = 24.62879282905812;
+  lng: number = 46.71085513899184;
 
   createContactUsform: FormGroup;
   isFormSubmitted: boolean;

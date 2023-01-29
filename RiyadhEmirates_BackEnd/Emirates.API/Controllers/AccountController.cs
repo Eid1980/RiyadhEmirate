@@ -171,10 +171,11 @@ namespace Emirates.API.Controllers
         {
             return _accountService.IsUserInRoles(UserId, new int[] { (int)SystemEnums.Roles.SuperSystemAdmin });
         }
-        [HttpGet("CheckIamUser/{nationalId}")]
-        public IApiResponse CheckIamUser(string nationalId)
+
+        [HttpPost("CheckIamUser")]
+        public IApiResponse CheckIamUser(CheckIamUserRequestDto checkIamUserDto)
         {
-            var response = _accountService.CheckIamUser(nationalId);
+            var response = _accountService.CheckIamUser(checkIamUserDto);
             var responseData = (CheckIamUserDto)response.Data;
             if (responseData.IamLoginResponse == (int)SystemEnums.IamLoginResponse.Success)
             {
