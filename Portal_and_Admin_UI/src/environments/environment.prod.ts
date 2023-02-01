@@ -3,8 +3,9 @@ export const environment = {
 
   cryptionKey: "Emirates@2023",
   ApiUrl: "https://new.riyadh.gov.sa:9090",
-  lastSieUpdate: "2022/12/15",
+  lastSieUpdate: "2023/02/02",
   mapsApiKey: "AIzaSyCoBSUMAtGMk2QMuDlT_sANbK8DcGwceSQ",
+  recaptchaSiteKey: "6LedlEUkAAAAABDpaGAmBtIb6Kba3awm88bQHCXh",
 
   allowedExtensions: 'image/*',
   fileSize: 4000000,

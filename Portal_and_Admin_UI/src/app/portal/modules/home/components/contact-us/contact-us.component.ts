@@ -6,6 +6,7 @@ import { CreateContactUsMessageDto } from '@shared/proxy/contact-us-messages/mod
 import { LookupDto } from '@shared/proxy/shared/lookup-dto.model';
 import { LookupService } from '@shared/proxy/shared/lookup.service';
 import { GlobalService } from '@shared/services/global.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-contact-us',
@@ -14,6 +15,7 @@ import { GlobalService } from '@shared/services/global.service';
 export class ContactUsComponent implements OnInit {
   lat: number = 24.62879282905812;
   lng: number = 46.71085513899184;
+  siteKey: string = environment.recaptchaSiteKey;
 
   createContactUsform: FormGroup;
   isFormSubmitted: boolean;

@@ -3,9 +3,11 @@
 <div class="py-5" *ngIf="!lettersAdvancedSearch">
   <div class="d-flex align-items-end justify-content-center flex-wrap">
     <div class="my-1">
-      <label class="fa-16 text-muted mb-2 fw-normal" for="letterNumber">رقم الخطاب</label>
-      <input type="text" class="form-control mw-300 input-lg py-3" placeholder="ادخل رقم الخطاب" [(ngModel)]="letterNumber" />
-      <small class="danger">البحث: الجهات: كل الجهات , المجال: عام , السنة: {{currentYear}}</small>
+      <label class="fa-16 text-muted mb-2 fw-normal" for="letterNumber">
+        <span>رقم الخطاب</span>
+        <small class="text-primary-alt-3 me-2">(البحث: الجهات: كل الجهات , المجال: عام , السنة: {{currentYear}})</small>
+      </label>
+      <input type="text" autocomplete="off" class="form-control mw-300 input-lg py-3" placeholder="ادخل رقم الخطاب" [(ngModel)]="letterNumber" />
     </div>
 
     <div class="d-flex align-items-center me-sm-5 my-1">
@@ -118,15 +120,46 @@
 <div class="border-top mx-3 pt-4" *ngIf="lettersSearchResult">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="d-flex align-items-center justify-content-between mb-4">
-        <h5 class="fw-bold mb-0">الإستعلام عن الخطابات</h5>
-        <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2">
-          <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
-          <span class="fa-12">طباعة</span>
-        </button>
-      </div>
-
       <div class="table-responsive">
+        <p-table #letterAdvancedSearch [value]="letterAdvancedSearchResponse" [rowHover]="true"
+                 [scrollable]="true" [lazy]="true" dataKey="id" [autoLayout]="true" [responsive]="true" class="w-100">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th>م</th>
+              <th>رقم الخطاب</th>
+              <th>تاريخ الخطاب</th>
+              <th>الجهة الوارد مها</th>
+              <th>الإجراءات</th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-i="rowIndex" let-letterAdvanced>
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ letterAdvanced.letterNo }}</td>
+              <td>{{ letterAdvanced.letterDate }}</td>
+              <td>{{ letterAdvanced.externalEntity }}</td>
+              <td>
+                <a class="btn btn-primary mx-1 p-2" title="عرض المعاملة">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+              <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <!--<div class="d-flex align-items-center justify-content-between mb-4">
+          <h5 class="fw-bold mb-0">الإستعلام عن الخطابات</h5>
+          <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2">
+            <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
+            <span class="fa-12">طباعة</span>
+          </button>
+        </div>
         <table class="table table-bordered">
           <tbody>
             <tr>
@@ -154,7 +187,7 @@
               <td class="content">إدارة تنفيذ الاحكام</td>
             </tr>
           </tbody>
-        </table>
+        </table>-->
       </div>
     </div>
   </div>

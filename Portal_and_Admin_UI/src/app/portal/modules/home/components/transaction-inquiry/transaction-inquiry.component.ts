@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GlobalService } from '@shared/services/global.service';
 import { LookupDto } from '@shared/proxy/shared/lookup-dto.model';
 import { LetterSearchComponent } from './letter-search/letter-search.component';
+import { TransactionSearchComponent } from './transaction-search/transaction-search.component';
 
 
 @Component({
@@ -10,11 +11,9 @@ import { LetterSearchComponent } from './letter-search/letter-search.component';
 })
 export class TransactionInquiryComponent implements OnInit {
   @ViewChild(LetterSearchComponent, { static: true }) letterSearchComponent: LetterSearchComponent;
+  @ViewChild(TransactionSearchComponent, { static: true }) transactionSearchComponent: TransactionSearchComponent;
   years = [] as LookupDto<string>[];
-  transactionsAdvancedSearch: boolean = false;
-  transactionsSearchResult: boolean = false;
   currentYear: string = '';
-
 
   constructor(private globalService: GlobalService)
   {
@@ -31,16 +30,6 @@ export class TransactionInquiryComponent implements OnInit {
       }
     }
   }
-  showTransactionsAdvancedSearch() {
-    this.transactionsSearchResult = false;
-    this.transactionsAdvancedSearch = !this.transactionsAdvancedSearch;
-  }
-
-  transactionsSearch() {
-    this.transactionsAdvancedSearch = false;
-    this.transactionsSearchResult = !this.transactionsSearchResult;
-  }
-
 
   getCurrentHijriYear() {
     return new Date().toLocaleString('en-u-ca-islamic', {
@@ -50,8 +39,8 @@ export class TransactionInquiryComponent implements OnInit {
   showLettersSearch() {
     this.letterSearchComponent.clear();
   }
-
-
-
-  
+  showTransactionsSearch() {
+    this.transactionSearchComponent.clear();
+  }
+      
 }

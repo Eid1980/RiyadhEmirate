@@ -106,7 +106,7 @@ namespace Emirates.API.Controllers
 
             var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
             var data = await ReadXMLString<LetterAdvancedSearchResponseDto>(firstNode);
-            await GetSubSubExternalEntity(transaction, 101, 106);
+            //await GetSubSubExternalEntity(transaction, 101, 106);
             return new ApiResponse { IsSuccess = true, Data = data.LetterAdvancedSearchResponses };
         }
 

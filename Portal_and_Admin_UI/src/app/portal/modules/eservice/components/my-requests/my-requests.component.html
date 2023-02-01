@@ -58,8 +58,7 @@
         <p-table #myRequests [value]="myRequestListDto" [rowHover]="true" [paginator]="true"
           [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10"
           [totalRecords]="pagingMetaData?.totalItemCount" [scrollable]="true" [lazy]="true"
-          (onLazyLoad)="onTableLazyLoad($event)" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"
-          class="w-100">
+          (onLazyLoad)="onTableLazyLoad($event)" dataKey="id" [autoLayout]="true" [responsive]="true" class="w-100">
           <ng-template pTemplate="header" let-columns>
             <tr>
               <th>م</th>

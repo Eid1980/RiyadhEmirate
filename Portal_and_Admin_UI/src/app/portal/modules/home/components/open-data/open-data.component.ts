@@ -9,12 +9,14 @@ import { OpenDataReportService } from '@shared/proxy/open-data-reports/open-data
 import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { MessageType } from '@shared/enums/message-type.enum';
 import { FileManagerService } from '@shared/services/file-manager.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-open-data',
   templateUrl: './open-data.component.html'
 })
 export class OpenDataComponent implements OnInit {
+  siteKey: string = environment.recaptchaSiteKey;
   createOpenDataRequestform: FormGroup;
   isFormSubmitted: boolean;
   createOpenDataRequestDto = {} as CreateOpenDataRequestDto;

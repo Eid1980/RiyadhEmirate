@@ -114,9 +114,7 @@
                   <small *ngIf="(isFormSubmitted || createContactUsform.get('content').touched) && createContactUsform.get('content').errors?.required" class="danger">هذاالحقل مطلوب</small>
                 </div>
               </div>
-
-              <ngx-recaptcha2 formControlName="recaptcha"
-                              siteKey="6Lci6nciAAAAADi8IjVz8SlZxv1PAwVYZbGX4ZRf">
+              <ngx-recaptcha2 formControlName="recaptcha" [siteKey]="siteKey">
               </ngx-recaptcha2>
             </div>
           </div>

@@ -143,6 +143,8 @@ export class LetterSearchComponent implements OnInit {
     this.lettersAdvancedSearchForm.controls['subExternalEntity'].setValue('-1');
     this.lettersAdvancedSearchForm.controls['subSubExternalEntity'].setValue('-1');
     this.lettersAdvancedSearch = false;
+    this.lettersSearchResult = false;
+    this.letterAdvancedSearchResponse = [];
   }
 
 }
