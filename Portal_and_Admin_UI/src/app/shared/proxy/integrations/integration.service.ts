@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../shared/api-response.model';
-import { EntityTableDto, GetSubSubExternalEntityRequestDto, LetterAdvancedSearchRequedtDto, LetterAdvancedSearchResponse, SendEmailRequest, SendSMSRequest } from './models';
+import { EntityTableDto, GetSubSubExternalEntityRequestDto, GetTransactionResponseDto, LetterAdvancedSearchRequedtDto, LetterAdvancedSearchResponse, SendEmailRequest, SendSMSRequest, TransactionRequedtDto } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +33,8 @@ export class IntegrationService {
     return this.httpClient.post<ApiResponse<LetterAdvancedSearchResponse[]>>(`${this.serviceUrl}/GetLetterBySearchAsync`, request).pipe();
   }
 
+  getTransactionAsync = (request: TransactionRequedtDto): Observable<ApiResponse<GetTransactionResponseDto>> => {
+    return this.httpClient.post<ApiResponse<GetTransactionResponseDto>>(`${this.serviceUrl}/GetTransactionAsync`, request).pipe();
+  }
 
 }

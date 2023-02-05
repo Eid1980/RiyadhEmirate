@@ -3,6 +3,8 @@ import { IntegrationService } from '@shared/proxy/integrations/integration.servi
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EntityTableDto, GetSubSubExternalEntityRequestDto, LetterAdvancedSearchRequedtDto, LetterAdvancedSearchResponse } from '@shared/proxy/integrations/models';
 import { LookupDto } from '@shared/proxy/shared/lookup-dto.model';
+import { GlobalService } from '@shared/services/global.service';
+import { MessageType } from '@shared/enums/message-type.enum';
 
 @Component({
   selector: 'app-letter-search',
@@ -11,6 +13,7 @@ import { LookupDto } from '@shared/proxy/shared/lookup-dto.model';
 export class LetterSearchComponent implements OnInit {
   lettersAdvancedSearch: boolean = false;
   lettersSearchResult: boolean = false;
+  lettersSearchFinalResult: boolean = false;
   isFormSubmitted: boolean = false;
   letterNumber: string = '';
   lettersAdvancedSearchForm: FormGroup;
@@ -26,7 +29,8 @@ export class LetterSearchComponent implements OnInit {
   letterAdvancedSearchRequedtDto = {} as LetterAdvancedSearchRequedtDto;
   letterAdvancedSearchResponse = [] as LetterAdvancedSearchResponse[];
 
-  constructor(private integrationService: IntegrationService, private formBuilder: FormBuilder)
+  constructor(private integrationService: IntegrationService, private formBuilder: FormBuilder,
+    private globalService: GlobalService)
   {
   }
 
@@ -42,10 +46,10 @@ export class LetterSearchComponent implements OnInit {
     this.buildLettersAdvancedSearchForm();
   }
   showLettersSearch() {
+    this.lettersSearchResult = false;
     this.lettersAdvancedSearch = false;
-    this.buildLettersAdvancedSearchForm();
+    this.letterNumber = '';
   }
-
   buildLettersAdvancedSearchForm() {
     this.lettersAdvancedSearchForm = this.formBuilder.group({
       externalEntity: [this.letterAdvancedSearchRequedtDto.externalEntity || '-1'],
@@ -118,6 +122,9 @@ export class LetterSearchComponent implements OnInit {
       } as LetterAdvancedSearchRequedtDto;
       this.search();
     }
+    else {
+      this.globalService.messageAlert(MessageType.Warning, 'برجاء ادخال رقم الخطاب أولا');
+    }
   }
   search() {
     this.integrationService.getLetterBySearchAsync(this.letterAdvancedSearchRequedtDto).subscribe((response) => {
@@ -127,12 +134,20 @@ export class LetterSearchComponent implements OnInit {
       }
     });
   }
+  showFinalResult() {
+    ///////////////// MY CODE NOT COMPLETE
+    this.lettersSearchFinalResult = true;
+  }
+
   getMainEntityTableDto() {
     if (this.externalEntities.length <= 0) {
       this.integrationService.getExternalEntityAsync().subscribe((response) => {
         this.externalEntities = response.data;
       });
     }
+  }
+  closeLettersSearchFinalResult() {
+    this.lettersSearchFinalResult = false;
   }
   clear() {
     this.letterNumber = '';

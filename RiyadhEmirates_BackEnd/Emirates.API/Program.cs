@@ -164,6 +164,7 @@ try
 
     #region services
     DependencyContainer.RegisterServices(builder);
+    builder.Services.AddMemoryCache();
     #endregion
 
     builder.Services.AddHttpContextAccessor();

@@ -3,12 +3,14 @@ using Emirates.Core.Application.Services.Shared;
 using Emirates.Core.Application.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System.Data;
 using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using X.PagedList;
 using static Emirates.Core.Application.Shared.SystemEnums;
 
 namespace Emirates.API.Controllers
@@ -17,8 +19,13 @@ namespace Emirates.API.Controllers
     [ApiController]
     public class IntegrationController : BaseController
     {
-        public IntegrationController(ILocalizationService localizationService) : base(localizationService)
+        private readonly IMemoryCache _memoryCache;
+        private readonly IConfiguration _config;
+
+        public IntegrationController(IMemoryCache memoryCache, IConfiguration config, ILocalizationService localizationService) : base(localizationService)
         {
+            _memoryCache = memoryCache;
+            _config = config;
         }
 
         [HttpPost("SendSMS")]
@@ -48,19 +55,32 @@ namespace Emirates.API.Controllers
             return new ApiResponse { IsSuccess = true, Data = true };
         }
 
+
         #region Letter Search
         [AllowAnonymous, HttpGet("GetExternalEntityAsync")]
         public async Task<IApiResponse> GetExternalEntityAsync()
         {
-            InqueryReference.RPINQUERYSoapClient transaction = new InqueryReference.RPINQUERYSoapClient(new InqueryReference.RPINQUERYSoapClient.EndpointConfiguration());
-            var response = await transaction.getExternalEntityAsync((int)Provices.EmirateCourt);
-            if (response != null && response.Nodes.Count > 1)
+            string cacheName = "ExternalEntities";
+            List<EntityTableDto> externalEntities = null;
+            if (!_memoryCache.TryGetValue(cacheName, out externalEntities))
             {
-                var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
-                var data = await ReadXMLString<ExternalEntityDto>(firstNode);
-                return new ApiResponse { IsSuccess = true, Data = data.ExternalEntityTables };
+                InqueryReference.RPINQUERYSoapClient transaction = new InqueryReference.RPINQUERYSoapClient(new InqueryReference.RPINQUERYSoapClient.EndpointConfiguration());
+                var response = await transaction.getExternalEntityAsync((int)Provices.EmirateCourt);
+                if (response != null && response.Nodes.Count > 1)
+                {
+                    var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
+                    var data = await ReadXMLString<ExternalEntityDto>(firstNode);
+                    if(data != null && data.ExternalEntityTables.Any())
+                    {
+                        externalEntities = data.ExternalEntityTables;
+                        int cacheMinutes = 0;
+                        int.TryParse(_config.GetSection("AppSettings:CacheMinutes").Value, out cacheMinutes);
+                        var options = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(cacheMinutes));
+                        _memoryCache.Set(cacheName, externalEntities, options);
+                    }
+                }
             }
-            return new ApiResponse { IsSuccess = false };
+            return new ApiResponse { IsSuccess = true, Data = externalEntities };
         }
 
 
@@ -106,64 +126,99 @@ namespace Emirates.API.Controllers
 
             var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
             var data = await ReadXMLString<LetterAdvancedSearchResponseDto>(firstNode);
-            //await GetSubSubExternalEntity(transaction, 101, 106);
-            return new ApiResponse { IsSuccess = true, Data = data.LetterAdvancedSearchResponses };
+            var responseData = new List<LetterAdvancedSearchResponse>();
+            foreach (var item in data.LetterAdvancedSearchResponses)
+            {
+                item.SubExternalEntityName = await GetIncomingEntityNameFull(transaction, item.ExternalEntity, item.SubExternalEntity, item.SubSubExternalEntity);
+                responseData.Add(item);
+            }
+            return new ApiResponse { IsSuccess = true, Data = responseData };
         }
-
-
         #endregion
 
-        [AllowAnonymous, HttpGet("GetTransactionByNumberAsync/{transactionNumber}")]
-        public async Task<IApiResponse> GetTransactionByNumberAsync(string transactionNumber)
+
+        [AllowAnonymous, HttpPost("GetTransactionAsync")]
+        public async Task<IApiResponse> GetTransactionAsync(TransactionRequedtDto request)
         {
-            await GetExternalEntityAsync();
-
-
             InqueryReference.RPINQUERYSoapClient transaction = new InqueryReference.RPINQUERYSoapClient(new InqueryReference.RPINQUERYSoapClient.EndpointConfiguration());
-            var response = await transaction.getMoamalahAsync(TransactionTypes.Incoming, TransactionClasses.General, new HijriCalendar().GetYear(DateTime.UtcNow).ToString(), transactionNumber, (int)Provices.EmirateCourt);
-            if(response == null || !response.Nodes.Any())
-                return new ApiResponse { IsSuccess = false , Data = null };
-            var firstNode = response.Nodes[1].Elements().FirstOrDefault().FirstNode.ToString();
-            var data = ReadXML<GetTransactionResponseDto>(new StringReader(firstNode));
-            if(data == default(GetTransactionResponseDto))
-                return new ApiResponse { IsSuccess = false, Data = null };
-            if(data.state != 13)
-                return new ApiResponse { IsSuccess = false, Data = null };
+            var response = await transaction.getMoamalahAsync(request.TransactionType, request.TransactionClass, request.IntYear,
+                                                              request.IntNumber, (int)Provices.EmirateCourt);
+            if (response == null || response.Nodes.Count <= 1)
+                throw new BusinessException("بيانات الطلب غير صحيحة");
 
-            //var dddd = await transaction.getMoamalahByIdAsync(data.id.ToString(), (int)Provices.EmirateCourt);
-            //var ddd = await transaction.getMoamlahUsingIDAsync("16098285", (int)Provices.EmirateCourt);
-            //var dd = await transaction.getExternelOrgByIdAsync(2, 15, -1);
+            var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
+            var data = (await ReadXMLString<TransactionResponseDto>(firstNode)).TransactionResponses.FirstOrDefault();
+            if (data == null)
+                throw new BusinessException("بيانات الطلب غير صحيحة");
 
-
-            return new ApiResponse { IsSuccess = true, Data = data };
-        }
-
-
-        [AllowAnonymous, HttpPost("GetExternelOrgById")]
-        public async Task<IApiResponse> GetExternelOrgById()
-        {
-            InqueryReference.RPINQUERYSoapClient inq = new InqueryReference.RPINQUERYSoapClient(new InqueryReference.RPINQUERYSoapClient.EndpointConfiguration());
-            //var xx = await inq.getExternelOrgByIdAsync();
-            var xx101 = await inq.getMoamalahAsync("2","1","1444","123",101);
-            var xx1 = await inq.getMoamalahAsync("2","1","1444","123",1);
-            var xx2 = await inq.getMoamalahAsync("2","1","1444","123",2);
-            var xx3 = await inq.getMoamalahAsync("2","1","1444","123",3);
-            var xxx = await inq.getMoamalahAsync("","","","4",3);
-            return new ApiResponse { IsSuccess = true, Data = true };
-        }
-
-        private TResponse ReadXML<TResponse>(StringReader input)
-        {
-            try
+            var responseData = new GetTransactionResponseDto();
+            if (data.State == 13)
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(TResponse));
-                return (TResponse)serializer.Deserialize(input);
+                responseData.StateName = "صدرت";
+                if (request.TransactionType == SystemEnums.TransactionTypes.Incoming)
+                {
+                    var transactionData = await GetTransactionById(transaction, data.Id);
+                    responseData.IncomingNumber = data.IntNumber;
+                    responseData.IncomingDate = data.StartDate;
+                    responseData.OutgoingNumber = transactionData.IntNumber;
+                    responseData.OutgoingDate = transactionData.StartDate;
+                    responseData.IncomingEntityName = await GetIncomingEntityName(transaction, transactionData.ExternalEntity, transactionData.SubExternalEntity, transactionData.SubSubExternalEntity);
+                }
+                else
+                {
+                    responseData.OutgoingNumber = data.IntNumber;
+                    responseData.OutgoingDate = data.StartDate;
+                    responseData.OutgoingEntityName = await GetIncomingEntityName(transaction, data.ExternalEntity, data.SubExternalEntity, data.SubSubExternalEntity);
+                }
             }
-            catch (Exception ex)
+            else if (data.State == 14)
             {
-                return default(TResponse);
+                responseData.StateName = "تم حفظ المعاملة";
+                if (request.TransactionType == SystemEnums.TransactionTypes.Incoming)
+                {
+                    responseData.CanFeedback = true;
+                    responseData.IncomingNumber = data.IntNumber;
+                    responseData.IncomingDate = data.StartDate;
+                    responseData.IncomingEntityName = await GetIncomingEntityName(transaction, data.ExternalEntity, data.SubExternalEntity, data.SubSubExternalEntity);
+                }
+                else
+                {
+                    responseData.OutgoingNumber = data.IntNumber;
+                    responseData.OutgoingDate = data.StartDate;
+                    responseData.OutgoingEntityName = await GetIncomingEntityName(transaction, data.ExternalEntity, data.SubExternalEntity, data.SubSubExternalEntity);
+                }
+                if (!string.IsNullOrEmpty(data.LetterNo))
+                {
+                    responseData.LetterNo = data.LetterNo;
+                    responseData.LetterDate = data.LetterDate;
+                }
             }
+            else
+            {
+                responseData.StateName = "تحت الإجراء";
+                if (request.TransactionType == SystemEnums.TransactionTypes.Incoming)
+                {
+                    responseData.CanFeedback = true;
+                    responseData.IncomingNumber = data.IntNumber;
+                    responseData.IncomingDate = data.StartDate;
+                    responseData.IncomingEntityName = await GetIncomingEntityName(transaction, data.ExternalEntity, data.SubExternalEntity, data.SubSubExternalEntity);
+                }
+                else
+                {
+                    responseData.OutgoingNumber = data.IntNumber;
+                    responseData.OutgoingDate = data.StartDate;
+                    responseData.OutgoingEntityName = await GetIncomingEntityName(transaction, data.ExternalEntity, data.SubExternalEntity, data.SubSubExternalEntity);
+                }
+                if (!string.IsNullOrEmpty(data.LetterNo))
+                {
+                    responseData.LetterNo = data.LetterNo;
+                    responseData.LetterDate = data.LetterDate;
+                }
+            }
+            return new ApiResponse { IsSuccess = true, Data = responseData };
         }
+
+
 
 
         private async Task<TResponse> ReadXMLString<TResponse>(string input)
@@ -183,9 +238,84 @@ namespace Emirates.API.Controllers
                 return default(TResponse);
             }
         }
-        private async Task GetSubSubExternalEntity(InqueryReference.RPINQUERYSoapClient transaction, int externalEntity, int subExternalEntity)
+        private async Task<string> GetIncomingEntityNameFull(InqueryReference.RPINQUERYSoapClient transaction, string externalEntity, string subExternalEntity, string subSubExternalEntity)
         {
-            var response = await transaction.getAllExternelEntitiesAsync(externalEntity, subExternalEntity, -1);
+            string subExternalEntityName = "";
+            if(!string.IsNullOrEmpty(externalEntity))
+            {
+                var externalEntities = (List<EntityTableDto>)(await GetExternalEntityAsync()).Data;
+                subExternalEntityName += externalEntities.Where(x => x.Id.ToString() == externalEntity).FirstOrDefault()?.Name;
+            }
+            if (!string.IsNullOrEmpty(subExternalEntity))
+            {
+                var response = await transaction.getSubExternalEntityAsync(externalEntity, (int)Provices.EmirateCourt);
+                if (response != null && response.Nodes.Count > 1)
+                {
+                    var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
+                    var data = await ReadXMLString<ExternalEntityDto>(firstNode);
+                    subExternalEntityName += $" - {data.ExternalEntityTables.Where(x => x.Id.ToString() == subExternalEntity).FirstOrDefault()?.Name}";
+                }
+            }
+            if (!string.IsNullOrEmpty(subSubExternalEntity))
+            {
+                var response = await transaction.getSubSubExternalEntityAsync((int)Provices.EmirateCourt, externalEntity, subExternalEntity);
+                if (response != null && response.Nodes.Count > 1)
+                {
+                    var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
+                    var data = await ReadXMLString<ExternalEntityDto>(firstNode);
+                    subExternalEntityName += $" - {data.ExternalEntityTables.Where(x => x.Id.ToString() == subSubExternalEntity).FirstOrDefault()?.Name}";
+                }
+            }
+            return subExternalEntityName;
+        }
+        private async Task<string> GetIncomingEntityName(InqueryReference.RPINQUERYSoapClient transaction, string externalEntity, string subExternalEntity, string subSubExternalEntity)
+        {
+            if (!string.IsNullOrEmpty(subSubExternalEntity))
+            {
+                var response = await transaction.getSubSubExternalEntityAsync((int)Provices.EmirateCourt, externalEntity, subExternalEntity);
+                if (response != null && response.Nodes.Count > 1)
+                {
+                    var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
+                    var data = await ReadXMLString<ExternalEntityDto>(firstNode);
+                    return data.ExternalEntityTables.Where(x => x.Id.ToString() == subSubExternalEntity).FirstOrDefault()?.Name;
+                }
+            }
+            if (!string.IsNullOrEmpty(subExternalEntity))
+            {
+                var response = await transaction.getSubExternalEntityAsync(externalEntity, (int)Provices.EmirateCourt);
+                if (response != null && response.Nodes.Count > 1)
+                {
+                    var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
+                    var data = await ReadXMLString<ExternalEntityDto>(firstNode);
+                    return data.ExternalEntityTables.Where(x => x.Id.ToString() == subExternalEntity).FirstOrDefault()?.Name;
+                }
+            }
+            if (!string.IsNullOrEmpty(externalEntity))
+            {
+                var externalEntities = (List<EntityTableDto>)(await GetExternalEntityAsync()).Data;
+                return externalEntities.Where(x => x.Id.ToString() == externalEntity).FirstOrDefault()?.Name;
+            }
+            return "";
+        }
+        private async Task<TransactionById> GetTransactionById(InqueryReference.RPINQUERYSoapClient transaction, string refId)
+        {
+            var response = await transaction.getMoamalahByRefIDAsync(refId, (int)Provices.EmirateCourt);
+            if (response == null || response.Nodes.Count <= 1)
+                return null;
+
+            var firstNode = response.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
+            var data = (await ReadXMLString<TransactionByRefIdDto>(firstNode)).TransactionByRefIds.FirstOrDefault();
+            if(data != null && !string.IsNullOrEmpty(data.CorrespondanceId))
+            {
+                var transactionResponse = await transaction.getMoamlahByIDAsync(data.CorrespondanceId, (int)Provices.EmirateCourt);
+                if (transactionResponse == null || transactionResponse.Nodes.Count <= 1)
+                    return null;
+
+                var transactionFirstNode = transactionResponse.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
+                var transactionData = (await ReadXMLString<TransactionByIdDto>(transactionFirstNode)).TransactionByIds.FirstOrDefault();
+                return transactionData;
+            }
+            return null;
         }
     }
 }

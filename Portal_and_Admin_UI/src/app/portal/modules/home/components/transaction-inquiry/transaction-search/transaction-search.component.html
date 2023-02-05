@@ -1,5 +1,5 @@
 <!-- search -->
-<div class="py-5">
+<div class="py-5" *ngIf="!transactionsAdvancedSearch && !transactionsSearchResult">
   <div class="d-flex align-items-end justify-content-center flex-wrap">
     <div class="my-1">
       <label class="fa-16 text-muted mb-2 fw-normal" for="transactionNumber">
@@ -8,10 +8,9 @@
       </label>
       <input type="text" autocomplete="off" class="form-control mw-300 input-lg py-3" placeholder="ادخل رقم المعاملة" [(ngModel)]="transactionNumber" />
     </div>
-
     <div class="d-flex align-items-center me-sm-5 my-1">
       <button class="btn btn-primary-2 text-white px-5" type="button"
-              style="font-size: 16px !important; height: 55px;" (click)="transactionsSearch()">
+              style="font-size: 16px !important; height: 55px;" (click)="transactionsSearchClick()">
         بحث
       </button>
       <button class="btn btn-primary-alt-3 me-3" type="button"
@@ -24,74 +23,70 @@
 </div>
 
 <!-- advanced search -->
-<div class="border-top mx-3 pt-4" *ngIf="transactionsAdvancedSearch">
+<div class="border-top mx-3 pt-4" *ngIf="transactionsAdvancedSearch && !transactionsSearchResult">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-      <form>
+      <form [formGroup]="transactionsAdvancedSearchForm" (ngSubmit)="onTransactionsAdvancedSearchSubmit()" >
         <div class="row">
-          <div class="col-lg-4 col-sm-6 offset-lg-2 mb-4">
-            <div>
-              <label class="fa-14 fw-bold mb-2" for="">السنه</label>
-              <select class="form-select" name="">
-                <option value="" selected>اختر...</option>
-                <option value="one">2000</option>
-                <option value="two">2002</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-sm-6 mb-4">
+          <div class="col-sm-12 mb-4">
             <div>
               <label class="fa-14 d-block fw-bold mb-2">نوع البحث</label>
               <div class="mt-3">
                 <div class="form-check form-check-inline ms-3">
-                  <input class="form-check-input" type="radio" name="searchType" id="optionOne"
-                         value="optionOne">
+                  <input class="form-check-input" type="radio" formControlName="transactionType" id="optionOne" value="2">
                   <label class="form-check-label fw-normal text-black fa-14" for="optionOne">وارد</label>
                 </div>
                 <div class="form-check form-check-inline ms-3">
-                  <input class="form-check-input" type="radio" name="searchType" id="Option2" value="option2">
+                  <input class="form-check-input" type="radio" formControlName="transactionType" id="Option2" value="1">
                   <label class="form-check-label fw-normal text-black fa-14" for="Option2">صادر</label>
                 </div>
               </div>
             </div>
           </div>
-
           <div class="col-12 mb-4">
             <div>
               <label class="fa-14 d-block fw-bold mb-2">مجال البحث</label>
               <div class="mt-3">
                 <div class="form-check form-check-inline ms-3">
-                  <input class="form-check-input" type="radio" name="searchService" id="option4"
-                         value="option4">
+                  <input class="form-check-input" type="radio" formControlName="transactionClass" id="option4" value="1">
                   <label class="form-check-label fw-normal text-black fa-14" for="option4">عام</label>
                 </div>
                 <div class="form-check form-check-inline ms-3">
-                  <input class="form-check-input" type="radio" name="searchService" id="Option5"
-                         value="option5">
+                  <input class="form-check-input" type="radio" formControlName="transactionClass" id="Option5" value="2">
                   <label class="form-check-label fw-normal text-black fa-14" for="Option5">عرائض</label>
                 </div>
                 <div class="form-check form-check-inline ms-3">
-                  <input class="form-check-input" type="radio" name="searchService" id="Option6"
-                         value="option6">
+                  <input class="form-check-input" type="radio" formControlName="transactionClass" id="Option6" value="4">
                   <label class="form-check-label fw-normal text-black fa-14" for="Option6">برقى</label>
                 </div>
                 <div class="form-check form-check-inline ms-3">
-                  <input class="form-check-input" type="radio" name="searchService" id="Option7"
-                         value="option7">
-                  <label class="form-check-label fw-normal text-black fa-14" for="Option7">
-                    المكتب
-                    الخاص
-                  </label>
+                  <input class="form-check-input" type="radio" formControlName="transactionClass" id="Option7" value="5">
+                  <label class="form-check-label fw-normal text-black fa-14" for="Option7"> المكتب الخاص </label>
                 </div>
                 <div class="form-check form-check-inline ms-3">
-                  <input class="form-check-input" type="radio" name="searchService" id="Option8"
-                         value="option8">
-                  <label class="form-check-label fw-normal text-black fa-14" for="Option8">
-                    استقبال
-                    جمهور
-                  </label>
+                  <input class="form-check-input" type="radio" formControlName="transactionClass" id="Option8" value="8">
+                  <label class="form-check-label fw-normal text-black fa-14" for="Option8"> استقبال جمهور </label>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div>
+              <label class="fa-14 fw-bold mb-2" for="">السنه</label>
+              <select class="form-select" formControlName="intYear" id="intYear">
+                <option *ngFor="let year of years" [ngValue]="year.id">{{ year.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div>
+              <label class="fa-14 fw-bold mb-2" for="">رقم المعاملة<span class="danger">*</span></label>
+              <input type="text" class="form-control" autocomplete="off" formControlName="intNumber" id="intNumber" />
+              <small *ngIf="(isFormSubmitted || transactionsAdvancedSearchForm.get('intNumber').touched) && transactionsAdvancedSearchForm.get('intNumber').errors?.required" class="danger">هذاالحقل مطلوب</small>
             </div>
           </div>
         </div>
@@ -99,10 +94,11 @@
         <div class="row mt-3">
           <div class="col-12 d-flex justify-content-center">
             <button type="submit" class="btn btn-primary px-5">بحث</button>
+            <button type="button" class="btn btn-primary-alt-3 me-3" (click)="showTransactionsSearch()">البحث برقم المعاملة</button>
           </div>
         </div>
       </form>
-    </div>
+  </div>
   </div>
 </div>
 
@@ -110,40 +106,57 @@
 <div class="border-top mx-3 pt-4" *ngIf="transactionsSearchResult">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="d-flex align-items-center justify-content-between mb-4">
-        <h5 class="fw-bold mb-0">الإستعلام عن المعاملات</h5>
-        <button type="button" class="border-primary-2 btn btn-white my-1 px-3 py-2">
+      <div class="d-flex align-items-center my-1">
+        <button class="btn btn-primary-2 text-white px-5" type="button" style="font-size: 16px !important; height: 55px;" (click)="showTransactionsSearch()"> بحث </button>
+        <button class="btn btn-primary-alt-3 me-3" type="button" style="font-size: 16px !important; height: 55px;" (click)="showTransactionsAdvancedSearch()">
+          <i class="fa-solid fa-filter ms-3"></i>
+          <span>بحث متقدم</span>
+        </button>
+        <button class="border-primary-2 btn btn-white me-3" type="button" style="font-size: 16px !important; height: 55px;">
           <img src="assets/images/icons/print.svg" alt="icon" class="img-fluid ms-2" style="width: 16px;">
           <span class="fa-12">طباعة</span>
         </button>
       </div>
-
+    </div>
+    <div class="col-lg-8 col-md-10 mx-auto">
       <div class="table-responsive">
         <table class="table table-bordered">
           <tbody>
-            <tr>
+            <tr *ngIf="transactionResponseDto.letterNo">
+              <td class="title bg-opacity-10 bg-primary fw-bold border">رقم الخطاب</td>
+              <td class="content border">{{transactionResponseDto.letterNo}}</td>
+            </tr>
+            <tr *ngIf="transactionResponseDto.letterNo">
+              <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الخطاب</td>
+              <td class="content">{{transactionResponseDto.letterDate}}</td>
+            </tr>
+            <tr *ngIf="transactionResponseDto.incomingNumber">
               <td class="title bg-opacity-10 bg-primary fw-bold border">رقم الوارد</td>
-              <td class="content border">103</td>
+              <td class="content border">{{transactionResponseDto.incomingNumber}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="transactionResponseDto.incomingDate">
               <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الوارد</td>
-              <td class="content">22/2/2022</td>
+              <td class="content">{{transactionResponseDto.incomingDate}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="transactionResponseDto.outgoingNumber">
               <td class="title bg-opacity-10 bg-primary fw-bold">رقم الصادر</td>
-              <td class="content">103</td>
+              <td class="content">{{transactionResponseDto.outgoingNumber}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="transactionResponseDto.outgoingDate">
               <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الصادر</td>
-              <td class="content">25/5/1995</td>
+              <td class="content">{{transactionResponseDto.outgoingDate}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="transactionResponseDto.stateName">
               <td class="title bg-opacity-10 bg-primary fw-bold">حالة المعاملة</td>
-              <td class="content">صدرت</td>
+              <td class="content">{{transactionResponseDto.stateName}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="transactionResponseDto.incomingEntityName">
+              <td class="title bg-opacity-10 bg-primary fw-bold">الجهة الوارد منها</td>
+              <td class="content">{{transactionResponseDto.incomingEntityName}}</td>
+            </tr>
+            <tr *ngIf="transactionResponseDto.outgoingEntityName">
               <td class="title bg-opacity-10 bg-primary fw-bold">الجهة الصادر إليها</td>
-              <td class="content">إدارة تنفيذ الاحكام</td>
+              <td class="content">{{transactionResponseDto.outgoingEntityName}}</td>
             </tr>
           </tbody>
         </table>

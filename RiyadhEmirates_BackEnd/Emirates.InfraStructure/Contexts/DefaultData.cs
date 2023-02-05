@@ -456,8 +456,8 @@ namespace Emirates.InfraStructure.Contexts
             arrData[1] = new Stage { Id = 2, NameAr = "طلب جديد", NameEn = "New Request", CanEdit = false, CanAddNew = false, SendNotification = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[2] = new Stage { Id = 3, NameAr = "استكمال البيانات من مقدم الطلب", NameEn = "Complete Data From Requester", CanEdit = true, CanAddNew = false, SendNotification = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[3] = new Stage { Id = 4, NameAr = "تحت الإجراء", NameEn = "Under Processing", CanEdit = false, CanAddNew = true, SendNotification = false, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[4] = new Stage { Id = 5, NameAr = "الطلب مرفوض من مدير النظام", NameEn = "Request Rejected From Admin", CanEdit = false, CanAddNew = true, SendNotification = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[5] = new Stage { Id = 6, NameAr = "الطلب مرفوض", NameEn = "Request Rejected", CanEdit = false, CanAddNew = true, SendNotification = false, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[4] = new Stage { Id = 5, NameAr = "الطلب مرفوض من مدير النظام", NameEn = "Request Rejected From Admin", CanEdit = false, CanAddNew = false, SendNotification = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[5] = new Stage { Id = 6, NameAr = "الطلب مرفوض", NameEn = "Request Rejected", CanEdit = false, CanAddNew = true, SendNotification = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[6] = new Stage { Id = 7, NameAr = "الطلب معتمد", NameEn = "Request Approved", CanEdit = false, CanAddNew = true, SendNotification = false, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             return arrData;
         }
@@ -620,10 +620,10 @@ namespace Emirates.InfraStructure.Contexts
             ServieNotification[] arrData = new ServieNotification[6];
             arrData[0] = new ServieNotification { Id = 1, StageId = 2, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[1] = new ServieNotification { Id = 2, StageId = 3, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[2] = new ServieNotification { Id = 3, StageId = 5, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[2] = new ServieNotification { Id = 3, StageId = 6, IsSMS = true, IsEmail = false, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[3] = new ServieNotification { Id = 4, StageId = 2, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             arrData[4] = new ServieNotification { Id = 5, StageId = 3, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
-            arrData[5] = new ServieNotification { Id = 6, StageId = 5, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
+            arrData[5] = new ServieNotification { Id = 6, StageId = 6, IsSMS = false, IsEmail = true, IsDefault = true, IsActive = true, CreatedBy = 1, CreatedDate = new DateTime(2022, 10, 1) };
             return arrData;
         }
         public static ServieNotificationLog[] ServieNotificationLogs()

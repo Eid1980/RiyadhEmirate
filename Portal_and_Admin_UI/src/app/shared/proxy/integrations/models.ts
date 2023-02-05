@@ -32,5 +32,41 @@ export interface LetterAdvancedSearchResponse {
   letterDate: string;
   externalEntity: string;
   subExternalEntity: string;
+  subSubExternalEntity: string;
   id: string;
+  subExternalEntityName: string;
+}
+
+
+export interface TransactionRequedtDto {
+  transactionType: string;
+  transactionClass: string;
+  intYear: string;
+  intNumber: string;
+}
+export interface TransactionResponse {
+  letterDate: string;
+  letterNo: string;
+  startDate: string;
+  intNumber: string;
+  externalEntity: string;
+  subExternalEntity: string;
+  subSubExternalEntity: string;
+  state: string;
+  id: string;
+  subExternalEntityName: string;
+}
+
+
+export interface GetTransactionResponseDto {
+  incomingNumber: string;
+  incomingDate: string;
+  outgoingNumber: string;
+  outgoingDate: string;
+  letterNo: string;
+  letterDate: string;
+  stateName: string;
+  incomingEntityName: string;
+  outgoingEntityName: string;
+  canFeedback: boolean;
 }

@@ -148,22 +148,20 @@ namespace Edraak.API.Controllers
                     request.SmsMessage = request.SmsMessage.Replace("رقم الطلب", request.RequestNumber);
                     // Production
                     SMS.RPSMSSoapClient smsClient = new SMS.RPSMSSoapClient(new SMS.RPSMSSoapClient.EndpointConfiguration());
-                    smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
-                    
-                    //// Development
+                    // Development
                     //SMSReference.RPSMSSoapClient smsClient = new SMSReference.RPSMSSoapClient(new SMSReference.RPSMSSoapClient.EndpointConfiguration());
-                    //smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
+                    
+                    smsClient.SendSmsAsync(request.MobileNumber, request.SmsMessage);
                 }
                 if (sendEmail && request.SendNotification && !string.IsNullOrEmpty(request.Email) && !string.IsNullOrEmpty(request.EmailMessage))
                 {
                     request.EmailMessage = request.EmailMessage.Replace("رقم الطلب", request.RequestNumber);
                     // Production
                     Email.emailSoapClient emailClient = new Email.emailSoapClient(new Email.emailSoapClient.EndpointConfiguration());
-                    emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
-
-                    //// Development
+                    // Development
                     //EmaiReference.emailSoapClient emailClient = new EmaiReference.emailSoapClient(new EmaiReference.emailSoapClient.EndpointConfiguration());
-                    //emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
+                    
+                    emailClient.sendEmailAsync("امارة منطقة الرياض - الطلبات", request.EmailMessage, request.Email);
                 }
             }
         }

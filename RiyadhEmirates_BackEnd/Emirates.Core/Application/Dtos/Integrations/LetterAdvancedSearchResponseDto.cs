@@ -22,8 +22,13 @@ namespace Emirates.Core.Application.Dtos
         [XmlElement(ElementName = "SubExternalEntity")]
         public string SubExternalEntity { get; set; }
 
+        [XmlElement(ElementName = "SubSubExternalEntity")]
+        public string SubSubExternalEntity { get; set; }
+
         [XmlElement(ElementName = "Id")]
         public string Id { get; set; }
+
+        public string SubExternalEntityName { get; set; }
 
     }
 }
