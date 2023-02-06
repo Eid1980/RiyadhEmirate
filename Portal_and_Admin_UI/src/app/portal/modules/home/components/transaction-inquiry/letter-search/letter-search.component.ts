@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IntegrationService } from '@shared/proxy/integrations/integration.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EntityTableDto, GetSubSubExternalEntityRequestDto, LetterAdvancedSearchRequedtDto, LetterAdvancedSearchResponse } from '@shared/proxy/integrations/models';
+import { EntityTableDto, GetSubSubExternalEntityRequestDto, GetTransactionResponseDto, LetterAdvancedSearchRequedtDto, LetterAdvancedSearchResponse } from '@shared/proxy/integrations/models';
 import { LookupDto } from '@shared/proxy/shared/lookup-dto.model';
 import { GlobalService } from '@shared/services/global.service';
 import { MessageType } from '@shared/enums/message-type.enum';
@@ -28,6 +28,7 @@ export class LetterSearchComponent implements OnInit {
   @Input() currentYear: string = '';
   letterAdvancedSearchRequedtDto = {} as LetterAdvancedSearchRequedtDto;
   letterAdvancedSearchResponse = [] as LetterAdvancedSearchResponse[];
+  transactionResponseDto = {} as GetTransactionResponseDto;
 
   constructor(private integrationService: IntegrationService, private formBuilder: FormBuilder,
     private globalService: GlobalService)
@@ -134,9 +135,16 @@ export class LetterSearchComponent implements OnInit {
       }
     });
   }
-  showFinalResult() {
-    ///////////////// MY CODE NOT COMPLETE
-    this.lettersSearchFinalResult = true;
+  showFinalResult(id: string, letterNo: string, letterDate: string) {
+    debugger;
+    this.integrationService.getTransactionByIdAsync(id).subscribe((response) => {
+      if (response.isSuccess) {
+        this.transactionResponseDto = response.data;
+        this.transactionResponseDto.letterNo = letterNo;
+        this.transactionResponseDto.letterDate = letterDate;
+        this.lettersSearchFinalResult = true;
+      }
+    });
   }
 
   getMainEntityTableDto() {

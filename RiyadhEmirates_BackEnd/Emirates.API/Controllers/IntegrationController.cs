@@ -134,6 +134,41 @@ namespace Emirates.API.Controllers
             }
             return new ApiResponse { IsSuccess = true, Data = responseData };
         }
+
+        [AllowAnonymous, HttpGet("GetTransactionByIdAsync/{id}")]
+        public async Task<IApiResponse> GetTransactionByIdAsync(string id)
+        {
+            InqueryReference.RPINQUERYSoapClient transaction = new InqueryReference.RPINQUERYSoapClient(new InqueryReference.RPINQUERYSoapClient.EndpointConfiguration());
+            var response = await GetTransactionById(transaction, id);
+            var responseData = new GetTransactionResponseDto {
+                IncomingNumber = response.IntNumber,
+                IncomingDate = response.StartDate
+            };
+            if (response.State == 13)
+            {
+                responseData.StateName = "صدرت";
+                var transactionData = await GetTransactionByRefId(transaction, response.Id);
+                if(transactionData != null)
+                {
+                    responseData.OutgoingNumber = transactionData.IntNumber;
+                    responseData.OutgoingDate = transactionData.StartDate;
+                    responseData.OutgoingEntityName = await GetIncomingEntityName(transaction, transactionData.ExternalEntity, transactionData.SubExternalEntity, transactionData.SubSubExternalEntity);
+                }
+                else
+                    responseData.IncomingEntityName = await GetIncomingEntityName(transaction, response.ExternalEntity, response.SubExternalEntity, response.SubSubExternalEntity);
+            }
+            else if (response.State == 14)
+            {
+                responseData.StateName = "تم حفظ المعاملة";
+                responseData.IncomingEntityName = await GetIncomingEntityName(transaction, response.ExternalEntity, response.SubExternalEntity, response.SubSubExternalEntity);
+            }
+            else
+            {
+                responseData.StateName = "تحت الإجراء";
+                responseData.IncomingEntityName = await GetIncomingEntityName(transaction, response.ExternalEntity, response.SubExternalEntity, response.SubSubExternalEntity);
+            }
+            return new ApiResponse { IsSuccess = true, Data = responseData };
+        }
         #endregion
 
 
@@ -157,7 +192,7 @@ namespace Emirates.API.Controllers
                 responseData.StateName = "صدرت";
                 if (request.TransactionType == SystemEnums.TransactionTypes.Incoming)
                 {
-                    var transactionData = await GetTransactionById(transaction, data.Id);
+                    var transactionData = await GetTransactionByRefId(transaction, data.Id);
                     responseData.IncomingNumber = data.IntNumber;
                     responseData.IncomingDate = data.StartDate;
                     responseData.OutgoingNumber = transactionData.IntNumber;
@@ -297,7 +332,7 @@ namespace Emirates.API.Controllers
             }
             return "";
         }
-        private async Task<TransactionById> GetTransactionById(InqueryReference.RPINQUERYSoapClient transaction, string refId)
+        private async Task<TransactionById> GetTransactionByRefId(InqueryReference.RPINQUERYSoapClient transaction, string refId)
         {
             var response = await transaction.getMoamalahByRefIDAsync(refId, (int)Provices.EmirateCourt);
             if (response == null || response.Nodes.Count <= 1)
@@ -316,6 +351,16 @@ namespace Emirates.API.Controllers
                 return transactionData;
             }
             return null;
+        }
+        private async Task<TransactionById> GetTransactionById(InqueryReference.RPINQUERYSoapClient transaction, string id)
+        {
+            var transactionResponse = await transaction.getMoamlahByIDAsync(id, (int)Provices.EmirateCourt);
+            if (transactionResponse == null || transactionResponse.Nodes.Count <= 1)
+                throw new BusinessException("بيانات الطلب غير صحيحة");
+
+            var transactionFirstNode = transactionResponse.Nodes[1].Elements().ToList().FirstOrDefault().ToString();
+            var transactionData = (await ReadXMLString<TransactionByIdDto>(transactionFirstNode)).TransactionByIds.FirstOrDefault();
+            return transactionData;
         }
     }
 }

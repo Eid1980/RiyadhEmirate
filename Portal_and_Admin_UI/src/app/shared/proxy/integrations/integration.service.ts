@@ -32,6 +32,10 @@ export class IntegrationService {
   getLetterBySearchAsync = (request: LetterAdvancedSearchRequedtDto): Observable<ApiResponse<LetterAdvancedSearchResponse[]>> => {
     return this.httpClient.post<ApiResponse<LetterAdvancedSearchResponse[]>>(`${this.serviceUrl}/GetLetterBySearchAsync`, request).pipe();
   }
+  getTransactionByIdAsync = (id: string): Observable<ApiResponse<GetTransactionResponseDto>> => {
+    return this.httpClient.get<ApiResponse<GetTransactionResponseDto>>(`${this.serviceUrl}/GetTransactionByIdAsync/${id}`).pipe(
+    );
+  }
 
   getTransactionAsync = (request: TransactionRequedtDto): Observable<ApiResponse<GetTransactionResponseDto>> => {
     return this.httpClient.post<ApiResponse<GetTransactionResponseDto>>(`${this.serviceUrl}/GetTransactionAsync`, request).pipe();

@@ -26,7 +26,7 @@ namespace Emirates.Core.Application.Dtos
         public string SubSubExternalEntity { get; set; }
 
         [XmlElement(ElementName = "state")]
-        public string State { get; set; }
+        public int State { get; set; }
 
         [XmlElement(ElementName = "id")]
         public string Id { get; set; }

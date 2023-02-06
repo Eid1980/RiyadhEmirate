@@ -148,7 +148,7 @@
               <td>{{ letterAdvanced.letterDate }}</td>
               <td>{{ letterAdvanced.subExternalEntityName }}</td>
               <td>
-                <a class="btn btn-primary mx-1 p-2" title="عرض المعاملة" (click)="showFinalResult()">
+                <a class="btn btn-primary mx-1 p-2" title="عرض المعاملة" (click)="showFinalResult(letterAdvanced.id, letterAdvanced.letterNo, letterAdvanced.letterDate)">
                   <i class="fa fa-eye"></i>
                 </a>
               </td>
@@ -178,37 +178,41 @@
       </div>
       <table class="table table-bordered">
         <tbody>
-          <tr>
+          <tr *ngIf="transactionResponseDto.letterNo">
             <td class="title bg-opacity-10 bg-primary fw-bold border">رقم الخطاب</td>
-            <td class="content border">103</td>
+            <td class="content border">{{transactionResponseDto.letterNo}}</td>
           </tr>
-          <tr>
-            <td class="title bg-opacity-10 bg-primary fw-bold border">تاريخ الخطاب</td>
-            <td class="content border">103</td>
+          <tr *ngIf="transactionResponseDto.letterNo">
+            <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الخطاب</td>
+            <td class="content">{{transactionResponseDto.letterDate}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="transactionResponseDto.incomingNumber">
             <td class="title bg-opacity-10 bg-primary fw-bold border">رقم الوارد</td>
-            <td class="content border">103</td>
+            <td class="content border">{{transactionResponseDto.incomingNumber}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="transactionResponseDto.incomingDate">
             <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الوارد</td>
-            <td class="content">22/2/2022</td>
+            <td class="content">{{transactionResponseDto.incomingDate}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="transactionResponseDto.outgoingNumber">
             <td class="title bg-opacity-10 bg-primary fw-bold">رقم الصادر</td>
-            <td class="content">103</td>
+            <td class="content">{{transactionResponseDto.outgoingNumber}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="transactionResponseDto.outgoingDate">
             <td class="title bg-opacity-10 bg-primary fw-bold">تاريخ الصادر</td>
-            <td class="content">25/5/1995</td>
+            <td class="content">{{transactionResponseDto.outgoingDate}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="transactionResponseDto.stateName">
             <td class="title bg-opacity-10 bg-primary fw-bold">حالة المعاملة</td>
-            <td class="content">صدرت</td>
+            <td class="content">{{transactionResponseDto.stateName}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="transactionResponseDto.incomingEntityName">
+            <td class="title bg-opacity-10 bg-primary fw-bold">الجهة الوارد منها</td>
+            <td class="content">{{transactionResponseDto.incomingEntityName}}</td>
+          </tr>
+          <tr *ngIf="transactionResponseDto.outgoingEntityName">
             <td class="title bg-opacity-10 bg-primary fw-bold">الجهة الصادر إليها</td>
-            <td class="content">إدارة تنفيذ الاحكام</td>
+            <td class="content">{{transactionResponseDto.outgoingEntityName}}</td>
           </tr>
         </tbody>
       </table>
