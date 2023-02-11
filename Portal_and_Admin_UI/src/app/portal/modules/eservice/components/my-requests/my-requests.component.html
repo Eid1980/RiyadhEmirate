@@ -78,7 +78,7 @@
               <td>{{ myRequest.requestNumber }}</td>
               <td>{{ myRequest.requestDate }}</td>
               <td>{{ myRequest.stageName }}</td>
-              <td title="{{ myRequest.notes }}" *ngIf="myRequest.notes">
+              <td pTooltip="{{ myRequest.notes }}" tooltipPosition="top" *ngIf="myRequest.notes">
                 {{
                   myRequest.notes.length > 20
                     ? myRequest.notes.substring(0, 20) + " ..."
@@ -87,7 +87,7 @@
               </td>
               <td title="{{ myRequest.notes }}" *ngIf="!myRequest.notes"></td>
               <td>
-                <a class="btn btn-primary mx-1 p-2" *ngIf="myRequest.url" title="بيانات الطلب"
+                <a class="btn btn-primary mx-1 p-2" *ngIf="myRequest.url" pTooltip="بيانات الطلب" tooltipPosition="top"
                   [routerLink]="[myRequest.url, myRequest.id]">
                   <i class="fa fa-eye"></i>
                 </a>

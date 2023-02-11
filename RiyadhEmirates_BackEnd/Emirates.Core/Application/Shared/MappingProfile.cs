@@ -209,6 +209,7 @@ namespace Emirates.Core.Application.Shared
                 .ForMember(dest => dest.ServiceName, src => src.MapFrom(m => m.Service.NameAr))
                 .ForMember(dest => dest.RequestDate, src => src.MapFrom(m => m.RequestDate.ToString("yyyy-MM-dd")))
                 .ForMember(dest => dest.StageName, src => src.MapFrom(m => m.Stage.NameAr))
+                .ForMember(dest => dest.Notes, src => src.MapFrom(m => m.StageId == (int)SystemEnums.Stages.CompleteDataFromRequester || m.StageId == (int)SystemEnums.Stages.UnderProcessing || m.StageId == (int)SystemEnums.Stages.RequestRejected ? m.RequestStageLogs.OrderByDescending( x=> x.CreatedDate).FirstOrDefault().Notes : m.Notes))
                 .ForMember(dest => dest.Url, src => src.MapFrom(m => m.Service.ServiceStages.FirstOrDefault(x => x.StageId.Equals(m.StageId)).RequesterUrl));
 
             CreateMap<Request, GetInboxListDto>()
